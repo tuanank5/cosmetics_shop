@@ -23,6 +23,7 @@
 | D18 | Flyway V1 toàn bộ schema, bật migrate ở dev/prod, JPA validate; DB local 3306 | Không dùng ddl-auto=update |
 | D19 | Class Diagram & ERD nộp theo v4; sơ đồ gốc nhóm là tài liệu tham chiếu lịch sử | `docs/design/07-group-diagram-mapping.md` |
 | D20 | Ollama qwen2.5:3b / bge-m3 dùng cho P09 khi có tài nguyên, AI disabled mặc định | Không cam kết chạy AI trên free host |
+| D21 | P01 thực hiện thao tác xóa sản phẩm bằng cách chuyển sang ngừng hoạt động để giữ tham chiếu và lịch sử đơn. | Danh mục và thương hiệu chỉ xóa vật lý khi chưa có sản phẩm tham chiếu. Tính duy nhất của đường dẫn do khóa UNIQUE trong V1 bảo đảm. |
 
 ## Điểm còn cần xác minh/định cấu hình
 

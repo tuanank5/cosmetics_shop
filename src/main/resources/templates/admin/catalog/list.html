@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title th:text="|${label} · Quản trị BeautyShop|">Quản trị BeautyShop</title>
+    <link rel="stylesheet" th:href="@{/css/theme.css}">
+    <link rel="stylesheet" th:href="@{/css/admin-catalog.css}">
+</head>
+<body>
+<div th:replace="~{fragments/header :: siteHeader}"></div>
+<main class="page-content catalog-admin">
+    <nav class="catalog-actions" aria-label="Quản lý danh mục">
+        <a th:href="@{/admin/catalog/categories}">Danh mục</a>
+        <a th:href="@{/admin/catalog/brands}">Thương hiệu</a>
+        <a th:href="@{/admin/catalog/products}">Sản phẩm</a>
+    </nav>
+    <h1 th:text="${label}">Danh mục</h1>
+    <p class="notice" role="status" th:if="${message}" th:text="${message}"></p>
+    <p class="notice catalog-error" role="alert" th:if="${error}" th:text="${error}"></p>
+    <a class="btn" th:href="@{/admin/catalog/{section}/new(section=${section})}">Thêm mới</a>
+    <p th:if="${#lists.isEmpty(items)}">Chưa có dữ liệu.</p>
+    <ul class="catalog-list">
+        <li th:each="item : ${items}">
+            <div>
+                <strong th:text="${item.name}"></strong>
+                <div th:text="${item.slug}"></div>
+                <small th:text="${item.active} ? 'Đang hoạt động' : 'Ngừng hoạt động'"></small>
+            </div>
+            <div class="catalog-actions">
+                <a class="btn" th:href="@{/admin/catalog/{section}/{id}/edit(section=${section},id=${item.id})}">Sửa</a>
+                <form th:if="${!product or item.active}"
+                      th:action="@{/admin/catalog/{section}/{id}/delete(section=${section},id=${item.id})}" method="post">
+                    <button class="btn" type="submit" th:text="${product} ? 'Ngừng hoạt động' : 'Xóa'">Xóa</button>
+                </form>
+            </div>
+        </li>
+    </ul>
+</main>
+<div th:replace="~{fragments/footer :: siteFooter}"></div>
+</body>
+</html>

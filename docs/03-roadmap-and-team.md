@@ -19,6 +19,10 @@
 
 - **A (lead dữ liệu):** 15–20 SKU thông tin thật có nguồn chính thức; kiểm tra brand/category, SKU, giá demo và license hình.
 - **D (UI/seed + kiểm nguồn):** 15–20 SKU, ảnh tự chụp hoặc được phép; kiểm logo, alt text, nguồn sản phẩm, bảng audit dữ liệu.
+**Xác minh P01:** CRUD danh mục, thương hiệu và sản phẩm tại `/admin/catalog` đã chạy qua test tích hợp với profile `dev`, JDK 21 và MariaDB 12.2.2. Flyway áp dụng V1 trên database trống. Maven chạy 15 test thành công và đóng gói JAR. Test dùng phiên Admin do Spring Security Test cấp. Đăng nhập bằng tài khoản thật thuộc P04.
+
+- Chạy lại test tích hợp bằng cách trỏ `DB_URL`, `DB_USER`, `DB_PASSWORD` vào một database MariaDB trống dành riêng cho kiểm thử, đặt `P01_MARIADB_TEST=true`, rồi chạy `mvn test`.
+
 - **B (QA nguồn & import):** 5–10 SKU, rà soát nhãn loại da/thành phần, chuẩn hóa file seed/import, đảm bảo không trích khẳng định chưa chứng thực.
 - **C (QA vận hành):** 5 SKU, kiểm tình huống SKU còn 1, hết hàng, hủy COD, giá snapshot, kiểm dữ liệu seed với Order.
 - **Deadline dữ liệu:** tối thiểu 15 hàng đã kiểm ngày 20/11; đủ 30–50 hàng có nguồn ngày **27/11**. File `docs/data/product-research.csv` là template, chưa giả vờ dữ liệu được nghiên cứu.

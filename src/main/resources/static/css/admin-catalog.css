@@ -1,0 +1,25 @@
+.catalog-actions { display: flex; flex-wrap: wrap; gap: .75rem; align-items: center; }
+.catalog-actions form { margin: 0; }
+.catalog-list { list-style: none; padding: 0; }
+.catalog-list li {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1rem 0;
+    border-bottom: 1px solid #e5d6cf;
+    overflow-wrap: anywhere;
+}
+.catalog-form, .catalog-form fieldset { display: grid; gap: .75rem; }
+.catalog-form { max-width: 42rem; }
+.catalog-form fieldset { min-width: 0; margin: 0; border: 1px solid #e5d6cf; }
+.catalog-form label { display: grid; gap: .25rem; }
+.catalog-form input:not([type=checkbox]), .catalog-form select, .catalog-form textarea {
+    width: 100%;
+    min-height: 2.75rem;
+    padding: .5rem;
+    font: inherit;
+}
+.catalog-form .catalog-checkbox { display: flex; align-items: center; }
+.catalog-error { color: #8c2637; }
+.catalog-admin .btn { cursor: pointer; font: inherit; }

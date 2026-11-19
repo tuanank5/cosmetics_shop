@@ -9,7 +9,8 @@
 
 - **Đã tạo:** bộ khung Spring Boot Maven, web page Thymeleaf giới thiệu dự án, CSS responsive, Spring Security cấu hình các đường dẫn, mẫu chính sách phí giao hàng & trạng thái đơn, unit test, tài liệu nghiệp vụ/thiết kế, 12 prompt Codex P00–P11.
 - **Đã bổ sung Flyway V1:** schema SQL cho toàn bộ domain; CHƯA chạy xác nhận với MariaDB tại môi trường tạo ZIP.
-- **Chưa hoàn thành:** entity/repository/service CRUD, tài khoản đăng nhập bằng MariaDB, giỏ, checkout, MoMo, AI, seed 30–50 sản phẩm, deployment. **Không dùng scaffold này như bằng chứng rằng MVP đã hoàn tất.**
+- **Đã xác minh P01:** CRUD danh mục, thương hiệu và sản phẩm ở `/admin/catalog` chạy với MariaDB trong test tích hợp. Truy cập các trang quản trị bằng tài khoản thực chờ P04.
+- **Chưa hoàn thành:** CRUD SKU, tài khoản đăng nhập bằng MariaDB, giỏ, checkout, MoMo, AI, seed 30–50 sản phẩm, deployment.
 - Security hiện **chặn mọi lần đăng nhập** qua `BootstrapUserDetailsService` cho tới khi nhóm triển khai P04. Không chứa tài khoản/mật khẩu demo hardcode.
 
 ## Stack / phạm vi
