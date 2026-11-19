@@ -2,21 +2,11 @@
 
 ## Local
 
-- Java 21 + Maven 3.9+ + MariaDB local, hoặc tùy chọn `docker compose up -d` (MariaDB cổng 3307, chỉ localhost).
-- Lệnh (PowerShell):
-
-```powershell
-$env:DB_URL='jdbc:mariadb://localhost:3307/beautyshop'
-$env:DB_USER='beautyshop'
-$env:DB_PASSWORD='beautyshop_dev_only'
-mvn spring-boot:run -Dspring-boot.run.profiles=dev
-```
-
-- `application-dev.properties` kết nối DB; migration sẽ được tạo ở P01+. Trang chủ scaffold không có business data.
+Dùng [hướng dẫn MariaDB và Flyway](01-local-db-and-flyway.md) để tạo database, chọn cổng và chạy profile `dev`.
 
 ## Production (chưa xác minh)
 
-- Cần Java 21 runtime, HTTPS, endpoint công khai nhận MoMo IPN, MariaDB có persistence và backup, biến môi trường `DB_URL`, `DB_USER`, `DB_PASSWORD`.
+- Cần Java 21 runtime, HTTPS, MariaDB có lưu trữ bền vững và backup, cùng các biến `DB_URL`, `DB_USER`, `DB_PASSWORD`. Nếu bật MoMo Sandbox, cấu hình thêm endpoint IPN công khai.
 - Hosting free tier thường sleep, hạn mức tài nguyên, không có DB free, hoặc giới hạn callback; **không đảm bảo** site + MoMo IPN luôn hoạt động. Kiểm tra điều khoản, thời gian sleep, egress, cổng callback, HTTPS và phí phát sinh trước khi đăng ký.
 - File ảnh tải lên không nên lưu duy nhất trên filesystem tạm của cloud host. Dùng bucket phù hợp hoặc thư mục local cho demo và phương án dự phòng.
 - Khi có migration hoàn chỉnh, prod dùng `spring.jpa.hibernate.ddl-auto=validate`; không bật `update` production.
@@ -29,6 +19,6 @@ mvn spring-boot:run -Dspring-boot.run.profiles=dev
 - [ ] MariaDB tạo DB + user đặc quyền tối thiểu, backup/restore kiểm thử.
 - [ ] Migration đã áp dụng thành công và JPA validate.
 - [ ] Environment secrets đặt ngoài repo, không log.
-- [ ] MoMo Sandbox merchant/redirect/IPN/transaction query được kiểm chứng trên host.
-- [ ] Smoke: catalog → cart → login → COD → admin → order; kiểm IPN/timeout.
+- [ ] Smoke test luồng catalog → giỏ → đăng nhập → COD → admin → đơn hàng.
+- [ ] Nếu bật MoMo Sandbox, kiểm merchant, redirect, IPN, truy vấn giao dịch và timeout trên host.
 - [ ] Có backup demo localhost + video thay thế khi free tier gặp sự cố.

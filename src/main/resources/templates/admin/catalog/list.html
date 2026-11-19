@@ -23,14 +23,14 @@
     <ul class="catalog-list">
         <li th:each="item : ${items}">
             <div>
-                <strong th:text="${item.name}"></strong>
-                <div th:text="${item.slug}"></div>
-                <small th:text="${item.active} ? 'Đang hoạt động' : 'Ngừng hoạt động'"></small>
+                <strong th:text="${item.ten}"></strong>
+                <div th:text="${item.duongDan}"></div>
+                <small th:text="${item.dangHoatDong} ? 'Đang hoạt động' : 'Ngừng hoạt động'"></small>
             </div>
             <div class="catalog-actions">
-                <a class="btn" th:href="@{/admin/catalog/{section}/{id}/edit(section=${section},id=${item.id})}">Sửa</a>
-                <form th:if="${!product or item.active}"
-                      th:action="@{/admin/catalog/{section}/{id}/delete(section=${section},id=${item.id})}" method="post">
+                <a class="btn" th:href="@{/admin/catalog/{section}/{id}/edit(section=${section},id=${item.ma})}">Sửa</a>
+                <form th:if="${!product or item.dangHoatDong}"
+                      th:action="@{/admin/catalog/{section}/{id}/delete(section=${section},id=${item.ma})}" method="post">
                     <button class="btn" type="submit" th:text="${product} ? 'Ngừng hoạt động' : 'Xóa'">Xóa</button>
                 </form>
             </div>

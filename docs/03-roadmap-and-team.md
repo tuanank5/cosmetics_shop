@@ -15,14 +15,18 @@
 | 30/11–02/12 | Full QA, fix, deploy, SRS/report/slides/video | Cả nhóm | COD E2E, regression, screenshots, trình bày |
 | **03/12** | **Nộp & demo** | Cả nhóm | Website + source + tài liệu + hướng dẫn |
 
-## Giao trách nhiệm 30–50 mỹ phẩm (bắt đầu sớm, không dồn cuối)
+## Kết quả kiểm chứng
+
+- **P00:** JAR chạy với profile `dev`. `/`, `/products` và `/login` trả HTTP 200. Xác nhận hiển thị ở 375, 768 và 1440 px còn mở.
+- **P01:** test tích hợp xác minh CRUD danh mục, thương hiệu và sản phẩm bằng phiên Admin do Spring Security Test cấp. Đăng nhập bằng tài khoản thật thuộc P04.
+- **Sau refactor MVC:** JDK 21 chạy compile, 15/15 test và đóng gói JAR thành công. Flyway áp dụng V1 trên MariaDB 12.2.2 trống và JPA xác thực schema. Flyway cảnh báo phiên bản MariaDB này mới hơn phạm vi kiểm chứng của nó.
+
+Xem [README](../README.md#chạy-local) để chạy lại test tích hợp.
+
+## Giao trách nhiệm 30–50 mỹ phẩm
 
 - **A (lead dữ liệu):** 15–20 SKU thông tin thật có nguồn chính thức; kiểm tra brand/category, SKU, giá demo và license hình.
 - **D (UI/seed + kiểm nguồn):** 15–20 SKU, ảnh tự chụp hoặc được phép; kiểm logo, alt text, nguồn sản phẩm, bảng audit dữ liệu.
-**Xác minh P01:** CRUD danh mục, thương hiệu và sản phẩm tại `/admin/catalog` đã chạy qua test tích hợp với profile `dev`, JDK 21 và MariaDB 12.2.2. Flyway áp dụng V1 trên database trống. Maven chạy 15 test thành công và đóng gói JAR. Test dùng phiên Admin do Spring Security Test cấp. Đăng nhập bằng tài khoản thật thuộc P04.
-
-- Chạy lại test tích hợp bằng cách trỏ `DB_URL`, `DB_USER`, `DB_PASSWORD` vào một database MariaDB trống dành riêng cho kiểm thử, đặt `P01_MARIADB_TEST=true`, rồi chạy `mvn test`.
-
 - **B (QA nguồn & import):** 5–10 SKU, rà soát nhãn loại da/thành phần, chuẩn hóa file seed/import, đảm bảo không trích khẳng định chưa chứng thực.
 - **C (QA vận hành):** 5 SKU, kiểm tình huống SKU còn 1, hết hàng, hủy COD, giá snapshot, kiểm dữ liệu seed với Order.
 - **Deadline dữ liệu:** tối thiểu 15 hàng đã kiểm ngày 20/11; đủ 30–50 hàng có nguồn ngày **27/11**. File `docs/data/product-research.csv` là template, chưa giả vờ dữ liệu được nghiên cứu.

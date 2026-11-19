@@ -18,12 +18,13 @@
 | D14 | Spring AI + RAG đọc catalog/FAQ, không dùng lịch sử cá nhân ở MVP; demo timebox P1 ưu tiên cao | Không chẩn đoán y khoa; giá/tồn truy vấn SQL |
 | D15 | UX Luxury/Premium responsive; ngân sách hosting/API AI ưu tiên miễn phí | Không giả vờ API/hosting free vận hành production |
 | D16 | Trọn bộ tài liệu SDLC | SRS, UML, ERD, test, deploy, slide và demo |
-| D17 | Chia source theo module, giữ 1 Spring Boot monolith, Form Login + Session | Không yêu cầu JWT cho web MVP |
+| D17 | Tổ chức source theo tầng MVC dưới `com.beautyshop`, giữ 1 Spring Boot monolith và Form Login + Session | Quy tắc domain độc lập giữ package theo trách nhiệm |
 
 | D18 | Flyway V1 toàn bộ schema, bật migrate ở dev/prod, JPA validate; DB local 3306 | Không dùng ddl-auto=update |
-| D19 | Class Diagram & ERD nộp theo v4; sơ đồ gốc nhóm là tài liệu tham chiếu lịch sử | `docs/design/07-group-diagram-mapping.md` |
+| D19 | Class Diagram mô tả mô hình nghiệp vụ v4. ERD và tên vật lý MariaDB theo v5. | Xem `docs/design/07-group-diagram-mapping.md` cho sơ đồ nhóm và `docs/design/02-erd.md` cho schema v5 |
 | D20 | Ollama qwen2.5:3b / bge-m3 dùng cho P09 khi có tài nguyên, AI disabled mặc định | Không cam kết chạy AI trên free host |
 | D21 | P01 thực hiện thao tác xóa sản phẩm bằng cách chuyển sang ngừng hoạt động để giữ tham chiếu và lịch sử đơn. | Danh mục và thương hiệu chỉ xóa vật lý khi chưa có sản phẩm tham chiếu. Tính duy nhất của đường dẫn do khóa UNIQUE trong V1 bảo đảm. |
+| D22 | Tên nghiệp vụ và biến nội bộ dùng tiếng Việt không dấu. Thuộc tính JPA dùng camelCase theo cột. Giữ thuật ngữ tiếng Anh và dùng dấu `_` trước hậu tố kỹ thuật như `_Controller`, `_Repository` và `_Policy`. | Giữ tên kỹ thuật như `path`, `label`, URL và tham số form hiện hành, cùng schema V1. |
 
 ## Điểm còn cần xác minh/định cấu hình
 

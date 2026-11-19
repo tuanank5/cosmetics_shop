@@ -4,10 +4,10 @@ package com.beautyshop.inventory;
 public final class InventoryRules {
     private InventoryRules() {}
 
-    public static int available(int onHand, int reserved) {
-        if (onHand < 0 || reserved < 0 || reserved > onHand) {
+    public static int available(int soLuongTrongKho, int soLuongTamGiu) {
+        if (soLuongTrongKho < 0 || soLuongTamGiu < 0 || soLuongTamGiu > soLuongTrongKho) {
             throw new IllegalArgumentException("Số lượng tồn kho không hợp lệ");
         }
-        return onHand - reserved;
+        return soLuongTrongKho - soLuongTamGiu;
     }
 }

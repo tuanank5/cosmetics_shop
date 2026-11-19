@@ -25,16 +25,16 @@
             <label>Danh mục
                 <select th:field="*{categoryId}" required>
                     <option value="">Chọn danh mục</option>
-                    <option th:each="item : ${categories}" th:value="${item.id}"
-                            th:text="${item.name + (item.active ? '' : ' (ngừng hoạt động)')}"></option>
+                    <option th:each="item : ${categories}" th:value="${item.ma}"
+                            th:text="${item.ten + (item.dangHoatDong ? '' : ' (ngừng hoạt động)')}"></option>
                 </select>
             </label>
             <small class="catalog-error" th:errors="*{categoryId}"></small>
             <label>Thương hiệu
                 <select th:field="*{brandId}" required>
                     <option value="">Chọn thương hiệu</option>
-                    <option th:each="item : ${brands}" th:value="${item.id}"
-                            th:text="${item.name + (item.active ? '' : ' (ngừng hoạt động)')}"></option>
+                    <option th:each="item : ${brands}" th:value="${item.ma}"
+                            th:text="${item.ten + (item.dangHoatDong ? '' : ' (ngừng hoạt động)')}"></option>
                 </select>
             </label>
             <small class="catalog-error" th:errors="*{brandId}"></small>

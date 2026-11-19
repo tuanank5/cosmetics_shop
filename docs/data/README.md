@@ -1,4 +1,12 @@
-# Dữ liệu demo — 30–50 mỹ phẩm từ thông tin công khai thực tế
+# Tên SQL và dữ liệu demo
+
+## Ánh xạ MariaDB v5
+
+[Bảng đối chiếu CSV](bang_doi_chieu_ten.csv) liệt kê tên bảng và cột cũ → mới. [ERD v5](../design/02-erd.md) mô tả quan hệ, còn [Flyway V1](../../src/main/resources/db/migration/V1__khoi_tao_co_so_du_lieu.sql) chứa định nghĩa SQL thực tế. Trong truy vấn SQL dùng tên vật lý MariaDB. Trong JPQL dùng tên entity và thuộc tính Java.
+
+P01 ánh xạ `DanhMuc` → `danh_muc`, `ThuongHieu` → `thuong_hieu`, `SanPham` → `san_pham`. Thuộc tính JPA dùng camelCase, ví dụ `maThuongHieu` → `ma_thuong_hieu`. JPA liên kết thuộc tính và quan hệ với các cột qua `@Column` và `@JoinColumn`. Tên kỹ thuật như `email`, `sku` và mã trạng thái như `PENDING_PAYMENT`, `PAID` giữ theo schema và quy tắc nghiệp vụ.
+
+## Dữ liệu demo
 
 **Chưa có bộ seed đã kiểm chứng** trong scaffold. Để tránh bịa thành phần/giá/hình và rủi ro bản quyền, nhóm cần chuẩn bị dữ liệu từ website chính thức của thương hiệu/nhà bán có quyền phù hợp, ghi nguồn và ngày kiểm tra từng sản phẩm.
 
@@ -14,12 +22,8 @@
 1. Thu thập vào `product-research.csv` (template chưa xác minh).
 2. Điền `source_url`, `reviewed_at`, `image_license`, reviewer.
 3. Chủ sản phẩm module A kiểm tra; D kiểm tra ảnh và metadata RAG.
-4. Sau khi xác minh, xuất `db/migration/Vxxx__seed_demo.sql` hoặc code seeder dev theo commit riêng; production không tự seed dữ liệu demo.
+4. Sau khi xác minh, chọn migration dành riêng cho môi trường demo hoặc seeder dev. Giữ dữ liệu demo ngoài đường chạy mặc định của production.
 
 CSV `verified=no` nghĩa là **không được coi là sản phẩm thực tế đã kiểm chứng**.
 
-## Kế hoạch dữ liệu thực tế (v4)
-- 4 thành viên chia 10–15 SKU/người theo `docs/03-roadmap-and-team.md`. Owner A/D lead nguồn và ảnh; B/C kiểm theo nghiệp vụ.
-- Không trộn `giá tham khảo` với giá bán tại Shop: price trong seed là **giá demo**, cần ghi rõ.
-- Ghi URL nguồn hãng cho tên/INCI/công dụng; quyền dùng ảnh phải rõ. Nếu không có quyền, dùng ảnh tự chụp hoặc placeholder do nhóm tạo. Không tải lại ảnh có watermark.
-- Mẫu CSV hiện mới có header và chưa xác minh sản phẩm; không coi là seed hoàn thành.
+Phân công và mốc kiểm tra nguồn nằm trong [roadmap](../03-roadmap-and-team.md).

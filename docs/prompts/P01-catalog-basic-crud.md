@@ -5,7 +5,7 @@
 **Chủ trì:** A
 
 
-- Tạo Entity/Repository/Service/DTO/Controller cho Category, Brand, Product (thông tin chung); quyền admin cho CRUD.
+- Tạo Entity/Repository/Service/DTO/Controller cho `DanhMuc`, `ThuongHieu`, `SanPham` (thông tin chung); quyền admin cho CRUD.
 - Thuộc tính `product`: slug, title, description, ingredients, usageGuide, skinTypeTags (metadata dùng RAG), active, brand/category FK. Không đặt stock/price tổng ở Product.
 - Ánh xạ Entity chính xác với Flyway V1 đã có, test migrate trên MariaDB sạch. Không sửa V1 khi đã migrate; thay đổi schema phải dùng V2+. Không dùng `ddl-auto=update` kể cả dev. Có validation slug/name, duplicate, active/inactive, prevent hard deletion khi đã có order.
 - Form Thymeleaf admin tối thiểu rõ ràng, flash messages bằng tiếng Việt; không cần thương hiệu/ảnh thật ở bước này.
@@ -13,8 +13,5 @@
 **Done:** CRUD category/brand/product chạy thật trên MariaDB, dữ liệu nhất quán.
 
 ## Quy định thực hiện
-1. Đọc `AGENTS.md`, `docs/DECISIONS.md`, `docs/requirements/01-srs.md`, `docs/requirements/02-business-rules.md`, `docs/design/02-erd.md` và code hiện tại trước khi sửa.
-2. Chỉ làm task này; không tự bổ sung tính năng P2, không đổi stack/phân quyền/trạng thái mà không có duyệt thay đổi.
-3. Làm theo package-by-feature, dùng DTO/validation/constructor injection/BigDecimal; thêm migration phiên bản và test thực tế khi cần.
-4. Kết thúc: liệt kê changed files, API/pages, `mvn test`/package PASS hoặc blocker, cách chạy thử, vấn đề còn tồn. Không giả lập bằng chứng.
-5. Không hardcode secret, không dùng giá từ client, không gắn cứng ảnh mỹ phẩm chưa rõ quyền.
+
+Áp dụng [AGENTS.md](../../AGENTS.md) và chỉ làm trong phạm vi prompt này. Báo các trang hoặc API bị tác động, cách chạy thử và kết quả kiểm chứng.

@@ -1,5 +1,7 @@
 # Changelog v4 – 12/11/2026
 
+Ghi chép lịch sử tại thời điểm v4. Tên migration, cấu trúc mã nguồn và tình trạng kiểm thử hiện hành nằm trong [README](../README.md) và [roadmap](03-roadmap-and-team.md).
+
 1. Thêm `flyway-core`, `flyway-mysql`; bật Flyway cả dev/prod với JPA validate; thêm `V1__init_schema.sql` (empty DB required).
 2. MariaDB dev mặc định 3306; Docker tùy chọn giữ host port 3307.
 3. CODE security: public MoMo IPN POST + chỉ bypass CSRF route này, return GET public, `/uploads/**` public **chỉ phù hợp ảnh đã validate**; chưa có upload controller/handler.
@@ -11,7 +13,7 @@
 9. Giao rõ owner/mốc 30–50 sản phẩm và bản quyền hình ảnh.
 10. Chưa có Maven Wrapper tải được trong container; đã ghi lệnh cài wrapper bằng Maven khi có Internet; không viết wrapper giả.
 
-## Chưa được kiểm chứng
+## Các mục chưa được kiểm chứng tại thời điểm v4
 - Chưa chạy Flyway/Maven Spring Boot trên MariaDB do runtime này không có Maven/DB và không tải dependency được. V1 là thiết kế SQL chưa được nghiệm thu thực tế.
 - MoMo Sandbox merchant, HTTPS IPN, AI provider, hosting free-tier chưa kết nối.
 - 30–50 sản phẩm demo có nguồn vẫn là công việc của nhóm, không tự bịa dữ liệu.

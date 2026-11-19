@@ -1,4 +1,4 @@
-# Chạy MariaDB local + Flyway (v4)
+# Chạy MariaDB local + Flyway (v5)
 
 ## 1. Tạo database một lần trên MariaDB cài trực tiếp (port 3306)
 
@@ -16,24 +16,24 @@ Ví dụ trên chỉ tạo user local; **thay placeholder** bằng mật khẩu 
 $env:DB_URL='jdbc:mariadb://localhost:3306/beautyshop'
 $env:DB_USER='beautyshop'
 $env:DB_PASSWORD='<MAT_KHAU_RIENG_CUA_BAN>'
-$env:SPRING_PROFILES_ACTIVE='dev'
-mvn test
-mvn spring-boot:run
+.\scripts\p00.ps1 -Task test
+.\scripts\p00.ps1 -Task run
 ```
 
 Dev `spring.jpa.hibernate.ddl-auto=validate`, `spring.flyway.enabled=true` ở `application-dev.properties`.
-Spring Boot tự gọi Flyway `V1__init_schema.sql` khi ứng dụng bắt đầu (nếu đã có schema hợp lệ và dependency); sau đó JPA validate bảng/entity. Không cần chạy `mvn flyway:migrate` thủ công để khởi động lần đầu.
+Khi khởi động trên database trống, Spring Boot tự áp dụng `V1__khoi_tao_co_so_du_lieu.sql`, sau đó JPA kiểm tra các bảng được ánh xạ. Kiểm tra log Flyway rồi mở `/`, `/products` và `/login` trên cổng 8080.
 
 ## 3. Flyway checklist
 
 - DB mới: không có bảng ứng dụng, Flyway tạo bảng + `flyway_schema_history`.
-- DB đã tồn tại bảng từ thử nghiệm cũ: **backup trước**; không tự bật `baseline-on-migrate=true` hoặc xóa bảng. Tạo schema mới cho project nếu có thể.
+- DB thử nghiệm đã áp dụng V1 tên tiếng Anh: dùng một database riêng, trống để khởi tạo v5. Nếu cần chuyển dữ liệu thật, lập kế hoạch backup và migration giữ dữ liệu. Giữ checksum của V1 đã áp dụng.
+- DB đã tồn tại bảng ngoài Flyway: kiểm tra lịch sử schema và backup trước. Không tự bật `baseline-on-migrate=true` hoặc xóa bảng.
 - Sau khi V1 được áp dụng: không sửa V1; viết V2__description.sql thay đổi schema.
 - `ddl-auto=validate` không sinh bảng; nếu lỗi validate => kiểm tra entity mapping, migration và tên cột.
 - `flyway-mysql` là module cần cho MariaDB/MySQL trên Flyway mới, phiên bản do Spring Boot quản lý.
 
 ## 4. Docker tùy chọn
 
-Nếu dùng `docker compose up -d`, compose expose MariaDB **host 3307** để không xung đột MariaDB cài trực tiếp; khi đó đổi `DB_URL` thành `jdbc:mariadb://localhost:3307/beautyshop`. Không cần Docker để chạy Maven/JAR.
+Nếu dùng Docker, khai báo `DB_PASSWORD` trước khi chạy `docker compose up -d`. Compose mở MariaDB trên **host 3307**, vì vậy đặt `DB_URL` thành `jdbc:mariadb://localhost:3307/beautyshop` trước khi chạy ứng dụng.
 
-**Chưa xác minh chạy thực tế MariaDB/Flyway trong môi trường tạo bộ ZIP này.**
+Xem [roadmap](../03-roadmap-and-team.md) để biết phiên bản MariaDB đã kiểm chứng. Đối chiếu tên bảng và cột trong [tài liệu dữ liệu](../data/README.md).
