@@ -4,6 +4,10 @@
 
 Dùng [hướng dẫn MariaDB và Flyway](01-local-db-and-flyway.md) để tạo database, chọn cổng và chạy profile `dev`.
 
+Tài khoản Admin được tạo theo [quy trình cấp quyền](03-cap-quyen-admin.md).
+
+Xem [cấu hình, mô phỏng và đối soát MoMo](04-momo-sandbox.md) cho P07.
+
 ## Production (chưa xác minh)
 
 - Cần Java 21 runtime, HTTPS, MariaDB có lưu trữ bền vững và backup, cùng các biến `DB_URL`, `DB_USER`, `DB_PASSWORD`. Nếu bật MoMo Sandbox, cấu hình thêm endpoint IPN công khai.

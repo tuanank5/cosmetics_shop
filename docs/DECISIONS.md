@@ -27,6 +27,10 @@
 | D22 | Tên nghiệp vụ và biến nội bộ dùng tiếng Việt không dấu. Thuộc tính JPA dùng camelCase theo cột. Giữ thuật ngữ tiếng Anh và dùng dấu `_` trước hậu tố kỹ thuật như `_Controller`, `_Repository` và `_Policy`. | Giữ tên kỹ thuật như `path`, `label`, URL và tham số form hiện hành, cùng schema V1. |
 | D23 | P02 dùng khóa hàng theo thứ tự đơn → biến thể. Giữ tồn dùng bảng V1. V2 thêm dấu ghi nhận COD theo cặp đơn–SKU để chống trừ lặp. | SKU được ngừng bán bằng trạng thái. Một SKU có tối đa một bộ mã lô/hạn dùng minh họa. |
 | D24 | P03 chỉ công khai sản phẩm và SKU đang hoạt động, thuộc danh mục và thương hiệu đang hoạt động. Giá từ là giá thấp nhất trong các SKU hoạt động khớp truy vấn. | SKU hết hàng vẫn xem được và ghi rõ trạng thái. Chi tiết mặc định chọn SKU khả dụng có giá thấp nhất, rồi đến SKU giá thấp nhất nếu tất cả hết hàng. |
+| D25 | P04 đăng ký CUSTOMER bằng email và BCrypt. Admin được cấp quyền theo quy trình vận hành. V3 ghi mã snapshot giỏ Guest trong cùng transaction hợp nhất giỏ. | Khi hợp nhất, giới hạn số lượng theo tồn hiện hành. Giữ CSRF cho IPN đến khi P07 triển khai HMAC. |
+| D26 | P05 dùng khóa hàng tài khoản để giữ một địa chỉ mặc định nếu còn địa chỉ. Khi xóa địa chỉ mặc định, chọn địa chỉ còn lại có mã nhỏ nhất. | Admin chỉ đổi trạng thái kích hoạt và không thể tự khóa. V4 tăng phiên bản xác thực khi khóa để mở khóa không khôi phục phiên cũ. |
+| D27 | P06 chốt COD trong transaction, lấy giá từ SKU, làm tròn voucher phần trăm xuống đồng và miễn phí giao từ 500.000 ₫ sau giảm. | Đặt đơn tạo thanh toán COD `UNPAID`. Admin dùng thao tác “Xác nhận đã giao và thu tiền” để chuyển vận chuyển/đơn sang `DELIVERED` và thanh toán sang `PAID` trong cùng transaction. |
+| D28 | P07 dùng MoMo One-Time Wallet `captureWallet` với `autoCapture=true`, API v2 create/query và IPN HMAC-SHA256. | Giữ tồn và voucher trước khi gọi gateway. Kết quả không rõ giữ nguyên tài nguyên đến đối soát. MoMo Sandbox thật đang `BLOCKED_EXTERNAL` vì thiếu merchant và HTTPS public. |
 
 ## Điểm còn cần xác minh/định cấu hình
 

@@ -2,7 +2,8 @@ package com.beautyshop.controller.admin;
 
 import com.beautyshop.service.DanhMucSanPhamThuongHieu_Service;
 
-import com.beautyshop.security.BootstrapUserDetails_Service;
+import com.beautyshop.security.LoginSuccess_Handler;
+import com.beautyshop.repository.NguoiDung_Repository;
 import com.beautyshop.security.Security_Config;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,9 +18,11 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @WebMvcTest(AdminDanhMucSanPhamThuongHieu_Controller.class)
-@Import({Security_Config.class, BootstrapUserDetails_Service.class})
+@Import(Security_Config.class)
 class AdminCatalogSecurityTest {
     @Autowired MockMvc mvc;
+    @MockitoBean LoginSuccess_Handler loginSuccess;
+    @MockitoBean NguoiDung_Repository nguoiDungRepository;
     @MockitoBean DanhMucSanPhamThuongHieu_Service catalog;
 
     @Test

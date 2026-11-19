@@ -46,6 +46,23 @@ Cần scheduler dọn những reservation quá hạn **chỉ khi được xác m
 
 Caller phải tạo và flush đơn trong cùng transaction trước khi gọi, gộp số lượng theo SKU và gọi theo mã biến thể tăng dần. Dịch vụ tham gia transaction hiện tại, khóa đơn rồi khóa và đọc lại biến thể. Khi thiếu tồn, SKU ngừng bán, lượng retry khác hoặc lượt giữ đã chốt theo hướng khác, phương thức ném lỗi để caller rollback toàn bộ checkout. Khi DB báo deadlock hoặc xung đột snapshot khi lấy khóa, retry toàn bộ transaction theo chính sách checkout. Trả hàng COD khi hủy hợp lệ thuộc P06. Scheduler, đối soát, IPN và voucher thuộc luồng tích hợp tiếp theo.
 
+### Giỏ Guest và quyền sở hữu cho P06
+
+- `GioKhach` lưu snapshot theo `maBienThe → soLuong` trong session. `GioHang_Service.gopSauDangNhap(maNguoiDung, gio)` ghi mã snapshot V3 và cập nhật giỏ DB trong cùng transaction. Cột tồn khả dụng hiện tại quyết định số lượng sau gộp. Giá hiển thị đọc từ SKU.
+- `LoginSuccess_Handler` chỉ gộp cho Customer. Snapshot được bỏ khỏi session sau khi transaction thành công. Khi DB báo lỗi, session giữ snapshot để lần đăng nhập tiếp theo thử lại.
+- P06 dùng lại `GioHang_Service` và hợp đồng khóa giỏ trước khi đổi số lượng. Checkout cần tính lại giá và khóa tồn khi lập đơn vì giỏ chưa giữ hàng.
+- Khi tạo đơn từ địa chỉ đã lưu, P06 phải tìm địa chỉ theo cả mã địa chỉ và mã Customer đang đăng nhập, rồi lưu snapshot địa chỉ vào đơn.
+- Trước khi đọc hoặc thao tác trên đơn của Customer, P06 gọi `QuyenDonHang_Service.kiemTraSoHuu(maDonHang)`. Service lấy mã người dùng từ phiên Security và trả 404 cho đơn không tồn tại hoặc thuộc người khác.
+
+### Luồng COD P06
+
+1. `DonHang_Service.datCOD` khóa giỏ rồi khóa SKU theo mã tăng dần để đọc giá/tồn hiện hành. Địa chỉ dùng bản ghi thuộc Customer. Nếu chọn voucher, khóa và kiểm tra lượt sau khi khóa SKU.
+2. Lưu đơn, chi tiết và thanh toán COD `UNPAID`. Trừ tồn qua `TonKho_Service`, ghi nhận voucher và xóa các mục giỏ trong cùng transaction. Tính lại giá trên server ở lần đặt đơn. Báo giá tại `/checkout/quote` chỉ đọc giá và lượt hiện có.
+3. Admin chuyển theo policy. Lúc bắt đầu giao, tạo bản ghi vận chuyển. Admin xác nhận đã giao và thu tiền để ghi `DELIVERED` và `PAID` cùng lúc, với timestamp UTC.
+4. Hủy COD chỉ cho đơn chưa thu tiền, trước `PACKING`. Khóa đơn trước, trả tồn theo ghi nhận V2, hoàn lượt voucher rồi ghi `CANCELLED`. Retry một đơn đã hủy giữ nguyên số liệu.
+
+P07 sử dụng contract giữ tồn 15 phút ở trên và phải giữ lượt voucher cùng transaction tạo đơn online. Gọi gateway ngoài transaction. Các route P06 phục vụ COD, dùng form session/CSRF. Quản trị tạo và sửa voucher thuộc P11.
+
 ## 4. Voucher
 
 - Chỉ một mã/đơn, `FIXED` hoặc `PERCENT`, giới hạn `usage_limit`, khung thời gian, minSpend, maxDiscount.

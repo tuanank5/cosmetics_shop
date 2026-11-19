@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Đặt hàng · BeautyShop</title>
+<link rel="stylesheet" th:href="@{/css/theme.css}">
+<link rel="stylesheet" th:href="@{/css/admin-catalog.css}"></head>
+<body><div th:replace="~{fragments/header :: siteHeader}"></div>
+<main class="page-content">
+    <a class="text-link" th:href="@{/cart}">Quay lại giỏ hàng</a>
+    <h1>Đặt hàng COD</h1>
+    <p class="notice" th:if="${#lists.isEmpty(muc)}">Giỏ hàng đang trống.</p>
+    <p class="notice" th:if="${#lists.isEmpty(diaChi)}">Cần <a class="text-link" th:href="@{/account/addresses/new}">thêm địa chỉ giao hàng</a>.</p>
+    <form class="catalog-form" method="post" th:action="@{/checkout}" th:object="${form}">
+        <p class="form-error" role="alert" th:each="loi : ${#fields.globalErrors()}" th:text="${loi}"></p>
+        <div th:unless="${#lists.isEmpty(muc) or #lists.isEmpty(diaChi)}">
+            <ul class="catalog-list">
+                <li th:each="sku : ${muc}">
+                    <span th:text="|${sku.tenSanPham} · ${sku.tenBienThe} × ${sku.soLuong}|"></span>
+                    <span th:text="|${#numbers.formatInteger(sku.giaBan, 1, 'POINT')} ₫ / SKU|"></span>
+                </li>
+            </ul>
+            <label>Địa chỉ giao hàng
+                <select th:field="*{addressId}" required>
+                    <option value="">Chọn địa chỉ</option>
+                    <option th:each="dc : ${diaChi}" th:value="${dc.maDiaChi}"
+                        th:text="|${dc.tenNguoiNhan} · ${dc.diaChiChiTiet}|"></option>
+                </select>
+            </label>
+            <small class="form-error" th:errors="*{addressId}"></small>
+            <label>Mã voucher <input th:field="*{voucher}" maxlength="80"></label>
+            <small class="form-error" th:errors="*{voucher}"></small>
+            <button type="submit" class="btn" th:formaction="@{/checkout/quote}">Tính lại giá</button>
+            <dl>
+                <dt>Tạm tính</dt><dd th:text="|${#numbers.formatInteger(tamTinh, 1, 'POINT')} ₫|"></dd>
+                <dt>Giảm giá</dt><dd th:text="|${#numbers.formatInteger(giam, 1, 'POINT')} ₫|"></dd>
+                <dt>Phí giao hàng</dt><dd th:text="|${#numbers.formatInteger(phi, 1, 'POINT')} ₫|"></dd>
+                <dt>Tổng dự kiến</dt><dd th:text="|${#numbers.formatInteger(tong, 1, 'POINT')} ₫|"></dd>
+            </dl>
+            <p>Giá, tồn và voucher được kiểm tra lại khi đặt đơn.</p>
+            <button type="submit" class="btn-primary">Đặt đơn · Thanh toán khi nhận hàng</button>
+            <button th:if="${momoEnabled}" type="submit" name="payment" value="MOMO" class="btn-primary"
+                    th:text="${momoMock ? 'MoMo · MÔ PHỎNG - KHÔNG THU TIỀN' : 'MoMo Sandbox'}"></button>
+        </div>
+    </form>
+</main>
+<div th:replace="~{fragments/footer :: siteFooter}"></div></body></html>

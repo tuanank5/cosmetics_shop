@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Quản lý tài khoản · BeautyShop</title><link rel="stylesheet" th:href="@{/css/theme.css}"><link rel="stylesheet" th:href="@{/css/admin-catalog.css}"></head>
+<body><div th:replace="~{fragments/header :: siteHeader}"></div>
+<main class="page-content catalog-admin">
+    <h1>Quản lý tài khoản</h1>
+    <p class="notice" role="status" th:if="${message}" th:text="${message}"></p>
+    <p class="form-error" role="alert" th:if="${error}" th:text="${error}"></p>
+    <form class="catalog-form" th:action="@{/admin/users}" method="get" role="search">
+        <label>Tìm theo họ tên hoặc email <input type="search" name="q" th:value="${q}" maxlength="190"></label>
+        <button type="submit" class="btn-primary">Tìm kiếm</button>
+    </form>
+    <p class="notice" th:if="${ketQua.empty}">Không tìm thấy tài khoản.</p>
+    <ul class="catalog-list">
+        <li th:each="muc : ${ketQua.content}">
+            <div>
+                <strong th:text="${muc.hoTen}"></strong>
+                <p th:text="${muc.email}"></p>
+                <small th:text="${muc.vaiTro.name() == 'ADMIN' ? 'Quản trị' : 'Khách hàng'}"></small>
+                <small th:text="${muc.kichHoat ? 'Đang hoạt động' : 'Đã khóa'}"></small>
+            </div>
+            <div class="catalog-actions">
+                <form th:if="${muc.maNguoiDung != maAdmin}" method="post"
+                      th:action="@{/admin/users/{id}/status(id=${muc.maNguoiDung})}">
+                    <input type="hidden" name="q" th:value="${q}">
+                    <input type="hidden" name="page" th:value="${ketQua.number}">
+                    <input type="hidden" name="enabled" th:value="${!muc.kichHoat}">
+                    <button type="submit" class="btn-primary" th:text="${muc.kichHoat ? 'Khóa' : 'Mở khóa'}"></button>
+                </form>
+            </div>
+        </li>
+    </ul>
+    <nav class="catalog-actions" th:if="${ketQua.totalPages > 1}" aria-label="Phân trang tài khoản">
+        <a class="text-link" th:if="${ketQua.hasPrevious()}" th:href="@{/admin/users(q=${q},page=${ketQua.number - 1})}">Trang trước</a>
+        <span th:text="|Trang ${ketQua.number + 1} / ${ketQua.totalPages}|"></span>
+        <a class="text-link" th:if="${ketQua.hasNext()}" th:href="@{/admin/users(q=${q},page=${ketQua.number + 1})}">Trang sau</a>
+    </nav>
+</main>
+<div th:replace="~{fragments/footer :: siteFooter}"></div></body></html>

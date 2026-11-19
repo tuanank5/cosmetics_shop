@@ -60,6 +60,17 @@ public class TonKho_Service {
         tonKhoRepository.ghiNhanTruCOD(maDonHang, maBienThe, soLuong);
     }
 
+    // Chỉ gọi từ transaction chuyển đơn COD sang CANCELLED đang giữ khóa đơn.
+    void hoanCOD(long maDonHang, long maBienThe, int soLuong) {
+        BienTheSanPham bienThe = khoa(maDonHang, maBienThe, "COD");
+        int daTru = tonKhoRepository.timSoLuongDaTruCOD(maDonHang, maBienThe)
+            .orElseThrow(() -> new IllegalStateException("Không tìm thấy lần trừ tồn của đơn COD."));
+        if (daTru != soLuong) {
+            throw new IllegalStateException("Số lượng hoàn khác với lần trừ tồn.");
+        }
+        bienThe.hoanCOD(daTru);
+    }
+
     private void chuyenTamGiu(long maDonHang, long maBienThe, TrangThaiTamGiu dich) {
         BienTheSanPham bienThe = khoa(maDonHang, maBienThe, "MOMO");
         var tamGiu = tonKhoRepository.timTamGiu(maDonHang, maBienThe)

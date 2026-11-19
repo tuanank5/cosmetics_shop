@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Giỏ hàng · BeautyShop</title><link rel="stylesheet" th:href="@{/css/theme.css}"></head>
+<body><div th:replace="~{fragments/header :: siteHeader}"></div>
+<main class="page-content">
+    <h1>Giỏ hàng</h1>
+    <p class="notice" role="status" th:if="${message}" th:text="${message}"></p>
+    <p class="form-error" role="alert" th:if="${error}" th:text="${error}"></p>
+    <p class="notice" role="status" th:if="${daGioiHan}">Một số SKU đã được điều chỉnh theo tồn hiện tại.</p>
+    <p class="notice" th:if="${#lists.isEmpty(mucGio)}">Giỏ hàng đang trống.</p>
+    <ul th:unless="${#lists.isEmpty(mucGio)}">
+        <li th:each="muc : ${mucGio}">
+            <strong th:text="|${muc.tenSanPham} · ${muc.tenBienThe}|"></strong>
+            <p th:text="|${#numbers.formatInteger(muc.giaBan, 1, 'POINT')} ₫ × ${muc.soLuong}|"></p>
+            <small th:if="${muc.soLuong > muc.khaDung}">Tồn khả dụng hiện tại đã thay đổi.</small>
+            <form method="post" th:action="@{/cart/items/{variant}/quantity(variant=${muc.maBienThe})}">
+                <label>Số lượng <input type="number" name="quantity" min="0" step="1" th:value="${muc.soLuong}" required></label>
+                <button type="submit" class="btn-primary">Cập nhật</button>
+            </form>
+            <form method="post" th:action="@{/cart/items/{variant}/quantity(variant=${muc.maBienThe})}">
+                <button type="submit" name="quantity" value="0" class="btn-primary">Xóa SKU</button>
+            </form>
+        </li>
+    </ul>
+    <p th:unless="${#lists.isEmpty(mucGio)}"><a class="btn-primary" th:href="@{/checkout}">Đặt hàng COD</a></p>
+    <a class="text-link" th:href="@{/products}">Tiếp tục xem sản phẩm</a>
+</main>
+<div th:replace="~{fragments/footer :: siteFooter}"></div></body></html>

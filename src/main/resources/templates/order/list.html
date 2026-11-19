@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Đơn hàng · BeautyShop</title>
+<link rel="stylesheet" th:href="@{/css/theme.css}">
+<link rel="stylesheet" th:href="@{/css/admin-catalog.css}"></head>
+<body><div th:replace="~{fragments/header :: siteHeader}"></div>
+<main class="page-content">
+    <h1 th:text="${base == '/admin/orders' ? 'Quản lý đơn hàng' : 'Đơn hàng của bạn'}">Đơn hàng</h1>
+    <p class="notice" th:if="${#lists.isEmpty(donHang)}">Chưa có đơn hàng.</p>
+    <ul class="catalog-list">
+        <li th:each="muc : ${donHang}">
+            <a class="text-link" th:href="@{${base + '/' + muc.maDonHang}}" th:text="${muc.maHienThi}"></a>
+            <span th:text="${muc.trangThai.label}"></span>
+            <span th:text="|${#numbers.formatInteger(muc.tong, 1, 'POINT')} ₫|"></span>
+        </li>
+    </ul>
+</main>
+<div th:replace="~{fragments/footer :: siteFooter}"></div></body></html>

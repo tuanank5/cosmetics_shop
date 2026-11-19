@@ -43,7 +43,9 @@ Mỗi TC có: người chạy, ngày, commit, môi trường, dữ liệu đầu
 
 ## Kiểm thử bắt buộc v4
 - Migration: V1 trên MariaDB mới tạo đủ bảng, chạy lần 2 không lỗi, `flyway_schema_history` có checksum; DB cũ có bảng chưa baseline phải fail an toàn.
-- Security: `POST /payment/momo/ipn` bypass CSRF, IPN cần kiểm chữ ký ở P07. Form POST cần CSRF. P02 có `GET /uploads/sku/{filename}` cho ảnh SKU đã ghi nhận, kiểm định dạng tên và kiểm tra file trong thư mục ảnh.
+- Security: `POST /payment/momo/ipn` miễn CSRF khi adapter P07 bật và bắt buộc xác minh HMAC. Form POST cần CSRF. P02 có `GET /uploads/sku/{filename}` cho ảnh SKU đã ghi nhận, kiểm định dạng tên và kiểm tra file trong thư mục ảnh.
+- P06: test tích hợp `DonHangCOD_MariaDb_Test` dùng tài khoản được đăng ký và đăng nhập, kiểm tra checkout COD, trạng thái giao/thu tiền, chủ đơn, rollback và tranh chấp SKU/voucher trên MariaDB riêng.
+- P07: test HMAC với vector RFC 4231, canonical IPN theo spec, IPN sai chữ ký/số tiền, replay, retry, đối soát, giữ hàng khi chưa rõ và thành công muộn. Chạy với mock và MariaDB riêng.
 - COD P0: 2 request đồng thời cho SKU cuối cùng phải có đúng một đơn thành công; voucher không vượt giới hạn; hủy hoàn kho một lần.
 - MoMo P1: mock phải không thực hiện thanh toán thật; kết quả qua return không chốt PAID; IPN ký đúng/replay/late-IPN cần test.
 - RAG P1: offline fallback không giả vờ là AI; câu hỏi thiếu nguồn phải nói không đủ thông tin.

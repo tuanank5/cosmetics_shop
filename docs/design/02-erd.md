@@ -214,3 +214,7 @@ erDiagram
 Chi tiết khóa ngoại, UNIQUE, CHECK xem trực tiếp SQL. Bảng và cột xem `docs/data/bang_doi_chieu_ten.csv`.
 
 P02 bổ sung [V2](../../src/main/resources/db/migration/V2__ghi_nhan_tru_kho_cod.sql) với bảng `ghi_nhan_tru_kho_cod`. Khóa chính ghép `(ma_don_hang, ma_bien_the)` đồng thời tham chiếu `don_hang` và `bien_the_san_pham`. Cột `so_luong` ghi số lượng đã trừ cho lần COD để retry an toàn.
+
+P04 bổ sung [V3](../../src/main/resources/db/migration/V3__ghi_nhan_gop_gio_hang.sql) với bảng `ghi_nhan_gop_gio_hang`. Khóa chính `ma_gop` là mã snapshot giỏ Guest và `ma_nguoi_dung` tham chiếu tài khoản nhận giỏ.
+
+P05 dùng khóa ngoại địa chỉ trong V1. [V4](../../src/main/resources/db/migration/V4__them_phien_ban_xac_thuc.sql) thêm `nguoi_dung.phien_ban_xac_thuc` để khóa tài khoản thu hồi phiên đăng nhập cũ.

@@ -75,6 +75,13 @@ public class BienTheSanPham {
         soLuongTrongKho -= soLuong;
     }
 
+    public void hoanCOD(int soLuong) {
+        if (soLuong <= 0 || soLuong > Integer.MAX_VALUE - soLuongTrongKho) {
+            throw new IllegalStateException("Không thể hoàn tồn vì số lượng trong kho vượt giới hạn.");
+        }
+        soLuongTrongKho += soLuong;
+    }
+
     public void chotTamGiu(int soLuong) {
         giaiPhong(soLuong);
         soLuongTrongKho -= soLuong;

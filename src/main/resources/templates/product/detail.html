@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<html lang="vi" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -34,6 +34,11 @@
                         </select>
                     </label>
                     <button class="btn-primary" type="submit">Xem biến thể</button>
+                </form>
+                <form th:if="${sku.soLuongKhaDung > 0}" sec:authorize="isAnonymous() or hasRole('CUSTOMER')"
+                      method="post" th:action="@{/cart/items}">
+                    <input type="hidden" name="variant" th:value="${sku.maBienThe}">
+                    <button class="btn-primary" type="submit">Thêm vào giỏ</button>
                 </form>
                 <p th:if="${sku.maLoMinhHoa}" th:text="|Lô minh họa: ${sku.maLoMinhHoa}|"></p>
                 <p th:if="${sku.hanSuDungMinhHoa}" th:text="|Hạn dùng minh họa: ${#temporals.format(sku.hanSuDungMinhHoa, 'dd/MM/yyyy')}|"></p>
