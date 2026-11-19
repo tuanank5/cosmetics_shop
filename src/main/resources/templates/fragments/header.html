@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<body>
+<header th:fragment="siteHeader" class="site-header">
+  <div class="topnote">CHĂM SÓC SẮC ĐẸP · TRẢI NGHIỆM TINH TẾ</div>
+  <nav class="nav-shell" aria-label="Điều hướng chính">
+    <a class="brand" th:href="@{/}">BEAUTY<span>SHOP</span></a>
+    <div class="nav-links">
+      <a th:href="@{/}">Trang chủ</a>
+      <a th:href="@{/products}">Sản phẩm</a>
+      <a th:href="@{/login}">Tài khoản</a>
+    </div>
+  </nav>
+</header>
+</body>
+</html>

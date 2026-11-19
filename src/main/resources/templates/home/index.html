@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BeautyShop · Vẻ đẹp trong từng lựa chọn</title>
+  <link rel="stylesheet" th:href="@{/css/theme.css}">
+</head>
+<body>
+<div th:replace="~{fragments/header :: siteHeader}"></div>
+<main>
+  <section class="hero">
+    <div class="hero-copy">
+      <p class="eyebrow">LUXURY BEAUTY EXPERIENCE</p>
+      <h1>Vẻ đẹp bắt đầu từ<br><em>những lựa chọn tinh tế.</em></h1>
+      <p>Không gian mỹ phẩm đa thương hiệu. Chọn sản phẩm phù hợp với làn da và phong cách của bạn.</p>
+      <a class="btn-primary" th:href="@{/products}">Khám phá bộ sưu tập</a>
+    </div>
+    <div class="hero-art" aria-label="Hình khối trang trí minh họa">
+      <div class="bottle"><div class="bottle-top"></div><div class="bottle-body">B<span>EAUTY</span></div></div>
+      <div class="hero-orbit"></div>
+    </div>
+  </section>
+  <section class="intro">
+    <p class="eyebrow">DỰ ÁN ĐANG PHÁT TRIỂN</p>
+    <h2>Một trải nghiệm mua sắm được thiết kế chỉn chu.</h2>
+    <p>Đây là giao diện scaffold để nhóm bắt đầu triển khai. Catalog, giỏ hàng, thanh toán và trợ lý AI sẽ được kết nối vào các task tiếp theo.</p>
+    <div class="features"><div><strong>01</strong><span>Mỹ phẩm đa thương hiệu</span></div><div><strong>02</strong><span>Giỏ hàng & thanh toán</span></div><div><strong>03</strong><span>Tư vấn AI theo dữ liệu</span></div></div>
+  </section>
+</main>
+<div th:replace="~{fragments/footer :: siteFooter}"></div>
+</body></html>

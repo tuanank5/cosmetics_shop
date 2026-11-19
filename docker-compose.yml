@@ -1,0 +1,20 @@
+# TÙY CHỌN chỉ cho dev local. Nếu đã có MariaDB, không cần Docker.
+services:
+  mariadb:
+    image: mariadb:11.4
+    environment:
+      MARIADB_ROOT_PASSWORD: local_root_change_me
+      MARIADB_DATABASE: beautyshop
+      MARIADB_USER: beautyshop
+      MARIADB_PASSWORD: beautyshop_dev_only
+    ports:
+      - "127.0.0.1:3307:3306"
+    volumes:
+      - beautyshop_db:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+volumes:
+  beautyshop_db:

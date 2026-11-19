@@ -1,0 +1,73 @@
+@startuml
+hide empty methods
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam linetype ortho
+skinparam packageStyle rectangle
+title BeautyShop - Domain Classes v4 (MVP + P1)
+package "Identity" {
+ class User { +id: Long\n+email: String\n+role: UserRole }
+ class Address { +receiverName: String\n+phone: String }
+}
+package "Catalog" {
+ class Brand { +name: String }
+ class Category { +name: String }
+ class Product { +name: String\n+ingredients: String\n+usageGuide: String }
+ class ProductVariant { +sku: String\n+price: BigDecimal\n+onHand: int\n+reserved: int\n+demoBatchCode: String [optional]\n+demoExpiryDate: LocalDate [optional] }
+}
+package "Shopping" {
+ class Cart { +id: Long }
+ class CartItem { +quantity: int }
+ class Voucher { +code: String\n+discountType: DiscountType }
+}
+package "Checkout" {
+ class Order { +code: String\n+status: OrderStatus\n+total: BigDecimal }
+ class OrderItem { +skuSnapshot: String\n+unitPrice: BigDecimal\n+quantity: int }
+ class PaymentAttempt { +attemptRef: String\n+status: PaymentStatus }
+ class InventoryReservation { +quantity: int\n+expiresAt: Instant\n+status: ReservationStatus }
+ class VoucherReservation { +status: VoucherHoldStatus }
+ class Shipment { +status: ShipmentStatus }
+}
+package "AfterSales / AI" {
+ class Review { +rating: int }
+ class WishlistItem
+ class ReturnRequest { +status: ReturnStatus }
+ class ReturnRequestItem { +quantity: int }
+ class FaqArticle { +question: String\n+answer: String }
+}
+User "1" -- "0..*" Address
+User "1" -- "0..1" Cart
+User "1" -- "0..*" Order
+Brand "1" -- "0..*" Product
+Category "1" -- "0..*" Product
+Product "1" *-- "1..*" ProductVariant
+Cart "1" *-- "0..*" CartItem
+ProductVariant "1" -- "0..*" CartItem
+Order "1" *-- "1..*" OrderItem
+ProductVariant "1" -- "0..*" OrderItem
+Voucher "1" -- "0..*" Order
+Voucher "1" -- "0..*" VoucherReservation
+Order "1" -- "0..1" VoucherReservation
+Order "1" -- "0..*" PaymentAttempt
+Order "1" -- "0..*" InventoryReservation
+ProductVariant "1" -- "0..*" InventoryReservation
+Order "1" -- "0..1" Shipment
+Order "1" -- "0..*" ReturnRequest
+ReturnRequest "1" *-- "1..*" ReturnRequestItem
+OrderItem "1" -- "0..*" ReturnRequestItem
+OrderItem "1" -- "0..1" Review
+User "1" -- "0..*" Review
+Product "1" -- "0..*" Review
+User "1" -- "0..*" WishlistItem
+Product "1" -- "0..*" WishlistItem
+note right of ProductVariant
+Available = onHand - reserved
+Money is BigDecimal/DECIMAL
+end note
+note bottom of PaymentAttempt
+Many attempts per order; IPN idempotent.
+end note
+note bottom of FaqArticle
+RAG knowledge source; no payment authority.
+end note
+@enduml

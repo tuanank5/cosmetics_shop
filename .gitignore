@@ -1,0 +1,15 @@
+/target/
+/.idea/
+*.iml
+/.vscode/
+.env
+.env.*
+!.env.example
+/uploads/**
+!/uploads/.gitkeep
+/logs/
+*.log
+/ai-data/
+**/vector-store*.json
+.DS_Store
+Thumbs.db

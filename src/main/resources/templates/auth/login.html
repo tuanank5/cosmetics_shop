@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Đăng nhập · BeautyShop</title><link rel="stylesheet" th:href="@{/css/theme.css}"></head>
+<body><div th:replace="~{fragments/header :: siteHeader}"></div><main class="page-content login-wrap">
+<p class="eyebrow">TÀI KHOẢN KHÁCH HÀNG</p><h1>Đăng nhập</h1>
+<div class="notice"><strong>Chưa kích hoạt tài khoản.</strong><p>Scaffold hiện từ chối mọi lần đăng nhập cho đến khi thực hiện P04 (User + Security + MariaDB).</p></div>
+<form method="post" th:action="@{/login}" class="login-card">
+<label for="username">Tên đăng nhập</label><input id="username" name="username" autocomplete="username" required>
+<label for="password">Mật khẩu</label><input id="password" name="password" type="password" autocomplete="current-password" required>
+<p class="form-error" th:if="${param.error}">Thông tin đăng nhập chưa hợp lệ hoặc module tài khoản chưa được triển khai.</p>
+<button type="submit" class="btn-primary">Đăng nhập</button>
+</form></main><div th:replace="~{fragments/footer :: siteFooter}"></div></body></html>
