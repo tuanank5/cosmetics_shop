@@ -8,12 +8,14 @@
     <div class="nav-links">
       <a th:href="@{/}">Trang chủ</a>
       <a th:href="@{/products}">Sản phẩm</a>
+      <a th:href="@{/chat}">Tư vấn</a>
       <a th:href="@{/cart}" sec:authorize="isAnonymous() or hasRole('CUSTOMER')">Giỏ hàng</a>
       <a th:href="@{/login}" sec:authorize="isAnonymous()">Tài khoản</a>
       <a th:href="@{/account}" sec:authorize="hasRole('CUSTOMER')">Tài khoản</a>
       <a th:href="@{/admin/catalog}" sec:authorize="hasRole('ADMIN')">Quản trị</a>
       <a th:href="@{/admin/users}" sec:authorize="hasRole('ADMIN')">Người dùng</a>
       <a th:href="@{/admin/orders}" sec:authorize="hasRole('ADMIN')">Đơn hàng</a>
+      <a th:href="@{/admin/vouchers}" sec:authorize="hasRole('ADMIN')">Voucher</a>
       <form class="nav-logout" method="post" th:action="@{/logout}" sec:authorize="isAuthenticated()">
         <button type="submit">Đăng xuất</button>
       </form>

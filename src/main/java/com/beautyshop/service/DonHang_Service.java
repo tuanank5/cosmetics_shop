@@ -77,7 +77,7 @@ public class DonHang_Service {
             if (muc.soLuong() > sku.khaDung()) {
                 throw new IllegalStateException("Không đủ tồn cho " + sku.tenSanPham() + " · " + sku.tenBienThe() + ".");
             }
-            var snapshot = new ChiTiet(sku.maBienThe(), sku.sku(), sku.tenSanPham(), sku.tenBienThe(), sku.giaBan(), muc.soLuong());
+            var snapshot = new ChiTiet(sku.maBienThe(), sku.sku(), sku.tenSanPham(), sku.tenBienThe(), sku.giaBan(), muc.soLuong(), null);
             chiTiet.add(snapshot);
             tamTinh = tamTinh.add(snapshot.thanhTien());
         }
@@ -114,6 +114,7 @@ public class DonHang_Service {
 
     public List<TomTat> danhSachCustomer(long maNguoiDung) { return donHangRepository.danhSach(maNguoiDung); }
     public List<TomTat> danhSachAdmin() { return donHangRepository.danhSach(null); }
+    public DonHang_Repository.TongQuan tongQuanAdmin() { return donHangRepository.tongQuan(); }
 
     public ChiTietDon chiTietCustomer(long maDon) {
         quyenDonHang.kiemTraSoHuu(maDon);

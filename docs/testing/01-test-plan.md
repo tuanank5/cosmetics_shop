@@ -33,6 +33,8 @@ Java domain helper unit tests; Controller/Service integration tests dùng MariaD
 
 Mỗi TC có: người chạy, ngày, commit, môi trường, dữ liệu đầu vào, expected, actual, PASS/FAIL/BLOCKED, ảnh/video/log (che bí mật). Không ghi PASS khi chưa chạy.
 
+[Kết quả TC01–TC20 và bằng chứng P10](02-p10-results.md).
+
 ## Quality gates
 
 - `mvn test`: toàn bộ unit test quan trọng PASS;
@@ -46,6 +48,9 @@ Mỗi TC có: người chạy, ngày, commit, môi trường, dữ liệu đầu
 - Security: `POST /payment/momo/ipn` miễn CSRF khi adapter P07 bật và bắt buộc xác minh HMAC. Form POST cần CSRF. P02 có `GET /uploads/sku/{filename}` cho ảnh SKU đã ghi nhận, kiểm định dạng tên và kiểm tra file trong thư mục ảnh.
 - P06: test tích hợp `DonHangCOD_MariaDb_Test` dùng tài khoản được đăng ký và đăng nhập, kiểm tra checkout COD, trạng thái giao/thu tiền, chủ đơn, rollback và tranh chấp SKU/voucher trên MariaDB riêng.
 - P07: test HMAC với vector RFC 4231, canonical IPN theo spec, IPN sai chữ ký/số tiền, replay, retry, đối soát, giữ hàng khi chưa rõ và thành công muộn. Chạy với mock và MariaDB riêng.
+- P08: test chủ đơn và đánh giá trùng, duyệt đúng phiên bản nội dung, quyền truy cập yêu thích, đổi trả ngày thứ tám, hạn mức khi gửi đồng thời và trạng thái thủ công giữ nguyên tồn/thanh toán.
+- P09: test FAQ và RAG với MariaDB, Spring AI và HTTP mock của Ollama. Kiểm tra nguồn, giá/tồn mới, thiếu ngữ cảnh, output bịa, câu hỏi ngoài phạm vi, lọc URL, XSS, CSRF và giới hạn tần suất.
+- P11: `PhieuGiamGia_MariaDb_Test` kiểm tra quyền Admin/CSRF, CRUD, mã trùng, khung giờ, đơn tối thiểu, trần và làm tròn giảm giá. Test COD dùng voucher do Admin tạo để tranh lượt cuối. Test MoMo mock kiểm tra việc ngừng voucher đang giữ, giới hạn bằng tổng lượt, chốt/trả lặp và bảo toàn lịch sử.
 - COD P0: 2 request đồng thời cho SKU cuối cùng phải có đúng một đơn thành công; voucher không vượt giới hạn; hủy hoàn kho một lần.
 - MoMo P1: mock phải không thực hiện thanh toán thật; kết quả qua return không chốt PAID; IPN ký đúng/replay/late-IPN cần test.
 - RAG P1: offline fallback không giả vờ là AI; câu hỏi thiếu nguồn phải nói không đủ thông tin.

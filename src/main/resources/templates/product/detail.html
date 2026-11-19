@@ -35,15 +35,32 @@
                     </label>
                     <button class="btn-primary" type="submit">Xem biến thể</button>
                 </form>
-                <form th:if="${sku.soLuongKhaDung > 0}" sec:authorize="isAnonymous() or hasRole('CUSTOMER')"
-                      method="post" th:action="@{/cart/items}">
-                    <input type="hidden" name="variant" th:value="${sku.maBienThe}">
-                    <button class="btn-primary" type="submit">Thêm vào giỏ</button>
-                </form>
+                <div class="store-purchase">
+                    <form th:if="${sku.soLuongKhaDung > 0}" sec:authorize="isAnonymous() or hasRole('CUSTOMER')"
+                          method="post" th:action="@{/cart/items}">
+                        <input type="hidden" name="variant" th:value="${sku.maBienThe}">
+                        <button class="btn-primary" type="submit">Thêm vào giỏ</button>
+                    </form>
+                    <form sec:authorize="hasRole('CUSTOMER')" method="post"
+                          th:action="@{/account/wishlist/{id}(id=${sanPham.ma})}">
+                        <button class="btn-primary" type="submit">Lưu yêu thích</button>
+                    </form>
+                    <a class="text-link" sec:authorize="isAnonymous()" th:href="@{/login}">Đăng nhập để lưu yêu thích</a>
+                </div>
                 <p th:if="${sku.maLoMinhHoa}" th:text="|Lô minh họa: ${sku.maLoMinhHoa}|"></p>
                 <p th:if="${sku.hanSuDungMinhHoa}" th:text="|Hạn dùng minh họa: ${#temporals.format(sku.hanSuDungMinhHoa, 'dd/MM/yyyy')}|"></p>
             </div>
         </div>
+        <section class="store-description">
+            <h2>Đánh giá sản phẩm</h2>
+            <p th:if="${#lists.isEmpty(danhGia)}">Chưa có đánh giá được duyệt.</p>
+            <ul class="store-reviews">
+                <li th:each="dg : ${danhGia}">
+                    <strong th:text="|${dg.soSao}/5 sao · Người mua đã xác minh|"></strong>
+                    <p th:if="${dg.noiDung}" th:text="${dg.noiDung}"></p>
+                </li>
+            </ul>
+        </section>
         <div class="store-description">
             <section th:if="${sanPham.moTa != null and !#strings.isEmpty(sanPham.moTa)}">
                 <h2>Mô tả</h2><p th:text="${sanPham.moTa}"></p>

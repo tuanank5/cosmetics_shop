@@ -1,6 +1,7 @@
 package com.beautyshop.controller;
 
 import com.beautyshop.service.CuaHang_Service;
+import com.beautyshop.service.SauMua_Service;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,9 +14,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping("/products")
 class CuaHang_Controller {
     private final CuaHang_Service cuaHangService;
+    private final SauMua_Service sauMua;
 
-    CuaHang_Controller(CuaHang_Service cuaHangService) {
+    CuaHang_Controller(CuaHang_Service cuaHangService, SauMua_Service sauMua) {
         this.cuaHangService = cuaHangService;
+        this.sauMua = sauMua;
     }
 
     @GetMapping
@@ -51,7 +54,9 @@ class CuaHang_Controller {
 
     @GetMapping("/{slug}")
     String chiTiet(@PathVariable String slug, @RequestParam(required = false) Long variant, Model model) {
-        model.addAttribute("chiTiet", cuaHangService.chiTiet(slug, variant));
+        var chiTiet = cuaHangService.chiTiet(slug, variant);
+        model.addAttribute("chiTiet", chiTiet);
+        model.addAttribute("danhGia", sauMua.danhGiaCongKhai(chiTiet.sanPham().getMa()));
         return "product/detail";
     }
 

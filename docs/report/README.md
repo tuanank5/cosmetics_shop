@@ -1,12 +1,12 @@
 # Danh mục tài liệu SDLC cần nộp
 
+[Báo cáo SDLC BeautyShop P10](beautyshop-sdlc.md).
+
 | Giai đoạn | File gợi ý | Hiện trạng |
 |---|---|---|
 | Khảo sát/Requirement | `docs/requirements/01-srs.md`, `02-business-rules.md`, Use Case | Bản nháp đủ yêu cầu nền |
 | Thiết kế | `docs/design/01-architecture.md`, `02-erd.md`, `03-order-payment-inventory.md`, `04-use-cases.md`, `05-sequence.md`, `06-domain-classes.puml` | Mô hình đề xuất, cần chốt với giảng viên |
-| Implementation | Code + README + cấu hình + ảnh nguồn dữ liệu | Có giao diện nền, CRUD catalog Admin và cấu trúc MVC |
-| Test | `docs/testing/01-test-plan.md` + báo cáo chạy thực tế | Đã chạy test catalog với MariaDB. Xem [kết quả](../03-roadmap-and-team.md#kết-quả-kiểm-chứng) |
-| Deployment | `docs/deployment/README.md` + link HTTPS và screenshot thực tế | Chưa có host |
-| Demo | Slide 5–7 trang, video 1–3 phút, script demo | Có [kịch bản demo](demo-script.md). Slide và video còn cần chuẩn bị |
-
-**Gợi ý 7 slide:** 1) Vấn đề & mục tiêu, 2) Actors & Use Cases, 3) Kiến trúc và ERD, 4) Luồng checkout/tồn, 5) Security & AI, 6) Demo kết quả kiểm thử, 7) Hạn chế, hướng phát triển và phân công. Tất cả kết quả phải có chứng cứ từ project chạy thật.
+| Implementation | Code, cấu hình và hướng dẫn chạy | [README](../../README.md) và [catalog có nguồn](../data/product-research.csv) |
+| Test | Kế hoạch kiểm thử, kết quả thực tế và ảnh | [Báo cáo TC01–TC20](../testing/02-p10-results.md) |
+| Deployment | Chạy local, backup và điều kiện HTTPS/MariaDB | [Runbook P10](../deployment/06-p10-demo.md). Host công khai đang `BLOCKED_HOST`. |
+| Demo | Slide 7 trang, video COD khoảng 70 giây và kịch bản Q&A | [Slide](beautyshop-demo-p10.pptx) · [Video](evidence-p10/demo-cod.mp4) · [Kịch bản](demo-script.md) |

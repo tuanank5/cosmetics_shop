@@ -36,6 +36,8 @@ public class Security_Config {
                         "/css/**", "/js/**", "/img/**", "/error", "/favicon.ico").permitAll()
                 .requestMatchers(HttpMethod.GET, "/cart", "/cart/**", "/uploads/sku/*").permitAll()
                 .requestMatchers(HttpMethod.HEAD, "/uploads/sku/*").permitAll()
+                .requestMatchers(HttpMethod.GET, "/chat").permitAll()
+                .requestMatchers(HttpMethod.POST, "/chat").permitAll()
                 .requestMatchers(HttpMethod.POST, "/cart", "/cart/**")
                     .access(new WebExpressionAuthorizationManager("isAnonymous() or hasRole('CUSTOMER')"))
                 .requestMatchers(HttpMethod.POST, "/payment/momo/ipn").permitAll()

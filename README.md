@@ -26,7 +26,10 @@ Mở `http://localhost:8080/`, `/products` hoặc `/login`. Để chạy test t�
 - **P05:** Customer chỉnh hồ sơ tại `/account` và quản lý địa chỉ tại `/account/addresses`. Admin tìm kiếm, phân trang, khóa và mở tài khoản tại `/admin/users`.
 - **P06:** chỉnh giỏ tại `/cart`, chọn địa chỉ và đặt COD tại `/checkout`, theo dõi hoặc hủy đơn hợp lệ tại `/orders`. Admin xác nhận giao và thu tiền tại `/admin/orders`.
 - **P07:** tích hợp có adapter mô phỏng cho dev/test. Sandbox thật vẫn `BLOCKED_EXTERNAL` vì thiếu merchant và HTTPS công khai. [Cách chạy MoMo](docs/deployment/04-momo-sandbox.md).
-- **MVP đang tiếp tục:** quản trị voucher và chatbot RAG theo roadmap. Xem [tiến độ và bằng chứng kiểm thử](docs/03-roadmap-and-team.md).
+- **P08:** đánh giá từ chi tiết đơn đã giao, danh sách yêu thích tại `/account/wishlist` và theo dõi đổi trả tại `/account/returns`. Admin duyệt đánh giá và xử lý đổi trả tại `/admin/reviews` và `/admin/returns`.
+- **P09:** tư vấn tại `/chat`, mặc định là tìm FAQ. RAG đã được kiểm thử với Ollama mô phỏng. Ollama thật còn `BLOCKED_AI`. [Hướng dẫn P09](docs/deployment/05-chatbot-rag.md).
+- **P10:** catalog demo 31 sản phẩm, dashboard thu tiền tại `/admin/orders` và COD E2E trên Chrome/MariaDB. [Chạy demo](docs/deployment/06-p10-demo.md) · [Báo cáo TC01–TC20](docs/testing/02-p10-results.md) · [Hồ sơ trình bày](docs/report/README.md). Host công khai còn `BLOCKED_HOST`.
+- **P11:** Admin tạo, xem, sửa, ngừng hoạt động và xóa voucher chưa có lịch sử tại `/admin/vouchers`. Nhập giờ UTC và giới hạn sử dụng. Customer nhập mã tại `/checkout`. [Contract voucher và kết quả kiểm thử](docs/design/03-order-payment-inventory.md#contract-p11-cho-checkout-và-momo) · [Roadmap](docs/03-roadmap-and-team.md#kết-quả-kiểm-chứng).
 
 ## Tài liệu
 

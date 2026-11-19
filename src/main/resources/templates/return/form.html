@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Yêu cầu đổi trả · BeautyShop</title><link rel="stylesheet" th:href="@{/css/theme.css}">
+<link rel="stylesheet" th:href="@{/css/admin-catalog.css}"></head>
+<body><div th:replace="~{fragments/header :: siteHeader}"></div>
+<main class="page-content">
+    <a class="text-link" th:href="@{/orders/{id}(id=${trang.don.maDon})}">Quay lại đơn</a>
+    <h1>Yêu cầu đổi trả</h1>
+    <p th:text="${trang.don.maHienThi}"></p>
+    <p th:unless="${trang.don.conHan}" class="notice">Chỉ nhận yêu cầu trong 7 ngày kể từ khi giao thành công.</p>
+    <form th:if="${trang.don.conHan}" class="catalog-form" method="post"
+          th:action="@{/orders/{id}/returns/new(id=${trang.don.maDon})}" th:object="${doiTra}">
+        <p class="form-error" role="alert" th:each="loi : ${#fields.allErrors()}" th:text="${loi}"></p>
+        <div th:each="muc : ${trang.muc}">
+            <label th:if="${muc.conLai > 0}">
+                <span th:text="|${muc.tenSanPham} · ${muc.tenBienThe} (tối đa ${muc.conLai})|"></span>
+                <input type="number" min="0" step="1" th:max="${muc.conLai}" th:field="*{soLuong[__${muc.maMuc}__]}">
+            </label>
+            <p th:if="${muc.conLai == 0}" th:text="|${muc.tenSanPham} · Đã hết số lượng có thể yêu cầu|"></p>
+        </div>
+        <label>Lý do <textarea th:field="*{lyDo}" rows="4" maxlength="2000" required></textarea></label>
+        <button class="btn-primary" type="submit">Gửi yêu cầu</button>
+    </form>
+</main>
+<div th:replace="~{fragments/footer :: siteFooter}"></div></body></html>

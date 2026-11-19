@@ -17,6 +17,7 @@ class AdminDonHang_Controller {
     @GetMapping
     String danhSach(Model model) {
         model.addAttribute("donHang", donHangService.danhSachAdmin());
+        model.addAttribute("tongQuan", donHangService.tongQuanAdmin());
         model.addAttribute("base", "/admin/orders");
         return "order/list";
     }

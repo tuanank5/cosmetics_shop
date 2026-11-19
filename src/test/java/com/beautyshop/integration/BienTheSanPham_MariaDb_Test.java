@@ -141,10 +141,14 @@ class BienTheSanPham_MariaDb_Test {
             png = bytes.toByteArray();
         }
         var anh = new MockMultipartFile("hinhAnh", "sku.png", "image/png", png);
-        var sai = new MockMultipartFile("hinhAnh", "sku.png", "image/png", new byte[]{1, 2, 3});
+        var sai = new MockMultipartFile("hinhAnh", "sku.png", "image/png",
+            "<html>Not a PNG</html>".getBytes(java.nio.charset.StandardCharsets.UTF_8));
+        var saiPhanMoRong = new MockMultipartFile("hinhAnh", "sku.html", "image/png", png);
 
         mvc.perform(get(base + "/new")).andExpect(status().isOk());
         mvc.perform(form(base + "/new", sku, 2, sai).with(csrf()))
+            .andExpect(model().attributeHasFieldErrors("form", "hinhAnh"));
+        mvc.perform(form(base + "/new", sku, 2, saiPhanMoRong).with(csrf()))
             .andExpect(model().attributeHasFieldErrors("form", "hinhAnh"));
         mvc.perform(form(base + "/new", sku, 2, anh)).andExpect(status().isForbidden());
         mvc.perform(form(base + "/new", sku, 2, anh).with(csrf())).andExpect(redirectedUrl(base));

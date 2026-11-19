@@ -4,6 +4,9 @@ import com.beautyshop.repository.GioHang_Repository;
 import com.beautyshop.repository.NguoiDung_Repository;
 import com.beautyshop.service.DonHang_Service;
 import com.beautyshop.service.GioHang_Service;
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
 import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.CountDownLatch;
@@ -98,8 +101,15 @@ class DonHangCOD_MariaDb_Test {
         assertThat(trangThai(maDon)).isEqualTo("CANCELLED");
 
         gioHangService.themGioCustomer(chu.id(), variant);
+        var tongQuanTruoc = donHangService.tongQuanAdmin();
         long maDonGiao = datDon(session, chu.maDiaChi(), "");
-        mvc.perform(get("/admin/orders").session(phienAdmin)).andExpect(status().isOk());
+        var tongQuanChuaThu = donHangService.tongQuanAdmin();
+        assertThat(tongQuanChuaThu.tongSoDon()).isEqualTo(tongQuanTruoc.tongSoDon() + 1);
+        assertThat(tongQuanChuaThu.soDonDaThu()).isEqualTo(tongQuanTruoc.soDonDaThu());
+        assertThat(tongQuanChuaThu.doanhThuDaThu()).isEqualByComparingTo(tongQuanTruoc.doanhThuDaThu());
+        mvc.perform(get("/admin/orders").session(session)).andExpect(status().isForbidden());
+        mvc.perform(get("/admin/orders").session(phienAdmin)).andExpect(status().isOk())
+            .andExpect(model().attribute("tongQuan", tongQuanChuaThu));
         mvc.perform(get("/admin/orders/" + maDonGiao).session(phienAdmin)).andExpect(status().isOk());
         mvc.perform(post("/admin/orders/" + maDonGiao + "/status").session(session).with(csrf()).param("status", "DELIVERED"))
             .andExpect(status().isForbidden());
@@ -120,6 +130,39 @@ class DonHangCOD_MariaDb_Test {
         assertThat(jdbc.sql("SELECT trang_thai FROM van_chuyen WHERE ma_don_hang = ?").param(maDonGiao)
             .query(String.class).single()).isEqualTo("DELIVERED");
         assertThat(ton(variant)).isEqualTo(2);
+        var tongQuanDaThu = donHangService.tongQuanAdmin();
+        assertThat(tongQuanDaThu.soDonDaThu()).isEqualTo(tongQuanChuaThu.soDonDaThu() + 1);
+        assertThat(tongQuanDaThu.doanhThuDaThu())
+            .isEqualByComparingTo(tongQuanChuaThu.doanhThuDaThu().add(new BigDecimal("600000")));
+    }
+
+    @Test
+    void checkoutHetHangGiuNguyenMucKhacVaAdminHuyHoanTonMotLan() throws Exception {
+        var khach = taiKhoan(false);
+        var admin = taiKhoan(true);
+        var phienKhach = login(khach.email(), new MockHttpSession());
+        var phienAdmin = login(admin.email(), new MockHttpSession());
+        long skuConHang = taoSku(2, 510000);
+        long skuHetHang = taoSku(1, 100000);
+        gioHangService.themGioCustomer(khach.id(), skuConHang);
+        gioHangService.themGioCustomer(khach.id(), skuHetHang);
+        jdbc.sql("UPDATE bien_the_san_pham SET so_luong_trong_kho = 0 WHERE ma_bien_the = ?")
+            .param(skuHetHang).update();
+        mvc.perform(post("/checkout").session(phienKhach).with(csrf()).param("addressId", Long.toString(khach.maDiaChi())))
+            .andExpect(status().isOk()).andExpect(model().attributeHasErrors("form"))
+            .andExpect(content().string(containsString("Không đủ tồn")));
+        assertThat(donHangService.danhSachCustomer(khach.id())).isEmpty();
+        assertThat(ton(skuConHang)).isEqualTo(2);
+        mvc.perform(post("/cart/items/" + skuHetHang + "/quantity").session(phienKhach).with(csrf()).param("quantity", "0"))
+            .andExpect(redirectedUrl("/cart"));
+        long maDon = datDon(phienKhach, khach.maDiaChi(), "");
+        assertThat(ton(skuConHang)).isEqualTo(1);
+        for (int lan = 0; lan < 2; lan++) {
+            mvc.perform(post("/admin/orders/" + maDon + "/status").session(phienAdmin).with(csrf()).param("status", "CANCELLED"))
+                .andExpect(redirectedUrl("/admin/orders/" + maDon));
+            assertThat(ton(skuConHang)).isEqualTo(2);
+            assertThat(trangThai(maDon)).isEqualTo("CANCELLED");
+        }
     }
 
     @Test
@@ -176,9 +219,17 @@ class DonHangCOD_MariaDb_Test {
     void voucherConMotLuotChiChoMotDonKhiHaiSkuKhacNhau() throws Exception {
         var a = taiKhoan(false);
         var b = taiKhoan(false);
+        var phienAdmin = login(taiKhoan(true).email(), new MockHttpSession());
         long skuA = taoSku(1, 510000);
         long skuB = taoSku(1, 510000);
-        String voucher = taoVoucher("PERCENT", 10, 20000, 1, false);
+        String voucher = UUID.randomUUID().toString();
+        var now = LocalDateTime.now(ZoneOffset.UTC).withNano(0);
+        mvc.perform(post("/admin/vouchers/new").session(phienAdmin).with(csrf())
+                .param("maApDung", voucher).param("loaiGiamGia", "PERCENT").param("giaTriGiam", "10")
+                .param("mucGiamToiDa", "20000").param("donToiThieu", "0").param("gioiHanSuDung", "1")
+                .param("batDauLuc", now.minusDays(1).toString()).param("ketThucLuc", now.plusDays(1).toString())
+                .param("dangHoatDong", "true"))
+            .andExpect(redirectedUrl("/admin/vouchers"));
         gioHangService.themGioCustomer(a.id(), skuA);
         gioHangService.themGioCustomer(b.id(), skuB);
         var batDau = new CountDownLatch(1);

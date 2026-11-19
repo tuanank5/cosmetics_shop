@@ -69,6 +69,17 @@ P07 sử dụng contract giữ tồn 15 phút ở trên và phải giữ lượt
 - Kiểm tra với subtotal trước chiết khấu, áp dụng giảm; phí ship dựa subtotal **sau** chiết khấu.
 - Trước khi khách thanh toán online: giữ 1 lượt; khi PAID mới consume, hủy/hết hạn release. Sử dụng index & transaction để không vượt lượt.
 
+### Contract P11 cho checkout và MoMo
+
+| Phương thức của `PhieuGiamGia_Service` | Contract |
+|---|---|
+| `xemTruoc(ma, tamTinh)` | Báo giá từ dữ liệu hiện hành. Giá trị giảm dùng BigDecimal, làm tròn phần trăm xuống đồng và áp trần nếu có. |
+| `apDungCOD(ma, tamTinh)` | Khóa voucher hợp lệ và tăng lượt đã dùng trong transaction tạo đơn. Hủy COD hợp lệ gọi `hoanCOD` dưới khóa hàng đơn. |
+| `giuOnline(ma, tamTinh)`, `ghiTamGiu(maDon, maVoucher)` | Khóa voucher, tăng lượt giữ và ghi trạng thái `HELD` cùng transaction tạo đơn. |
+| `ketThucTamGiu(maDon, maVoucher, suDung)` | Khi có kết quả đã xác minh, chuyển sang `CONSUMED` hoặc `RELEASED` và cập nhật bộ đếm cùng transaction. Lặp lại cùng kết quả giữ nguyên số liệu. |
+
+Trang `/admin/vouchers` dành cho Admin. Mã được bỏ khoảng trắng hai đầu và viết hoa khi lưu. Voucher có hiệu lực từ thời điểm bắt đầu đến trước thời điểm kết thúc, theo UTC. Trường giới hạn phải đủ cho tổng lượt đã dùng và đang giữ. Lượt đã đặt và số tiền snapshot trên đơn được giữ khi Admin sửa hoặc ngừng voucher. Nếu còn đơn hoặc lịch sử giữ lượt tham chiếu thì dùng ngừng hoạt động. P11 dùng schema V1.
+
 ## 5. MoMo
 
 - Chỉ Sandbox; config thông tin merchant từ biến môi trường. Không đưa secret vào URL/log/HTML/repo.
@@ -80,3 +91,5 @@ P07 sử dụng contract giữ tồn 15 phút ở trên và phải giữ lượt
 ## 6. Policy hủy/đổi trả
 
 Customer tự hủy khi Order trước `PACKING` và chưa bàn giao vận chuyển. Nếu PAID: cần trạng thái `REFUND_PENDING`, không được coi tiền đã trả lại. Yêu cầu đổi trả trong 7 ngày sau DELIVERED, admin quyết định và chỉ nhập kho khi đã nhận hàng phù hợp điều kiện.
+
+Trong P08, Customer gửi một yêu cầu gồm một hoặc nhiều dòng của chính đơn đã giao. Hệ thống dùng giờ UTC của MariaDB để kiểm cửa sổ 7 ngày và khóa hàng đơn khi kiểm số lượng còn có thể yêu cầu. Admin xử lý `PENDING → APPROVED → RECEIVED → COMPLETED` hoặc `PENDING → REJECTED`. Mọi yêu cầu trừ `REJECTED` đều tính vào số lượng đã yêu cầu. Trang đổi trả chỉ thao tác trạng thái yêu cầu. Tiếp nhận hàng, điều chỉnh tồn và hoàn tiền cần quy trình vận hành riêng.

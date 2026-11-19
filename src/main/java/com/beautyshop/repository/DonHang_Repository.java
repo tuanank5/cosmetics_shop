@@ -38,10 +38,10 @@ public class DonHang_Repository {
 
     public List<ChiTiet> chiTiet(long maDon) {
         return jdbc.sql("""
-            SELECT ma_bien_the, sku_khi_dat, ten_san_pham_khi_dat, ten_bien_the_khi_dat, don_gia, so_luong
+            SELECT ma_bien_the, sku_khi_dat, ten_san_pham_khi_dat, ten_bien_the_khi_dat, don_gia, so_luong, ma_chi_tiet_don_hang
             FROM chi_tiet_don_hang WHERE ma_don_hang = ? ORDER BY ma_bien_the
             """).param(maDon).query((rs, row) -> new ChiTiet(rs.getLong(1), rs.getString(2), rs.getString(3),
-                rs.getString(4), rs.getBigDecimal(5), rs.getInt(6))).list();
+                rs.getString(4), rs.getBigDecimal(5), rs.getInt(6), rs.getLong(7))).list();
     }
 
     public List<TomTat> danhSach(Long maNguoiDung) {
@@ -54,6 +54,20 @@ public class DonHang_Repository {
         }
         return truyVan.query((rs, row) -> new TomTat(rs.getLong(1), rs.getString(2),
             OrderStatus.valueOf(rs.getString(3)), rs.getBigDecimal(4), rs.getObject(5, LocalDateTime.class))).list();
+    }
+
+    public TongQuan tongQuan() {
+        return jdbc.sql("""
+            SELECT COUNT(*), COUNT(da_thu), COALESCE(SUM(da_thu), 0)
+            FROM (
+                SELECT CASE WHEN EXISTS (
+                    SELECT 1 FROM lan_thanh_toan tt
+                    WHERE tt.ma_don_hang = dh.ma_don_hang
+                      AND tt.trang_thai = 'PAID' AND tt.so_tien = dh.tong_thanh_toan
+                ) THEN dh.tong_thanh_toan END AS da_thu
+                FROM don_hang dh
+            ) thong_ke
+            """).query((rs, row) -> new TongQuan(rs.getLong(1), rs.getLong(2), rs.getBigDecimal(3))).single();
     }
 
     public Optional<Don> timDon(long maDon, boolean khoa) {
@@ -113,10 +127,11 @@ public class DonHang_Repository {
     }
 
     public record ChiTiet(long maBienThe, String sku, String tenSanPham, String tenBienThe,
-                          BigDecimal donGia, int soLuong) {
+                          BigDecimal donGia, int soLuong, Long maMuc) {
         public BigDecimal thanhTien() { return donGia.multiply(BigDecimal.valueOf(soLuong)); }
     }
     public record TomTat(long maDonHang, String maHienThi, OrderStatus trangThai, BigDecimal tong, LocalDateTime ngayTao) {}
+    public record TongQuan(long tongSoDon, long soDonDaThu, BigDecimal doanhThuDaThu) {}
     public record Don(long maDonHang, String maHienThi, Long maVoucher, String tenNguoiNhan, String soDienThoai,
                       String diaChi, BigDecimal tamTinh, BigDecimal giam, BigDecimal phiVanChuyen,
                       BigDecimal tong, OrderStatus trangThai, String phuongThuc, LocalDateTime ngayTao) {}

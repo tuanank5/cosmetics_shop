@@ -6,6 +6,7 @@ import com.beautyshop.payment.MomoSignature.Ipn;
 import com.beautyshop.payment.Momo_Settings;
 import com.beautyshop.repository.ThanhToanMomo_Repository;
 import com.beautyshop.service.GioHang_Service;
+import com.beautyshop.service.PhieuGiamGia_Service;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.util.UUID;
 import org.junit.jupiter.api.Test;
@@ -19,6 +20,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.util.ReflectionTestUtils;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
+import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.support.TransactionTemplate;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.containsString;
@@ -38,6 +41,8 @@ class Momo_MariaDb_Test {
     @Autowired GioHang_Service gioHang;
     @Autowired ThanhToanMomo_Repository attempts;
     @Autowired Momo_Settings settings;
+    @Autowired PhieuGiamGia_Service phieuGiamGiaService;
+    @Autowired PlatformTransactionManager transactionManager;
     private final String password = UUID.randomUUID().toString();
 
     @Test
@@ -54,6 +59,19 @@ class Momo_MariaDb_Test {
         assertThat(trangThai(don)).isEqualTo("PENDING_PAYMENT");
         assertThat(soLuong(don, "so_luong_trong_kho")).isEqualTo(2);
         assertThat(soLuong(don, "so_luong_tam_giu")).isEqualTo(1);
+        assertThat(luot(don, "so_luot_tam_giu")).isEqualTo(1);
+        var admin = login(taiKhoan(true));
+        mvc.perform(post("/admin/orders/" + don.id() + "/status").session(admin).with(csrf())
+                .param("status", "DELIVERED"))
+            .andExpect(flash().attributeExists("error"));
+        assertThat(trangThai(don)).isEqualTo("PENDING_PAYMENT");
+        String code = jdbc.sql("SELECT ma_ap_dung FROM phieu_giam_gia WHERE ma_phieu_giam_gia = ?")
+            .param(don.voucher()).query(String.class).single();
+        mvc.perform(suaVoucher(don, code, "0").session(admin))
+            .andExpect(model().attributeHasFieldErrors("form", "gioiHanSuDung"));
+        mvc.perform(suaVoucher(don, code, "1").session(admin)).andExpect(redirectedUrl("/admin/vouchers"));
+        assertThat(jdbc.sql("SELECT dang_hoat_dong FROM phieu_giam_gia WHERE ma_phieu_giam_gia = ?")
+            .param(don.voucher()).query(Boolean.class).single()).isFalse();
         assertThat(luot(don, "so_luot_tam_giu")).isEqualTo(1);
 
         Ipn dung = settings.moPhong(request, 0);
@@ -76,6 +94,9 @@ class Momo_MariaDb_Test {
         assertThat(soLuong(don, "so_luong_tam_giu")).isZero();
         assertThat(luot(don, "so_luot_da_dung")).isEqualTo(1);
         assertThat(luot(don, "so_luot_tam_giu")).isZero();
+        new TransactionTemplate(transactionManager).executeWithoutResult(status ->
+            phieuGiamGiaService.ketThucTamGiu(don.id(), don.voucher(), true));
+        assertThat(luot(don, "so_luot_da_dung")).isEqualTo(1);
     }
 
     @Test
@@ -120,6 +141,12 @@ class Momo_MariaDb_Test {
         assertThat(trangThai(don)).isEqualTo("EXPIRED");
         assertThat(soLuong(don, "so_luong_tam_giu")).isZero();
         assertThat(luot(don, "so_luot_tam_giu")).isZero();
+        new TransactionTemplate(transactionManager).executeWithoutResult(status ->
+            phieuGiamGiaService.ketThucTamGiu(don.id(), don.voucher(), false));
+        assertThat(luot(don, "so_luot_tam_giu")).isZero();
+        mvc.perform(post("/admin/vouchers/" + don.voucher() + "/delete").session(admin).with(csrf()))
+            .andExpect(redirectedUrl("/admin/vouchers")).andExpect(flash().attributeExists("error"));
+        assertThat(luot(don, "so_luot_da_dung")).isZero();
 
         // Mô phỏng thông báo thành công ký hợp lệ nhưng trái với kết quả cổng đã báo trước đó.
         String accessKey = (String) ReflectionTestUtils.getField(settings, "accessKey");
@@ -141,6 +168,14 @@ class Momo_MariaDb_Test {
 
     private MockHttpServletRequestBuilder ipn(Ipn ipn) throws Exception {
         return post("/payment/momo/ipn").contentType("application/json").content(mapper.writeValueAsBytes(ipn));
+    }
+
+    private MockHttpServletRequestBuilder suaVoucher(Don don, String code, String gioiHan) {
+        return post("/admin/vouchers/" + don.voucher() + "/edit").with(csrf())
+            .param("maApDung", code).param("loaiGiamGia", "FIXED").param("giaTriGiam", "10000")
+            .param("donToiThieu", "0").param("gioiHanSuDung", gioiHan)
+            .param("batDauLuc", "2020-01-01T00:00").param("ketThucLuc", "2099-01-01T00:00")
+            .param("_dangHoatDong", "on");
     }
 
     private Don datDon() throws Exception {

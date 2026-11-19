@@ -31,6 +31,9 @@
 | D26 | P05 dùng khóa hàng tài khoản để giữ một địa chỉ mặc định nếu còn địa chỉ. Khi xóa địa chỉ mặc định, chọn địa chỉ còn lại có mã nhỏ nhất. | Admin chỉ đổi trạng thái kích hoạt và không thể tự khóa. V4 tăng phiên bản xác thực khi khóa để mở khóa không khôi phục phiên cũ. |
 | D27 | P06 chốt COD trong transaction, lấy giá từ SKU, làm tròn voucher phần trăm xuống đồng và miễn phí giao từ 500.000 ₫ sau giảm. | Đặt đơn tạo thanh toán COD `UNPAID`. Admin dùng thao tác “Xác nhận đã giao và thu tiền” để chuyển vận chuyển/đơn sang `DELIVERED` và thanh toán sang `PAID` trong cùng transaction. |
 | D28 | P07 dùng MoMo One-Time Wallet `captureWallet` với `autoCapture=true`, API v2 create/query và IPN HMAC-SHA256. | Giữ tồn và voucher trước khi gọi gateway. Kết quả không rõ giữ nguyên tài nguyên đến đối soát. MoMo Sandbox thật đang `BLOCKED_EXTERNAL` vì thiếu merchant và HTTPS public. |
+| D29 | P08 dùng các bảng V1 cho đánh giá, yêu thích và đổi trả. Đánh giá mới hoặc vừa sửa chỉ công khai sau duyệt. | Khóa hàng đơn khi gửi yêu cầu đổi trả. Yêu cầu chờ duyệt, đã duyệt, đã nhận và hoàn tất đều tính vào số lượng đã yêu cầu. Từ chối trả lại hạn mức. |
+| D30 | P09 dùng Spring AI 1.1.8, Ollama và vector store trong RAM. Model chọn đoạn nguồn hoặc từ chối. MariaDB cung cấp giá/tồn SKU tại thời điểm trả lời. | Mặc định tìm FAQ, Admin nạp lại chỉ mục khi bật AI. V5 nạp FAQ chính sách. Ollama thật là `BLOCKED_AI` trong môi trường kiểm thử. |
+| D31 | P11 dùng bảng voucher V1 và khóa dòng voucher khi Admin lưu hoặc xóa. Giờ quản trị dùng UTC. Các bộ đếm lượt do checkout và đối soát cập nhật. | Chỉ xóa voucher chưa có lượt sử dụng hoặc tham chiếu. Voucher có lịch sử có thể ngừng hoạt động. Các lượt MoMo đã giữ vẫn được chốt hoặc trả theo kết quả đối soát. |
 
 ## Điểm còn cần xác minh/định cấu hình
 

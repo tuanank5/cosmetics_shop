@@ -26,6 +26,11 @@
 - **P05:** JDK 21 chạy compile, 31/31 test và đóng gói JAR thành công. Flyway áp dụng V1–V4 trên MariaDB 12.2.2 trống. Test xác minh sửa hồ sơ, địa chỉ mặc định khi ghi song song, từ chối sửa/xóa địa chỉ của người khác, phân trang quản trị, khóa/mở và thu hồi phiên cũ.
 - **P06:** JDK 21 chạy compile, 34/34 test và đóng gói JAR thành công với MariaDB 12.2.2. Luồng Guest → đăng nhập → đặt COD → Admin giao và thu tiền đã qua test tích hợp. Đã kiểm tra hủy và hoàn đúng một lần, snapshot giá/địa chỉ, quyền chủ đơn, rollback, tranh SKU và tranh lượt voucher. P06 dùng schema V1–V4.
 - **P07:** JDK 21 chạy compile, 40/40 test và đóng gói JAR thành công với MariaDB 12.2.2. Đã kiểm chứng luồng mock dev/test, HMAC, IPN sai đơn/số tiền, replay, retry, đối soát, hết hạn và kết quả thành công muộn. COD tiếp tục qua test hồi quy. **Sandbox end-to-end: BLOCKED_EXTERNAL** vì chưa có merchant và HTTPS công khai được xác minh. [Hướng dẫn P07](deployment/04-momo-sandbox.md).
+- **P08:** JDK 21 chạy compile, 44/44 test và đóng gói JAR thành công với MariaDB 12.2.2. Test kiểm chứng đánh giá từ đơn đã giao, duyệt đúng phiên bản nội dung, yêu thích chống trùng, quyền sở hữu, từ chối đổi trả ngày thứ tám và hai yêu cầu cạnh tranh số lượng. Trạng thái đổi trả không sửa đơn, tồn kho hay thanh toán.
+
+- **P09:** JDK 21 chạy compile, 48/48 test và đóng gói JAR thành công với MariaDB 12.2.2. Flyway áp dụng V1–V5. Test qua Spring AI và vector store với HTTP mock Ollama kiểm tra FAQ fallback, trích nguồn, giá/tồn hiện hành, CSRF và câu hỏi ngoài nguồn. **Ollama thật: BLOCKED_AI**. [Hướng dẫn P09](deployment/05-chatbot-rag.md).
+- **P10:** JDK 21 chạy compile, 49/49 test và đóng gói JAR thành công. Chrome hoàn tất COD E2E và kiểm tra 375, 768, 1440 px. Đã nạp 31 sản phẩm, 32 SKU và kiểm tra backup/restore trên MariaDB 12.2.2. **Host công khai: BLOCKED_HOST.** [Báo cáo QA](testing/02-p10-results.md) · [Runbook](deployment/06-p10-demo.md) · [Hồ sơ demo](report/README.md).
+- **P11:** quản trị tại `/admin/vouchers`. JDK 21 chạy compile, 51/51 test và đóng gói JAR thành công với MariaDB 12.2.2. Test kiểm chứng quyền Admin, CSRF, mã trùng, điều kiện giảm giá, tranh lượt cuối khi đặt COD, giữ/chốt/trả lượt với MoMo mock và bảo toàn voucher đã có lịch sử. Chrome kiểm chứng Admin tạo, Customer áp mã và đặt COD, bộ đếm từ 0 lên 1, Admin ngừng hoạt động và trang quản trị ở 375, 768, 1440 px. Customer truy cập trang quản trị nhận HTTP 403, log ghi thiếu template lỗi dùng chung. [Prompt P11](prompts/P11-promotion.md) · [Contract](design/03-order-payment-inventory.md#contract-p11-cho-checkout-và-momo).
 
 Xem [README](../README.md#chạy-local) để chạy lại test tích hợp.
 
@@ -35,7 +40,7 @@ Xem [README](../README.md#chạy-local) để chạy lại test tích hợp.
 - **D (UI/seed + kiểm nguồn):** 15–20 SKU, ảnh tự chụp hoặc được phép; kiểm logo, alt text, nguồn sản phẩm, bảng audit dữ liệu.
 - **B (QA nguồn & import):** 5–10 SKU, rà soát nhãn loại da/thành phần, chuẩn hóa file seed/import, đảm bảo không trích khẳng định chưa chứng thực.
 - **C (QA vận hành):** 5 SKU, kiểm tình huống SKU còn 1, hết hàng, hủy COD, giá snapshot, kiểm dữ liệu seed với Order.
-- **Deadline dữ liệu:** tối thiểu 15 hàng đã kiểm ngày 20/11; đủ 30–50 hàng có nguồn ngày **27/11**. File `docs/data/product-research.csv` là template, chưa giả vờ dữ liệu được nghiên cứu.
+- **Deadline dữ liệu:** tối thiểu 15 hàng đã kiểm ngày 20/11; đủ 30–50 hàng có nguồn ngày **27/11**. [Catalog P10](data/product-research.csv) đã có 31 sản phẩm đối chiếu từ trang thương hiệu và minh họa CSS của dự án.
 
 ## Contract & tích hợp
 

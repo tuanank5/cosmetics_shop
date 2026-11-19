@@ -32,6 +32,8 @@
                     <div th:text="|SKU ${muc.sku} · ${#numbers.formatInteger(muc.donGia, 1, 'POINT')} ₫ × ${muc.soLuong}|"></div>
                 </div>
                 <span th:text="|${#numbers.formatInteger(muc.thanhTien(), 1, 'POINT')} ₫|"></span>
+                <a th:if="${base == '/orders' and don.trangThai.name() == 'DELIVERED'}" class="text-link"
+                   th:href="@{/orders/items/{id}/review(id=${muc.maMuc})}">Đánh giá hoặc sửa đánh giá</a>
             </li>
         </ul>
         <dl>
@@ -42,6 +44,8 @@
         </dl>
     </section>
     <div class="catalog-actions">
+        <a th:if="${base == '/orders' and don.trangThai.name() == 'DELIVERED'}" class="text-link"
+           th:href="@{/orders/{id}/returns/new(id=${don.maDonHang})}">Yêu cầu đổi trả</a>
         <form th:if="${base == '/orders' and chiTiet.coTheThuLai}" method="post"
               th:action="@{/orders/{id}/momo/retry(id=${don.maDonHang})}">
             <button type="submit" class="btn-primary">Mở lại thanh toán MoMo</button>

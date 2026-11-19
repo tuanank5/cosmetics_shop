@@ -34,7 +34,7 @@
             </select>
         </label>
         <button class="btn-primary" type="submit">Áp dụng</button>
-        <a class="text-link" th:href="@{/products}" th:if="${q != '' or brand != '' or category != '' or skinType != '' or sort != 'newest'}">Xóa bộ lọc</a>
+        <a class="text-link store-filter-reset" th:href="@{/products}" th:if="${q != '' or brand != '' or category != '' or skinType != '' or sort != 'newest'}">Xóa bộ lọc</a>
     </form>
 
     <div class="notice" th:if="${ketQua.empty}">

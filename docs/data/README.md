@@ -8,7 +8,9 @@ P01 ánh xạ `DanhMuc` → `danh_muc`, `ThuongHieu` → `thuong_hieu`, `SanPham
 
 ## Dữ liệu demo
 
-**Chưa có bộ seed đã kiểm chứng** trong scaffold. Để tránh bịa thành phần/giá/hình và rủi ro bản quyền, nhóm cần chuẩn bị dữ liệu từ website chính thức của thương hiệu/nhà bán có quyền phù hợp, ghi nguồn và ngày kiểm tra từng sản phẩm.
+[Catalog P10](product-research.csv) có 31 sản phẩm, 32 SKU demo, 8 thương hiệu và 6 danh mục. Mỗi sản phẩm ghi trang chính thức và ngày đối chiếu. Một số SKU dùng nhãn minh họa khi chưa xác minh dung tích. Ô thành phần hoặc loại da để trống khi chưa có dữ liệu được đối chiếu.
+
+Giá và tồn dành cho kịch bản demo. Các thẻ dùng minh họa CSS nguyên gốc của BeautyShop với tỷ lệ 4:3. Tệp CSV ghi rõ xuất xứ của minh họa. [Cách nạp catalog](../deployment/06-p10-demo.md).
 
 ## Tiêu chí dữ liệu
 
@@ -19,10 +21,10 @@ P01 ánh xạ `DanhMuc` → `danh_muc`, `ThuongHieu` → `thuong_hieu`, `SanPham
 
 ## Quy trình
 
-1. Thu thập vào `product-research.csv` (template chưa xác minh).
+1. Thu thập vào `product-research.csv`. Dùng cùng `research_id` cho các SKU của một sản phẩm.
 2. Điền `source_url`, `reviewed_at`, `image_license`, reviewer.
 3. Chủ sản phẩm module A kiểm tra; D kiểm tra ảnh và metadata RAG.
-4. Sau khi xác minh, chọn migration dành riêng cho môi trường demo hoặc seeder dev. Giữ dữ liệu demo ngoài đường chạy mặc định của production.
+4. Sau khi xác minh, chạy seeder dev trên database demo riêng đã được Flyway khởi tạo.
 
 CSV `verified=no` nghĩa là **không được coi là sản phẩm thực tế đã kiểm chứng**.
 

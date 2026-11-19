@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Duyệt đánh giá · BeautyShop</title><link rel="stylesheet" th:href="@{/css/theme.css}">
+<link rel="stylesheet" th:href="@{/css/admin-catalog.css}"></head>
+<body><div th:replace="~{fragments/header :: siteHeader}"></div>
+<main class="page-content">
+    <h1>Duyệt đánh giá</h1>
+    <p class="notice" role="status" th:if="${message}" th:text="${message}"></p>
+    <p class="form-error" role="alert" th:if="${error}" th:text="${error}"></p>
+    <p class="notice" th:if="${#lists.isEmpty(danhGia)}">Chưa có đánh giá.</p>
+    <ul class="catalog-list">
+        <li th:each="muc : ${danhGia}" th:with="dg=${muc.danhGia}">
+            <div>
+                <strong th:text="|${muc.tenSanPham} · ${dg.soSao}/5 sao|"></strong>
+                <p th:text="${dg.noiDung}"></p>
+                <a th:href="@{/admin/orders/{id}(id=${muc.maDon})}" class="text-link">Xem đơn mua</a>
+                <small th:text="${dg.hienThi ? 'Đang hiển thị' : 'Chờ duyệt hoặc đã ẩn'}"></small>
+            </div>
+            <form method="post" th:action="@{/admin/reviews/{id}/visibility(id=${dg.ma})}">
+                <input type="hidden" name="revision" th:value="${muc.phienBan}">
+                <button type="submit" name="visible" th:value="${!dg.hienThi}" class="btn-primary"
+                        th:text="${dg.hienThi ? 'Ẩn đánh giá' : 'Duyệt đánh giá'}"></button>
+            </form>
+        </li>
+    </ul>
+</main>
+<div th:replace="~{fragments/footer :: siteFooter}"></div></body></html>

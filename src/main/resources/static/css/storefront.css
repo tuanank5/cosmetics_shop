@@ -71,7 +71,9 @@
     overflow-wrap: anywhere;
 }
 .store-detail h1 { margin: .25rem 0 .75rem; }
-.store-detail-image { aspect-ratio: 1; }
+.store-detail-image { aspect-ratio: 4 / 3; }
+.store-purchase { display: flex; flex-wrap: wrap; gap: .75rem; align-items: center; margin-block: 1rem; }
+.store-filter-reset { min-height: 44px; display: inline-flex; align-items: center; }
 .store-current-price { font-size: 1.5rem; }
 .store-stock { color: #365a4e; }
 .store-stock.is-sold-out { color: #8c2637; }
@@ -79,6 +81,8 @@
 .store-variant label { flex: 1 1 12rem; }
 .store-description section { border-top: 1px solid var(--line); padding: 1rem 0; }
 .store-description p { white-space: pre-line; overflow-wrap: anywhere; }
+.store-reviews { list-style: none; padding: 0; }
+.store-reviews > li { border-top: 1px solid var(--line); padding: .75rem 0; }
 @media (max-width: 640px) {
     .storefront { margin-block: 2rem 4rem; }
     .store-detail { grid-template-columns: 1fr; }
