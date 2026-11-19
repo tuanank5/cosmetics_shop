@@ -25,6 +25,8 @@
 | D20 | Ollama qwen2.5:3b / bge-m3 dùng cho P09 khi có tài nguyên, AI disabled mặc định | Không cam kết chạy AI trên free host |
 | D21 | P01 thực hiện thao tác xóa sản phẩm bằng cách chuyển sang ngừng hoạt động để giữ tham chiếu và lịch sử đơn. | Danh mục và thương hiệu chỉ xóa vật lý khi chưa có sản phẩm tham chiếu. Tính duy nhất của đường dẫn do khóa UNIQUE trong V1 bảo đảm. |
 | D22 | Tên nghiệp vụ và biến nội bộ dùng tiếng Việt không dấu. Thuộc tính JPA dùng camelCase theo cột. Giữ thuật ngữ tiếng Anh và dùng dấu `_` trước hậu tố kỹ thuật như `_Controller`, `_Repository` và `_Policy`. | Giữ tên kỹ thuật như `path`, `label`, URL và tham số form hiện hành, cùng schema V1. |
+| D23 | P02 dùng khóa hàng theo thứ tự đơn → biến thể. Giữ tồn dùng bảng V1. V2 thêm dấu ghi nhận COD theo cặp đơn–SKU để chống trừ lặp. | SKU được ngừng bán bằng trạng thái. Một SKU có tối đa một bộ mã lô/hạn dùng minh họa. |
+| D24 | P03 chỉ công khai sản phẩm và SKU đang hoạt động, thuộc danh mục và thương hiệu đang hoạt động. Giá từ là giá thấp nhất trong các SKU hoạt động khớp truy vấn. | SKU hết hàng vẫn xem được và ghi rõ trạng thái. Chi tiết mặc định chọn SKU khả dụng có giá thấp nhất, rồi đến SKU giá thấp nhất nếu tất cả hết hàng. |
 
 ## Điểm còn cần xác minh/định cấu hình
 

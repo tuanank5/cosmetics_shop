@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title th:text="|${chiTiet.sanPham.tenSanPham} · BeautyShop|">Sản phẩm · BeautyShop</title>
+    <link rel="stylesheet" th:href="@{/css/theme.css}">
+    <link rel="stylesheet" th:href="@{/css/storefront.css}">
+    <script defer th:src="@{/js/storefront.js}"></script>
+</head>
+<body>
+<div th:replace="~{fragments/header :: siteHeader}"></div>
+<main class="page-content storefront">
+    <a class="text-link" th:href="@{/products}">Quay lại sản phẩm</a>
+    <article th:with="sanPham=${chiTiet.sanPham}, sku=${chiTiet.dangChon}">
+        <div class="store-detail">
+            <div class="store-image store-detail-image">
+                <img th:if="${sku.urlHinhAnh}" th:src="@{${sku.urlHinhAnh}}" th:alt="|${sanPham.tenSanPham} · ${sku.tenBienThe}|" decoding="async">
+                <span th:unless="${sku.urlHinhAnh}" class="store-placeholder" aria-hidden="true"></span>
+            </div>
+            <div>
+                <p class="store-brand" th:text="${sanPham.thuongHieu.tenThuongHieu}"></p>
+                <h1 th:text="${sanPham.tenSanPham}"></h1>
+                <p class="store-price store-current-price" th:text="|${#numbers.formatInteger(sku.giaBan, 1, 'POINT')} ₫|"></p>
+                <p class="store-stock" th:classappend="${sku.soLuongKhaDung == 0} ? ' is-sold-out'"
+                   th:text="${sku.soLuongKhaDung > 0} ? |Còn ${sku.soLuongKhaDung} sản phẩm| : 'Hết hàng'"></p>
+                <p class="store-brand" th:text="|SKU ${sku.sku}|"></p>
+                <form class="store-variant" method="get" th:action="@{/products/{slug}(slug=${sanPham.duongDan})}">
+                    <label>Biến thể
+                        <select name="variant" data-submit-variant>
+                            <option th:each="muc : ${chiTiet.bienThe}" th:value="${muc.maBienThe}"
+                                    th:selected="${muc.maBienThe == sku.maBienThe}"
+                                    th:text="${muc.tenBienThe + (muc.soLuongKhaDung == 0 ? ' · Hết hàng' : '')}"></option>
+                        </select>
+                    </label>
+                    <button class="btn-primary" type="submit">Xem biến thể</button>
+                </form>
+                <p th:if="${sku.maLoMinhHoa}" th:text="|Lô minh họa: ${sku.maLoMinhHoa}|"></p>
+                <p th:if="${sku.hanSuDungMinhHoa}" th:text="|Hạn dùng minh họa: ${#temporals.format(sku.hanSuDungMinhHoa, 'dd/MM/yyyy')}|"></p>
+            </div>
+        </div>
+        <div class="store-description">
+            <section th:if="${sanPham.moTa != null and !#strings.isEmpty(sanPham.moTa)}">
+                <h2>Mô tả</h2><p th:text="${sanPham.moTa}"></p>
+            </section>
+            <section th:if="${sanPham.thanhPhan != null and !#strings.isEmpty(sanPham.thanhPhan)}">
+                <h2>Thành phần</h2><p th:text="${sanPham.thanhPhan}"></p>
+            </section>
+            <section th:if="${sanPham.huongDanSuDung != null and !#strings.isEmpty(sanPham.huongDanSuDung)}">
+                <h2>Hướng dẫn sử dụng</h2><p th:text="${sanPham.huongDanSuDung}"></p>
+            </section>
+            <section th:if="${sanPham.loaiDaPhuHop != null and !#strings.isEmpty(sanPham.loaiDaPhuHop)}">
+                <h2>Loại da phù hợp</h2><p th:text="${sanPham.loaiDaPhuHop}"></p>
+            </section>
+        </div>
+    </article>
+</main>
+<div th:replace="~{fragments/footer :: siteFooter}"></div>
+</body>
+</html>

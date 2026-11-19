@@ -43,7 +43,7 @@ Mỗi TC có: người chạy, ngày, commit, môi trường, dữ liệu đầu
 
 ## Kiểm thử bắt buộc v4
 - Migration: V1 trên MariaDB mới tạo đủ bảng, chạy lần 2 không lỗi, `flyway_schema_history` có checksum; DB cũ có bảng chưa baseline phải fail an toàn.
-- Security: `POST /payment/momo/ipn` bypass CSRF nhưng không được ghi PAID khi thiếu/chữ ký sai; form POST thường vẫn cần CSRF. `GET /uploads/<filename>` không được đọc file ngoài thư mục ảnh hợp lệ (module uploads chưa xây).
+- Security: `POST /payment/momo/ipn` bypass CSRF, IPN cần kiểm chữ ký ở P07. Form POST cần CSRF. P02 có `GET /uploads/sku/{filename}` cho ảnh SKU đã ghi nhận, kiểm định dạng tên và kiểm tra file trong thư mục ảnh.
 - COD P0: 2 request đồng thời cho SKU cuối cùng phải có đúng một đơn thành công; voucher không vượt giới hạn; hủy hoàn kho một lần.
 - MoMo P1: mock phải không thực hiện thanh toán thật; kết quả qua return không chốt PAID; IPN ký đúng/replay/late-IPN cần test.
 - RAG P1: offline fallback không giả vờ là AI; câu hỏi thiếu nguồn phải nói không đủ thông tin.

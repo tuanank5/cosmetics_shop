@@ -14,13 +14,15 @@ mvn test
 mvn -DskipTests package
 ```
 
-Mở `http://localhost:8080/`, `/products` hoặc `/login`. Để chạy test tích hợp catalog, dùng một database MariaDB trống dành riêng cho test và đặt `P01_MARIADB_TEST=true` trước khi chạy `mvn test`.
+Mở `http://localhost:8080/`, `/products` hoặc `/login`. Để chạy test tích hợp catalog, SKU, tồn kho và storefront, dùng một database MariaDB trống dành riêng cho test và đặt `P01_MARIADB_TEST=true` trước khi chạy `mvn test`.
 
 ## Trạng thái
 
 - **P00:** ba trang giao diện nền trả HTTP 200 trong lần chạy thử. Xác nhận hiển thị ở 375, 768 và 1440 px còn mở.
-- **P01:** CRUD danh mục, thương hiệu, sản phẩm tại `/admin/catalog` đã được kiểm thử với phiên Admin trong test tích hợp. Trang sản phẩm công khai và đăng nhập hiện ở mức scaffold, tài khoản thật thuộc P04.
-- **MVP đang tiếp tục:** SKU, storefront, giỏ hàng và checkout COD theo roadmap. MoMo Sandbox và chatbot RAG là các mốc sau. Xem [tiến độ và bằng chứng kiểm thử](docs/03-roadmap-and-team.md).
+- **P01:** CRUD danh mục, thương hiệu, sản phẩm tại `/admin/catalog` đã được kiểm thử với phiên Admin trong test tích hợp. Đăng nhập bằng tài khoản thật thuộc P04.
+- **P02:** quản trị SKU, giá, tồn, ảnh và một lô minh họa tại `/admin/catalog/products/{productId}/variants`. Flyway V2 bổ sung ghi nhận trừ kho COD. Xem [contract tồn kho](docs/design/03-order-payment-inventory.md#contract-p02-cho-p06p07).
+- **P03:** danh sách và lọc tại `/products`, chi tiết và chọn SKU tại `/products/{slug}`. Cần sản phẩm và SKU đang hoạt động trong database để xem kết quả.
+- **MVP đang tiếp tục:** giỏ hàng và checkout COD theo roadmap. MoMo Sandbox và chatbot RAG là các mốc sau. Xem [tiến độ và bằng chứng kiểm thử](docs/03-roadmap-and-team.md).
 
 ## Tài liệu
 

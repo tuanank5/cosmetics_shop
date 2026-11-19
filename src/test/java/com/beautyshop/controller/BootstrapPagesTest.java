@@ -27,7 +27,6 @@ class BootstrapPagesTest {
     @ParameterizedTest
     @CsvSource({
         "/, Vẻ đẹp bắt đầu từ",
-        "/products, Danh mục đang được chuẩn bị",
         "/login, Đăng nhập chưa mở"
     })
     void publicPagesRenderInVietnamese(String path, String heading) throws Exception {

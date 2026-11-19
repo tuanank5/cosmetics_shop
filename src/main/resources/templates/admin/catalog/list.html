@@ -28,6 +28,7 @@
                 <small th:text="${item.dangHoatDong} ? 'Đang hoạt động' : 'Ngừng hoạt động'"></small>
             </div>
             <div class="catalog-actions">
+                <a class="btn" th:if="${product}" th:href="@{/admin/catalog/products/{id}/variants(id=${item.ma})}">SKU</a>
                 <a class="btn" th:href="@{/admin/catalog/{section}/{id}/edit(section=${section},id=${item.ma})}">Sửa</a>
                 <form th:if="${!product or item.dangHoatDong}"
                       th:action="@{/admin/catalog/{section}/{id}/delete(section=${section},id=${item.ma})}" method="post">

@@ -20,6 +20,8 @@
 - **P00:** JAR chạy với profile `dev`. `/`, `/products` và `/login` trả HTTP 200. Xác nhận hiển thị ở 375, 768 và 1440 px còn mở.
 - **P01:** test tích hợp xác minh CRUD danh mục, thương hiệu và sản phẩm bằng phiên Admin do Spring Security Test cấp. Đăng nhập bằng tài khoản thật thuộc P04.
 - **Sau refactor MVC:** JDK 21 chạy compile, 15/15 test và đóng gói JAR thành công. Flyway áp dụng V1 trên MariaDB 12.2.2 trống và JPA xác thực schema. Flyway cảnh báo phiên bản MariaDB này mới hơn phạm vi kiểm chứng của nó.
+- **P02:** JDK 21 chạy compile, 22/22 test và đóng gói JAR thành công. Flyway áp dụng V1 và V2 trên MariaDB 12.2.2 trống. Test tích hợp kiểm chứng CRUD/ảnh SKU bằng phiên Admin kiểm thử, hai đơn COD hoặc hai đơn MOMO tranh một SKU, retry, rollback và đọc lại tồn khi checkout đã nạp SKU. Test MOMO chỉ sử dụng dữ liệu đơn nội bộ.
+- **P03:** JDK 21 chạy compile, 23/23 test và đóng gói JAR thành công với MariaDB 12.2.2. Test kiểm chứng tìm tiếng Việt và theo SKU, bộ lọc, sắp xếp, phân trang, giá/tồn theo SKU và HTTP 404. JAR trả HTTP 200 cho danh sách và chi tiết có dữ liệu kiểm thử. Kiểm tra trực quan các viewport còn mở do công cụ không truy cập được cửa sổ Chrome.
 
 Xem [README](../README.md#chạy-local) để chạy lại test tích hợp.
 

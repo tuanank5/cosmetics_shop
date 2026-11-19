@@ -9,9 +9,6 @@ public class Bootstrap_Controller {
     @GetMapping("/")
     public String home() { return "home/index"; }
 
-    @GetMapping("/products")
-    public String products() { return "product/list"; }
-
     @GetMapping("/login")
     public String login() { return "auth/login"; }
 }

@@ -21,7 +21,7 @@ $env:DB_PASSWORD='<MAT_KHAU_RIENG_CUA_BAN>'
 ```
 
 Dev `spring.jpa.hibernate.ddl-auto=validate`, `spring.flyway.enabled=true` ở `application-dev.properties`.
-Khi khởi động trên database trống, Spring Boot tự áp dụng `V1__khoi_tao_co_so_du_lieu.sql`, sau đó JPA kiểm tra các bảng được ánh xạ. Kiểm tra log Flyway rồi mở `/`, `/products` và `/login` trên cổng 8080.
+Khi khởi động trên database trống, Flyway áp dụng V1 và các migration tiếp theo theo thứ tự, sau đó JPA kiểm tra các bảng được ánh xạ. Database đã có V1 chỉ nhận các phiên bản chưa áp dụng. Kiểm tra log Flyway rồi mở `/`, `/products` và `/login` trên cổng 8080.
 
 ## 3. Flyway checklist
 

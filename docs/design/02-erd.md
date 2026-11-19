@@ -212,3 +212,5 @@ erDiagram
 ```
 
 Chi tiết khóa ngoại, UNIQUE, CHECK xem trực tiếp SQL. Bảng và cột xem `docs/data/bang_doi_chieu_ten.csv`.
+
+P02 bổ sung [V2](../../src/main/resources/db/migration/V2__ghi_nhan_tru_kho_cod.sql) với bảng `ghi_nhan_tru_kho_cod`. Khóa chính ghép `(ma_don_hang, ma_bien_the)` đồng thời tham chiếu `don_hang` và `bien_the_san_pham`. Cột `so_luong` ghi số lượng đã trừ cho lần COD để retry an toàn.
