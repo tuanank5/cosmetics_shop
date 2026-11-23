@@ -12,6 +12,15 @@ P01 ánh xạ `DanhMuc` → `danh_muc`, `ThuongHieu` → `thuong_hieu`, `SanPham
 
 Giá và tồn dành cho kịch bản demo. Các thẻ dùng minh họa CSS nguyên gốc của BeautyShop với tỷ lệ 4:3. Tệp CSV ghi rõ xuất xứ của minh họa. [Cách nạp catalog](../deployment/06-p10-demo.md).
 
+### Ảnh sản phẩm demo (P16)
+
+Ảnh demo nằm trong JAR, tại `src/main/resources/static/img/products/`, để không bị mất khi host restart hoặc redeploy. Ảnh Admin upload vào `uploads/sku` vẫn dùng cơ chế cũ.
+
+- Tên file viết thường, không dấu, không khoảng trắng, ví dụ `r001.webp`. Định dạng `.webp`, `.jpg` hoặc `.png`, tỉ lệ 4:5 (khoảng 800×1000 px), mỗi file ≤ 300 KB. Chỉ dùng ảnh nhóm có quyền sử dụng và ghi nguồn tại `image_source`/`image_license`.
+- Cột `image_path` của CSV ghi `/img/products/<tên file>`. Để trống nếu chưa có ảnh: SKU nhận `NULL` và giao diện hiện placeholder.
+- `scripts/seed-demo.ps1` từ chối đường dẫn sai mẫu, file không tồn tại hoặc file > 300 KB, rồi ghi giá trị vào `bien_the_san_pham.url_hinh_anh` (`san_pham` không có cột ảnh). Chạy lại seed chỉ cập nhật ảnh còn trống hoặc ảnh `/img/products/`, không đè ảnh Admin đã upload.
+- Tại thời điểm P16, thư mục chưa có ảnh và mọi `image_path` đều trống.
+
 ## Tiêu chí dữ liệu
 
 - Mục tiêu 40 sản phẩm: 8–10 thương hiệu, 4–6 danh mục; mỗi sản phẩm 1–3 SKU khi thực tế có màu/dung tích.

@@ -210,9 +210,53 @@ class GiaoDienPagesTest {
             .andExpect(content().string(containsString("Xem tất cả sản phẩm")));
     }
 
+    @Test
+    void homeHienSanPhamNoiBatTruocFooterVaDungLaiTheSanPham() throws Exception {
+        var coAnh = mock(TheSanPham.class);
+        when(coAnh.getDuongDan()).thenReturn("serum-noi-bat");
+        when(coAnh.getTenSanPham()).thenReturn("Serum <b>nổi bật</b>");
+        when(coAnh.getTenThuongHieu()).thenReturn("Thương hiệu kiểm thử");
+        when(coAnh.getGiaTu()).thenReturn(new BigDecimal("450000"));
+        when(coAnh.getUrlHinhAnh()).thenReturn("/uploads/sku/fixture.png");
+        when(coAnh.getSoLuongKhaDungLonNhat()).thenReturn(3);
+        var chuaAnh = mock(TheSanPham.class);
+        when(chuaAnh.getDuongDan()).thenReturn("kem-chua-anh");
+        when(chuaAnh.getTenSanPham()).thenReturn("Kem chưa có ảnh");
+        when(chuaAnh.getGiaTu()).thenReturn(new BigDecimal("125000"));
+        when(chuaAnh.getSoLuongKhaDungLonNhat()).thenReturn(1);
+        when(cuaHangService.sanPhamNoiBat(8)).thenReturn(List.of(coAnh, chuaAnh));
+
+        String html = mvc.perform(get("/")).andExpect(status().isOk())
+            .andReturn().getResponse().getContentAsString();
+
+        assertThat(html).containsSubsequence("data-home-carousel", "</main>", "id=\"home-featured\"",
+                "Sản phẩm nổi bật", "id=\"home-footer\"", "class=\"site-footer\"")
+            .contains("href=\"/products/serum-noi-bat\"", "href=\"/products/kem-chua-anh\"",
+                "Serum &lt;b&gt;nổi bật&lt;/b&gt;", "450.000 ₫", "Còn hàng",
+                "src=\"/uploads/sku/fixture.png\"", "data-catalog-placeholder", "loading=\"lazy\"")
+            .doesNotContain("loading=\"eager\"", "src=\"\"", "th:utext", "style=")
+            .containsOnlyOnce("<h1");
+        assertThat(html.substring(html.indexOf("id=\"home-featured\"")))
+            .contains("class=\"btn btn--secondary home-featured-all\" href=\"/products\"");
+        assertThat(html.indexOf("id=\"home-featured\"")).isGreaterThan(html.indexOf("</main>"));
+    }
+
+    @Test
+    void homeAnDaiNoiBatKhiRongHoacCatalogLoi() throws Exception {
+        when(cuaHangService.sanPhamNoiBat(anyInt())).thenReturn(List.of());
+        mvc.perform(get("/")).andExpect(status().isOk())
+            .andExpect(content().string(not(containsString("home-featured"))))
+            .andExpect(content().string(containsString("class=\"site-footer\"")));
+        when(cuaHangService.sanPhamNoiBat(anyInt()))
+            .thenThrow(new org.springframework.dao.DataAccessResourceFailureException("fixture"));
+        mvc.perform(get("/")).andExpect(status().isOk())
+            .andExpect(content().string(not(containsString("home-featured"))))
+            .andExpect(content().string(containsString("Vẻ đẹp.")));
+    }
+
     @ParameterizedTest
     @org.junit.jupiter.params.provider.NullAndEmptySource
-    @org.junit.jupiter.params.provider.ValueSource(strings = {"   ", "/uploads/sku/fixture.png"})
+    @org.junit.jupiter.params.provider.ValueSource(strings = {"   ", "/uploads/sku/fixture.png", "/img/products/r001.webp"})
     void catalogAnhCoFallbackSsrVaKhongGuiUrlRong(String url) throws Exception {
         var card = mock(TheSanPham.class);
         when(card.getDuongDan()).thenReturn("kiem-thu");

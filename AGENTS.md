@@ -28,3 +28,14 @@ Trước khi sửa, đọc [README](README.md), [SRS](docs/requirements/01-srs.m
 - Làm một task/lần, xem trạng thái Git và giữ các thay đổi sẵn có. Báo cho owner liên quan khi thay đổi contract dùng chung và cập nhật test tương ứng. Theo yêu cầu hiện hành về commit/PR.
 - Khi đổi mã, chạy `mvn test`, `mvn -DskipTests package` và kiểm chứng dev với MariaDB nếu liên quan. Bổ sung test cho quy tắc nghiệp vụ bị tác động, gồm tính tiền, trạng thái đơn, khóa SKU, hết hạn, IPN trùng, voucher hoặc sở hữu đơn.
 - Báo file sửa, lệnh đã chạy, kết quả, điểm chưa xác minh và link PR nếu có. Cập nhật quyết định khi có thay đổi đã duyệt và roadmap khi tiến độ thay đổi.
+
+## Báo cáo và bằng chứng
+
+Mọi báo cáo, log, JSON QA, ảnh chụp và video kiểm thử lưu bên trong repository. Không lưu ở `AppData\Local\Temp`, thư mục scratchpad hay nơi nào ngoài project.
+
+- Báo cáo: `docs/reviews/<mã-task>-<tên-ngắn>.md`.
+- Log, JSON, script QA: `docs/qa/<mã-task>/`.
+- Ảnh chụp chọn lọc (tối đa khoảng 10 ảnh mỗi task, PNG/WebP đã nén): `docs/ui/screenshots/<mã-task>/`.
+- Video (nếu có, đã nén): `docs/ui/screenshots/<mã-task>/`.
+
+Không lưu secret, mật khẩu, token hay dữ liệu cá nhân vào các file này. Tin nhắn kết thúc task liệt kê đường dẫn tương đối của báo cáo và bằng chứng.

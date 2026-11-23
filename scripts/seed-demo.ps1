@@ -22,6 +22,17 @@ function SqlText([string] $Value) {
     return "CONVERT(X'$hex' USING utf8mb4)"
 }
 
+# Demo images ship inside the JAR (static/img/products) so they survive redeploys; empty image_path -> NULL placeholder.
+$imageDir = Join-Path $PSScriptRoot '../src/main/resources/static/img/products'
+function ImageSql([string] $Path) {
+    if ([string]::IsNullOrWhiteSpace($Path)) { return 'NULL' }
+    if ($Path -cnotmatch '^/img/products/[a-z0-9](?:[a-z0-9-]{0,98}[a-z0-9])?\.(?:webp|jpg|png)$') { throw "Invalid image_path: $Path" }
+    $file = Join-Path $imageDir ($Path.Substring('/img/products/'.Length))
+    if (-not (Test-Path -LiteralPath $file -PathType Leaf)) { throw "image_path not found in static/img/products: $Path" }
+    if ((Get-Item -LiteralPath $file).Length -gt 300KB) { throw "Image larger than 300 KB: $Path" }
+    return "'$Path'"
+}
+
 function Slug([string] $Value) {
     $ascii = $Value.Normalize([Text.NormalizationForm]::FormD).ToLowerInvariant() -replace '\p{Mn}', ''
     $ascii = $ascii.Replace([char]0x0111, [char]'d')
@@ -62,10 +73,12 @@ ON DUPLICATE KEY UPDATE ma_san_pham=ma_san_pham;
         $sku = $variant.variant_sku
         $price = $variant.demo_price_vnd
         $stock = switch ($sku) { 'DEMO-013' { 0 } 'DEMO-004' { 1 } default { 12 } }
+        $image = ImageSql $variant.image_path
+        # Re-running the seed refreshes demo images only; an Admin-uploaded /uploads/sku image is never overwritten.
         $statements.Add(@"
-INSERT INTO bien_the_san_pham (ma_san_pham, sku, ten_bien_the, gia_ban, so_luong_trong_kho)
-SELECT sp.ma_san_pham, '$sku', $label, $price, $stock FROM san_pham sp WHERE sp.duong_dan='$slug'
-ON DUPLICATE KEY UPDATE ma_bien_the=ma_bien_the;
+INSERT INTO bien_the_san_pham (ma_san_pham, sku, ten_bien_the, gia_ban, so_luong_trong_kho, url_hinh_anh)
+SELECT sp.ma_san_pham, '$sku', $label, $price, $stock, $image FROM san_pham sp WHERE sp.duong_dan='$slug'
+ON DUPLICATE KEY UPDATE url_hinh_anh = IF(url_hinh_anh IS NULL OR url_hinh_anh LIKE '/img/products/%', VALUES(url_hinh_anh), url_hinh_anh);
 "@)
     }
 }

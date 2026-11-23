@@ -2,6 +2,7 @@ package com.beautyshop.repository;
 
 import com.beautyshop.entity.SanPham;
 import java.math.BigDecimal;
+import java.util.List;
 import java.util.Optional;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -39,6 +40,23 @@ public interface CuaHang_Repository extends Repository<SanPham, Long> {
     Page<TheSanPham> timSanPham(@Param("q") String q, @Param("brand") String brand,
         @Param("category") String category, @Param("skinType") String skinType,
         @Param("sort") String sort, Pageable pageable);
+
+    /** Trang chủ: sản phẩm active mới nhất có ít nhất một SKU active còn hàng khả dụng; không có cờ "nổi bật" trong schema. */
+    @Query("""
+        select s.duongDan as duongDan, s.tenSanPham as tenSanPham, t.tenThuongHieu as tenThuongHieu,
+               min(b.giaBan) as giaTu, min(b.urlHinhAnh) as urlHinhAnh,
+               max(b.soLuongTrongKho - b.soLuongTamGiu) as soLuongKhaDungLonNhat
+        from BienTheSanPham b
+        join b.sanPham s
+        join s.thuongHieu t
+        join s.danhMuc d
+        where s.dangHoatDong = true and b.dangHoatDong = true
+          and t.dangHoatDong = true and d.dangHoatDong = true
+        group by s.maSanPham, s.duongDan, s.tenSanPham, t.tenThuongHieu, s.ngayTao
+        having max(b.soLuongTrongKho - b.soLuongTamGiu) > 0
+        order by s.ngayTao desc, s.maSanPham desc
+        """)
+    List<TheSanPham> timNoiBat(Pageable pageable);
 
     @EntityGraph(attributePaths = {"thuongHieu", "danhMuc"})
     @Query("""

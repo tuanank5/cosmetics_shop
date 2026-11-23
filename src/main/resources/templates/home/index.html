@@ -26,7 +26,7 @@
       <p>Mỹ phẩm đa thương hiệu. Một lựa chọn của riêng bạn.</p>
     </div>
     <aside class="story-spotlight" aria-label="Khám phá cửa hàng">
-      <img src="/img/editorial/nocturne.svg" alt="" width="80" height="100">
+      <span class="story-spotlight-mark" aria-hidden="true">BS</span>
       <div><p>Mỹ phẩm đa thương hiệu</p><a class="btn btn--primary btn--lg" th:href="@{/products}">Khám phá sản phẩm <span aria-hidden="true">↗</span></a></div>
     </aside>
     <a class="story-next" href="#ritual">Khám phá tiếp <span aria-hidden="true">↓</span></a>
@@ -47,7 +47,7 @@
       <p>Bắt đầu từ làn da, tìm điều phù hợp.</p>
     </div>
     <aside class="story-spotlight" aria-label="Khám phá theo loại da">
-      <img src="/img/editorial/form.svg" alt="" width="80" height="100" loading="lazy">
+      <span class="story-spotlight-mark" aria-hidden="true">BS</span>
       <div><p>Nhịp chăm sóc của bạn</p><a class="btn btn--secondary btn--lg" th:href="@{/products#skin-type}">Tìm theo loại da <span aria-hidden="true">↗</span></a></div>
     </aside>
     <nav class="story-discovery" aria-label="Khám phá mỹ phẩm">
@@ -69,7 +69,7 @@
       <h2 id="discovery-title">Một góc nhìn mới.</h2>
     </div>
     <aside class="story-spotlight" aria-label="Khám phá sản phẩm mới">
-      <img src="/img/editorial/light.svg" alt="" width="80" height="100" loading="lazy">
+      <span class="story-spotlight-mark" aria-hidden="true">BS</span>
       <div><p>Một lựa chọn mới</p><a class="btn btn--secondary btn--lg" th:href="@{/products(sort='newest')}">Xem sản phẩm mới <span aria-hidden="true">↗</span></a></div>
     </aside>
     <a class="story-next" href="#home-footer">Thông tin cửa hàng <span aria-hidden="true">↓</span></a>
@@ -79,6 +79,20 @@
   </div>
 </main>
 </div>
+<section id="home-featured" class="home-featured" aria-labelledby="home-featured-title"
+         th:if="${sanPhamNoiBat != null and !#lists.isEmpty(sanPhamNoiBat)}">
+  <div class="home-featured-head">
+    <p class="eyebrow">Tuyển chọn</p>
+    <h2 id="home-featured-title">Sản phẩm nổi bật</h2>
+    <p>Những lựa chọn mới nhất đang có sẵn tại BeautyShop.</p>
+  </div>
+  <ul class="store-grid home-featured-grid">
+    <li th:each="the : ${sanPhamNoiBat}">
+      <div th:replace="~{fragments/product-card :: productCard(${the}, false)}"></div>
+    </li>
+  </ul>
+  <a class="btn btn--secondary home-featured-all" th:href="@{/products}">Xem tất cả sản phẩm <span aria-hidden="true">↗</span></a>
+</section>
 <div id="home-footer" tabindex="-1"></div>
 <div th:replace="~{fragments/footer :: siteFooter}"></div>
 <script defer th:src="@{/js/vendor/gsap-3.15.1.min.js}"></script>

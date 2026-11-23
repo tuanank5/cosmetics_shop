@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 import org.springframework.jdbc.core.simple.JdbcClient;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
@@ -64,5 +65,21 @@ class GioHangRepositoryTest {
         assertThat(gio.getFirst().soLuong()).isEqualTo(2);
         assertThat(gio.getFirst().giaBan()).isEqualByComparingTo("410000");
         assertThat(repository.timBienThe(11, false)).contains(gio.getFirst().voiSoLuong(0));
+    }
+    @ParameterizedTest
+    @ValueSource(strings = {"/uploads/sku/123e4567-e89b-12d3-a456-426614174000.png",
+        "/img/products/r001.webp", "/img/products/r026-a.jpg", "/img/products/demo-r010.png"})
+    void anhUploadVaAnhDemoTrongJarDuocGiu(String url) {
+        assertThat(new GioHang_Repository.MucGio(1, "A", "B", BigDecimal.ONE, 1, 1, "S", url, null, null).urlHinhAnh())
+            .isEqualTo(url);
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"/img/products/../app.js", "/img/products/R001.webp", "/img/products/r001.gif",
+        "/img/products/r001.webp?x=1", "/img/products/-r001.webp", "/img/products/a/b.png", "/img/editorial/light.svg",
+        "https://example.com/a.png", "//example.com/a.png", "/uploads/sku/fixture.png", "javascript:alert(1)"})
+    void anhNgoaiMauBiLoai(String url) {
+        assertThat(new GioHang_Repository.MucGio(1, "A", "B", BigDecimal.ONE, 1, 1, "S", url, null, null).urlHinhAnh())
+            .isNull();
     }
 }

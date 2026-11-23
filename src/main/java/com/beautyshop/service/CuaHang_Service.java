@@ -9,6 +9,7 @@ import com.beautyshop.repository.ThuongHieu_Repository;
 import java.util.List;
 import java.util.Locale;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -34,6 +35,10 @@ public class CuaHang_Service {
     public Page<CuaHang_Repository.TheSanPham> timSanPham(
             String q, String brand, String category, String skinType, String sort, Pageable pageable) {
         return cuaHangRepository.timSanPham(mauTimKiem(q), brand, category, mauTimKiem(skinType), sort, pageable);
+    }
+
+    public List<CuaHang_Repository.TheSanPham> sanPhamNoiBat(int soLuong) {
+        return cuaHangRepository.timNoiBat(PageRequest.of(0, Math.clamp(soLuong, 1, 8)));
     }
 
     public List<TuyChon> danhMuc() {

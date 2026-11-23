@@ -90,7 +90,10 @@ public class GioHang_Repository {
 
     public record MucGio(long maBienThe, String tenSanPham, String tenBienThe, BigDecimal giaBan, int khaDung,
                          int soLuong, String sku, String urlHinhAnh, String tenThuongHieu, String duongDan) {
-        private static final Pattern ANH_SKU = Pattern.compile("/uploads/sku/[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}\\.(?:jpg|png)");
+        /** Ảnh Admin upload (UUID) hoặc ảnh demo đóng gói trong JAR dưới /img/products/ với tên an toàn. */
+        private static final Pattern ANH_SKU = Pattern.compile(
+            "/uploads/sku/[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}\\.(?:jpg|png)"
+                + "|/img/products/[a-z0-9](?:[a-z0-9-]{0,98}[a-z0-9])?\\.(?:webp|jpg|png)");
 
         public MucGio {
             if (urlHinhAnh != null && !ANH_SKU.matcher(urlHinhAnh).matches()) {

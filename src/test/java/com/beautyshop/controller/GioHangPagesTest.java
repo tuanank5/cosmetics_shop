@@ -64,6 +64,47 @@ class GioHangPagesTest {
     }
 
     @Test
+    void tuCapNhatChiLaTangTangCuongVaGiuNguyenFormKhongJs() throws Exception {
+        var muc = new MucGio(11, "Kem dưỡng", "50 g", new BigDecimal("245000"), 5, 2, "QA-11", null, null, null);
+        when(gioHang.docGioKhach(any())).thenReturn(List.of(muc));
+        String html = mvc.perform(get("/cart")).andExpect(status().isOk())
+            .andReturn().getResponse().getContentAsString().replaceAll("\\s+", " ");
+        org.assertj.core.api.Assertions.assertThat(html)
+            .contains("data-cart-line=\"11\"", "data-cart-live", "aria-live=\"polite\"", "class=\"cart-progress\"",
+                "<script defer src=\"/js/cart.js\"></script>",
+                "action=\"/cart/items/11/quantity\"", "name=\"quantity\"", "name=\"_csrf\"",
+                "type=\"submit\" class=\"btn btn--secondary\" aria-label=\"Cập nhật số lượng SKU QA-11\">Cập nhật</button>",
+                "data-zero-confirm=", "id=\"error-11\"", "id=\"stock-11\"", "490.000 ₫")
+            .doesNotContain("style=", "onclick=", "th:utext")
+            .containsOnlyOnce("<h1");
+    }
+
+    @Test
+    void postSoLuongVanPrgVeGioHang() throws Exception {
+        when(gioHang.datSoLuongKhach(any(), eq(11L), eq(3))).thenReturn(new GioKhach(null, java.util.Map.of(11L, 3)));
+        mvc.perform(post("/cart/items/11/quantity").param("quantity", "3").with(csrf()))
+            .andExpect(status().is3xxRedirection())
+            .andExpect(redirectedUrl("/cart"))
+            .andExpect(flash().attribute("message", "Đã cập nhật số lượng."));
+        mvc.perform(post("/cart/items/11/quantity").param("quantity", "3"))
+            .andExpect(status().isForbidden());
+    }
+
+    @Test
+    void anhDemoTrongJarHienVoiKieuMimeDung() throws Exception {
+        var webp = new MucGio(11, "Moisturizing Cream", "Hũ demo", new BigDecimal("355000"), 6, 1,
+            "DEMO-001", "/img/products/r001.webp", "CeraVe", "demo-r001");
+        var jpg = new MucGio(22, "Water Gel", "Gel demo", new BigDecimal("395000"), 6, 1,
+            "DEMO-002", "/img/products/r002.jpg", "CeraVe", "demo-r002");
+        when(gioHang.docGioKhach(any())).thenReturn(List.of(webp, jpg));
+        String html = mvc.perform(get("/cart")).andExpect(status().isOk())
+            .andReturn().getResponse().getContentAsString().replaceAll("\\s+", " ");
+        org.assertj.core.api.Assertions.assertThat(html)
+            .contains("data=\"/img/products/r001.webp\" type=\"image/webp\"",
+                "data=\"/img/products/r002.jpg\" type=\"image/jpeg\"");
+    }
+
+    @Test
     void haiSkuCungSanPhamGiuDungAnhThuongHieuVaLienKet() throws Exception {
         String url = "/uploads/sku/00000000-0000-4000-8000-000000000026.png";
         var lon = new MucGio(11, "Moisturizing Cream", "16 oz", new BigDecimal("410000"), 6, 2,

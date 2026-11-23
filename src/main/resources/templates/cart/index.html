@@ -10,6 +10,7 @@
     </header>
     <th:block th:if="${message}"><div th:replace="~{fragments/ui :: flash('success', ${message})}"></div></th:block>
     <th:block th:if="${error}"><div th:replace="~{fragments/ui :: flash('error', ${error})}"></div></th:block>
+    <p class="visually-hidden" aria-live="polite" data-cart-live></p>
     <p class="notice" role="status" th:if="${daGioiHan}">Một số SKU đã được điều chỉnh theo tồn hiện tại.</p>
 
     <section class="cart-empty" th:if="${#lists.isEmpty(mucGio)}">
@@ -20,12 +21,12 @@
 
     <div class="cart-layout" th:unless="${#lists.isEmpty(mucGio)}">
         <ul class="cart-lines" aria-label="Sản phẩm trong giỏ">
-            <li class="cart-line" th:each="muc : ${mucGio}"
+            <li class="cart-line" th:each="muc : ${mucGio}" th:attr="data-cart-line=${muc.maBienThe}"
                 th:with="ma=${muc.maBienThe}, xacNhan=|Xóa ${muc.tenSanPham} · ${muc.tenBienThe} (SKU ${muc.sku}) khỏi giỏ hàng?|">
                 <div class="cart-item">
                     <div class="cart-media" aria-hidden="true">
                         <object th:if="${muc.urlHinhAnh != null}" th:data="@{${muc.urlHinhAnh}}"
-                                th:type="${#strings.endsWith(muc.urlHinhAnh, '.png') ? 'image/png' : 'image/jpeg'}" tabindex="-1">
+                                th:type="${#strings.endsWith(muc.urlHinhAnh, '.png') ? 'image/png' : (#strings.endsWith(muc.urlHinhAnh, '.webp') ? 'image/webp' : 'image/jpeg')}" tabindex="-1">
                             <span class="cart-monogram">B</span>
                         </object>
                         <span th:if="${muc.urlHinhAnh == null}" class="cart-monogram">B</span>
@@ -66,6 +67,7 @@
                                         th:attr="aria-label=|Tăng số lượng SKU ${muc.sku}|">+</button>
                             </div>
                             <button type="submit" class="btn btn--secondary" th:attr="aria-label=|Cập nhật số lượng SKU ${muc.sku}|">Cập nhật</button>
+                            <span class="cart-progress" aria-hidden="true">Đang cập nhật…</span>
                         </div>
                         <small class="muted" th:id="|hint-${ma}|">Nhập 0 để xóa khỏi giỏ.</small>
                         <p class="field-error" aria-live="polite" th:id="|error-${ma}|"></p>
@@ -87,5 +89,6 @@
     </div>
 </main>
 <div th:replace="~{fragments/footer :: siteFooter}"></div>
+<script defer th:src="@{/js/cart.js}"></script>
 </body>
 </html>
