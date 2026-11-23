@@ -1,47 +1,122 @@
+
 <!DOCTYPE html>
-<html lang="vi" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html lang="vi" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <body>
+
 <th:block th:fragment="siteFooter">
-<footer class="site-footer">
-  <div class="footer-grid">
-    <div>
-      <p class="footer-brand">Beauty<wbr>Shop</p>
-      <p>Mỹ phẩm đa thương hiệu.<br>Vẻ đẹp trong từng lựa chọn.</p>
-      <small>© 2026 BeautyShop</small>
+
+  <footer class="site-footer">
+
+
+
+    <!-- THÔNG TIN FOOTER -->
+    <div class="footer-grid">
+
+      <!-- VỀ BEAUTYSHOP -->
+      <div>
+        <h2>VỀ BEAUTYSHOP</h2>
+
+        <a th:href="@{/}">Giới thiệu cửa hàng</a>
+        <a th:href="@{/products}">Sản phẩm</a>
+        <a th:href="@{/products#brands}">Thương hiệu</a>
+        <a th:href="@{/chat}">Tư vấn làm đẹp</a>
+      </div>
+
+      <!-- HƯỚNG DẪN MUA HÀNG -->
+      <nav aria-label="Hướng dẫn mua hàng">
+        <h2>HƯỚNG DẪN MUA HÀNG</h2>
+
+        <a th:href="@{/products}">Hướng dẫn mua hàng</a>
+        <a th:href="@{/products}">Chính sách thanh toán</a>
+        <a th:href="@{/account/returns}"
+           sec:authorize="hasRole('CUSTOMER')">
+          Chính sách đổi trả và hoàn tiền
+        </a>
+        <a th:href="@{/}">Chính sách bảo mật thông tin</a>
+      </nav>
+
+      <!-- ĐỒNG HÀNH CÙNG KHÁCH HÀNG -->
+      <nav aria-label="Hoạt động và hỗ trợ">
+        <h2>ĐỒNG HÀNH CÙNG BẠN</h2>
+
+        <a th:href="@{/chat}">Tư vấn sản phẩm</a>
+        <a th:href="@{/products}">Khám phá sản phẩm mới</a>
+        <a th:href="@{/account/wishlist}"
+           sec:authorize="hasRole('CUSTOMER')">
+          Sản phẩm yêu thích
+        </a>
+        <a th:href="@{/orders}"
+           sec:authorize="hasRole('CUSTOMER')">
+          Theo dõi đơn hàng
+        </a>
+      </nav>
+
+      <div class="footer-contact">
+
+        <h2>ĐỊA CHỈ CỬA HÀNG</h2>
+
+        <a th:href="@{/products}">
+          Khám phá cửa hàng
+        </a>
+
+        <div class="footer-contact-item">
+          <div>
+            <strong>EMAIL</strong>
+            <p>support@beautyshop.vn</p>
+          </div>
+        </div>
+
+        <div class="footer-contact-item">
+          <div>
+            <strong>HOTLINE</strong>
+            <p>1900 xxxx xx</p>
+          </div>
+        </div>
+
+        <!-- MẠNG XÃ HỘI -->
+        <div class="footer-social">
+          <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">
+            Facebook
+          </a>
+
+          <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">
+            Instagram
+          </a>
+
+          <a href="https://chat.zalo.me/" target="_blank" rel="noopener noreferrer">
+            Zalo
+          </a>
+        </div>
+
+      </div>
+
     </div>
-    <nav aria-label="Khám phá cửa hàng">
-      <h2>Khám phá</h2>
-      <a th:href="@{/products}">Cửa hàng</a>
-      <a th:href="@{/products#categories}">Danh mục</a>
-      <a th:href="@{/products#brands}">Thương hiệu</a>
-    </nav>
-    <nav aria-label="Liên kết tài khoản" sec:authorize="isAnonymous()">
-      <h2>Tài khoản</h2>
-      <a th:href="@{/login}">Đăng nhập</a>
-      <a th:href="@{/register}">Tạo tài khoản</a>
-      <a th:href="@{/cart}">Giỏ hàng</a>
-    </nav>
-    <nav aria-label="Liên kết tài khoản" sec:authorize="hasRole('CUSTOMER')">
-      <h2>Tài khoản</h2>
-      <a th:href="@{/account}">Hồ sơ</a>
-      <a th:href="@{/orders}">Đơn hàng</a>
-      <a th:href="@{/account/wishlist}">Sản phẩm yêu thích</a>
-      <a th:href="@{/cart}">Giỏ hàng</a>
-    </nav>
-    <nav aria-label="Quản trị cửa hàng" sec:authorize="hasRole('ADMIN')">
-      <h2>Quản trị</h2>
-      <a th:href="@{/admin/catalog/categories}">Danh mục</a>
-      <a th:href="@{/admin/catalog/brands}">Thương hiệu</a>
-      <a th:href="@{/admin/catalog/products}">Sản phẩm</a>
-    </nav>
-    <nav aria-label="Hỗ trợ mua sắm">
-      <h2>Đồng hành</h2>
-      <a th:href="@{/chat}">Tư vấn sản phẩm</a>
-      <a th:href="@{/account/returns}" sec:authorize="hasRole('CUSTOMER')">Yêu cầu đổi trả</a>
-    </nav>
+
+    <!-- THÔNG TIN DOANH NGHIỆP -->
+    <div class="footer-company">
+      <div>
+        <h3>Công ty BeautyShop</h3>
+
+        <p>Hệ thống phân phối mỹ phẩm và sản phẩm chăm sóc sắc đẹp.</p>
+        <p>Cam kết mang đến những sản phẩm chất lượng cho khách hàng.</p>
+        <p>© 2026 BeautyShop. All rights reserved.</p>
+      </div>
+    </div>
+
+  </footer>
+
+  <!-- DÒNG LƯU Ý CUỐI FOOTER -->
+  <div class="footer-bottom">
+    <p>
+      *Lưu ý: Thông tin và công dụng sản phẩm có thể thay đổi
+      tùy theo đặc điểm và tình trạng da của mỗi người.
+    </p>
   </div>
-</footer>
-<div th:replace="~{fragments/ui :: confirmDialog}"></div>
+
+  <div th:replace="~{fragments/ui :: confirmDialog}"></div>
+
 </th:block>
+
 </body>
 </html>
