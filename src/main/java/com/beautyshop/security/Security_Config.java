@@ -16,6 +16,7 @@ import org.springframework.security.web.access.intercept.AuthorizationFilter;
 import org.springframework.security.web.servlet.util.matcher.PathPatternRequestMatcher;
 import org.springframework.web.util.HttpSessionMutexListener;
 import org.springframework.http.HttpMethod;
+import org.springframework.security.oauth2.client.userinfo.OAuth2UserService;
 
 @Configuration
 @EnableMethodSecurity
@@ -23,6 +24,7 @@ public class Security_Config {
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http, LoginSuccess_Handler loginSuccess,
                                             NguoiDung_Repository nguoiDungRepository,
+                                            OAuth2NguoiDung_Service oauth2NguoiDungService,
                                             ObjectProvider<Momo_Settings> momoSettings) throws Exception {
         var momo = momoSettings.getIfAvailable();
         if (momo != null && momo.enabled()) {
@@ -30,25 +32,34 @@ public class Security_Config {
                 .matcher(HttpMethod.POST, "/payment/momo/ipn")));
         }
         return http
-            .addFilterBefore(new TrangThaiTaiKhoan_Filter(nguoiDungRepository), AuthorizationFilter.class)
-            .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/", "/products", "/products/**", "/login", "/register",
-                        "/css/**", "/js/**", "/img/**", "/error", "/favicon.ico").permitAll()
-                .requestMatchers(HttpMethod.GET, "/cart", "/cart/**", "/uploads/sku/*").permitAll()
-                .requestMatchers(HttpMethod.HEAD, "/uploads/sku/*").permitAll()
-                .requestMatchers(HttpMethod.GET, "/chat").permitAll()
-                .requestMatchers(HttpMethod.POST, "/chat").permitAll()
-                .requestMatchers(HttpMethod.POST, "/cart", "/cart/**")
-                    .access(new WebExpressionAuthorizationManager("isAnonymous() or hasRole('CUSTOMER')"))
-                .requestMatchers(HttpMethod.POST, "/payment/momo/ipn").permitAll()
-                .requestMatchers(HttpMethod.GET, "/payment/momo/return").permitAll()
-                .requestMatchers("/payment/momo/mock/**").hasRole("CUSTOMER")
-                .requestMatchers("/admin/**").hasRole("ADMIN")
-                .requestMatchers("/checkout/**", "/orders/**", "/account/**").hasRole("CUSTOMER")
-                .anyRequest().authenticated())
-            .formLogin(form -> form.loginPage("/login").successHandler(loginSuccess).permitAll())
-            .logout(logout -> logout.logoutUrl("/logout").logoutSuccessUrl("/?logout").invalidateHttpSession(true))
-            .build();
+                .addFilterBefore(new TrangThaiTaiKhoan_Filter(nguoiDungRepository), AuthorizationFilter.class)
+                .authorizeHttpRequests(auth -> auth
+                    .requestMatchers("/", "/products", "/products/**", "/login", "/register","/oauth2/**",
+                            "/login/oauth2/**","/css/**", "/js/**", "/img/**", "/error", "/favicon.ico").permitAll()
+                    .requestMatchers(HttpMethod.GET, "/cart", "/cart/**", "/uploads/sku/*").permitAll()
+                    .requestMatchers(HttpMethod.HEAD, "/uploads/sku/*").permitAll()
+                    .requestMatchers(HttpMethod.GET, "/chat").permitAll()
+                    .requestMatchers(HttpMethod.POST, "/chat").permitAll()
+                    .requestMatchers(HttpMethod.POST, "/cart", "/cart/**")
+                        .access(new WebExpressionAuthorizationManager("isAnonymous() or hasRole('CUSTOMER')"))
+                    .requestMatchers(HttpMethod.POST, "/payment/momo/ipn").permitAll()
+                    .requestMatchers(HttpMethod.GET, "/payment/momo/return").permitAll()
+                    .requestMatchers("/payment/momo/mock/**").hasRole("CUSTOMER")
+                    .requestMatchers("/admin/**").hasRole("ADMIN")
+                    .requestMatchers("/checkout/**", "/orders/**", "/account/**").hasRole("CUSTOMER")
+                    .anyRequest().authenticated())
+                .formLogin(form -> form.loginPage("/login").successHandler(loginSuccess).permitAll())
+                // Đăng nhập Google và GitHub
+                .oauth2Login(oauth2 -> oauth2
+                        .loginPage("/login")
+                        .userInfoEndpoint(userInfo -> userInfo
+                                .userService(oauth2NguoiDungService)
+                        )
+                        .successHandler(loginSuccess)
+                        .failureUrl("/login?oauth2Error")
+                )
+                .logout(logout -> logout.logoutUrl("/logout").logoutSuccessUrl("/?logout").invalidateHttpSession(true))
+                .build();
     }
 
     @Bean

@@ -37,8 +37,33 @@
         </div>
         <p id="login-error" class="field-error" th:if="${param.error}">Lỗi: Vui lòng kiểm tra thông tin đăng nhập.</p>
       </div>
-      <button type="submit" class="btn btn--primary btn--lg">Đăng nhập</button>
+      <button type="submit" class="btn btn--primary btn--lg">
+        Đăng nhập
+      </button>
     </form>
+
+    <div class="oauth-divider">
+      <span>Hoặc đăng nhập bằng</span>
+    </div>
+
+    <div class="oauth-buttons">
+      <a class="oauth-btn oauth-google"
+         th:href="@{/oauth2/authorization/google}">
+        <img src="https://developers.google.com/identity/images/g-logo.png" alt="Google Logo">
+        Đăng nhập bằng Google
+      </a>
+      <a class="oauth-btn oauth-github"
+         th:href="@{/oauth2/authorization/github}">
+        <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub Logo">
+        Đăng nhập bằng GitHub
+      </a>
+    </div>
+
+    <p class="alert alert--error" role="alert" th:if="${param.oauth2Error}">
+      Không thể đăng nhập bằng Google/GitHub.
+      Vui lòng kiểm tra tài khoản hoặc thử lại.
+    </p>
+
     <p class="auth-switch">Chưa có tài khoản? <a class="text-link" th:href="@{/register}">Tạo tài khoản</a></p>
   </section>
 </main>
