@@ -1,0 +1,365 @@
+{
+  "base": "http://localhost:8081",
+  "startedAt": "2026-11-23T11:00:37.508Z",
+  "guest": {
+    "enhanced: submit hidden": {
+      "pass": true,
+      "s0": {
+        "qty": "1",
+        "max": "12",
+        "unit": "355.000 ₫",
+        "total": "355.000 ₫",
+        "stock": "Còn 12 sản phẩm.",
+        "error": "",
+        "subtotal": "1.010.000 ₫",
+        "badge": "3",
+        "live": "",
+        "submitHidden": true,
+        "plusDisabled": false,
+        "focus": ""
+      }
+    },
+    "+1 updates qty/total/subtotal/badge": {
+      "pass": true,
+      "before": {
+        "qty": "1",
+        "max": "12",
+        "unit": "355.000 ₫",
+        "total": "355.000 ₫",
+        "stock": "Còn 12 sản phẩm.",
+        "error": "",
+        "subtotal": "1.010.000 ₫",
+        "badge": "3",
+        "live": "",
+        "submitHidden": true,
+        "plusDisabled": false,
+        "focus": ""
+      },
+      "after": {
+        "qty": "2",
+        "max": "12",
+        "unit": "355.000 ₫",
+        "total": "710.000 ₫",
+        "stock": "Còn 12 sản phẩm.",
+        "error": "",
+        "subtotal": "1.365.000 ₫",
+        "badge": "4",
+        "live": "Đã cập nhật số lượng SKU DEMO-001: 2. Thành tiền 710.000 ₫. Tạm tính 1.365.000 ₫.",
+        "submitHidden": true,
+        "plusDisabled": false,
+        "focus": "1"
+      },
+      "posts": 1
+    },
+    "live region announces": {
+      "pass": true,
+      "live": "Đã cập nhật số lượng SKU DEMO-001: 2. Thành tiền 710.000 ₫. Tạm tính 1.365.000 ₫."
+    },
+    "focus stays on + after update": {
+      "pass": true,
+      "focus": "1"
+    },
+    "+ x3 fast -> one request, final value": {
+      "pass": true,
+      "posts": 1,
+      "during": "5",
+      "after": "5"
+    },
+    "other line untouched": {
+      "pass": true
+    },
+    "matches server after reload (+)": {
+      "pass": true
+    },
+    "- down to 1": {
+      "pass": true,
+      "qty": "1",
+      "posts": 1
+    },
+    "- at 1 -> confirm, cancel restores 1 without request": {
+      "pass": true,
+      "dialogOpen": true,
+      "qty": "1",
+      "posts": 0,
+      "focus": "-1"
+    },
+    "typed 4 + Tab -> saved": {
+      "pass": true,
+      "qty": "4",
+      "posts": 1
+    },
+    "over stock (client max) -> message, no request": {
+      "pass": true,
+      "error": "Nhập số nguyên từ 0 đến 12.",
+      "posts": 0
+    },
+    "over stock (server) -> line error, value restored": {
+      "pass": true,
+      "error": "Lỗi: Số lượng vượt tồn khả dụng hoặc không hợp lệ.",
+      "qty": "4",
+      "max": "12"
+    },
+    "+ disabled at available stock": {
+      "pass": true,
+      "limited": [
+        {
+          "id": "4",
+          "plusDisabled": true
+        }
+      ]
+    },
+    "keyboard Enter on + updates and keeps focus": {
+      "pass": true,
+      "qty": "5",
+      "focus": "1"
+    },
+    "Enter in field -> fetch update without reload": {
+      "pass": true,
+      "qty": "3",
+      "posts": [
+        {
+          "url": "http://localhost:8081/cart/items/2/quantity",
+          "type": "Fetch"
+        },
+        {
+          "url": "http://localhost:8081/cart/items/1/quantity",
+          "type": "Document"
+        }
+      ],
+      "noReload": true,
+      "focus": "quantity-2"
+    },
+    "matches server after reload (mixed)": {
+      "pass": true
+    },
+    "- at 1 then confirm removes line (PRG)": {
+      "pass": true,
+      "flash": "Thông báo: Đã xóa SKU khỏi giỏ."
+    }
+  },
+  "customer": {
+    "loggedIn": {
+      "pass": true,
+      "account": "qa-p17-<random>@example.test"
+    },
+    "enhanced: submit hidden": {
+      "pass": true,
+      "s0": {
+        "qty": "1",
+        "max": "12",
+        "unit": "355.000 ₫",
+        "total": "355.000 ₫",
+        "stock": "Còn 12 sản phẩm.",
+        "error": "",
+        "subtotal": "1.405.000 ₫",
+        "badge": "4",
+        "live": "",
+        "submitHidden": true,
+        "plusDisabled": false,
+        "focus": ""
+      }
+    },
+    "+1 updates qty/total/subtotal/badge": {
+      "pass": true,
+      "before": {
+        "qty": "1",
+        "max": "12",
+        "unit": "355.000 ₫",
+        "total": "355.000 ₫",
+        "stock": "Còn 12 sản phẩm.",
+        "error": "",
+        "subtotal": "1.405.000 ₫",
+        "badge": "4",
+        "live": "",
+        "submitHidden": true,
+        "plusDisabled": false,
+        "focus": ""
+      },
+      "after": {
+        "qty": "2",
+        "max": "12",
+        "unit": "355.000 ₫",
+        "total": "710.000 ₫",
+        "stock": "Còn 12 sản phẩm.",
+        "error": "",
+        "subtotal": "1.760.000 ₫",
+        "badge": "5",
+        "live": "Đã cập nhật số lượng SKU DEMO-001: 2. Thành tiền 710.000 ₫. Tạm tính 1.760.000 ₫.",
+        "submitHidden": true,
+        "plusDisabled": false,
+        "focus": "1"
+      },
+      "posts": 1
+    },
+    "live region announces": {
+      "pass": true,
+      "live": "Đã cập nhật số lượng SKU DEMO-001: 2. Thành tiền 710.000 ₫. Tạm tính 1.760.000 ₫."
+    },
+    "focus stays on + after update": {
+      "pass": true,
+      "focus": "1"
+    },
+    "+ x3 fast -> one request, final value": {
+      "pass": true,
+      "posts": 1,
+      "during": "5",
+      "after": "5"
+    },
+    "other line untouched": {
+      "pass": true
+    },
+    "matches server after reload (+)": {
+      "pass": true
+    },
+    "- down to 1": {
+      "pass": true,
+      "qty": "1",
+      "posts": 1
+    },
+    "- at 1 -> confirm, cancel restores 1 without request": {
+      "pass": true,
+      "dialogOpen": true,
+      "qty": "1",
+      "posts": 0,
+      "focus": "-1"
+    },
+    "typed 4 + Tab -> saved": {
+      "pass": true,
+      "qty": "4",
+      "posts": 1
+    },
+    "over stock (client max) -> message, no request": {
+      "pass": true,
+      "error": "Nhập số nguyên từ 0 đến 12.",
+      "posts": 0
+    },
+    "over stock (server) -> line error, value restored": {
+      "pass": true,
+      "error": "Lỗi: Số lượng vượt tồn khả dụng hoặc không hợp lệ.",
+      "qty": "4",
+      "max": "12"
+    },
+    "+ disabled at available stock": {
+      "pass": true,
+      "limited": [
+        {
+          "id": "4",
+          "plusDisabled": true
+        }
+      ]
+    },
+    "keyboard Enter on + updates and keeps focus": {
+      "pass": true,
+      "qty": "5",
+      "focus": "1"
+    },
+    "Enter in field -> fetch update without reload": {
+      "pass": true,
+      "qty": "3",
+      "posts": [
+        {
+          "url": "http://localhost:8081/cart/items/2/quantity",
+          "type": "Fetch"
+        },
+        {
+          "url": "http://localhost:8081/cart/items/1/quantity",
+          "type": "Document"
+        }
+      ],
+      "noReload": true,
+      "focus": "quantity-2"
+    },
+    "matches server after reload (mixed)": {
+      "pass": true
+    },
+    "- at 1 then confirm removes line (PRG)": {
+      "pass": true,
+      "flash": "Thông báo: Đã xóa SKU khỏi giỏ."
+    }
+  },
+  "viewports": {
+    "360x800": {
+      "pass": true,
+      "overflowX": false,
+      "before": [
+        502,
+        189
+      ],
+      "during": [
+        502,
+        189
+      ],
+      "progressVisible": "visible"
+    },
+    "390x844": {
+      "pass": true,
+      "overflowX": false,
+      "before": [
+        474,
+        189
+      ],
+      "during": [
+        474,
+        189
+      ],
+      "progressVisible": "visible"
+    },
+    "768x1024": {
+      "pass": true,
+      "overflowX": false,
+      "before": [
+        355,
+        126
+      ],
+      "during": [
+        355,
+        126
+      ],
+      "progressVisible": "visible"
+    },
+    "1366x768": {
+      "pass": true,
+      "overflowX": false,
+      "before": [
+        381,
+        126
+      ],
+      "during": [
+        381,
+        126
+      ],
+      "progressVisible": "visible"
+    },
+    "1920x1080": {
+      "pass": true,
+      "overflowX": false,
+      "before": [
+        381,
+        126
+      ],
+      "during": [
+        381,
+        126
+      ],
+      "progressVisible": "visible"
+    }
+  },
+  "noJs": {
+    "pass": true,
+    "before": {
+      "visible": true,
+      "steppersHidden": true,
+      "qty": "3"
+    },
+    "after": {
+      "qty": "1",
+      "flash": "Thông báo: Đã cập nhật số lượng.",
+      "path": "/cart"
+    }
+  },
+  "finishedAt": "2026-11-23T11:01:00.631Z",
+  "summary": {
+    "pass": 41,
+    "fail": 0
+  }
+}

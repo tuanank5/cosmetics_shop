@@ -6,12 +6,15 @@
 <div th:replace="~{fragments/header :: siteHeader}"></div>
 <main id="main" tabindex="-1" class="page-content shop-home home-carousel" data-home-carousel>
   <nav class="home-carousel-pagination" aria-label="Các chương BeautyShop">
-    <a href="#home-slide-1"><span class="visually-hidden">Chương 1: Vẻ đẹp theo cách bạn</span></a>
-    <a href="#ritual"><span class="visually-hidden">Chương 2: Nhịp chăm sóc</span></a>
-    <a href="#home-slide-3"><span class="visually-hidden">Chương 3: Một góc nhìn mới</span></a>
+    <a href="#home-opening"><span class="visually-hidden">Chương 1: Vẻ đẹp theo cách bạn</span></a>
+    <a href="#home-skin"><span class="visually-hidden">Chương 2: Hiểu làn da</span></a>
+    <a href="#home-ritual"><span class="visually-hidden">Chương 3: Nghi thức chăm sóc</span></a>
+    <a href="#home-ingredients"><span class="visually-hidden">Chương 4: Thành phần</span></a>
+    <a href="#home-featured"><span class="visually-hidden">Chương 5: Sản phẩm nổi bật</span></a>
+    <a href="#home-advisor"><span class="visually-hidden">Chương 6: Trợ lý tư vấn</span></a>
   </nav>
   <div class="home-carousel-track">
-  <section id="home-slide-1" class="editorial-story editorial-story--opening home-slide" aria-labelledby="home-title" data-story
+  <section id="home-opening" class="editorial-story editorial-story--opening home-slide" aria-labelledby="home-title" data-story
            th:with="media=${homeEditorialMedia != null ? homeEditorialMedia['opening'] : null}">
     <div class="shop-hero-art" aria-hidden="true">
       <img class="story-poster" src="/img/editorial/nocturne.svg" alt="" width="1600" height="1000" fetchpriority="high">
@@ -29,70 +32,124 @@
       <span class="story-spotlight-mark" aria-hidden="true">BS</span>
       <div><p>Mỹ phẩm đa thương hiệu</p><a class="btn btn--primary btn--lg" th:href="@{/products}">Khám phá sản phẩm <span aria-hidden="true">↗</span></a></div>
     </aside>
-    <a class="story-next" href="#ritual">Khám phá tiếp <span aria-hidden="true">↓</span></a>
+    <a class="story-next" href="#home-skin">Khám phá tiếp <span aria-hidden="true">↓</span></a>
     <button class="story-media-toggle btn btn--secondary" type="button" data-story-toggle hidden>Tạm dừng video</button>
     <span class="story-caption">Nghiên cứu ánh sáng · BeautyShop</span>
   </section>
-  <section id="ritual" class="editorial-story editorial-story--ritual home-slide" aria-labelledby="ritual-title" data-story
+  <section id="home-skin" class="editorial-story home-slide home-chapter home-chapter--skin" aria-labelledby="skin-title" data-story
            th:with="media=${homeEditorialMedia != null ? homeEditorialMedia['ritual'] : null}">
     <div class="story-media" aria-hidden="true">
       <img class="story-poster" src="/img/editorial/form.svg" alt="" width="1600" height="1000" loading="lazy" decoding="async">
       <video th:if="${media != null and media['previewVideoUrl'] != null}" data-story-video
              th:attr="data-video-src=${media['previewVideoUrl']}" muted loop playsinline preload="none" tabindex="-1"></video>
     </div>
-    <span class="home-slide-wordmark" aria-hidden="true">BEAUTYSHOP</span>
-    <div class="story-copy">
-      <p class="eyebrow">02 / Nhịp chăm sóc</p>
-      <h2 id="ritual-title">Chọn mỹ phẩm.<br>Chọn nhịp riêng.</h2>
-      <p>Bắt đầu từ làn da, tìm điều phù hợp.</p>
+    <div class="home-chapter-inner">
+      <header class="home-chapter-head">
+        <p class="eyebrow">02 / Hiểu làn da</p>
+        <h2 id="skin-title">Bắt đầu từ làn da của bạn.</h2>
+        <p>Mỗi làn da có nhu cầu riêng. Chọn loại da gần với bạn nhất để xem sản phẩm phù hợp.</p>
+      </header>
+      <ul class="home-skin-list story-reveal-list" th:unless="${#lists.isEmpty(loaiDa)}">
+        <li th:each="loai : ${loaiDa}">
+          <a class="home-tile" th:href="@{/products(skinType=${loai.giaTriLoc})}">
+            <span class="home-tile-title" th:text="${loai.ten}">Da khô</span>
+            <span class="home-tile-meta" th:text="|${loai.soSanPham} sản phẩm|">0 sản phẩm</span>
+            <span class="home-tile-text" th:if="${loai.moTa != null}" th:text="${loai.moTa}"></span>
+          </a>
+        </li>
+      </ul>
+      <p class="home-chapter-fallback" th:if="${#lists.isEmpty(loaiDa)}">
+        <a class="btn btn--secondary btn--lg" th:href="@{/products#skin-type}">Tìm theo loại da <span aria-hidden="true">↗</span></a>
+      </p>
     </div>
-    <aside class="story-spotlight" aria-label="Khám phá theo loại da">
-      <span class="story-spotlight-mark" aria-hidden="true">BS</span>
-      <div><p>Nhịp chăm sóc của bạn</p><a class="btn btn--secondary btn--lg" th:href="@{/products#skin-type}">Tìm theo loại da <span aria-hidden="true">↗</span></a></div>
-    </aside>
-    <nav class="story-discovery" aria-label="Khám phá mỹ phẩm">
-      <a th:href="@{/products#categories}">Danh mục</a><a th:href="@{/products#brands}">Thương hiệu</a>
-    </nav>
     <button class="story-media-toggle btn btn--secondary" type="button" data-story-toggle hidden>Tạm dừng video</button>
-    <span class="story-caption">Nghiên cứu hình khối · BeautyShop</span>
   </section>
-  <section id="home-slide-3" class="editorial-story editorial-story--discovery home-slide" aria-labelledby="discovery-title" data-story
+  <section id="home-ritual" class="editorial-story home-slide home-chapter home-chapter--ritual" aria-labelledby="ritual-title" data-story>
+    <div class="home-chapter-inner">
+      <header class="home-chapter-head">
+        <p class="eyebrow">03 / Nghi thức chăm sóc</p>
+        <h2 id="ritual-title">Năm bước, một nhịp riêng.</h2>
+        <p>Một trình tự cơ bản để bắt đầu. Bạn có thể lược bớt tùy nhu cầu.</p>
+      </header>
+      <ol class="home-ritual-steps story-reveal-list" role="list">
+        <li th:each="buoc : ${nghiThuc}">
+          <span class="home-ritual-number" aria-hidden="true" th:text="${buoc.so < 10 ? '0' + buoc.so : buoc.so}">01</span>
+          <h3>
+            <a th:if="${buoc.duongDanDanhMuc != null}" th:href="@{/products(category=${buoc.duongDanDanhMuc})}"
+               th:text="${buoc.ten}">Làm sạch</a>
+            <span th:if="${buoc.duongDanDanhMuc == null}" th:text="${buoc.ten}">Làm sạch</span>
+          </h3>
+          <p th:text="${buoc.moTa}"></p>
+        </li>
+      </ol>
+    </div>
+  </section>
+  <section id="home-ingredients" class="editorial-story home-slide home-chapter home-chapter--ingredients" aria-labelledby="ingredients-title" data-story
            th:with="media=${homeEditorialMedia != null ? homeEditorialMedia['discovery'] : null}">
     <div class="story-media" aria-hidden="true">
       <img class="story-poster" src="/img/editorial/light.svg" alt="" width="1600" height="1000" loading="lazy" decoding="async">
       <video th:if="${media != null and media['previewVideoUrl'] != null}" data-story-video
              th:attr="data-video-src=${media['previewVideoUrl']}" muted loop playsinline preload="none" tabindex="-1"></video>
     </div>
-    <span class="home-slide-wordmark" aria-hidden="true">BEAUTYSHOP</span>
-    <div class="story-copy">
-      <p class="eyebrow">03 / Tiếp tục khám phá</p>
-      <h2 id="discovery-title">Một góc nhìn mới.</h2>
+    <div class="home-chapter-inner">
+      <header class="home-chapter-head">
+        <p class="eyebrow">04 / Thành phần</p>
+        <h2 id="ingredients-title">Hiểu điều bạn thoa lên da.</h2>
+        <p>Một vài hoạt chất thường gặp trong mỹ phẩm. Thông tin chỉ mang tính tham khảo.</p>
+      </header>
+      <ul class="home-ingredient-list story-reveal-list" th:unless="${#lists.isEmpty(hoatChat)}">
+        <li th:each="chat : ${hoatChat}">
+          <a class="home-tile" th:href="@{/products(q=${chat.tuKhoa})}">
+            <span class="home-tile-title" th:text="${chat.ten}">Hyaluronic Acid</span>
+            <span class="home-tile-text" th:text="${chat.moTa}"></span>
+            <span class="home-tile-meta" th:text="|Xem ${chat.soSanPham} sản phẩm|">Xem sản phẩm</span>
+          </a>
+        </li>
+      </ul>
+      <p class="home-chapter-fallback" th:if="${#lists.isEmpty(hoatChat)}">
+        <a class="btn btn--secondary btn--lg" th:href="@{/products}">Khám phá sản phẩm <span aria-hidden="true">↗</span></a>
+      </p>
     </div>
-    <aside class="story-spotlight" aria-label="Khám phá sản phẩm mới">
-      <span class="story-spotlight-mark" aria-hidden="true">BS</span>
-      <div><p>Một lựa chọn mới</p><a class="btn btn--secondary btn--lg" th:href="@{/products(sort='newest')}">Xem sản phẩm mới <span aria-hidden="true">↗</span></a></div>
-    </aside>
-    <a class="story-next" href="#home-footer">Thông tin cửa hàng <span aria-hidden="true">↓</span></a>
     <button class="story-media-toggle btn btn--secondary" type="button" data-story-toggle hidden>Tạm dừng video</button>
-    <span class="story-caption">Nghiên cứu sắc độ · BeautyShop</span>
+  </section>
+  <section id="home-featured" class="editorial-story home-slide home-chapter home-chapter--featured home-featured" aria-labelledby="featured-title" data-story>
+    <div class="home-chapter-inner">
+      <header class="home-chapter-head">
+        <p class="eyebrow">05 / Sản phẩm nổi bật</p>
+        <h2 id="featured-title">Lựa chọn mới tại BeautyShop.</h2>
+        <p th:if="${#lists.isEmpty(sanPhamNoiBat)}">Danh mục đang được cập nhật. Bạn vẫn có thể xem toàn bộ sản phẩm hiện có.</p>
+        <a class="btn btn--secondary home-featured-all" th:href="@{/products}"
+           th:text="${#lists.isEmpty(sanPhamNoiBat)} ? 'Khám phá tất cả sản phẩm' : 'Xem tất cả sản phẩm'">Xem tất cả sản phẩm</a>
+      </header>
+      <ul class="store-grid home-featured-grid" th:unless="${#lists.isEmpty(sanPhamNoiBat)}">
+        <li th:each="the : ${sanPhamNoiBat}">
+          <div th:replace="~{fragments/product-card :: productCard(${the}, false)}"></div>
+        </li>
+      </ul>
+    </div>
+  </section>
+  <section id="home-advisor" class="editorial-story home-slide home-chapter home-chapter--advisor" aria-labelledby="advisor-title" data-story>
+    <div class="home-chapter-inner">
+      <header class="home-chapter-head">
+        <p class="eyebrow">06 / Trợ lý tư vấn</p>
+        <h2 id="advisor-title">Chưa biết chọn gì? Hỏi BeautyShop.</h2>
+        <p>Trợ lý trả lời dựa trên thông tin sản phẩm và chính sách của cửa hàng.</p>
+      </header>
+      <div class="home-advisor-body">
+        <ul class="home-advisor-prompts" aria-label="Câu hỏi gợi ý">
+          <li>“Da khô nên chọn kem dưỡng nào?”</li>
+          <li>“Sản phẩm nào có Hyaluronic Acid?”</li>
+          <li>“Chính sách đổi trả thế nào?”</li>
+        </ul>
+        <a class="btn btn--primary btn--lg" th:href="@{/chat}">Hỏi BeautyShop <span aria-hidden="true">↗</span></a>
+        <p class="home-advisor-note">Thông tin mang tính tham khảo, không thay thế tư vấn của bác sĩ da liễu.</p>
+      </div>
+    </div>
+    <a class="story-next" href="#home-footer">Thông tin cửa hàng <span aria-hidden="true">↓</span></a>
   </section>
   </div>
 </main>
 </div>
-<section id="home-featured" class="home-featured" aria-labelledby="home-featured-title"
-         th:if="${sanPhamNoiBat != null and !#lists.isEmpty(sanPhamNoiBat)}">
-  <div class="home-featured-head">
-    <p class="eyebrow">Tuyển chọn</p>
-    <h2 id="home-featured-title">Sản phẩm nổi bật</h2>
-    <p>Những lựa chọn mới nhất đang có sẵn tại BeautyShop.</p>
-  </div>
-  <ul class="store-grid home-featured-grid">
-    <li th:each="the : ${sanPhamNoiBat}">
-      <div th:replace="~{fragments/product-card :: productCard(${the}, false)}"></div>
-    </li>
-  </ul>
-  <a class="btn btn--secondary home-featured-all" th:href="@{/products}">Xem tất cả sản phẩm <span aria-hidden="true">↗</span></a>
-</section>
 <div id="home-footer" tabindex="-1"></div>
 <div th:replace="~{fragments/footer :: siteFooter}"></div>
 <script defer th:src="@{/js/vendor/gsap-3.15.1.min.js}"></script>

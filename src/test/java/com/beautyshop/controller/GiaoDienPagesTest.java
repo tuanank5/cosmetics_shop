@@ -224,13 +224,14 @@ class GiaoDienPagesTest {
         when(chuaAnh.getTenSanPham()).thenReturn("Kem chưa có ảnh");
         when(chuaAnh.getGiaTu()).thenReturn(new BigDecimal("125000"));
         when(chuaAnh.getSoLuongKhaDungLonNhat()).thenReturn(1);
-        when(cuaHangService.sanPhamNoiBat(8)).thenReturn(List.of(coAnh, chuaAnh));
+        when(cuaHangService.sanPhamNoiBat(4)).thenReturn(List.of(coAnh, chuaAnh));
 
         String html = mvc.perform(get("/")).andExpect(status().isOk())
             .andReturn().getResponse().getContentAsString();
 
-        assertThat(html).containsSubsequence("data-home-carousel", "</main>", "id=\"home-featured\"",
-                "Sản phẩm nổi bật", "id=\"home-footer\"", "class=\"site-footer\"")
+        // P18: the featured strip is chapter 5 of the carousel, inside <main>, before the footer.
+        assertThat(html).containsSubsequence("data-home-carousel", "id=\"home-featured\"",
+                "Sản phẩm nổi bật", "</main>", "id=\"home-footer\"", "class=\"site-footer\"")
             .contains("href=\"/products/serum-noi-bat\"", "href=\"/products/kem-chua-anh\"",
                 "Serum &lt;b&gt;nổi bật&lt;/b&gt;", "450.000 ₫", "Còn hàng",
                 "src=\"/uploads/sku/fixture.png\"", "data-catalog-placeholder", "loading=\"lazy\"")
@@ -238,19 +239,22 @@ class GiaoDienPagesTest {
             .containsOnlyOnce("<h1");
         assertThat(html.substring(html.indexOf("id=\"home-featured\"")))
             .contains("class=\"btn btn--secondary home-featured-all\" href=\"/products\"");
-        assertThat(html.indexOf("id=\"home-featured\"")).isGreaterThan(html.indexOf("</main>"));
+        assertThat(html.indexOf("id=\"home-featured\"")).isLessThan(html.indexOf("</main>"));
     }
 
     @Test
-    void homeAnDaiNoiBatKhiRongHoacCatalogLoi() throws Exception {
+    void homeChuong5VanHienLoiMoiKhiRongHoacCatalogLoi() throws Exception {
         when(cuaHangService.sanPhamNoiBat(anyInt())).thenReturn(List.of());
         mvc.perform(get("/")).andExpect(status().isOk())
-            .andExpect(content().string(not(containsString("home-featured"))))
+            .andExpect(content().string(containsString("id=\"home-featured\"")))
+            .andExpect(content().string(containsString("Khám phá tất cả sản phẩm")))
+            .andExpect(content().string(not(containsString("home-featured-grid"))))
             .andExpect(content().string(containsString("class=\"site-footer\"")));
         when(cuaHangService.sanPhamNoiBat(anyInt()))
             .thenThrow(new org.springframework.dao.DataAccessResourceFailureException("fixture"));
         mvc.perform(get("/")).andExpect(status().isOk())
-            .andExpect(content().string(not(containsString("home-featured"))))
+            .andExpect(content().string(containsString("Khám phá tất cả sản phẩm")))
+            .andExpect(content().string(not(containsString("home-featured-grid"))))
             .andExpect(content().string(containsString("Vẻ đẹp.")));
     }
 

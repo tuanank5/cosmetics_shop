@@ -57,7 +57,8 @@ class BootstrapPagesTest {
             .andExpect(content().string(containsString("href=\"/products#categories\"")))
             .andExpect(content().string(containsString("href=\"/products#brands\"")))
             .andExpect(content().string(containsString("href=\"/products#skin-type\"")))
-            .andExpect(content().string(containsString("href=\"/products?sort=newest\"")));
+            // P18: chapter 3 "Xem sản phẩm mới" was replaced by chapter 5 (featured → /products) and chapter 6 (/chat).
+            .andExpect(content().string(containsString("href=\"/chat\"")));
     }
 
     @ParameterizedTest

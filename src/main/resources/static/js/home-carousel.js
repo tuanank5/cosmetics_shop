@@ -13,7 +13,7 @@
   const links = header?.querySelector('.nav-links');
   const search = header?.querySelector('.header-search');
   const cart = header?.querySelector('a[href="/cart"]');
-  if (!track || slides.length !== 3 || !pagination || !shell || !menu || !links || !search) return;
+  if (!track || slides.length < 2 || !pagination || !shell || !menu || !links || !search) return;
   const sourcePagination = pagination.innerHTML;
   const sourceSlides = slides.map((slide) => ({ role: slide.getAttribute('role'), label: slide.getAttribute('aria-label') }));
   const searchSlot = { parent: search.parentNode, next: search.nextSibling };

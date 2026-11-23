@@ -9,7 +9,7 @@
   let activeSlide = null;
   const selected = (entry) => !carousel?.classList.contains('is-ready') || stories.indexOf(entry.story) === activeSlide;
   const toggleVisible = (entry, visible) => {
-    if (!visible && document.activeElement === entry.button) entry.story.querySelector('.story-spotlight a').focus();
+    if (!visible && document.activeElement === entry.button) entry.story.querySelector('.story-spotlight a, .home-chapter a, a')?.focus();
     entry.button.hidden = !visible;
   };
   const permitted = (value) => {

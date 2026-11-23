@@ -24,7 +24,7 @@ public interface CuaHang_Repository extends Repository<SanPham, Long> {
           and (:skinType = '' or lower(s.loaiDaPhuHop) like :skinType escape '!')
           and (:q = '' or lower(s.tenSanPham) like :q escape '!'
                or lower(s.moTa) like :q escape '!' or lower(t.tenThuongHieu) like :q escape '!'
-               or lower(b.sku) like :q escape '!')
+               or lower(b.sku) like :q escape '!' or lower(s.thanhPhan) like :q escape '!')
         """;
 
     @Query(value = """
@@ -58,12 +58,38 @@ public interface CuaHang_Repository extends Repository<SanPham, Long> {
         """)
     List<TheSanPham> timNoiBat(Pageable pageable);
 
+    /** Trang chủ chương 2: chuỗi loại da thô của các sản phẩm đang bán (cùng điều kiện hiển thị với /products). */
+    @Query("""
+        select distinct s.loaiDaPhuHop
+        from BienTheSanPham b join b.sanPham s join s.thuongHieu t join s.danhMuc d
+        where s.dangHoatDong = true and b.dangHoatDong = true
+          and t.dangHoatDong = true and d.dangHoatDong = true
+          and s.loaiDaPhuHop is not null
+        """)
+    List<String> timLoaiDaDangBan();
+
+    /** Trang chủ chương 3: số sản phẩm đang bán theo danh mục; danh mục không có sản phẩm thì không xuất hiện. */
+    @Query("""
+        select d.tenDanhMuc as tenDanhMuc, d.duongDan as duongDan, count(distinct s.maSanPham) as soSanPham
+        from BienTheSanPham b join b.sanPham s join s.thuongHieu t join s.danhMuc d
+        where s.dangHoatDong = true and b.dangHoatDong = true
+          and t.dangHoatDong = true and d.dangHoatDong = true
+        group by d.maDanhMuc, d.tenDanhMuc, d.duongDan
+        """)
+    List<DanhMucDangBan> demDanhMucDangBan();
+
     @EntityGraph(attributePaths = {"thuongHieu", "danhMuc"})
     @Query("""
         select s from SanPham s where s.duongDan = :slug and s.dangHoatDong = true
           and s.thuongHieu.dangHoatDong = true and s.danhMuc.dangHoatDong = true
         """)
     Optional<SanPham> timChiTiet(@Param("slug") String slug);
+
+    interface DanhMucDangBan {
+        String getTenDanhMuc();
+        String getDuongDan();
+        long getSoSanPham();
+    }
 
     interface TheSanPham {
         String getDuongDan();
