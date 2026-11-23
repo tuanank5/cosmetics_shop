@@ -1,10 +1,17 @@
 <!DOCTYPE html>
-<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<html lang="vi" xmlns:th="http://www.thymeleaf.org" th:with="homeCarouselCss=true">
 <head th:replace="~{fragments/head :: head('BeautyShop · Vẻ đẹp theo cách của bạn')}"></head>
 <body>
+<div id="home-stage" class="home-stage">
 <div th:replace="~{fragments/header :: siteHeader}"></div>
-<main id="main" tabindex="-1" class="page-content shop-home">
-  <section class="editorial-story editorial-story--opening" aria-labelledby="home-title" data-story
+<main id="main" tabindex="-1" class="page-content shop-home home-carousel" data-home-carousel>
+  <nav class="home-carousel-pagination" aria-label="Các chương BeautyShop">
+    <a href="#home-slide-1"><span class="visually-hidden">Chương 1: Vẻ đẹp theo cách bạn</span></a>
+    <a href="#ritual"><span class="visually-hidden">Chương 2: Nhịp chăm sóc</span></a>
+    <a href="#home-slide-3"><span class="visually-hidden">Chương 3: Một góc nhìn mới</span></a>
+  </nav>
+  <div class="home-carousel-track">
+  <section id="home-slide-1" class="editorial-story editorial-story--opening home-slide" aria-labelledby="home-title" data-story
            th:with="media=${homeEditorialMedia != null ? homeEditorialMedia['opening'] : null}">
     <div class="shop-hero-art" aria-hidden="true">
       <img class="story-poster" src="/img/editorial/nocturne.svg" alt="" width="1600" height="1000" fetchpriority="high">
@@ -12,62 +19,72 @@
              th:attr="data-video-src=${media['previewVideoUrl']}" muted loop playsinline preload="none" tabindex="-1"></video>
       <span class="shop-hero-arch"></span><span class="shop-hero-vessel"></span><span class="shop-hero-jar"></span>
     </div>
+    <span class="home-slide-wordmark" aria-hidden="true">BEAUTYSHOP</span>
     <div class="story-copy">
       <p class="eyebrow">01 / BeautyShop</p>
       <h1 id="home-title">Vẻ đẹp.<br>Theo cách bạn.</h1>
       <p>Mỹ phẩm đa thương hiệu. Một lựa chọn của riêng bạn.</p>
-      <a class="btn btn--primary btn--lg" th:href="@{/products}">Khám phá sản phẩm <span aria-hidden="true">↗</span></a>
     </div>
+    <aside class="story-spotlight" aria-label="Khám phá cửa hàng">
+      <img src="/img/editorial/nocturne.svg" alt="" width="80" height="100">
+      <div><p>Mỹ phẩm đa thương hiệu</p><a class="btn btn--primary btn--lg" th:href="@{/products}">Khám phá sản phẩm <span aria-hidden="true">↗</span></a></div>
+    </aside>
     <a class="story-next" href="#ritual">Khám phá tiếp <span aria-hidden="true">↓</span></a>
     <button class="story-media-toggle btn btn--secondary" type="button" data-story-toggle hidden>Tạm dừng video</button>
     <span class="story-caption">Nghiên cứu ánh sáng · BeautyShop</span>
   </section>
-  <section id="ritual" class="editorial-story editorial-story--ritual" aria-labelledby="ritual-title" data-story
+  <section id="ritual" class="editorial-story editorial-story--ritual home-slide" aria-labelledby="ritual-title" data-story
            th:with="media=${homeEditorialMedia != null ? homeEditorialMedia['ritual'] : null}">
     <div class="story-media" aria-hidden="true">
       <img class="story-poster" src="/img/editorial/form.svg" alt="" width="1600" height="1000" loading="lazy" decoding="async">
       <video th:if="${media != null and media['previewVideoUrl'] != null}" data-story-video
              th:attr="data-video-src=${media['previewVideoUrl']}" muted loop playsinline preload="none" tabindex="-1"></video>
     </div>
+    <span class="home-slide-wordmark" aria-hidden="true">BEAUTYSHOP</span>
     <div class="story-copy">
       <p class="eyebrow">02 / Nhịp chăm sóc</p>
       <h2 id="ritual-title">Chọn mỹ phẩm.<br>Chọn nhịp riêng.</h2>
       <p>Bắt đầu từ làn da, tìm điều phù hợp.</p>
-      <a class="btn btn--secondary btn--lg" th:href="@{/products#skin-type}">Tìm theo loại da <span aria-hidden="true">↗</span></a>
     </div>
+    <aside class="story-spotlight" aria-label="Khám phá theo loại da">
+      <img src="/img/editorial/form.svg" alt="" width="80" height="100" loading="lazy">
+      <div><p>Nhịp chăm sóc của bạn</p><a class="btn btn--secondary btn--lg" th:href="@{/products#skin-type}">Tìm theo loại da <span aria-hidden="true">↗</span></a></div>
+    </aside>
     <nav class="story-discovery" aria-label="Khám phá mỹ phẩm">
       <a th:href="@{/products#categories}">Danh mục</a><a th:href="@{/products#brands}">Thương hiệu</a>
     </nav>
     <button class="story-media-toggle btn btn--secondary" type="button" data-story-toggle hidden>Tạm dừng video</button>
     <span class="story-caption">Nghiên cứu hình khối · BeautyShop</span>
   </section>
-  <section class="editorial-story editorial-story--discovery" aria-labelledby="discovery-title" data-story
+  <section id="home-slide-3" class="editorial-story editorial-story--discovery home-slide" aria-labelledby="discovery-title" data-story
            th:with="media=${homeEditorialMedia != null ? homeEditorialMedia['discovery'] : null}">
     <div class="story-media" aria-hidden="true">
       <img class="story-poster" src="/img/editorial/light.svg" alt="" width="1600" height="1000" loading="lazy" decoding="async">
       <video th:if="${media != null and media['previewVideoUrl'] != null}" data-story-video
              th:attr="data-video-src=${media['previewVideoUrl']}" muted loop playsinline preload="none" tabindex="-1"></video>
     </div>
+    <span class="home-slide-wordmark" aria-hidden="true">BEAUTYSHOP</span>
     <div class="story-copy">
       <p class="eyebrow">03 / Tiếp tục khám phá</p>
       <h2 id="discovery-title">Một góc nhìn mới.</h2>
-      <a class="btn btn--secondary btn--lg" th:href="@{/products(sort='newest')}">Xem sản phẩm mới <span aria-hidden="true">↗</span></a>
     </div>
-    <a class="story-next" th:href="@{/chat}">Hỏi BeautyShop <span aria-hidden="true">↗</span></a>
+    <aside class="story-spotlight" aria-label="Khám phá sản phẩm mới">
+      <img src="/img/editorial/light.svg" alt="" width="80" height="100" loading="lazy">
+      <div><p>Một lựa chọn mới</p><a class="btn btn--secondary btn--lg" th:href="@{/products(sort='newest')}">Xem sản phẩm mới <span aria-hidden="true">↗</span></a></div>
+    </aside>
+    <a class="story-next" href="#home-footer">Thông tin cửa hàng <span aria-hidden="true">↓</span></a>
     <button class="story-media-toggle btn btn--secondary" type="button" data-story-toggle hidden>Tạm dừng video</button>
     <span class="story-caption">Nghiên cứu sắc độ · BeautyShop</span>
   </section>
-  <section class="editorial-services" aria-labelledby="service-title">
-    <h2 id="service-title">Đồng hành cùng bạn</h2>
-    <div><h3>Tư vấn sản phẩm</h3><a class="text-link" th:href="@{/chat}">Hỏi về sản phẩm và chính sách</a></div>
-    <div><h3>Thanh toán khi nhận hàng</h3><p>Chọn thanh toán khi nhận hàng khi đặt đơn.</p></div>
-    <div><h3>Yêu cầu đổi trả</h3><p>Gửi yêu cầu trong vòng 7 ngày kể từ khi giao thành công. Cửa hàng xét duyệt theo điều kiện đổi trả.</p></div>
-  </section>
+  </div>
 </main>
+</div>
+<div id="home-footer" tabindex="-1"></div>
 <div th:replace="~{fragments/footer :: siteFooter}"></div>
 <script defer th:src="@{/js/vendor/gsap-3.15.1.min.js}"></script>
 <script defer th:src="@{/js/home-motion.js}"></script>
-<script defer th:src="@{/js/vendor/ScrollTrigger-3.15.1.min.js}"></script>
 <script defer th:src="@{/js/home-story.js}"></script>
+<script defer th:src="@{/js/vendor/swiper-14.4.0.min.js}"></script>
+<script defer th:src="@{/js/home-carousel.js}"></script>
 </body>
 </html>

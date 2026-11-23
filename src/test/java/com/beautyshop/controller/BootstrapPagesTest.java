@@ -85,15 +85,17 @@ class BootstrapPagesTest {
     @Test
     void editorialMediaIsOptionalAndDeferredWithoutChangingDiscoveryLinks() throws Exception {
         String plain = mvc.perform(get("/")).andExpect(status().isOk()).andReturn().getResponse().getContentAsString();
-        assertThat(plain).contains("data-story", "/img/editorial/nocturne.svg", "/js/vendor/ScrollTrigger-3.15.1.min.js")
-            .doesNotContain("data-story-video");
+        assertThat(plain).contains("data-story", "/img/editorial/nocturne.svg", "data-home-carousel", "home-carousel-pagination")
+            .doesNotContain("data-story-video", "ScrollTrigger");
+        assertThat(plain).containsOnlyOnce("/js/vendor/swiper-14.4.0.min.js")
+            .containsOnlyOnce("/css/vendor/swiper-14.4.0.min.css").contains("/js/home-carousel.js", "id=\"home-footer\"");
         String media = mvc.perform(get("/").flashAttr("homeEditorialMedia", java.util.Map.of(
                 "opening", java.util.Map.of("previewVideoUrl", "/img/editorial/approved.webm"))))
             .andExpect(status().isOk()).andReturn().getResponse().getContentAsString();
         assertThat(media).contains("data-story-video", "data-video-src=\"/img/editorial/approved.webm\"", "preload=\"none\"")
             .doesNotContain("<video src=", "autoplay=");
         String login = mvc.perform(get("/login")).andReturn().getResponse().getContentAsString();
-        assertThat(login).doesNotContain("ScrollTrigger", "home-story.js");
+        assertThat(login).doesNotContain("ScrollTrigger", "home-story.js", "swiper-14.4.0", "home-carousel.js");
     }
 
     @Test
