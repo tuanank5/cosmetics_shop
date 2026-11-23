@@ -40,12 +40,22 @@ class Checkout_Controller {
     String baoGia(@AuthenticationPrincipal PhienNguoiDung phien,
                   @Valid @ModelAttribute("form") Checkout_Form form, BindingResult errors, Model model) {
         hienCheckout(phien, model);
+        if (((java.util.List<?>) model.getAttribute("muc")).isEmpty()) {
+            errors.reject("checkout.empty", "Giỏ hàng đang trống. Vui lòng quay lại giỏ hàng.");
+        }
+        if (!errors.hasFieldErrors("addressId") && !Boolean.TRUE.equals(model.getAttribute("diaChiHopLe"))) {
+            errors.rejectValue("addressId", "checkout.address", "Chọn địa chỉ giao hàng của bạn.");
+        }
         if (!errors.hasErrors()) {
             BigDecimal tamTinh = (BigDecimal) model.getAttribute("tamTinh");
             try {
                 themBaoGia(model, tamTinh, voucherService.xemTruoc(form.getVoucher(), tamTinh).soTien());
+                model.addAttribute("baoGiaHopLe", true);
+                model.addAttribute("voucherDaTinh", form.getVoucher() == null ? "" : form.getVoucher().strip());
             } catch (IllegalArgumentException exception) {
                 errors.rejectValue("voucher", "checkout.voucher", exception.getMessage());
+            } catch (IllegalStateException | ConcurrencyFailureException exception) {
+                errors.reject("checkout.quote", "Chưa thể xác nhận báo giá. Vui lòng cập nhật lại báo giá.");
             }
         }
         return "order/checkout";
@@ -109,7 +119,9 @@ class Checkout_Controller {
         model.addAttribute("momoMock", momo.mock());
         BigDecimal tamTinh = muc.stream().map(sku -> sku.giaBan().multiply(BigDecimal.valueOf(sku.soLuong())))
             .reduce(BigDecimal.ZERO, BigDecimal::add);
-        themBaoGia(model, tamTinh, BigDecimal.ZERO);
+        model.addAttribute("tamTinh", tamTinh);
+        model.addAttribute("baoGiaHopLe", false);
+        model.addAttribute("diaChiHopLe", diaChi.stream().anyMatch(dc -> dc.getMaDiaChi().equals(form.getAddressId())));
         return "order/checkout";
     }
 

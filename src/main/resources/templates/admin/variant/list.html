@@ -1,19 +1,13 @@
 <!DOCTYPE html>
 <html lang="vi" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Biến thể sản phẩm · BeautyShop</title>
-    <link rel="stylesheet" th:href="@{/css/theme.css}">
-    <link rel="stylesheet" th:href="@{/css/admin-catalog.css}">
-</head>
+<head th:replace="~{fragments/head :: head('Biến thể sản phẩm · BeautyShop')}"></head>
 <body>
 <div th:replace="~{fragments/header :: siteHeader}"></div>
-<main class="page-content catalog-admin">
+<main id="main" tabindex="-1" class="page-content catalog-admin">
     <a class="text-link" th:href="@{/admin/catalog/products}">Quay lại sản phẩm</a>
     <h1 th:text="|Biến thể · ${sanPham.ten}|">Biến thể</h1>
     <p class="notice" role="status" th:if="${message}" th:text="${message}"></p>
-    <a class="btn" th:href="@{/admin/catalog/products/{p}/variants/new(p=${sanPham.ma})}">Thêm SKU</a>
+    <a class="btn btn--secondary" th:href="@{/admin/catalog/products/{p}/variants/new(p=${sanPham.ma})}">Thêm SKU</a>
     <p th:if="${#lists.isEmpty(bienThe)}">Chưa có SKU.</p>
     <ul class="catalog-list">
         <li th:each="sku : ${bienThe}">
@@ -28,10 +22,10 @@
                 <div th:if="${sku.hanSuDungMinhHoa}" th:text="|Hạn dùng minh họa: ${#temporals.format(sku.hanSuDungMinhHoa, 'dd/MM/yyyy')}|"></div>
             </div>
             <div class="catalog-actions">
-                <a class="btn" th:href="@{/admin/catalog/products/{p}/variants/{v}/edit(p=${sanPham.ma},v=${sku.maBienThe})}">Sửa</a>
+                <a class="btn btn--secondary" th:href="@{/admin/catalog/products/{p}/variants/{v}/edit(p=${sanPham.ma},v=${sku.maBienThe})}">Sửa</a>
                 <form th:if="${sku.dangHoatDong}" method="post"
                       th:action="@{/admin/catalog/products/{p}/variants/{v}/delete(p=${sanPham.ma},v=${sku.maBienThe})}">
-                    <button class="btn" type="submit">Ngừng bán</button>
+                    <button class="btn btn--secondary" type="submit">Ngừng bán</button>
                 </form>
             </div>
         </li>

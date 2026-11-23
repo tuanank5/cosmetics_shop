@@ -1,0 +1,31 @@
+:root {
+  --color-bg: #faf7f3;
+  --color-surface: #ffffff;
+  --color-surface-alt: #f3ece4;
+  --color-ink: #2a1f1d;
+  --color-muted: #6b5a55;
+  --color-primary: #5e2f3e;
+  --color-primary-hover: #4a2330;
+  --color-accent: #b08d57;
+  --color-border: #e6dace;
+  --color-control-border: #8a766f;
+  --color-success: #2f6b4f;
+  --color-error: #a12b3f;
+  --color-warning: #8a5a00;
+  --color-footer-bg: #2a1f1d;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 14px;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 72px;
+  --shadow-soft: 0 6px 24px rgba(42,31,29,.08);
+  --focus-ring: 3px solid var(--color-primary);
+  --font-heading: "Cormorant Garamond", "Playfair Display", "Palatino Linotype", Palatino, Cambria, Georgia, serif;
+  --font-body: "Be Vietnam Pro", system-ui, "Segoe UI", Roboto, sans-serif;
+}

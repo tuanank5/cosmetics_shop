@@ -1,19 +1,13 @@
 <!DOCTYPE html>
 <html lang="vi" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Voucher · Quản trị BeautyShop</title>
-    <link rel="stylesheet" th:href="@{/css/theme.css}">
-    <link rel="stylesheet" th:href="@{/css/admin-catalog.css}">
-</head>
+<head th:replace="~{fragments/head :: head('Voucher · Quản trị BeautyShop')}"></head>
 <body>
 <div th:replace="~{fragments/header :: siteHeader}"></div>
-<main class="page-content catalog-admin">
+<main id="main" tabindex="-1" class="page-content catalog-admin">
     <h1>Quản lý voucher</h1>
     <p class="notice" role="status" th:if="${message}" th:text="${message}"></p>
     <p class="notice catalog-error" role="alert" th:if="${error}" th:text="${error}"></p>
-    <a class="btn-primary" th:href="@{/admin/vouchers/new}">Tạo voucher</a>
+    <a class="btn btn--primary" th:href="@{/admin/vouchers/new}">Tạo voucher</a>
     <p class="notice" th:if="${#lists.isEmpty(danhSach)}">Chưa có voucher.</p>
     <ul class="catalog-list">
         <li th:each="phieu : ${danhSach}" th:with="cauHinh=${phieu.cauHinh}">
@@ -29,9 +23,9 @@
                 <p th:text="|Giới hạn ${cauHinh.gioiHanSuDung} · Đã dùng ${phieu.soLuotDaDung} · Đang giữ ${phieu.soLuotTamGiu} · Còn ${phieu.soLuotConLai()}|"></p>
             </div>
             <div class="catalog-actions">
-                <a class="btn" th:href="@{/admin/vouchers/{id}/edit(id=${phieu.maPhieuGiamGia})}">Sửa</a>
+                <a class="btn btn--secondary" th:href="@{/admin/vouchers/{id}/edit(id=${phieu.maPhieuGiamGia})}">Sửa</a>
                 <form method="post" th:action="@{/admin/vouchers/{id}/delete(id=${phieu.maPhieuGiamGia})}">
-                    <button class="btn" type="submit" th:aria-label="|Xóa voucher ${cauHinh.maApDung}|">Xóa nếu chưa sử dụng</button>
+                    <button class="btn btn--secondary" type="submit" th:aria-label="|Xóa voucher ${cauHinh.maApDung}|">Xóa nếu chưa sử dụng</button>
                 </form>
             </div>
         </li>

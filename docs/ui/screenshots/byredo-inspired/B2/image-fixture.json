@@ -1,0 +1,19 @@
+﻿{
+    "Purpose":  "Technical PNG decode/contain fixture, not a product photograph",
+    "Source":  "docs/report/evidence-p10/faq.png",
+    "Files":  [
+                  {
+                      "Path":  "E:\\Nam 4 HK 1\\WWW\\cosmetics_shop\\docs\\report\\evidence-p10\\faq.png",
+                      "Hash":  "ED7FC796B0EB241AD82FCD2297DFB72DE6C87FBDC741DE2909BC8D73BAD19654"
+                  },
+                  {
+                      "Path":  "E:\\Nam 4 HK 1\\WWW\\cosmetics_shop\\target\\p15-b2\\images\\00000000-0000-4000-8000-000000000026.png",
+                      "Hash":  "ED7FC796B0EB241AD82FCD2297DFB72DE6C87FBDC741DE2909BC8D73BAD19654"
+                  },
+                  {
+                      "Path":  "E:\\Nam 4 HK 1\\WWW\\cosmetics_shop\\target\\p15-b2\\images\\00000000-0000-4000-8000-000000000029.png",
+                      "Hash":  "04A09435654D97D7AF09513A91BDC842DB551B7DAFBC51A682441DB744F36D49"
+                  }
+              ],
+    "CorruptImage":  "Intentional invalid bytes in isolated fixture; no upload/database write"
+}

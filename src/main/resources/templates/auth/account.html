@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html lang="vi" xmlns:th="http://www.thymeleaf.org">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Tài khoản · BeautyShop</title><link rel="stylesheet" th:href="@{/css/theme.css}"></head>
+<head th:replace="~{fragments/head :: head('Tài khoản · BeautyShop')}"></head>
 <body><div th:replace="~{fragments/header :: siteHeader}"></div>
-<main class="page-content login-wrap">
+<main id="main" tabindex="-1" class="page-content login-wrap">
     <h1>Tài khoản</h1>
     <div class="notice"><strong>Email</strong><p th:text="${email}"></p></div>
     <p class="notice" role="status" th:if="${message}" th:text="${message}"></p>
@@ -14,7 +13,7 @@
         <label for="soDienThoai">Số điện thoại (tùy chọn)</label>
         <input type="tel" th:field="*{soDienThoai}" autocomplete="tel" maxlength="16">
         <small class="form-error" th:errors="*{soDienThoai}"></small>
-        <button class="btn-primary" type="submit">Lưu hồ sơ</button>
+        <button class="btn btn--primary" type="submit">Lưu hồ sơ</button>
     </form>
     <p><a class="text-link" th:href="@{/account/addresses}">Quản lý địa chỉ giao hàng</a></p>
     <p><a class="text-link" th:href="@{/orders}">Xem đơn hàng của bạn</a></p>

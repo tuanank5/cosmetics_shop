@@ -1,16 +1,47 @@
 <!DOCTYPE html>
-<html lang="vi" xmlns:th="http://www.thymeleaf.org"><head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Đăng nhập · BeautyShop</title><link rel="stylesheet" th:href="@{/css/theme.css}"></head>
-<body><div th:replace="~{fragments/header :: siteHeader}"></div><main class="page-content login-wrap">
-<p class="eyebrow">TÀI KHOẢN KHÁCH HÀNG</p><h1>Đăng nhập</h1>
-<p class="notice" role="status" th:if="${param.registered}">Đăng ký thành công. Bạn có thể đăng nhập.</p>
-<form method="post" th:action="@{/login}" class="login-card">
-<label for="username">Email</label><input id="username" name="username" type="email" autocomplete="username" maxlength="190" required>
-<label for="password">Mật khẩu</label><input id="password" name="password" type="password" autocomplete="current-password" required>
-<p class="form-error" role="alert" th:if="${param.error}">Email hoặc mật khẩu không hợp lệ.</p>
-<p class="form-error" role="alert" th:if="${param.cartError}">Chưa thể đồng bộ giỏ. Vui lòng đăng nhập lại.</p>
-<p class="form-error" role="alert" th:if="${param.inactive}">Phiên đã hết hiệu lực. Vui lòng đăng nhập lại.</p>
-<button type="submit" class="btn-primary">Đăng nhập</button>
-</form><p><a class="text-link" th:href="@{/register}">Tạo tài khoản</a></p>
-</main><div th:replace="~{fragments/footer :: siteFooter}"></div></body></html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/head :: head('Đăng nhập · BeautyShop')}"></head>
+<body>
+<div th:replace="~{fragments/header :: siteHeader}"></div>
+<main id="main" tabindex="-1" class="page-content auth-layout">
+  <aside class="auth-intro" aria-label="Chào mừng đến BeautyShop">
+    <span class="auth-monogram" aria-hidden="true">B</span>
+    <p class="eyebrow">BEAUTYSHOP · KHÔNG GIAN CỦA BẠN</p>
+    <h2>Chăm chút vẻ đẹp,<br>từ những điều nhỏ.</h2>
+    <p>Đăng nhập để tiếp tục mua sắm, quản lý địa chỉ và theo dõi đơn hàng của bạn.</p>
+    <a class="text-link" th:href="@{/products}">Khám phá cửa hàng</a>
+  </aside>
+  <section class="auth-panel">
+    <p class="eyebrow">CHÀO MỪNG BẠN TRỞ LẠI</p>
+    <h1>Đăng nhập</h1>
+    <p class="muted">Nhập email và mật khẩu để vào tài khoản.</p>
+    <div th:if="${param.registered}"><div th:replace="~{fragments/ui :: flash('success', 'Đăng ký thành công. Bạn có thể đăng nhập.')}"></div></div>
+    <form method="post" th:action="@{/login}" class="login-card" th:with="loiDangNhap=${param.error != null}">
+      <div class="error-summary" role="alert" th:if="${param.error}">
+        <p><strong>Lỗi: Email hoặc mật khẩu không hợp lệ.</strong></p>
+        <a href="#username">Kiểm tra email</a> · <a href="#password">Nhập lại mật khẩu</a>
+      </div>
+      <p class="alert alert--error" role="alert" th:if="${param.cartError}">Lỗi: Chưa thể đồng bộ giỏ. Vui lòng đăng nhập lại.</p>
+      <p class="alert alert--error" role="alert" th:if="${param.inactive}">Lỗi: Phiên đã hết hiệu lực. Vui lòng đăng nhập lại.</p>
+      <div class="field">
+        <label for="username">Email <span class="muted">(bắt buộc)</span></label>
+        <input id="username" name="username" type="email" autocomplete="username" maxlength="190" required
+               th:attr="aria-invalid=${loiDangNhap ? 'true' : null},aria-describedby=${loiDangNhap ? 'login-error' : null}">
+      </div>
+      <div class="field">
+        <label for="password">Mật khẩu <span class="muted">(bắt buộc)</span></label>
+        <div class="password-control">
+          <input id="password" name="password" type="password" autocomplete="current-password" required
+                 th:attr="aria-invalid=${loiDangNhap ? 'true' : null},aria-describedby=${loiDangNhap ? 'login-error' : null}">
+          <button class="btn btn--ghost" type="button" data-password-toggle="password" aria-controls="password" aria-pressed="false" hidden>Hiện mật khẩu</button>
+        </div>
+        <p id="login-error" class="field-error" th:if="${param.error}">Lỗi: Vui lòng kiểm tra thông tin đăng nhập.</p>
+      </div>
+      <button type="submit" class="btn btn--primary btn--lg">Đăng nhập</button>
+    </form>
+    <p class="auth-switch">Chưa có tài khoản? <a class="text-link" th:href="@{/register}">Tạo tài khoản</a></p>
+  </section>
+</main>
+<div th:replace="~{fragments/footer :: siteFooter}"></div>
+</body>
+</html>

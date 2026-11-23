@@ -6,6 +6,7 @@ import com.beautyshop.security.Security_Config;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.context.annotation.Import;
@@ -15,6 +16,8 @@ import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.hamcrest.Matchers.containsString;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.user;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -33,7 +36,7 @@ class BootstrapPagesTest {
 
     @ParameterizedTest
     @CsvSource({
-        "/, Vẻ đẹp bắt đầu từ",
+        "/, Vẻ đẹp.",
         "/login, Đăng nhập"
     })
     void publicPagesRenderInVietnamese(String path, String heading) throws Exception {
@@ -43,7 +46,54 @@ class BootstrapPagesTest {
             .andExpect(content().string(containsString(heading)))
             .andExpect(content().string(containsString("class=\"nav-shell\"")))
             .andExpect(content().string(containsString("class=\"site-footer\"")))
-            .andExpect(content().string(containsString("href=\"/css/theme.css\"")));
+            .andExpect(content().string(containsString("href=\"/css/tokens.css\"")));
+    }
+
+    @Test
+    void homeLinksToTheExistingCatalogDiscoveryControls() throws Exception {
+        mvc.perform(get("/"))
+            .andExpect(status().isOk())
+            .andExpect(content().string(containsString("href=\"/\" aria-current=\"page\"")))
+            .andExpect(content().string(containsString("href=\"/products#categories\"")))
+            .andExpect(content().string(containsString("href=\"/products#brands\"")))
+            .andExpect(content().string(containsString("href=\"/products#skin-type\"")))
+            .andExpect(content().string(containsString("href=\"/products?sort=newest\"")));
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"GUEST", "CUSTOMER", "ADMIN"})
+    void heroMotionLoadsLocallyInOrderOnlyOnHome(String role) throws Exception {
+        var home = get("/");
+        var login = get("/login");
+        if (!role.equals("GUEST")) {
+            home.with(user("fixture").roles(role));
+            login.with(user("fixture").roles(role));
+        }
+        String html = mvc.perform(home).andExpect(status().isOk())
+            .andReturn().getResponse().getContentAsString();
+        assertThat(html).containsSubsequence(
+            "<script defer src=\"/js/vendor/gsap-3.15.1.min.js\"></script>",
+            "<script defer src=\"/js/home-motion.js\"></script>");
+        assertThat(html).containsOnlyOnce("/js/vendor/gsap-3.15.1.min.js")
+            .containsOnlyOnce("/js/home-motion.js")
+            .contains("class=\"shop-hero-art\" aria-hidden=\"true\"", "id=\"home-title\"");
+        String otherPage = mvc.perform(login).andExpect(status().isOk())
+            .andReturn().getResponse().getContentAsString();
+        assertThat(otherPage).doesNotContain("gsap-", "home-motion.js");
+    }
+
+    @Test
+    void editorialMediaIsOptionalAndDeferredWithoutChangingDiscoveryLinks() throws Exception {
+        String plain = mvc.perform(get("/")).andExpect(status().isOk()).andReturn().getResponse().getContentAsString();
+        assertThat(plain).contains("data-story", "/img/editorial/nocturne.svg", "/js/vendor/ScrollTrigger-3.15.1.min.js")
+            .doesNotContain("data-story-video");
+        String media = mvc.perform(get("/").flashAttr("homeEditorialMedia", java.util.Map.of(
+                "opening", java.util.Map.of("previewVideoUrl", "/img/editorial/approved.webm"))))
+            .andExpect(status().isOk()).andReturn().getResponse().getContentAsString();
+        assertThat(media).contains("data-story-video", "data-video-src=\"/img/editorial/approved.webm\"", "preload=\"none\"")
+            .doesNotContain("<video src=", "autoplay=");
+        String login = mvc.perform(get("/login")).andReturn().getResponse().getContentAsString();
+        assertThat(login).doesNotContain("ScrollTrigger", "home-story.js");
     }
 
     @Test

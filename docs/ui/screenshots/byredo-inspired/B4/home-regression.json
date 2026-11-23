@@ -1,0 +1,325 @@
+{
+  "rows": [
+    {
+      "viewport": [
+        360,
+        800
+      ],
+      "zoom": 1,
+      "before": {
+        "scripts": [
+          "/js/app.js",
+          "/js/vendor/gsap-3.15.1.min.js",
+          "/js/home-motion.js"
+        ],
+        "width": 345,
+        "scroll": 345,
+        "styles": [
+          "",
+          "",
+          ""
+        ]
+      },
+      "motion": [
+        {
+          "duration": 0.38,
+          "targets": [
+            "shop-hero-arch",
+            "shop-hero-vessel",
+            "shop-hero-jar"
+          ]
+        }
+      ],
+      "reverted": true
+    },
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "zoom": 1,
+      "before": {
+        "scripts": [
+          "/js/app.js",
+          "/js/vendor/gsap-3.15.1.min.js",
+          "/js/home-motion.js"
+        ],
+        "width": 375,
+        "scroll": 375,
+        "styles": [
+          "",
+          "",
+          ""
+        ]
+      },
+      "motion": [
+        {
+          "duration": 0.38,
+          "targets": [
+            "shop-hero-arch",
+            "shop-hero-vessel",
+            "shop-hero-jar"
+          ]
+        }
+      ],
+      "reverted": true
+    },
+    {
+      "viewport": [
+        768,
+        1024
+      ],
+      "zoom": 1,
+      "before": {
+        "scripts": [
+          "/js/app.js",
+          "/js/vendor/gsap-3.15.1.min.js",
+          "/js/home-motion.js"
+        ],
+        "width": 753,
+        "scroll": 753,
+        "styles": [
+          "",
+          "",
+          ""
+        ]
+      },
+      "motion": [
+        {
+          "duration": 0.38,
+          "targets": [
+            "shop-hero-arch",
+            "shop-hero-vessel",
+            "shop-hero-jar"
+          ]
+        }
+      ],
+      "reverted": true
+    },
+    {
+      "viewport": [
+        1366,
+        768
+      ],
+      "zoom": 1,
+      "before": {
+        "scripts": [
+          "/js/app.js",
+          "/js/vendor/gsap-3.15.1.min.js",
+          "/js/home-motion.js"
+        ],
+        "width": 1351,
+        "scroll": 1351,
+        "styles": [
+          "",
+          "",
+          ""
+        ]
+      },
+      "motion": [
+        {
+          "duration": 0.38,
+          "targets": [
+            "shop-hero-arch",
+            "shop-hero-vessel",
+            "shop-hero-jar"
+          ]
+        }
+      ],
+      "reverted": true
+    },
+    {
+      "viewport": [
+        1920,
+        1080
+      ],
+      "zoom": 1,
+      "before": {
+        "scripts": [
+          "/js/app.js",
+          "/js/vendor/gsap-3.15.1.min.js",
+          "/js/home-motion.js"
+        ],
+        "width": 1905,
+        "scroll": 1905,
+        "styles": [
+          "",
+          "",
+          ""
+        ]
+      },
+      "motion": [
+        {
+          "duration": 0.38,
+          "targets": [
+            "shop-hero-arch",
+            "shop-hero-vessel",
+            "shop-hero-jar"
+          ]
+        }
+      ],
+      "reverted": true
+    },
+    {
+      "viewport": [
+        360,
+        800
+      ],
+      "zoom": 2,
+      "before": {
+        "scripts": [
+          "/js/app.js",
+          "/js/vendor/gsap-3.15.1.min.js",
+          "/js/home-motion.js"
+        ],
+        "width": 172,
+        "scroll": 172,
+        "styles": [
+          "",
+          "",
+          ""
+        ]
+      },
+      "motion": [
+        {
+          "duration": 0.38,
+          "targets": [
+            "shop-hero-arch",
+            "shop-hero-vessel",
+            "shop-hero-jar"
+          ]
+        }
+      ],
+      "reverted": true
+    },
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "zoom": 2,
+      "before": {
+        "scripts": [
+          "/js/app.js",
+          "/js/vendor/gsap-3.15.1.min.js",
+          "/js/home-motion.js"
+        ],
+        "width": 187,
+        "scroll": 187,
+        "styles": [
+          "",
+          "",
+          ""
+        ]
+      },
+      "motion": [
+        {
+          "duration": 0.38,
+          "targets": [
+            "shop-hero-arch",
+            "shop-hero-vessel",
+            "shop-hero-jar"
+          ]
+        }
+      ],
+      "reverted": true
+    },
+    {
+      "viewport": [
+        768,
+        1024
+      ],
+      "zoom": 2,
+      "before": {
+        "scripts": [
+          "/js/app.js",
+          "/js/vendor/gsap-3.15.1.min.js",
+          "/js/home-motion.js"
+        ],
+        "width": 376,
+        "scroll": 376,
+        "styles": [
+          "",
+          "",
+          ""
+        ]
+      },
+      "motion": [
+        {
+          "duration": 0.38,
+          "targets": [
+            "shop-hero-arch",
+            "shop-hero-vessel",
+            "shop-hero-jar"
+          ]
+        }
+      ],
+      "reverted": true
+    },
+    {
+      "viewport": [
+        1366,
+        768
+      ],
+      "zoom": 2,
+      "before": {
+        "scripts": [
+          "/js/app.js",
+          "/js/vendor/gsap-3.15.1.min.js",
+          "/js/home-motion.js"
+        ],
+        "width": 675,
+        "scroll": 675,
+        "styles": [
+          "",
+          "",
+          ""
+        ]
+      },
+      "motion": [
+        {
+          "duration": 0.38,
+          "targets": [
+            "shop-hero-arch",
+            "shop-hero-vessel",
+            "shop-hero-jar"
+          ]
+        }
+      ],
+      "reverted": true
+    },
+    {
+      "viewport": [
+        1920,
+        1080
+      ],
+      "zoom": 2,
+      "before": {
+        "scripts": [
+          "/js/app.js",
+          "/js/vendor/gsap-3.15.1.min.js",
+          "/js/home-motion.js"
+        ],
+        "width": 952,
+        "scroll": 952,
+        "styles": [
+          "",
+          "",
+          ""
+        ]
+      },
+      "motion": [
+        {
+          "duration": 0.38,
+          "targets": [
+            "shop-hero-arch",
+            "shop-hero-vessel",
+            "shop-hero-jar"
+          ]
+        }
+      ],
+      "reverted": true
+    }
+  ],
+  "jsExceptions": 0
+}

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/head :: head('Chưa thể mở nội dung · BeautyShop')}"></head>
+<body>
+<div th:replace="~{fragments/header :: siteHeader}"></div>
+<main id="main" tabindex="-1" class="page-content error-page">
+  <p class="eyebrow">BEAUTYSHOP · LUÔN CÓ MỘT LỐI ĐI TIẾP</p>
+  <p class="error-code" aria-label="Mã lỗi hệ thống">BeautyShop</p>
+  <h1>Chưa thể mở nội dung</h1>
+  <p class="muted">Vui lòng quay về cửa hàng hoặc thử lại sau ít phút.</p>
+  <div class="button-group">
+    <a class="btn btn--primary" th:href="@{/products}">Xem sản phẩm</a>
+    <a class="btn btn--secondary" th:href="@{/}">Về trang chủ</a>
+  </div>
+</main>
+<div th:replace="~{fragments/footer :: siteFooter}"></div>
+</body>
+</html>

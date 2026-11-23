@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html lang="vi" xmlns:th="http://www.thymeleaf.org">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Địa chỉ giao hàng · BeautyShop</title><link rel="stylesheet" th:href="@{/css/theme.css}"><link rel="stylesheet" th:href="@{/css/admin-catalog.css}"></head>
+<head th:replace="~{fragments/head :: head('Địa chỉ giao hàng · BeautyShop')}"></head>
 <body><div th:replace="~{fragments/header :: siteHeader}"></div>
-<main class="page-content catalog-admin">
+<main id="main" tabindex="-1" class="page-content catalog-admin">
     <a class="text-link" th:href="@{/account}">Quay lại hồ sơ</a>
     <h1>Địa chỉ giao hàng</h1>
     <p class="notice" role="status" th:if="${message}" th:text="${message}"></p>
-    <a class="btn-primary" th:href="@{/account/addresses/new}">Thêm địa chỉ</a>
+    <a class="btn btn--primary" th:href="@{/account/addresses/new}">Thêm địa chỉ</a>
     <p class="notice" th:if="${#lists.isEmpty(diaChi)}">Bạn chưa có địa chỉ giao hàng.</p>
     <ul class="catalog-list">
         <li th:each="muc : ${diaChi}">
@@ -18,9 +17,9 @@
                 <small th:if="${muc.laMacDinh}">Mặc định</small>
             </div>
             <div class="catalog-actions">
-                <a class="btn-primary" th:href="@{/account/addresses/{id}/edit(id=${muc.maDiaChi})}">Sửa</a>
+                <a class="btn btn--primary" th:href="@{/account/addresses/{id}/edit(id=${muc.maDiaChi})}">Sửa</a>
                 <form method="post" th:action="@{/account/addresses/{id}/delete(id=${muc.maDiaChi})}">
-                    <button type="submit" class="btn-primary">Xóa</button>
+                    <button type="submit" class="btn btn--primary">Xóa</button>
                 </form>
             </div>
         </li>

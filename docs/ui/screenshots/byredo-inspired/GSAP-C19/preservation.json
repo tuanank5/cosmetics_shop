@@ -1,0 +1,42 @@
+﻿{
+    "BeforeSourceFiles":  184,
+    "AfterSourceFiles":  187,
+    "Delta":  [
+                  {
+                      "Path":  "E:\\Nam 4 HK 1\\WWW\\cosmetics_shop\\src\\main\\resources\\static\\js\\home-motion.js",
+                      "Hash":  "E804B020D6FCDA54A2617D7552A68A7FBEFA859EFFDD7A214B2E377D34FFE88C",
+                      "SideIndicator":  "=\u003e"
+                  },
+                  {
+                      "Path":  "E:\\Nam 4 HK 1\\WWW\\cosmetics_shop\\src\\main\\resources\\static\\js\\vendor\\gsap-3.15.1.min.js",
+                      "Hash":  "3D1BEA374AB1B703CC5C4105358EEC63C4465EFDC573931DC116E34A0A190C1B",
+                      "SideIndicator":  "=\u003e"
+                  },
+                  {
+                      "Path":  "E:\\Nam 4 HK 1\\WWW\\cosmetics_shop\\src\\main\\resources\\static\\js\\vendor\\gsap-3.15.1.provenance.md",
+                      "Hash":  "8EEA107F64C5989D7E558CA4AA4D277F60F52338BEEBF6335B97F4363790D76C",
+                      "SideIndicator":  "=\u003e"
+                  },
+                  {
+                      "Path":  "E:\\Nam 4 HK 1\\WWW\\cosmetics_shop\\src\\main\\resources\\templates\\home\\index.html",
+                      "Hash":  "B7DF19372374439F18CAE19FA2DA5530C1C9043681E87461DE9C2D60F0BE6500",
+                      "SideIndicator":  "=\u003e"
+                  },
+                  {
+                      "Path":  "E:\\Nam 4 HK 1\\WWW\\cosmetics_shop\\src\\test\\java\\com\\beautyshop\\controller\\BootstrapPagesTest.java",
+                      "Hash":  "83EB43D2DE90B776183C5043EE9B98731FED1FE30D4330B054397FF9F93157A7",
+                      "SideIndicator":  "=\u003e"
+                  },
+                  {
+                      "Path":  "E:\\Nam 4 HK 1\\WWW\\cosmetics_shop\\src\\main\\resources\\templates\\home\\index.html",
+                      "Hash":  "DD302F1912C4F107EB0EF0F6B0FF6831DD8A160F13B3316538A2A8B171E364F0",
+                      "SideIndicator":  "\u003c="
+                  },
+                  {
+                      "Path":  "E:\\Nam 4 HK 1\\WWW\\cosmetics_shop\\src\\test\\java\\com\\beautyshop\\controller\\BootstrapPagesTest.java",
+                      "Hash":  "FD63AEE8D7244E11D94D57763311093A12ADD9132832503DED76F6E052EFD96D",
+                      "SideIndicator":  "\u003c="
+                  }
+              ],
+    "ProtectedDifferences":  0
+}

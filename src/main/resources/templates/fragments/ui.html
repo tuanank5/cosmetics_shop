@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<body>
+<div th:fragment="flash(type, message)" class="alert" th:classappend="${type == 'error' ? 'alert--error' : 'alert--success'}" th:attr="role=${type == 'error' ? 'alert' : 'status'}">
+  <strong th:text="${type == 'error' ? 'Lỗi: ' : 'Thông báo: '}"></strong><span th:text="${message}"></span>
+</div>
+<p th:fragment="fieldError(field, id)" th:id="${id}" class="field-error">
+  <span th:if="${#fields.hasErrors(field)}">Lỗi: <span th:errors="*{__${field}__}"></span></span>
+</p>
+<span th:fragment="money(amount)" class="money" th:text="|${#numbers.formatInteger(amount, 1, 'POINT')} ₫|"></span>
+<nav th:fragment="pagination(page, previous, next)" class="pagination" aria-label="Phân trang" th:if="${page.totalPages > 1}">
+  <a class="btn btn--secondary" th:if="${page.hasPrevious()}" th:href="${previous}">Trang trước</a>
+  <span aria-current="page" th:text="|Trang ${page.number + 1} / ${page.totalPages}|"></span>
+  <a class="btn btn--secondary" th:if="${page.hasNext()}" th:href="${next}">Trang sau</a>
+</nav>
+<dialog th:fragment="confirmDialog" data-confirm-dialog aria-labelledby="confirm-title" aria-describedby="confirm-message">
+  <h2 id="confirm-title">Xác nhận thao tác</h2>
+  <p id="confirm-message" data-confirm-message></p>
+  <div class="button-group">
+    <button class="btn btn--secondary" type="button" data-confirm-cancel autofocus>Quay lại</button>
+    <button class="btn btn--danger" type="button" data-confirm-accept>Xác nhận</button>
+  </div>
+</dialog>
+</body>
+</html>

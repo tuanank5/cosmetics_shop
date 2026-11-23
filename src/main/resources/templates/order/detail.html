@@ -1,11 +1,8 @@
 <!DOCTYPE html>
 <html lang="vi" xmlns:th="http://www.thymeleaf.org">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Chi tiết đơn hàng · BeautyShop</title>
-<link rel="stylesheet" th:href="@{/css/theme.css}">
-<link rel="stylesheet" th:href="@{/css/admin-catalog.css}"></head>
+<head th:replace="~{fragments/head :: head('Chi tiết đơn hàng · BeautyShop')}"></head>
 <body><div th:replace="~{fragments/header :: siteHeader}"></div>
-<main class="page-content" th:with="don=${chiTiet.don}">
+<main id="main" tabindex="-1" class="page-content" th:with="don=${chiTiet.don}">
     <a class="text-link" th:href="@{${base}}">Quay lại đơn hàng</a>
     <h1>Chi tiết đơn hàng</h1>
     <p th:text="${don.maHienThi}"></p>
@@ -48,23 +45,23 @@
            th:href="@{/orders/{id}/returns/new(id=${don.maDonHang})}">Yêu cầu đổi trả</a>
         <form th:if="${base == '/orders' and chiTiet.coTheThuLai}" method="post"
               th:action="@{/orders/{id}/momo/retry(id=${don.maDonHang})}">
-            <button type="submit" class="btn-primary">Mở lại thanh toán MoMo</button>
+            <button type="submit" class="btn btn--primary">Mở lại thanh toán MoMo</button>
         </form>
         <form th:if="${base == '/admin/orders' and chiTiet.doiSoat}" method="post"
               th:action="@{/admin/orders/{id}/momo/reconcile(id=${don.maDonHang})}">
-            <button type="submit" class="btn-primary">Đối soát MoMo</button>
+            <button type="submit" class="btn btn--primary">Đối soát MoMo</button>
         </form>
         <form th:if="${base == '/orders' and chiTiet.coTheHuy}" method="post"
               th:action="@{/orders/{id}/cancel(id=${don.maDonHang})}">
-            <button type="submit" class="btn">Hủy đơn</button>
+            <button type="submit" class="btn btn--secondary">Hủy đơn</button>
         </form>
         <form th:if="${base == '/admin/orders' and chiTiet.coTheHuy}" method="post"
               th:action="@{/admin/orders/{id}/status(id=${don.maDonHang})}">
-            <button name="status" value="CANCELLED" type="submit" class="btn">Hủy đơn</button>
+            <button name="status" value="CANCELLED" type="submit" class="btn btn--secondary">Hủy đơn</button>
         </form>
         <form th:if="${base == '/admin/orders' and chiTiet.tiepTheo != null}" method="post"
               th:action="@{/admin/orders/{id}/status(id=${don.maDonHang})}">
-            <button name="status" th:value="${chiTiet.tiepTheo.name()}" type="submit" class="btn-primary"
+            <button name="status" th:value="${chiTiet.tiepTheo.name()}" type="submit" class="btn btn--primary"
                     th:text="${chiTiet.tiepTheo.name() == 'DELIVERED' and don.phuongThuc == 'COD' ? 'Xác nhận đã giao và thu tiền' : chiTiet.tiepTheo.label}"></button>
         </form>
     </div>

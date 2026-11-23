@@ -1,0 +1,95 @@
+[
+  {
+    "width": 1366,
+    "zoom": 1,
+    "url": "http://127.0.0.1:50693/products",
+    "images": [
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+        "complete": true,
+        "naturalWidth": 1280,
+        "hidden": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+        "complete": true,
+        "naturalWidth": 0,
+        "hidden": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+        "complete": true,
+        "naturalWidth": 0,
+        "hidden": false
+      },
+      {
+        "src": "",
+        "complete": true,
+        "naturalWidth": 0,
+        "hidden": false
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "zoom": 1,
+    "url": "http://127.0.0.1:50693/products",
+    "images": [
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+        "complete": true,
+        "naturalWidth": 1280,
+        "hidden": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+        "complete": true,
+        "naturalWidth": 0,
+        "hidden": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+        "complete": true,
+        "naturalWidth": 0,
+        "hidden": false
+      },
+      {
+        "src": "",
+        "complete": true,
+        "naturalWidth": 0,
+        "hidden": false
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "zoom": 2,
+    "url": "http://127.0.0.1:50693/products",
+    "images": [
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+        "complete": true,
+        "naturalWidth": 1280,
+        "hidden": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+        "complete": true,
+        "naturalWidth": 0,
+        "hidden": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+        "complete": true,
+        "naturalWidth": 0,
+        "hidden": false
+      },
+      {
+        "src": "",
+        "complete": true,
+        "naturalWidth": 0,
+        "hidden": false
+      }
+    ]
+  }
+]

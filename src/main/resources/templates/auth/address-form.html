@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html lang="vi" xmlns:th="http://www.thymeleaf.org">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Địa chỉ giao hàng · BeautyShop</title><link rel="stylesheet" th:href="@{/css/theme.css}"></head>
+<head th:replace="~{fragments/head :: head('Địa chỉ giao hàng · BeautyShop')}"></head>
 <body><div th:replace="~{fragments/header :: siteHeader}"></div>
-<main class="page-content login-wrap">
+<main id="main" tabindex="-1" class="page-content login-wrap">
     <a class="text-link" th:href="@{/account/addresses}">Quay lại địa chỉ</a>
     <h1>Địa chỉ giao hàng</h1>
     <form class="login-card" method="post" th:action="@{${action}}" th:object="${form}">
@@ -17,7 +16,7 @@
         <input th:field="*{diaChiChiTiet}" autocomplete="street-address" maxlength="600" required>
         <small class="form-error" th:errors="*{diaChiChiTiet}"></small>
         <label><input type="checkbox" th:field="*{laMacDinh}"> Đặt làm mặc định</label>
-        <button type="submit" class="btn-primary">Lưu địa chỉ</button>
+        <button type="submit" class="btn btn--primary">Lưu địa chỉ</button>
     </form>
 </main>
 <div th:replace="~{fragments/footer :: siteFooter}"></div></body></html>

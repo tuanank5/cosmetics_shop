@@ -1,10 +1,8 @@
 <!DOCTYPE html>
 <html lang="vi" xmlns:th="http://www.thymeleaf.org">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Yêu cầu đổi trả · BeautyShop</title><link rel="stylesheet" th:href="@{/css/theme.css}">
-<link rel="stylesheet" th:href="@{/css/admin-catalog.css}"></head>
+<head th:replace="~{fragments/head :: head('Yêu cầu đổi trả · BeautyShop')}"></head>
 <body><div th:replace="~{fragments/header :: siteHeader}"></div>
-<main class="page-content">
+<main id="main" tabindex="-1" class="page-content">
     <a class="text-link" th:href="@{/orders/{id}(id=${trang.don.maDon})}">Quay lại đơn</a>
     <h1>Yêu cầu đổi trả</h1>
     <p th:text="${trang.don.maHienThi}"></p>
@@ -20,7 +18,7 @@
             <p th:if="${muc.conLai == 0}" th:text="|${muc.tenSanPham} · Đã hết số lượng có thể yêu cầu|"></p>
         </div>
         <label>Lý do <textarea th:field="*{lyDo}" rows="4" maxlength="2000" required></textarea></label>
-        <button class="btn-primary" type="submit">Gửi yêu cầu</button>
+        <button class="btn btn--primary" type="submit">Gửi yêu cầu</button>
     </form>
 </main>
 <div th:replace="~{fragments/footer :: siteFooter}"></div></body></html>

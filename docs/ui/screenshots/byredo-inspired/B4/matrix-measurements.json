@@ -1,0 +1,9362 @@
+[
+  {
+    "state": "unconfirmed",
+    "viewport": [
+      360,
+      800
+    ],
+    "zoom": 1,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout",
+    "width": 345,
+    "scroll": 345,
+    "dpr": 1,
+    "quote": "false",
+    "voucher": "",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 78.6875
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "no-voucher",
+    "viewport": [
+      360,
+      800
+    ],
+    "zoom": 1,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 345,
+    "scroll": 345,
+    "dpr": 1,
+    "quote": "true",
+    "voucher": "",
+    "discount": "0 ₫",
+    "shipping": "25.000 ₫",
+    "total": "515.000 ₫",
+    "stale": false,
+    "buttons": [
+      {
+        "disabled": false,
+        "payment": "",
+        "height": 78.6875
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "valid",
+    "viewport": [
+      360,
+      800
+    ],
+    "zoom": 1,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 345,
+    "scroll": 345,
+    "dpr": 1,
+    "quote": "true",
+    "voucher": "SAVE50",
+    "discount": "50.000 ₫",
+    "shipping": "25.000 ₫",
+    "total": "465.000 ₫",
+    "stale": false,
+    "buttons": [
+      {
+        "disabled": false,
+        "payment": "",
+        "height": 78.6875
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "edited-quote",
+    "viewport": [
+      360,
+      800
+    ],
+    "zoom": 1,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 345,
+    "scroll": 345,
+    "dpr": 1,
+    "quote": "false",
+    "voucher": "X",
+    "discount": "50.000 ₫",
+    "shipping": "25.000 ₫",
+    "total": "465.000 ₫",
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 78.6875
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "F07-submit-error",
+    "viewport": [
+      360,
+      800
+    ],
+    "zoom": 1,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout",
+    "width": 345,
+    "scroll": 345,
+    "dpr": 1,
+    "quote": "false",
+    "voucher": "SAVE50",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 78.6875
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": "\n            Chưa thể hoàn tất\n            \n                Giỏ hàng hoặc tồn kho vừa thay đổi. Vui lòng thử lại.\n                \n                \n            \n        "
+  },
+  {
+    "state": "reconfirmed",
+    "viewport": [
+      360,
+      800
+    ],
+    "zoom": 1,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 345,
+    "scroll": 345,
+    "dpr": 1,
+    "quote": "true",
+    "voucher": "SAVE50",
+    "discount": "50.000 ₫",
+    "shipping": "25.000 ₫",
+    "total": "465.000 ₫",
+    "stale": false,
+    "buttons": [
+      {
+        "disabled": false,
+        "payment": "",
+        "height": 78.6875
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "invalid-voucher",
+    "viewport": [
+      360,
+      800
+    ],
+    "zoom": 1,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 345,
+    "scroll": 345,
+    "dpr": 1,
+    "quote": "false",
+    "voucher": "EXPIRED",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 78.6875
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": "\n            Chưa thể hoàn tất\n            \n                \n                \n                Voucher không hợp lệ, đã hết hạn hoặc hết lượt.\n            \n        "
+  },
+  {
+    "state": "minimum-not-met",
+    "viewport": [
+      360,
+      800
+    ],
+    "zoom": 1,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 345,
+    "scroll": 345,
+    "dpr": 1,
+    "quote": "false",
+    "voucher": "MINIMUM",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 78.6875
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": "\n            Chưa thể hoàn tất\n            \n                \n                \n                Đơn chưa đạt mức tối thiểu của voucher.\n            \n        "
+  },
+  {
+    "state": "quote-failed",
+    "viewport": [
+      360,
+      800
+    ],
+    "zoom": 1,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 345,
+    "scroll": 345,
+    "dpr": 1,
+    "quote": "false",
+    "voucher": "READFAIL",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 78.6875
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": "\n            Chưa thể hoàn tất\n            \n                Chưa thể xác nhận báo giá. Vui lòng cập nhật lại báo giá.\n                \n                \n            \n        "
+  },
+  {
+    "state": "foreign-address",
+    "viewport": [
+      360,
+      800
+    ],
+    "zoom": 1,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 345,
+    "scroll": 345,
+    "dpr": 1,
+    "quote": "false",
+    "voucher": "",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 78.6875
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": "\n            Chưa thể hoàn tất\n            \n                \n                Chọn địa chỉ giao hàng hợp lệ của bạn.\n                \n            \n        "
+  },
+  {
+    "state": "COD-success-fixture",
+    "viewport": [
+      360,
+      800
+    ],
+    "zoom": 1,
+    "js": true,
+    "url": "http://127.0.0.1:57080/orders/901",
+    "width": 345,
+    "scroll": 345,
+    "dpr": 1,
+    "quote": null,
+    "voucher": null,
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": false,
+    "buttons": [],
+    "scripts": [
+      "/js/app.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "MOMO-enabled-mock",
+    "viewport": [
+      360,
+      800
+    ],
+    "zoom": 1,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 345,
+    "scroll": 345,
+    "dpr": 1,
+    "quote": "true",
+    "voucher": "SAVE50",
+    "discount": "50.000 ₫",
+    "shipping": "25.000 ₫",
+    "total": "465.000 ₫",
+    "stale": false,
+    "buttons": [
+      {
+        "disabled": false,
+        "payment": "",
+        "height": 78.6875
+      },
+      {
+        "disabled": false,
+        "payment": "MOMO",
+        "height": 105.03125
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "MOMO-mock-redirect",
+    "viewport": [
+      360,
+      800
+    ],
+    "zoom": 1,
+    "js": true,
+    "url": "http://127.0.0.1:57080/payment/momo/mock/902",
+    "width": 345,
+    "scroll": 345,
+    "dpr": 1,
+    "quote": null,
+    "voucher": null,
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": false,
+    "buttons": [],
+    "scripts": [
+      "/js/app.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "MOMO-pending-gateway",
+    "viewport": [
+      360,
+      800
+    ],
+    "zoom": 1,
+    "js": true,
+    "url": "http://127.0.0.1:57080/orders/902",
+    "width": 345,
+    "scroll": 345,
+    "dpr": 1,
+    "quote": null,
+    "voucher": null,
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": false,
+    "buttons": [],
+    "scripts": [
+      "/js/app.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "empty-cart",
+    "viewport": [
+      360,
+      800
+    ],
+    "zoom": 1,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout",
+    "width": 345,
+    "scroll": 345,
+    "dpr": 1,
+    "quote": "false",
+    "voucher": null,
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": false,
+    "buttons": [],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "no-address",
+    "viewport": [
+      360,
+      800
+    ],
+    "zoom": 1,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout",
+    "width": 345,
+    "scroll": 345,
+    "dpr": 1,
+    "quote": "false",
+    "voucher": null,
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": false,
+    "buttons": [],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "unconfirmed",
+    "viewport": [
+      390,
+      844
+    ],
+    "zoom": 1,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout",
+    "width": 375,
+    "scroll": 375,
+    "dpr": 1,
+    "quote": "false",
+    "voucher": "",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 78.6875
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "no-voucher",
+    "viewport": [
+      390,
+      844
+    ],
+    "zoom": 1,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 375,
+    "scroll": 375,
+    "dpr": 1,
+    "quote": "true",
+    "voucher": "",
+    "discount": "0 ₫",
+    "shipping": "25.000 ₫",
+    "total": "515.000 ₫",
+    "stale": false,
+    "buttons": [
+      {
+        "disabled": false,
+        "payment": "",
+        "height": 78.6875
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "valid",
+    "viewport": [
+      390,
+      844
+    ],
+    "zoom": 1,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 375,
+    "scroll": 375,
+    "dpr": 1,
+    "quote": "true",
+    "voucher": "SAVE50",
+    "discount": "50.000 ₫",
+    "shipping": "25.000 ₫",
+    "total": "465.000 ₫",
+    "stale": false,
+    "buttons": [
+      {
+        "disabled": false,
+        "payment": "",
+        "height": 78.6875
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "edited-quote",
+    "viewport": [
+      390,
+      844
+    ],
+    "zoom": 1,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 375,
+    "scroll": 375,
+    "dpr": 1,
+    "quote": "false",
+    "voucher": "X",
+    "discount": "50.000 ₫",
+    "shipping": "25.000 ₫",
+    "total": "465.000 ₫",
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 78.6875
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "F07-submit-error",
+    "viewport": [
+      390,
+      844
+    ],
+    "zoom": 1,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout",
+    "width": 375,
+    "scroll": 375,
+    "dpr": 1,
+    "quote": "false",
+    "voucher": "SAVE50",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 78.6875
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": "\n            Chưa thể hoàn tất\n            \n                Giỏ hàng hoặc tồn kho vừa thay đổi. Vui lòng thử lại.\n                \n                \n            \n        "
+  },
+  {
+    "state": "reconfirmed",
+    "viewport": [
+      390,
+      844
+    ],
+    "zoom": 1,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 375,
+    "scroll": 375,
+    "dpr": 1,
+    "quote": "true",
+    "voucher": "SAVE50",
+    "discount": "50.000 ₫",
+    "shipping": "25.000 ₫",
+    "total": "465.000 ₫",
+    "stale": false,
+    "buttons": [
+      {
+        "disabled": false,
+        "payment": "",
+        "height": 78.6875
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "invalid-voucher",
+    "viewport": [
+      390,
+      844
+    ],
+    "zoom": 1,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 375,
+    "scroll": 375,
+    "dpr": 1,
+    "quote": "false",
+    "voucher": "EXPIRED",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 78.6875
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": "\n            Chưa thể hoàn tất\n            \n                \n                \n                Voucher không hợp lệ, đã hết hạn hoặc hết lượt.\n            \n        "
+  },
+  {
+    "state": "minimum-not-met",
+    "viewport": [
+      390,
+      844
+    ],
+    "zoom": 1,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 375,
+    "scroll": 375,
+    "dpr": 1,
+    "quote": "false",
+    "voucher": "MINIMUM",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 78.6875
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": "\n            Chưa thể hoàn tất\n            \n                \n                \n                Đơn chưa đạt mức tối thiểu của voucher.\n            \n        "
+  },
+  {
+    "state": "quote-failed",
+    "viewport": [
+      390,
+      844
+    ],
+    "zoom": 1,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 375,
+    "scroll": 375,
+    "dpr": 1,
+    "quote": "false",
+    "voucher": "READFAIL",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 78.6875
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": "\n            Chưa thể hoàn tất\n            \n                Chưa thể xác nhận báo giá. Vui lòng cập nhật lại báo giá.\n                \n                \n            \n        "
+  },
+  {
+    "state": "foreign-address",
+    "viewport": [
+      390,
+      844
+    ],
+    "zoom": 1,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 375,
+    "scroll": 375,
+    "dpr": 1,
+    "quote": "false",
+    "voucher": "",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 78.6875
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": "\n            Chưa thể hoàn tất\n            \n                \n                Chọn địa chỉ giao hàng hợp lệ của bạn.\n                \n            \n        "
+  },
+  {
+    "state": "COD-success-fixture",
+    "viewport": [
+      390,
+      844
+    ],
+    "zoom": 1,
+    "js": true,
+    "url": "http://127.0.0.1:57080/orders/901",
+    "width": 375,
+    "scroll": 375,
+    "dpr": 1,
+    "quote": null,
+    "voucher": null,
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": false,
+    "buttons": [],
+    "scripts": [
+      "/js/app.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "MOMO-enabled-mock",
+    "viewport": [
+      390,
+      844
+    ],
+    "zoom": 1,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 375,
+    "scroll": 375,
+    "dpr": 1,
+    "quote": "true",
+    "voucher": "SAVE50",
+    "discount": "50.000 ₫",
+    "shipping": "25.000 ₫",
+    "total": "465.000 ₫",
+    "stale": false,
+    "buttons": [
+      {
+        "disabled": false,
+        "payment": "",
+        "height": 78.6875
+      },
+      {
+        "disabled": false,
+        "payment": "MOMO",
+        "height": 78.6875
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "MOMO-mock-redirect",
+    "viewport": [
+      390,
+      844
+    ],
+    "zoom": 1,
+    "js": true,
+    "url": "http://127.0.0.1:57080/payment/momo/mock/902",
+    "width": 375,
+    "scroll": 375,
+    "dpr": 1,
+    "quote": null,
+    "voucher": null,
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": false,
+    "buttons": [],
+    "scripts": [
+      "/js/app.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "MOMO-pending-gateway",
+    "viewport": [
+      390,
+      844
+    ],
+    "zoom": 1,
+    "js": true,
+    "url": "http://127.0.0.1:57080/orders/902",
+    "width": 375,
+    "scroll": 375,
+    "dpr": 1,
+    "quote": null,
+    "voucher": null,
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": false,
+    "buttons": [],
+    "scripts": [
+      "/js/app.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "empty-cart",
+    "viewport": [
+      390,
+      844
+    ],
+    "zoom": 1,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout",
+    "width": 375,
+    "scroll": 375,
+    "dpr": 1,
+    "quote": "false",
+    "voucher": null,
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": false,
+    "buttons": [],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "no-address",
+    "viewport": [
+      390,
+      844
+    ],
+    "zoom": 1,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout",
+    "width": 375,
+    "scroll": 375,
+    "dpr": 1,
+    "quote": "false",
+    "voucher": null,
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": false,
+    "buttons": [],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "unconfirmed",
+    "viewport": [
+      768,
+      1024
+    ],
+    "zoom": 1,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout",
+    "width": 753,
+    "scroll": 753,
+    "dpr": 1,
+    "quote": "false",
+    "voucher": "",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 56
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "no-voucher",
+    "viewport": [
+      768,
+      1024
+    ],
+    "zoom": 1,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 753,
+    "scroll": 753,
+    "dpr": 1,
+    "quote": "true",
+    "voucher": "",
+    "discount": "0 ₫",
+    "shipping": "25.000 ₫",
+    "total": "515.000 ₫",
+    "stale": false,
+    "buttons": [
+      {
+        "disabled": false,
+        "payment": "",
+        "height": 56
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "valid",
+    "viewport": [
+      768,
+      1024
+    ],
+    "zoom": 1,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 753,
+    "scroll": 753,
+    "dpr": 1,
+    "quote": "true",
+    "voucher": "SAVE50",
+    "discount": "50.000 ₫",
+    "shipping": "25.000 ₫",
+    "total": "465.000 ₫",
+    "stale": false,
+    "buttons": [
+      {
+        "disabled": false,
+        "payment": "",
+        "height": 56
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "edited-quote",
+    "viewport": [
+      768,
+      1024
+    ],
+    "zoom": 1,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 753,
+    "scroll": 753,
+    "dpr": 1,
+    "quote": "false",
+    "voucher": "X",
+    "discount": "50.000 ₫",
+    "shipping": "25.000 ₫",
+    "total": "465.000 ₫",
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 56
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "F07-submit-error",
+    "viewport": [
+      768,
+      1024
+    ],
+    "zoom": 1,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout",
+    "width": 753,
+    "scroll": 753,
+    "dpr": 1,
+    "quote": "false",
+    "voucher": "SAVE50",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 56
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": "\n            Chưa thể hoàn tất\n            \n                Giỏ hàng hoặc tồn kho vừa thay đổi. Vui lòng thử lại.\n                \n                \n            \n        "
+  },
+  {
+    "state": "reconfirmed",
+    "viewport": [
+      768,
+      1024
+    ],
+    "zoom": 1,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 753,
+    "scroll": 753,
+    "dpr": 1,
+    "quote": "true",
+    "voucher": "SAVE50",
+    "discount": "50.000 ₫",
+    "shipping": "25.000 ₫",
+    "total": "465.000 ₫",
+    "stale": false,
+    "buttons": [
+      {
+        "disabled": false,
+        "payment": "",
+        "height": 56
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "invalid-voucher",
+    "viewport": [
+      768,
+      1024
+    ],
+    "zoom": 1,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 753,
+    "scroll": 753,
+    "dpr": 1,
+    "quote": "false",
+    "voucher": "EXPIRED",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 56
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": "\n            Chưa thể hoàn tất\n            \n                \n                \n                Voucher không hợp lệ, đã hết hạn hoặc hết lượt.\n            \n        "
+  },
+  {
+    "state": "minimum-not-met",
+    "viewport": [
+      768,
+      1024
+    ],
+    "zoom": 1,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 753,
+    "scroll": 753,
+    "dpr": 1,
+    "quote": "false",
+    "voucher": "MINIMUM",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 56
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": "\n            Chưa thể hoàn tất\n            \n                \n                \n                Đơn chưa đạt mức tối thiểu của voucher.\n            \n        "
+  },
+  {
+    "state": "quote-failed",
+    "viewport": [
+      768,
+      1024
+    ],
+    "zoom": 1,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 753,
+    "scroll": 753,
+    "dpr": 1,
+    "quote": "false",
+    "voucher": "READFAIL",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 56
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": "\n            Chưa thể hoàn tất\n            \n                Chưa thể xác nhận báo giá. Vui lòng cập nhật lại báo giá.\n                \n                \n            \n        "
+  },
+  {
+    "state": "foreign-address",
+    "viewport": [
+      768,
+      1024
+    ],
+    "zoom": 1,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 753,
+    "scroll": 753,
+    "dpr": 1,
+    "quote": "false",
+    "voucher": "",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 56
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": "\n            Chưa thể hoàn tất\n            \n                \n                Chọn địa chỉ giao hàng hợp lệ của bạn.\n                \n            \n        "
+  },
+  {
+    "state": "COD-success-fixture",
+    "viewport": [
+      768,
+      1024
+    ],
+    "zoom": 1,
+    "js": true,
+    "url": "http://127.0.0.1:57080/orders/901",
+    "width": 753,
+    "scroll": 753,
+    "dpr": 1,
+    "quote": null,
+    "voucher": null,
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": false,
+    "buttons": [],
+    "scripts": [
+      "/js/app.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "MOMO-enabled-mock",
+    "viewport": [
+      768,
+      1024
+    ],
+    "zoom": 1,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 753,
+    "scroll": 753,
+    "dpr": 1,
+    "quote": "true",
+    "voucher": "SAVE50",
+    "discount": "50.000 ₫",
+    "shipping": "25.000 ₫",
+    "total": "465.000 ₫",
+    "stale": false,
+    "buttons": [
+      {
+        "disabled": false,
+        "payment": "",
+        "height": 56
+      },
+      {
+        "disabled": false,
+        "payment": "MOMO",
+        "height": 56
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "MOMO-mock-redirect",
+    "viewport": [
+      768,
+      1024
+    ],
+    "zoom": 1,
+    "js": true,
+    "url": "http://127.0.0.1:57080/payment/momo/mock/902",
+    "width": 753,
+    "scroll": 753,
+    "dpr": 1,
+    "quote": null,
+    "voucher": null,
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": false,
+    "buttons": [],
+    "scripts": [
+      "/js/app.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "MOMO-pending-gateway",
+    "viewport": [
+      768,
+      1024
+    ],
+    "zoom": 1,
+    "js": true,
+    "url": "http://127.0.0.1:57080/orders/902",
+    "width": 753,
+    "scroll": 753,
+    "dpr": 1,
+    "quote": null,
+    "voucher": null,
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": false,
+    "buttons": [],
+    "scripts": [
+      "/js/app.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "empty-cart",
+    "viewport": [
+      768,
+      1024
+    ],
+    "zoom": 1,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout",
+    "width": 753,
+    "scroll": 753,
+    "dpr": 1,
+    "quote": "false",
+    "voucher": null,
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": false,
+    "buttons": [],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "no-address",
+    "viewport": [
+      768,
+      1024
+    ],
+    "zoom": 1,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout",
+    "width": 753,
+    "scroll": 753,
+    "dpr": 1,
+    "quote": "false",
+    "voucher": null,
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": false,
+    "buttons": [],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "unconfirmed",
+    "viewport": [
+      1366,
+      768
+    ],
+    "zoom": 1,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout",
+    "width": 1351,
+    "scroll": 1351,
+    "dpr": 1,
+    "quote": "false",
+    "voucher": "",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 56
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "no-voucher",
+    "viewport": [
+      1366,
+      768
+    ],
+    "zoom": 1,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 1351,
+    "scroll": 1351,
+    "dpr": 1,
+    "quote": "true",
+    "voucher": "",
+    "discount": "0 ₫",
+    "shipping": "25.000 ₫",
+    "total": "515.000 ₫",
+    "stale": false,
+    "buttons": [
+      {
+        "disabled": false,
+        "payment": "",
+        "height": 56
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "valid",
+    "viewport": [
+      1366,
+      768
+    ],
+    "zoom": 1,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 1351,
+    "scroll": 1351,
+    "dpr": 1,
+    "quote": "true",
+    "voucher": "SAVE50",
+    "discount": "50.000 ₫",
+    "shipping": "25.000 ₫",
+    "total": "465.000 ₫",
+    "stale": false,
+    "buttons": [
+      {
+        "disabled": false,
+        "payment": "",
+        "height": 56
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "edited-quote",
+    "viewport": [
+      1366,
+      768
+    ],
+    "zoom": 1,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 1351,
+    "scroll": 1351,
+    "dpr": 1,
+    "quote": "false",
+    "voucher": "X",
+    "discount": "50.000 ₫",
+    "shipping": "25.000 ₫",
+    "total": "465.000 ₫",
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 56
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "F07-submit-error",
+    "viewport": [
+      1366,
+      768
+    ],
+    "zoom": 1,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout",
+    "width": 1351,
+    "scroll": 1351,
+    "dpr": 1,
+    "quote": "false",
+    "voucher": "SAVE50",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 56
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": "\n            Chưa thể hoàn tất\n            \n                Giỏ hàng hoặc tồn kho vừa thay đổi. Vui lòng thử lại.\n                \n                \n            \n        "
+  },
+  {
+    "state": "reconfirmed",
+    "viewport": [
+      1366,
+      768
+    ],
+    "zoom": 1,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 1351,
+    "scroll": 1351,
+    "dpr": 1,
+    "quote": "true",
+    "voucher": "SAVE50",
+    "discount": "50.000 ₫",
+    "shipping": "25.000 ₫",
+    "total": "465.000 ₫",
+    "stale": false,
+    "buttons": [
+      {
+        "disabled": false,
+        "payment": "",
+        "height": 56
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "invalid-voucher",
+    "viewport": [
+      1366,
+      768
+    ],
+    "zoom": 1,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 1351,
+    "scroll": 1351,
+    "dpr": 1,
+    "quote": "false",
+    "voucher": "EXPIRED",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 56
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": "\n            Chưa thể hoàn tất\n            \n                \n                \n                Voucher không hợp lệ, đã hết hạn hoặc hết lượt.\n            \n        "
+  },
+  {
+    "state": "minimum-not-met",
+    "viewport": [
+      1366,
+      768
+    ],
+    "zoom": 1,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 1351,
+    "scroll": 1351,
+    "dpr": 1,
+    "quote": "false",
+    "voucher": "MINIMUM",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 56
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": "\n            Chưa thể hoàn tất\n            \n                \n                \n                Đơn chưa đạt mức tối thiểu của voucher.\n            \n        "
+  },
+  {
+    "state": "quote-failed",
+    "viewport": [
+      1366,
+      768
+    ],
+    "zoom": 1,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 1351,
+    "scroll": 1351,
+    "dpr": 1,
+    "quote": "false",
+    "voucher": "READFAIL",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 56
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": "\n            Chưa thể hoàn tất\n            \n                Chưa thể xác nhận báo giá. Vui lòng cập nhật lại báo giá.\n                \n                \n            \n        "
+  },
+  {
+    "state": "foreign-address",
+    "viewport": [
+      1366,
+      768
+    ],
+    "zoom": 1,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 1351,
+    "scroll": 1351,
+    "dpr": 1,
+    "quote": "false",
+    "voucher": "",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 56
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": "\n            Chưa thể hoàn tất\n            \n                \n                Chọn địa chỉ giao hàng hợp lệ của bạn.\n                \n            \n        "
+  },
+  {
+    "state": "COD-success-fixture",
+    "viewport": [
+      1366,
+      768
+    ],
+    "zoom": 1,
+    "js": true,
+    "url": "http://127.0.0.1:57080/orders/901",
+    "width": 1351,
+    "scroll": 1351,
+    "dpr": 1,
+    "quote": null,
+    "voucher": null,
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": false,
+    "buttons": [],
+    "scripts": [
+      "/js/app.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "MOMO-enabled-mock",
+    "viewport": [
+      1366,
+      768
+    ],
+    "zoom": 1,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 1351,
+    "scroll": 1351,
+    "dpr": 1,
+    "quote": "true",
+    "voucher": "SAVE50",
+    "discount": "50.000 ₫",
+    "shipping": "25.000 ₫",
+    "total": "465.000 ₫",
+    "stale": false,
+    "buttons": [
+      {
+        "disabled": false,
+        "payment": "",
+        "height": 56
+      },
+      {
+        "disabled": false,
+        "payment": "MOMO",
+        "height": 78.6875
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "MOMO-mock-redirect",
+    "viewport": [
+      1366,
+      768
+    ],
+    "zoom": 1,
+    "js": true,
+    "url": "http://127.0.0.1:57080/payment/momo/mock/902",
+    "width": 1351,
+    "scroll": 1351,
+    "dpr": 1,
+    "quote": null,
+    "voucher": null,
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": false,
+    "buttons": [],
+    "scripts": [
+      "/js/app.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "MOMO-pending-gateway",
+    "viewport": [
+      1366,
+      768
+    ],
+    "zoom": 1,
+    "js": true,
+    "url": "http://127.0.0.1:57080/orders/902",
+    "width": 1351,
+    "scroll": 1351,
+    "dpr": 1,
+    "quote": null,
+    "voucher": null,
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": false,
+    "buttons": [],
+    "scripts": [
+      "/js/app.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "empty-cart",
+    "viewport": [
+      1366,
+      768
+    ],
+    "zoom": 1,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout",
+    "width": 1351,
+    "scroll": 1351,
+    "dpr": 1,
+    "quote": "false",
+    "voucher": null,
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": false,
+    "buttons": [],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "no-address",
+    "viewport": [
+      1366,
+      768
+    ],
+    "zoom": 1,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout",
+    "width": 1351,
+    "scroll": 1351,
+    "dpr": 1,
+    "quote": "false",
+    "voucher": null,
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": false,
+    "buttons": [],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "unconfirmed",
+    "viewport": [
+      1920,
+      1080
+    ],
+    "zoom": 1,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout",
+    "width": 1905,
+    "scroll": 1905,
+    "dpr": 1,
+    "quote": "false",
+    "voucher": "",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 56
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "no-voucher",
+    "viewport": [
+      1920,
+      1080
+    ],
+    "zoom": 1,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 1905,
+    "scroll": 1905,
+    "dpr": 1,
+    "quote": "true",
+    "voucher": "",
+    "discount": "0 ₫",
+    "shipping": "25.000 ₫",
+    "total": "515.000 ₫",
+    "stale": false,
+    "buttons": [
+      {
+        "disabled": false,
+        "payment": "",
+        "height": 56
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "valid",
+    "viewport": [
+      1920,
+      1080
+    ],
+    "zoom": 1,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 1905,
+    "scroll": 1905,
+    "dpr": 1,
+    "quote": "true",
+    "voucher": "SAVE50",
+    "discount": "50.000 ₫",
+    "shipping": "25.000 ₫",
+    "total": "465.000 ₫",
+    "stale": false,
+    "buttons": [
+      {
+        "disabled": false,
+        "payment": "",
+        "height": 56
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "edited-quote",
+    "viewport": [
+      1920,
+      1080
+    ],
+    "zoom": 1,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 1905,
+    "scroll": 1905,
+    "dpr": 1,
+    "quote": "false",
+    "voucher": "X",
+    "discount": "50.000 ₫",
+    "shipping": "25.000 ₫",
+    "total": "465.000 ₫",
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 56
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "F07-submit-error",
+    "viewport": [
+      1920,
+      1080
+    ],
+    "zoom": 1,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout",
+    "width": 1905,
+    "scroll": 1905,
+    "dpr": 1,
+    "quote": "false",
+    "voucher": "SAVE50",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 56
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": "\n            Chưa thể hoàn tất\n            \n                Giỏ hàng hoặc tồn kho vừa thay đổi. Vui lòng thử lại.\n                \n                \n            \n        "
+  },
+  {
+    "state": "reconfirmed",
+    "viewport": [
+      1920,
+      1080
+    ],
+    "zoom": 1,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 1905,
+    "scroll": 1905,
+    "dpr": 1,
+    "quote": "true",
+    "voucher": "SAVE50",
+    "discount": "50.000 ₫",
+    "shipping": "25.000 ₫",
+    "total": "465.000 ₫",
+    "stale": false,
+    "buttons": [
+      {
+        "disabled": false,
+        "payment": "",
+        "height": 56
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "invalid-voucher",
+    "viewport": [
+      1920,
+      1080
+    ],
+    "zoom": 1,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 1905,
+    "scroll": 1905,
+    "dpr": 1,
+    "quote": "false",
+    "voucher": "EXPIRED",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 56
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": "\n            Chưa thể hoàn tất\n            \n                \n                \n                Voucher không hợp lệ, đã hết hạn hoặc hết lượt.\n            \n        "
+  },
+  {
+    "state": "minimum-not-met",
+    "viewport": [
+      1920,
+      1080
+    ],
+    "zoom": 1,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 1905,
+    "scroll": 1905,
+    "dpr": 1,
+    "quote": "false",
+    "voucher": "MINIMUM",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 56
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": "\n            Chưa thể hoàn tất\n            \n                \n                \n                Đơn chưa đạt mức tối thiểu của voucher.\n            \n        "
+  },
+  {
+    "state": "quote-failed",
+    "viewport": [
+      1920,
+      1080
+    ],
+    "zoom": 1,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 1905,
+    "scroll": 1905,
+    "dpr": 1,
+    "quote": "false",
+    "voucher": "READFAIL",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 56
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": "\n            Chưa thể hoàn tất\n            \n                Chưa thể xác nhận báo giá. Vui lòng cập nhật lại báo giá.\n                \n                \n            \n        "
+  },
+  {
+    "state": "foreign-address",
+    "viewport": [
+      1920,
+      1080
+    ],
+    "zoom": 1,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 1905,
+    "scroll": 1905,
+    "dpr": 1,
+    "quote": "false",
+    "voucher": "",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 56
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": "\n            Chưa thể hoàn tất\n            \n                \n                Chọn địa chỉ giao hàng hợp lệ của bạn.\n                \n            \n        "
+  },
+  {
+    "state": "COD-success-fixture",
+    "viewport": [
+      1920,
+      1080
+    ],
+    "zoom": 1,
+    "js": true,
+    "url": "http://127.0.0.1:57080/orders/901",
+    "width": 1905,
+    "scroll": 1905,
+    "dpr": 1,
+    "quote": null,
+    "voucher": null,
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": false,
+    "buttons": [],
+    "scripts": [
+      "/js/app.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "MOMO-enabled-mock",
+    "viewport": [
+      1920,
+      1080
+    ],
+    "zoom": 1,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 1905,
+    "scroll": 1905,
+    "dpr": 1,
+    "quote": "true",
+    "voucher": "SAVE50",
+    "discount": "50.000 ₫",
+    "shipping": "25.000 ₫",
+    "total": "465.000 ₫",
+    "stale": false,
+    "buttons": [
+      {
+        "disabled": false,
+        "payment": "",
+        "height": 56
+      },
+      {
+        "disabled": false,
+        "payment": "MOMO",
+        "height": 78.6875
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "MOMO-mock-redirect",
+    "viewport": [
+      1920,
+      1080
+    ],
+    "zoom": 1,
+    "js": true,
+    "url": "http://127.0.0.1:57080/payment/momo/mock/902",
+    "width": 1920,
+    "scroll": 1920,
+    "dpr": 1,
+    "quote": null,
+    "voucher": null,
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": false,
+    "buttons": [],
+    "scripts": [
+      "/js/app.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "MOMO-pending-gateway",
+    "viewport": [
+      1920,
+      1080
+    ],
+    "zoom": 1,
+    "js": true,
+    "url": "http://127.0.0.1:57080/orders/902",
+    "width": 1905,
+    "scroll": 1905,
+    "dpr": 1,
+    "quote": null,
+    "voucher": null,
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": false,
+    "buttons": [],
+    "scripts": [
+      "/js/app.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "empty-cart",
+    "viewport": [
+      1920,
+      1080
+    ],
+    "zoom": 1,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout",
+    "width": 1920,
+    "scroll": 1920,
+    "dpr": 1,
+    "quote": "false",
+    "voucher": null,
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": false,
+    "buttons": [],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "no-address",
+    "viewport": [
+      1920,
+      1080
+    ],
+    "zoom": 1,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout",
+    "width": 1920,
+    "scroll": 1920,
+    "dpr": 1,
+    "quote": "false",
+    "voucher": null,
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": false,
+    "buttons": [],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "unconfirmed",
+    "viewport": [
+      360,
+      800
+    ],
+    "zoom": 2,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout",
+    "width": 172,
+    "scroll": 172,
+    "dpr": 2,
+    "quote": "false",
+    "voucher": "",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 211.40625
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "no-voucher",
+    "viewport": [
+      360,
+      800
+    ],
+    "zoom": 2,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 172,
+    "scroll": 172,
+    "dpr": 2,
+    "quote": "true",
+    "voucher": "",
+    "discount": "0 ₫",
+    "shipping": "25.000 ₫",
+    "total": "515.000 ₫",
+    "stale": false,
+    "buttons": [
+      {
+        "disabled": false,
+        "payment": "",
+        "height": 211.40625
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "valid",
+    "viewport": [
+      360,
+      800
+    ],
+    "zoom": 2,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 172,
+    "scroll": 172,
+    "dpr": 2,
+    "quote": "true",
+    "voucher": "SAVE50",
+    "discount": "50.000 ₫",
+    "shipping": "25.000 ₫",
+    "total": "465.000 ₫",
+    "stale": false,
+    "buttons": [
+      {
+        "disabled": false,
+        "payment": "",
+        "height": 211.40625
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "edited-quote",
+    "viewport": [
+      360,
+      800
+    ],
+    "zoom": 2,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 172,
+    "scroll": 172,
+    "dpr": 2,
+    "quote": "false",
+    "voucher": "X",
+    "discount": "50.000 ₫",
+    "shipping": "25.000 ₫",
+    "total": "465.000 ₫",
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 211.40625
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "F07-submit-error",
+    "viewport": [
+      360,
+      800
+    ],
+    "zoom": 2,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout",
+    "width": 172,
+    "scroll": 172,
+    "dpr": 2,
+    "quote": "false",
+    "voucher": "SAVE50",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 211.40625
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": "\n            Chưa thể hoàn tất\n            \n                Giỏ hàng hoặc tồn kho vừa thay đổi. Vui lòng thử lại.\n                \n                \n            \n        "
+  },
+  {
+    "state": "reconfirmed",
+    "viewport": [
+      360,
+      800
+    ],
+    "zoom": 2,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 172,
+    "scroll": 172,
+    "dpr": 2,
+    "quote": "true",
+    "voucher": "SAVE50",
+    "discount": "50.000 ₫",
+    "shipping": "25.000 ₫",
+    "total": "465.000 ₫",
+    "stale": false,
+    "buttons": [
+      {
+        "disabled": false,
+        "payment": "",
+        "height": 211.40625
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "invalid-voucher",
+    "viewport": [
+      360,
+      800
+    ],
+    "zoom": 2,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 172,
+    "scroll": 172,
+    "dpr": 2,
+    "quote": "false",
+    "voucher": "EXPIRED",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 211.40625
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": "\n            Chưa thể hoàn tất\n            \n                \n                \n                Voucher không hợp lệ, đã hết hạn hoặc hết lượt.\n            \n        "
+  },
+  {
+    "state": "minimum-not-met",
+    "viewport": [
+      360,
+      800
+    ],
+    "zoom": 2,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 172,
+    "scroll": 172,
+    "dpr": 2,
+    "quote": "false",
+    "voucher": "MINIMUM",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 211.40625
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": "\n            Chưa thể hoàn tất\n            \n                \n                \n                Đơn chưa đạt mức tối thiểu của voucher.\n            \n        "
+  },
+  {
+    "state": "quote-failed",
+    "viewport": [
+      360,
+      800
+    ],
+    "zoom": 2,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 172,
+    "scroll": 172,
+    "dpr": 2,
+    "quote": "false",
+    "voucher": "READFAIL",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 211.40625
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": "\n            Chưa thể hoàn tất\n            \n                Chưa thể xác nhận báo giá. Vui lòng cập nhật lại báo giá.\n                \n                \n            \n        "
+  },
+  {
+    "state": "foreign-address",
+    "viewport": [
+      360,
+      800
+    ],
+    "zoom": 2,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 172,
+    "scroll": 172,
+    "dpr": 2,
+    "quote": "false",
+    "voucher": "",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 211.40625
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": "\n            Chưa thể hoàn tất\n            \n                \n                Chọn địa chỉ giao hàng hợp lệ của bạn.\n                \n            \n        "
+  },
+  {
+    "state": "COD-success-fixture",
+    "viewport": [
+      360,
+      800
+    ],
+    "zoom": 2,
+    "js": true,
+    "url": "http://127.0.0.1:57080/orders/901",
+    "width": 172,
+    "scroll": 172,
+    "dpr": 2,
+    "quote": null,
+    "voucher": null,
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": false,
+    "buttons": [],
+    "scripts": [
+      "/js/app.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "MOMO-enabled-mock",
+    "viewport": [
+      360,
+      800
+    ],
+    "zoom": 2,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 172,
+    "scroll": 172,
+    "dpr": 2,
+    "quote": "true",
+    "voucher": "SAVE50",
+    "discount": "50.000 ₫",
+    "shipping": "25.000 ₫",
+    "total": "465.000 ₫",
+    "stale": false,
+    "buttons": [
+      {
+        "disabled": false,
+        "payment": "",
+        "height": 211.40625
+      },
+      {
+        "disabled": false,
+        "payment": "MOMO",
+        "height": 264.09375
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "MOMO-mock-redirect",
+    "viewport": [
+      360,
+      800
+    ],
+    "zoom": 2,
+    "js": true,
+    "url": "http://127.0.0.1:57080/payment/momo/mock/902",
+    "width": 172,
+    "scroll": 172,
+    "dpr": 2,
+    "quote": null,
+    "voucher": null,
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": false,
+    "buttons": [],
+    "scripts": [
+      "/js/app.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "MOMO-pending-gateway",
+    "viewport": [
+      360,
+      800
+    ],
+    "zoom": 2,
+    "js": true,
+    "url": "http://127.0.0.1:57080/orders/902",
+    "width": 172,
+    "scroll": 172,
+    "dpr": 2,
+    "quote": null,
+    "voucher": null,
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": false,
+    "buttons": [],
+    "scripts": [
+      "/js/app.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "empty-cart",
+    "viewport": [
+      360,
+      800
+    ],
+    "zoom": 2,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout",
+    "width": 172,
+    "scroll": 172,
+    "dpr": 2,
+    "quote": "false",
+    "voucher": null,
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": false,
+    "buttons": [],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "no-address",
+    "viewport": [
+      360,
+      800
+    ],
+    "zoom": 2,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout",
+    "width": 172,
+    "scroll": 172,
+    "dpr": 2,
+    "quote": "false",
+    "voucher": null,
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": false,
+    "buttons": [],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "unconfirmed",
+    "viewport": [
+      390,
+      844
+    ],
+    "zoom": 2,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout",
+    "width": 187,
+    "scroll": 187,
+    "dpr": 2,
+    "quote": "false",
+    "voucher": "",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 211.40625
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "no-voucher",
+    "viewport": [
+      390,
+      844
+    ],
+    "zoom": 2,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 187,
+    "scroll": 187,
+    "dpr": 2,
+    "quote": "true",
+    "voucher": "",
+    "discount": "0 ₫",
+    "shipping": "25.000 ₫",
+    "total": "515.000 ₫",
+    "stale": false,
+    "buttons": [
+      {
+        "disabled": false,
+        "payment": "",
+        "height": 211.40625
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "valid",
+    "viewport": [
+      390,
+      844
+    ],
+    "zoom": 2,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 187,
+    "scroll": 187,
+    "dpr": 2,
+    "quote": "true",
+    "voucher": "SAVE50",
+    "discount": "50.000 ₫",
+    "shipping": "25.000 ₫",
+    "total": "465.000 ₫",
+    "stale": false,
+    "buttons": [
+      {
+        "disabled": false,
+        "payment": "",
+        "height": 211.40625
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "edited-quote",
+    "viewport": [
+      390,
+      844
+    ],
+    "zoom": 2,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 187,
+    "scroll": 187,
+    "dpr": 2,
+    "quote": "false",
+    "voucher": "X",
+    "discount": "50.000 ₫",
+    "shipping": "25.000 ₫",
+    "total": "465.000 ₫",
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 211.40625
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "F07-submit-error",
+    "viewport": [
+      390,
+      844
+    ],
+    "zoom": 2,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout",
+    "width": 187,
+    "scroll": 187,
+    "dpr": 2,
+    "quote": "false",
+    "voucher": "SAVE50",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 211.40625
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": "\n            Chưa thể hoàn tất\n            \n                Giỏ hàng hoặc tồn kho vừa thay đổi. Vui lòng thử lại.\n                \n                \n            \n        "
+  },
+  {
+    "state": "reconfirmed",
+    "viewport": [
+      390,
+      844
+    ],
+    "zoom": 2,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 187,
+    "scroll": 187,
+    "dpr": 2,
+    "quote": "true",
+    "voucher": "SAVE50",
+    "discount": "50.000 ₫",
+    "shipping": "25.000 ₫",
+    "total": "465.000 ₫",
+    "stale": false,
+    "buttons": [
+      {
+        "disabled": false,
+        "payment": "",
+        "height": 211.40625
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "invalid-voucher",
+    "viewport": [
+      390,
+      844
+    ],
+    "zoom": 2,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 187,
+    "scroll": 187,
+    "dpr": 2,
+    "quote": "false",
+    "voucher": "EXPIRED",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 211.40625
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": "\n            Chưa thể hoàn tất\n            \n                \n                \n                Voucher không hợp lệ, đã hết hạn hoặc hết lượt.\n            \n        "
+  },
+  {
+    "state": "minimum-not-met",
+    "viewport": [
+      390,
+      844
+    ],
+    "zoom": 2,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 187,
+    "scroll": 187,
+    "dpr": 2,
+    "quote": "false",
+    "voucher": "MINIMUM",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 211.40625
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": "\n            Chưa thể hoàn tất\n            \n                \n                \n                Đơn chưa đạt mức tối thiểu của voucher.\n            \n        "
+  },
+  {
+    "state": "quote-failed",
+    "viewport": [
+      390,
+      844
+    ],
+    "zoom": 2,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 187,
+    "scroll": 187,
+    "dpr": 2,
+    "quote": "false",
+    "voucher": "READFAIL",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 211.40625
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": "\n            Chưa thể hoàn tất\n            \n                Chưa thể xác nhận báo giá. Vui lòng cập nhật lại báo giá.\n                \n                \n            \n        "
+  },
+  {
+    "state": "foreign-address",
+    "viewport": [
+      390,
+      844
+    ],
+    "zoom": 2,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 187,
+    "scroll": 187,
+    "dpr": 2,
+    "quote": "false",
+    "voucher": "",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 211.40625
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": "\n            Chưa thể hoàn tất\n            \n                \n                Chọn địa chỉ giao hàng hợp lệ của bạn.\n                \n            \n        "
+  },
+  {
+    "state": "COD-success-fixture",
+    "viewport": [
+      390,
+      844
+    ],
+    "zoom": 2,
+    "js": true,
+    "url": "http://127.0.0.1:57080/orders/901",
+    "width": 187,
+    "scroll": 187,
+    "dpr": 2,
+    "quote": null,
+    "voucher": null,
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": false,
+    "buttons": [],
+    "scripts": [
+      "/js/app.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "MOMO-enabled-mock",
+    "viewport": [
+      390,
+      844
+    ],
+    "zoom": 2,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 187,
+    "scroll": 187,
+    "dpr": 2,
+    "quote": "true",
+    "voucher": "SAVE50",
+    "discount": "50.000 ₫",
+    "shipping": "25.000 ₫",
+    "total": "465.000 ₫",
+    "stale": false,
+    "buttons": [
+      {
+        "disabled": false,
+        "payment": "",
+        "height": 211.40625
+      },
+      {
+        "disabled": false,
+        "payment": "MOMO",
+        "height": 264.09375
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "MOMO-mock-redirect",
+    "viewport": [
+      390,
+      844
+    ],
+    "zoom": 2,
+    "js": true,
+    "url": "http://127.0.0.1:57080/payment/momo/mock/902",
+    "width": 187,
+    "scroll": 187,
+    "dpr": 2,
+    "quote": null,
+    "voucher": null,
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": false,
+    "buttons": [],
+    "scripts": [
+      "/js/app.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "MOMO-pending-gateway",
+    "viewport": [
+      390,
+      844
+    ],
+    "zoom": 2,
+    "js": true,
+    "url": "http://127.0.0.1:57080/orders/902",
+    "width": 187,
+    "scroll": 187,
+    "dpr": 2,
+    "quote": null,
+    "voucher": null,
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": false,
+    "buttons": [],
+    "scripts": [
+      "/js/app.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "empty-cart",
+    "viewport": [
+      390,
+      844
+    ],
+    "zoom": 2,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout",
+    "width": 187,
+    "scroll": 187,
+    "dpr": 2,
+    "quote": "false",
+    "voucher": null,
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": false,
+    "buttons": [],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "no-address",
+    "viewport": [
+      390,
+      844
+    ],
+    "zoom": 2,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout",
+    "width": 187,
+    "scroll": 187,
+    "dpr": 2,
+    "quote": "false",
+    "voucher": null,
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": false,
+    "buttons": [],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "unconfirmed",
+    "viewport": [
+      768,
+      1024
+    ],
+    "zoom": 2,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout",
+    "width": 376,
+    "scroll": 376,
+    "dpr": 2,
+    "quote": "false",
+    "voucher": "",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 79.6875
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "no-voucher",
+    "viewport": [
+      768,
+      1024
+    ],
+    "zoom": 2,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 376,
+    "scroll": 376,
+    "dpr": 2,
+    "quote": "true",
+    "voucher": "",
+    "discount": "0 ₫",
+    "shipping": "25.000 ₫",
+    "total": "515.000 ₫",
+    "stale": false,
+    "buttons": [
+      {
+        "disabled": false,
+        "payment": "",
+        "height": 79.6875
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "valid",
+    "viewport": [
+      768,
+      1024
+    ],
+    "zoom": 2,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 376,
+    "scroll": 376,
+    "dpr": 2,
+    "quote": "true",
+    "voucher": "SAVE50",
+    "discount": "50.000 ₫",
+    "shipping": "25.000 ₫",
+    "total": "465.000 ₫",
+    "stale": false,
+    "buttons": [
+      {
+        "disabled": false,
+        "payment": "",
+        "height": 79.6875
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "edited-quote",
+    "viewport": [
+      768,
+      1024
+    ],
+    "zoom": 2,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 376,
+    "scroll": 376,
+    "dpr": 2,
+    "quote": "false",
+    "voucher": "X",
+    "discount": "50.000 ₫",
+    "shipping": "25.000 ₫",
+    "total": "465.000 ₫",
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 79.6875
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "F07-submit-error",
+    "viewport": [
+      768,
+      1024
+    ],
+    "zoom": 2,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout",
+    "width": 376,
+    "scroll": 376,
+    "dpr": 2,
+    "quote": "false",
+    "voucher": "SAVE50",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 79.6875
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": "\n            Chưa thể hoàn tất\n            \n                Giỏ hàng hoặc tồn kho vừa thay đổi. Vui lòng thử lại.\n                \n                \n            \n        "
+  },
+  {
+    "state": "reconfirmed",
+    "viewport": [
+      768,
+      1024
+    ],
+    "zoom": 2,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 376,
+    "scroll": 376,
+    "dpr": 2,
+    "quote": "true",
+    "voucher": "SAVE50",
+    "discount": "50.000 ₫",
+    "shipping": "25.000 ₫",
+    "total": "465.000 ₫",
+    "stale": false,
+    "buttons": [
+      {
+        "disabled": false,
+        "payment": "",
+        "height": 79.6875
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "invalid-voucher",
+    "viewport": [
+      768,
+      1024
+    ],
+    "zoom": 2,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 376,
+    "scroll": 376,
+    "dpr": 2,
+    "quote": "false",
+    "voucher": "EXPIRED",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 79.6875
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": "\n            Chưa thể hoàn tất\n            \n                \n                \n                Voucher không hợp lệ, đã hết hạn hoặc hết lượt.\n            \n        "
+  },
+  {
+    "state": "minimum-not-met",
+    "viewport": [
+      768,
+      1024
+    ],
+    "zoom": 2,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 376,
+    "scroll": 376,
+    "dpr": 2,
+    "quote": "false",
+    "voucher": "MINIMUM",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 79.6875
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": "\n            Chưa thể hoàn tất\n            \n                \n                \n                Đơn chưa đạt mức tối thiểu của voucher.\n            \n        "
+  },
+  {
+    "state": "quote-failed",
+    "viewport": [
+      768,
+      1024
+    ],
+    "zoom": 2,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 376,
+    "scroll": 376,
+    "dpr": 2,
+    "quote": "false",
+    "voucher": "READFAIL",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 79.6875
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": "\n            Chưa thể hoàn tất\n            \n                Chưa thể xác nhận báo giá. Vui lòng cập nhật lại báo giá.\n                \n                \n            \n        "
+  },
+  {
+    "state": "foreign-address",
+    "viewport": [
+      768,
+      1024
+    ],
+    "zoom": 2,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 376,
+    "scroll": 376,
+    "dpr": 2,
+    "quote": "false",
+    "voucher": "",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 79.6875
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": "\n            Chưa thể hoàn tất\n            \n                \n                Chọn địa chỉ giao hàng hợp lệ của bạn.\n                \n            \n        "
+  },
+  {
+    "state": "COD-success-fixture",
+    "viewport": [
+      768,
+      1024
+    ],
+    "zoom": 2,
+    "js": true,
+    "url": "http://127.0.0.1:57080/orders/901",
+    "width": 376,
+    "scroll": 376,
+    "dpr": 2,
+    "quote": null,
+    "voucher": null,
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": false,
+    "buttons": [],
+    "scripts": [
+      "/js/app.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "MOMO-enabled-mock",
+    "viewport": [
+      768,
+      1024
+    ],
+    "zoom": 2,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 376,
+    "scroll": 376,
+    "dpr": 2,
+    "quote": "true",
+    "voucher": "SAVE50",
+    "discount": "50.000 ₫",
+    "shipping": "25.000 ₫",
+    "total": "465.000 ₫",
+    "stale": false,
+    "buttons": [
+      {
+        "disabled": false,
+        "payment": "",
+        "height": 79.6875
+      },
+      {
+        "disabled": false,
+        "payment": "MOMO",
+        "height": 79.6875
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "MOMO-mock-redirect",
+    "viewport": [
+      768,
+      1024
+    ],
+    "zoom": 2,
+    "js": true,
+    "url": "http://127.0.0.1:57080/payment/momo/mock/902",
+    "width": 376,
+    "scroll": 376,
+    "dpr": 2,
+    "quote": null,
+    "voucher": null,
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": false,
+    "buttons": [],
+    "scripts": [
+      "/js/app.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "MOMO-pending-gateway",
+    "viewport": [
+      768,
+      1024
+    ],
+    "zoom": 2,
+    "js": true,
+    "url": "http://127.0.0.1:57080/orders/902",
+    "width": 376,
+    "scroll": 376,
+    "dpr": 2,
+    "quote": null,
+    "voucher": null,
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": false,
+    "buttons": [],
+    "scripts": [
+      "/js/app.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "empty-cart",
+    "viewport": [
+      768,
+      1024
+    ],
+    "zoom": 2,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout",
+    "width": 376,
+    "scroll": 376,
+    "dpr": 2,
+    "quote": "false",
+    "voucher": null,
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": false,
+    "buttons": [],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "no-address",
+    "viewport": [
+      768,
+      1024
+    ],
+    "zoom": 2,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout",
+    "width": 376,
+    "scroll": 376,
+    "dpr": 2,
+    "quote": "false",
+    "voucher": null,
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": false,
+    "buttons": [],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "unconfirmed",
+    "viewport": [
+      1366,
+      768
+    ],
+    "zoom": 2,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout",
+    "width": 675,
+    "scroll": 675,
+    "dpr": 2,
+    "quote": "false",
+    "voucher": "",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 56
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "no-voucher",
+    "viewport": [
+      1366,
+      768
+    ],
+    "zoom": 2,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 675,
+    "scroll": 675,
+    "dpr": 2,
+    "quote": "true",
+    "voucher": "",
+    "discount": "0 ₫",
+    "shipping": "25.000 ₫",
+    "total": "515.000 ₫",
+    "stale": false,
+    "buttons": [
+      {
+        "disabled": false,
+        "payment": "",
+        "height": 56
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "valid",
+    "viewport": [
+      1366,
+      768
+    ],
+    "zoom": 2,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 675,
+    "scroll": 675,
+    "dpr": 2,
+    "quote": "true",
+    "voucher": "SAVE50",
+    "discount": "50.000 ₫",
+    "shipping": "25.000 ₫",
+    "total": "465.000 ₫",
+    "stale": false,
+    "buttons": [
+      {
+        "disabled": false,
+        "payment": "",
+        "height": 56
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "edited-quote",
+    "viewport": [
+      1366,
+      768
+    ],
+    "zoom": 2,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 675,
+    "scroll": 675,
+    "dpr": 2,
+    "quote": "false",
+    "voucher": "X",
+    "discount": "50.000 ₫",
+    "shipping": "25.000 ₫",
+    "total": "465.000 ₫",
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 56
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "F07-submit-error",
+    "viewport": [
+      1366,
+      768
+    ],
+    "zoom": 2,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout",
+    "width": 675,
+    "scroll": 675,
+    "dpr": 2,
+    "quote": "false",
+    "voucher": "SAVE50",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 56
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": "\n            Chưa thể hoàn tất\n            \n                Giỏ hàng hoặc tồn kho vừa thay đổi. Vui lòng thử lại.\n                \n                \n            \n        "
+  },
+  {
+    "state": "reconfirmed",
+    "viewport": [
+      1366,
+      768
+    ],
+    "zoom": 2,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 675,
+    "scroll": 675,
+    "dpr": 2,
+    "quote": "true",
+    "voucher": "SAVE50",
+    "discount": "50.000 ₫",
+    "shipping": "25.000 ₫",
+    "total": "465.000 ₫",
+    "stale": false,
+    "buttons": [
+      {
+        "disabled": false,
+        "payment": "",
+        "height": 56
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "invalid-voucher",
+    "viewport": [
+      1366,
+      768
+    ],
+    "zoom": 2,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 675,
+    "scroll": 675,
+    "dpr": 2,
+    "quote": "false",
+    "voucher": "EXPIRED",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 56
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": "\n            Chưa thể hoàn tất\n            \n                \n                \n                Voucher không hợp lệ, đã hết hạn hoặc hết lượt.\n            \n        "
+  },
+  {
+    "state": "minimum-not-met",
+    "viewport": [
+      1366,
+      768
+    ],
+    "zoom": 2,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 675,
+    "scroll": 675,
+    "dpr": 2,
+    "quote": "false",
+    "voucher": "MINIMUM",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 56
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": "\n            Chưa thể hoàn tất\n            \n                \n                \n                Đơn chưa đạt mức tối thiểu của voucher.\n            \n        "
+  },
+  {
+    "state": "quote-failed",
+    "viewport": [
+      1366,
+      768
+    ],
+    "zoom": 2,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 675,
+    "scroll": 675,
+    "dpr": 2,
+    "quote": "false",
+    "voucher": "READFAIL",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 56
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": "\n            Chưa thể hoàn tất\n            \n                Chưa thể xác nhận báo giá. Vui lòng cập nhật lại báo giá.\n                \n                \n            \n        "
+  },
+  {
+    "state": "foreign-address",
+    "viewport": [
+      1366,
+      768
+    ],
+    "zoom": 2,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 675,
+    "scroll": 675,
+    "dpr": 2,
+    "quote": "false",
+    "voucher": "",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 56
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": "\n            Chưa thể hoàn tất\n            \n                \n                Chọn địa chỉ giao hàng hợp lệ của bạn.\n                \n            \n        "
+  },
+  {
+    "state": "COD-success-fixture",
+    "viewport": [
+      1366,
+      768
+    ],
+    "zoom": 2,
+    "js": true,
+    "url": "http://127.0.0.1:57080/orders/901",
+    "width": 675,
+    "scroll": 675,
+    "dpr": 2,
+    "quote": null,
+    "voucher": null,
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": false,
+    "buttons": [],
+    "scripts": [
+      "/js/app.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "MOMO-enabled-mock",
+    "viewport": [
+      1366,
+      768
+    ],
+    "zoom": 2,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 675,
+    "scroll": 675,
+    "dpr": 2,
+    "quote": "true",
+    "voucher": "SAVE50",
+    "discount": "50.000 ₫",
+    "shipping": "25.000 ₫",
+    "total": "465.000 ₫",
+    "stale": false,
+    "buttons": [
+      {
+        "disabled": false,
+        "payment": "",
+        "height": 56
+      },
+      {
+        "disabled": false,
+        "payment": "MOMO",
+        "height": 56
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "MOMO-mock-redirect",
+    "viewport": [
+      1366,
+      768
+    ],
+    "zoom": 2,
+    "js": true,
+    "url": "http://127.0.0.1:57080/payment/momo/mock/902",
+    "width": 675,
+    "scroll": 675,
+    "dpr": 2,
+    "quote": null,
+    "voucher": null,
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": false,
+    "buttons": [],
+    "scripts": [
+      "/js/app.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "MOMO-pending-gateway",
+    "viewport": [
+      1366,
+      768
+    ],
+    "zoom": 2,
+    "js": true,
+    "url": "http://127.0.0.1:57080/orders/902",
+    "width": 675,
+    "scroll": 675,
+    "dpr": 2,
+    "quote": null,
+    "voucher": null,
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": false,
+    "buttons": [],
+    "scripts": [
+      "/js/app.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "empty-cart",
+    "viewport": [
+      1366,
+      768
+    ],
+    "zoom": 2,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout",
+    "width": 675,
+    "scroll": 675,
+    "dpr": 2,
+    "quote": "false",
+    "voucher": null,
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": false,
+    "buttons": [],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "no-address",
+    "viewport": [
+      1366,
+      768
+    ],
+    "zoom": 2,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout",
+    "width": 675,
+    "scroll": 675,
+    "dpr": 2,
+    "quote": "false",
+    "voucher": null,
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": false,
+    "buttons": [],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "unconfirmed",
+    "viewport": [
+      1920,
+      1080
+    ],
+    "zoom": 2,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout",
+    "width": 952,
+    "scroll": 952,
+    "dpr": 2,
+    "quote": "false",
+    "voucher": "",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 79.6875
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "no-voucher",
+    "viewport": [
+      1920,
+      1080
+    ],
+    "zoom": 2,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 952,
+    "scroll": 952,
+    "dpr": 2,
+    "quote": "true",
+    "voucher": "",
+    "discount": "0 ₫",
+    "shipping": "25.000 ₫",
+    "total": "515.000 ₫",
+    "stale": false,
+    "buttons": [
+      {
+        "disabled": false,
+        "payment": "",
+        "height": 79.6875
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "valid",
+    "viewport": [
+      1920,
+      1080
+    ],
+    "zoom": 2,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 952,
+    "scroll": 952,
+    "dpr": 2,
+    "quote": "true",
+    "voucher": "SAVE50",
+    "discount": "50.000 ₫",
+    "shipping": "25.000 ₫",
+    "total": "465.000 ₫",
+    "stale": false,
+    "buttons": [
+      {
+        "disabled": false,
+        "payment": "",
+        "height": 79.6875
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "edited-quote",
+    "viewport": [
+      1920,
+      1080
+    ],
+    "zoom": 2,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 952,
+    "scroll": 952,
+    "dpr": 2,
+    "quote": "false",
+    "voucher": "X",
+    "discount": "50.000 ₫",
+    "shipping": "25.000 ₫",
+    "total": "465.000 ₫",
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 79.6875
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "F07-submit-error",
+    "viewport": [
+      1920,
+      1080
+    ],
+    "zoom": 2,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout",
+    "width": 952,
+    "scroll": 952,
+    "dpr": 2,
+    "quote": "false",
+    "voucher": "SAVE50",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 79.6875
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": "\n            Chưa thể hoàn tất\n            \n                Giỏ hàng hoặc tồn kho vừa thay đổi. Vui lòng thử lại.\n                \n                \n            \n        "
+  },
+  {
+    "state": "reconfirmed",
+    "viewport": [
+      1920,
+      1080
+    ],
+    "zoom": 2,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 952,
+    "scroll": 952,
+    "dpr": 2,
+    "quote": "true",
+    "voucher": "SAVE50",
+    "discount": "50.000 ₫",
+    "shipping": "25.000 ₫",
+    "total": "465.000 ₫",
+    "stale": false,
+    "buttons": [
+      {
+        "disabled": false,
+        "payment": "",
+        "height": 79.6875
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "invalid-voucher",
+    "viewport": [
+      1920,
+      1080
+    ],
+    "zoom": 2,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 952,
+    "scroll": 952,
+    "dpr": 2,
+    "quote": "false",
+    "voucher": "EXPIRED",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 79.6875
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": "\n            Chưa thể hoàn tất\n            \n                \n                \n                Voucher không hợp lệ, đã hết hạn hoặc hết lượt.\n            \n        "
+  },
+  {
+    "state": "minimum-not-met",
+    "viewport": [
+      1920,
+      1080
+    ],
+    "zoom": 2,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 952,
+    "scroll": 952,
+    "dpr": 2,
+    "quote": "false",
+    "voucher": "MINIMUM",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 79.6875
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": "\n            Chưa thể hoàn tất\n            \n                \n                \n                Đơn chưa đạt mức tối thiểu của voucher.\n            \n        "
+  },
+  {
+    "state": "quote-failed",
+    "viewport": [
+      1920,
+      1080
+    ],
+    "zoom": 2,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 952,
+    "scroll": 952,
+    "dpr": 2,
+    "quote": "false",
+    "voucher": "READFAIL",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 79.6875
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": "\n            Chưa thể hoàn tất\n            \n                Chưa thể xác nhận báo giá. Vui lòng cập nhật lại báo giá.\n                \n                \n            \n        "
+  },
+  {
+    "state": "foreign-address",
+    "viewport": [
+      1920,
+      1080
+    ],
+    "zoom": 2,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 952,
+    "scroll": 952,
+    "dpr": 2,
+    "quote": "false",
+    "voucher": "",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 79.6875
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": "\n            Chưa thể hoàn tất\n            \n                \n                Chọn địa chỉ giao hàng hợp lệ của bạn.\n                \n            \n        "
+  },
+  {
+    "state": "COD-success-fixture",
+    "viewport": [
+      1920,
+      1080
+    ],
+    "zoom": 2,
+    "js": true,
+    "url": "http://127.0.0.1:57080/orders/901",
+    "width": 952,
+    "scroll": 952,
+    "dpr": 2,
+    "quote": null,
+    "voucher": null,
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": false,
+    "buttons": [],
+    "scripts": [
+      "/js/app.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "MOMO-enabled-mock",
+    "viewport": [
+      1920,
+      1080
+    ],
+    "zoom": 2,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 952,
+    "scroll": 952,
+    "dpr": 2,
+    "quote": "true",
+    "voucher": "SAVE50",
+    "discount": "50.000 ₫",
+    "shipping": "25.000 ₫",
+    "total": "465.000 ₫",
+    "stale": false,
+    "buttons": [
+      {
+        "disabled": false,
+        "payment": "",
+        "height": 79.6875
+      },
+      {
+        "disabled": false,
+        "payment": "MOMO",
+        "height": 79.6875
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "MOMO-mock-redirect",
+    "viewport": [
+      1920,
+      1080
+    ],
+    "zoom": 2,
+    "js": true,
+    "url": "http://127.0.0.1:57080/payment/momo/mock/902",
+    "width": 952,
+    "scroll": 952,
+    "dpr": 2,
+    "quote": null,
+    "voucher": null,
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": false,
+    "buttons": [],
+    "scripts": [
+      "/js/app.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "MOMO-pending-gateway",
+    "viewport": [
+      1920,
+      1080
+    ],
+    "zoom": 2,
+    "js": true,
+    "url": "http://127.0.0.1:57080/orders/902",
+    "width": 952,
+    "scroll": 952,
+    "dpr": 2,
+    "quote": null,
+    "voucher": null,
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": false,
+    "buttons": [],
+    "scripts": [
+      "/js/app.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "empty-cart",
+    "viewport": [
+      1920,
+      1080
+    ],
+    "zoom": 2,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout",
+    "width": 952,
+    "scroll": 952,
+    "dpr": 2,
+    "quote": "false",
+    "voucher": null,
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": false,
+    "buttons": [],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "no-address",
+    "viewport": [
+      1920,
+      1080
+    ],
+    "zoom": 2,
+    "js": true,
+    "url": "http://127.0.0.1:57080/checkout",
+    "width": 952,
+    "scroll": 952,
+    "dpr": 2,
+    "quote": "false",
+    "voucher": null,
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": false,
+    "buttons": [],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "unconfirmed",
+    "viewport": [
+      360,
+      800
+    ],
+    "zoom": 1,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout",
+    "width": 345,
+    "scroll": 345,
+    "dpr": 1,
+    "quote": "false",
+    "voucher": "",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 78.6875
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "no-voucher",
+    "viewport": [
+      360,
+      800
+    ],
+    "zoom": 1,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 345,
+    "scroll": 345,
+    "dpr": 1,
+    "quote": "true",
+    "voucher": "",
+    "discount": "0 ₫",
+    "shipping": "25.000 ₫",
+    "total": "515.000 ₫",
+    "stale": false,
+    "buttons": [
+      {
+        "disabled": false,
+        "payment": "",
+        "height": 78.6875
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "valid",
+    "viewport": [
+      360,
+      800
+    ],
+    "zoom": 1,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 345,
+    "scroll": 345,
+    "dpr": 1,
+    "quote": "true",
+    "voucher": "SAVE50",
+    "discount": "50.000 ₫",
+    "shipping": "25.000 ₫",
+    "total": "465.000 ₫",
+    "stale": false,
+    "buttons": [
+      {
+        "disabled": false,
+        "payment": "",
+        "height": 78.6875
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "noJS-edited-code-submit",
+    "viewport": [
+      360,
+      800
+    ],
+    "zoom": 1,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout",
+    "width": 345,
+    "scroll": 345,
+    "dpr": 1,
+    "quote": "false",
+    "voucher": "EXPIRED",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 78.6875
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": "\n            Chưa thể hoàn tất\n            \n                Voucher không hợp lệ, đã hết hạn hoặc hết lượt.\n                \n                \n            \n        "
+  },
+  {
+    "state": "F07-submit-error",
+    "viewport": [
+      360,
+      800
+    ],
+    "zoom": 1,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout",
+    "width": 345,
+    "scroll": 345,
+    "dpr": 1,
+    "quote": "false",
+    "voucher": "SAVE50",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 78.6875
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": "\n            Chưa thể hoàn tất\n            \n                Giỏ hàng hoặc tồn kho vừa thay đổi. Vui lòng thử lại.\n                \n                \n            \n        "
+  },
+  {
+    "state": "reconfirmed",
+    "viewport": [
+      360,
+      800
+    ],
+    "zoom": 1,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 345,
+    "scroll": 345,
+    "dpr": 1,
+    "quote": "true",
+    "voucher": "SAVE50",
+    "discount": "50.000 ₫",
+    "shipping": "25.000 ₫",
+    "total": "465.000 ₫",
+    "stale": false,
+    "buttons": [
+      {
+        "disabled": false,
+        "payment": "",
+        "height": 78.6875
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "invalid-voucher",
+    "viewport": [
+      360,
+      800
+    ],
+    "zoom": 1,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 345,
+    "scroll": 345,
+    "dpr": 1,
+    "quote": "false",
+    "voucher": "EXPIRED",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 78.6875
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": "\n            Chưa thể hoàn tất\n            \n                \n                \n                Voucher không hợp lệ, đã hết hạn hoặc hết lượt.\n            \n        "
+  },
+  {
+    "state": "minimum-not-met",
+    "viewport": [
+      360,
+      800
+    ],
+    "zoom": 1,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 345,
+    "scroll": 345,
+    "dpr": 1,
+    "quote": "false",
+    "voucher": "MINIMUM",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 78.6875
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": "\n            Chưa thể hoàn tất\n            \n                \n                \n                Đơn chưa đạt mức tối thiểu của voucher.\n            \n        "
+  },
+  {
+    "state": "quote-failed",
+    "viewport": [
+      360,
+      800
+    ],
+    "zoom": 1,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 345,
+    "scroll": 345,
+    "dpr": 1,
+    "quote": "false",
+    "voucher": "READFAIL",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 78.6875
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": "\n            Chưa thể hoàn tất\n            \n                Chưa thể xác nhận báo giá. Vui lòng cập nhật lại báo giá.\n                \n                \n            \n        "
+  },
+  {
+    "state": "foreign-address",
+    "viewport": [
+      360,
+      800
+    ],
+    "zoom": 1,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 345,
+    "scroll": 345,
+    "dpr": 1,
+    "quote": "false",
+    "voucher": "",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 78.6875
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": "\n            Chưa thể hoàn tất\n            \n                \n                Chọn địa chỉ giao hàng hợp lệ của bạn.\n                \n            \n        "
+  },
+  {
+    "state": "COD-success-fixture",
+    "viewport": [
+      360,
+      800
+    ],
+    "zoom": 1,
+    "js": false,
+    "url": "http://127.0.0.1:57080/orders/901",
+    "width": 345,
+    "scroll": 345,
+    "dpr": 1,
+    "quote": null,
+    "voucher": null,
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": false,
+    "buttons": [],
+    "scripts": [
+      "/js/app.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "MOMO-enabled-mock",
+    "viewport": [
+      360,
+      800
+    ],
+    "zoom": 1,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 345,
+    "scroll": 345,
+    "dpr": 1,
+    "quote": "true",
+    "voucher": "SAVE50",
+    "discount": "50.000 ₫",
+    "shipping": "25.000 ₫",
+    "total": "465.000 ₫",
+    "stale": false,
+    "buttons": [
+      {
+        "disabled": false,
+        "payment": "",
+        "height": 78.6875
+      },
+      {
+        "disabled": false,
+        "payment": "MOMO",
+        "height": 105.03125
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "MOMO-mock-redirect",
+    "viewport": [
+      360,
+      800
+    ],
+    "zoom": 1,
+    "js": false,
+    "url": "http://127.0.0.1:57080/payment/momo/mock/902",
+    "width": 345,
+    "scroll": 345,
+    "dpr": 1,
+    "quote": null,
+    "voucher": null,
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": false,
+    "buttons": [],
+    "scripts": [
+      "/js/app.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "MOMO-pending-gateway",
+    "viewport": [
+      360,
+      800
+    ],
+    "zoom": 1,
+    "js": false,
+    "url": "http://127.0.0.1:57080/orders/902",
+    "width": 345,
+    "scroll": 345,
+    "dpr": 1,
+    "quote": null,
+    "voucher": null,
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": false,
+    "buttons": [],
+    "scripts": [
+      "/js/app.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "empty-cart",
+    "viewport": [
+      360,
+      800
+    ],
+    "zoom": 1,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout",
+    "width": 345,
+    "scroll": 345,
+    "dpr": 1,
+    "quote": "false",
+    "voucher": null,
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": false,
+    "buttons": [],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "no-address",
+    "viewport": [
+      360,
+      800
+    ],
+    "zoom": 1,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout",
+    "width": 345,
+    "scroll": 345,
+    "dpr": 1,
+    "quote": "false",
+    "voucher": null,
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": false,
+    "buttons": [],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "unconfirmed",
+    "viewport": [
+      390,
+      844
+    ],
+    "zoom": 1,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout",
+    "width": 375,
+    "scroll": 375,
+    "dpr": 1,
+    "quote": "false",
+    "voucher": "",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 78.6875
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "no-voucher",
+    "viewport": [
+      390,
+      844
+    ],
+    "zoom": 1,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 375,
+    "scroll": 375,
+    "dpr": 1,
+    "quote": "true",
+    "voucher": "",
+    "discount": "0 ₫",
+    "shipping": "25.000 ₫",
+    "total": "515.000 ₫",
+    "stale": false,
+    "buttons": [
+      {
+        "disabled": false,
+        "payment": "",
+        "height": 78.6875
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "valid",
+    "viewport": [
+      390,
+      844
+    ],
+    "zoom": 1,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 375,
+    "scroll": 375,
+    "dpr": 1,
+    "quote": "true",
+    "voucher": "SAVE50",
+    "discount": "50.000 ₫",
+    "shipping": "25.000 ₫",
+    "total": "465.000 ₫",
+    "stale": false,
+    "buttons": [
+      {
+        "disabled": false,
+        "payment": "",
+        "height": 78.6875
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "noJS-edited-code-submit",
+    "viewport": [
+      390,
+      844
+    ],
+    "zoom": 1,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout",
+    "width": 375,
+    "scroll": 375,
+    "dpr": 1,
+    "quote": "false",
+    "voucher": "EXPIRED",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 78.6875
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": "\n            Chưa thể hoàn tất\n            \n                Voucher không hợp lệ, đã hết hạn hoặc hết lượt.\n                \n                \n            \n        "
+  },
+  {
+    "state": "F07-submit-error",
+    "viewport": [
+      390,
+      844
+    ],
+    "zoom": 1,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout",
+    "width": 375,
+    "scroll": 375,
+    "dpr": 1,
+    "quote": "false",
+    "voucher": "SAVE50",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 78.6875
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": "\n            Chưa thể hoàn tất\n            \n                Giỏ hàng hoặc tồn kho vừa thay đổi. Vui lòng thử lại.\n                \n                \n            \n        "
+  },
+  {
+    "state": "reconfirmed",
+    "viewport": [
+      390,
+      844
+    ],
+    "zoom": 1,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 375,
+    "scroll": 375,
+    "dpr": 1,
+    "quote": "true",
+    "voucher": "SAVE50",
+    "discount": "50.000 ₫",
+    "shipping": "25.000 ₫",
+    "total": "465.000 ₫",
+    "stale": false,
+    "buttons": [
+      {
+        "disabled": false,
+        "payment": "",
+        "height": 78.6875
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "invalid-voucher",
+    "viewport": [
+      390,
+      844
+    ],
+    "zoom": 1,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 375,
+    "scroll": 375,
+    "dpr": 1,
+    "quote": "false",
+    "voucher": "EXPIRED",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 78.6875
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": "\n            Chưa thể hoàn tất\n            \n                \n                \n                Voucher không hợp lệ, đã hết hạn hoặc hết lượt.\n            \n        "
+  },
+  {
+    "state": "minimum-not-met",
+    "viewport": [
+      390,
+      844
+    ],
+    "zoom": 1,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 375,
+    "scroll": 375,
+    "dpr": 1,
+    "quote": "false",
+    "voucher": "MINIMUM",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 78.6875
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": "\n            Chưa thể hoàn tất\n            \n                \n                \n                Đơn chưa đạt mức tối thiểu của voucher.\n            \n        "
+  },
+  {
+    "state": "quote-failed",
+    "viewport": [
+      390,
+      844
+    ],
+    "zoom": 1,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 375,
+    "scroll": 375,
+    "dpr": 1,
+    "quote": "false",
+    "voucher": "READFAIL",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 78.6875
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": "\n            Chưa thể hoàn tất\n            \n                Chưa thể xác nhận báo giá. Vui lòng cập nhật lại báo giá.\n                \n                \n            \n        "
+  },
+  {
+    "state": "foreign-address",
+    "viewport": [
+      390,
+      844
+    ],
+    "zoom": 1,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 375,
+    "scroll": 375,
+    "dpr": 1,
+    "quote": "false",
+    "voucher": "",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 78.6875
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": "\n            Chưa thể hoàn tất\n            \n                \n                Chọn địa chỉ giao hàng hợp lệ của bạn.\n                \n            \n        "
+  },
+  {
+    "state": "COD-success-fixture",
+    "viewport": [
+      390,
+      844
+    ],
+    "zoom": 1,
+    "js": false,
+    "url": "http://127.0.0.1:57080/orders/901",
+    "width": 375,
+    "scroll": 375,
+    "dpr": 1,
+    "quote": null,
+    "voucher": null,
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": false,
+    "buttons": [],
+    "scripts": [
+      "/js/app.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "MOMO-enabled-mock",
+    "viewport": [
+      390,
+      844
+    ],
+    "zoom": 1,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 375,
+    "scroll": 375,
+    "dpr": 1,
+    "quote": "true",
+    "voucher": "SAVE50",
+    "discount": "50.000 ₫",
+    "shipping": "25.000 ₫",
+    "total": "465.000 ₫",
+    "stale": false,
+    "buttons": [
+      {
+        "disabled": false,
+        "payment": "",
+        "height": 78.6875
+      },
+      {
+        "disabled": false,
+        "payment": "MOMO",
+        "height": 78.6875
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "MOMO-mock-redirect",
+    "viewport": [
+      390,
+      844
+    ],
+    "zoom": 1,
+    "js": false,
+    "url": "http://127.0.0.1:57080/payment/momo/mock/902",
+    "width": 375,
+    "scroll": 375,
+    "dpr": 1,
+    "quote": null,
+    "voucher": null,
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": false,
+    "buttons": [],
+    "scripts": [
+      "/js/app.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "MOMO-pending-gateway",
+    "viewport": [
+      390,
+      844
+    ],
+    "zoom": 1,
+    "js": false,
+    "url": "http://127.0.0.1:57080/orders/902",
+    "width": 375,
+    "scroll": 375,
+    "dpr": 1,
+    "quote": null,
+    "voucher": null,
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": false,
+    "buttons": [],
+    "scripts": [
+      "/js/app.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "empty-cart",
+    "viewport": [
+      390,
+      844
+    ],
+    "zoom": 1,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout",
+    "width": 375,
+    "scroll": 375,
+    "dpr": 1,
+    "quote": "false",
+    "voucher": null,
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": false,
+    "buttons": [],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "no-address",
+    "viewport": [
+      390,
+      844
+    ],
+    "zoom": 1,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout",
+    "width": 375,
+    "scroll": 375,
+    "dpr": 1,
+    "quote": "false",
+    "voucher": null,
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": false,
+    "buttons": [],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "unconfirmed",
+    "viewport": [
+      768,
+      1024
+    ],
+    "zoom": 1,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout",
+    "width": 753,
+    "scroll": 753,
+    "dpr": 1,
+    "quote": "false",
+    "voucher": "",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 56
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "no-voucher",
+    "viewport": [
+      768,
+      1024
+    ],
+    "zoom": 1,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 753,
+    "scroll": 753,
+    "dpr": 1,
+    "quote": "true",
+    "voucher": "",
+    "discount": "0 ₫",
+    "shipping": "25.000 ₫",
+    "total": "515.000 ₫",
+    "stale": false,
+    "buttons": [
+      {
+        "disabled": false,
+        "payment": "",
+        "height": 56
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "valid",
+    "viewport": [
+      768,
+      1024
+    ],
+    "zoom": 1,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 753,
+    "scroll": 753,
+    "dpr": 1,
+    "quote": "true",
+    "voucher": "SAVE50",
+    "discount": "50.000 ₫",
+    "shipping": "25.000 ₫",
+    "total": "465.000 ₫",
+    "stale": false,
+    "buttons": [
+      {
+        "disabled": false,
+        "payment": "",
+        "height": 56
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "noJS-edited-code-submit",
+    "viewport": [
+      768,
+      1024
+    ],
+    "zoom": 1,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout",
+    "width": 753,
+    "scroll": 753,
+    "dpr": 1,
+    "quote": "false",
+    "voucher": "EXPIRED",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 56
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": "\n            Chưa thể hoàn tất\n            \n                Voucher không hợp lệ, đã hết hạn hoặc hết lượt.\n                \n                \n            \n        "
+  },
+  {
+    "state": "F07-submit-error",
+    "viewport": [
+      768,
+      1024
+    ],
+    "zoom": 1,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout",
+    "width": 753,
+    "scroll": 753,
+    "dpr": 1,
+    "quote": "false",
+    "voucher": "SAVE50",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 56
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": "\n            Chưa thể hoàn tất\n            \n                Giỏ hàng hoặc tồn kho vừa thay đổi. Vui lòng thử lại.\n                \n                \n            \n        "
+  },
+  {
+    "state": "reconfirmed",
+    "viewport": [
+      768,
+      1024
+    ],
+    "zoom": 1,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 753,
+    "scroll": 753,
+    "dpr": 1,
+    "quote": "true",
+    "voucher": "SAVE50",
+    "discount": "50.000 ₫",
+    "shipping": "25.000 ₫",
+    "total": "465.000 ₫",
+    "stale": false,
+    "buttons": [
+      {
+        "disabled": false,
+        "payment": "",
+        "height": 56
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "invalid-voucher",
+    "viewport": [
+      768,
+      1024
+    ],
+    "zoom": 1,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 753,
+    "scroll": 753,
+    "dpr": 1,
+    "quote": "false",
+    "voucher": "EXPIRED",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 56
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": "\n            Chưa thể hoàn tất\n            \n                \n                \n                Voucher không hợp lệ, đã hết hạn hoặc hết lượt.\n            \n        "
+  },
+  {
+    "state": "minimum-not-met",
+    "viewport": [
+      768,
+      1024
+    ],
+    "zoom": 1,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 753,
+    "scroll": 753,
+    "dpr": 1,
+    "quote": "false",
+    "voucher": "MINIMUM",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 56
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": "\n            Chưa thể hoàn tất\n            \n                \n                \n                Đơn chưa đạt mức tối thiểu của voucher.\n            \n        "
+  },
+  {
+    "state": "quote-failed",
+    "viewport": [
+      768,
+      1024
+    ],
+    "zoom": 1,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 753,
+    "scroll": 753,
+    "dpr": 1,
+    "quote": "false",
+    "voucher": "READFAIL",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 56
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": "\n            Chưa thể hoàn tất\n            \n                Chưa thể xác nhận báo giá. Vui lòng cập nhật lại báo giá.\n                \n                \n            \n        "
+  },
+  {
+    "state": "foreign-address",
+    "viewport": [
+      768,
+      1024
+    ],
+    "zoom": 1,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 753,
+    "scroll": 753,
+    "dpr": 1,
+    "quote": "false",
+    "voucher": "",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 56
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": "\n            Chưa thể hoàn tất\n            \n                \n                Chọn địa chỉ giao hàng hợp lệ của bạn.\n                \n            \n        "
+  },
+  {
+    "state": "COD-success-fixture",
+    "viewport": [
+      768,
+      1024
+    ],
+    "zoom": 1,
+    "js": false,
+    "url": "http://127.0.0.1:57080/orders/901",
+    "width": 753,
+    "scroll": 753,
+    "dpr": 1,
+    "quote": null,
+    "voucher": null,
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": false,
+    "buttons": [],
+    "scripts": [
+      "/js/app.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "MOMO-enabled-mock",
+    "viewport": [
+      768,
+      1024
+    ],
+    "zoom": 1,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 753,
+    "scroll": 753,
+    "dpr": 1,
+    "quote": "true",
+    "voucher": "SAVE50",
+    "discount": "50.000 ₫",
+    "shipping": "25.000 ₫",
+    "total": "465.000 ₫",
+    "stale": false,
+    "buttons": [
+      {
+        "disabled": false,
+        "payment": "",
+        "height": 56
+      },
+      {
+        "disabled": false,
+        "payment": "MOMO",
+        "height": 56
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "MOMO-mock-redirect",
+    "viewport": [
+      768,
+      1024
+    ],
+    "zoom": 1,
+    "js": false,
+    "url": "http://127.0.0.1:57080/payment/momo/mock/902",
+    "width": 753,
+    "scroll": 753,
+    "dpr": 1,
+    "quote": null,
+    "voucher": null,
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": false,
+    "buttons": [],
+    "scripts": [
+      "/js/app.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "MOMO-pending-gateway",
+    "viewport": [
+      768,
+      1024
+    ],
+    "zoom": 1,
+    "js": false,
+    "url": "http://127.0.0.1:57080/orders/902",
+    "width": 753,
+    "scroll": 753,
+    "dpr": 1,
+    "quote": null,
+    "voucher": null,
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": false,
+    "buttons": [],
+    "scripts": [
+      "/js/app.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "empty-cart",
+    "viewport": [
+      768,
+      1024
+    ],
+    "zoom": 1,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout",
+    "width": 753,
+    "scroll": 753,
+    "dpr": 1,
+    "quote": "false",
+    "voucher": null,
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": false,
+    "buttons": [],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "no-address",
+    "viewport": [
+      768,
+      1024
+    ],
+    "zoom": 1,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout",
+    "width": 753,
+    "scroll": 753,
+    "dpr": 1,
+    "quote": "false",
+    "voucher": null,
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": false,
+    "buttons": [],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "unconfirmed",
+    "viewport": [
+      1366,
+      768
+    ],
+    "zoom": 1,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout",
+    "width": 1351,
+    "scroll": 1351,
+    "dpr": 1,
+    "quote": "false",
+    "voucher": "",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 56
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "no-voucher",
+    "viewport": [
+      1366,
+      768
+    ],
+    "zoom": 1,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 1351,
+    "scroll": 1351,
+    "dpr": 1,
+    "quote": "true",
+    "voucher": "",
+    "discount": "0 ₫",
+    "shipping": "25.000 ₫",
+    "total": "515.000 ₫",
+    "stale": false,
+    "buttons": [
+      {
+        "disabled": false,
+        "payment": "",
+        "height": 56
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "valid",
+    "viewport": [
+      1366,
+      768
+    ],
+    "zoom": 1,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 1351,
+    "scroll": 1351,
+    "dpr": 1,
+    "quote": "true",
+    "voucher": "SAVE50",
+    "discount": "50.000 ₫",
+    "shipping": "25.000 ₫",
+    "total": "465.000 ₫",
+    "stale": false,
+    "buttons": [
+      {
+        "disabled": false,
+        "payment": "",
+        "height": 56
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "noJS-edited-code-submit",
+    "viewport": [
+      1366,
+      768
+    ],
+    "zoom": 1,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout",
+    "width": 1351,
+    "scroll": 1351,
+    "dpr": 1,
+    "quote": "false",
+    "voucher": "EXPIRED",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 56
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": "\n            Chưa thể hoàn tất\n            \n                Voucher không hợp lệ, đã hết hạn hoặc hết lượt.\n                \n                \n            \n        "
+  },
+  {
+    "state": "F07-submit-error",
+    "viewport": [
+      1366,
+      768
+    ],
+    "zoom": 1,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout",
+    "width": 1351,
+    "scroll": 1351,
+    "dpr": 1,
+    "quote": "false",
+    "voucher": "SAVE50",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 56
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": "\n            Chưa thể hoàn tất\n            \n                Giỏ hàng hoặc tồn kho vừa thay đổi. Vui lòng thử lại.\n                \n                \n            \n        "
+  },
+  {
+    "state": "reconfirmed",
+    "viewport": [
+      1366,
+      768
+    ],
+    "zoom": 1,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 1351,
+    "scroll": 1351,
+    "dpr": 1,
+    "quote": "true",
+    "voucher": "SAVE50",
+    "discount": "50.000 ₫",
+    "shipping": "25.000 ₫",
+    "total": "465.000 ₫",
+    "stale": false,
+    "buttons": [
+      {
+        "disabled": false,
+        "payment": "",
+        "height": 56
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "invalid-voucher",
+    "viewport": [
+      1366,
+      768
+    ],
+    "zoom": 1,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 1351,
+    "scroll": 1351,
+    "dpr": 1,
+    "quote": "false",
+    "voucher": "EXPIRED",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 56
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": "\n            Chưa thể hoàn tất\n            \n                \n                \n                Voucher không hợp lệ, đã hết hạn hoặc hết lượt.\n            \n        "
+  },
+  {
+    "state": "minimum-not-met",
+    "viewport": [
+      1366,
+      768
+    ],
+    "zoom": 1,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 1351,
+    "scroll": 1351,
+    "dpr": 1,
+    "quote": "false",
+    "voucher": "MINIMUM",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 56
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": "\n            Chưa thể hoàn tất\n            \n                \n                \n                Đơn chưa đạt mức tối thiểu của voucher.\n            \n        "
+  },
+  {
+    "state": "quote-failed",
+    "viewport": [
+      1366,
+      768
+    ],
+    "zoom": 1,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 1351,
+    "scroll": 1351,
+    "dpr": 1,
+    "quote": "false",
+    "voucher": "READFAIL",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 56
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": "\n            Chưa thể hoàn tất\n            \n                Chưa thể xác nhận báo giá. Vui lòng cập nhật lại báo giá.\n                \n                \n            \n        "
+  },
+  {
+    "state": "foreign-address",
+    "viewport": [
+      1366,
+      768
+    ],
+    "zoom": 1,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 1351,
+    "scroll": 1351,
+    "dpr": 1,
+    "quote": "false",
+    "voucher": "",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 56
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": "\n            Chưa thể hoàn tất\n            \n                \n                Chọn địa chỉ giao hàng hợp lệ của bạn.\n                \n            \n        "
+  },
+  {
+    "state": "COD-success-fixture",
+    "viewport": [
+      1366,
+      768
+    ],
+    "zoom": 1,
+    "js": false,
+    "url": "http://127.0.0.1:57080/orders/901",
+    "width": 1351,
+    "scroll": 1351,
+    "dpr": 1,
+    "quote": null,
+    "voucher": null,
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": false,
+    "buttons": [],
+    "scripts": [
+      "/js/app.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "MOMO-enabled-mock",
+    "viewport": [
+      1366,
+      768
+    ],
+    "zoom": 1,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 1351,
+    "scroll": 1351,
+    "dpr": 1,
+    "quote": "true",
+    "voucher": "SAVE50",
+    "discount": "50.000 ₫",
+    "shipping": "25.000 ₫",
+    "total": "465.000 ₫",
+    "stale": false,
+    "buttons": [
+      {
+        "disabled": false,
+        "payment": "",
+        "height": 56
+      },
+      {
+        "disabled": false,
+        "payment": "MOMO",
+        "height": 78.6875
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "MOMO-mock-redirect",
+    "viewport": [
+      1366,
+      768
+    ],
+    "zoom": 1,
+    "js": false,
+    "url": "http://127.0.0.1:57080/payment/momo/mock/902",
+    "width": 1351,
+    "scroll": 1351,
+    "dpr": 1,
+    "quote": null,
+    "voucher": null,
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": false,
+    "buttons": [],
+    "scripts": [
+      "/js/app.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "MOMO-pending-gateway",
+    "viewport": [
+      1366,
+      768
+    ],
+    "zoom": 1,
+    "js": false,
+    "url": "http://127.0.0.1:57080/orders/902",
+    "width": 1351,
+    "scroll": 1351,
+    "dpr": 1,
+    "quote": null,
+    "voucher": null,
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": false,
+    "buttons": [],
+    "scripts": [
+      "/js/app.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "empty-cart",
+    "viewport": [
+      1366,
+      768
+    ],
+    "zoom": 1,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout",
+    "width": 1351,
+    "scroll": 1351,
+    "dpr": 1,
+    "quote": "false",
+    "voucher": null,
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": false,
+    "buttons": [],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "no-address",
+    "viewport": [
+      1366,
+      768
+    ],
+    "zoom": 1,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout",
+    "width": 1351,
+    "scroll": 1351,
+    "dpr": 1,
+    "quote": "false",
+    "voucher": null,
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": false,
+    "buttons": [],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "unconfirmed",
+    "viewport": [
+      1920,
+      1080
+    ],
+    "zoom": 1,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout",
+    "width": 1905,
+    "scroll": 1905,
+    "dpr": 1,
+    "quote": "false",
+    "voucher": "",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 56
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "no-voucher",
+    "viewport": [
+      1920,
+      1080
+    ],
+    "zoom": 1,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 1905,
+    "scroll": 1905,
+    "dpr": 1,
+    "quote": "true",
+    "voucher": "",
+    "discount": "0 ₫",
+    "shipping": "25.000 ₫",
+    "total": "515.000 ₫",
+    "stale": false,
+    "buttons": [
+      {
+        "disabled": false,
+        "payment": "",
+        "height": 56
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "valid",
+    "viewport": [
+      1920,
+      1080
+    ],
+    "zoom": 1,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 1905,
+    "scroll": 1905,
+    "dpr": 1,
+    "quote": "true",
+    "voucher": "SAVE50",
+    "discount": "50.000 ₫",
+    "shipping": "25.000 ₫",
+    "total": "465.000 ₫",
+    "stale": false,
+    "buttons": [
+      {
+        "disabled": false,
+        "payment": "",
+        "height": 56
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "noJS-edited-code-submit",
+    "viewport": [
+      1920,
+      1080
+    ],
+    "zoom": 1,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout",
+    "width": 1905,
+    "scroll": 1905,
+    "dpr": 1,
+    "quote": "false",
+    "voucher": "EXPIRED",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 56
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": "\n            Chưa thể hoàn tất\n            \n                Voucher không hợp lệ, đã hết hạn hoặc hết lượt.\n                \n                \n            \n        "
+  },
+  {
+    "state": "F07-submit-error",
+    "viewport": [
+      1920,
+      1080
+    ],
+    "zoom": 1,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout",
+    "width": 1905,
+    "scroll": 1905,
+    "dpr": 1,
+    "quote": "false",
+    "voucher": "SAVE50",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 56
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": "\n            Chưa thể hoàn tất\n            \n                Giỏ hàng hoặc tồn kho vừa thay đổi. Vui lòng thử lại.\n                \n                \n            \n        "
+  },
+  {
+    "state": "reconfirmed",
+    "viewport": [
+      1920,
+      1080
+    ],
+    "zoom": 1,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 1905,
+    "scroll": 1905,
+    "dpr": 1,
+    "quote": "true",
+    "voucher": "SAVE50",
+    "discount": "50.000 ₫",
+    "shipping": "25.000 ₫",
+    "total": "465.000 ₫",
+    "stale": false,
+    "buttons": [
+      {
+        "disabled": false,
+        "payment": "",
+        "height": 56
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "invalid-voucher",
+    "viewport": [
+      1920,
+      1080
+    ],
+    "zoom": 1,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 1905,
+    "scroll": 1905,
+    "dpr": 1,
+    "quote": "false",
+    "voucher": "EXPIRED",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 56
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": "\n            Chưa thể hoàn tất\n            \n                \n                \n                Voucher không hợp lệ, đã hết hạn hoặc hết lượt.\n            \n        "
+  },
+  {
+    "state": "minimum-not-met",
+    "viewport": [
+      1920,
+      1080
+    ],
+    "zoom": 1,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 1905,
+    "scroll": 1905,
+    "dpr": 1,
+    "quote": "false",
+    "voucher": "MINIMUM",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 56
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": "\n            Chưa thể hoàn tất\n            \n                \n                \n                Đơn chưa đạt mức tối thiểu của voucher.\n            \n        "
+  },
+  {
+    "state": "quote-failed",
+    "viewport": [
+      1920,
+      1080
+    ],
+    "zoom": 1,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 1905,
+    "scroll": 1905,
+    "dpr": 1,
+    "quote": "false",
+    "voucher": "READFAIL",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 56
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": "\n            Chưa thể hoàn tất\n            \n                Chưa thể xác nhận báo giá. Vui lòng cập nhật lại báo giá.\n                \n                \n            \n        "
+  },
+  {
+    "state": "foreign-address",
+    "viewport": [
+      1920,
+      1080
+    ],
+    "zoom": 1,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 1905,
+    "scroll": 1905,
+    "dpr": 1,
+    "quote": "false",
+    "voucher": "",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 56
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": "\n            Chưa thể hoàn tất\n            \n                \n                Chọn địa chỉ giao hàng hợp lệ của bạn.\n                \n            \n        "
+  },
+  {
+    "state": "COD-success-fixture",
+    "viewport": [
+      1920,
+      1080
+    ],
+    "zoom": 1,
+    "js": false,
+    "url": "http://127.0.0.1:57080/orders/901",
+    "width": 1905,
+    "scroll": 1905,
+    "dpr": 1,
+    "quote": null,
+    "voucher": null,
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": false,
+    "buttons": [],
+    "scripts": [
+      "/js/app.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "MOMO-enabled-mock",
+    "viewport": [
+      1920,
+      1080
+    ],
+    "zoom": 1,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 1905,
+    "scroll": 1905,
+    "dpr": 1,
+    "quote": "true",
+    "voucher": "SAVE50",
+    "discount": "50.000 ₫",
+    "shipping": "25.000 ₫",
+    "total": "465.000 ₫",
+    "stale": false,
+    "buttons": [
+      {
+        "disabled": false,
+        "payment": "",
+        "height": 56
+      },
+      {
+        "disabled": false,
+        "payment": "MOMO",
+        "height": 78.6875
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "MOMO-mock-redirect",
+    "viewport": [
+      1920,
+      1080
+    ],
+    "zoom": 1,
+    "js": false,
+    "url": "http://127.0.0.1:57080/payment/momo/mock/902",
+    "width": 1920,
+    "scroll": 1920,
+    "dpr": 1,
+    "quote": null,
+    "voucher": null,
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": false,
+    "buttons": [],
+    "scripts": [
+      "/js/app.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "MOMO-pending-gateway",
+    "viewport": [
+      1920,
+      1080
+    ],
+    "zoom": 1,
+    "js": false,
+    "url": "http://127.0.0.1:57080/orders/902",
+    "width": 1905,
+    "scroll": 1905,
+    "dpr": 1,
+    "quote": null,
+    "voucher": null,
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": false,
+    "buttons": [],
+    "scripts": [
+      "/js/app.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "empty-cart",
+    "viewport": [
+      1920,
+      1080
+    ],
+    "zoom": 1,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout",
+    "width": 1920,
+    "scroll": 1920,
+    "dpr": 1,
+    "quote": "false",
+    "voucher": null,
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": false,
+    "buttons": [],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "no-address",
+    "viewport": [
+      1920,
+      1080
+    ],
+    "zoom": 1,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout",
+    "width": 1920,
+    "scroll": 1920,
+    "dpr": 1,
+    "quote": "false",
+    "voucher": null,
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": false,
+    "buttons": [],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "unconfirmed",
+    "viewport": [
+      360,
+      800
+    ],
+    "zoom": 2,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout",
+    "width": 172,
+    "scroll": 172,
+    "dpr": 2,
+    "quote": "false",
+    "voucher": "",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 211.40625
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "no-voucher",
+    "viewport": [
+      360,
+      800
+    ],
+    "zoom": 2,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 172,
+    "scroll": 172,
+    "dpr": 2,
+    "quote": "true",
+    "voucher": "",
+    "discount": "0 ₫",
+    "shipping": "25.000 ₫",
+    "total": "515.000 ₫",
+    "stale": false,
+    "buttons": [
+      {
+        "disabled": false,
+        "payment": "",
+        "height": 211.40625
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "valid",
+    "viewport": [
+      360,
+      800
+    ],
+    "zoom": 2,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 172,
+    "scroll": 172,
+    "dpr": 2,
+    "quote": "true",
+    "voucher": "SAVE50",
+    "discount": "50.000 ₫",
+    "shipping": "25.000 ₫",
+    "total": "465.000 ₫",
+    "stale": false,
+    "buttons": [
+      {
+        "disabled": false,
+        "payment": "",
+        "height": 211.40625
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "noJS-edited-code-submit",
+    "viewport": [
+      360,
+      800
+    ],
+    "zoom": 2,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout",
+    "width": 172,
+    "scroll": 172,
+    "dpr": 2,
+    "quote": "false",
+    "voucher": "EXPIRED",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 211.40625
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": "\n            Chưa thể hoàn tất\n            \n                Voucher không hợp lệ, đã hết hạn hoặc hết lượt.\n                \n                \n            \n        "
+  },
+  {
+    "state": "F07-submit-error",
+    "viewport": [
+      360,
+      800
+    ],
+    "zoom": 2,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout",
+    "width": 172,
+    "scroll": 172,
+    "dpr": 2,
+    "quote": "false",
+    "voucher": "SAVE50",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 211.40625
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": "\n            Chưa thể hoàn tất\n            \n                Giỏ hàng hoặc tồn kho vừa thay đổi. Vui lòng thử lại.\n                \n                \n            \n        "
+  },
+  {
+    "state": "reconfirmed",
+    "viewport": [
+      360,
+      800
+    ],
+    "zoom": 2,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 172,
+    "scroll": 172,
+    "dpr": 2,
+    "quote": "true",
+    "voucher": "SAVE50",
+    "discount": "50.000 ₫",
+    "shipping": "25.000 ₫",
+    "total": "465.000 ₫",
+    "stale": false,
+    "buttons": [
+      {
+        "disabled": false,
+        "payment": "",
+        "height": 211.40625
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "invalid-voucher",
+    "viewport": [
+      360,
+      800
+    ],
+    "zoom": 2,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 172,
+    "scroll": 172,
+    "dpr": 2,
+    "quote": "false",
+    "voucher": "EXPIRED",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 211.40625
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": "\n            Chưa thể hoàn tất\n            \n                \n                \n                Voucher không hợp lệ, đã hết hạn hoặc hết lượt.\n            \n        "
+  },
+  {
+    "state": "minimum-not-met",
+    "viewport": [
+      360,
+      800
+    ],
+    "zoom": 2,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 172,
+    "scroll": 172,
+    "dpr": 2,
+    "quote": "false",
+    "voucher": "MINIMUM",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 211.40625
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": "\n            Chưa thể hoàn tất\n            \n                \n                \n                Đơn chưa đạt mức tối thiểu của voucher.\n            \n        "
+  },
+  {
+    "state": "quote-failed",
+    "viewport": [
+      360,
+      800
+    ],
+    "zoom": 2,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 172,
+    "scroll": 172,
+    "dpr": 2,
+    "quote": "false",
+    "voucher": "READFAIL",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 211.40625
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": "\n            Chưa thể hoàn tất\n            \n                Chưa thể xác nhận báo giá. Vui lòng cập nhật lại báo giá.\n                \n                \n            \n        "
+  },
+  {
+    "state": "foreign-address",
+    "viewport": [
+      360,
+      800
+    ],
+    "zoom": 2,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 172,
+    "scroll": 172,
+    "dpr": 2,
+    "quote": "false",
+    "voucher": "",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 211.40625
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": "\n            Chưa thể hoàn tất\n            \n                \n                Chọn địa chỉ giao hàng hợp lệ của bạn.\n                \n            \n        "
+  },
+  {
+    "state": "COD-success-fixture",
+    "viewport": [
+      360,
+      800
+    ],
+    "zoom": 2,
+    "js": false,
+    "url": "http://127.0.0.1:57080/orders/901",
+    "width": 172,
+    "scroll": 172,
+    "dpr": 2,
+    "quote": null,
+    "voucher": null,
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": false,
+    "buttons": [],
+    "scripts": [
+      "/js/app.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "MOMO-enabled-mock",
+    "viewport": [
+      360,
+      800
+    ],
+    "zoom": 2,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 172,
+    "scroll": 172,
+    "dpr": 2,
+    "quote": "true",
+    "voucher": "SAVE50",
+    "discount": "50.000 ₫",
+    "shipping": "25.000 ₫",
+    "total": "465.000 ₫",
+    "stale": false,
+    "buttons": [
+      {
+        "disabled": false,
+        "payment": "",
+        "height": 211.40625
+      },
+      {
+        "disabled": false,
+        "payment": "MOMO",
+        "height": 264.09375
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "MOMO-mock-redirect",
+    "viewport": [
+      360,
+      800
+    ],
+    "zoom": 2,
+    "js": false,
+    "url": "http://127.0.0.1:57080/payment/momo/mock/902",
+    "width": 172,
+    "scroll": 172,
+    "dpr": 2,
+    "quote": null,
+    "voucher": null,
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": false,
+    "buttons": [],
+    "scripts": [
+      "/js/app.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "MOMO-pending-gateway",
+    "viewport": [
+      360,
+      800
+    ],
+    "zoom": 2,
+    "js": false,
+    "url": "http://127.0.0.1:57080/orders/902",
+    "width": 172,
+    "scroll": 172,
+    "dpr": 2,
+    "quote": null,
+    "voucher": null,
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": false,
+    "buttons": [],
+    "scripts": [
+      "/js/app.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "empty-cart",
+    "viewport": [
+      360,
+      800
+    ],
+    "zoom": 2,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout",
+    "width": 172,
+    "scroll": 172,
+    "dpr": 2,
+    "quote": "false",
+    "voucher": null,
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": false,
+    "buttons": [],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "no-address",
+    "viewport": [
+      360,
+      800
+    ],
+    "zoom": 2,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout",
+    "width": 172,
+    "scroll": 172,
+    "dpr": 2,
+    "quote": "false",
+    "voucher": null,
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": false,
+    "buttons": [],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "unconfirmed",
+    "viewport": [
+      390,
+      844
+    ],
+    "zoom": 2,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout",
+    "width": 187,
+    "scroll": 187,
+    "dpr": 2,
+    "quote": "false",
+    "voucher": "",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 211.40625
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "no-voucher",
+    "viewport": [
+      390,
+      844
+    ],
+    "zoom": 2,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 187,
+    "scroll": 187,
+    "dpr": 2,
+    "quote": "true",
+    "voucher": "",
+    "discount": "0 ₫",
+    "shipping": "25.000 ₫",
+    "total": "515.000 ₫",
+    "stale": false,
+    "buttons": [
+      {
+        "disabled": false,
+        "payment": "",
+        "height": 211.40625
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "valid",
+    "viewport": [
+      390,
+      844
+    ],
+    "zoom": 2,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 187,
+    "scroll": 187,
+    "dpr": 2,
+    "quote": "true",
+    "voucher": "SAVE50",
+    "discount": "50.000 ₫",
+    "shipping": "25.000 ₫",
+    "total": "465.000 ₫",
+    "stale": false,
+    "buttons": [
+      {
+        "disabled": false,
+        "payment": "",
+        "height": 211.40625
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "noJS-edited-code-submit",
+    "viewport": [
+      390,
+      844
+    ],
+    "zoom": 2,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout",
+    "width": 187,
+    "scroll": 187,
+    "dpr": 2,
+    "quote": "false",
+    "voucher": "EXPIRED",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 211.40625
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": "\n            Chưa thể hoàn tất\n            \n                Voucher không hợp lệ, đã hết hạn hoặc hết lượt.\n                \n                \n            \n        "
+  },
+  {
+    "state": "F07-submit-error",
+    "viewport": [
+      390,
+      844
+    ],
+    "zoom": 2,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout",
+    "width": 187,
+    "scroll": 187,
+    "dpr": 2,
+    "quote": "false",
+    "voucher": "SAVE50",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 211.40625
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": "\n            Chưa thể hoàn tất\n            \n                Giỏ hàng hoặc tồn kho vừa thay đổi. Vui lòng thử lại.\n                \n                \n            \n        "
+  },
+  {
+    "state": "reconfirmed",
+    "viewport": [
+      390,
+      844
+    ],
+    "zoom": 2,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 187,
+    "scroll": 187,
+    "dpr": 2,
+    "quote": "true",
+    "voucher": "SAVE50",
+    "discount": "50.000 ₫",
+    "shipping": "25.000 ₫",
+    "total": "465.000 ₫",
+    "stale": false,
+    "buttons": [
+      {
+        "disabled": false,
+        "payment": "",
+        "height": 211.40625
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "invalid-voucher",
+    "viewport": [
+      390,
+      844
+    ],
+    "zoom": 2,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 187,
+    "scroll": 187,
+    "dpr": 2,
+    "quote": "false",
+    "voucher": "EXPIRED",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 211.40625
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": "\n            Chưa thể hoàn tất\n            \n                \n                \n                Voucher không hợp lệ, đã hết hạn hoặc hết lượt.\n            \n        "
+  },
+  {
+    "state": "minimum-not-met",
+    "viewport": [
+      390,
+      844
+    ],
+    "zoom": 2,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 187,
+    "scroll": 187,
+    "dpr": 2,
+    "quote": "false",
+    "voucher": "MINIMUM",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 211.40625
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": "\n            Chưa thể hoàn tất\n            \n                \n                \n                Đơn chưa đạt mức tối thiểu của voucher.\n            \n        "
+  },
+  {
+    "state": "quote-failed",
+    "viewport": [
+      390,
+      844
+    ],
+    "zoom": 2,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 187,
+    "scroll": 187,
+    "dpr": 2,
+    "quote": "false",
+    "voucher": "READFAIL",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 211.40625
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": "\n            Chưa thể hoàn tất\n            \n                Chưa thể xác nhận báo giá. Vui lòng cập nhật lại báo giá.\n                \n                \n            \n        "
+  },
+  {
+    "state": "foreign-address",
+    "viewport": [
+      390,
+      844
+    ],
+    "zoom": 2,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 187,
+    "scroll": 187,
+    "dpr": 2,
+    "quote": "false",
+    "voucher": "",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 211.40625
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": "\n            Chưa thể hoàn tất\n            \n                \n                Chọn địa chỉ giao hàng hợp lệ của bạn.\n                \n            \n        "
+  },
+  {
+    "state": "COD-success-fixture",
+    "viewport": [
+      390,
+      844
+    ],
+    "zoom": 2,
+    "js": false,
+    "url": "http://127.0.0.1:57080/orders/901",
+    "width": 187,
+    "scroll": 187,
+    "dpr": 2,
+    "quote": null,
+    "voucher": null,
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": false,
+    "buttons": [],
+    "scripts": [
+      "/js/app.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "MOMO-enabled-mock",
+    "viewport": [
+      390,
+      844
+    ],
+    "zoom": 2,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 187,
+    "scroll": 187,
+    "dpr": 2,
+    "quote": "true",
+    "voucher": "SAVE50",
+    "discount": "50.000 ₫",
+    "shipping": "25.000 ₫",
+    "total": "465.000 ₫",
+    "stale": false,
+    "buttons": [
+      {
+        "disabled": false,
+        "payment": "",
+        "height": 211.40625
+      },
+      {
+        "disabled": false,
+        "payment": "MOMO",
+        "height": 264.09375
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "MOMO-mock-redirect",
+    "viewport": [
+      390,
+      844
+    ],
+    "zoom": 2,
+    "js": false,
+    "url": "http://127.0.0.1:57080/payment/momo/mock/902",
+    "width": 187,
+    "scroll": 187,
+    "dpr": 2,
+    "quote": null,
+    "voucher": null,
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": false,
+    "buttons": [],
+    "scripts": [
+      "/js/app.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "MOMO-pending-gateway",
+    "viewport": [
+      390,
+      844
+    ],
+    "zoom": 2,
+    "js": false,
+    "url": "http://127.0.0.1:57080/orders/902",
+    "width": 187,
+    "scroll": 187,
+    "dpr": 2,
+    "quote": null,
+    "voucher": null,
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": false,
+    "buttons": [],
+    "scripts": [
+      "/js/app.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "empty-cart",
+    "viewport": [
+      390,
+      844
+    ],
+    "zoom": 2,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout",
+    "width": 187,
+    "scroll": 187,
+    "dpr": 2,
+    "quote": "false",
+    "voucher": null,
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": false,
+    "buttons": [],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "no-address",
+    "viewport": [
+      390,
+      844
+    ],
+    "zoom": 2,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout",
+    "width": 187,
+    "scroll": 187,
+    "dpr": 2,
+    "quote": "false",
+    "voucher": null,
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": false,
+    "buttons": [],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "unconfirmed",
+    "viewport": [
+      768,
+      1024
+    ],
+    "zoom": 2,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout",
+    "width": 376,
+    "scroll": 376,
+    "dpr": 2,
+    "quote": "false",
+    "voucher": "",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 79.6875
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "no-voucher",
+    "viewport": [
+      768,
+      1024
+    ],
+    "zoom": 2,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 376,
+    "scroll": 376,
+    "dpr": 2,
+    "quote": "true",
+    "voucher": "",
+    "discount": "0 ₫",
+    "shipping": "25.000 ₫",
+    "total": "515.000 ₫",
+    "stale": false,
+    "buttons": [
+      {
+        "disabled": false,
+        "payment": "",
+        "height": 79.6875
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "valid",
+    "viewport": [
+      768,
+      1024
+    ],
+    "zoom": 2,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 376,
+    "scroll": 376,
+    "dpr": 2,
+    "quote": "true",
+    "voucher": "SAVE50",
+    "discount": "50.000 ₫",
+    "shipping": "25.000 ₫",
+    "total": "465.000 ₫",
+    "stale": false,
+    "buttons": [
+      {
+        "disabled": false,
+        "payment": "",
+        "height": 79.6875
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "noJS-edited-code-submit",
+    "viewport": [
+      768,
+      1024
+    ],
+    "zoom": 2,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout",
+    "width": 376,
+    "scroll": 376,
+    "dpr": 2,
+    "quote": "false",
+    "voucher": "EXPIRED",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 79.6875
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": "\n            Chưa thể hoàn tất\n            \n                Voucher không hợp lệ, đã hết hạn hoặc hết lượt.\n                \n                \n            \n        "
+  },
+  {
+    "state": "F07-submit-error",
+    "viewport": [
+      768,
+      1024
+    ],
+    "zoom": 2,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout",
+    "width": 376,
+    "scroll": 376,
+    "dpr": 2,
+    "quote": "false",
+    "voucher": "SAVE50",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 79.6875
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": "\n            Chưa thể hoàn tất\n            \n                Giỏ hàng hoặc tồn kho vừa thay đổi. Vui lòng thử lại.\n                \n                \n            \n        "
+  },
+  {
+    "state": "reconfirmed",
+    "viewport": [
+      768,
+      1024
+    ],
+    "zoom": 2,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 376,
+    "scroll": 376,
+    "dpr": 2,
+    "quote": "true",
+    "voucher": "SAVE50",
+    "discount": "50.000 ₫",
+    "shipping": "25.000 ₫",
+    "total": "465.000 ₫",
+    "stale": false,
+    "buttons": [
+      {
+        "disabled": false,
+        "payment": "",
+        "height": 79.6875
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "invalid-voucher",
+    "viewport": [
+      768,
+      1024
+    ],
+    "zoom": 2,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 376,
+    "scroll": 376,
+    "dpr": 2,
+    "quote": "false",
+    "voucher": "EXPIRED",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 79.6875
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": "\n            Chưa thể hoàn tất\n            \n                \n                \n                Voucher không hợp lệ, đã hết hạn hoặc hết lượt.\n            \n        "
+  },
+  {
+    "state": "minimum-not-met",
+    "viewport": [
+      768,
+      1024
+    ],
+    "zoom": 2,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 376,
+    "scroll": 376,
+    "dpr": 2,
+    "quote": "false",
+    "voucher": "MINIMUM",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 79.6875
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": "\n            Chưa thể hoàn tất\n            \n                \n                \n                Đơn chưa đạt mức tối thiểu của voucher.\n            \n        "
+  },
+  {
+    "state": "quote-failed",
+    "viewport": [
+      768,
+      1024
+    ],
+    "zoom": 2,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 376,
+    "scroll": 376,
+    "dpr": 2,
+    "quote": "false",
+    "voucher": "READFAIL",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 79.6875
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": "\n            Chưa thể hoàn tất\n            \n                Chưa thể xác nhận báo giá. Vui lòng cập nhật lại báo giá.\n                \n                \n            \n        "
+  },
+  {
+    "state": "foreign-address",
+    "viewport": [
+      768,
+      1024
+    ],
+    "zoom": 2,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 376,
+    "scroll": 376,
+    "dpr": 2,
+    "quote": "false",
+    "voucher": "",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 79.6875
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": "\n            Chưa thể hoàn tất\n            \n                \n                Chọn địa chỉ giao hàng hợp lệ của bạn.\n                \n            \n        "
+  },
+  {
+    "state": "COD-success-fixture",
+    "viewport": [
+      768,
+      1024
+    ],
+    "zoom": 2,
+    "js": false,
+    "url": "http://127.0.0.1:57080/orders/901",
+    "width": 376,
+    "scroll": 376,
+    "dpr": 2,
+    "quote": null,
+    "voucher": null,
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": false,
+    "buttons": [],
+    "scripts": [
+      "/js/app.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "MOMO-enabled-mock",
+    "viewport": [
+      768,
+      1024
+    ],
+    "zoom": 2,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 376,
+    "scroll": 376,
+    "dpr": 2,
+    "quote": "true",
+    "voucher": "SAVE50",
+    "discount": "50.000 ₫",
+    "shipping": "25.000 ₫",
+    "total": "465.000 ₫",
+    "stale": false,
+    "buttons": [
+      {
+        "disabled": false,
+        "payment": "",
+        "height": 79.6875
+      },
+      {
+        "disabled": false,
+        "payment": "MOMO",
+        "height": 79.6875
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "MOMO-mock-redirect",
+    "viewport": [
+      768,
+      1024
+    ],
+    "zoom": 2,
+    "js": false,
+    "url": "http://127.0.0.1:57080/payment/momo/mock/902",
+    "width": 376,
+    "scroll": 376,
+    "dpr": 2,
+    "quote": null,
+    "voucher": null,
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": false,
+    "buttons": [],
+    "scripts": [
+      "/js/app.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "MOMO-pending-gateway",
+    "viewport": [
+      768,
+      1024
+    ],
+    "zoom": 2,
+    "js": false,
+    "url": "http://127.0.0.1:57080/orders/902",
+    "width": 376,
+    "scroll": 376,
+    "dpr": 2,
+    "quote": null,
+    "voucher": null,
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": false,
+    "buttons": [],
+    "scripts": [
+      "/js/app.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "empty-cart",
+    "viewport": [
+      768,
+      1024
+    ],
+    "zoom": 2,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout",
+    "width": 376,
+    "scroll": 376,
+    "dpr": 2,
+    "quote": "false",
+    "voucher": null,
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": false,
+    "buttons": [],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "no-address",
+    "viewport": [
+      768,
+      1024
+    ],
+    "zoom": 2,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout",
+    "width": 376,
+    "scroll": 376,
+    "dpr": 2,
+    "quote": "false",
+    "voucher": null,
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": false,
+    "buttons": [],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "unconfirmed",
+    "viewport": [
+      1366,
+      768
+    ],
+    "zoom": 2,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout",
+    "width": 675,
+    "scroll": 675,
+    "dpr": 2,
+    "quote": "false",
+    "voucher": "",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 56
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "no-voucher",
+    "viewport": [
+      1366,
+      768
+    ],
+    "zoom": 2,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 675,
+    "scroll": 675,
+    "dpr": 2,
+    "quote": "true",
+    "voucher": "",
+    "discount": "0 ₫",
+    "shipping": "25.000 ₫",
+    "total": "515.000 ₫",
+    "stale": false,
+    "buttons": [
+      {
+        "disabled": false,
+        "payment": "",
+        "height": 56
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "valid",
+    "viewport": [
+      1366,
+      768
+    ],
+    "zoom": 2,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 675,
+    "scroll": 675,
+    "dpr": 2,
+    "quote": "true",
+    "voucher": "SAVE50",
+    "discount": "50.000 ₫",
+    "shipping": "25.000 ₫",
+    "total": "465.000 ₫",
+    "stale": false,
+    "buttons": [
+      {
+        "disabled": false,
+        "payment": "",
+        "height": 56
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "noJS-edited-code-submit",
+    "viewport": [
+      1366,
+      768
+    ],
+    "zoom": 2,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout",
+    "width": 675,
+    "scroll": 675,
+    "dpr": 2,
+    "quote": "false",
+    "voucher": "EXPIRED",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 56
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": "\n            Chưa thể hoàn tất\n            \n                Voucher không hợp lệ, đã hết hạn hoặc hết lượt.\n                \n                \n            \n        "
+  },
+  {
+    "state": "F07-submit-error",
+    "viewport": [
+      1366,
+      768
+    ],
+    "zoom": 2,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout",
+    "width": 675,
+    "scroll": 675,
+    "dpr": 2,
+    "quote": "false",
+    "voucher": "SAVE50",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 56
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": "\n            Chưa thể hoàn tất\n            \n                Giỏ hàng hoặc tồn kho vừa thay đổi. Vui lòng thử lại.\n                \n                \n            \n        "
+  },
+  {
+    "state": "reconfirmed",
+    "viewport": [
+      1366,
+      768
+    ],
+    "zoom": 2,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 675,
+    "scroll": 675,
+    "dpr": 2,
+    "quote": "true",
+    "voucher": "SAVE50",
+    "discount": "50.000 ₫",
+    "shipping": "25.000 ₫",
+    "total": "465.000 ₫",
+    "stale": false,
+    "buttons": [
+      {
+        "disabled": false,
+        "payment": "",
+        "height": 56
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "invalid-voucher",
+    "viewport": [
+      1366,
+      768
+    ],
+    "zoom": 2,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 675,
+    "scroll": 675,
+    "dpr": 2,
+    "quote": "false",
+    "voucher": "EXPIRED",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 56
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": "\n            Chưa thể hoàn tất\n            \n                \n                \n                Voucher không hợp lệ, đã hết hạn hoặc hết lượt.\n            \n        "
+  },
+  {
+    "state": "minimum-not-met",
+    "viewport": [
+      1366,
+      768
+    ],
+    "zoom": 2,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 675,
+    "scroll": 675,
+    "dpr": 2,
+    "quote": "false",
+    "voucher": "MINIMUM",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 56
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": "\n            Chưa thể hoàn tất\n            \n                \n                \n                Đơn chưa đạt mức tối thiểu của voucher.\n            \n        "
+  },
+  {
+    "state": "quote-failed",
+    "viewport": [
+      1366,
+      768
+    ],
+    "zoom": 2,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 675,
+    "scroll": 675,
+    "dpr": 2,
+    "quote": "false",
+    "voucher": "READFAIL",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 56
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": "\n            Chưa thể hoàn tất\n            \n                Chưa thể xác nhận báo giá. Vui lòng cập nhật lại báo giá.\n                \n                \n            \n        "
+  },
+  {
+    "state": "foreign-address",
+    "viewport": [
+      1366,
+      768
+    ],
+    "zoom": 2,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 675,
+    "scroll": 675,
+    "dpr": 2,
+    "quote": "false",
+    "voucher": "",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 56
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": "\n            Chưa thể hoàn tất\n            \n                \n                Chọn địa chỉ giao hàng hợp lệ của bạn.\n                \n            \n        "
+  },
+  {
+    "state": "COD-success-fixture",
+    "viewport": [
+      1366,
+      768
+    ],
+    "zoom": 2,
+    "js": false,
+    "url": "http://127.0.0.1:57080/orders/901",
+    "width": 675,
+    "scroll": 675,
+    "dpr": 2,
+    "quote": null,
+    "voucher": null,
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": false,
+    "buttons": [],
+    "scripts": [
+      "/js/app.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "MOMO-enabled-mock",
+    "viewport": [
+      1366,
+      768
+    ],
+    "zoom": 2,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 675,
+    "scroll": 675,
+    "dpr": 2,
+    "quote": "true",
+    "voucher": "SAVE50",
+    "discount": "50.000 ₫",
+    "shipping": "25.000 ₫",
+    "total": "465.000 ₫",
+    "stale": false,
+    "buttons": [
+      {
+        "disabled": false,
+        "payment": "",
+        "height": 56
+      },
+      {
+        "disabled": false,
+        "payment": "MOMO",
+        "height": 56
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "MOMO-mock-redirect",
+    "viewport": [
+      1366,
+      768
+    ],
+    "zoom": 2,
+    "js": false,
+    "url": "http://127.0.0.1:57080/payment/momo/mock/902",
+    "width": 675,
+    "scroll": 675,
+    "dpr": 2,
+    "quote": null,
+    "voucher": null,
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": false,
+    "buttons": [],
+    "scripts": [
+      "/js/app.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "MOMO-pending-gateway",
+    "viewport": [
+      1366,
+      768
+    ],
+    "zoom": 2,
+    "js": false,
+    "url": "http://127.0.0.1:57080/orders/902",
+    "width": 675,
+    "scroll": 675,
+    "dpr": 2,
+    "quote": null,
+    "voucher": null,
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": false,
+    "buttons": [],
+    "scripts": [
+      "/js/app.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "empty-cart",
+    "viewport": [
+      1366,
+      768
+    ],
+    "zoom": 2,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout",
+    "width": 675,
+    "scroll": 675,
+    "dpr": 2,
+    "quote": "false",
+    "voucher": null,
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": false,
+    "buttons": [],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "no-address",
+    "viewport": [
+      1366,
+      768
+    ],
+    "zoom": 2,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout",
+    "width": 675,
+    "scroll": 675,
+    "dpr": 2,
+    "quote": "false",
+    "voucher": null,
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": false,
+    "buttons": [],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "unconfirmed",
+    "viewport": [
+      1920,
+      1080
+    ],
+    "zoom": 2,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout",
+    "width": 952,
+    "scroll": 952,
+    "dpr": 2,
+    "quote": "false",
+    "voucher": "",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 79.6875
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "no-voucher",
+    "viewport": [
+      1920,
+      1080
+    ],
+    "zoom": 2,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 952,
+    "scroll": 952,
+    "dpr": 2,
+    "quote": "true",
+    "voucher": "",
+    "discount": "0 ₫",
+    "shipping": "25.000 ₫",
+    "total": "515.000 ₫",
+    "stale": false,
+    "buttons": [
+      {
+        "disabled": false,
+        "payment": "",
+        "height": 79.6875
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "valid",
+    "viewport": [
+      1920,
+      1080
+    ],
+    "zoom": 2,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 952,
+    "scroll": 952,
+    "dpr": 2,
+    "quote": "true",
+    "voucher": "SAVE50",
+    "discount": "50.000 ₫",
+    "shipping": "25.000 ₫",
+    "total": "465.000 ₫",
+    "stale": false,
+    "buttons": [
+      {
+        "disabled": false,
+        "payment": "",
+        "height": 79.6875
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "noJS-edited-code-submit",
+    "viewport": [
+      1920,
+      1080
+    ],
+    "zoom": 2,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout",
+    "width": 952,
+    "scroll": 952,
+    "dpr": 2,
+    "quote": "false",
+    "voucher": "EXPIRED",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 79.6875
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": "\n            Chưa thể hoàn tất\n            \n                Voucher không hợp lệ, đã hết hạn hoặc hết lượt.\n                \n                \n            \n        "
+  },
+  {
+    "state": "F07-submit-error",
+    "viewport": [
+      1920,
+      1080
+    ],
+    "zoom": 2,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout",
+    "width": 952,
+    "scroll": 952,
+    "dpr": 2,
+    "quote": "false",
+    "voucher": "SAVE50",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 79.6875
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": "\n            Chưa thể hoàn tất\n            \n                Giỏ hàng hoặc tồn kho vừa thay đổi. Vui lòng thử lại.\n                \n                \n            \n        "
+  },
+  {
+    "state": "reconfirmed",
+    "viewport": [
+      1920,
+      1080
+    ],
+    "zoom": 2,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 952,
+    "scroll": 952,
+    "dpr": 2,
+    "quote": "true",
+    "voucher": "SAVE50",
+    "discount": "50.000 ₫",
+    "shipping": "25.000 ₫",
+    "total": "465.000 ₫",
+    "stale": false,
+    "buttons": [
+      {
+        "disabled": false,
+        "payment": "",
+        "height": 79.6875
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "invalid-voucher",
+    "viewport": [
+      1920,
+      1080
+    ],
+    "zoom": 2,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 952,
+    "scroll": 952,
+    "dpr": 2,
+    "quote": "false",
+    "voucher": "EXPIRED",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 79.6875
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": "\n            Chưa thể hoàn tất\n            \n                \n                \n                Voucher không hợp lệ, đã hết hạn hoặc hết lượt.\n            \n        "
+  },
+  {
+    "state": "minimum-not-met",
+    "viewport": [
+      1920,
+      1080
+    ],
+    "zoom": 2,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 952,
+    "scroll": 952,
+    "dpr": 2,
+    "quote": "false",
+    "voucher": "MINIMUM",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 79.6875
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": "\n            Chưa thể hoàn tất\n            \n                \n                \n                Đơn chưa đạt mức tối thiểu của voucher.\n            \n        "
+  },
+  {
+    "state": "quote-failed",
+    "viewport": [
+      1920,
+      1080
+    ],
+    "zoom": 2,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 952,
+    "scroll": 952,
+    "dpr": 2,
+    "quote": "false",
+    "voucher": "READFAIL",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 79.6875
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": "\n            Chưa thể hoàn tất\n            \n                Chưa thể xác nhận báo giá. Vui lòng cập nhật lại báo giá.\n                \n                \n            \n        "
+  },
+  {
+    "state": "foreign-address",
+    "viewport": [
+      1920,
+      1080
+    ],
+    "zoom": 2,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 952,
+    "scroll": 952,
+    "dpr": 2,
+    "quote": "false",
+    "voucher": "",
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": true,
+    "buttons": [
+      {
+        "disabled": true,
+        "payment": "",
+        "height": 79.6875
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": "\n            Chưa thể hoàn tất\n            \n                \n                Chọn địa chỉ giao hàng hợp lệ của bạn.\n                \n            \n        "
+  },
+  {
+    "state": "COD-success-fixture",
+    "viewport": [
+      1920,
+      1080
+    ],
+    "zoom": 2,
+    "js": false,
+    "url": "http://127.0.0.1:57080/orders/901",
+    "width": 952,
+    "scroll": 952,
+    "dpr": 2,
+    "quote": null,
+    "voucher": null,
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": false,
+    "buttons": [],
+    "scripts": [
+      "/js/app.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "MOMO-enabled-mock",
+    "viewport": [
+      1920,
+      1080
+    ],
+    "zoom": 2,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout/quote",
+    "width": 952,
+    "scroll": 952,
+    "dpr": 2,
+    "quote": "true",
+    "voucher": "SAVE50",
+    "discount": "50.000 ₫",
+    "shipping": "25.000 ₫",
+    "total": "465.000 ₫",
+    "stale": false,
+    "buttons": [
+      {
+        "disabled": false,
+        "payment": "",
+        "height": 79.6875
+      },
+      {
+        "disabled": false,
+        "payment": "MOMO",
+        "height": 79.6875
+      }
+    ],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "MOMO-mock-redirect",
+    "viewport": [
+      1920,
+      1080
+    ],
+    "zoom": 2,
+    "js": false,
+    "url": "http://127.0.0.1:57080/payment/momo/mock/902",
+    "width": 952,
+    "scroll": 952,
+    "dpr": 2,
+    "quote": null,
+    "voucher": null,
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": false,
+    "buttons": [],
+    "scripts": [
+      "/js/app.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "MOMO-pending-gateway",
+    "viewport": [
+      1920,
+      1080
+    ],
+    "zoom": 2,
+    "js": false,
+    "url": "http://127.0.0.1:57080/orders/902",
+    "width": 952,
+    "scroll": 952,
+    "dpr": 2,
+    "quote": null,
+    "voucher": null,
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": false,
+    "buttons": [],
+    "scripts": [
+      "/js/app.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "empty-cart",
+    "viewport": [
+      1920,
+      1080
+    ],
+    "zoom": 2,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout",
+    "width": 952,
+    "scroll": 952,
+    "dpr": 2,
+    "quote": "false",
+    "voucher": null,
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": false,
+    "buttons": [],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  },
+  {
+    "state": "no-address",
+    "viewport": [
+      1920,
+      1080
+    ],
+    "zoom": 2,
+    "js": false,
+    "url": "http://127.0.0.1:57080/checkout",
+    "width": 952,
+    "scroll": 952,
+    "dpr": 2,
+    "quote": "false",
+    "voucher": null,
+    "discount": null,
+    "shipping": null,
+    "total": null,
+    "stale": false,
+    "buttons": [],
+    "scripts": [
+      "/js/app.js",
+      "/js/checkout.js"
+    ],
+    "error": null
+  }
+]

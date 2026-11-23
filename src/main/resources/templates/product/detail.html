@@ -1,78 +1,89 @@
 <!DOCTYPE html>
 <html lang="vi" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title th:text="|${chiTiet.sanPham.tenSanPham} · BeautyShop|">Sản phẩm · BeautyShop</title>
-    <link rel="stylesheet" th:href="@{/css/theme.css}">
-    <link rel="stylesheet" th:href="@{/css/storefront.css}">
-    <script defer th:src="@{/js/storefront.js}"></script>
-</head>
+<head th:replace="~{fragments/head :: head(|${chiTiet.sanPham.tenSanPham} · BeautyShop|)}"></head>
 <body>
 <div th:replace="~{fragments/header :: siteHeader}"></div>
-<main class="page-content storefront">
-    <a class="text-link" th:href="@{/products}">Quay lại sản phẩm</a>
+<main id="main" tabindex="-1" class="page-content storefront product-page">
+    <a class="pdp-back text-link" th:href="@{/products}"><span aria-hidden="true">←</span> Tất cả sản phẩm</a>
     <article th:with="sanPham=${chiTiet.sanPham}, sku=${chiTiet.dangChon}">
-        <div class="store-detail">
-            <div class="store-image store-detail-image">
-                <img th:if="${sku.urlHinhAnh}" th:src="@{${sku.urlHinhAnh}}" th:alt="|${sanPham.tenSanPham} · ${sku.tenBienThe}|" decoding="async">
-                <span th:unless="${sku.urlHinhAnh}" class="store-placeholder" aria-hidden="true"></span>
+        <div class="pdp-layout">
+            <div class="pdp-media" th:with="coAnh=${!#strings.isEmpty(#strings.trim(sku.urlHinhAnh))}">
+                <img th:if="${coAnh}" data-sku-image th:src="@{${sku.urlHinhAnh}}"
+                     th:alt="|${sanPham.tenSanPham} · ${sku.tenBienThe}|" width="600" height="600" decoding="async">
+                <div class="store-placeholder" th:hidden="${coAnh}">
+                    <span class="pdp-monogram" aria-hidden="true">B</span>
+                    <span>Chưa có ảnh biến thể</span>
+                </div>
             </div>
-            <div>
-                <p class="store-brand" th:text="${sanPham.thuongHieu.tenThuongHieu}"></p>
+            <div class="pdp-buy">
+                <p class="eyebrow" th:text="${sanPham.thuongHieu.tenThuongHieu}"></p>
                 <h1 th:text="${sanPham.tenSanPham}"></h1>
-                <p class="store-price store-current-price" th:text="|${#numbers.formatInteger(sku.giaBan, 1, 'POINT')} ₫|"></p>
-                <p class="store-stock" th:classappend="${sku.soLuongKhaDung == 0} ? ' is-sold-out'"
-                   th:text="${sku.soLuongKhaDung > 0} ? |Còn ${sku.soLuongKhaDung} sản phẩm| : 'Hết hàng'"></p>
-                <p class="store-brand" th:text="|SKU ${sku.sku}|"></p>
-                <form class="store-variant" method="get" th:action="@{/products/{slug}(slug=${sanPham.duongDan})}">
-                    <label>Biến thể
-                        <select name="variant" data-submit-variant>
-                            <option th:each="muc : ${chiTiet.bienThe}" th:value="${muc.maBienThe}"
-                                    th:selected="${muc.maBienThe == sku.maBienThe}"
-                                    th:text="${muc.tenBienThe + (muc.soLuongKhaDung == 0 ? ' · Hết hàng' : '')}"></option>
-                        </select>
-                    </label>
-                    <button class="btn-primary" type="submit">Xem biến thể</button>
+                <p class="pdp-selection" th:text="|${sku.tenBienThe} · SKU ${sku.sku}|"></p>
+                <div class="pdp-offer">
+                    <strong class="pdp-price"><span th:replace="~{fragments/ui :: money(${sku.giaBan})}"></span></strong>
+                    <span class="badge" th:classappend="${sku.soLuongKhaDung > 0 ? 'badge--success' : 'badge--error'}"
+                          th:text="${sku.soLuongKhaDung > 0} ? |Còn ${sku.soLuongKhaDung} sản phẩm| : 'Hết hàng'"></span>
+                </div>
+                <form method="get" th:action="@{/products/{slug}(slug=${sanPham.duongDan})}">
+                    <fieldset class="pdp-variants">
+                        <legend>Chọn biến thể</legend>
+                        <div class="pdp-options">
+                            <button th:each="muc : ${chiTiet.bienThe}" th:with="daChon=${muc.maBienThe == sku.maBienThe}"
+                                    class="btn btn--secondary pdp-option" type="submit" name="variant" th:value="${muc.maBienThe}"
+                                    th:attr="aria-current=${daChon ? 'true' : null}">
+                                <span class="pdp-option-name" th:text="${muc.tenBienThe}"></span>
+                                <span class="pdp-option-code" th:text="|SKU ${muc.sku}|"></span>
+                                <span th:replace="~{fragments/ui :: money(${muc.giaBan})}"></span>
+                                <span class="pdp-option-stock" th:classappend="${muc.soLuongKhaDung == 0} ? 'sold-out'"
+                                      th:text="${muc.soLuongKhaDung > 0} ? |Còn ${muc.soLuongKhaDung} sản phẩm| : 'Hết hàng'"></span>
+                                <span class="pdp-current" th:if="${daChon}">Đang chọn</span>
+                            </button>
+                        </div>
+                    </fieldset>
                 </form>
-                <div class="store-purchase">
-                    <form th:if="${sku.soLuongKhaDung > 0}" sec:authorize="isAnonymous() or hasRole('CUSTOMER')"
-                          method="post" th:action="@{/cart/items}">
+                <div id="pdp-actions" class="pdp-actions" sec:authorize="isAnonymous() or hasRole('CUSTOMER')">
+                    <form th:if="${sku.soLuongKhaDung > 0}" method="post" th:action="@{/cart/items}">
                         <input type="hidden" name="variant" th:value="${sku.maBienThe}">
-                        <button class="btn-primary" type="submit">Thêm vào giỏ</button>
+                        <button class="btn btn--primary btn--lg" type="submit">Thêm vào giỏ</button>
                     </form>
-                    <form sec:authorize="hasRole('CUSTOMER')" method="post"
-                          th:action="@{/account/wishlist/{id}(id=${sanPham.ma})}">
-                        <button class="btn-primary" type="submit">Lưu yêu thích</button>
+                    <button th:unless="${sku.soLuongKhaDung > 0}" class="btn btn--lg" type="button" disabled>Biến thể đã hết hàng</button>
+                    <form sec:authorize="hasRole('CUSTOMER')" method="post" th:action="@{/account/wishlist/{id}(id=${sanPham.ma})}">
+                        <button class="btn btn--secondary" type="submit">Lưu yêu thích</button>
                     </form>
                     <a class="text-link" sec:authorize="isAnonymous()" th:href="@{/login}">Đăng nhập để lưu yêu thích</a>
                 </div>
-                <p th:if="${sku.maLoMinhHoa}" th:text="|Lô minh họa: ${sku.maLoMinhHoa}|"></p>
-                <p th:if="${sku.hanSuDungMinhHoa}" th:text="|Hạn dùng minh họa: ${#temporals.format(sku.hanSuDungMinhHoa, 'dd/MM/yyyy')}|"></p>
+                <dl class="pdp-lot" th:if="${!#strings.isEmpty(sku.maLoMinhHoa) or sku.hanSuDungMinhHoa != null}">
+                    <th:block th:if="${sku.maLoMinhHoa}"><dt>Lô minh họa</dt><dd th:text="${sku.maLoMinhHoa}"></dd></th:block>
+                    <th:block th:if="${sku.hanSuDungMinhHoa}"><dt>Hạn dùng minh họa</dt><dd th:text="${#temporals.format(sku.hanSuDungMinhHoa, 'dd/MM/yyyy')}"></dd></th:block>
+                </dl>
             </div>
         </div>
-        <section class="store-description">
-            <h2>Đánh giá sản phẩm</h2>
-            <p th:if="${#lists.isEmpty(danhGia)}">Chưa có đánh giá được duyệt.</p>
-            <ul class="store-reviews">
-                <li th:each="dg : ${danhGia}">
-                    <strong th:text="|${dg.soSao}/5 sao · Người mua đã xác minh|"></strong>
-                    <p th:if="${dg.noiDung}" th:text="${dg.noiDung}"></p>
-                </li>
-            </ul>
-        </section>
-        <div class="store-description">
-            <section th:if="${sanPham.moTa != null and !#strings.isEmpty(sanPham.moTa)}">
-                <h2>Mô tả</h2><p th:text="${sanPham.moTa}"></p>
+        <div class="pdp-content">
+            <section th:if="${!#strings.isEmpty(#strings.trim(sanPham.moTa))}">
+                <h2>Mô tả sản phẩm</h2>
+                <p class="pdp-copy" th:text="${sanPham.moTa}"></p>
             </section>
-            <section th:if="${sanPham.thanhPhan != null and !#strings.isEmpty(sanPham.thanhPhan)}">
-                <h2>Thành phần</h2><p th:text="${sanPham.thanhPhan}"></p>
-            </section>
-            <section th:if="${sanPham.huongDanSuDung != null and !#strings.isEmpty(sanPham.huongDanSuDung)}">
-                <h2>Hướng dẫn sử dụng</h2><p th:text="${sanPham.huongDanSuDung}"></p>
-            </section>
-            <section th:if="${sanPham.loaiDaPhuHop != null and !#strings.isEmpty(sanPham.loaiDaPhuHop)}">
-                <h2>Loại da phù hợp</h2><p th:text="${sanPham.loaiDaPhuHop}"></p>
+            <details th:if="${!#strings.isEmpty(#strings.trim(sanPham.huongDanSuDung))}">
+                <summary>Hướng dẫn sử dụng</summary>
+                <p class="pdp-copy" th:text="${sanPham.huongDanSuDung}"></p>
+            </details>
+            <details th:if="${!#strings.isEmpty(#strings.trim(sanPham.thanhPhan))}">
+                <summary>Thành phần</summary>
+                <p class="pdp-copy" th:text="${sanPham.thanhPhan}"></p>
+            </details>
+            <details th:if="${!#strings.isEmpty(#strings.trim(sanPham.loaiDaPhuHop))}">
+                <summary>Loại da phù hợp</summary>
+                <p class="pdp-copy" th:text="${sanPham.loaiDaPhuHop}"></p>
+            </details>
+            <section>
+                <h2>Đánh giá sản phẩm</h2>
+                <p class="muted" th:if="${#lists.isEmpty(danhGia)}">Chưa có đánh giá được duyệt.</p>
+                <ul class="pdp-reviews" th:unless="${#lists.isEmpty(danhGia)}">
+                    <li th:each="dg : ${danhGia}">
+                        <strong th:text="|${dg.soSao}/5 sao · Người mua đã xác minh|"></strong>
+                        <p class="pdp-copy" th:if="${dg.noiDung}" th:text="${dg.noiDung}"></p>
+                    </li>
+                </ul>
             </section>
         </div>
     </article>

@@ -1,0 +1,69 @@
+﻿{
+    "BeforeFiles":  190,
+    "AfterFiles":  198,
+    "Changed":  [
+                    {
+                        "Path":  "E:\\Nam 4 HK 1\\WWW\\cosmetics_shop\\src\\main\\resources\\static\\css\\storefront.css",
+                        "Status":  "Changed"
+                    },
+                    {
+                        "Path":  "E:\\Nam 4 HK 1\\WWW\\cosmetics_shop\\src\\main\\resources\\static\\js\\app.js",
+                        "Status":  "Changed"
+                    },
+                    {
+                        "Path":  "E:\\Nam 4 HK 1\\WWW\\cosmetics_shop\\src\\main\\resources\\templates\\fragments\\header.html",
+                        "Status":  "Changed"
+                    },
+                    {
+                        "Path":  "E:\\Nam 4 HK 1\\WWW\\cosmetics_shop\\src\\main\\resources\\templates\\fragments\\product-card.html",
+                        "Status":  "Changed"
+                    },
+                    {
+                        "Path":  "E:\\Nam 4 HK 1\\WWW\\cosmetics_shop\\src\\main\\resources\\templates\\home\\index.html",
+                        "Status":  "Changed"
+                    },
+                    {
+                        "Path":  "E:\\Nam 4 HK 1\\WWW\\cosmetics_shop\\src\\main\\resources\\templates\\product\\detail.html",
+                        "Status":  "Changed"
+                    },
+                    {
+                        "Path":  "E:\\Nam 4 HK 1\\WWW\\cosmetics_shop\\src\\main\\resources\\templates\\product\\list.html",
+                        "Status":  "Changed"
+                    },
+                    {
+                        "Path":  "E:\\Nam 4 HK 1\\WWW\\cosmetics_shop\\src\\test\\java\\com\\beautyshop\\controller\\BootstrapPagesTest.java",
+                        "Status":  "Changed"
+                    },
+                    {
+                        "Path":  "E:\\Nam 4 HK 1\\WWW\\cosmetics_shop\\src\\test\\java\\com\\beautyshop\\controller\\GiaoDienPagesTest.java",
+                        "Status":  "Changed"
+                    }
+                ],
+    "Added":  [
+                  "E:\\Nam 4 HK 1\\WWW\\cosmetics_shop\\src\\main\\resources\\static\\img\\editorial\\form.svg",
+                  "E:\\Nam 4 HK 1\\WWW\\cosmetics_shop\\src\\main\\resources\\static\\img\\editorial\\light.svg",
+                  "E:\\Nam 4 HK 1\\WWW\\cosmetics_shop\\src\\main\\resources\\static\\img\\editorial\\nocturne.svg",
+                  "E:\\Nam 4 HK 1\\WWW\\cosmetics_shop\\src\\main\\resources\\static\\js\\catalog-preview.js",
+                  "E:\\Nam 4 HK 1\\WWW\\cosmetics_shop\\src\\main\\resources\\static\\js\\home-story.js",
+                  "E:\\Nam 4 HK 1\\WWW\\cosmetics_shop\\src\\main\\resources\\static\\js\\vendor\\ScrollTrigger-3.15.1.LICENSE-NOTICE.txt",
+                  "E:\\Nam 4 HK 1\\WWW\\cosmetics_shop\\src\\main\\resources\\static\\js\\vendor\\ScrollTrigger-3.15.1.min.js",
+                  "E:\\Nam 4 HK 1\\WWW\\cosmetics_shop\\src\\main\\resources\\static\\js\\vendor\\ScrollTrigger-3.15.1.provenance.md"
+              ],
+    "CriticalChanges":  [
+
+                        ],
+    "GSAP":  [
+                 {
+                     "Path":  "E:\\Nam 4 HK 1\\WWW\\cosmetics_shop\\src\\main\\resources\\static\\js\\vendor\\gsap-3.15.1.min.js",
+                     "Hash":  "3D1BEA374AB1B703CC5C4105358EEC63C4465EFDC573931DC116E34A0A190C1B"
+                 },
+                 {
+                     "Path":  "E:\\Nam 4 HK 1\\WWW\\cosmetics_shop\\src\\main\\resources\\static\\js\\home-motion.js",
+                     "Hash":  "E804B020D6FCDA54A2617D7552A68A7FBEFA859EFFDD7A214B2E377D34FFE88C"
+                 },
+                 {
+                     "Path":  "E:\\Nam 4 HK 1\\WWW\\cosmetics_shop\\src\\main\\resources\\static\\js\\vendor\\ScrollTrigger-3.15.1.min.js",
+                     "Hash":  "B5BB360661F478F0FF6FFA11500D8CE5E2B6AAF6F7288237CDCA3AAC9548035A"
+                 }
+             ]
+}

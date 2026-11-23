@@ -1,0 +1,5862 @@
+[
+  {
+    "role": "guest",
+    "path": "/",
+    "w": 360,
+    "h": 800,
+    "zoom": 1,
+    "height": 109,
+    "width": 345,
+    "scroll": 345,
+    "dpr": 1,
+    "submenu": false,
+    "current": [
+      "/"
+    ],
+    "icons": [
+      {
+        "href": "/cart",
+        "name": "Giỏ hàng · 0 sản phẩm",
+        "svg": "true"
+      }
+    ],
+    "header": {
+      "width": 345,
+      "scroll": 345,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "width": 345,
+        "height": 253.390625,
+        "top": 0,
+        "right": 345,
+        "bottom": 253.390625,
+        "left": 0
+      },
+      "actions": [
+        {
+          "href": "/cart",
+          "box": {
+            "x": 32,
+            "y": 202.390625,
+            "width": 70,
+            "height": 44,
+            "top": 202.390625,
+            "right": 102,
+            "bottom": 246.390625,
+            "left": 32
+          }
+        }
+      ]
+    },
+    "panel": {
+      "left": 32,
+      "right": 313,
+      "width": 281,
+      "summaryW": 255,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "guest",
+    "path": "/products",
+    "w": 360,
+    "h": 800,
+    "zoom": 1,
+    "height": 109,
+    "width": 345,
+    "scroll": 345,
+    "dpr": 1,
+    "submenu": false,
+    "current": [
+      "/products"
+    ],
+    "icons": [
+      {
+        "href": "/cart",
+        "name": "Giỏ hàng · 0 sản phẩm",
+        "svg": "true"
+      }
+    ],
+    "header": {
+      "width": 345,
+      "scroll": 345,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "width": 345,
+        "height": 253.390625,
+        "top": 0,
+        "right": 345,
+        "bottom": 253.390625,
+        "left": 0
+      },
+      "actions": [
+        {
+          "href": "/cart",
+          "box": {
+            "x": 32,
+            "y": 202.390625,
+            "width": 70,
+            "height": 44,
+            "top": 202.390625,
+            "right": 102,
+            "bottom": 246.390625,
+            "left": 32
+          }
+        }
+      ]
+    },
+    "panel": {
+      "left": 32,
+      "right": 313,
+      "width": 281,
+      "summaryW": 255,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "guest",
+    "path": "/products/demo-r026?variant=22",
+    "w": 360,
+    "h": 800,
+    "zoom": 1,
+    "height": 109,
+    "width": 345,
+    "scroll": 345,
+    "dpr": 1,
+    "submenu": false,
+    "current": [],
+    "icons": [
+      {
+        "href": "/cart",
+        "name": "Giỏ hàng · 0 sản phẩm",
+        "svg": "true"
+      }
+    ],
+    "header": {
+      "width": 345,
+      "scroll": 345,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "width": 345,
+        "height": 253.390625,
+        "top": 0,
+        "right": 345,
+        "bottom": 253.390625,
+        "left": 0
+      },
+      "actions": [
+        {
+          "href": "/cart",
+          "box": {
+            "x": 32,
+            "y": 202.390625,
+            "width": 70,
+            "height": 44,
+            "top": 202.390625,
+            "right": 102,
+            "bottom": 246.390625,
+            "left": 32
+          }
+        }
+      ]
+    },
+    "panel": {
+      "left": 32,
+      "right": 313,
+      "width": 281,
+      "summaryW": 255,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "guest",
+    "path": "/cart",
+    "w": 360,
+    "h": 800,
+    "zoom": 1,
+    "height": 109,
+    "width": 345,
+    "scroll": 345,
+    "dpr": 1,
+    "submenu": false,
+    "current": [
+      "/cart"
+    ],
+    "icons": [
+      {
+        "href": "/cart",
+        "name": "Giỏ hàng · 0 sản phẩm",
+        "svg": "true"
+      }
+    ],
+    "header": {
+      "width": 345,
+      "scroll": 345,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "width": 345,
+        "height": 253.390625,
+        "top": 0,
+        "right": 345,
+        "bottom": 253.390625,
+        "left": 0
+      },
+      "actions": [
+        {
+          "href": "/cart",
+          "box": {
+            "x": 32,
+            "y": 202.390625,
+            "width": 70,
+            "height": 44,
+            "top": 202.390625,
+            "right": 102,
+            "bottom": 246.390625,
+            "left": 32
+          }
+        }
+      ]
+    },
+    "panel": {
+      "left": 32,
+      "right": 313,
+      "width": 281,
+      "summaryW": 255,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "guest",
+    "path": "/login",
+    "w": 360,
+    "h": 800,
+    "zoom": 1,
+    "height": 109,
+    "width": 345,
+    "scroll": 345,
+    "dpr": 1,
+    "submenu": false,
+    "current": [
+      "/login"
+    ],
+    "icons": [
+      {
+        "href": "/cart",
+        "name": "Giỏ hàng · 0 sản phẩm",
+        "svg": "true"
+      }
+    ],
+    "header": {
+      "width": 345,
+      "scroll": 345,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "width": 345,
+        "height": 285.390625,
+        "top": 0,
+        "right": 345,
+        "bottom": 285.390625,
+        "left": 0
+      },
+      "actions": [
+        {
+          "href": "/cart",
+          "box": {
+            "x": 32,
+            "y": 226.390625,
+            "width": 70,
+            "height": 44,
+            "top": 226.390625,
+            "right": 102,
+            "bottom": 270.390625,
+            "left": 32
+          }
+        }
+      ]
+    },
+    "panel": {
+      "left": 32,
+      "right": 313,
+      "width": 281,
+      "summaryW": 255,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "guest",
+    "path": "/register",
+    "w": 360,
+    "h": 800,
+    "zoom": 1,
+    "height": 109,
+    "width": 345,
+    "scroll": 345,
+    "dpr": 1,
+    "submenu": false,
+    "current": [],
+    "icons": [
+      {
+        "href": "/cart",
+        "name": "Giỏ hàng · 0 sản phẩm",
+        "svg": "true"
+      }
+    ],
+    "header": {
+      "width": 345,
+      "scroll": 345,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "width": 345,
+        "height": 285.390625,
+        "top": 0,
+        "right": 345,
+        "bottom": 285.390625,
+        "left": 0
+      },
+      "actions": [
+        {
+          "href": "/cart",
+          "box": {
+            "x": 32,
+            "y": 226.390625,
+            "width": 70,
+            "height": 44,
+            "top": 226.390625,
+            "right": 102,
+            "bottom": 270.390625,
+            "left": 32
+          }
+        }
+      ]
+    },
+    "panel": {
+      "left": 32,
+      "right": 313,
+      "width": 281,
+      "summaryW": 255,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "guest",
+    "path": "/",
+    "w": 390,
+    "h": 844,
+    "zoom": 1,
+    "height": 109,
+    "width": 375,
+    "scroll": 375,
+    "dpr": 1,
+    "submenu": false,
+    "current": [
+      "/"
+    ],
+    "icons": [
+      {
+        "href": "/cart",
+        "name": "Giỏ hàng · 0 sản phẩm",
+        "svg": "true"
+      }
+    ],
+    "header": {
+      "width": 375,
+      "scroll": 375,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "width": 375,
+        "height": 253.390625,
+        "top": 0,
+        "right": 375,
+        "bottom": 253.390625,
+        "left": 0
+      },
+      "actions": [
+        {
+          "href": "/cart",
+          "box": {
+            "x": 32,
+            "y": 202.390625,
+            "width": 70,
+            "height": 44,
+            "top": 202.390625,
+            "right": 102,
+            "bottom": 246.390625,
+            "left": 32
+          }
+        }
+      ]
+    },
+    "panel": {
+      "left": 32,
+      "right": 343,
+      "width": 311,
+      "summaryW": 285,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "guest",
+    "path": "/products",
+    "w": 390,
+    "h": 844,
+    "zoom": 1,
+    "height": 109,
+    "width": 375,
+    "scroll": 375,
+    "dpr": 1,
+    "submenu": false,
+    "current": [
+      "/products"
+    ],
+    "icons": [
+      {
+        "href": "/cart",
+        "name": "Giỏ hàng · 0 sản phẩm",
+        "svg": "true"
+      }
+    ],
+    "header": {
+      "width": 375,
+      "scroll": 375,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "width": 375,
+        "height": 253.390625,
+        "top": 0,
+        "right": 375,
+        "bottom": 253.390625,
+        "left": 0
+      },
+      "actions": [
+        {
+          "href": "/cart",
+          "box": {
+            "x": 32,
+            "y": 202.390625,
+            "width": 70,
+            "height": 44,
+            "top": 202.390625,
+            "right": 102,
+            "bottom": 246.390625,
+            "left": 32
+          }
+        }
+      ]
+    },
+    "panel": {
+      "left": 32,
+      "right": 343,
+      "width": 311,
+      "summaryW": 285,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "guest",
+    "path": "/products/demo-r026?variant=22",
+    "w": 390,
+    "h": 844,
+    "zoom": 1,
+    "height": 109,
+    "width": 375,
+    "scroll": 375,
+    "dpr": 1,
+    "submenu": false,
+    "current": [],
+    "icons": [
+      {
+        "href": "/cart",
+        "name": "Giỏ hàng · 0 sản phẩm",
+        "svg": "true"
+      }
+    ],
+    "header": {
+      "width": 375,
+      "scroll": 375,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "width": 375,
+        "height": 253.390625,
+        "top": 0,
+        "right": 375,
+        "bottom": 253.390625,
+        "left": 0
+      },
+      "actions": [
+        {
+          "href": "/cart",
+          "box": {
+            "x": 32,
+            "y": 202.390625,
+            "width": 70,
+            "height": 44,
+            "top": 202.390625,
+            "right": 102,
+            "bottom": 246.390625,
+            "left": 32
+          }
+        }
+      ]
+    },
+    "panel": {
+      "left": 32,
+      "right": 343,
+      "width": 311,
+      "summaryW": 285,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "guest",
+    "path": "/cart",
+    "w": 390,
+    "h": 844,
+    "zoom": 1,
+    "height": 109,
+    "width": 375,
+    "scroll": 375,
+    "dpr": 1,
+    "submenu": false,
+    "current": [
+      "/cart"
+    ],
+    "icons": [
+      {
+        "href": "/cart",
+        "name": "Giỏ hàng · 0 sản phẩm",
+        "svg": "true"
+      }
+    ],
+    "header": {
+      "width": 375,
+      "scroll": 375,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "width": 375,
+        "height": 253.390625,
+        "top": 0,
+        "right": 375,
+        "bottom": 253.390625,
+        "left": 0
+      },
+      "actions": [
+        {
+          "href": "/cart",
+          "box": {
+            "x": 32,
+            "y": 202.390625,
+            "width": 70,
+            "height": 44,
+            "top": 202.390625,
+            "right": 102,
+            "bottom": 246.390625,
+            "left": 32
+          }
+        }
+      ]
+    },
+    "panel": {
+      "left": 32,
+      "right": 343,
+      "width": 311,
+      "summaryW": 285,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "guest",
+    "path": "/login",
+    "w": 390,
+    "h": 844,
+    "zoom": 1,
+    "height": 109,
+    "width": 375,
+    "scroll": 375,
+    "dpr": 1,
+    "submenu": false,
+    "current": [
+      "/login"
+    ],
+    "icons": [
+      {
+        "href": "/cart",
+        "name": "Giỏ hàng · 0 sản phẩm",
+        "svg": "true"
+      }
+    ],
+    "header": {
+      "width": 375,
+      "scroll": 375,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "width": 375,
+        "height": 285.390625,
+        "top": 0,
+        "right": 375,
+        "bottom": 285.390625,
+        "left": 0
+      },
+      "actions": [
+        {
+          "href": "/cart",
+          "box": {
+            "x": 32,
+            "y": 226.390625,
+            "width": 70,
+            "height": 44,
+            "top": 226.390625,
+            "right": 102,
+            "bottom": 270.390625,
+            "left": 32
+          }
+        }
+      ]
+    },
+    "panel": {
+      "left": 32,
+      "right": 343,
+      "width": 311,
+      "summaryW": 285,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "guest",
+    "path": "/register",
+    "w": 390,
+    "h": 844,
+    "zoom": 1,
+    "height": 109,
+    "width": 375,
+    "scroll": 375,
+    "dpr": 1,
+    "submenu": false,
+    "current": [],
+    "icons": [
+      {
+        "href": "/cart",
+        "name": "Giỏ hàng · 0 sản phẩm",
+        "svg": "true"
+      }
+    ],
+    "header": {
+      "width": 375,
+      "scroll": 375,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "width": 375,
+        "height": 285.390625,
+        "top": 0,
+        "right": 375,
+        "bottom": 285.390625,
+        "left": 0
+      },
+      "actions": [
+        {
+          "href": "/cart",
+          "box": {
+            "x": 32,
+            "y": 226.390625,
+            "width": 70,
+            "height": 44,
+            "top": 226.390625,
+            "right": 102,
+            "bottom": 270.390625,
+            "left": 32
+          }
+        }
+      ]
+    },
+    "panel": {
+      "left": 32,
+      "right": 343,
+      "width": 311,
+      "summaryW": 285,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "guest",
+    "path": "/",
+    "w": 768,
+    "h": 1024,
+    "zoom": 1,
+    "height": 109,
+    "width": 753,
+    "scroll": 753,
+    "dpr": 1,
+    "submenu": false,
+    "current": [
+      "/"
+    ],
+    "icons": [
+      {
+        "href": "/cart",
+        "name": "Giỏ hàng · 0 sản phẩm",
+        "svg": "true"
+      }
+    ],
+    "header": {
+      "width": 753,
+      "scroll": 753,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "width": 753,
+        "height": 285.390625,
+        "top": 0,
+        "right": 753,
+        "bottom": 285.390625,
+        "left": 0
+      },
+      "actions": [
+        {
+          "href": "/cart",
+          "box": {
+            "x": 32,
+            "y": 226.390625,
+            "width": 70,
+            "height": 44,
+            "top": 226.390625,
+            "right": 102,
+            "bottom": 270.390625,
+            "left": 32
+          }
+        }
+      ]
+    },
+    "panel": {
+      "left": 32,
+      "right": 721,
+      "width": 689,
+      "summaryW": 663,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "guest",
+    "path": "/products",
+    "w": 768,
+    "h": 1024,
+    "zoom": 1,
+    "height": 109,
+    "width": 753,
+    "scroll": 753,
+    "dpr": 1,
+    "submenu": false,
+    "current": [
+      "/products"
+    ],
+    "icons": [
+      {
+        "href": "/cart",
+        "name": "Giỏ hàng · 0 sản phẩm",
+        "svg": "true"
+      }
+    ],
+    "header": {
+      "width": 753,
+      "scroll": 753,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "width": 753,
+        "height": 285.390625,
+        "top": 0,
+        "right": 753,
+        "bottom": 285.390625,
+        "left": 0
+      },
+      "actions": [
+        {
+          "href": "/cart",
+          "box": {
+            "x": 32,
+            "y": 226.390625,
+            "width": 70,
+            "height": 44,
+            "top": 226.390625,
+            "right": 102,
+            "bottom": 270.390625,
+            "left": 32
+          }
+        }
+      ]
+    },
+    "panel": {
+      "left": 32,
+      "right": 721,
+      "width": 689,
+      "summaryW": 663,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "guest",
+    "path": "/products/demo-r026?variant=22",
+    "w": 768,
+    "h": 1024,
+    "zoom": 1,
+    "height": 109,
+    "width": 753,
+    "scroll": 753,
+    "dpr": 1,
+    "submenu": false,
+    "current": [],
+    "icons": [
+      {
+        "href": "/cart",
+        "name": "Giỏ hàng · 0 sản phẩm",
+        "svg": "true"
+      }
+    ],
+    "header": {
+      "width": 753,
+      "scroll": 753,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "width": 753,
+        "height": 285.390625,
+        "top": 0,
+        "right": 753,
+        "bottom": 285.390625,
+        "left": 0
+      },
+      "actions": [
+        {
+          "href": "/cart",
+          "box": {
+            "x": 32,
+            "y": 226.390625,
+            "width": 70,
+            "height": 44,
+            "top": 226.390625,
+            "right": 102,
+            "bottom": 270.390625,
+            "left": 32
+          }
+        }
+      ]
+    },
+    "panel": {
+      "left": 32,
+      "right": 721,
+      "width": 689,
+      "summaryW": 663,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "guest",
+    "path": "/cart",
+    "w": 768,
+    "h": 1024,
+    "zoom": 1,
+    "height": 109,
+    "width": 753,
+    "scroll": 753,
+    "dpr": 1,
+    "submenu": false,
+    "current": [
+      "/cart"
+    ],
+    "icons": [
+      {
+        "href": "/cart",
+        "name": "Giỏ hàng · 0 sản phẩm",
+        "svg": "true"
+      }
+    ],
+    "header": {
+      "width": 753,
+      "scroll": 753,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "width": 753,
+        "height": 285.390625,
+        "top": 0,
+        "right": 753,
+        "bottom": 285.390625,
+        "left": 0
+      },
+      "actions": [
+        {
+          "href": "/cart",
+          "box": {
+            "x": 32,
+            "y": 226.390625,
+            "width": 70,
+            "height": 44,
+            "top": 226.390625,
+            "right": 102,
+            "bottom": 270.390625,
+            "left": 32
+          }
+        }
+      ]
+    },
+    "panel": {
+      "left": 32,
+      "right": 721,
+      "width": 689,
+      "summaryW": 663,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "guest",
+    "path": "/login",
+    "w": 768,
+    "h": 1024,
+    "zoom": 1,
+    "height": 109,
+    "width": 753,
+    "scroll": 753,
+    "dpr": 1,
+    "submenu": false,
+    "current": [
+      "/login"
+    ],
+    "icons": [
+      {
+        "href": "/cart",
+        "name": "Giỏ hàng · 0 sản phẩm",
+        "svg": "true"
+      }
+    ],
+    "header": {
+      "width": 753,
+      "scroll": 753,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "width": 753,
+        "height": 285.390625,
+        "top": 0,
+        "right": 753,
+        "bottom": 285.390625,
+        "left": 0
+      },
+      "actions": [
+        {
+          "href": "/cart",
+          "box": {
+            "x": 32,
+            "y": 226.390625,
+            "width": 70,
+            "height": 44,
+            "top": 226.390625,
+            "right": 102,
+            "bottom": 270.390625,
+            "left": 32
+          }
+        }
+      ]
+    },
+    "panel": {
+      "left": 32,
+      "right": 721,
+      "width": 689,
+      "summaryW": 663,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "guest",
+    "path": "/register",
+    "w": 768,
+    "h": 1024,
+    "zoom": 1,
+    "height": 109,
+    "width": 753,
+    "scroll": 753,
+    "dpr": 1,
+    "submenu": false,
+    "current": [],
+    "icons": [
+      {
+        "href": "/cart",
+        "name": "Giỏ hàng · 0 sản phẩm",
+        "svg": "true"
+      }
+    ],
+    "header": {
+      "width": 753,
+      "scroll": 753,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "width": 753,
+        "height": 285.390625,
+        "top": 0,
+        "right": 753,
+        "bottom": 285.390625,
+        "left": 0
+      },
+      "actions": [
+        {
+          "href": "/cart",
+          "box": {
+            "x": 32,
+            "y": 226.390625,
+            "width": 70,
+            "height": 44,
+            "top": 226.390625,
+            "right": 102,
+            "bottom": 270.390625,
+            "left": 32
+          }
+        }
+      ]
+    },
+    "panel": {
+      "left": 32,
+      "right": 721,
+      "width": 689,
+      "summaryW": 663,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "guest",
+    "path": "/",
+    "w": 1366,
+    "h": 768,
+    "zoom": 1,
+    "height": 113,
+    "width": 1351,
+    "scroll": 1351,
+    "dpr": 1,
+    "submenu": false,
+    "current": [
+      "/"
+    ],
+    "icons": [
+      {
+        "href": "/cart",
+        "name": "Giỏ hàng · 0 sản phẩm",
+        "svg": "true"
+      }
+    ],
+    "header": {
+      "width": 1351,
+      "scroll": 1351,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "width": 1351,
+        "height": 113.390625,
+        "top": 0,
+        "right": 1351,
+        "bottom": 113.390625,
+        "left": 0
+      },
+      "actions": [
+        {
+          "href": "/cart",
+          "box": {
+            "x": 496.3125,
+            "y": 62.390625,
+            "width": 70,
+            "height": 44,
+            "top": 62.390625,
+            "right": 566.3125,
+            "bottom": 106.390625,
+            "left": 496.3125
+          }
+        }
+      ]
+    },
+    "panel": {
+      "left": 107.5,
+      "right": 1243.5,
+      "width": 1136,
+      "summaryW": 253.5,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "guest",
+    "path": "/products",
+    "w": 1366,
+    "h": 768,
+    "zoom": 1,
+    "height": 113,
+    "width": 1351,
+    "scroll": 1351,
+    "dpr": 1,
+    "submenu": false,
+    "current": [
+      "/products"
+    ],
+    "icons": [
+      {
+        "href": "/cart",
+        "name": "Giỏ hàng · 0 sản phẩm",
+        "svg": "true"
+      }
+    ],
+    "header": {
+      "width": 1351,
+      "scroll": 1351,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "width": 1351,
+        "height": 113.390625,
+        "top": 0,
+        "right": 1351,
+        "bottom": 113.390625,
+        "left": 0
+      },
+      "actions": [
+        {
+          "href": "/cart",
+          "box": {
+            "x": 496.3125,
+            "y": 62.390625,
+            "width": 70,
+            "height": 44,
+            "top": 62.390625,
+            "right": 566.3125,
+            "bottom": 106.390625,
+            "left": 496.3125
+          }
+        }
+      ]
+    },
+    "panel": {
+      "left": 107.5,
+      "right": 1243.5,
+      "width": 1136,
+      "summaryW": 253.5,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "guest",
+    "path": "/products/demo-r026?variant=22",
+    "w": 1366,
+    "h": 768,
+    "zoom": 1,
+    "height": 113,
+    "width": 1351,
+    "scroll": 1351,
+    "dpr": 1,
+    "submenu": false,
+    "current": [],
+    "icons": [
+      {
+        "href": "/cart",
+        "name": "Giỏ hàng · 0 sản phẩm",
+        "svg": "true"
+      }
+    ],
+    "header": {
+      "width": 1351,
+      "scroll": 1351,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "width": 1351,
+        "height": 113.390625,
+        "top": 0,
+        "right": 1351,
+        "bottom": 113.390625,
+        "left": 0
+      },
+      "actions": [
+        {
+          "href": "/cart",
+          "box": {
+            "x": 498.125,
+            "y": 62.390625,
+            "width": 70,
+            "height": 44,
+            "top": 62.390625,
+            "right": 568.125,
+            "bottom": 106.390625,
+            "left": 498.125
+          }
+        }
+      ]
+    },
+    "panel": {
+      "left": 107.5,
+      "right": 1243.5,
+      "width": 1136,
+      "summaryW": 253.5,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "guest",
+    "path": "/cart",
+    "w": 1366,
+    "h": 768,
+    "zoom": 1,
+    "height": 113,
+    "width": 1351,
+    "scroll": 1351,
+    "dpr": 1,
+    "submenu": false,
+    "current": [
+      "/cart"
+    ],
+    "icons": [
+      {
+        "href": "/cart",
+        "name": "Giỏ hàng · 0 sản phẩm",
+        "svg": "true"
+      }
+    ],
+    "header": {
+      "width": 1351,
+      "scroll": 1351,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "width": 1351,
+        "height": 113.390625,
+        "top": 0,
+        "right": 1351,
+        "bottom": 113.390625,
+        "left": 0
+      },
+      "actions": [
+        {
+          "href": "/cart",
+          "box": {
+            "x": 496.3125,
+            "y": 62.390625,
+            "width": 70,
+            "height": 44,
+            "top": 62.390625,
+            "right": 566.3125,
+            "bottom": 106.390625,
+            "left": 496.3125
+          }
+        }
+      ]
+    },
+    "panel": {
+      "left": 107.5,
+      "right": 1243.5,
+      "width": 1136,
+      "summaryW": 253.5,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "guest",
+    "path": "/login",
+    "w": 1366,
+    "h": 768,
+    "zoom": 1,
+    "height": 113,
+    "width": 1351,
+    "scroll": 1351,
+    "dpr": 1,
+    "submenu": false,
+    "current": [
+      "/login"
+    ],
+    "icons": [
+      {
+        "href": "/cart",
+        "name": "Giỏ hàng · 0 sản phẩm",
+        "svg": "true"
+      }
+    ],
+    "header": {
+      "width": 1351,
+      "scroll": 1351,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "width": 1351,
+        "height": 113.390625,
+        "top": 0,
+        "right": 1351,
+        "bottom": 113.390625,
+        "left": 0
+      },
+      "actions": [
+        {
+          "href": "/cart",
+          "box": {
+            "x": 496.3125,
+            "y": 62.390625,
+            "width": 70,
+            "height": 44,
+            "top": 62.390625,
+            "right": 566.3125,
+            "bottom": 106.390625,
+            "left": 496.3125
+          }
+        }
+      ]
+    },
+    "panel": {
+      "left": 107.5,
+      "right": 1243.5,
+      "width": 1136,
+      "summaryW": 253.5,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "guest",
+    "path": "/register",
+    "w": 1366,
+    "h": 768,
+    "zoom": 1,
+    "height": 113,
+    "width": 1351,
+    "scroll": 1351,
+    "dpr": 1,
+    "submenu": false,
+    "current": [],
+    "icons": [
+      {
+        "href": "/cart",
+        "name": "Giỏ hàng · 0 sản phẩm",
+        "svg": "true"
+      }
+    ],
+    "header": {
+      "width": 1351,
+      "scroll": 1351,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "width": 1351,
+        "height": 113.390625,
+        "top": 0,
+        "right": 1351,
+        "bottom": 113.390625,
+        "left": 0
+      },
+      "actions": [
+        {
+          "href": "/cart",
+          "box": {
+            "x": 496.3125,
+            "y": 62.390625,
+            "width": 70,
+            "height": 44,
+            "top": 62.390625,
+            "right": 566.3125,
+            "bottom": 106.390625,
+            "left": 496.3125
+          }
+        }
+      ]
+    },
+    "panel": {
+      "left": 107.5,
+      "right": 1243.5,
+      "width": 1136,
+      "summaryW": 253.5,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "guest",
+    "path": "/",
+    "w": 1920,
+    "h": 1080,
+    "zoom": 1,
+    "height": 113,
+    "width": 1905,
+    "scroll": 1905,
+    "dpr": 1,
+    "submenu": false,
+    "current": [
+      "/"
+    ],
+    "icons": [
+      {
+        "href": "/cart",
+        "name": "Giỏ hàng · 0 sản phẩm",
+        "svg": "true"
+      }
+    ],
+    "header": {
+      "width": 1905,
+      "scroll": 1905,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "width": 1905,
+        "height": 113.390625,
+        "top": 0,
+        "right": 1905,
+        "bottom": 113.390625,
+        "left": 0
+      },
+      "actions": [
+        {
+          "href": "/cart",
+          "box": {
+            "x": 773.3125,
+            "y": 62.390625,
+            "width": 70,
+            "height": 44,
+            "top": 62.390625,
+            "right": 843.3125,
+            "bottom": 106.390625,
+            "left": 773.3125
+          }
+        }
+      ]
+    },
+    "panel": {
+      "left": 384.5,
+      "right": 1520.5,
+      "width": 1136,
+      "summaryW": 253.5,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "guest",
+    "path": "/products",
+    "w": 1920,
+    "h": 1080,
+    "zoom": 1,
+    "height": 113,
+    "width": 1905,
+    "scroll": 1905,
+    "dpr": 1,
+    "submenu": false,
+    "current": [
+      "/products"
+    ],
+    "icons": [
+      {
+        "href": "/cart",
+        "name": "Giỏ hàng · 0 sản phẩm",
+        "svg": "true"
+      }
+    ],
+    "header": {
+      "width": 1905,
+      "scroll": 1905,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "width": 1905,
+        "height": 113.390625,
+        "top": 0,
+        "right": 1905,
+        "bottom": 113.390625,
+        "left": 0
+      },
+      "actions": [
+        {
+          "href": "/cart",
+          "box": {
+            "x": 773.3125,
+            "y": 62.390625,
+            "width": 70,
+            "height": 44,
+            "top": 62.390625,
+            "right": 843.3125,
+            "bottom": 106.390625,
+            "left": 773.3125
+          }
+        }
+      ]
+    },
+    "panel": {
+      "left": 384.5,
+      "right": 1520.5,
+      "width": 1136,
+      "summaryW": 253.5,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "guest",
+    "path": "/products/demo-r026?variant=22",
+    "w": 1920,
+    "h": 1080,
+    "zoom": 1,
+    "height": 113,
+    "width": 1905,
+    "scroll": 1905,
+    "dpr": 1,
+    "submenu": false,
+    "current": [],
+    "icons": [
+      {
+        "href": "/cart",
+        "name": "Giỏ hàng · 0 sản phẩm",
+        "svg": "true"
+      }
+    ],
+    "header": {
+      "width": 1905,
+      "scroll": 1905,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "width": 1905,
+        "height": 113.390625,
+        "top": 0,
+        "right": 1905,
+        "bottom": 113.390625,
+        "left": 0
+      },
+      "actions": [
+        {
+          "href": "/cart",
+          "box": {
+            "x": 775.125,
+            "y": 62.390625,
+            "width": 70,
+            "height": 44,
+            "top": 62.390625,
+            "right": 845.125,
+            "bottom": 106.390625,
+            "left": 775.125
+          }
+        }
+      ]
+    },
+    "panel": {
+      "left": 384.5,
+      "right": 1520.5,
+      "width": 1136,
+      "summaryW": 253.5,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "guest",
+    "path": "/cart",
+    "w": 1920,
+    "h": 1080,
+    "zoom": 1,
+    "height": 113,
+    "width": 1920,
+    "scroll": 1920,
+    "dpr": 1,
+    "submenu": false,
+    "current": [
+      "/cart"
+    ],
+    "icons": [
+      {
+        "href": "/cart",
+        "name": "Giỏ hàng · 0 sản phẩm",
+        "svg": "true"
+      }
+    ],
+    "header": {
+      "width": 1920,
+      "scroll": 1920,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "width": 1920,
+        "height": 113.390625,
+        "top": 0,
+        "right": 1920,
+        "bottom": 113.390625,
+        "left": 0
+      },
+      "actions": [
+        {
+          "href": "/cart",
+          "box": {
+            "x": 780.8125,
+            "y": 62.390625,
+            "width": 70,
+            "height": 44,
+            "top": 62.390625,
+            "right": 850.8125,
+            "bottom": 106.390625,
+            "left": 780.8125
+          }
+        }
+      ]
+    },
+    "panel": {
+      "left": 392,
+      "right": 1528,
+      "width": 1136,
+      "summaryW": 253.5,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "guest",
+    "path": "/login",
+    "w": 1920,
+    "h": 1080,
+    "zoom": 1,
+    "height": 113,
+    "width": 1905,
+    "scroll": 1905,
+    "dpr": 1,
+    "submenu": false,
+    "current": [
+      "/login"
+    ],
+    "icons": [
+      {
+        "href": "/cart",
+        "name": "Giỏ hàng · 0 sản phẩm",
+        "svg": "true"
+      }
+    ],
+    "header": {
+      "width": 1905,
+      "scroll": 1905,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "width": 1905,
+        "height": 113.390625,
+        "top": 0,
+        "right": 1905,
+        "bottom": 113.390625,
+        "left": 0
+      },
+      "actions": [
+        {
+          "href": "/cart",
+          "box": {
+            "x": 773.3125,
+            "y": 62.390625,
+            "width": 70,
+            "height": 44,
+            "top": 62.390625,
+            "right": 843.3125,
+            "bottom": 106.390625,
+            "left": 773.3125
+          }
+        }
+      ]
+    },
+    "panel": {
+      "left": 384.5,
+      "right": 1520.5,
+      "width": 1136,
+      "summaryW": 253.5,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "guest",
+    "path": "/register",
+    "w": 1920,
+    "h": 1080,
+    "zoom": 1,
+    "height": 113,
+    "width": 1905,
+    "scroll": 1905,
+    "dpr": 1,
+    "submenu": false,
+    "current": [],
+    "icons": [
+      {
+        "href": "/cart",
+        "name": "Giỏ hàng · 0 sản phẩm",
+        "svg": "true"
+      }
+    ],
+    "header": {
+      "width": 1905,
+      "scroll": 1905,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "width": 1905,
+        "height": 113.390625,
+        "top": 0,
+        "right": 1905,
+        "bottom": 113.390625,
+        "left": 0
+      },
+      "actions": [
+        {
+          "href": "/cart",
+          "box": {
+            "x": 773.3125,
+            "y": 62.390625,
+            "width": 70,
+            "height": 44,
+            "top": 62.390625,
+            "right": 843.3125,
+            "bottom": 106.390625,
+            "left": 773.3125
+          }
+        }
+      ]
+    },
+    "panel": {
+      "left": 384.5,
+      "right": 1520.5,
+      "width": 1136,
+      "summaryW": 253.5,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "guest",
+    "path": "/",
+    "w": 360,
+    "h": 800,
+    "zoom": 2,
+    "height": 226,
+    "width": 172,
+    "scroll": 208,
+    "dpr": 2,
+    "submenu": false,
+    "current": [
+      "/"
+    ],
+    "icons": [
+      {
+        "href": "/cart",
+        "name": "Giỏ hàng · 0 sản phẩm",
+        "svg": "true"
+      }
+    ],
+    "header": {
+      "width": 173,
+      "scroll": 173,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "width": 172.5,
+        "height": 501.1953125,
+        "top": 0,
+        "right": 172.5,
+        "bottom": 501.1953125,
+        "left": 0
+      },
+      "actions": [
+        {
+          "href": "/cart",
+          "box": {
+            "x": 32,
+            "y": 404.1953125,
+            "width": 70,
+            "height": 44,
+            "top": 404.1953125,
+            "right": 102,
+            "bottom": 448.1953125,
+            "left": 32
+          }
+        }
+      ]
+    },
+    "panel": {
+      "left": 32,
+      "right": 140.5,
+      "width": 108.5,
+      "summaryW": 75,
+      "summaryH": 124.890625
+    }
+  },
+  {
+    "role": "guest",
+    "path": "/products",
+    "w": 360,
+    "h": 800,
+    "zoom": 2,
+    "height": 226,
+    "width": 172,
+    "scroll": 208,
+    "dpr": 2,
+    "submenu": false,
+    "current": [
+      "/products"
+    ],
+    "icons": [
+      {
+        "href": "/cart",
+        "name": "Giỏ hàng · 0 sản phẩm",
+        "svg": "true"
+      }
+    ],
+    "header": {
+      "width": 173,
+      "scroll": 173,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "width": 172.5,
+        "height": 501.1953125,
+        "top": 0,
+        "right": 172.5,
+        "bottom": 501.1953125,
+        "left": 0
+      },
+      "actions": [
+        {
+          "href": "/cart",
+          "box": {
+            "x": 32,
+            "y": 404.1953125,
+            "width": 70,
+            "height": 44,
+            "top": 404.1953125,
+            "right": 102,
+            "bottom": 448.1953125,
+            "left": 32
+          }
+        }
+      ]
+    },
+    "panel": {
+      "left": 32,
+      "right": 140.5,
+      "width": 108.5,
+      "summaryW": 75,
+      "summaryH": 124.890625
+    }
+  },
+  {
+    "role": "guest",
+    "path": "/products/demo-r026?variant=22",
+    "w": 360,
+    "h": 800,
+    "zoom": 2,
+    "height": 226,
+    "width": 172,
+    "scroll": 172,
+    "dpr": 2,
+    "submenu": false,
+    "current": [],
+    "icons": [
+      {
+        "href": "/cart",
+        "name": "Giỏ hàng · 0 sản phẩm",
+        "svg": "true"
+      }
+    ],
+    "header": {
+      "width": 173,
+      "scroll": 173,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "width": 172.5,
+        "height": 501.1953125,
+        "top": 0,
+        "right": 172.5,
+        "bottom": 501.1953125,
+        "left": 0
+      },
+      "actions": [
+        {
+          "href": "/cart",
+          "box": {
+            "x": 32,
+            "y": 404.1953125,
+            "width": 70,
+            "height": 44,
+            "top": 404.1953125,
+            "right": 102,
+            "bottom": 448.1953125,
+            "left": 32
+          }
+        }
+      ]
+    },
+    "panel": {
+      "left": 32,
+      "right": 140.5,
+      "width": 108.5,
+      "summaryW": 75,
+      "summaryH": 124.890625
+    }
+  },
+  {
+    "role": "guest",
+    "path": "/cart",
+    "w": 360,
+    "h": 800,
+    "zoom": 2,
+    "height": 226,
+    "width": 172,
+    "scroll": 172,
+    "dpr": 2,
+    "submenu": false,
+    "current": [
+      "/cart"
+    ],
+    "icons": [
+      {
+        "href": "/cart",
+        "name": "Giỏ hàng · 0 sản phẩm",
+        "svg": "true"
+      }
+    ],
+    "header": {
+      "width": 173,
+      "scroll": 173,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "width": 172.5,
+        "height": 501.1953125,
+        "top": 0,
+        "right": 172.5,
+        "bottom": 501.1953125,
+        "left": 0
+      },
+      "actions": [
+        {
+          "href": "/cart",
+          "box": {
+            "x": 32,
+            "y": 404.1953125,
+            "width": 70,
+            "height": 44,
+            "top": 404.1953125,
+            "right": 102,
+            "bottom": 448.1953125,
+            "left": 32
+          }
+        }
+      ]
+    },
+    "panel": {
+      "left": 32,
+      "right": 140.5,
+      "width": 108.5,
+      "summaryW": 75,
+      "summaryH": 124.890625
+    }
+  },
+  {
+    "role": "guest",
+    "path": "/login",
+    "w": 360,
+    "h": 800,
+    "zoom": 2,
+    "height": 226,
+    "width": 172,
+    "scroll": 208,
+    "dpr": 2,
+    "submenu": false,
+    "current": [
+      "/login"
+    ],
+    "icons": [
+      {
+        "href": "/cart",
+        "name": "Giỏ hàng · 0 sản phẩm",
+        "svg": "true"
+      }
+    ],
+    "header": {
+      "width": 173,
+      "scroll": 173,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "width": 172.5,
+        "height": 557.1953125,
+        "top": 0,
+        "right": 172.5,
+        "bottom": 557.1953125,
+        "left": 0
+      },
+      "actions": [
+        {
+          "href": "/cart",
+          "box": {
+            "x": 32,
+            "y": 444.1953125,
+            "width": 70,
+            "height": 44,
+            "top": 444.1953125,
+            "right": 102,
+            "bottom": 488.1953125,
+            "left": 32
+          }
+        }
+      ]
+    },
+    "panel": {
+      "left": 32,
+      "right": 140.5,
+      "width": 108.5,
+      "summaryW": 75,
+      "summaryH": 124.890625
+    }
+  },
+  {
+    "role": "guest",
+    "path": "/register",
+    "w": 360,
+    "h": 800,
+    "zoom": 2,
+    "height": 226,
+    "width": 172,
+    "scroll": 208,
+    "dpr": 2,
+    "submenu": false,
+    "current": [],
+    "icons": [
+      {
+        "href": "/cart",
+        "name": "Giỏ hàng · 0 sản phẩm",
+        "svg": "true"
+      }
+    ],
+    "header": {
+      "width": 173,
+      "scroll": 173,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "width": 172.5,
+        "height": 557.1953125,
+        "top": 0,
+        "right": 172.5,
+        "bottom": 557.1953125,
+        "left": 0
+      },
+      "actions": [
+        {
+          "href": "/cart",
+          "box": {
+            "x": 32,
+            "y": 444.1953125,
+            "width": 70,
+            "height": 44,
+            "top": 444.1953125,
+            "right": 102,
+            "bottom": 488.1953125,
+            "left": 32
+          }
+        }
+      ]
+    },
+    "panel": {
+      "left": 32,
+      "right": 140.5,
+      "width": 108.5,
+      "summaryW": 75,
+      "summaryH": 124.890625
+    }
+  },
+  {
+    "role": "guest",
+    "path": "/",
+    "w": 390,
+    "h": 844,
+    "zoom": 2,
+    "height": 226,
+    "width": 187,
+    "scroll": 208,
+    "dpr": 2,
+    "submenu": false,
+    "current": [
+      "/"
+    ],
+    "icons": [
+      {
+        "href": "/cart",
+        "name": "Giỏ hàng · 0 sản phẩm",
+        "svg": "true"
+      }
+    ],
+    "header": {
+      "width": 188,
+      "scroll": 188,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "width": 187.5,
+        "height": 501.1953125,
+        "top": 0,
+        "right": 187.5,
+        "bottom": 501.1953125,
+        "left": 0
+      },
+      "actions": [
+        {
+          "href": "/cart",
+          "box": {
+            "x": 32,
+            "y": 404.1953125,
+            "width": 70,
+            "height": 44,
+            "top": 404.1953125,
+            "right": 102,
+            "bottom": 448.1953125,
+            "left": 32
+          }
+        }
+      ]
+    },
+    "panel": {
+      "left": 32,
+      "right": 155.5,
+      "width": 123.5,
+      "summaryW": 90,
+      "summaryH": 124.890625
+    }
+  },
+  {
+    "role": "guest",
+    "path": "/products",
+    "w": 390,
+    "h": 844,
+    "zoom": 2,
+    "height": 226,
+    "width": 187,
+    "scroll": 208,
+    "dpr": 2,
+    "submenu": false,
+    "current": [
+      "/products"
+    ],
+    "icons": [
+      {
+        "href": "/cart",
+        "name": "Giỏ hàng · 0 sản phẩm",
+        "svg": "true"
+      }
+    ],
+    "header": {
+      "width": 188,
+      "scroll": 188,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "width": 187.5,
+        "height": 501.1953125,
+        "top": 0,
+        "right": 187.5,
+        "bottom": 501.1953125,
+        "left": 0
+      },
+      "actions": [
+        {
+          "href": "/cart",
+          "box": {
+            "x": 32,
+            "y": 404.1953125,
+            "width": 70,
+            "height": 44,
+            "top": 404.1953125,
+            "right": 102,
+            "bottom": 448.1953125,
+            "left": 32
+          }
+        }
+      ]
+    },
+    "panel": {
+      "left": 32,
+      "right": 155.5,
+      "width": 123.5,
+      "summaryW": 90,
+      "summaryH": 124.890625
+    }
+  },
+  {
+    "role": "guest",
+    "path": "/products/demo-r026?variant=22",
+    "w": 390,
+    "h": 844,
+    "zoom": 2,
+    "height": 226,
+    "width": 187,
+    "scroll": 187,
+    "dpr": 2,
+    "submenu": false,
+    "current": [],
+    "icons": [
+      {
+        "href": "/cart",
+        "name": "Giỏ hàng · 0 sản phẩm",
+        "svg": "true"
+      }
+    ],
+    "header": {
+      "width": 188,
+      "scroll": 188,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "width": 187.5,
+        "height": 501.1953125,
+        "top": 0,
+        "right": 187.5,
+        "bottom": 501.1953125,
+        "left": 0
+      },
+      "actions": [
+        {
+          "href": "/cart",
+          "box": {
+            "x": 32,
+            "y": 404.1953125,
+            "width": 70,
+            "height": 44,
+            "top": 404.1953125,
+            "right": 102,
+            "bottom": 448.1953125,
+            "left": 32
+          }
+        }
+      ]
+    },
+    "panel": {
+      "left": 32,
+      "right": 155.5,
+      "width": 123.5,
+      "summaryW": 90,
+      "summaryH": 124.890625
+    }
+  },
+  {
+    "role": "guest",
+    "path": "/cart",
+    "w": 390,
+    "h": 844,
+    "zoom": 2,
+    "height": 226,
+    "width": 187,
+    "scroll": 187,
+    "dpr": 2,
+    "submenu": false,
+    "current": [
+      "/cart"
+    ],
+    "icons": [
+      {
+        "href": "/cart",
+        "name": "Giỏ hàng · 0 sản phẩm",
+        "svg": "true"
+      }
+    ],
+    "header": {
+      "width": 188,
+      "scroll": 188,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "width": 187.5,
+        "height": 501.1953125,
+        "top": 0,
+        "right": 187.5,
+        "bottom": 501.1953125,
+        "left": 0
+      },
+      "actions": [
+        {
+          "href": "/cart",
+          "box": {
+            "x": 32,
+            "y": 404.1953125,
+            "width": 70,
+            "height": 44,
+            "top": 404.1953125,
+            "right": 102,
+            "bottom": 448.1953125,
+            "left": 32
+          }
+        }
+      ]
+    },
+    "panel": {
+      "left": 32,
+      "right": 155.5,
+      "width": 123.5,
+      "summaryW": 90,
+      "summaryH": 124.890625
+    }
+  },
+  {
+    "role": "guest",
+    "path": "/login",
+    "w": 390,
+    "h": 844,
+    "zoom": 2,
+    "height": 226,
+    "width": 187,
+    "scroll": 208,
+    "dpr": 2,
+    "submenu": false,
+    "current": [
+      "/login"
+    ],
+    "icons": [
+      {
+        "href": "/cart",
+        "name": "Giỏ hàng · 0 sản phẩm",
+        "svg": "true"
+      }
+    ],
+    "header": {
+      "width": 188,
+      "scroll": 188,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "width": 187.5,
+        "height": 557.1953125,
+        "top": 0,
+        "right": 187.5,
+        "bottom": 557.1953125,
+        "left": 0
+      },
+      "actions": [
+        {
+          "href": "/cart",
+          "box": {
+            "x": 32,
+            "y": 444.1953125,
+            "width": 70,
+            "height": 44,
+            "top": 444.1953125,
+            "right": 102,
+            "bottom": 488.1953125,
+            "left": 32
+          }
+        }
+      ]
+    },
+    "panel": {
+      "left": 32,
+      "right": 155.5,
+      "width": 123.5,
+      "summaryW": 90,
+      "summaryH": 124.890625
+    }
+  },
+  {
+    "role": "guest",
+    "path": "/register",
+    "w": 390,
+    "h": 844,
+    "zoom": 2,
+    "height": 226,
+    "width": 187,
+    "scroll": 208,
+    "dpr": 2,
+    "submenu": false,
+    "current": [],
+    "icons": [
+      {
+        "href": "/cart",
+        "name": "Giỏ hàng · 0 sản phẩm",
+        "svg": "true"
+      }
+    ],
+    "header": {
+      "width": 188,
+      "scroll": 188,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "width": 187.5,
+        "height": 557.1953125,
+        "top": 0,
+        "right": 187.5,
+        "bottom": 557.1953125,
+        "left": 0
+      },
+      "actions": [
+        {
+          "href": "/cart",
+          "box": {
+            "x": 32,
+            "y": 444.1953125,
+            "width": 70,
+            "height": 44,
+            "top": 444.1953125,
+            "right": 102,
+            "bottom": 488.1953125,
+            "left": 32
+          }
+        }
+      ]
+    },
+    "panel": {
+      "left": 32,
+      "right": 155.5,
+      "width": 123.5,
+      "summaryW": 90,
+      "summaryH": 124.890625
+    }
+  },
+  {
+    "role": "guest",
+    "path": "/",
+    "w": 768,
+    "h": 1024,
+    "zoom": 2,
+    "height": 109,
+    "width": 376,
+    "scroll": 376,
+    "dpr": 2,
+    "submenu": false,
+    "current": [
+      "/"
+    ],
+    "icons": [
+      {
+        "href": "/cart",
+        "name": "Giỏ hàng · 0 sản phẩm",
+        "svg": "true"
+      }
+    ],
+    "header": {
+      "width": 377,
+      "scroll": 377,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "width": 376.5,
+        "height": 253.3984375,
+        "top": 0,
+        "right": 376.5,
+        "bottom": 253.3984375,
+        "left": 0
+      },
+      "actions": [
+        {
+          "href": "/cart",
+          "box": {
+            "x": 32,
+            "y": 202.3984375,
+            "width": 70,
+            "height": 44,
+            "top": 202.3984375,
+            "right": 102,
+            "bottom": 246.3984375,
+            "left": 32
+          }
+        }
+      ]
+    },
+    "panel": {
+      "left": 32,
+      "right": 344.5,
+      "width": 312.5,
+      "summaryW": 279,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "guest",
+    "path": "/products",
+    "w": 768,
+    "h": 1024,
+    "zoom": 2,
+    "height": 109,
+    "width": 376,
+    "scroll": 376,
+    "dpr": 2,
+    "submenu": false,
+    "current": [
+      "/products"
+    ],
+    "icons": [
+      {
+        "href": "/cart",
+        "name": "Giỏ hàng · 0 sản phẩm",
+        "svg": "true"
+      }
+    ],
+    "header": {
+      "width": 377,
+      "scroll": 377,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "width": 376.5,
+        "height": 253.3984375,
+        "top": 0,
+        "right": 376.5,
+        "bottom": 253.3984375,
+        "left": 0
+      },
+      "actions": [
+        {
+          "href": "/cart",
+          "box": {
+            "x": 32,
+            "y": 202.3984375,
+            "width": 70,
+            "height": 44,
+            "top": 202.3984375,
+            "right": 102,
+            "bottom": 246.3984375,
+            "left": 32
+          }
+        }
+      ]
+    },
+    "panel": {
+      "left": 32,
+      "right": 344.5,
+      "width": 312.5,
+      "summaryW": 279,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "guest",
+    "path": "/products/demo-r026?variant=22",
+    "w": 768,
+    "h": 1024,
+    "zoom": 2,
+    "height": 109,
+    "width": 376,
+    "scroll": 376,
+    "dpr": 2,
+    "submenu": false,
+    "current": [],
+    "icons": [
+      {
+        "href": "/cart",
+        "name": "Giỏ hàng · 0 sản phẩm",
+        "svg": "true"
+      }
+    ],
+    "header": {
+      "width": 377,
+      "scroll": 377,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "width": 376.5,
+        "height": 253.3984375,
+        "top": 0,
+        "right": 376.5,
+        "bottom": 253.3984375,
+        "left": 0
+      },
+      "actions": [
+        {
+          "href": "/cart",
+          "box": {
+            "x": 32,
+            "y": 202.3984375,
+            "width": 70,
+            "height": 44,
+            "top": 202.3984375,
+            "right": 102,
+            "bottom": 246.3984375,
+            "left": 32
+          }
+        }
+      ]
+    },
+    "panel": {
+      "left": 32,
+      "right": 344.5,
+      "width": 312.5,
+      "summaryW": 279,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "guest",
+    "path": "/cart",
+    "w": 768,
+    "h": 1024,
+    "zoom": 2,
+    "height": 109,
+    "width": 376,
+    "scroll": 376,
+    "dpr": 2,
+    "submenu": false,
+    "current": [
+      "/cart"
+    ],
+    "icons": [
+      {
+        "href": "/cart",
+        "name": "Giỏ hàng · 0 sản phẩm",
+        "svg": "true"
+      }
+    ],
+    "header": {
+      "width": 377,
+      "scroll": 377,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "width": 376.5,
+        "height": 253.3984375,
+        "top": 0,
+        "right": 376.5,
+        "bottom": 253.3984375,
+        "left": 0
+      },
+      "actions": [
+        {
+          "href": "/cart",
+          "box": {
+            "x": 32,
+            "y": 202.3984375,
+            "width": 70,
+            "height": 44,
+            "top": 202.3984375,
+            "right": 102,
+            "bottom": 246.3984375,
+            "left": 32
+          }
+        }
+      ]
+    },
+    "panel": {
+      "left": 32,
+      "right": 344.5,
+      "width": 312.5,
+      "summaryW": 279,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "guest",
+    "path": "/login",
+    "w": 768,
+    "h": 1024,
+    "zoom": 2,
+    "height": 109,
+    "width": 376,
+    "scroll": 376,
+    "dpr": 2,
+    "submenu": false,
+    "current": [
+      "/login"
+    ],
+    "icons": [
+      {
+        "href": "/cart",
+        "name": "Giỏ hàng · 0 sản phẩm",
+        "svg": "true"
+      }
+    ],
+    "header": {
+      "width": 377,
+      "scroll": 377,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "width": 376.5,
+        "height": 285.3984375,
+        "top": 0,
+        "right": 376.5,
+        "bottom": 285.3984375,
+        "left": 0
+      },
+      "actions": [
+        {
+          "href": "/cart",
+          "box": {
+            "x": 32,
+            "y": 226.3984375,
+            "width": 70,
+            "height": 44,
+            "top": 226.3984375,
+            "right": 102,
+            "bottom": 270.3984375,
+            "left": 32
+          }
+        }
+      ]
+    },
+    "panel": {
+      "left": 32,
+      "right": 344.5,
+      "width": 312.5,
+      "summaryW": 279,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "guest",
+    "path": "/register",
+    "w": 768,
+    "h": 1024,
+    "zoom": 2,
+    "height": 109,
+    "width": 376,
+    "scroll": 376,
+    "dpr": 2,
+    "submenu": false,
+    "current": [],
+    "icons": [
+      {
+        "href": "/cart",
+        "name": "Giỏ hàng · 0 sản phẩm",
+        "svg": "true"
+      }
+    ],
+    "header": {
+      "width": 377,
+      "scroll": 377,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "width": 376.5,
+        "height": 285.3984375,
+        "top": 0,
+        "right": 376.5,
+        "bottom": 285.3984375,
+        "left": 0
+      },
+      "actions": [
+        {
+          "href": "/cart",
+          "box": {
+            "x": 32,
+            "y": 226.3984375,
+            "width": 70,
+            "height": 44,
+            "top": 226.3984375,
+            "right": 102,
+            "bottom": 270.3984375,
+            "left": 32
+          }
+        }
+      ]
+    },
+    "panel": {
+      "left": 32,
+      "right": 344.5,
+      "width": 312.5,
+      "summaryW": 279,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "guest",
+    "path": "/",
+    "w": 1366,
+    "h": 768,
+    "zoom": 2,
+    "height": 109,
+    "width": 675,
+    "scroll": 675,
+    "dpr": 2,
+    "submenu": false,
+    "current": [
+      "/"
+    ],
+    "icons": [
+      {
+        "href": "/cart",
+        "name": "Giỏ hàng · 0 sản phẩm",
+        "svg": "true"
+      }
+    ],
+    "header": {
+      "width": 676,
+      "scroll": 676,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "width": 675.5,
+        "height": 285.3984375,
+        "top": 0,
+        "right": 675.5,
+        "bottom": 285.3984375,
+        "left": 0
+      },
+      "actions": [
+        {
+          "href": "/cart",
+          "box": {
+            "x": 32,
+            "y": 226.3984375,
+            "width": 70,
+            "height": 44,
+            "top": 226.3984375,
+            "right": 102,
+            "bottom": 270.3984375,
+            "left": 32
+          }
+        }
+      ]
+    },
+    "panel": {
+      "left": 32,
+      "right": 643.5,
+      "width": 611.5,
+      "summaryW": 578,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "guest",
+    "path": "/products",
+    "w": 1366,
+    "h": 768,
+    "zoom": 2,
+    "height": 109,
+    "width": 675,
+    "scroll": 675,
+    "dpr": 2,
+    "submenu": false,
+    "current": [
+      "/products"
+    ],
+    "icons": [
+      {
+        "href": "/cart",
+        "name": "Giỏ hàng · 0 sản phẩm",
+        "svg": "true"
+      }
+    ],
+    "header": {
+      "width": 676,
+      "scroll": 676,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "width": 675.5,
+        "height": 285.3984375,
+        "top": 0,
+        "right": 675.5,
+        "bottom": 285.3984375,
+        "left": 0
+      },
+      "actions": [
+        {
+          "href": "/cart",
+          "box": {
+            "x": 32,
+            "y": 226.3984375,
+            "width": 70,
+            "height": 44,
+            "top": 226.3984375,
+            "right": 102,
+            "bottom": 270.3984375,
+            "left": 32
+          }
+        }
+      ]
+    },
+    "panel": {
+      "left": 32,
+      "right": 643.5,
+      "width": 611.5,
+      "summaryW": 578,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "guest",
+    "path": "/products/demo-r026?variant=22",
+    "w": 1366,
+    "h": 768,
+    "zoom": 2,
+    "height": 109,
+    "width": 675,
+    "scroll": 675,
+    "dpr": 2,
+    "submenu": false,
+    "current": [],
+    "icons": [
+      {
+        "href": "/cart",
+        "name": "Giỏ hàng · 0 sản phẩm",
+        "svg": "true"
+      }
+    ],
+    "header": {
+      "width": 676,
+      "scroll": 676,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "width": 675.5,
+        "height": 285.3984375,
+        "top": 0,
+        "right": 675.5,
+        "bottom": 285.3984375,
+        "left": 0
+      },
+      "actions": [
+        {
+          "href": "/cart",
+          "box": {
+            "x": 32,
+            "y": 226.3984375,
+            "width": 70,
+            "height": 44,
+            "top": 226.3984375,
+            "right": 102,
+            "bottom": 270.3984375,
+            "left": 32
+          }
+        }
+      ]
+    },
+    "panel": {
+      "left": 32,
+      "right": 643.5,
+      "width": 611.5,
+      "summaryW": 578,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "guest",
+    "path": "/cart",
+    "w": 1366,
+    "h": 768,
+    "zoom": 2,
+    "height": 109,
+    "width": 675,
+    "scroll": 675,
+    "dpr": 2,
+    "submenu": false,
+    "current": [
+      "/cart"
+    ],
+    "icons": [
+      {
+        "href": "/cart",
+        "name": "Giỏ hàng · 0 sản phẩm",
+        "svg": "true"
+      }
+    ],
+    "header": {
+      "width": 676,
+      "scroll": 676,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "width": 675.5,
+        "height": 285.3984375,
+        "top": 0,
+        "right": 675.5,
+        "bottom": 285.3984375,
+        "left": 0
+      },
+      "actions": [
+        {
+          "href": "/cart",
+          "box": {
+            "x": 32,
+            "y": 226.3984375,
+            "width": 70,
+            "height": 44,
+            "top": 226.3984375,
+            "right": 102,
+            "bottom": 270.3984375,
+            "left": 32
+          }
+        }
+      ]
+    },
+    "panel": {
+      "left": 32,
+      "right": 643.5,
+      "width": 611.5,
+      "summaryW": 578,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "guest",
+    "path": "/login",
+    "w": 1366,
+    "h": 768,
+    "zoom": 2,
+    "height": 109,
+    "width": 675,
+    "scroll": 675,
+    "dpr": 2,
+    "submenu": false,
+    "current": [
+      "/login"
+    ],
+    "icons": [
+      {
+        "href": "/cart",
+        "name": "Giỏ hàng · 0 sản phẩm",
+        "svg": "true"
+      }
+    ],
+    "header": {
+      "width": 676,
+      "scroll": 676,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "width": 675.5,
+        "height": 285.3984375,
+        "top": 0,
+        "right": 675.5,
+        "bottom": 285.3984375,
+        "left": 0
+      },
+      "actions": [
+        {
+          "href": "/cart",
+          "box": {
+            "x": 32,
+            "y": 226.3984375,
+            "width": 70,
+            "height": 44,
+            "top": 226.3984375,
+            "right": 102,
+            "bottom": 270.3984375,
+            "left": 32
+          }
+        }
+      ]
+    },
+    "panel": {
+      "left": 32,
+      "right": 643.5,
+      "width": 611.5,
+      "summaryW": 578,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "guest",
+    "path": "/register",
+    "w": 1366,
+    "h": 768,
+    "zoom": 2,
+    "height": 109,
+    "width": 675,
+    "scroll": 675,
+    "dpr": 2,
+    "submenu": false,
+    "current": [],
+    "icons": [
+      {
+        "href": "/cart",
+        "name": "Giỏ hàng · 0 sản phẩm",
+        "svg": "true"
+      }
+    ],
+    "header": {
+      "width": 676,
+      "scroll": 676,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "width": 675.5,
+        "height": 285.3984375,
+        "top": 0,
+        "right": 675.5,
+        "bottom": 285.3984375,
+        "left": 0
+      },
+      "actions": [
+        {
+          "href": "/cart",
+          "box": {
+            "x": 32,
+            "y": 226.3984375,
+            "width": 70,
+            "height": 44,
+            "top": 226.3984375,
+            "right": 102,
+            "bottom": 270.3984375,
+            "left": 32
+          }
+        }
+      ]
+    },
+    "panel": {
+      "left": 32,
+      "right": 643.5,
+      "width": 611.5,
+      "summaryW": 578,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "guest",
+    "path": "/",
+    "w": 1920,
+    "h": 1080,
+    "zoom": 2,
+    "height": 109,
+    "width": 952,
+    "scroll": 952,
+    "dpr": 2,
+    "submenu": false,
+    "current": [
+      "/"
+    ],
+    "icons": [
+      {
+        "href": "/cart",
+        "name": "Giỏ hàng · 0 sản phẩm",
+        "svg": "true"
+      }
+    ],
+    "header": {
+      "width": 953,
+      "scroll": 953,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "width": 952.5,
+        "height": 285.3984375,
+        "top": 0,
+        "right": 952.5,
+        "bottom": 285.3984375,
+        "left": 0
+      },
+      "actions": [
+        {
+          "href": "/cart",
+          "box": {
+            "x": 32,
+            "y": 226.3984375,
+            "width": 70,
+            "height": 44,
+            "top": 226.3984375,
+            "right": 102,
+            "bottom": 270.3984375,
+            "left": 32
+          }
+        }
+      ]
+    },
+    "panel": {
+      "left": 32,
+      "right": 920.5,
+      "width": 888.5,
+      "summaryW": 862.5,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "guest",
+    "path": "/products",
+    "w": 1920,
+    "h": 1080,
+    "zoom": 2,
+    "height": 109,
+    "width": 952,
+    "scroll": 952,
+    "dpr": 2,
+    "submenu": false,
+    "current": [
+      "/products"
+    ],
+    "icons": [
+      {
+        "href": "/cart",
+        "name": "Giỏ hàng · 0 sản phẩm",
+        "svg": "true"
+      }
+    ],
+    "header": {
+      "width": 953,
+      "scroll": 953,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "width": 952.5,
+        "height": 285.3984375,
+        "top": 0,
+        "right": 952.5,
+        "bottom": 285.3984375,
+        "left": 0
+      },
+      "actions": [
+        {
+          "href": "/cart",
+          "box": {
+            "x": 32,
+            "y": 226.3984375,
+            "width": 70,
+            "height": 44,
+            "top": 226.3984375,
+            "right": 102,
+            "bottom": 270.3984375,
+            "left": 32
+          }
+        }
+      ]
+    },
+    "panel": {
+      "left": 32,
+      "right": 920.5,
+      "width": 888.5,
+      "summaryW": 862.5,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "guest",
+    "path": "/products/demo-r026?variant=22",
+    "w": 1920,
+    "h": 1080,
+    "zoom": 2,
+    "height": 109,
+    "width": 952,
+    "scroll": 952,
+    "dpr": 2,
+    "submenu": false,
+    "current": [],
+    "icons": [
+      {
+        "href": "/cart",
+        "name": "Giỏ hàng · 0 sản phẩm",
+        "svg": "true"
+      }
+    ],
+    "header": {
+      "width": 953,
+      "scroll": 953,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "width": 952.5,
+        "height": 285.3984375,
+        "top": 0,
+        "right": 952.5,
+        "bottom": 285.3984375,
+        "left": 0
+      },
+      "actions": [
+        {
+          "href": "/cart",
+          "box": {
+            "x": 32,
+            "y": 226.3984375,
+            "width": 70,
+            "height": 44,
+            "top": 226.3984375,
+            "right": 102,
+            "bottom": 270.3984375,
+            "left": 32
+          }
+        }
+      ]
+    },
+    "panel": {
+      "left": 32,
+      "right": 920.5,
+      "width": 888.5,
+      "summaryW": 862.5,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "guest",
+    "path": "/cart",
+    "w": 1920,
+    "h": 1080,
+    "zoom": 2,
+    "height": 109,
+    "width": 952,
+    "scroll": 952,
+    "dpr": 2,
+    "submenu": false,
+    "current": [
+      "/cart"
+    ],
+    "icons": [
+      {
+        "href": "/cart",
+        "name": "Giỏ hàng · 0 sản phẩm",
+        "svg": "true"
+      }
+    ],
+    "header": {
+      "width": 953,
+      "scroll": 953,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "width": 952.5,
+        "height": 285.3984375,
+        "top": 0,
+        "right": 952.5,
+        "bottom": 285.3984375,
+        "left": 0
+      },
+      "actions": [
+        {
+          "href": "/cart",
+          "box": {
+            "x": 32,
+            "y": 226.3984375,
+            "width": 70,
+            "height": 44,
+            "top": 226.3984375,
+            "right": 102,
+            "bottom": 270.3984375,
+            "left": 32
+          }
+        }
+      ]
+    },
+    "panel": {
+      "left": 32,
+      "right": 920.5,
+      "width": 888.5,
+      "summaryW": 862.5,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "guest",
+    "path": "/login",
+    "w": 1920,
+    "h": 1080,
+    "zoom": 2,
+    "height": 109,
+    "width": 952,
+    "scroll": 952,
+    "dpr": 2,
+    "submenu": false,
+    "current": [
+      "/login"
+    ],
+    "icons": [
+      {
+        "href": "/cart",
+        "name": "Giỏ hàng · 0 sản phẩm",
+        "svg": "true"
+      }
+    ],
+    "header": {
+      "width": 953,
+      "scroll": 953,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "width": 952.5,
+        "height": 285.3984375,
+        "top": 0,
+        "right": 952.5,
+        "bottom": 285.3984375,
+        "left": 0
+      },
+      "actions": [
+        {
+          "href": "/cart",
+          "box": {
+            "x": 32,
+            "y": 226.3984375,
+            "width": 70,
+            "height": 44,
+            "top": 226.3984375,
+            "right": 102,
+            "bottom": 270.3984375,
+            "left": 32
+          }
+        }
+      ]
+    },
+    "panel": {
+      "left": 32,
+      "right": 920.5,
+      "width": 888.5,
+      "summaryW": 862.5,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "guest",
+    "path": "/register",
+    "w": 1920,
+    "h": 1080,
+    "zoom": 2,
+    "height": 109,
+    "width": 952,
+    "scroll": 952,
+    "dpr": 2,
+    "submenu": false,
+    "current": [],
+    "icons": [
+      {
+        "href": "/cart",
+        "name": "Giỏ hàng · 0 sản phẩm",
+        "svg": "true"
+      }
+    ],
+    "header": {
+      "width": 953,
+      "scroll": 953,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "width": 952.5,
+        "height": 285.3984375,
+        "top": 0,
+        "right": 952.5,
+        "bottom": 285.3984375,
+        "left": 0
+      },
+      "actions": [
+        {
+          "href": "/cart",
+          "box": {
+            "x": 32,
+            "y": 226.3984375,
+            "width": 70,
+            "height": 44,
+            "top": 226.3984375,
+            "right": 102,
+            "bottom": 270.3984375,
+            "left": 32
+          }
+        }
+      ]
+    },
+    "panel": {
+      "left": 32,
+      "right": 920.5,
+      "width": 888.5,
+      "summaryW": 862.5,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "customer",
+    "path": "/checkout",
+    "w": 360,
+    "h": 800,
+    "zoom": 1,
+    "height": 109,
+    "width": 345,
+    "scroll": 345,
+    "dpr": 1,
+    "submenu": false,
+    "current": [],
+    "icons": [
+      {
+        "href": "/cart",
+        "name": "Giỏ hàng · 12 sản phẩm",
+        "svg": "true"
+      },
+      {
+        "href": "/account/wishlist",
+        "name": "Sản phẩm yêu thích",
+        "svg": "true"
+      }
+    ],
+    "header": {
+      "width": 345,
+      "scroll": 345,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "width": 345,
+        "height": 344.1875,
+        "top": 0,
+        "right": 345,
+        "bottom": 344.1875,
+        "left": 0
+      },
+      "actions": [
+        {
+          "href": "/cart",
+          "box": {
+            "x": 32,
+            "y": 226.390625,
+            "width": 70,
+            "height": 44,
+            "top": 226.390625,
+            "right": 102,
+            "bottom": 270.390625,
+            "left": 32
+          }
+        },
+        {
+          "href": "/account/wishlist",
+          "box": {
+            "x": 118,
+            "y": 226.390625,
+            "width": 44,
+            "height": 44,
+            "top": 226.390625,
+            "right": 162,
+            "bottom": 270.390625,
+            "left": 118
+          }
+        }
+      ]
+    },
+    "panel": {
+      "left": 32,
+      "right": 313,
+      "width": 281,
+      "summaryW": 255,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "customer",
+    "path": "/account",
+    "w": 360,
+    "h": 800,
+    "zoom": 1,
+    "height": 109,
+    "width": 345,
+    "scroll": 345,
+    "dpr": 1,
+    "submenu": false,
+    "current": [
+      "/account"
+    ],
+    "icons": [
+      {
+        "href": "/cart",
+        "name": "Giỏ hàng · 12 sản phẩm",
+        "svg": "true"
+      },
+      {
+        "href": "/account/wishlist",
+        "name": "Sản phẩm yêu thích",
+        "svg": "true"
+      }
+    ],
+    "header": {
+      "width": 345,
+      "scroll": 345,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "width": 345,
+        "height": 344.1875,
+        "top": 0,
+        "right": 345,
+        "bottom": 344.1875,
+        "left": 0
+      },
+      "actions": [
+        {
+          "href": "/cart",
+          "box": {
+            "x": 32,
+            "y": 226.390625,
+            "width": 70,
+            "height": 44,
+            "top": 226.390625,
+            "right": 102,
+            "bottom": 270.390625,
+            "left": 32
+          }
+        },
+        {
+          "href": "/account/wishlist",
+          "box": {
+            "x": 118,
+            "y": 226.390625,
+            "width": 44,
+            "height": 44,
+            "top": 226.390625,
+            "right": 162,
+            "bottom": 270.390625,
+            "left": 118
+          }
+        }
+      ]
+    },
+    "panel": {
+      "left": 32,
+      "right": 313,
+      "width": 281,
+      "summaryW": 255,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "customer",
+    "path": "/account/wishlist",
+    "w": 360,
+    "h": 800,
+    "zoom": 1,
+    "height": 109,
+    "width": 345,
+    "scroll": 345,
+    "dpr": 1,
+    "submenu": false,
+    "current": [
+      "/account/wishlist"
+    ],
+    "icons": [
+      {
+        "href": "/cart",
+        "name": "Giỏ hàng · 12 sản phẩm",
+        "svg": "true"
+      },
+      {
+        "href": "/account/wishlist",
+        "name": "Sản phẩm yêu thích",
+        "svg": "true"
+      }
+    ],
+    "header": {
+      "width": 345,
+      "scroll": 345,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "width": 345,
+        "height": 344.1875,
+        "top": 0,
+        "right": 345,
+        "bottom": 344.1875,
+        "left": 0
+      },
+      "actions": [
+        {
+          "href": "/cart",
+          "box": {
+            "x": 32,
+            "y": 226.390625,
+            "width": 70,
+            "height": 44,
+            "top": 226.390625,
+            "right": 102,
+            "bottom": 270.390625,
+            "left": 32
+          }
+        },
+        {
+          "href": "/account/wishlist",
+          "box": {
+            "x": 118,
+            "y": 226.390625,
+            "width": 44,
+            "height": 44,
+            "top": 226.390625,
+            "right": 162,
+            "bottom": 270.390625,
+            "left": 118
+          }
+        }
+      ]
+    },
+    "panel": {
+      "left": 32,
+      "right": 313,
+      "width": 281,
+      "summaryW": 255,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "customer",
+    "path": "/checkout",
+    "w": 390,
+    "h": 844,
+    "zoom": 1,
+    "height": 109,
+    "width": 375,
+    "scroll": 375,
+    "dpr": 1,
+    "submenu": false,
+    "current": [],
+    "icons": [
+      {
+        "href": "/cart",
+        "name": "Giỏ hàng · 12 sản phẩm",
+        "svg": "true"
+      },
+      {
+        "href": "/account/wishlist",
+        "name": "Sản phẩm yêu thích",
+        "svg": "true"
+      }
+    ],
+    "header": {
+      "width": 375,
+      "scroll": 375,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "width": 375,
+        "height": 344.1875,
+        "top": 0,
+        "right": 375,
+        "bottom": 344.1875,
+        "left": 0
+      },
+      "actions": [
+        {
+          "href": "/cart",
+          "box": {
+            "x": 32,
+            "y": 226.390625,
+            "width": 70,
+            "height": 44,
+            "top": 226.390625,
+            "right": 102,
+            "bottom": 270.390625,
+            "left": 32
+          }
+        },
+        {
+          "href": "/account/wishlist",
+          "box": {
+            "x": 118,
+            "y": 226.390625,
+            "width": 44,
+            "height": 44,
+            "top": 226.390625,
+            "right": 162,
+            "bottom": 270.390625,
+            "left": 118
+          }
+        }
+      ]
+    },
+    "panel": {
+      "left": 32,
+      "right": 343,
+      "width": 311,
+      "summaryW": 285,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "customer",
+    "path": "/account",
+    "w": 390,
+    "h": 844,
+    "zoom": 1,
+    "height": 109,
+    "width": 375,
+    "scroll": 375,
+    "dpr": 1,
+    "submenu": false,
+    "current": [
+      "/account"
+    ],
+    "icons": [
+      {
+        "href": "/cart",
+        "name": "Giỏ hàng · 12 sản phẩm",
+        "svg": "true"
+      },
+      {
+        "href": "/account/wishlist",
+        "name": "Sản phẩm yêu thích",
+        "svg": "true"
+      }
+    ],
+    "header": {
+      "width": 375,
+      "scroll": 375,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "width": 375,
+        "height": 344.1875,
+        "top": 0,
+        "right": 375,
+        "bottom": 344.1875,
+        "left": 0
+      },
+      "actions": [
+        {
+          "href": "/cart",
+          "box": {
+            "x": 32,
+            "y": 226.390625,
+            "width": 70,
+            "height": 44,
+            "top": 226.390625,
+            "right": 102,
+            "bottom": 270.390625,
+            "left": 32
+          }
+        },
+        {
+          "href": "/account/wishlist",
+          "box": {
+            "x": 118,
+            "y": 226.390625,
+            "width": 44,
+            "height": 44,
+            "top": 226.390625,
+            "right": 162,
+            "bottom": 270.390625,
+            "left": 118
+          }
+        }
+      ]
+    },
+    "panel": {
+      "left": 32,
+      "right": 343,
+      "width": 311,
+      "summaryW": 285,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "customer",
+    "path": "/account/wishlist",
+    "w": 390,
+    "h": 844,
+    "zoom": 1,
+    "height": 109,
+    "width": 375,
+    "scroll": 375,
+    "dpr": 1,
+    "submenu": false,
+    "current": [
+      "/account/wishlist"
+    ],
+    "icons": [
+      {
+        "href": "/cart",
+        "name": "Giỏ hàng · 12 sản phẩm",
+        "svg": "true"
+      },
+      {
+        "href": "/account/wishlist",
+        "name": "Sản phẩm yêu thích",
+        "svg": "true"
+      }
+    ],
+    "header": {
+      "width": 375,
+      "scroll": 375,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "width": 375,
+        "height": 344.1875,
+        "top": 0,
+        "right": 375,
+        "bottom": 344.1875,
+        "left": 0
+      },
+      "actions": [
+        {
+          "href": "/cart",
+          "box": {
+            "x": 32,
+            "y": 226.390625,
+            "width": 70,
+            "height": 44,
+            "top": 226.390625,
+            "right": 102,
+            "bottom": 270.390625,
+            "left": 32
+          }
+        },
+        {
+          "href": "/account/wishlist",
+          "box": {
+            "x": 118,
+            "y": 226.390625,
+            "width": 44,
+            "height": 44,
+            "top": 226.390625,
+            "right": 162,
+            "bottom": 270.390625,
+            "left": 118
+          }
+        }
+      ]
+    },
+    "panel": {
+      "left": 32,
+      "right": 343,
+      "width": 311,
+      "summaryW": 285,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "customer",
+    "path": "/checkout",
+    "w": 768,
+    "h": 1024,
+    "zoom": 1,
+    "height": 109,
+    "width": 753,
+    "scroll": 753,
+    "dpr": 1,
+    "submenu": false,
+    "current": [],
+    "icons": [
+      {
+        "href": "/cart",
+        "name": "Giỏ hàng · 12 sản phẩm",
+        "svg": "true"
+      },
+      {
+        "href": "/account/wishlist",
+        "name": "Sản phẩm yêu thích",
+        "svg": "true"
+      }
+    ],
+    "header": {
+      "width": 753,
+      "scroll": 753,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "width": 753,
+        "height": 288.1875,
+        "top": 0,
+        "right": 753,
+        "bottom": 288.1875,
+        "left": 0
+      },
+      "actions": [
+        {
+          "href": "/cart",
+          "box": {
+            "x": 32,
+            "y": 227.78125,
+            "width": 70,
+            "height": 44,
+            "top": 227.78125,
+            "right": 102,
+            "bottom": 271.78125,
+            "left": 32
+          }
+        },
+        {
+          "href": "/account/wishlist",
+          "box": {
+            "x": 118,
+            "y": 227.78125,
+            "width": 44,
+            "height": 44,
+            "top": 227.78125,
+            "right": 162,
+            "bottom": 271.78125,
+            "left": 118
+          }
+        }
+      ]
+    },
+    "panel": {
+      "left": 32,
+      "right": 721,
+      "width": 689,
+      "summaryW": 663,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "customer",
+    "path": "/account",
+    "w": 768,
+    "h": 1024,
+    "zoom": 1,
+    "height": 109,
+    "width": 753,
+    "scroll": 753,
+    "dpr": 1,
+    "submenu": false,
+    "current": [
+      "/account"
+    ],
+    "icons": [
+      {
+        "href": "/cart",
+        "name": "Giỏ hàng · 12 sản phẩm",
+        "svg": "true"
+      },
+      {
+        "href": "/account/wishlist",
+        "name": "Sản phẩm yêu thích",
+        "svg": "true"
+      }
+    ],
+    "header": {
+      "width": 753,
+      "scroll": 753,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "width": 753,
+        "height": 288.1875,
+        "top": 0,
+        "right": 753,
+        "bottom": 288.1875,
+        "left": 0
+      },
+      "actions": [
+        {
+          "href": "/cart",
+          "box": {
+            "x": 32,
+            "y": 227.78125,
+            "width": 70,
+            "height": 44,
+            "top": 227.78125,
+            "right": 102,
+            "bottom": 271.78125,
+            "left": 32
+          }
+        },
+        {
+          "href": "/account/wishlist",
+          "box": {
+            "x": 118,
+            "y": 227.78125,
+            "width": 44,
+            "height": 44,
+            "top": 227.78125,
+            "right": 162,
+            "bottom": 271.78125,
+            "left": 118
+          }
+        }
+      ]
+    },
+    "panel": {
+      "left": 32,
+      "right": 721,
+      "width": 689,
+      "summaryW": 663,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "customer",
+    "path": "/account/wishlist",
+    "w": 768,
+    "h": 1024,
+    "zoom": 1,
+    "height": 109,
+    "width": 768,
+    "scroll": 768,
+    "dpr": 1,
+    "submenu": false,
+    "current": [
+      "/account/wishlist"
+    ],
+    "icons": [
+      {
+        "href": "/cart",
+        "name": "Giỏ hàng · 12 sản phẩm",
+        "svg": "true"
+      },
+      {
+        "href": "/account/wishlist",
+        "name": "Sản phẩm yêu thích",
+        "svg": "true"
+      }
+    ],
+    "header": {
+      "width": 753,
+      "scroll": 753,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "width": 753,
+        "height": 288.1875,
+        "top": 0,
+        "right": 753,
+        "bottom": 288.1875,
+        "left": 0
+      },
+      "actions": [
+        {
+          "href": "/cart",
+          "box": {
+            "x": 32,
+            "y": 227.78125,
+            "width": 70,
+            "height": 44,
+            "top": 227.78125,
+            "right": 102,
+            "bottom": 271.78125,
+            "left": 32
+          }
+        },
+        {
+          "href": "/account/wishlist",
+          "box": {
+            "x": 118,
+            "y": 227.78125,
+            "width": 44,
+            "height": 44,
+            "top": 227.78125,
+            "right": 162,
+            "bottom": 271.78125,
+            "left": 118
+          }
+        }
+      ]
+    },
+    "panel": {
+      "left": 32,
+      "right": 721,
+      "width": 689,
+      "summaryW": 663,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "customer",
+    "path": "/checkout",
+    "w": 1366,
+    "h": 768,
+    "zoom": 1,
+    "height": 116,
+    "width": 1351,
+    "scroll": 1351,
+    "dpr": 1,
+    "submenu": false,
+    "current": [],
+    "icons": [
+      {
+        "href": "/cart",
+        "name": "Giỏ hàng · 12 sản phẩm",
+        "svg": "true"
+      },
+      {
+        "href": "/account/wishlist",
+        "name": "Sản phẩm yêu thích",
+        "svg": "true"
+      }
+    ],
+    "header": {
+      "width": 1351,
+      "scroll": 1351,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "width": 1351,
+        "height": 116.1875,
+        "top": 0,
+        "right": 1351,
+        "bottom": 116.1875,
+        "left": 0
+      },
+      "actions": [
+        {
+          "href": "/cart",
+          "box": {
+            "x": 496.3125,
+            "y": 63.78125,
+            "width": 70,
+            "height": 44,
+            "top": 63.78125,
+            "right": 566.3125,
+            "bottom": 107.78125,
+            "left": 496.3125
+          }
+        },
+        {
+          "href": "/account/wishlist",
+          "box": {
+            "x": 590.3125,
+            "y": 63.78125,
+            "width": 44,
+            "height": 44,
+            "top": 63.78125,
+            "right": 634.3125,
+            "bottom": 107.78125,
+            "left": 590.3125
+          }
+        }
+      ]
+    },
+    "panel": {
+      "left": 107.5,
+      "right": 1243.5,
+      "width": 1136,
+      "summaryW": 253.5,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "customer",
+    "path": "/account",
+    "w": 1366,
+    "h": 768,
+    "zoom": 1,
+    "height": 116,
+    "width": 1351,
+    "scroll": 1351,
+    "dpr": 1,
+    "submenu": false,
+    "current": [
+      "/account"
+    ],
+    "icons": [
+      {
+        "href": "/cart",
+        "name": "Giỏ hàng · 12 sản phẩm",
+        "svg": "true"
+      },
+      {
+        "href": "/account/wishlist",
+        "name": "Sản phẩm yêu thích",
+        "svg": "true"
+      }
+    ],
+    "header": {
+      "width": 1351,
+      "scroll": 1351,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "width": 1351,
+        "height": 116.1875,
+        "top": 0,
+        "right": 1351,
+        "bottom": 116.1875,
+        "left": 0
+      },
+      "actions": [
+        {
+          "href": "/cart",
+          "box": {
+            "x": 496.3125,
+            "y": 63.78125,
+            "width": 70,
+            "height": 44,
+            "top": 63.78125,
+            "right": 566.3125,
+            "bottom": 107.78125,
+            "left": 496.3125
+          }
+        },
+        {
+          "href": "/account/wishlist",
+          "box": {
+            "x": 590.3125,
+            "y": 63.78125,
+            "width": 44,
+            "height": 44,
+            "top": 63.78125,
+            "right": 634.3125,
+            "bottom": 107.78125,
+            "left": 590.3125
+          }
+        }
+      ]
+    },
+    "panel": {
+      "left": 107.5,
+      "right": 1243.5,
+      "width": 1136,
+      "summaryW": 253.5,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "customer",
+    "path": "/account/wishlist",
+    "w": 1366,
+    "h": 768,
+    "zoom": 1,
+    "height": 116,
+    "width": 1351,
+    "scroll": 1351,
+    "dpr": 1,
+    "submenu": false,
+    "current": [
+      "/account/wishlist"
+    ],
+    "icons": [
+      {
+        "href": "/cart",
+        "name": "Giỏ hàng · 12 sản phẩm",
+        "svg": "true"
+      },
+      {
+        "href": "/account/wishlist",
+        "name": "Sản phẩm yêu thích",
+        "svg": "true"
+      }
+    ],
+    "header": {
+      "width": 1351,
+      "scroll": 1351,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "width": 1351,
+        "height": 116.1875,
+        "top": 0,
+        "right": 1351,
+        "bottom": 116.1875,
+        "left": 0
+      },
+      "actions": [
+        {
+          "href": "/cart",
+          "box": {
+            "x": 496.3125,
+            "y": 63.78125,
+            "width": 70,
+            "height": 44,
+            "top": 63.78125,
+            "right": 566.3125,
+            "bottom": 107.78125,
+            "left": 496.3125
+          }
+        },
+        {
+          "href": "/account/wishlist",
+          "box": {
+            "x": 590.3125,
+            "y": 63.78125,
+            "width": 44,
+            "height": 44,
+            "top": 63.78125,
+            "right": 634.3125,
+            "bottom": 107.78125,
+            "left": 590.3125
+          }
+        }
+      ]
+    },
+    "panel": {
+      "left": 107.5,
+      "right": 1243.5,
+      "width": 1136,
+      "summaryW": 253.5,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "customer",
+    "path": "/checkout",
+    "w": 1920,
+    "h": 1080,
+    "zoom": 1,
+    "height": 116,
+    "width": 1905,
+    "scroll": 1905,
+    "dpr": 1,
+    "submenu": false,
+    "current": [],
+    "icons": [
+      {
+        "href": "/cart",
+        "name": "Giỏ hàng · 12 sản phẩm",
+        "svg": "true"
+      },
+      {
+        "href": "/account/wishlist",
+        "name": "Sản phẩm yêu thích",
+        "svg": "true"
+      }
+    ],
+    "header": {
+      "width": 1905,
+      "scroll": 1905,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "width": 1905,
+        "height": 116.1875,
+        "top": 0,
+        "right": 1905,
+        "bottom": 116.1875,
+        "left": 0
+      },
+      "actions": [
+        {
+          "href": "/cart",
+          "box": {
+            "x": 773.3125,
+            "y": 63.78125,
+            "width": 70,
+            "height": 44,
+            "top": 63.78125,
+            "right": 843.3125,
+            "bottom": 107.78125,
+            "left": 773.3125
+          }
+        },
+        {
+          "href": "/account/wishlist",
+          "box": {
+            "x": 867.3125,
+            "y": 63.78125,
+            "width": 44,
+            "height": 44,
+            "top": 63.78125,
+            "right": 911.3125,
+            "bottom": 107.78125,
+            "left": 867.3125
+          }
+        }
+      ]
+    },
+    "panel": {
+      "left": 384.5,
+      "right": 1520.5,
+      "width": 1136,
+      "summaryW": 253.5,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "customer",
+    "path": "/account",
+    "w": 1920,
+    "h": 1080,
+    "zoom": 1,
+    "height": 116,
+    "width": 1905,
+    "scroll": 1905,
+    "dpr": 1,
+    "submenu": false,
+    "current": [
+      "/account"
+    ],
+    "icons": [
+      {
+        "href": "/cart",
+        "name": "Giỏ hàng · 12 sản phẩm",
+        "svg": "true"
+      },
+      {
+        "href": "/account/wishlist",
+        "name": "Sản phẩm yêu thích",
+        "svg": "true"
+      }
+    ],
+    "header": {
+      "width": 1905,
+      "scroll": 1905,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "width": 1905,
+        "height": 116.1875,
+        "top": 0,
+        "right": 1905,
+        "bottom": 116.1875,
+        "left": 0
+      },
+      "actions": [
+        {
+          "href": "/cart",
+          "box": {
+            "x": 773.3125,
+            "y": 63.78125,
+            "width": 70,
+            "height": 44,
+            "top": 63.78125,
+            "right": 843.3125,
+            "bottom": 107.78125,
+            "left": 773.3125
+          }
+        },
+        {
+          "href": "/account/wishlist",
+          "box": {
+            "x": 867.3125,
+            "y": 63.78125,
+            "width": 44,
+            "height": 44,
+            "top": 63.78125,
+            "right": 911.3125,
+            "bottom": 107.78125,
+            "left": 867.3125
+          }
+        }
+      ]
+    },
+    "panel": {
+      "left": 384.5,
+      "right": 1520.5,
+      "width": 1136,
+      "summaryW": 253.5,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "customer",
+    "path": "/account/wishlist",
+    "w": 1920,
+    "h": 1080,
+    "zoom": 1,
+    "height": 116,
+    "width": 1920,
+    "scroll": 1920,
+    "dpr": 1,
+    "submenu": false,
+    "current": [
+      "/account/wishlist"
+    ],
+    "icons": [
+      {
+        "href": "/cart",
+        "name": "Giỏ hàng · 12 sản phẩm",
+        "svg": "true"
+      },
+      {
+        "href": "/account/wishlist",
+        "name": "Sản phẩm yêu thích",
+        "svg": "true"
+      }
+    ],
+    "header": {
+      "width": 1920,
+      "scroll": 1920,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "width": 1920,
+        "height": 116.1875,
+        "top": 0,
+        "right": 1920,
+        "bottom": 116.1875,
+        "left": 0
+      },
+      "actions": [
+        {
+          "href": "/cart",
+          "box": {
+            "x": 780.8125,
+            "y": 63.78125,
+            "width": 70,
+            "height": 44,
+            "top": 63.78125,
+            "right": 850.8125,
+            "bottom": 107.78125,
+            "left": 780.8125
+          }
+        },
+        {
+          "href": "/account/wishlist",
+          "box": {
+            "x": 874.8125,
+            "y": 63.78125,
+            "width": 44,
+            "height": 44,
+            "top": 63.78125,
+            "right": 918.8125,
+            "bottom": 107.78125,
+            "left": 874.8125
+          }
+        }
+      ]
+    },
+    "panel": {
+      "left": 392,
+      "right": 1528,
+      "width": 1136,
+      "summaryW": 253.5,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "customer",
+    "path": "/checkout",
+    "w": 360,
+    "h": 800,
+    "zoom": 2,
+    "height": 226,
+    "width": 172,
+    "scroll": 208,
+    "dpr": 2,
+    "submenu": false,
+    "current": [],
+    "icons": [
+      {
+        "href": "/cart",
+        "name": "Giỏ hàng · 12 sản phẩm",
+        "svg": "true"
+      },
+      {
+        "href": "/account/wishlist",
+        "name": "Sản phẩm yêu thích",
+        "svg": "true"
+      }
+    ],
+    "header": {
+      "width": 173,
+      "scroll": 173,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "width": 172.5,
+        "height": 724.9921875,
+        "top": 0,
+        "right": 172.5,
+        "bottom": 724.9921875,
+        "left": 0
+      },
+      "actions": [
+        {
+          "href": "/cart",
+          "box": {
+            "x": 32,
+            "y": 444.1953125,
+            "width": 70,
+            "height": 44,
+            "top": 444.1953125,
+            "right": 102,
+            "bottom": 488.1953125,
+            "left": 32
+          }
+        },
+        {
+          "href": "/account/wishlist",
+          "box": {
+            "x": 32,
+            "y": 496.1953125,
+            "width": 44,
+            "height": 44,
+            "top": 496.1953125,
+            "right": 76,
+            "bottom": 540.1953125,
+            "left": 32
+          }
+        }
+      ]
+    },
+    "panel": {
+      "left": 32,
+      "right": 140.5,
+      "width": 108.5,
+      "summaryW": 75,
+      "summaryH": 124.890625
+    }
+  },
+  {
+    "role": "customer",
+    "path": "/account",
+    "w": 360,
+    "h": 800,
+    "zoom": 2,
+    "height": 226,
+    "width": 172,
+    "scroll": 208,
+    "dpr": 2,
+    "submenu": false,
+    "current": [
+      "/account"
+    ],
+    "icons": [
+      {
+        "href": "/cart",
+        "name": "Giỏ hàng · 12 sản phẩm",
+        "svg": "true"
+      },
+      {
+        "href": "/account/wishlist",
+        "name": "Sản phẩm yêu thích",
+        "svg": "true"
+      }
+    ],
+    "header": {
+      "width": 173,
+      "scroll": 173,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "width": 172.5,
+        "height": 724.9921875,
+        "top": 0,
+        "right": 172.5,
+        "bottom": 724.9921875,
+        "left": 0
+      },
+      "actions": [
+        {
+          "href": "/cart",
+          "box": {
+            "x": 32,
+            "y": 444.1953125,
+            "width": 70,
+            "height": 44,
+            "top": 444.1953125,
+            "right": 102,
+            "bottom": 488.1953125,
+            "left": 32
+          }
+        },
+        {
+          "href": "/account/wishlist",
+          "box": {
+            "x": 32,
+            "y": 496.1953125,
+            "width": 44,
+            "height": 44,
+            "top": 496.1953125,
+            "right": 76,
+            "bottom": 540.1953125,
+            "left": 32
+          }
+        }
+      ]
+    },
+    "panel": {
+      "left": 32,
+      "right": 140.5,
+      "width": 108.5,
+      "summaryW": 75,
+      "summaryH": 124.890625
+    }
+  },
+  {
+    "role": "customer",
+    "path": "/account/wishlist",
+    "w": 360,
+    "h": 800,
+    "zoom": 2,
+    "height": 226,
+    "width": 172,
+    "scroll": 208,
+    "dpr": 2,
+    "submenu": false,
+    "current": [
+      "/account/wishlist"
+    ],
+    "icons": [
+      {
+        "href": "/cart",
+        "name": "Giỏ hàng · 12 sản phẩm",
+        "svg": "true"
+      },
+      {
+        "href": "/account/wishlist",
+        "name": "Sản phẩm yêu thích",
+        "svg": "true"
+      }
+    ],
+    "header": {
+      "width": 173,
+      "scroll": 173,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "width": 172.5,
+        "height": 724.9921875,
+        "top": 0,
+        "right": 172.5,
+        "bottom": 724.9921875,
+        "left": 0
+      },
+      "actions": [
+        {
+          "href": "/cart",
+          "box": {
+            "x": 32,
+            "y": 444.1953125,
+            "width": 70,
+            "height": 44,
+            "top": 444.1953125,
+            "right": 102,
+            "bottom": 488.1953125,
+            "left": 32
+          }
+        },
+        {
+          "href": "/account/wishlist",
+          "box": {
+            "x": 32,
+            "y": 496.1953125,
+            "width": 44,
+            "height": 44,
+            "top": 496.1953125,
+            "right": 76,
+            "bottom": 540.1953125,
+            "left": 32
+          }
+        }
+      ]
+    },
+    "panel": {
+      "left": 32,
+      "right": 140.5,
+      "width": 108.5,
+      "summaryW": 75,
+      "summaryH": 124.890625
+    }
+  },
+  {
+    "role": "customer",
+    "path": "/checkout",
+    "w": 390,
+    "h": 844,
+    "zoom": 2,
+    "height": 226,
+    "width": 187,
+    "scroll": 208,
+    "dpr": 2,
+    "submenu": false,
+    "current": [],
+    "icons": [
+      {
+        "href": "/cart",
+        "name": "Giỏ hàng · 12 sản phẩm",
+        "svg": "true"
+      },
+      {
+        "href": "/account/wishlist",
+        "name": "Sản phẩm yêu thích",
+        "svg": "true"
+      }
+    ],
+    "header": {
+      "width": 188,
+      "scroll": 188,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "width": 187.5,
+        "height": 724.9921875,
+        "top": 0,
+        "right": 187.5,
+        "bottom": 724.9921875,
+        "left": 0
+      },
+      "actions": [
+        {
+          "href": "/cart",
+          "box": {
+            "x": 32,
+            "y": 444.1953125,
+            "width": 70,
+            "height": 44,
+            "top": 444.1953125,
+            "right": 102,
+            "bottom": 488.1953125,
+            "left": 32
+          }
+        },
+        {
+          "href": "/account/wishlist",
+          "box": {
+            "x": 32,
+            "y": 496.1953125,
+            "width": 44,
+            "height": 44,
+            "top": 496.1953125,
+            "right": 76,
+            "bottom": 540.1953125,
+            "left": 32
+          }
+        }
+      ]
+    },
+    "panel": {
+      "left": 32,
+      "right": 155.5,
+      "width": 123.5,
+      "summaryW": 90,
+      "summaryH": 124.890625
+    }
+  },
+  {
+    "role": "customer",
+    "path": "/account",
+    "w": 390,
+    "h": 844,
+    "zoom": 2,
+    "height": 226,
+    "width": 187,
+    "scroll": 208,
+    "dpr": 2,
+    "submenu": false,
+    "current": [
+      "/account"
+    ],
+    "icons": [
+      {
+        "href": "/cart",
+        "name": "Giỏ hàng · 12 sản phẩm",
+        "svg": "true"
+      },
+      {
+        "href": "/account/wishlist",
+        "name": "Sản phẩm yêu thích",
+        "svg": "true"
+      }
+    ],
+    "header": {
+      "width": 188,
+      "scroll": 188,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "width": 187.5,
+        "height": 724.9921875,
+        "top": 0,
+        "right": 187.5,
+        "bottom": 724.9921875,
+        "left": 0
+      },
+      "actions": [
+        {
+          "href": "/cart",
+          "box": {
+            "x": 32,
+            "y": 444.1953125,
+            "width": 70,
+            "height": 44,
+            "top": 444.1953125,
+            "right": 102,
+            "bottom": 488.1953125,
+            "left": 32
+          }
+        },
+        {
+          "href": "/account/wishlist",
+          "box": {
+            "x": 32,
+            "y": 496.1953125,
+            "width": 44,
+            "height": 44,
+            "top": 496.1953125,
+            "right": 76,
+            "bottom": 540.1953125,
+            "left": 32
+          }
+        }
+      ]
+    },
+    "panel": {
+      "left": 32,
+      "right": 155.5,
+      "width": 123.5,
+      "summaryW": 90,
+      "summaryH": 124.890625
+    }
+  },
+  {
+    "role": "customer",
+    "path": "/account/wishlist",
+    "w": 390,
+    "h": 844,
+    "zoom": 2,
+    "height": 226,
+    "width": 187,
+    "scroll": 208,
+    "dpr": 2,
+    "submenu": false,
+    "current": [
+      "/account/wishlist"
+    ],
+    "icons": [
+      {
+        "href": "/cart",
+        "name": "Giỏ hàng · 12 sản phẩm",
+        "svg": "true"
+      },
+      {
+        "href": "/account/wishlist",
+        "name": "Sản phẩm yêu thích",
+        "svg": "true"
+      }
+    ],
+    "header": {
+      "width": 188,
+      "scroll": 188,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "width": 187.5,
+        "height": 724.9921875,
+        "top": 0,
+        "right": 187.5,
+        "bottom": 724.9921875,
+        "left": 0
+      },
+      "actions": [
+        {
+          "href": "/cart",
+          "box": {
+            "x": 32,
+            "y": 444.1953125,
+            "width": 70,
+            "height": 44,
+            "top": 444.1953125,
+            "right": 102,
+            "bottom": 488.1953125,
+            "left": 32
+          }
+        },
+        {
+          "href": "/account/wishlist",
+          "box": {
+            "x": 32,
+            "y": 496.1953125,
+            "width": 44,
+            "height": 44,
+            "top": 496.1953125,
+            "right": 76,
+            "bottom": 540.1953125,
+            "left": 32
+          }
+        }
+      ]
+    },
+    "panel": {
+      "left": 32,
+      "right": 155.5,
+      "width": 123.5,
+      "summaryW": 90,
+      "summaryH": 124.890625
+    }
+  },
+  {
+    "role": "customer",
+    "path": "/checkout",
+    "w": 768,
+    "h": 1024,
+    "zoom": 2,
+    "height": 109,
+    "width": 376,
+    "scroll": 376,
+    "dpr": 2,
+    "submenu": false,
+    "current": [],
+    "icons": [
+      {
+        "href": "/cart",
+        "name": "Giỏ hàng · 12 sản phẩm",
+        "svg": "true"
+      },
+      {
+        "href": "/account/wishlist",
+        "name": "Sản phẩm yêu thích",
+        "svg": "true"
+      }
+    ],
+    "header": {
+      "width": 377,
+      "scroll": 377,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "width": 376.5,
+        "height": 345.1953125,
+        "top": 0,
+        "right": 376.5,
+        "bottom": 345.1953125,
+        "left": 0
+      },
+      "actions": [
+        {
+          "href": "/cart",
+          "box": {
+            "x": 32,
+            "y": 226.3984375,
+            "width": 70,
+            "height": 44,
+            "top": 226.3984375,
+            "right": 102,
+            "bottom": 270.3984375,
+            "left": 32
+          }
+        },
+        {
+          "href": "/account/wishlist",
+          "box": {
+            "x": 118,
+            "y": 226.3984375,
+            "width": 44,
+            "height": 44,
+            "top": 226.3984375,
+            "right": 162,
+            "bottom": 270.3984375,
+            "left": 118
+          }
+        }
+      ]
+    },
+    "panel": {
+      "left": 32,
+      "right": 344.5,
+      "width": 312.5,
+      "summaryW": 279,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "customer",
+    "path": "/account",
+    "w": 768,
+    "h": 1024,
+    "zoom": 2,
+    "height": 109,
+    "width": 376,
+    "scroll": 376,
+    "dpr": 2,
+    "submenu": false,
+    "current": [
+      "/account"
+    ],
+    "icons": [
+      {
+        "href": "/cart",
+        "name": "Giỏ hàng · 12 sản phẩm",
+        "svg": "true"
+      },
+      {
+        "href": "/account/wishlist",
+        "name": "Sản phẩm yêu thích",
+        "svg": "true"
+      }
+    ],
+    "header": {
+      "width": 377,
+      "scroll": 377,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "width": 376.5,
+        "height": 345.1953125,
+        "top": 0,
+        "right": 376.5,
+        "bottom": 345.1953125,
+        "left": 0
+      },
+      "actions": [
+        {
+          "href": "/cart",
+          "box": {
+            "x": 32,
+            "y": 226.3984375,
+            "width": 70,
+            "height": 44,
+            "top": 226.3984375,
+            "right": 102,
+            "bottom": 270.3984375,
+            "left": 32
+          }
+        },
+        {
+          "href": "/account/wishlist",
+          "box": {
+            "x": 118,
+            "y": 226.3984375,
+            "width": 44,
+            "height": 44,
+            "top": 226.3984375,
+            "right": 162,
+            "bottom": 270.3984375,
+            "left": 118
+          }
+        }
+      ]
+    },
+    "panel": {
+      "left": 32,
+      "right": 344.5,
+      "width": 312.5,
+      "summaryW": 279,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "customer",
+    "path": "/account/wishlist",
+    "w": 768,
+    "h": 1024,
+    "zoom": 2,
+    "height": 109,
+    "width": 376,
+    "scroll": 376,
+    "dpr": 2,
+    "submenu": false,
+    "current": [
+      "/account/wishlist"
+    ],
+    "icons": [
+      {
+        "href": "/cart",
+        "name": "Giỏ hàng · 12 sản phẩm",
+        "svg": "true"
+      },
+      {
+        "href": "/account/wishlist",
+        "name": "Sản phẩm yêu thích",
+        "svg": "true"
+      }
+    ],
+    "header": {
+      "width": 377,
+      "scroll": 377,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "width": 376.5,
+        "height": 345.1953125,
+        "top": 0,
+        "right": 376.5,
+        "bottom": 345.1953125,
+        "left": 0
+      },
+      "actions": [
+        {
+          "href": "/cart",
+          "box": {
+            "x": 32,
+            "y": 226.3984375,
+            "width": 70,
+            "height": 44,
+            "top": 226.3984375,
+            "right": 102,
+            "bottom": 270.3984375,
+            "left": 32
+          }
+        },
+        {
+          "href": "/account/wishlist",
+          "box": {
+            "x": 118,
+            "y": 226.3984375,
+            "width": 44,
+            "height": 44,
+            "top": 226.3984375,
+            "right": 162,
+            "bottom": 270.3984375,
+            "left": 118
+          }
+        }
+      ]
+    },
+    "panel": {
+      "left": 32,
+      "right": 344.5,
+      "width": 312.5,
+      "summaryW": 279,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "customer",
+    "path": "/checkout",
+    "w": 1366,
+    "h": 768,
+    "zoom": 2,
+    "height": 109,
+    "width": 675,
+    "scroll": 675,
+    "dpr": 2,
+    "submenu": false,
+    "current": [],
+    "icons": [
+      {
+        "href": "/cart",
+        "name": "Giỏ hàng · 12 sản phẩm",
+        "svg": "true"
+      },
+      {
+        "href": "/account/wishlist",
+        "name": "Sản phẩm yêu thích",
+        "svg": "true"
+      }
+    ],
+    "header": {
+      "width": 676,
+      "scroll": 676,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "width": 675.5,
+        "height": 289.1953125,
+        "top": 0,
+        "right": 675.5,
+        "bottom": 289.1953125,
+        "left": 0
+      },
+      "actions": [
+        {
+          "href": "/cart",
+          "box": {
+            "x": 32,
+            "y": 228.296875,
+            "width": 70,
+            "height": 44,
+            "top": 228.296875,
+            "right": 102,
+            "bottom": 272.296875,
+            "left": 32
+          }
+        },
+        {
+          "href": "/account/wishlist",
+          "box": {
+            "x": 118,
+            "y": 228.296875,
+            "width": 44,
+            "height": 44,
+            "top": 228.296875,
+            "right": 162,
+            "bottom": 272.296875,
+            "left": 118
+          }
+        }
+      ]
+    },
+    "panel": {
+      "left": 32,
+      "right": 643.5,
+      "width": 611.5,
+      "summaryW": 578,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "customer",
+    "path": "/account",
+    "w": 1366,
+    "h": 768,
+    "zoom": 2,
+    "height": 109,
+    "width": 675,
+    "scroll": 675,
+    "dpr": 2,
+    "submenu": false,
+    "current": [
+      "/account"
+    ],
+    "icons": [
+      {
+        "href": "/cart",
+        "name": "Giỏ hàng · 12 sản phẩm",
+        "svg": "true"
+      },
+      {
+        "href": "/account/wishlist",
+        "name": "Sản phẩm yêu thích",
+        "svg": "true"
+      }
+    ],
+    "header": {
+      "width": 676,
+      "scroll": 676,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "width": 675.5,
+        "height": 289.1953125,
+        "top": 0,
+        "right": 675.5,
+        "bottom": 289.1953125,
+        "left": 0
+      },
+      "actions": [
+        {
+          "href": "/cart",
+          "box": {
+            "x": 32,
+            "y": 228.296875,
+            "width": 70,
+            "height": 44,
+            "top": 228.296875,
+            "right": 102,
+            "bottom": 272.296875,
+            "left": 32
+          }
+        },
+        {
+          "href": "/account/wishlist",
+          "box": {
+            "x": 118,
+            "y": 228.296875,
+            "width": 44,
+            "height": 44,
+            "top": 228.296875,
+            "right": 162,
+            "bottom": 272.296875,
+            "left": 118
+          }
+        }
+      ]
+    },
+    "panel": {
+      "left": 32,
+      "right": 643.5,
+      "width": 611.5,
+      "summaryW": 578,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "customer",
+    "path": "/account/wishlist",
+    "w": 1366,
+    "h": 768,
+    "zoom": 2,
+    "height": 109,
+    "width": 675,
+    "scroll": 675,
+    "dpr": 2,
+    "submenu": false,
+    "current": [
+      "/account/wishlist"
+    ],
+    "icons": [
+      {
+        "href": "/cart",
+        "name": "Giỏ hàng · 12 sản phẩm",
+        "svg": "true"
+      },
+      {
+        "href": "/account/wishlist",
+        "name": "Sản phẩm yêu thích",
+        "svg": "true"
+      }
+    ],
+    "header": {
+      "width": 676,
+      "scroll": 676,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "width": 675.5,
+        "height": 289.1953125,
+        "top": 0,
+        "right": 675.5,
+        "bottom": 289.1953125,
+        "left": 0
+      },
+      "actions": [
+        {
+          "href": "/cart",
+          "box": {
+            "x": 32,
+            "y": 228.296875,
+            "width": 70,
+            "height": 44,
+            "top": 228.296875,
+            "right": 102,
+            "bottom": 272.296875,
+            "left": 32
+          }
+        },
+        {
+          "href": "/account/wishlist",
+          "box": {
+            "x": 118,
+            "y": 228.296875,
+            "width": 44,
+            "height": 44,
+            "top": 228.296875,
+            "right": 162,
+            "bottom": 272.296875,
+            "left": 118
+          }
+        }
+      ]
+    },
+    "panel": {
+      "left": 32,
+      "right": 643.5,
+      "width": 611.5,
+      "summaryW": 578,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "customer",
+    "path": "/checkout",
+    "w": 1920,
+    "h": 1080,
+    "zoom": 2,
+    "height": 109,
+    "width": 952,
+    "scroll": 952,
+    "dpr": 2,
+    "submenu": false,
+    "current": [],
+    "icons": [
+      {
+        "href": "/cart",
+        "name": "Giỏ hàng · 12 sản phẩm",
+        "svg": "true"
+      },
+      {
+        "href": "/account/wishlist",
+        "name": "Sản phẩm yêu thích",
+        "svg": "true"
+      }
+    ],
+    "header": {
+      "width": 953,
+      "scroll": 953,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "width": 952.5,
+        "height": 289.1953125,
+        "top": 0,
+        "right": 952.5,
+        "bottom": 289.1953125,
+        "left": 0
+      },
+      "actions": [
+        {
+          "href": "/cart",
+          "box": {
+            "x": 32,
+            "y": 228.296875,
+            "width": 70,
+            "height": 44,
+            "top": 228.296875,
+            "right": 102,
+            "bottom": 272.296875,
+            "left": 32
+          }
+        },
+        {
+          "href": "/account/wishlist",
+          "box": {
+            "x": 118,
+            "y": 228.296875,
+            "width": 44,
+            "height": 44,
+            "top": 228.296875,
+            "right": 162,
+            "bottom": 272.296875,
+            "left": 118
+          }
+        }
+      ]
+    },
+    "panel": {
+      "left": 32,
+      "right": 920.5,
+      "width": 888.5,
+      "summaryW": 862.5,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "customer",
+    "path": "/account",
+    "w": 1920,
+    "h": 1080,
+    "zoom": 2,
+    "height": 109,
+    "width": 952,
+    "scroll": 952,
+    "dpr": 2,
+    "submenu": false,
+    "current": [
+      "/account"
+    ],
+    "icons": [
+      {
+        "href": "/cart",
+        "name": "Giỏ hàng · 12 sản phẩm",
+        "svg": "true"
+      },
+      {
+        "href": "/account/wishlist",
+        "name": "Sản phẩm yêu thích",
+        "svg": "true"
+      }
+    ],
+    "header": {
+      "width": 953,
+      "scroll": 953,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "width": 952.5,
+        "height": 289.1953125,
+        "top": 0,
+        "right": 952.5,
+        "bottom": 289.1953125,
+        "left": 0
+      },
+      "actions": [
+        {
+          "href": "/cart",
+          "box": {
+            "x": 32,
+            "y": 228.296875,
+            "width": 70,
+            "height": 44,
+            "top": 228.296875,
+            "right": 102,
+            "bottom": 272.296875,
+            "left": 32
+          }
+        },
+        {
+          "href": "/account/wishlist",
+          "box": {
+            "x": 118,
+            "y": 228.296875,
+            "width": 44,
+            "height": 44,
+            "top": 228.296875,
+            "right": 162,
+            "bottom": 272.296875,
+            "left": 118
+          }
+        }
+      ]
+    },
+    "panel": {
+      "left": 32,
+      "right": 920.5,
+      "width": 888.5,
+      "summaryW": 862.5,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "customer",
+    "path": "/account/wishlist",
+    "w": 1920,
+    "h": 1080,
+    "zoom": 2,
+    "height": 109,
+    "width": 952,
+    "scroll": 952,
+    "dpr": 2,
+    "submenu": false,
+    "current": [
+      "/account/wishlist"
+    ],
+    "icons": [
+      {
+        "href": "/cart",
+        "name": "Giỏ hàng · 12 sản phẩm",
+        "svg": "true"
+      },
+      {
+        "href": "/account/wishlist",
+        "name": "Sản phẩm yêu thích",
+        "svg": "true"
+      }
+    ],
+    "header": {
+      "width": 953,
+      "scroll": 953,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "width": 952.5,
+        "height": 289.1953125,
+        "top": 0,
+        "right": 952.5,
+        "bottom": 289.1953125,
+        "left": 0
+      },
+      "actions": [
+        {
+          "href": "/cart",
+          "box": {
+            "x": 32,
+            "y": 228.296875,
+            "width": 70,
+            "height": 44,
+            "top": 228.296875,
+            "right": 102,
+            "bottom": 272.296875,
+            "left": 32
+          }
+        },
+        {
+          "href": "/account/wishlist",
+          "box": {
+            "x": 118,
+            "y": 228.296875,
+            "width": 44,
+            "height": 44,
+            "top": 228.296875,
+            "right": 162,
+            "bottom": 272.296875,
+            "left": 118
+          }
+        }
+      ]
+    },
+    "panel": {
+      "left": 32,
+      "right": 920.5,
+      "width": 888.5,
+      "summaryW": 862.5,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "admin",
+    "path": "/admin/catalog/categories",
+    "w": 360,
+    "h": 800,
+    "zoom": 1,
+    "height": 109,
+    "width": 345,
+    "scroll": 345,
+    "dpr": 1,
+    "submenu": false,
+    "current": [
+      "/admin/catalog"
+    ],
+    "icons": []
+  },
+  {
+    "role": "admin",
+    "path": "/admin/catalog/categories",
+    "w": 390,
+    "h": 844,
+    "zoom": 1,
+    "height": 109,
+    "width": 375,
+    "scroll": 375,
+    "dpr": 1,
+    "submenu": false,
+    "current": [
+      "/admin/catalog"
+    ],
+    "icons": []
+  },
+  {
+    "role": "admin",
+    "path": "/admin/catalog/categories",
+    "w": 768,
+    "h": 1024,
+    "zoom": 1,
+    "height": 109,
+    "width": 768,
+    "scroll": 768,
+    "dpr": 1,
+    "submenu": false,
+    "current": [
+      "/admin/catalog"
+    ],
+    "icons": []
+  },
+  {
+    "role": "admin",
+    "path": "/admin/catalog/categories",
+    "w": 1366,
+    "h": 768,
+    "zoom": 1,
+    "height": 116,
+    "width": 1351,
+    "scroll": 1351,
+    "dpr": 1,
+    "submenu": false,
+    "current": [
+      "/admin/catalog"
+    ],
+    "icons": []
+  },
+  {
+    "role": "admin",
+    "path": "/admin/catalog/categories",
+    "w": 1920,
+    "h": 1080,
+    "zoom": 1,
+    "height": 116,
+    "width": 1920,
+    "scroll": 1920,
+    "dpr": 1,
+    "submenu": false,
+    "current": [
+      "/admin/catalog"
+    ],
+    "icons": []
+  },
+  {
+    "role": "admin",
+    "path": "/admin/catalog/categories",
+    "w": 360,
+    "h": 800,
+    "zoom": 2,
+    "height": 226,
+    "width": 172,
+    "scroll": 208,
+    "dpr": 2,
+    "submenu": false,
+    "current": [
+      "/admin/catalog"
+    ],
+    "icons": []
+  },
+  {
+    "role": "admin",
+    "path": "/admin/catalog/categories",
+    "w": 390,
+    "h": 844,
+    "zoom": 2,
+    "height": 226,
+    "width": 187,
+    "scroll": 208,
+    "dpr": 2,
+    "submenu": false,
+    "current": [
+      "/admin/catalog"
+    ],
+    "icons": []
+  },
+  {
+    "role": "admin",
+    "path": "/admin/catalog/categories",
+    "w": 768,
+    "h": 1024,
+    "zoom": 2,
+    "height": 109,
+    "width": 376,
+    "scroll": 376,
+    "dpr": 2,
+    "submenu": false,
+    "current": [
+      "/admin/catalog"
+    ],
+    "icons": []
+  },
+  {
+    "role": "admin",
+    "path": "/admin/catalog/categories",
+    "w": 1366,
+    "h": 768,
+    "zoom": 2,
+    "height": 109,
+    "width": 675,
+    "scroll": 675,
+    "dpr": 2,
+    "submenu": false,
+    "current": [
+      "/admin/catalog"
+    ],
+    "icons": []
+  },
+  {
+    "role": "admin",
+    "path": "/admin/catalog/categories",
+    "w": 1920,
+    "h": 1080,
+    "zoom": 2,
+    "height": 109,
+    "width": 952,
+    "scroll": 952,
+    "dpr": 2,
+    "submenu": false,
+    "current": [
+      "/admin/catalog"
+    ],
+    "icons": []
+  }
+]

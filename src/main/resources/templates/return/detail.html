@@ -1,10 +1,8 @@
 <!DOCTYPE html>
 <html lang="vi" xmlns:th="http://www.thymeleaf.org">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Chi tiết đổi trả · BeautyShop</title><link rel="stylesheet" th:href="@{/css/theme.css}">
-<link rel="stylesheet" th:href="@{/css/admin-catalog.css}"></head>
+<head th:replace="~{fragments/head :: head('Chi tiết đổi trả · BeautyShop')}"></head>
 <body><div th:replace="~{fragments/header :: siteHeader}"></div>
-<main class="page-content">
+<main id="main" tabindex="-1" class="page-content">
     <a class="text-link" th:href="@{${base}}">Quay lại yêu cầu đổi trả</a>
     <article th:with="yc=${trang.chiTiet.yeuCau}">
         <h1 th:text="|Yêu cầu #${yc.ma}|">Yêu cầu đổi trả</h1>
@@ -17,7 +15,7 @@
         </ul>
         <form class="catalog-actions" th:if="${base == '/admin/returns'}" method="post"
               th:action="@{/admin/returns/{id}/status(id=${yc.ma})}">
-            <button th:each="dich : ${yc.trangThai.buocTiepTheo()}" class="btn-primary" type="submit"
+            <button th:each="dich : ${yc.trangThai.buocTiepTheo()}" class="btn btn--primary" type="submit"
                     name="status" th:value="${dich.name()}" th:text="${dich.label}"></button>
         </form>
     </article>

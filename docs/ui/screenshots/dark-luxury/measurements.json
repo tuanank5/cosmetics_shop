@@ -1,0 +1,1385 @@
+{
+  "rows": [
+    {
+      "viewport": [
+        360,
+        800
+      ],
+      "zoom": 1,
+      "js": true,
+      "page": "home",
+      "width": 345,
+      "scroll": 345,
+      "dpr": 1,
+      "background": "rgb(10, 10, 11)",
+      "columns": null,
+      "heading": "Vẻ đẹp.Theo cách bạn.",
+      "scripts": [
+        "/js/app.js",
+        "/js/vendor/gsap-3.15.1.min.js",
+        "/js/home-motion.js",
+        "/js/vendor/ScrollTrigger-3.15.1.min.js",
+        "/js/home-story.js"
+      ],
+      "posters": [
+        true,
+        true,
+        true
+      ],
+      "triggers": 3
+    },
+    {
+      "viewport": [
+        360,
+        800
+      ],
+      "zoom": 1,
+      "js": true,
+      "page": "catalog",
+      "width": 345,
+      "scroll": 345,
+      "dpr": 1,
+      "background": "rgb(10, 10, 11)",
+      "columns": "148.5px 148.5px",
+      "heading": "Sản phẩm mỹ phẩm",
+      "scripts": [
+        "/js/app.js",
+        "/js/catalog-preview.js"
+      ],
+      "posters": [],
+      "triggers": 0
+    },
+    {
+      "viewport": [
+        360,
+        800
+      ],
+      "zoom": 1,
+      "js": true,
+      "page": "pdp",
+      "width": 345,
+      "scroll": 345,
+      "dpr": 1,
+      "background": "rgb(10, 10, 11)",
+      "columns": null,
+      "heading": "Moisturizing Cream",
+      "scripts": [
+        "/js/app.js"
+      ],
+      "posters": [],
+      "triggers": 0
+    },
+    {
+      "viewport": [
+        360,
+        800
+      ],
+      "zoom": 1,
+      "js": false,
+      "page": "home",
+      "width": 345,
+      "scroll": 345,
+      "dpr": 1,
+      "background": "rgb(10, 10, 11)",
+      "columns": null,
+      "heading": "Vẻ đẹp.Theo cách bạn.",
+      "scripts": [
+        "/js/app.js",
+        "/js/vendor/gsap-3.15.1.min.js",
+        "/js/home-motion.js",
+        "/js/vendor/ScrollTrigger-3.15.1.min.js",
+        "/js/home-story.js"
+      ],
+      "posters": [
+        true,
+        true,
+        true
+      ],
+      "triggers": 0
+    },
+    {
+      "viewport": [
+        360,
+        800
+      ],
+      "zoom": 1,
+      "js": false,
+      "page": "catalog",
+      "width": 345,
+      "scroll": 345,
+      "dpr": 1,
+      "background": "rgb(10, 10, 11)",
+      "columns": "148.5px 148.5px",
+      "heading": "Sản phẩm mỹ phẩm",
+      "scripts": [
+        "/js/app.js",
+        "/js/catalog-preview.js"
+      ],
+      "posters": [],
+      "triggers": 0
+    },
+    {
+      "viewport": [
+        360,
+        800
+      ],
+      "zoom": 1,
+      "js": false,
+      "page": "pdp",
+      "width": 345,
+      "scroll": 345,
+      "dpr": 1,
+      "background": "rgb(10, 10, 11)",
+      "columns": null,
+      "heading": "Moisturizing Cream",
+      "scripts": [
+        "/js/app.js"
+      ],
+      "posters": [],
+      "triggers": 0
+    },
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "zoom": 1,
+      "js": true,
+      "page": "home",
+      "width": 375,
+      "scroll": 375,
+      "dpr": 1,
+      "background": "rgb(10, 10, 11)",
+      "columns": null,
+      "heading": "Vẻ đẹp.Theo cách bạn.",
+      "scripts": [
+        "/js/app.js",
+        "/js/vendor/gsap-3.15.1.min.js",
+        "/js/home-motion.js",
+        "/js/vendor/ScrollTrigger-3.15.1.min.js",
+        "/js/home-story.js"
+      ],
+      "posters": [
+        true,
+        true,
+        true
+      ],
+      "triggers": 3
+    },
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "zoom": 1,
+      "js": true,
+      "page": "catalog",
+      "width": 375,
+      "scroll": 375,
+      "dpr": 1,
+      "background": "rgb(10, 10, 11)",
+      "columns": "163.5px 163.5px",
+      "heading": "Sản phẩm mỹ phẩm",
+      "scripts": [
+        "/js/app.js",
+        "/js/catalog-preview.js"
+      ],
+      "posters": [],
+      "triggers": 0
+    },
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "zoom": 1,
+      "js": true,
+      "page": "pdp",
+      "width": 375,
+      "scroll": 375,
+      "dpr": 1,
+      "background": "rgb(10, 10, 11)",
+      "columns": null,
+      "heading": "Moisturizing Cream",
+      "scripts": [
+        "/js/app.js"
+      ],
+      "posters": [],
+      "triggers": 0
+    },
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "zoom": 1,
+      "js": false,
+      "page": "home",
+      "width": 375,
+      "scroll": 375,
+      "dpr": 1,
+      "background": "rgb(10, 10, 11)",
+      "columns": null,
+      "heading": "Vẻ đẹp.Theo cách bạn.",
+      "scripts": [
+        "/js/app.js",
+        "/js/vendor/gsap-3.15.1.min.js",
+        "/js/home-motion.js",
+        "/js/vendor/ScrollTrigger-3.15.1.min.js",
+        "/js/home-story.js"
+      ],
+      "posters": [
+        true,
+        true,
+        true
+      ],
+      "triggers": 0
+    },
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "zoom": 1,
+      "js": false,
+      "page": "catalog",
+      "width": 375,
+      "scroll": 375,
+      "dpr": 1,
+      "background": "rgb(10, 10, 11)",
+      "columns": "163.5px 163.5px",
+      "heading": "Sản phẩm mỹ phẩm",
+      "scripts": [
+        "/js/app.js",
+        "/js/catalog-preview.js"
+      ],
+      "posters": [],
+      "triggers": 0
+    },
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "zoom": 1,
+      "js": false,
+      "page": "pdp",
+      "width": 375,
+      "scroll": 375,
+      "dpr": 1,
+      "background": "rgb(10, 10, 11)",
+      "columns": null,
+      "heading": "Moisturizing Cream",
+      "scripts": [
+        "/js/app.js"
+      ],
+      "posters": [],
+      "triggers": 0
+    },
+    {
+      "viewport": [
+        768,
+        1024
+      ],
+      "zoom": 1,
+      "js": true,
+      "page": "home",
+      "width": 753,
+      "scroll": 753,
+      "dpr": 1,
+      "background": "rgb(10, 10, 11)",
+      "columns": null,
+      "heading": "Vẻ đẹp.Theo cách bạn.",
+      "scripts": [
+        "/js/app.js",
+        "/js/vendor/gsap-3.15.1.min.js",
+        "/js/home-motion.js",
+        "/js/vendor/ScrollTrigger-3.15.1.min.js",
+        "/js/home-story.js"
+      ],
+      "posters": [
+        true,
+        true,
+        true
+      ],
+      "triggers": 3
+    },
+    {
+      "viewport": [
+        768,
+        1024
+      ],
+      "zoom": 1,
+      "js": true,
+      "page": "catalog",
+      "width": 753,
+      "scroll": 753,
+      "dpr": 1,
+      "background": "rgb(10, 10, 11)",
+      "columns": "341.625px 341.625px",
+      "heading": "Sản phẩm mỹ phẩm",
+      "scripts": [
+        "/js/app.js",
+        "/js/catalog-preview.js"
+      ],
+      "posters": [],
+      "triggers": 0
+    },
+    {
+      "viewport": [
+        768,
+        1024
+      ],
+      "zoom": 1,
+      "js": true,
+      "page": "pdp",
+      "width": 753,
+      "scroll": 753,
+      "dpr": 1,
+      "background": "rgb(10, 10, 11)",
+      "columns": null,
+      "heading": "Moisturizing Cream",
+      "scripts": [
+        "/js/app.js"
+      ],
+      "posters": [],
+      "triggers": 0
+    },
+    {
+      "viewport": [
+        768,
+        1024
+      ],
+      "zoom": 1,
+      "js": false,
+      "page": "home",
+      "width": 753,
+      "scroll": 753,
+      "dpr": 1,
+      "background": "rgb(10, 10, 11)",
+      "columns": null,
+      "heading": "Vẻ đẹp.Theo cách bạn.",
+      "scripts": [
+        "/js/app.js",
+        "/js/vendor/gsap-3.15.1.min.js",
+        "/js/home-motion.js",
+        "/js/vendor/ScrollTrigger-3.15.1.min.js",
+        "/js/home-story.js"
+      ],
+      "posters": [
+        true,
+        true,
+        true
+      ],
+      "triggers": 0
+    },
+    {
+      "viewport": [
+        768,
+        1024
+      ],
+      "zoom": 1,
+      "js": false,
+      "page": "catalog",
+      "width": 753,
+      "scroll": 753,
+      "dpr": 1,
+      "background": "rgb(10, 10, 11)",
+      "columns": "341.625px 341.625px",
+      "heading": "Sản phẩm mỹ phẩm",
+      "scripts": [
+        "/js/app.js",
+        "/js/catalog-preview.js"
+      ],
+      "posters": [],
+      "triggers": 0
+    },
+    {
+      "viewport": [
+        768,
+        1024
+      ],
+      "zoom": 1,
+      "js": false,
+      "page": "pdp",
+      "width": 753,
+      "scroll": 753,
+      "dpr": 1,
+      "background": "rgb(10, 10, 11)",
+      "columns": null,
+      "heading": "Moisturizing Cream",
+      "scripts": [
+        "/js/app.js"
+      ],
+      "posters": [],
+      "triggers": 0
+    },
+    {
+      "viewport": [
+        1366,
+        768
+      ],
+      "zoom": 1,
+      "js": true,
+      "page": "home",
+      "width": 1351,
+      "scroll": 1351,
+      "dpr": 1,
+      "background": "rgb(10, 10, 11)",
+      "columns": null,
+      "heading": "Vẻ đẹp.Theo cách bạn.",
+      "scripts": [
+        "/js/app.js",
+        "/js/vendor/gsap-3.15.1.min.js",
+        "/js/home-motion.js",
+        "/js/vendor/ScrollTrigger-3.15.1.min.js",
+        "/js/home-story.js"
+      ],
+      "posters": [
+        true,
+        true,
+        true
+      ],
+      "triggers": 3
+    },
+    {
+      "viewport": [
+        1366,
+        768
+      ],
+      "zoom": 1,
+      "js": true,
+      "page": "catalog",
+      "width": 1351,
+      "scroll": 1351,
+      "dpr": 1,
+      "background": "rgb(10, 10, 11)",
+      "columns": "295.844px 295.859px 295.844px 295.859px",
+      "heading": "Sản phẩm mỹ phẩm",
+      "scripts": [
+        "/js/app.js",
+        "/js/catalog-preview.js"
+      ],
+      "posters": [],
+      "triggers": 0
+    },
+    {
+      "viewport": [
+        1366,
+        768
+      ],
+      "zoom": 1,
+      "js": true,
+      "page": "pdp",
+      "width": 1351,
+      "scroll": 1351,
+      "dpr": 1,
+      "background": "rgb(10, 10, 11)",
+      "columns": null,
+      "heading": "Moisturizing Cream",
+      "scripts": [
+        "/js/app.js"
+      ],
+      "posters": [],
+      "triggers": 0
+    },
+    {
+      "viewport": [
+        1366,
+        768
+      ],
+      "zoom": 1,
+      "js": false,
+      "page": "home",
+      "width": 1351,
+      "scroll": 1351,
+      "dpr": 1,
+      "background": "rgb(10, 10, 11)",
+      "columns": null,
+      "heading": "Vẻ đẹp.Theo cách bạn.",
+      "scripts": [
+        "/js/app.js",
+        "/js/vendor/gsap-3.15.1.min.js",
+        "/js/home-motion.js",
+        "/js/vendor/ScrollTrigger-3.15.1.min.js",
+        "/js/home-story.js"
+      ],
+      "posters": [
+        true,
+        true,
+        true
+      ],
+      "triggers": 0
+    },
+    {
+      "viewport": [
+        1366,
+        768
+      ],
+      "zoom": 1,
+      "js": false,
+      "page": "catalog",
+      "width": 1351,
+      "scroll": 1351,
+      "dpr": 1,
+      "background": "rgb(10, 10, 11)",
+      "columns": "295.844px 295.859px 295.844px 295.859px",
+      "heading": "Sản phẩm mỹ phẩm",
+      "scripts": [
+        "/js/app.js",
+        "/js/catalog-preview.js"
+      ],
+      "posters": [],
+      "triggers": 0
+    },
+    {
+      "viewport": [
+        1366,
+        768
+      ],
+      "zoom": 1,
+      "js": false,
+      "page": "pdp",
+      "width": 1351,
+      "scroll": 1351,
+      "dpr": 1,
+      "background": "rgb(10, 10, 11)",
+      "columns": null,
+      "heading": "Moisturizing Cream",
+      "scripts": [
+        "/js/app.js"
+      ],
+      "posters": [],
+      "triggers": 0
+    },
+    {
+      "viewport": [
+        1920,
+        1080
+      ],
+      "zoom": 1,
+      "js": true,
+      "page": "home",
+      "width": 1905,
+      "scroll": 1905,
+      "dpr": 1,
+      "background": "rgb(10, 10, 11)",
+      "columns": null,
+      "heading": "Vẻ đẹp.Theo cách bạn.",
+      "scripts": [
+        "/js/app.js",
+        "/js/vendor/gsap-3.15.1.min.js",
+        "/js/home-motion.js",
+        "/js/vendor/ScrollTrigger-3.15.1.min.js",
+        "/js/home-story.js"
+      ],
+      "posters": [
+        true,
+        true,
+        true
+      ],
+      "triggers": 3
+    },
+    {
+      "viewport": [
+        1920,
+        1080
+      ],
+      "zoom": 1,
+      "js": true,
+      "page": "catalog",
+      "width": 1905,
+      "scroll": 1905,
+      "dpr": 1,
+      "background": "rgb(10, 10, 11)",
+      "columns": "350px 350px 350px 350px",
+      "heading": "Sản phẩm mỹ phẩm",
+      "scripts": [
+        "/js/app.js",
+        "/js/catalog-preview.js"
+      ],
+      "posters": [],
+      "triggers": 0
+    },
+    {
+      "viewport": [
+        1920,
+        1080
+      ],
+      "zoom": 1,
+      "js": true,
+      "page": "pdp",
+      "width": 1905,
+      "scroll": 1905,
+      "dpr": 1,
+      "background": "rgb(10, 10, 11)",
+      "columns": null,
+      "heading": "Moisturizing Cream",
+      "scripts": [
+        "/js/app.js"
+      ],
+      "posters": [],
+      "triggers": 0
+    },
+    {
+      "viewport": [
+        1920,
+        1080
+      ],
+      "zoom": 1,
+      "js": false,
+      "page": "home",
+      "width": 1905,
+      "scroll": 1905,
+      "dpr": 1,
+      "background": "rgb(10, 10, 11)",
+      "columns": null,
+      "heading": "Vẻ đẹp.Theo cách bạn.",
+      "scripts": [
+        "/js/app.js",
+        "/js/vendor/gsap-3.15.1.min.js",
+        "/js/home-motion.js",
+        "/js/vendor/ScrollTrigger-3.15.1.min.js",
+        "/js/home-story.js"
+      ],
+      "posters": [
+        true,
+        true,
+        true
+      ],
+      "triggers": 0
+    },
+    {
+      "viewport": [
+        1920,
+        1080
+      ],
+      "zoom": 1,
+      "js": false,
+      "page": "catalog",
+      "width": 1905,
+      "scroll": 1905,
+      "dpr": 1,
+      "background": "rgb(10, 10, 11)",
+      "columns": "350px 350px 350px 350px",
+      "heading": "Sản phẩm mỹ phẩm",
+      "scripts": [
+        "/js/app.js",
+        "/js/catalog-preview.js"
+      ],
+      "posters": [],
+      "triggers": 0
+    },
+    {
+      "viewport": [
+        1920,
+        1080
+      ],
+      "zoom": 1,
+      "js": false,
+      "page": "pdp",
+      "width": 1905,
+      "scroll": 1905,
+      "dpr": 1,
+      "background": "rgb(10, 10, 11)",
+      "columns": null,
+      "heading": "Moisturizing Cream",
+      "scripts": [
+        "/js/app.js"
+      ],
+      "posters": [],
+      "triggers": 0
+    },
+    {
+      "viewport": [
+        360,
+        800
+      ],
+      "zoom": 2,
+      "js": true,
+      "page": "home",
+      "width": 172,
+      "scroll": 172,
+      "dpr": 2,
+      "background": "rgb(10, 10, 11)",
+      "columns": null,
+      "heading": "Vẻ đẹp.Theo cách bạn.",
+      "scripts": [
+        "/js/app.js",
+        "/js/vendor/gsap-3.15.1.min.js",
+        "/js/home-motion.js",
+        "/js/vendor/ScrollTrigger-3.15.1.min.js",
+        "/js/home-story.js"
+      ],
+      "posters": [
+        true,
+        true,
+        true
+      ],
+      "triggers": 3
+    },
+    {
+      "viewport": [
+        360,
+        800
+      ],
+      "zoom": 2,
+      "js": true,
+      "page": "catalog",
+      "width": 172,
+      "scroll": 172,
+      "dpr": 2,
+      "background": "rgb(10, 10, 11)",
+      "columns": "140.5px",
+      "heading": "Sản phẩm mỹ phẩm",
+      "scripts": [
+        "/js/app.js",
+        "/js/catalog-preview.js"
+      ],
+      "posters": [],
+      "triggers": 0
+    },
+    {
+      "viewport": [
+        360,
+        800
+      ],
+      "zoom": 2,
+      "js": true,
+      "page": "pdp",
+      "width": 172,
+      "scroll": 172,
+      "dpr": 2,
+      "background": "rgb(10, 10, 11)",
+      "columns": null,
+      "heading": "Moisturizing Cream",
+      "scripts": [
+        "/js/app.js"
+      ],
+      "posters": [],
+      "triggers": 0
+    },
+    {
+      "viewport": [
+        360,
+        800
+      ],
+      "zoom": 2,
+      "js": false,
+      "page": "home",
+      "width": 172,
+      "scroll": 172,
+      "dpr": 2,
+      "background": "rgb(10, 10, 11)",
+      "columns": null,
+      "heading": "Vẻ đẹp.Theo cách bạn.",
+      "scripts": [
+        "/js/app.js",
+        "/js/vendor/gsap-3.15.1.min.js",
+        "/js/home-motion.js",
+        "/js/vendor/ScrollTrigger-3.15.1.min.js",
+        "/js/home-story.js"
+      ],
+      "posters": [
+        true,
+        true,
+        true
+      ],
+      "triggers": 0
+    },
+    {
+      "viewport": [
+        360,
+        800
+      ],
+      "zoom": 2,
+      "js": false,
+      "page": "catalog",
+      "width": 172,
+      "scroll": 172,
+      "dpr": 2,
+      "background": "rgb(10, 10, 11)",
+      "columns": "140.5px",
+      "heading": "Sản phẩm mỹ phẩm",
+      "scripts": [
+        "/js/app.js",
+        "/js/catalog-preview.js"
+      ],
+      "posters": [],
+      "triggers": 0
+    },
+    {
+      "viewport": [
+        360,
+        800
+      ],
+      "zoom": 2,
+      "js": false,
+      "page": "pdp",
+      "width": 172,
+      "scroll": 172,
+      "dpr": 2,
+      "background": "rgb(10, 10, 11)",
+      "columns": null,
+      "heading": "Moisturizing Cream",
+      "scripts": [
+        "/js/app.js"
+      ],
+      "posters": [],
+      "triggers": 0
+    },
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "zoom": 2,
+      "js": true,
+      "page": "home",
+      "width": 187,
+      "scroll": 187,
+      "dpr": 2,
+      "background": "rgb(10, 10, 11)",
+      "columns": null,
+      "heading": "Vẻ đẹp.Theo cách bạn.",
+      "scripts": [
+        "/js/app.js",
+        "/js/vendor/gsap-3.15.1.min.js",
+        "/js/home-motion.js",
+        "/js/vendor/ScrollTrigger-3.15.1.min.js",
+        "/js/home-story.js"
+      ],
+      "posters": [
+        true,
+        true,
+        true
+      ],
+      "triggers": 3
+    },
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "zoom": 2,
+      "js": true,
+      "page": "catalog",
+      "width": 187,
+      "scroll": 187,
+      "dpr": 2,
+      "background": "rgb(10, 10, 11)",
+      "columns": "155.5px",
+      "heading": "Sản phẩm mỹ phẩm",
+      "scripts": [
+        "/js/app.js",
+        "/js/catalog-preview.js"
+      ],
+      "posters": [],
+      "triggers": 0
+    },
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "zoom": 2,
+      "js": true,
+      "page": "pdp",
+      "width": 187,
+      "scroll": 187,
+      "dpr": 2,
+      "background": "rgb(10, 10, 11)",
+      "columns": null,
+      "heading": "Moisturizing Cream",
+      "scripts": [
+        "/js/app.js"
+      ],
+      "posters": [],
+      "triggers": 0
+    },
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "zoom": 2,
+      "js": false,
+      "page": "home",
+      "width": 187,
+      "scroll": 187,
+      "dpr": 2,
+      "background": "rgb(10, 10, 11)",
+      "columns": null,
+      "heading": "Vẻ đẹp.Theo cách bạn.",
+      "scripts": [
+        "/js/app.js",
+        "/js/vendor/gsap-3.15.1.min.js",
+        "/js/home-motion.js",
+        "/js/vendor/ScrollTrigger-3.15.1.min.js",
+        "/js/home-story.js"
+      ],
+      "posters": [
+        true,
+        true,
+        true
+      ],
+      "triggers": 0
+    },
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "zoom": 2,
+      "js": false,
+      "page": "catalog",
+      "width": 187,
+      "scroll": 187,
+      "dpr": 2,
+      "background": "rgb(10, 10, 11)",
+      "columns": "155.5px",
+      "heading": "Sản phẩm mỹ phẩm",
+      "scripts": [
+        "/js/app.js",
+        "/js/catalog-preview.js"
+      ],
+      "posters": [],
+      "triggers": 0
+    },
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "zoom": 2,
+      "js": false,
+      "page": "pdp",
+      "width": 187,
+      "scroll": 187,
+      "dpr": 2,
+      "background": "rgb(10, 10, 11)",
+      "columns": null,
+      "heading": "Moisturizing Cream",
+      "scripts": [
+        "/js/app.js"
+      ],
+      "posters": [],
+      "triggers": 0
+    },
+    {
+      "viewport": [
+        768,
+        1024
+      ],
+      "zoom": 2,
+      "js": true,
+      "page": "home",
+      "width": 376,
+      "scroll": 376,
+      "dpr": 2,
+      "background": "rgb(10, 10, 11)",
+      "columns": null,
+      "heading": "Vẻ đẹp.Theo cách bạn.",
+      "scripts": [
+        "/js/app.js",
+        "/js/vendor/gsap-3.15.1.min.js",
+        "/js/home-motion.js",
+        "/js/vendor/ScrollTrigger-3.15.1.min.js",
+        "/js/home-story.js"
+      ],
+      "posters": [
+        true,
+        true,
+        true
+      ],
+      "triggers": 3
+    },
+    {
+      "viewport": [
+        768,
+        1024
+      ],
+      "zoom": 2,
+      "js": true,
+      "page": "catalog",
+      "width": 376,
+      "scroll": 376,
+      "dpr": 2,
+      "background": "rgb(10, 10, 11)",
+      "columns": "164.25px 164.25px",
+      "heading": "Sản phẩm mỹ phẩm",
+      "scripts": [
+        "/js/app.js",
+        "/js/catalog-preview.js"
+      ],
+      "posters": [],
+      "triggers": 0
+    },
+    {
+      "viewport": [
+        768,
+        1024
+      ],
+      "zoom": 2,
+      "js": true,
+      "page": "pdp",
+      "width": 376,
+      "scroll": 376,
+      "dpr": 2,
+      "background": "rgb(10, 10, 11)",
+      "columns": null,
+      "heading": "Moisturizing Cream",
+      "scripts": [
+        "/js/app.js"
+      ],
+      "posters": [],
+      "triggers": 0
+    },
+    {
+      "viewport": [
+        768,
+        1024
+      ],
+      "zoom": 2,
+      "js": false,
+      "page": "home",
+      "width": 376,
+      "scroll": 376,
+      "dpr": 2,
+      "background": "rgb(10, 10, 11)",
+      "columns": null,
+      "heading": "Vẻ đẹp.Theo cách bạn.",
+      "scripts": [
+        "/js/app.js",
+        "/js/vendor/gsap-3.15.1.min.js",
+        "/js/home-motion.js",
+        "/js/vendor/ScrollTrigger-3.15.1.min.js",
+        "/js/home-story.js"
+      ],
+      "posters": [
+        true,
+        true,
+        true
+      ],
+      "triggers": 0
+    },
+    {
+      "viewport": [
+        768,
+        1024
+      ],
+      "zoom": 2,
+      "js": false,
+      "page": "catalog",
+      "width": 376,
+      "scroll": 376,
+      "dpr": 2,
+      "background": "rgb(10, 10, 11)",
+      "columns": "164.25px 164.25px",
+      "heading": "Sản phẩm mỹ phẩm",
+      "scripts": [
+        "/js/app.js",
+        "/js/catalog-preview.js"
+      ],
+      "posters": [],
+      "triggers": 0
+    },
+    {
+      "viewport": [
+        768,
+        1024
+      ],
+      "zoom": 2,
+      "js": false,
+      "page": "pdp",
+      "width": 376,
+      "scroll": 376,
+      "dpr": 2,
+      "background": "rgb(10, 10, 11)",
+      "columns": null,
+      "heading": "Moisturizing Cream",
+      "scripts": [
+        "/js/app.js"
+      ],
+      "posters": [],
+      "triggers": 0
+    },
+    {
+      "viewport": [
+        1366,
+        768
+      ],
+      "zoom": 2,
+      "js": true,
+      "page": "home",
+      "width": 675,
+      "scroll": 675,
+      "dpr": 2,
+      "background": "rgb(10, 10, 11)",
+      "columns": null,
+      "heading": "Vẻ đẹp.Theo cách bạn.",
+      "scripts": [
+        "/js/app.js",
+        "/js/vendor/gsap-3.15.1.min.js",
+        "/js/home-motion.js",
+        "/js/vendor/ScrollTrigger-3.15.1.min.js",
+        "/js/home-story.js"
+      ],
+      "posters": [
+        true,
+        true,
+        true
+      ],
+      "triggers": 3
+    },
+    {
+      "viewport": [
+        1366,
+        768
+      ],
+      "zoom": 2,
+      "js": true,
+      "page": "catalog",
+      "width": 675,
+      "scroll": 675,
+      "dpr": 2,
+      "background": "rgb(10, 10, 11)",
+      "columns": "305.852px 305.852px",
+      "heading": "Sản phẩm mỹ phẩm",
+      "scripts": [
+        "/js/app.js",
+        "/js/catalog-preview.js"
+      ],
+      "posters": [],
+      "triggers": 0
+    },
+    {
+      "viewport": [
+        1366,
+        768
+      ],
+      "zoom": 2,
+      "js": true,
+      "page": "pdp",
+      "width": 675,
+      "scroll": 675,
+      "dpr": 2,
+      "background": "rgb(10, 10, 11)",
+      "columns": null,
+      "heading": "Moisturizing Cream",
+      "scripts": [
+        "/js/app.js"
+      ],
+      "posters": [],
+      "triggers": 0
+    },
+    {
+      "viewport": [
+        1366,
+        768
+      ],
+      "zoom": 2,
+      "js": false,
+      "page": "home",
+      "width": 675,
+      "scroll": 675,
+      "dpr": 2,
+      "background": "rgb(10, 10, 11)",
+      "columns": null,
+      "heading": "Vẻ đẹp.Theo cách bạn.",
+      "scripts": [
+        "/js/app.js",
+        "/js/vendor/gsap-3.15.1.min.js",
+        "/js/home-motion.js",
+        "/js/vendor/ScrollTrigger-3.15.1.min.js",
+        "/js/home-story.js"
+      ],
+      "posters": [
+        true,
+        true,
+        true
+      ],
+      "triggers": 0
+    },
+    {
+      "viewport": [
+        1366,
+        768
+      ],
+      "zoom": 2,
+      "js": false,
+      "page": "catalog",
+      "width": 675,
+      "scroll": 675,
+      "dpr": 2,
+      "background": "rgb(10, 10, 11)",
+      "columns": "305.852px 305.852px",
+      "heading": "Sản phẩm mỹ phẩm",
+      "scripts": [
+        "/js/app.js",
+        "/js/catalog-preview.js"
+      ],
+      "posters": [],
+      "triggers": 0
+    },
+    {
+      "viewport": [
+        1366,
+        768
+      ],
+      "zoom": 2,
+      "js": false,
+      "page": "pdp",
+      "width": 675,
+      "scroll": 675,
+      "dpr": 2,
+      "background": "rgb(10, 10, 11)",
+      "columns": null,
+      "heading": "Moisturizing Cream",
+      "scripts": [
+        "/js/app.js"
+      ],
+      "posters": [],
+      "triggers": 0
+    },
+    {
+      "viewport": [
+        1920,
+        1080
+      ],
+      "zoom": 2,
+      "js": true,
+      "page": "home",
+      "width": 952,
+      "scroll": 952,
+      "dpr": 2,
+      "background": "rgb(10, 10, 11)",
+      "columns": null,
+      "heading": "Vẻ đẹp.Theo cách bạn.",
+      "scripts": [
+        "/js/app.js",
+        "/js/vendor/gsap-3.15.1.min.js",
+        "/js/home-motion.js",
+        "/js/vendor/ScrollTrigger-3.15.1.min.js",
+        "/js/home-story.js"
+      ],
+      "posters": [
+        true,
+        true,
+        true
+      ],
+      "triggers": 3
+    },
+    {
+      "viewport": [
+        1920,
+        1080
+      ],
+      "zoom": 2,
+      "js": true,
+      "page": "catalog",
+      "width": 952,
+      "scroll": 952,
+      "dpr": 2,
+      "background": "rgb(10, 10, 11)",
+      "columns": "434.656px 434.656px",
+      "heading": "Sản phẩm mỹ phẩm",
+      "scripts": [
+        "/js/app.js",
+        "/js/catalog-preview.js"
+      ],
+      "posters": [],
+      "triggers": 0
+    },
+    {
+      "viewport": [
+        1920,
+        1080
+      ],
+      "zoom": 2,
+      "js": true,
+      "page": "pdp",
+      "width": 952,
+      "scroll": 952,
+      "dpr": 2,
+      "background": "rgb(10, 10, 11)",
+      "columns": null,
+      "heading": "Moisturizing Cream",
+      "scripts": [
+        "/js/app.js"
+      ],
+      "posters": [],
+      "triggers": 0
+    },
+    {
+      "viewport": [
+        1920,
+        1080
+      ],
+      "zoom": 2,
+      "js": false,
+      "page": "home",
+      "width": 952,
+      "scroll": 952,
+      "dpr": 2,
+      "background": "rgb(10, 10, 11)",
+      "columns": null,
+      "heading": "Vẻ đẹp.Theo cách bạn.",
+      "scripts": [
+        "/js/app.js",
+        "/js/vendor/gsap-3.15.1.min.js",
+        "/js/home-motion.js",
+        "/js/vendor/ScrollTrigger-3.15.1.min.js",
+        "/js/home-story.js"
+      ],
+      "posters": [
+        true,
+        true,
+        true
+      ],
+      "triggers": 0
+    },
+    {
+      "viewport": [
+        1920,
+        1080
+      ],
+      "zoom": 2,
+      "js": false,
+      "page": "catalog",
+      "width": 952,
+      "scroll": 952,
+      "dpr": 2,
+      "background": "rgb(10, 10, 11)",
+      "columns": "434.656px 434.656px",
+      "heading": "Sản phẩm mỹ phẩm",
+      "scripts": [
+        "/js/app.js",
+        "/js/catalog-preview.js"
+      ],
+      "posters": [],
+      "triggers": 0
+    },
+    {
+      "viewport": [
+        1920,
+        1080
+      ],
+      "zoom": 2,
+      "js": false,
+      "page": "pdp",
+      "width": 952,
+      "scroll": 952,
+      "dpr": 2,
+      "background": "rgb(10, 10, 11)",
+      "columns": null,
+      "heading": "Moisturizing Cream",
+      "scripts": [
+        "/js/app.js"
+      ],
+      "posters": [],
+      "triggers": 0
+    }
+  ],
+  "jsExceptions": 0
+}

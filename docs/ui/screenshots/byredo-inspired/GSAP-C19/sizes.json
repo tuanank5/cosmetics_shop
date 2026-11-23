@@ -1,0 +1,28 @@
+{
+  "node": "v26.13.0",
+  "zlib": "1.3.2.1-motley-456ae73",
+  "brotli": "1.2.0",
+  "sizes": [
+    {
+      "path": "D:/Downloads/gsap.min.js",
+      "sha256": "3D1BEA374AB1B703CC5C4105358EEC63C4465EFDC573931DC116E34A0A190C1B",
+      "raw": 73357,
+      "gzip9": 28511,
+      "brotli11": 25842
+    },
+    {
+      "path": "target/gsap-c19-resume/home-motion.js",
+      "sha256": "E804B020D6FCDA54A2617D7552A68A7FBEFA859EFFDD7A214B2E377D34FFE88C",
+      "raw": 1483,
+      "gzip9": 678,
+      "brotli11": 538
+    }
+  ],
+  "total": {
+    "raw": 74840,
+    "gzip9": 29189,
+    "brotli11": 26380
+  },
+  "budget": 35840,
+  "pass": true
+}

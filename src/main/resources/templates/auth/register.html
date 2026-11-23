@@ -1,23 +1,59 @@
 <!DOCTYPE html>
 <html lang="vi" xmlns:th="http://www.thymeleaf.org">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Đăng ký · BeautyShop</title><link rel="stylesheet" th:href="@{/css/theme.css}"></head>
-<body><div th:replace="~{fragments/header :: siteHeader}"></div>
-<main class="page-content login-wrap">
+<head th:replace="~{fragments/head :: head('Đăng ký · BeautyShop')}"></head>
+<body>
+<div th:replace="~{fragments/header :: siteHeader}"></div>
+<main id="main" tabindex="-1" class="page-content auth-layout">
+  <aside class="auth-intro" aria-label="Tài khoản BeautyShop">
+    <span class="auth-monogram" aria-hidden="true">B</span>
+    <p class="eyebrow">VẺ ĐẸP TRONG TỪNG LỰA CHỌN</p>
+    <h2>Một khởi đầu<br>thật tinh tế.</h2>
+    <p>Tạo tài khoản để lưu địa chỉ, đặt hàng và theo dõi hành trình mua sắm của bạn.</p>
+    <a class="text-link" th:href="@{/products}">Khám phá cửa hàng</a>
+  </aside>
+  <section class="auth-panel">
+    <p class="eyebrow">KHÔNG GIAN SẮC ĐẸP CỦA BẠN</p>
     <h1>Đăng ký</h1>
+    <p class="muted">Các thông tin dưới đây đều bắt buộc.</p>
     <form class="login-card" method="post" th:action="@{/register}" th:object="${form}">
+      <div class="error-summary" role="alert" th:if="${#fields.hasAnyErrors()}">
+        <p><strong>Lỗi: Vui lòng kiểm tra thông tin đăng ký.</strong></p>
+        <ul>
+          <li th:if="${#fields.hasErrors('hoTen')}"><a href="#hoTen" th:text="${#fields.errors('hoTen')[0]}"></a></li>
+          <li th:if="${#fields.hasErrors('email')}"><a href="#email" th:text="${#fields.errors('email')[0]}"></a></li>
+          <li th:if="${#fields.hasErrors('matKhau') or #fields.hasErrors('doDaiBcryptHopLe')}"><a href="#matKhau">Kiểm tra độ dài mật khẩu.</a></li>
+          <li th:each="loi : ${#fields.globalErrors()}" th:text="${loi}"></li>
+        </ul>
+      </div>
+      <div class="field">
         <label for="hoTen">Họ và tên</label>
-        <input th:field="*{hoTen}" autocomplete="name" maxlength="160" required>
-        <small class="form-error" th:errors="*{hoTen}"></small>
+        <input th:field="*{hoTen}" autocomplete="name" maxlength="160" required
+               aria-describedby="hoTen-error" th:attr="aria-invalid=${#fields.hasErrors('hoTen') ? 'true' : null}">
+        <div th:replace="~{fragments/ui :: fieldError('hoTen', 'hoTen-error')}"></div>
+      </div>
+      <div class="field">
         <label for="email">Email</label>
-        <input type="email" th:field="*{email}" autocomplete="email" maxlength="190" required>
-        <small class="form-error" th:errors="*{email}"></small>
+        <input type="email" th:field="*{email}" autocomplete="email" maxlength="190" required
+               aria-describedby="email-error" th:attr="aria-invalid=${#fields.hasErrors('email') ? 'true' : null}">
+        <div th:replace="~{fragments/ui :: fieldError('email', 'email-error')}"></div>
+      </div>
+      <div class="field">
         <label for="matKhau">Mật khẩu</label>
-        <input type="password" id="matKhau" name="matKhau" autocomplete="new-password" minlength="12" maxlength="72" required>
-        <small class="form-error" th:errors="*{matKhau}"></small>
-        <small class="form-error" th:errors="*{doDaiBcryptHopLe}"></small>
-        <button class="btn-primary" type="submit">Tạo tài khoản</button>
+        <p id="password-hint" class="hint">Từ 12 đến 72 ký tự, tối đa 72 byte UTF-8. Chữ có dấu có thể chiếm nhiều byte.</p>
+        <div class="password-control">
+          <input type="password" id="matKhau" name="matKhau" autocomplete="new-password" minlength="12" maxlength="72" required
+                 aria-describedby="password-hint matKhau-error bcrypt-error"
+                 th:attr="aria-invalid=${#fields.hasErrors('matKhau') or #fields.hasErrors('doDaiBcryptHopLe') ? 'true' : null}">
+          <button class="btn btn--ghost" type="button" data-password-toggle="matKhau" aria-controls="matKhau" aria-pressed="false" hidden>Hiện mật khẩu</button>
+        </div>
+        <div th:replace="~{fragments/ui :: fieldError('matKhau', 'matKhau-error')}"></div>
+        <div th:replace="~{fragments/ui :: fieldError('doDaiBcryptHopLe', 'bcrypt-error')}"></div>
+      </div>
+      <button class="btn btn--primary btn--lg" type="submit">Tạo tài khoản</button>
     </form>
-    <p><a class="text-link" th:href="@{/login}">Đăng nhập</a></p>
+    <p class="auth-switch">Đã có tài khoản? <a class="text-link" th:href="@{/login}">Đăng nhập</a></p>
+  </section>
 </main>
-<div th:replace="~{fragments/footer :: siteFooter}"></div></body></html>
+<div th:replace="~{fragments/footer :: siteFooter}"></div>
+</body>
+</html>

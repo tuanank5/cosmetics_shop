@@ -32,6 +32,11 @@
 - **P10:** JDK 21 chạy compile, 49/49 test và đóng gói JAR thành công. Chrome hoàn tất COD E2E và kiểm tra 375, 768, 1440 px. Đã nạp 31 sản phẩm, 32 SKU và kiểm tra backup/restore trên MariaDB 12.2.2. **Host công khai: BLOCKED_HOST.** [Báo cáo QA](testing/02-p10-results.md) · [Runbook](deployment/06-p10-demo.md) · [Hồ sơ demo](report/README.md).
 - **P11:** quản trị tại `/admin/vouchers`. JDK 21 chạy compile, 51/51 test và đóng gói JAR thành công với MariaDB 12.2.2. Test kiểm chứng quyền Admin, CSRF, mã trùng, điều kiện giảm giá, tranh lượt cuối khi đặt COD, giữ/chốt/trả lượt với MoMo mock và bảo toàn voucher đã có lịch sử. Chrome kiểm chứng Admin tạo, Customer áp mã và đặt COD, bộ đếm từ 0 lên 1, Admin ngừng hoạt động và trang quản trị ở 375, 768, 1440 px. Customer truy cập trang quản trị nhận HTTP 403, log ghi thiếu template lỗi dùng chung. [Prompt P11](prompts/P11-promotion.md) · [Contract](design/03-order-payment-inventory.md#contract-p11-cho-checkout-và-momo).
 
+- **P12/U1 (22/11)** đã triển khai token, control/nút, head/header/footer, lỗi tiếng Việt và mẫu đăng nhập/đăng ký. JDK 21 chạy 29 test thành công, bỏ qua 34 test MariaDB và đóng gói JAR thành công. Nghiệm thu browser và dev với DB demo riêng còn mở. [Báo cáo U1](reviews/ui-upgrade-2026-11.md)
+- **P12/U2.1 (22/11)** đã nâng cấp trang chủ và catalog. JDK 21 chạy 31 test thành công, bỏ qua 34 test MariaDB và đóng gói JAR thành công. Chrome kiểm tra năm viewport trên HTML Thymeleaf với dữ liệu kiểm thử. F01 vẫn bị chặn do chưa xác nhận môi trường demo có catalog hoạt động. [Báo cáo U2.1](reviews/ui-upgrade-U2-2026-11.md)
+- **P12/U2.2 (22/11)** đã nâng cấp trang chi tiết sản phẩm và xử lý F03. Chrome kiểm chọn SKU, thêm giỏ Guest/Customer, năm viewport và zoom 200% trên fixture. JDK 21 chạy 35 test đạt, 34 test MariaDB bỏ qua, đóng gói JAR thành công. F01 vẫn chặn nghiệm thu dữ liệu demo. [Báo cáo U2.2](reviews/ui-upgrade-U2-2026-11.md#u22)
+- **P12/U2.3 (22/11)** Giỏ đọc ảnh SKU, thương hiệu và slug bằng truy vấn hiện có. Hai SKU cùng sản phẩm mở đúng biến thể và giữ đúng tạm tính sau đăng nhập trên fixture. Chrome đạt ở 5 viewport, zoom 100% và 200%. JDK 21 có 43 PASS, 0 FAIL, 0 ERROR và 34 SKIPPED. Còn chờ ảnh thương phẩm và đối chiếu giao dịch trên MariaDB test độc lập. F01 vẫn BLOCKED. [Báo cáo U2.3](reviews/ui-upgrade-U2-2026-11.md#u23-du-lieu)
+
 Xem [README](../README.md#chạy-local) để chạy lại test tích hợp.
 
 ## Giao trách nhiệm 30–50 mỹ phẩm
@@ -59,3 +64,11 @@ Xem [README](../README.md#chạy-local) để chạy lại test tích hợp.
 2. RAG giữ **demo timebox** nếu khả thi; fallback FAQ search/knowledge base có nhãn `không phải AI` nếu thiếu model/API.
 3. MoMo mock chỉ test nội bộ, không thay thế bằng chứng giao dịch Sandbox thật.
 4. Wishlist/returns/report nâng cao cắt trước; không được tuyên bố đã làm khi còn stub.
+
+## P15-V · Dark Luxury storefront · 23/11/2026
+
+Owner phê duyệt palette tối và ScrollTrigger local cho Home. Đã triển khai Home3
+chapter, Catalog editorial4/2/1 cột, optional hover-video hook; giữ Backend/B2/B4.
+JDK21:120 PASS/0 FAIL/0 ERROR/34 SKIPPED, JAR đóng gói. Nội dung video thương phẩm,
+F01/MariaDB và nghiệm thu thị giác của owner còn mở. Không mở rộng scope/commit/push.
+[Báo cáo và bằng chứng](reviews/P15-V-dark-luxury-redesign.md).

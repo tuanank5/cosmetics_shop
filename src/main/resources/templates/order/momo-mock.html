@@ -1,16 +1,15 @@
 <!DOCTYPE html>
 <html lang="vi" xmlns:th="http://www.thymeleaf.org">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Mô phỏng MoMo · BeautyShop</title><link rel="stylesheet" th:href="@{/css/theme.css}"></head>
+<head th:replace="~{fragments/head :: head('Mô phỏng MoMo · BeautyShop')}"></head>
 <body><div th:replace="~{fragments/header :: siteHeader}"></div>
-<main class="page-content">
+<main id="main" tabindex="-1" class="page-content">
     <h1>MÔ PHỎNG - KHÔNG THU TIỀN</h1>
     <p th:text="|Số tiền mô phỏng: ${#numbers.formatInteger(lan.request.amount, 1, 'POINT')} ₫|"></p>
     <form method="post" th:action="@{/payment/momo/mock/{id}(id=${lan.request.maDonHang})}">
         <input type="hidden" name="requestId" th:value="${lan.request.requestId}">
-        <button class="btn-primary" type="submit" name="result" value="0">Mô phỏng thành công</button>
-        <button class="btn-primary" type="submit" name="result" value="1006">Mô phỏng từ chối</button>
-        <button class="btn-primary" type="submit" name="result" value="1005">Mô phỏng cổng hết hạn</button>
+        <button class="btn btn--primary" type="submit" name="result" value="0">Mô phỏng thành công</button>
+        <button class="btn btn--primary" type="submit" name="result" value="1006">Mô phỏng từ chối</button>
+        <button class="btn btn--primary" type="submit" name="result" value="1005">Mô phỏng cổng hết hạn</button>
     </form>
     <p><a class="text-link" th:href="@{/orders/{id}(id=${lan.request.maDonHang})}">Quay lại đơn hàng</a></p>
 </main>

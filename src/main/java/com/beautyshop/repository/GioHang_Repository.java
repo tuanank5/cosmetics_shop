@@ -1,19 +1,23 @@
 package com.beautyshop.repository;
 
 import java.math.BigDecimal;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
+import java.util.regex.Pattern;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.jdbc.core.simple.JdbcClient;
 import org.springframework.stereotype.Repository;
 
 @Repository
 public class GioHang_Repository {
+    private static final String DANG_HIEN_THI = "b.dang_hoat_dong AND s.dang_hoat_dong AND t.dang_hoat_dong AND d.dang_hoat_dong";
     private static final String COT_SKU = """
         b.ma_bien_the, s.ten_san_pham, b.ten_bien_the, b.gia_ban,
-               CASE WHEN b.dang_hoat_dong AND s.dang_hoat_dong AND t.dang_hoat_dong AND d.dang_hoat_dong
-                    THEN b.so_luong_trong_kho - b.so_luong_tam_giu ELSE 0 END AS kha_dung, b.sku
-        """;
+               CASE WHEN %1$s THEN b.so_luong_trong_kho - b.so_luong_tam_giu ELSE 0 END AS kha_dung, b.sku,
+               b.url_hinh_anh, t.ten_thuong_hieu, CASE WHEN %1$s THEN s.duong_dan END AS duong_dan
+        """.formatted(DANG_HIEN_THI);
     private static final String NGUON_SKU = """
         FROM bien_the_san_pham b
         JOIN san_pham s ON s.ma_san_pham = b.ma_san_pham
@@ -28,9 +32,8 @@ public class GioHang_Repository {
     }
 
     public Optional<MucGio> timBienThe(long maBienThe, boolean khoa) {
-        return jdbc.sql("SELECT " + COT_SKU + NGUON_SKU + " WHERE b.ma_bien_the = ?" + (khoa ? " FOR UPDATE" : "")).param(maBienThe)
-            .query((rs, row) -> new MucGio(rs.getLong(1), rs.getString(2), rs.getString(3),
-                rs.getBigDecimal(4), rs.getInt(5), 0, rs.getString("sku"))).optional();
+        return jdbc.sql("SELECT " + COT_SKU + ", 0 AS so_luong " + NGUON_SKU + " WHERE b.ma_bien_the = ?" + (khoa ? " FOR UPDATE" : "")).param(maBienThe)
+            .query(GioHang_Repository::docMucGio).optional();
     }
 
     public List<MucGio> docGio(long maNguoiDung) {
@@ -39,8 +42,13 @@ public class GioHang_Repository {
             JOIN gio_hang g ON g.ma_gio_hang = ct.ma_gio_hang
             WHERE g.ma_nguoi_dung = ? ORDER BY b.ma_bien_the
             """)
-            .param(maNguoiDung).query((rs, row) -> new MucGio(rs.getLong(1), rs.getString(2),
-                rs.getString(3), rs.getBigDecimal(4), rs.getInt(5), rs.getInt("so_luong"), rs.getString("sku"))).list();
+            .param(maNguoiDung).query(GioHang_Repository::docMucGio).list();
+    }
+
+    private static MucGio docMucGio(ResultSet rs, int row) throws SQLException {
+        return new MucGio(rs.getLong("ma_bien_the"), rs.getString("ten_san_pham"), rs.getString("ten_bien_the"),
+            rs.getBigDecimal("gia_ban"), rs.getInt("kha_dung"), rs.getInt("so_luong"), rs.getString("sku"),
+            rs.getString("url_hinh_anh"), rs.getString("ten_thuong_hieu"), rs.getString("duong_dan"));
     }
 
     public boolean ghiNhanGop(String maGop, long maNguoiDung) {
@@ -80,9 +88,19 @@ public class GioHang_Repository {
         jdbc.sql("UPDATE gio_hang SET ngay_cap_nhat = UTC_TIMESTAMP(6) WHERE ma_gio_hang = ?").param(maGio).update();
     }
 
-    public record MucGio(long maBienThe, String tenSanPham, String tenBienThe, BigDecimal giaBan, int khaDung, int soLuong, String sku) {
+    public record MucGio(long maBienThe, String tenSanPham, String tenBienThe, BigDecimal giaBan, int khaDung,
+                         int soLuong, String sku, String urlHinhAnh, String tenThuongHieu, String duongDan) {
+        private static final Pattern ANH_SKU = Pattern.compile("/uploads/sku/[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}\\.(?:jpg|png)");
+
+        public MucGio {
+            if (urlHinhAnh != null && !ANH_SKU.matcher(urlHinhAnh).matches()) {
+                urlHinhAnh = null;
+            }
+        }
+
         public MucGio voiSoLuong(int soLuongMoi) {
-            return new MucGio(maBienThe, tenSanPham, tenBienThe, giaBan, khaDung, soLuongMoi, sku);
+            return new MucGio(maBienThe, tenSanPham, tenBienThe, giaBan, khaDung, soLuongMoi, sku,
+                urlHinhAnh, tenThuongHieu, duongDan);
         }
     }
 

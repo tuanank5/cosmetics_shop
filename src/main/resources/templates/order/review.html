@@ -1,10 +1,8 @@
 <!DOCTYPE html>
 <html lang="vi" xmlns:th="http://www.thymeleaf.org">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Đánh giá · BeautyShop</title><link rel="stylesheet" th:href="@{/css/theme.css}">
-<link rel="stylesheet" th:href="@{/css/admin-catalog.css}"></head>
+<head th:replace="~{fragments/head :: head('Đánh giá · BeautyShop')}"></head>
 <body><div th:replace="~{fragments/header :: siteHeader}"></div>
-<main class="page-content">
+<main id="main" tabindex="-1" class="page-content">
     <a class="text-link" th:href="@{/orders/{id}(id=${trang.muc.maDon})}">Quay lại đơn</a>
     <h1>Đánh giá sản phẩm</h1>
     <p th:text="|${trang.muc.tenSanPham} · ${trang.muc.tenBienThe}|"></p>
@@ -19,7 +17,7 @@
         <small class="form-error" th:errors="*{soSao}"></small>
         <label>Nội dung <textarea th:field="*{noiDung}" maxlength="2000" rows="5"></textarea></label>
         <small class="form-error" th:errors="*{noiDung}"></small>
-        <button type="submit" class="btn-primary">Gửi duyệt</button>
+        <button type="submit" class="btn btn--primary">Gửi duyệt</button>
     </form>
 </main>
 <div th:replace="~{fragments/footer :: siteFooter}"></div></body></html>

@@ -37,6 +37,13 @@
 
 ## Điểm còn cần xác minh/định cấu hình
 
+**P15-V · 23/11/2026 — quyết định đã được owner duyệt:** storefront chuyển sang
+Dark Luxury (đen/gold muted), giữ U1 cho Admin. Chỉ sửa frontend, giữ các contract,
+CSRF và nghiệp vụ. Bổ sung ScrollTrigger3.15.1 từ artifact local khớp SHA-256 owner
+cung cấp; GSAP Core/pilot giữ nguyên. Video chỉ dùng khi có nguồn hợp lệ; không
+thêm field database, không dùng fixture để khẳng định có media thương phẩm.
+[Báo cáo triển khai](reviews/P15-V-dark-luxury-redesign.md).
+
 - Tên, logo và thương hiệu chính thức của nhóm; domain thực tế và tài khoản Sandbox.
 - Nguồn hợp lệ và quyền sử dụng hình ảnh, tuyên bố thành phần mỹ phẩm.
 - Chính sách cụ thể về hoàn tiền/cửa hàng nhận lại hàng lỗi và tiến độ duyệt Sandbox.

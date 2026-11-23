@@ -1,0 +1,27 @@
+[
+  {
+    "w": 390,
+    "wishlistAX": true,
+    "cartAX": "Giỏ hàng · 12 sản phẩm",
+    "pageCurrent": [
+      "/account/wishlist"
+    ]
+  },
+  {
+    "w": 1366,
+    "wishlistAX": true,
+    "cartAX": "Giỏ hàng · 12 sản phẩm",
+    "pageCurrent": [
+      "/account/wishlist"
+    ]
+  },
+  {
+    "guestProtectedWishlist": "redirects to /login",
+    "wishlistEntry": false
+  },
+  {
+    "adminCanonical": "/admin/catalog -> /admin/catalog/categories",
+    "adminProductsCurrent": 0,
+    "adminWishlist": 403
+  }
+]

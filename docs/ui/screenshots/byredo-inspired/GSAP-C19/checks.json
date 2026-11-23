@@ -1,0 +1,25 @@
+{
+  "browser": "Chrome/158.0.8127.36",
+  "checks": [
+    "Simulated persisted pagehide/pageshow cleanup, no duplicate context",
+    {
+      "fixtureHTTP": 200,
+      "CSP": null,
+      "CSPReportOnly": null
+    },
+    {
+      "isolatedCSP": "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; object-src 'self'; base-uri 'self'; form-action 'self'",
+      "violations": 0,
+      "animation": true,
+      "revert": true
+    },
+    "C03 search Enter: fixture 3 -> 1 result",
+    "C11 GET filter retains Vietnamese skinType",
+    "C22 service CTA opens existing chat",
+    "C23-C26 PDP/SKU/CTA/Guest cart, JS disabled=false",
+    "C23-C26 PDP/SKU/CTA/Guest cart, JS disabled=true",
+    "C26 Customer merge: 14 units, server subtotal 5245000 VND"
+  ],
+  "jsExceptions": [],
+  "measurements": 150
+}

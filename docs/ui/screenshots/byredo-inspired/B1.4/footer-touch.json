@@ -1,0 +1,29 @@
+[
+  {
+    "role": "guest",
+    "zoom": 200,
+    "touch": true,
+    "noJS": true,
+    "target": "/products#brands",
+    "height": 44,
+    "width": 155.5
+  },
+  {
+    "role": "customer",
+    "zoom": 200,
+    "touch": true,
+    "noJS": true,
+    "target": "/products#brands",
+    "height": 44,
+    "width": 155.5
+  },
+  {
+    "role": "admin",
+    "zoom": 200,
+    "touch": true,
+    "noJS": true,
+    "target": "/products#brands",
+    "height": 44,
+    "width": 155.5
+  }
+]

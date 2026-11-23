@@ -1,10 +1,8 @@
 <!DOCTYPE html>
 <html lang="vi" xmlns:th="http://www.thymeleaf.org">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Duyệt đánh giá · BeautyShop</title><link rel="stylesheet" th:href="@{/css/theme.css}">
-<link rel="stylesheet" th:href="@{/css/admin-catalog.css}"></head>
+<head th:replace="~{fragments/head :: head('Duyệt đánh giá · BeautyShop')}"></head>
 <body><div th:replace="~{fragments/header :: siteHeader}"></div>
-<main class="page-content">
+<main id="main" tabindex="-1" class="page-content">
     <h1>Duyệt đánh giá</h1>
     <p class="notice" role="status" th:if="${message}" th:text="${message}"></p>
     <p class="form-error" role="alert" th:if="${error}" th:text="${error}"></p>
@@ -19,7 +17,7 @@
             </div>
             <form method="post" th:action="@{/admin/reviews/{id}/visibility(id=${dg.ma})}">
                 <input type="hidden" name="revision" th:value="${muc.phienBan}">
-                <button type="submit" name="visible" th:value="${!dg.hienThi}" class="btn-primary"
+                <button type="submit" name="visible" th:value="${!dg.hienThi}" class="btn btn--primary"
                         th:text="${dg.hienThi ? 'Ẩn đánh giá' : 'Duyệt đánh giá'}"></button>
             </form>
         </li>

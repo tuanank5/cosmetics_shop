@@ -1,0 +1,42 @@
+{
+  "node": "v26.13.0",
+  "rows": [
+    {
+      "file": "js/vendor/gsap-3.15.1.min.js",
+      "sha256": "3d1bea374ab1b703cc5c4105358eec63c4465efdc573931dc116e34a0a190c1b",
+      "raw": 73357,
+      "gzip9": 28511,
+      "brotli11": 25842
+    },
+    {
+      "file": "js/vendor/ScrollTrigger-3.15.1.min.js",
+      "sha256": "b5bb360661f478f0ff6ffa11500d8ce5e2b6aaf6f7288237cdca3aac9548035a",
+      "raw": 44683,
+      "gzip9": 18028,
+      "brotli11": 16248
+    },
+    {
+      "file": "js/home-motion.js",
+      "sha256": "e804b020d6fcda54a2617d7552a68a7fbefa859effdd7a214b2e377d34ffe88c",
+      "raw": 1483,
+      "gzip9": 678,
+      "brotli11": 538
+    },
+    {
+      "file": "js/home-story.js",
+      "sha256": "eb3215454c43aa949dcb38bd13057005851ca8f41051507ca23b775cd7f19c7b",
+      "raw": 4484,
+      "gzip9": 1548,
+      "brotli11": 1340
+    },
+    {
+      "file": "js/catalog-preview.js",
+      "sha256": "9e5ff68d75bcfcd4e557f9dbce0a53e2d781a75ac4472c76b4e30fd5c60c798e",
+      "raw": 3492,
+      "gzip9": 1209,
+      "brotli11": 1021
+    }
+  ],
+  "homeGzip": 48765,
+  "catalogGzip": 1209
+}

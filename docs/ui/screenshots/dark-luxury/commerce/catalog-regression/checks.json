@@ -1,0 +1,4505 @@
+{
+  "browser": "Chrome/158.0.8127.36",
+  "checks": [
+    {
+      "viewport": [
+        360,
+        800
+      ],
+      "zoom": 1,
+      "js": true,
+      "pagination": true,
+      "history": true,
+      "reload": true,
+      "individualChips": 5,
+      "clearAll": true,
+      "keyboard": true
+    },
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "zoom": 1,
+      "js": true,
+      "pagination": true,
+      "history": true,
+      "reload": true,
+      "individualChips": 5,
+      "clearAll": true,
+      "keyboard": true
+    },
+    {
+      "viewport": [
+        768,
+        1024
+      ],
+      "zoom": 1,
+      "js": true,
+      "pagination": true,
+      "history": true,
+      "reload": true,
+      "individualChips": 5,
+      "clearAll": true,
+      "keyboard": true
+    },
+    {
+      "viewport": [
+        1366,
+        768
+      ],
+      "zoom": 1,
+      "js": true,
+      "pagination": true,
+      "history": true,
+      "reload": true,
+      "individualChips": 5,
+      "clearAll": true,
+      "keyboard": true
+    },
+    {
+      "viewport": [
+        1920,
+        1080
+      ],
+      "zoom": 1,
+      "js": true,
+      "pagination": true,
+      "history": true,
+      "reload": true,
+      "individualChips": 5,
+      "clearAll": true,
+      "keyboard": true
+    },
+    {
+      "viewport": [
+        360,
+        800
+      ],
+      "zoom": 2,
+      "js": true,
+      "pagination": true,
+      "history": true,
+      "reload": true,
+      "individualChips": 5,
+      "clearAll": true,
+      "keyboard": true
+    },
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "zoom": 2,
+      "js": true,
+      "pagination": true,
+      "history": true,
+      "reload": true,
+      "individualChips": 5,
+      "clearAll": true,
+      "keyboard": true
+    },
+    {
+      "viewport": [
+        768,
+        1024
+      ],
+      "zoom": 2,
+      "js": true,
+      "pagination": true,
+      "history": true,
+      "reload": true,
+      "individualChips": 5,
+      "clearAll": true,
+      "keyboard": true
+    },
+    {
+      "viewport": [
+        1366,
+        768
+      ],
+      "zoom": 2,
+      "js": true,
+      "pagination": true,
+      "history": true,
+      "reload": true,
+      "individualChips": 5,
+      "clearAll": true,
+      "keyboard": true
+    },
+    {
+      "viewport": [
+        1920,
+        1080
+      ],
+      "zoom": 2,
+      "js": true,
+      "pagination": true,
+      "history": true,
+      "reload": true,
+      "individualChips": 5,
+      "clearAll": true,
+      "keyboard": true
+    },
+    {
+      "viewport": [
+        360,
+        800
+      ],
+      "zoom": 1,
+      "js": false,
+      "pagination": true,
+      "history": true,
+      "reload": true,
+      "individualChips": 5,
+      "clearAll": true,
+      "keyboard": true
+    },
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "zoom": 1,
+      "js": false,
+      "pagination": true,
+      "history": true,
+      "reload": true,
+      "individualChips": 5,
+      "clearAll": true,
+      "keyboard": true
+    },
+    {
+      "viewport": [
+        768,
+        1024
+      ],
+      "zoom": 1,
+      "js": false,
+      "pagination": true,
+      "history": true,
+      "reload": true,
+      "individualChips": 5,
+      "clearAll": true,
+      "keyboard": true
+    },
+    {
+      "viewport": [
+        1366,
+        768
+      ],
+      "zoom": 1,
+      "js": false,
+      "pagination": true,
+      "history": true,
+      "reload": true,
+      "individualChips": 5,
+      "clearAll": true,
+      "keyboard": true
+    },
+    {
+      "viewport": [
+        1920,
+        1080
+      ],
+      "zoom": 1,
+      "js": false,
+      "pagination": true,
+      "history": true,
+      "reload": true,
+      "individualChips": 5,
+      "clearAll": true,
+      "keyboard": true
+    },
+    {
+      "viewport": [
+        360,
+        800
+      ],
+      "zoom": 2,
+      "js": false,
+      "pagination": true,
+      "history": true,
+      "reload": true,
+      "individualChips": 5,
+      "clearAll": true,
+      "keyboard": true
+    },
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "zoom": 2,
+      "js": false,
+      "pagination": true,
+      "history": true,
+      "reload": true,
+      "individualChips": 5,
+      "clearAll": true,
+      "keyboard": true
+    },
+    {
+      "viewport": [
+        768,
+        1024
+      ],
+      "zoom": 2,
+      "js": false,
+      "pagination": true,
+      "history": true,
+      "reload": true,
+      "individualChips": 5,
+      "clearAll": true,
+      "keyboard": true
+    },
+    {
+      "viewport": [
+        1366,
+        768
+      ],
+      "zoom": 2,
+      "js": false,
+      "pagination": true,
+      "history": true,
+      "reload": true,
+      "individualChips": 5,
+      "clearAll": true,
+      "keyboard": true
+    },
+    {
+      "viewport": [
+        1920,
+        1080
+      ],
+      "zoom": 2,
+      "js": false,
+      "pagination": true,
+      "history": true,
+      "reload": true,
+      "individualChips": 5,
+      "clearAll": true,
+      "keyboard": true
+    },
+    {
+      "cachedFailureBeforeListener": true
+    },
+    {
+      "normalization": "/products?brand=%20%20&category=&skinType=%20%20&q=%20%20&sort=newest",
+      "count": 0
+    },
+    {
+      "normalization": "/products?brand=cerave",
+      "count": 1
+    },
+    {
+      "normalization": "/products?category=duong-am",
+      "count": 1
+    },
+    {
+      "normalization": "/products?skinType=da%20kh%C3%B4",
+      "count": 1
+    },
+    {
+      "normalization": "/products?brand=cerave&category=duong-am",
+      "count": 2
+    },
+    {
+      "noJSCardToPDP": true
+    }
+  ],
+  "images": [
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+      "status": 404,
+      "mime": "text/plain"
+    },
+    {
+      "url": "http://127.0.0.1:50974/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+      "status": 200,
+      "mime": "image/png"
+    }
+  ],
+  "jsExceptions": [],
+  "measurements": 160
+}

@@ -1,11 +1,8 @@
 <!DOCTYPE html>
 <html lang="vi" xmlns:th="http://www.thymeleaf.org">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Đơn hàng · BeautyShop</title>
-<link rel="stylesheet" th:href="@{/css/theme.css}">
-<link rel="stylesheet" th:href="@{/css/admin-catalog.css}"></head>
+<head th:replace="~{fragments/head :: head('Đơn hàng · BeautyShop')}"></head>
 <body><div th:replace="~{fragments/header :: siteHeader}"></div>
-<main class="page-content">
+<main id="main" tabindex="-1" class="page-content">
     <h1 th:text="${base == '/admin/orders' ? 'Quản lý đơn hàng' : 'Đơn hàng của bạn'}">Đơn hàng</h1>
     <dl class="order-summary" th:if="${tongQuan}" aria-label="Tổng quan đơn hàng">
         <div><dt>Tổng số đơn</dt><dd th:text="${tongQuan.tongSoDon}"></dd></div>

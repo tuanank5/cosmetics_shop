@@ -1,0 +1,62 @@
+﻿{
+    "BeforeFiles":  187,
+    "AfterFiles":  190,
+    "Differences":  [
+                        {
+                            "Path":  "E:\\Nam 4 HK 1\\WWW\\cosmetics_shop\\src\\main\\java\\com\\beautyshop\\controller\\Checkout_Controller.java",
+                            "Hash":  "9C856FCD892B9BDBE3805E32149A1EA54EE241780C985B30EFB7043688121D16",
+                            "SideIndicator":  "=\u003e"
+                        },
+                        {
+                            "Path":  "E:\\Nam 4 HK 1\\WWW\\cosmetics_shop\\src\\main\\resources\\static\\css\\storefront.css",
+                            "Hash":  "A12CE9143AC2664B0605F9C022A77F6B9E5815E8CAFD0C7601BFC2F3475538B4",
+                            "SideIndicator":  "=\u003e"
+                        },
+                        {
+                            "Path":  "E:\\Nam 4 HK 1\\WWW\\cosmetics_shop\\src\\main\\resources\\static\\js\\checkout.js",
+                            "Hash":  "E31899EE148E839FFA57166D8E953417CDED779D5B9CDA83DE1C7D57F44F045A",
+                            "SideIndicator":  "=\u003e"
+                        },
+                        {
+                            "Path":  "E:\\Nam 4 HK 1\\WWW\\cosmetics_shop\\src\\main\\resources\\templates\\order\\checkout.html",
+                            "Hash":  "4E7798F62C2FFF3CAB779C423153D6D8C580515C543E7278499510656890524E",
+                            "SideIndicator":  "=\u003e"
+                        },
+                        {
+                            "Path":  "E:\\Nam 4 HK 1\\WWW\\cosmetics_shop\\src\\test\\java\\com\\beautyshop\\controller\\CheckoutPagesTest.java",
+                            "Hash":  "DEA84C80BC68A0C3DFD8E7F93B557F0908932FF2845F310F950E1E65DE6854C7",
+                            "SideIndicator":  "=\u003e"
+                        },
+                        {
+                            "Path":  "E:\\Nam 4 HK 1\\WWW\\cosmetics_shop\\src\\test\\java\\com\\beautyshop\\service\\CheckoutIntegrityTest.java",
+                            "Hash":  "7C74BA1090AACD4B4F8EF902FD72719055C746DC577599E8F78BA111105371C6",
+                            "SideIndicator":  "=\u003e"
+                        },
+                        {
+                            "Path":  "E:\\Nam 4 HK 1\\WWW\\cosmetics_shop\\src\\main\\java\\com\\beautyshop\\controller\\Checkout_Controller.java",
+                            "Hash":  "DD3BAC72CE7FAECD6E0FBE47B925ADC69F1D3F771F832839A3B4E5ACDAE7EAFC",
+                            "SideIndicator":  "\u003c="
+                        },
+                        {
+                            "Path":  "E:\\Nam 4 HK 1\\WWW\\cosmetics_shop\\src\\main\\resources\\static\\css\\storefront.css",
+                            "Hash":  "955DE44FE56E75BE5A262E3391BF0E58D94AAC2C4F454383A6ED46A17B782A95",
+                            "SideIndicator":  "\u003c="
+                        },
+                        {
+                            "Path":  "E:\\Nam 4 HK 1\\WWW\\cosmetics_shop\\src\\main\\resources\\templates\\order\\checkout.html",
+                            "Hash":  "D27D45570F305F7CF113178A04AF3DEB8E586570B0DBED2D866F64EF89C4271A",
+                            "SideIndicator":  "\u003c="
+                        }
+                    ],
+    "ProtectedDifferences":  0,
+    "GSAP":  [
+                 {
+                     "Path":  "E:\\Nam 4 HK 1\\WWW\\cosmetics_shop\\src\\main\\resources\\static\\js\\vendor\\gsap-3.15.1.min.js",
+                     "Hash":  "3D1BEA374AB1B703CC5C4105358EEC63C4465EFDC573931DC116E34A0A190C1B"
+                 },
+                 {
+                     "Path":  "E:\\Nam 4 HK 1\\WWW\\cosmetics_shop\\src\\main\\resources\\static\\js\\home-motion.js",
+                     "Hash":  "E804B020D6FCDA54A2617D7552A68A7FBEFA859EFFDD7A214B2E377D34FFE88C"
+                 }
+             ]
+}

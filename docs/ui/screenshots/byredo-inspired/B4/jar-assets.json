@@ -1,0 +1,37 @@
+﻿{
+    "Jar":  "target/beautyshop-0.0.1-SNAPSHOT.jar",
+    "Bytes":  69996366,
+    "SHA256":  "68D6EF3A242D0F546B8F3E0E2D0B83A589D042B83CF9CDA4EA9F2DBFA496D218",
+    "Assets":  [
+                   {
+                       "Entry":  "BOOT-INF/classes/templates/order/checkout.html",
+                       "Bytes":  7991,
+                       "SHA256":  "4E7798F62C2FFF3CAB779C423153D6D8C580515C543E7278499510656890524E",
+                       "MatchesSource":  true
+                   },
+                   {
+                       "Entry":  "BOOT-INF/classes/static/js/checkout.js",
+                       "Bytes":  712,
+                       "SHA256":  "E31899EE148E839FFA57166D8E953417CDED779D5B9CDA83DE1C7D57F44F045A",
+                       "MatchesSource":  true
+                   },
+                   {
+                       "Entry":  "BOOT-INF/classes/static/css/storefront.css",
+                       "Bytes":  27412,
+                       "SHA256":  "A12CE9143AC2664B0605F9C022A77F6B9E5815E8CAFD0C7601BFC2F3475538B4",
+                       "MatchesSource":  true
+                   },
+                   {
+                       "Entry":  "BOOT-INF/classes/static/js/vendor/gsap-3.15.1.min.js",
+                       "Bytes":  73357,
+                       "SHA256":  "3D1BEA374AB1B703CC5C4105358EEC63C4465EFDC573931DC116E34A0A190C1B",
+                       "MatchesSource":  true
+                   },
+                   {
+                       "Entry":  "BOOT-INF/classes/static/js/home-motion.js",
+                       "Bytes":  1483,
+                       "SHA256":  "E804B020D6FCDA54A2617D7552A68A7FBEFA859EFFDD7A214B2E377D34FFE88C",
+                       "MatchesSource":  true
+                   }
+               ]
+}

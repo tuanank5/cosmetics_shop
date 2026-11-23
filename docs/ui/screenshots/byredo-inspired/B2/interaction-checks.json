@@ -1,0 +1,769 @@
+{
+  "rows": [
+    {
+      "viewport": [
+        360,
+        800
+      ],
+      "zoom": 1,
+      "js": true,
+      "summary": {
+        "text": "Bộ lọc (3) đang áp dụng và sắp xếp",
+        "rect": {
+          "x": 33,
+          "y": 17.171875,
+          "width": 279,
+          "height": 48
+        },
+        "count": {
+          "x": 104.53125,
+          "y": 29.96875,
+          "width": 8.890625,
+          "height": 21,
+          "top": 29.96875,
+          "right": 113.421875,
+          "bottom": 50.96875,
+          "left": 104.53125
+        }
+      },
+      "space": true,
+      "enter": true,
+      "touch": true,
+      "explicitApply": true,
+      "sortOrder": [
+        345000,
+        355000,
+        395000
+      ],
+      "previousNext": true,
+      "edgeLinks": true
+    },
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "zoom": 1,
+      "js": true,
+      "summary": {
+        "text": "Bộ lọc (3) đang áp dụng và sắp xếp",
+        "rect": {
+          "x": 33,
+          "y": 17.171875,
+          "width": 309,
+          "height": 48
+        },
+        "count": {
+          "x": 104.53125,
+          "y": 29.96875,
+          "width": 8.890625,
+          "height": 21,
+          "top": 29.96875,
+          "right": 113.421875,
+          "bottom": 50.96875,
+          "left": 104.53125
+        }
+      },
+      "space": true,
+      "enter": true,
+      "touch": true,
+      "explicitApply": true,
+      "sortOrder": [
+        345000,
+        355000,
+        395000
+      ],
+      "previousNext": true,
+      "edgeLinks": true
+    },
+    {
+      "viewport": [
+        768,
+        1024
+      ],
+      "zoom": 1,
+      "js": true,
+      "summary": {
+        "text": "Bộ lọc (3) đang áp dụng và sắp xếp",
+        "rect": {
+          "x": 41,
+          "y": 16.78125,
+          "width": 182,
+          "height": 48
+        },
+        "count": {
+          "x": 112.53125,
+          "y": 29.578125,
+          "width": 8.890625,
+          "height": 21,
+          "top": 29.578125,
+          "right": 121.421875,
+          "bottom": 50.578125,
+          "left": 112.53125
+        }
+      },
+      "space": true,
+      "enter": true,
+      "touch": true,
+      "explicitApply": true,
+      "sortOrder": [
+        345000,
+        355000,
+        395000
+      ],
+      "previousNext": true,
+      "edgeLinks": true
+    },
+    {
+      "viewport": [
+        1366,
+        768
+      ],
+      "zoom": 1,
+      "js": true,
+      "summary": {
+        "text": "Bộ lọc (3) đang áp dụng và sắp xếp",
+        "rect": {
+          "x": 124.5,
+          "y": 17.078125,
+          "width": 222,
+          "height": 48
+        },
+        "count": {
+          "x": 196.03125,
+          "y": 29.875,
+          "width": 8.890625,
+          "height": 21,
+          "top": 29.875,
+          "right": 204.921875,
+          "bottom": 50.875,
+          "left": 196.03125
+        }
+      },
+      "space": true,
+      "enter": true,
+      "touch": true,
+      "explicitApply": true,
+      "sortOrder": [
+        345000,
+        355000,
+        395000
+      ],
+      "previousNext": true,
+      "edgeLinks": true
+    },
+    {
+      "viewport": [
+        1920,
+        1080
+      ],
+      "zoom": 1,
+      "js": true,
+      "summary": {
+        "text": "Bộ lọc (3) đang áp dụng và sắp xếp",
+        "rect": {
+          "x": 401.5,
+          "y": 57.78125,
+          "width": 222,
+          "height": 48
+        },
+        "count": {
+          "x": 473.03125,
+          "y": 70.578125,
+          "width": 8.890625,
+          "height": 21,
+          "top": 70.578125,
+          "right": 481.921875,
+          "bottom": 91.578125,
+          "left": 473.03125
+        }
+      },
+      "space": true,
+      "enter": true,
+      "touch": true,
+      "explicitApply": true,
+      "sortOrder": [
+        345000,
+        355000,
+        395000
+      ],
+      "previousNext": true,
+      "edgeLinks": true
+    },
+    {
+      "viewport": [
+        360,
+        800
+      ],
+      "zoom": 2,
+      "js": true,
+      "summary": {
+        "text": "Bộ lọc (3) đang áp dụng và sắp xếp",
+        "rect": {
+          "x": 33,
+          "y": 17.0859375,
+          "width": 106.5,
+          "height": 52.796875
+        },
+        "count": {
+          "x": 101.3359375,
+          "y": 19.0859375,
+          "width": 8.8828125,
+          "height": 21.5,
+          "top": 19.0859375,
+          "right": 110.21875,
+          "bottom": 40.5859375,
+          "left": 101.3359375
+        }
+      },
+      "space": true,
+      "enter": true,
+      "touch": true,
+      "explicitApply": true,
+      "sortOrder": [
+        345000,
+        355000,
+        395000
+      ],
+      "previousNext": true,
+      "edgeLinks": true
+    },
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "zoom": 2,
+      "js": true,
+      "summary": {
+        "text": "Bộ lọc (3) đang áp dụng và sắp xếp",
+        "rect": {
+          "x": 33,
+          "y": 17.0859375,
+          "width": 121.5,
+          "height": 52.796875
+        },
+        "count": {
+          "x": 101.3359375,
+          "y": 19.0859375,
+          "width": 8.8828125,
+          "height": 21.5,
+          "top": 19.0859375,
+          "right": 110.21875,
+          "bottom": 40.5859375,
+          "left": 101.3359375
+        }
+      },
+      "space": true,
+      "enter": true,
+      "touch": true,
+      "explicitApply": true,
+      "sortOrder": [
+        345000,
+        355000,
+        395000
+      ],
+      "previousNext": true,
+      "edgeLinks": true
+    },
+    {
+      "viewport": [
+        768,
+        1024
+      ],
+      "zoom": 2,
+      "js": true,
+      "summary": {
+        "text": "Bộ lọc (3) đang áp dụng và sắp xếp",
+        "rect": {
+          "x": 33,
+          "y": 17.1953125,
+          "width": 310.5,
+          "height": 48
+        },
+        "count": {
+          "x": 101.3359375,
+          "y": 29.9921875,
+          "width": 8.8828125,
+          "height": 21.5,
+          "top": 29.9921875,
+          "right": 110.21875,
+          "bottom": 51.4921875,
+          "left": 101.3359375
+        }
+      },
+      "space": true,
+      "enter": true,
+      "touch": true,
+      "explicitApply": true,
+      "sortOrder": [
+        345000,
+        355000,
+        395000
+      ],
+      "previousNext": true,
+      "edgeLinks": true
+    },
+    {
+      "viewport": [
+        1366,
+        768
+      ],
+      "zoom": 2,
+      "js": true,
+      "summary": {
+        "text": "Bộ lọc (3) đang áp dụng và sắp xếp",
+        "rect": {
+          "x": 41,
+          "y": 16.796875,
+          "width": 182,
+          "height": 48
+        },
+        "count": {
+          "x": 109.3359375,
+          "y": 29.59375,
+          "width": 8.8828125,
+          "height": 21.5,
+          "top": 29.59375,
+          "right": 118.21875,
+          "bottom": 51.09375,
+          "left": 109.3359375
+        }
+      },
+      "space": true,
+      "enter": true,
+      "touch": true,
+      "explicitApply": true,
+      "sortOrder": [
+        345000,
+        355000,
+        395000
+      ],
+      "previousNext": true,
+      "edgeLinks": true
+    },
+    {
+      "viewport": [
+        1920,
+        1080
+      ],
+      "zoom": 2,
+      "js": true,
+      "summary": {
+        "text": "Bộ lọc (3) đang áp dụng và sắp xếp",
+        "rect": {
+          "x": 49,
+          "y": 16.7890625,
+          "width": 222,
+          "height": 48
+        },
+        "count": {
+          "x": 117.3359375,
+          "y": 29.5859375,
+          "width": 8.8828125,
+          "height": 21.5,
+          "top": 29.5859375,
+          "right": 126.21875,
+          "bottom": 51.0859375,
+          "left": 117.3359375
+        }
+      },
+      "space": true,
+      "enter": true,
+      "touch": true,
+      "explicitApply": true,
+      "sortOrder": [
+        345000,
+        355000,
+        395000
+      ],
+      "previousNext": true,
+      "edgeLinks": true
+    },
+    {
+      "viewport": [
+        360,
+        800
+      ],
+      "zoom": 1,
+      "js": false,
+      "summary": {
+        "text": "Bộ lọc (3) đang áp dụng và sắp xếp",
+        "rect": {
+          "x": 33,
+          "y": 17.171875,
+          "width": 279,
+          "height": 48
+        },
+        "count": {
+          "x": 104.53125,
+          "y": 29.96875,
+          "width": 8.890625,
+          "height": 21,
+          "top": 29.96875,
+          "right": 113.421875,
+          "bottom": 50.96875,
+          "left": 104.53125
+        }
+      },
+      "space": true,
+      "enter": true,
+      "touch": true,
+      "explicitApply": true,
+      "sortOrder": [
+        345000,
+        355000,
+        395000
+      ],
+      "previousNext": true,
+      "edgeLinks": true
+    },
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "zoom": 1,
+      "js": false,
+      "summary": {
+        "text": "Bộ lọc (3) đang áp dụng và sắp xếp",
+        "rect": {
+          "x": 33,
+          "y": 17.171875,
+          "width": 309,
+          "height": 48
+        },
+        "count": {
+          "x": 104.53125,
+          "y": 29.96875,
+          "width": 8.890625,
+          "height": 21,
+          "top": 29.96875,
+          "right": 113.421875,
+          "bottom": 50.96875,
+          "left": 104.53125
+        }
+      },
+      "space": true,
+      "enter": true,
+      "touch": true,
+      "explicitApply": true,
+      "sortOrder": [
+        345000,
+        355000,
+        395000
+      ],
+      "previousNext": true,
+      "edgeLinks": true
+    },
+    {
+      "viewport": [
+        768,
+        1024
+      ],
+      "zoom": 1,
+      "js": false,
+      "summary": {
+        "text": "Bộ lọc (3) đang áp dụng và sắp xếp",
+        "rect": {
+          "x": 41,
+          "y": 16.78125,
+          "width": 182,
+          "height": 48
+        },
+        "count": {
+          "x": 112.53125,
+          "y": 29.578125,
+          "width": 8.890625,
+          "height": 21,
+          "top": 29.578125,
+          "right": 121.421875,
+          "bottom": 50.578125,
+          "left": 112.53125
+        }
+      },
+      "space": true,
+      "enter": true,
+      "touch": true,
+      "explicitApply": true,
+      "sortOrder": [
+        345000,
+        355000,
+        395000
+      ],
+      "previousNext": true,
+      "edgeLinks": true
+    },
+    {
+      "viewport": [
+        1366,
+        768
+      ],
+      "zoom": 1,
+      "js": false,
+      "summary": {
+        "text": "Bộ lọc (3) đang áp dụng và sắp xếp",
+        "rect": {
+          "x": 124.5,
+          "y": 17.078125,
+          "width": 222,
+          "height": 48
+        },
+        "count": {
+          "x": 196.03125,
+          "y": 29.875,
+          "width": 8.890625,
+          "height": 21,
+          "top": 29.875,
+          "right": 204.921875,
+          "bottom": 50.875,
+          "left": 196.03125
+        }
+      },
+      "space": true,
+      "enter": true,
+      "touch": true,
+      "explicitApply": true,
+      "sortOrder": [
+        345000,
+        355000,
+        395000
+      ],
+      "previousNext": true,
+      "edgeLinks": true
+    },
+    {
+      "viewport": [
+        1920,
+        1080
+      ],
+      "zoom": 1,
+      "js": false,
+      "summary": {
+        "text": "Bộ lọc (3) đang áp dụng và sắp xếp",
+        "rect": {
+          "x": 401.5,
+          "y": 57.78125,
+          "width": 222,
+          "height": 48
+        },
+        "count": {
+          "x": 473.03125,
+          "y": 70.578125,
+          "width": 8.890625,
+          "height": 21,
+          "top": 70.578125,
+          "right": 481.921875,
+          "bottom": 91.578125,
+          "left": 473.03125
+        }
+      },
+      "space": true,
+      "enter": true,
+      "touch": true,
+      "explicitApply": true,
+      "sortOrder": [
+        345000,
+        355000,
+        395000
+      ],
+      "previousNext": true,
+      "edgeLinks": true
+    },
+    {
+      "viewport": [
+        360,
+        800
+      ],
+      "zoom": 2,
+      "js": false,
+      "summary": {
+        "text": "Bộ lọc (3) đang áp dụng và sắp xếp",
+        "rect": {
+          "x": 33,
+          "y": 17.0859375,
+          "width": 106.5,
+          "height": 52.796875
+        },
+        "count": {
+          "x": 101.3359375,
+          "y": 19.0859375,
+          "width": 8.8828125,
+          "height": 21.5,
+          "top": 19.0859375,
+          "right": 110.21875,
+          "bottom": 40.5859375,
+          "left": 101.3359375
+        }
+      },
+      "space": true,
+      "enter": true,
+      "touch": true,
+      "explicitApply": true,
+      "sortOrder": [
+        345000,
+        355000,
+        395000
+      ],
+      "previousNext": true,
+      "edgeLinks": true
+    },
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "zoom": 2,
+      "js": false,
+      "summary": {
+        "text": "Bộ lọc (3) đang áp dụng và sắp xếp",
+        "rect": {
+          "x": 33,
+          "y": 17.0859375,
+          "width": 121.5,
+          "height": 52.796875
+        },
+        "count": {
+          "x": 101.3359375,
+          "y": 19.0859375,
+          "width": 8.8828125,
+          "height": 21.5,
+          "top": 19.0859375,
+          "right": 110.21875,
+          "bottom": 40.5859375,
+          "left": 101.3359375
+        }
+      },
+      "space": true,
+      "enter": true,
+      "touch": true,
+      "explicitApply": true,
+      "sortOrder": [
+        345000,
+        355000,
+        395000
+      ],
+      "previousNext": true,
+      "edgeLinks": true
+    },
+    {
+      "viewport": [
+        768,
+        1024
+      ],
+      "zoom": 2,
+      "js": false,
+      "summary": {
+        "text": "Bộ lọc (3) đang áp dụng và sắp xếp",
+        "rect": {
+          "x": 33,
+          "y": 17.1953125,
+          "width": 310.5,
+          "height": 48
+        },
+        "count": {
+          "x": 101.3359375,
+          "y": 29.9921875,
+          "width": 8.8828125,
+          "height": 21.5,
+          "top": 29.9921875,
+          "right": 110.21875,
+          "bottom": 51.4921875,
+          "left": 101.3359375
+        }
+      },
+      "space": true,
+      "enter": true,
+      "touch": true,
+      "explicitApply": true,
+      "sortOrder": [
+        345000,
+        355000,
+        395000
+      ],
+      "previousNext": true,
+      "edgeLinks": true
+    },
+    {
+      "viewport": [
+        1366,
+        768
+      ],
+      "zoom": 2,
+      "js": false,
+      "summary": {
+        "text": "Bộ lọc (3) đang áp dụng và sắp xếp",
+        "rect": {
+          "x": 41,
+          "y": 16.796875,
+          "width": 182,
+          "height": 48
+        },
+        "count": {
+          "x": 109.3359375,
+          "y": 29.59375,
+          "width": 8.8828125,
+          "height": 21.5,
+          "top": 29.59375,
+          "right": 118.21875,
+          "bottom": 51.09375,
+          "left": 109.3359375
+        }
+      },
+      "space": true,
+      "enter": true,
+      "touch": true,
+      "explicitApply": true,
+      "sortOrder": [
+        345000,
+        355000,
+        395000
+      ],
+      "previousNext": true,
+      "edgeLinks": true
+    },
+    {
+      "viewport": [
+        1920,
+        1080
+      ],
+      "zoom": 2,
+      "js": false,
+      "summary": {
+        "text": "Bộ lọc (3) đang áp dụng và sắp xếp",
+        "rect": {
+          "x": 49,
+          "y": 16.7890625,
+          "width": 222,
+          "height": 48
+        },
+        "count": {
+          "x": 117.3359375,
+          "y": 29.5859375,
+          "width": 8.8828125,
+          "height": 21.5,
+          "top": 29.5859375,
+          "right": 126.21875,
+          "bottom": 51.0859375,
+          "left": 117.3359375
+        }
+      },
+      "space": true,
+      "enter": true,
+      "touch": true,
+      "explicitApply": true,
+      "sortOrder": [
+        345000,
+        355000,
+        395000
+      ],
+      "previousNext": true,
+      "edgeLinks": true
+    }
+  ],
+  "accessibleNames": {
+    "valid": "CeraVe Moisturizing Cream Từ 355.000 ₫ Còn hàng",
+    "missing": "Chưa có ảnh sản phẩm CeraVe Invisible Mineral Sunscreen SPF 50 Từ 425.000 ₫ Còn hàng"
+  },
+  "jsExceptions": 0
+}
