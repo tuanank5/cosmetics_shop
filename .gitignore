@@ -13,3 +13,6 @@
 **/vector-store*.json
 .DS_Store
 Thumbs.db
+
+# P20B: ảnh gốc sản phẩm do owner đặt vào (nặng, không commit); chỉ commit ảnh đã xử lý ở static/img/products
+/assets-raw/

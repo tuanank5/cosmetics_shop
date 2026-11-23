@@ -1,0 +1,8 @@
+PASS products 1366 {"w":1366,"overflowX":false,"productImgs":0,"placeholders":12,"broken":[],"distorted":[]}
+PASS home 1366 {"w":1366,"overflowX":false,"productImgs":0,"placeholders":21,"broken":[],"distorted":[]}
+PASS detail 1366 {"w":1366,"overflowX":false,"productImgs":0,"placeholders":1,"broken":[],"distorted":[]}
+PASS products 390 {"w":390,"overflowX":false,"productImgs":0,"placeholders":12,"broken":[],"distorted":[]}
+PASS home 390 {"w":390,"overflowX":false,"productImgs":0,"placeholders":21,"broken":[],"distorted":[]}
+PASS detail 390 {"w":390,"overflowX":false,"productImgs":0,"placeholders":1,"broken":[],"distorted":[]}
+PASS cart 1366 {"w":1366,"overflowX":false,"productImgs":0,"placeholders":0,"broken":[],"distorted":[]}
+ALL PASS; page exceptions: 0

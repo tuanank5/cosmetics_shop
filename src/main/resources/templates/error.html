@@ -5,7 +5,8 @@
 <div th:replace="~{fragments/header :: siteHeader}"></div>
 <main id="main" tabindex="-1" class="page-content error-page">
   <p class="eyebrow">BEAUTYSHOP · LUÔN CÓ MỘT LỐI ĐI TIẾP</p>
-  <p class="error-code" aria-label="Mã lỗi hệ thống">BeautyShop</p>
+  <p class="error-brand"><img th:src="@{${#strings.startsWith(uiPath ?: '', '/admin') ? '/img/brand/beautyshop-lockup-light.svg' : '/img/brand/beautyshop-lockup.svg'}}"
+       alt="BeautyShop" width="402" height="54"></p>
   <h1>Chưa thể mở nội dung</h1>
   <p class="muted">Vui lòng quay về cửa hàng hoặc thử lại sau ít phút.</p>
   <div class="button-group">

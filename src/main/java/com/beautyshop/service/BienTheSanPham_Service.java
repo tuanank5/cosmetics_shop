@@ -1,5 +1,6 @@
 package com.beautyshop.service;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import com.beautyshop.dto.BienTheSanPham_Form;
 import com.beautyshop.entity.BienTheSanPham;
 import com.beautyshop.entity.SanPham;
@@ -32,14 +33,17 @@ public class BienTheSanPham_Service {
         this.anhService = anhService;
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     public SanPham sanPham(long maSanPham) {
         return sanPhamRepository.findById(maSanPham).orElseThrow(() -> khongTimThay());
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     public List<BienTheSanPham> danhSach(long maSanPham) {
         return bienTheRepository.findAllBySanPhamMaSanPhamOrderBySkuAsc(maSanPham);
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     public BienTheSanPham chiTiet(long maSanPham, long maBienThe) {
         return bienTheRepository.findByMaBienTheAndSanPhamMaSanPham(maBienThe, maSanPham)
             .orElseThrow(() -> khongTimThay());
@@ -51,6 +55,7 @@ public class BienTheSanPham_Service {
     }
 
     @Transactional
+    @PreAuthorize("hasRole('ADMIN')")
     public void luu(long maSanPham, Long maBienThe, BienTheSanPham_Form form, Errors errors) {
         BienTheSanPham bienThe = maBienThe == null ? new BienTheSanPham(sanPham(maSanPham))
             : khoa(maSanPham, maBienThe);
@@ -90,6 +95,7 @@ public class BienTheSanPham_Service {
     }
 
     @Transactional
+    @PreAuthorize("hasRole('ADMIN')")
     public void ngungHoatDong(long maSanPham, long maBienThe) {
         khoa(maSanPham, maBienThe).ngungHoatDong();
     }

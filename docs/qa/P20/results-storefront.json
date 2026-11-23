@@ -1,0 +1,1033 @@
+{
+  "mode": "storefront",
+  "base": "http://localhost:8081",
+  "startedAt": "2026-11-23T15:02:14.701Z",
+  "checks": [
+    {
+      "name": "guest icon / 340x720",
+      "pass": true,
+      "detail": {
+        "w": 340,
+        "overflowX": false,
+        "kind": "a",
+        "href": "/login",
+        "form": null,
+        "label": "Đăng nhập",
+        "svgHidden": true,
+        "rect": {
+          "x": 16,
+          "y": 4,
+          "w": 44,
+          "h": 44,
+          "r": 60,
+          "b": 48
+        },
+        "leftOfMenu": true,
+        "leftOfBrand": true,
+        "overlaps": [],
+        "initialScrollY": 108,
+        "clickable": true,
+        "carousel": false
+      }
+    },
+    {
+      "name": "guest icon /products 340x720",
+      "pass": true,
+      "detail": {
+        "w": 340,
+        "overflowX": false,
+        "kind": "a",
+        "href": "/login",
+        "form": null,
+        "label": "Đăng nhập",
+        "svgHidden": true,
+        "rect": {
+          "x": 16,
+          "y": 4,
+          "w": 44,
+          "h": 44,
+          "r": 60,
+          "b": 48
+        },
+        "leftOfMenu": true,
+        "leftOfBrand": true,
+        "overlaps": [],
+        "initialScrollY": 0,
+        "clickable": true,
+        "carousel": null
+      }
+    },
+    {
+      "name": "guest icon /login 340x720",
+      "pass": true,
+      "detail": {
+        "w": 340,
+        "overflowX": false,
+        "kind": "a",
+        "href": "/login",
+        "form": null,
+        "label": "Đăng nhập",
+        "svgHidden": true,
+        "rect": {
+          "x": 16,
+          "y": 4,
+          "w": 44,
+          "h": 44,
+          "r": 60,
+          "b": 48
+        },
+        "leftOfMenu": true,
+        "leftOfBrand": true,
+        "overlaps": [],
+        "initialScrollY": 0,
+        "clickable": true,
+        "carousel": null
+      }
+    },
+    {
+      "name": "guest icon / 390x844",
+      "pass": true,
+      "detail": {
+        "w": 390,
+        "overflowX": false,
+        "kind": "a",
+        "href": "/login",
+        "form": null,
+        "label": "Đăng nhập",
+        "svgHidden": true,
+        "rect": {
+          "x": 16,
+          "y": 4,
+          "w": 44,
+          "h": 44,
+          "r": 60,
+          "b": 48
+        },
+        "leftOfMenu": true,
+        "leftOfBrand": true,
+        "overlaps": [],
+        "initialScrollY": 108,
+        "clickable": true,
+        "carousel": false
+      }
+    },
+    {
+      "name": "guest icon /products 390x844",
+      "pass": true,
+      "detail": {
+        "w": 390,
+        "overflowX": false,
+        "kind": "a",
+        "href": "/login",
+        "form": null,
+        "label": "Đăng nhập",
+        "svgHidden": true,
+        "rect": {
+          "x": 16,
+          "y": 4,
+          "w": 44,
+          "h": 44,
+          "r": 60,
+          "b": 48
+        },
+        "leftOfMenu": true,
+        "leftOfBrand": true,
+        "overlaps": [],
+        "initialScrollY": 0,
+        "clickable": true,
+        "carousel": null
+      }
+    },
+    {
+      "name": "guest icon /login 390x844",
+      "pass": true,
+      "detail": {
+        "w": 390,
+        "overflowX": false,
+        "kind": "a",
+        "href": "/login",
+        "form": null,
+        "label": "Đăng nhập",
+        "svgHidden": true,
+        "rect": {
+          "x": 16,
+          "y": 4,
+          "w": 44,
+          "h": 44,
+          "r": 60,
+          "b": 48
+        },
+        "leftOfMenu": true,
+        "leftOfBrand": true,
+        "overlaps": [],
+        "initialScrollY": 0,
+        "clickable": true,
+        "carousel": null
+      }
+    },
+    {
+      "name": "guest icon / 768x1024",
+      "pass": true,
+      "detail": {
+        "w": 768,
+        "overflowX": false,
+        "kind": "a",
+        "href": "/login",
+        "form": null,
+        "label": "Đăng nhập",
+        "svgHidden": true,
+        "rect": {
+          "x": 24,
+          "y": 16,
+          "w": 44,
+          "h": 44,
+          "r": 68,
+          "b": 60
+        },
+        "leftOfMenu": true,
+        "leftOfBrand": true,
+        "overlaps": [],
+        "initialScrollY": 0,
+        "clickable": true,
+        "carousel": true
+      }
+    },
+    {
+      "name": "guest icon /products 768x1024",
+      "pass": true,
+      "detail": {
+        "w": 768,
+        "overflowX": false,
+        "kind": "a",
+        "href": "/login",
+        "form": null,
+        "label": "Đăng nhập",
+        "svgHidden": true,
+        "rect": {
+          "x": 27,
+          "y": 4,
+          "w": 44,
+          "h": 44,
+          "r": 71,
+          "b": 48
+        },
+        "leftOfMenu": true,
+        "leftOfBrand": true,
+        "overlaps": [],
+        "initialScrollY": 0,
+        "clickable": true,
+        "carousel": null
+      }
+    },
+    {
+      "name": "guest icon /login 768x1024",
+      "pass": true,
+      "detail": {
+        "w": 768,
+        "overflowX": false,
+        "kind": "a",
+        "href": "/login",
+        "form": null,
+        "label": "Đăng nhập",
+        "svgHidden": true,
+        "rect": {
+          "x": 27,
+          "y": 4,
+          "w": 44,
+          "h": 44,
+          "r": 71,
+          "b": 48
+        },
+        "leftOfMenu": true,
+        "leftOfBrand": true,
+        "overlaps": [],
+        "initialScrollY": 0,
+        "clickable": true,
+        "carousel": null
+      }
+    },
+    {
+      "name": "guest icon / 1099x800",
+      "pass": true,
+      "detail": {
+        "w": 1099,
+        "overflowX": false,
+        "kind": "a",
+        "href": "/login",
+        "form": null,
+        "label": "Đăng nhập",
+        "svgHidden": true,
+        "rect": {
+          "x": 24,
+          "y": 16,
+          "w": 44,
+          "h": 44,
+          "r": 68,
+          "b": 60
+        },
+        "leftOfMenu": true,
+        "leftOfBrand": true,
+        "overlaps": [],
+        "initialScrollY": 0,
+        "clickable": true,
+        "carousel": true
+      }
+    },
+    {
+      "name": "guest icon /products 1099x800",
+      "pass": true,
+      "detail": {
+        "w": 1099,
+        "overflowX": false,
+        "kind": "a",
+        "href": "/login",
+        "form": null,
+        "label": "Đăng nhập",
+        "svgHidden": true,
+        "rect": {
+          "x": 38,
+          "y": 4,
+          "w": 44,
+          "h": 44,
+          "r": 82,
+          "b": 48
+        },
+        "leftOfMenu": true,
+        "leftOfBrand": true,
+        "overlaps": [],
+        "initialScrollY": 0,
+        "clickable": true,
+        "carousel": null
+      }
+    },
+    {
+      "name": "guest icon /login 1099x800",
+      "pass": true,
+      "detail": {
+        "w": 1099,
+        "overflowX": false,
+        "kind": "a",
+        "href": "/login",
+        "form": null,
+        "label": "Đăng nhập",
+        "svgHidden": true,
+        "rect": {
+          "x": 38,
+          "y": 4,
+          "w": 44,
+          "h": 44,
+          "r": 82,
+          "b": 48
+        },
+        "leftOfMenu": true,
+        "leftOfBrand": true,
+        "overlaps": [],
+        "initialScrollY": 0,
+        "clickable": true,
+        "carousel": null
+      }
+    },
+    {
+      "name": "guest icon / 1366x768",
+      "pass": true,
+      "detail": {
+        "w": 1366,
+        "overflowX": false,
+        "kind": "a",
+        "href": "/login",
+        "form": null,
+        "label": "Đăng nhập",
+        "svgHidden": true,
+        "rect": {
+          "x": 24,
+          "y": 16,
+          "w": 44,
+          "h": 44,
+          "r": 68,
+          "b": 60
+        },
+        "leftOfMenu": true,
+        "leftOfBrand": true,
+        "overlaps": [],
+        "initialScrollY": 0,
+        "clickable": true,
+        "carousel": true
+      }
+    },
+    {
+      "name": "guest icon /products 1366x768",
+      "pass": true,
+      "detail": {
+        "w": 1366,
+        "overflowX": false,
+        "kind": "a",
+        "href": "/login",
+        "form": null,
+        "label": "Đăng nhập",
+        "svgHidden": true,
+        "rect": {
+          "x": 48,
+          "y": 8,
+          "w": 44,
+          "h": 44,
+          "r": 92,
+          "b": 52
+        },
+        "leftOfMenu": true,
+        "leftOfBrand": true,
+        "overlaps": [],
+        "initialScrollY": 0,
+        "clickable": true,
+        "carousel": null
+      }
+    },
+    {
+      "name": "guest icon /login 1366x768",
+      "pass": true,
+      "detail": {
+        "w": 1366,
+        "overflowX": false,
+        "kind": "a",
+        "href": "/login",
+        "form": null,
+        "label": "Đăng nhập",
+        "svgHidden": true,
+        "rect": {
+          "x": 48,
+          "y": 8,
+          "w": 44,
+          "h": 44,
+          "r": 92,
+          "b": 52
+        },
+        "leftOfMenu": true,
+        "leftOfBrand": true,
+        "overlaps": [],
+        "initialScrollY": 0,
+        "clickable": true,
+        "carousel": null
+      }
+    },
+    {
+      "name": "guest icon / 1920x1080",
+      "pass": true,
+      "detail": {
+        "w": 1920,
+        "overflowX": false,
+        "kind": "a",
+        "href": "/login",
+        "form": null,
+        "label": "Đăng nhập",
+        "svgHidden": true,
+        "rect": {
+          "x": 24,
+          "y": 16,
+          "w": 44,
+          "h": 44,
+          "r": 68,
+          "b": 60
+        },
+        "leftOfMenu": true,
+        "leftOfBrand": true,
+        "overlaps": [],
+        "initialScrollY": 0,
+        "clickable": true,
+        "carousel": true
+      }
+    },
+    {
+      "name": "guest icon /products 1920x1080",
+      "pass": true,
+      "detail": {
+        "w": 1920,
+        "overflowX": false,
+        "kind": "a",
+        "href": "/login",
+        "form": null,
+        "label": "Đăng nhập",
+        "svgHidden": true,
+        "rect": {
+          "x": 224,
+          "y": 8,
+          "w": 44,
+          "h": 44,
+          "r": 268,
+          "b": 52
+        },
+        "leftOfMenu": true,
+        "leftOfBrand": true,
+        "overlaps": [],
+        "initialScrollY": 0,
+        "clickable": true,
+        "carousel": null
+      }
+    },
+    {
+      "name": "guest icon /login 1920x1080",
+      "pass": true,
+      "detail": {
+        "w": 1920,
+        "overflowX": false,
+        "kind": "a",
+        "href": "/login",
+        "form": null,
+        "label": "Đăng nhập",
+        "svgHidden": true,
+        "rect": {
+          "x": 224,
+          "y": 8,
+          "w": 44,
+          "h": 44,
+          "r": 268,
+          "b": 52
+        },
+        "leftOfMenu": true,
+        "leftOfBrand": true,
+        "overlaps": [],
+        "initialScrollY": 0,
+        "clickable": true,
+        "carousel": null
+      }
+    },
+    {
+      "name": "guest icon keyboard focus + visible label",
+      "pass": true,
+      "detail": {
+        "steps": 2,
+        "lbl": {
+          "clip": "none",
+          "w": 74,
+          "focusVisible": true,
+          "outline": "solid"
+        }
+      }
+    },
+    {
+      "name": "guest icon Enter opens /login",
+      "pass": true
+    },
+    {
+      "name": "home carousel keeps icon usable",
+      "pass": true,
+      "detail": {
+        "w": 1366,
+        "overflowX": false,
+        "kind": "a",
+        "href": "/login",
+        "form": null,
+        "label": "Đăng nhập",
+        "svgHidden": true,
+        "rect": {
+          "x": 24,
+          "y": 16,
+          "w": 44,
+          "h": 44,
+          "r": 68,
+          "b": 60
+        },
+        "leftOfMenu": true,
+        "leftOfBrand": true,
+        "overlaps": [],
+        "initialScrollY": 0,
+        "clickable": true,
+        "carousel": true
+      }
+    },
+    {
+      "name": "customer login keeps storefront flow (not /admin)",
+      "pass": true,
+      "detail": {
+        "path": "/"
+      }
+    },
+    {
+      "name": "customer logout icon / 340x720",
+      "pass": true,
+      "detail": {
+        "w": 340,
+        "overflowX": false,
+        "kind": "button",
+        "href": null,
+        "form": {
+          "method": "post",
+          "action": "/logout",
+          "csrf": true
+        },
+        "label": "Đăng xuất",
+        "svgHidden": true,
+        "rect": {
+          "x": 16,
+          "y": 4,
+          "w": 44,
+          "h": 44,
+          "r": 60,
+          "b": 48
+        },
+        "leftOfMenu": true,
+        "leftOfBrand": true,
+        "overlaps": [],
+        "initialScrollY": 108,
+        "clickable": true,
+        "carousel": false
+      }
+    },
+    {
+      "name": "customer logout icon /products 340x720",
+      "pass": true,
+      "detail": {
+        "w": 340,
+        "overflowX": false,
+        "kind": "button",
+        "href": null,
+        "form": {
+          "method": "post",
+          "action": "/logout",
+          "csrf": true
+        },
+        "label": "Đăng xuất",
+        "svgHidden": true,
+        "rect": {
+          "x": 16,
+          "y": 4,
+          "w": 44,
+          "h": 44,
+          "r": 60,
+          "b": 48
+        },
+        "leftOfMenu": true,
+        "leftOfBrand": true,
+        "overlaps": [],
+        "initialScrollY": 0,
+        "clickable": true,
+        "carousel": null
+      }
+    },
+    {
+      "name": "customer logout icon /account 340x720",
+      "pass": true,
+      "detail": {
+        "w": 340,
+        "overflowX": false,
+        "kind": "button",
+        "href": null,
+        "form": {
+          "method": "post",
+          "action": "/logout",
+          "csrf": true
+        },
+        "label": "Đăng xuất",
+        "svgHidden": true,
+        "rect": {
+          "x": 16,
+          "y": 4,
+          "w": 44,
+          "h": 44,
+          "r": 60,
+          "b": 48
+        },
+        "leftOfMenu": true,
+        "leftOfBrand": true,
+        "overlaps": [],
+        "initialScrollY": 0,
+        "clickable": true,
+        "carousel": null
+      }
+    },
+    {
+      "name": "customer logout icon / 390x844",
+      "pass": true,
+      "detail": {
+        "w": 390,
+        "overflowX": false,
+        "kind": "button",
+        "href": null,
+        "form": {
+          "method": "post",
+          "action": "/logout",
+          "csrf": true
+        },
+        "label": "Đăng xuất",
+        "svgHidden": true,
+        "rect": {
+          "x": 16,
+          "y": 4,
+          "w": 44,
+          "h": 44,
+          "r": 60,
+          "b": 48
+        },
+        "leftOfMenu": true,
+        "leftOfBrand": true,
+        "overlaps": [],
+        "initialScrollY": 108,
+        "clickable": true,
+        "carousel": false
+      }
+    },
+    {
+      "name": "customer logout icon /products 390x844",
+      "pass": true,
+      "detail": {
+        "w": 390,
+        "overflowX": false,
+        "kind": "button",
+        "href": null,
+        "form": {
+          "method": "post",
+          "action": "/logout",
+          "csrf": true
+        },
+        "label": "Đăng xuất",
+        "svgHidden": true,
+        "rect": {
+          "x": 16,
+          "y": 4,
+          "w": 44,
+          "h": 44,
+          "r": 60,
+          "b": 48
+        },
+        "leftOfMenu": true,
+        "leftOfBrand": true,
+        "overlaps": [],
+        "initialScrollY": 0,
+        "clickable": true,
+        "carousel": null
+      }
+    },
+    {
+      "name": "customer logout icon /account 390x844",
+      "pass": true,
+      "detail": {
+        "w": 390,
+        "overflowX": false,
+        "kind": "button",
+        "href": null,
+        "form": {
+          "method": "post",
+          "action": "/logout",
+          "csrf": true
+        },
+        "label": "Đăng xuất",
+        "svgHidden": true,
+        "rect": {
+          "x": 16,
+          "y": 4,
+          "w": 44,
+          "h": 44,
+          "r": 60,
+          "b": 48
+        },
+        "leftOfMenu": true,
+        "leftOfBrand": true,
+        "overlaps": [],
+        "initialScrollY": 0,
+        "clickable": true,
+        "carousel": null
+      }
+    },
+    {
+      "name": "customer logout icon / 768x1024",
+      "pass": true,
+      "detail": {
+        "w": 768,
+        "overflowX": false,
+        "kind": "button",
+        "href": null,
+        "form": {
+          "method": "post",
+          "action": "/logout",
+          "csrf": true
+        },
+        "label": "Đăng xuất",
+        "svgHidden": true,
+        "rect": {
+          "x": 24,
+          "y": 16,
+          "w": 44,
+          "h": 44,
+          "r": 68,
+          "b": 60
+        },
+        "leftOfMenu": true,
+        "leftOfBrand": true,
+        "overlaps": [],
+        "initialScrollY": 0,
+        "clickable": true,
+        "carousel": true
+      }
+    },
+    {
+      "name": "customer logout icon /products 768x1024",
+      "pass": true,
+      "detail": {
+        "w": 768,
+        "overflowX": false,
+        "kind": "button",
+        "href": null,
+        "form": {
+          "method": "post",
+          "action": "/logout",
+          "csrf": true
+        },
+        "label": "Đăng xuất",
+        "svgHidden": true,
+        "rect": {
+          "x": 27,
+          "y": 4,
+          "w": 44,
+          "h": 44,
+          "r": 71,
+          "b": 48
+        },
+        "leftOfMenu": true,
+        "leftOfBrand": true,
+        "overlaps": [],
+        "initialScrollY": 0,
+        "clickable": true,
+        "carousel": null
+      }
+    },
+    {
+      "name": "customer logout icon /account 768x1024",
+      "pass": true,
+      "detail": {
+        "w": 768,
+        "overflowX": false,
+        "kind": "button",
+        "href": null,
+        "form": {
+          "method": "post",
+          "action": "/logout",
+          "csrf": true
+        },
+        "label": "Đăng xuất",
+        "svgHidden": true,
+        "rect": {
+          "x": 27,
+          "y": 4,
+          "w": 44,
+          "h": 44,
+          "r": 71,
+          "b": 48
+        },
+        "leftOfMenu": true,
+        "leftOfBrand": true,
+        "overlaps": [],
+        "initialScrollY": 0,
+        "clickable": true,
+        "carousel": null
+      }
+    },
+    {
+      "name": "customer logout icon / 1366x768",
+      "pass": true,
+      "detail": {
+        "w": 1366,
+        "overflowX": false,
+        "kind": "button",
+        "href": null,
+        "form": {
+          "method": "post",
+          "action": "/logout",
+          "csrf": true
+        },
+        "label": "Đăng xuất",
+        "svgHidden": true,
+        "rect": {
+          "x": 24,
+          "y": 16,
+          "w": 44,
+          "h": 44,
+          "r": 68,
+          "b": 60
+        },
+        "leftOfMenu": true,
+        "leftOfBrand": true,
+        "overlaps": [],
+        "initialScrollY": 0,
+        "clickable": true,
+        "carousel": true
+      }
+    },
+    {
+      "name": "customer logout icon /products 1366x768",
+      "pass": true,
+      "detail": {
+        "w": 1366,
+        "overflowX": false,
+        "kind": "button",
+        "href": null,
+        "form": {
+          "method": "post",
+          "action": "/logout",
+          "csrf": true
+        },
+        "label": "Đăng xuất",
+        "svgHidden": true,
+        "rect": {
+          "x": 48,
+          "y": 8,
+          "w": 44,
+          "h": 44,
+          "r": 92,
+          "b": 52
+        },
+        "leftOfMenu": true,
+        "leftOfBrand": true,
+        "overlaps": [],
+        "initialScrollY": 0,
+        "clickable": true,
+        "carousel": null
+      }
+    },
+    {
+      "name": "customer logout icon /account 1366x768",
+      "pass": true,
+      "detail": {
+        "w": 1366,
+        "overflowX": false,
+        "kind": "button",
+        "href": null,
+        "form": {
+          "method": "post",
+          "action": "/logout",
+          "csrf": true
+        },
+        "label": "Đăng xuất",
+        "svgHidden": true,
+        "rect": {
+          "x": 48,
+          "y": 8,
+          "w": 44,
+          "h": 44,
+          "r": 92,
+          "b": 52
+        },
+        "leftOfMenu": true,
+        "leftOfBrand": true,
+        "overlaps": [],
+        "initialScrollY": 0,
+        "clickable": true,
+        "carousel": null
+      }
+    },
+    {
+      "name": "customer logout icon / 1920x1080",
+      "pass": true,
+      "detail": {
+        "w": 1920,
+        "overflowX": false,
+        "kind": "button",
+        "href": null,
+        "form": {
+          "method": "post",
+          "action": "/logout",
+          "csrf": true
+        },
+        "label": "Đăng xuất",
+        "svgHidden": true,
+        "rect": {
+          "x": 24,
+          "y": 16,
+          "w": 44,
+          "h": 44,
+          "r": 68,
+          "b": 60
+        },
+        "leftOfMenu": true,
+        "leftOfBrand": true,
+        "overlaps": [],
+        "initialScrollY": 0,
+        "clickable": true,
+        "carousel": true
+      }
+    },
+    {
+      "name": "customer logout icon /products 1920x1080",
+      "pass": true,
+      "detail": {
+        "w": 1920,
+        "overflowX": false,
+        "kind": "button",
+        "href": null,
+        "form": {
+          "method": "post",
+          "action": "/logout",
+          "csrf": true
+        },
+        "label": "Đăng xuất",
+        "svgHidden": true,
+        "rect": {
+          "x": 224,
+          "y": 8,
+          "w": 44,
+          "h": 44,
+          "r": 268,
+          "b": 52
+        },
+        "leftOfMenu": true,
+        "leftOfBrand": true,
+        "overlaps": [],
+        "initialScrollY": 0,
+        "clickable": true,
+        "carousel": null
+      }
+    },
+    {
+      "name": "customer logout icon /account 1920x1080",
+      "pass": true,
+      "detail": {
+        "w": 1920,
+        "overflowX": false,
+        "kind": "button",
+        "href": null,
+        "form": {
+          "method": "post",
+          "action": "/logout",
+          "csrf": true
+        },
+        "label": "Đăng xuất",
+        "svgHidden": true,
+        "rect": {
+          "x": 224,
+          "y": 8,
+          "w": 44,
+          "h": 44,
+          "r": 268,
+          "b": 52
+        },
+        "leftOfMenu": true,
+        "leftOfBrand": true,
+        "overlaps": [],
+        "initialScrollY": 0,
+        "clickable": true,
+        "carousel": null
+      }
+    },
+    {
+      "name": "customer logout icon keyboard focus + visible label",
+      "pass": true,
+      "detail": {
+        "steps": 2,
+        "cLbl": {
+          "clip": "none",
+          "w": 70,
+          "focusVisible": true,
+          "outline": "solid"
+        }
+      }
+    },
+    {
+      "name": "customer keyboard logout (POST + CSRF) returns guest header",
+      "pass": true,
+      "detail": {
+        "path": "/?logout",
+        "guestIcon": true
+      }
+    }
+  ],
+  "exceptions": [],
+  "failures": 0,
+  "finishedAt": "2026-11-23T15:03:00.261Z"
+}

@@ -1,5 +1,6 @@
 package com.beautyshop.service;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import com.beautyshop.ai.RagProvider;
 import com.beautyshop.service.KhoTriThuc_Service.Nguon;
 import jakarta.annotation.PreDestroy;
@@ -57,12 +58,14 @@ public class TuVan_Service {
         this.provider = provider;
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     public TrangThai trangThai() {
         var hienTai = chiMuc;
         return new TrangThai(provider.getIfAvailable() != null, hienTai == null ? 0 : hienTai.fragments().size(),
             hienTai == null ? null : hienTai.capNhat(), dangNap.get());
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     public void napLai() {
         var ai = provider.getIfAvailable();
         if (ai == null) {

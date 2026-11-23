@@ -1,0 +1,93 @@
+{
+  "base": "http://localhost:8081",
+  "startedAt": "2026-11-23T15:48:52.283Z",
+  "checks": [
+    {
+      "name": "products 1366",
+      "pass": true,
+      "detail": {
+        "w": 1366,
+        "overflowX": false,
+        "productImgs": 0,
+        "placeholders": 12,
+        "broken": [],
+        "distorted": []
+      }
+    },
+    {
+      "name": "home 1366",
+      "pass": true,
+      "detail": {
+        "w": 1366,
+        "overflowX": false,
+        "productImgs": 0,
+        "placeholders": 21,
+        "broken": [],
+        "distorted": []
+      }
+    },
+    {
+      "name": "detail 1366",
+      "pass": true,
+      "detail": {
+        "w": 1366,
+        "overflowX": false,
+        "productImgs": 0,
+        "placeholders": 1,
+        "broken": [],
+        "distorted": []
+      }
+    },
+    {
+      "name": "products 390",
+      "pass": true,
+      "detail": {
+        "w": 390,
+        "overflowX": false,
+        "productImgs": 0,
+        "placeholders": 12,
+        "broken": [],
+        "distorted": []
+      }
+    },
+    {
+      "name": "home 390",
+      "pass": true,
+      "detail": {
+        "w": 390,
+        "overflowX": false,
+        "productImgs": 0,
+        "placeholders": 21,
+        "broken": [],
+        "distorted": []
+      }
+    },
+    {
+      "name": "detail 390",
+      "pass": true,
+      "detail": {
+        "w": 390,
+        "overflowX": false,
+        "productImgs": 0,
+        "placeholders": 1,
+        "broken": [],
+        "distorted": []
+      }
+    },
+    {
+      "name": "cart 1366",
+      "pass": true,
+      "detail": {
+        "w": 1366,
+        "overflowX": false,
+        "productImgs": 0,
+        "placeholders": 0,
+        "broken": [],
+        "distorted": []
+      }
+    }
+  ],
+  "exceptions": [],
+  "failures": 0,
+  "finishedAt": "2026-11-23T15:49:11.332Z"
+}
