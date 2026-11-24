@@ -1,0 +1,191 @@
+{
+  "thoi_gian": "2026-11-23T15:47:07+00:00",
+  "pillow": "13.0.0",
+  "so_file_goc": 11,
+  "so_sku": 32,
+  "sku_da_nap": 0,
+  "xu_ly": [
+    {
+      "file": "r001.jpg",
+      "research_id": "r001",
+      "loai": "chinh",
+      "dinh_dang": "JPEG",
+      "goc": [
+        150,
+        200
+      ],
+      "sau_cat": [
+        150,
+        187
+      ],
+      "trang_thai": "QUA_NHO"
+    },
+    {
+      "file": "r002.jpg",
+      "research_id": "r002",
+      "loai": "chinh",
+      "dinh_dang": "JPEG",
+      "goc": [
+        150,
+        200
+      ],
+      "sau_cat": [
+        150,
+        187
+      ],
+      "trang_thai": "QUA_NHO"
+    },
+    {
+      "file": "r003.jpg",
+      "research_id": "r003",
+      "loai": "chinh",
+      "dinh_dang": "JPEG",
+      "goc": [
+        150,
+        200
+      ],
+      "sau_cat": [
+        150,
+        187
+      ],
+      "trang_thai": "QUA_NHO"
+    },
+    {
+      "file": "r004.jpg",
+      "research_id": "r004",
+      "loai": "chinh",
+      "dinh_dang": "JPEG",
+      "goc": [
+        150,
+        200
+      ],
+      "sau_cat": [
+        150,
+        187
+      ],
+      "trang_thai": "QUA_NHO"
+    },
+    {
+      "file": "r005.jpg",
+      "research_id": "r005",
+      "loai": "chinh",
+      "dinh_dang": "JPEG",
+      "goc": [
+        150,
+        200
+      ],
+      "sau_cat": [
+        150,
+        187
+      ],
+      "trang_thai": "QUA_NHO"
+    },
+    {
+      "file": "r006.jpg",
+      "research_id": "r006",
+      "loai": "chinh",
+      "dinh_dang": "JPEG",
+      "goc": [
+        101,
+        200
+      ],
+      "sau_cat": [
+        101,
+        126
+      ],
+      "trang_thai": "QUA_NHO"
+    },
+    {
+      "file": "r007.jpg",
+      "research_id": "r007",
+      "loai": "chinh",
+      "dinh_dang": "JPEG",
+      "goc": [
+        90,
+        200
+      ],
+      "sau_cat": [
+        90,
+        112
+      ],
+      "trang_thai": "QUA_NHO"
+    },
+    {
+      "file": "r008.jpg",
+      "research_id": "r008",
+      "loai": "chinh",
+      "dinh_dang": "JPEG",
+      "goc": [
+        150,
+        200
+      ],
+      "sau_cat": [
+        150,
+        187
+      ],
+      "trang_thai": "QUA_NHO"
+    },
+    {
+      "file": "r009.jpg",
+      "research_id": "r009",
+      "loai": "chinh",
+      "dinh_dang": "JPEG",
+      "goc": [
+        150,
+        200
+      ],
+      "sau_cat": [
+        150,
+        187
+      ],
+      "trang_thai": "QUA_NHO"
+    }
+  ],
+  "bo_qua": [
+    {
+      "file": "r0010-1.jpg",
+      "ly_do": "KHONG_GHEP_DUOC: tên không bắt đầu bằng r + đúng 3 chữ số (vd r010.jpg, r010-2.jpg)"
+    },
+    {
+      "file": "r0010.jpg",
+      "ly_do": "KHONG_GHEP_DUOC: tên không bắt đầu bằng r + đúng 3 chữ số (vd r010.jpg, r010-2.jpg)"
+    },
+    {
+      "file": "r001.jpg",
+      "ly_do": "QUA_NHO: sau cắt 4:5 còn 150x187 < 600x750"
+    },
+    {
+      "file": "r002.jpg",
+      "ly_do": "QUA_NHO: sau cắt 4:5 còn 150x187 < 600x750"
+    },
+    {
+      "file": "r003.jpg",
+      "ly_do": "QUA_NHO: sau cắt 4:5 còn 150x187 < 600x750"
+    },
+    {
+      "file": "r004.jpg",
+      "ly_do": "QUA_NHO: sau cắt 4:5 còn 150x187 < 600x750"
+    },
+    {
+      "file": "r005.jpg",
+      "ly_do": "QUA_NHO: sau cắt 4:5 còn 150x187 < 600x750"
+    },
+    {
+      "file": "r006.jpg",
+      "ly_do": "QUA_NHO: sau cắt 4:5 còn 101x126 < 600x750"
+    },
+    {
+      "file": "r007.jpg",
+      "ly_do": "QUA_NHO: sau cắt 4:5 còn 90x112 < 600x750"
+    },
+    {
+      "file": "r008.jpg",
+      "ly_do": "QUA_NHO: sau cắt 4:5 còn 150x187 < 600x750"
+    },
+    {
+      "file": "r009.jpg",
+      "ly_do": "QUA_NHO: sau cắt 4:5 còn 150x187 < 600x750"
+    }
+  ],
+  "sku_can_owner_dien_nguon": []
+}

@@ -90,6 +90,14 @@
     const remembered = history.state?.beautyshopHomeSlide;
     if (initial && Number.isInteger(remembered) && remembered >= 0 && remembered < slides.length) index = remembered;
     else if (initial && location.hash) { const target = slides.findIndex((slide) => '#' + slide.id === location.hash); if (target >= 0) index = target; }
+    // P21: a hash below the carousel (#home-products, #home-all-products, #home-footer) keeps the reader there;
+    // the carousel waits on the last chapter so scrolling back up returns to chapter 6.
+    let below = null;
+    if (initial && location.hash && !slides.some((slide) => '#' + slide.id === location.hash)) {
+      try { below = document.querySelector(location.hash); } catch { below = null; }
+      if (below && (stage.contains(below) || !(stage.compareDocumentPosition(below) & Node.DOCUMENT_POSITION_FOLLOWING))) below = null;
+      if (below) index = slides.length - 1;
+    }
     const beforeY = scrollY;
     const preserveFooter = initial && Number.isInteger(remembered) && beforeY > 2 && !location.hash;
     initial = false;
@@ -115,7 +123,8 @@
       swiper.init();
       if (slides.some((slide) => slide.scrollHeight > root.clientHeight + 2)) { disable('content-height'); return; }
       delete root.dataset.carouselFallback;
-      scrollTo(0, preserveFooter ? beforeY : stage.offsetTop);
+      if (below) below.scrollIntoView({ block: 'start' });
+      else scrollTo(0, preserveFooter ? beforeY : stage.offsetTop);
       sync(); controls();
     } catch { disable('initialization-error'); }
   };

@@ -1,0 +1,5 @@
+== P20 template scan
+templates/admin/dashboard.html: style=0 on*=0 utext=0 inline-script=0 http=0
+templates/fragments/header.html: style=0 on*=0 utext=0 inline-script=0 http=0
+templates/order/list.html: style=0 on*=0 utext=0 inline-script=0 http=0
+dashboard.js innerHTML/eval: 0

@@ -14,6 +14,10 @@
         <a class="text-link" th:href="@{/admin/returns}">Quản lý đổi trả</a>
         <a class="text-link" th:href="@{/admin/ai}">Kho tri thức tư vấn</a>
     </nav>
+    <p class="notice" role="status" th:if="${locTrangThai != null}">
+        <span th:text="|Đang lọc ${#lists.size(donHang)} đơn: ${#strings.listJoin(locTrangThai.![label], ', ')}.|"></span>
+        <a class="text-link" th:href="@{/admin/orders}">Xem tất cả đơn</a>
+    </p>
     <p class="notice" th:if="${#lists.isEmpty(donHang)}">Chưa có đơn hàng.</p>
     <ul class="catalog-list">
         <li th:each="muc : ${donHang}">

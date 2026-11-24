@@ -1,0 +1,3 @@
+﻿Demo catalog imported: 31 products, 32 SKUs.
+tong_sku	placeholder	anh_demo	anh_admin
+32	32	NULL	NULL

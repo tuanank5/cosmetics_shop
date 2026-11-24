@@ -1,0 +1,453 @@
+{
+  "base": "http://localhost:8081",
+  "startedAt": "2026-11-23T14:01:30.334Z",
+  "viewports": {
+    "340x720": {
+      "mode": "fallback (content-height)",
+      "overflowX": false,
+      "h1": 1,
+      "logo": {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loaded": true,
+        "height": 32,
+        "width": 24,
+        "opacity": "1",
+        "label": "BeautyShop – Trang chủ"
+      },
+      "headerOverlap": [],
+      "chapter1BrandOpacity": null,
+      "hero": {
+        "rect": {
+          "x": 16,
+          "y": 24,
+          "w": 308,
+          "h": 91,
+          "r": 324,
+          "b": 115
+        },
+        "overlap": [],
+        "insideX": true
+      },
+      "slide1Overflow": null,
+      "pass": true
+    },
+    "360x800": {
+      "mode": "fallback (content-height)",
+      "overflowX": false,
+      "h1": 1,
+      "logo": {
+        "src": "/img/brand/beautyshop-lockup.svg",
+        "loaded": true,
+        "height": 32,
+        "width": 189,
+        "opacity": "1",
+        "label": "BeautyShop – Trang chủ"
+      },
+      "headerOverlap": [],
+      "chapter1BrandOpacity": null,
+      "hero": {
+        "rect": {
+          "x": 24,
+          "y": 40,
+          "w": 312,
+          "h": 92,
+          "r": 336,
+          "b": 132
+        },
+        "overlap": [],
+        "insideX": true
+      },
+      "slide1Overflow": null,
+      "pass": true
+    },
+    "390x844": {
+      "mode": "fallback (content-height)",
+      "overflowX": false,
+      "h1": 1,
+      "logo": {
+        "src": "/img/brand/beautyshop-lockup.svg",
+        "loaded": true,
+        "height": 32,
+        "width": 219,
+        "opacity": "1",
+        "label": "BeautyShop – Trang chủ"
+      },
+      "headerOverlap": [],
+      "chapter1BrandOpacity": null,
+      "hero": {
+        "rect": {
+          "x": 24,
+          "y": 40,
+          "w": 342,
+          "h": 101,
+          "r": 366,
+          "b": 141
+        },
+        "overlap": [],
+        "insideX": true
+      },
+      "slide1Overflow": null,
+      "pass": true
+    },
+    "768x1024": {
+      "mode": "carousel",
+      "overflowX": false,
+      "h1": 1,
+      "logo": {
+        "src": "/img/brand/beautyshop-lockup.svg",
+        "loaded": true,
+        "height": 32,
+        "width": 238,
+        "opacity": "1",
+        "label": "BeautyShop – Trang chủ"
+      },
+      "headerOverlap": [],
+      "chapter1BrandOpacity": "0",
+      "hero": {
+        "rect": {
+          "x": 138,
+          "y": 56,
+          "w": 492,
+          "h": 144,
+          "r": 630,
+          "b": 200
+        },
+        "overlap": [],
+        "insideX": true
+      },
+      "slide1Overflow": false,
+      "pass": true
+    },
+    "1366x768": {
+      "mode": "carousel",
+      "overflowX": false,
+      "h1": 1,
+      "logo": {
+        "src": "/img/brand/beautyshop-lockup.svg",
+        "loaded": true,
+        "height": 40,
+        "width": 298,
+        "opacity": "1",
+        "label": "BeautyShop – Trang chủ"
+      },
+      "headerOverlap": [],
+      "chapter1BrandOpacity": "0",
+      "hero": {
+        "rect": {
+          "x": 343,
+          "y": 56,
+          "w": 680,
+          "h": 200,
+          "r": 1023,
+          "b": 256
+        },
+        "overlap": [],
+        "insideX": true
+      },
+      "slide1Overflow": false,
+      "pass": true
+    },
+    "1920x1080": {
+      "mode": "carousel",
+      "overflowX": false,
+      "h1": 1,
+      "logo": {
+        "src": "/img/brand/beautyshop-lockup.svg",
+        "loaded": true,
+        "height": 40,
+        "width": 298,
+        "opacity": "1",
+        "label": "BeautyShop – Trang chủ"
+      },
+      "headerOverlap": [],
+      "chapter1BrandOpacity": "0",
+      "hero": {
+        "rect": {
+          "x": 620,
+          "y": 56,
+          "w": 680,
+          "h": 200,
+          "r": 1300,
+          "b": 256
+        },
+        "overlap": [],
+        "insideX": true
+      },
+      "slide1Overflow": false,
+      "pass": true
+    },
+    "1366x768-zoom200": {
+      "mode": "fallback (viewport-or-css)",
+      "overflowX": false,
+      "h1": 1,
+      "logo": {
+        "src": "/img/brand/beautyshop-lockup.svg",
+        "loaded": true,
+        "height": 32,
+        "width": 238,
+        "opacity": "1",
+        "label": "BeautyShop – Trang chủ"
+      },
+      "headerOverlap": [],
+      "chapter1BrandOpacity": null,
+      "hero": {
+        "rect": {
+          "x": 162,
+          "y": 132,
+          "w": 360,
+          "h": 106,
+          "r": 522,
+          "b": 238
+        },
+        "overlap": [],
+        "insideX": true
+      },
+      "slide1Overflow": null,
+      "pass": true
+    }
+  },
+  "products": {
+    "340x720": {
+      "overflowX": false,
+      "h1": 1,
+      "logo": {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loaded": true,
+        "height": 32,
+        "width": 24,
+        "opacity": "1",
+        "label": "BeautyShop – Trang chủ"
+      },
+      "headerOverlap": [],
+      "pass": true
+    },
+    "360x800": {
+      "overflowX": false,
+      "h1": 1,
+      "logo": {
+        "src": "/img/brand/beautyshop-lockup.svg",
+        "loaded": true,
+        "height": 32,
+        "width": 189,
+        "opacity": "1",
+        "label": "BeautyShop – Trang chủ"
+      },
+      "headerOverlap": [],
+      "pass": true
+    },
+    "390x844": {
+      "overflowX": false,
+      "h1": 1,
+      "logo": {
+        "src": "/img/brand/beautyshop-lockup.svg",
+        "loaded": true,
+        "height": 32,
+        "width": 219,
+        "opacity": "1",
+        "label": "BeautyShop – Trang chủ"
+      },
+      "headerOverlap": [],
+      "pass": true
+    },
+    "768x1024": {
+      "overflowX": false,
+      "h1": 1,
+      "logo": {
+        "src": "/img/brand/beautyshop-lockup.svg",
+        "loaded": true,
+        "height": 32,
+        "width": 238,
+        "opacity": "1",
+        "label": "BeautyShop – Trang chủ"
+      },
+      "headerOverlap": [],
+      "pass": true
+    },
+    "1366x768": {
+      "overflowX": false,
+      "h1": 1,
+      "logo": {
+        "src": "/img/brand/beautyshop-lockup.svg",
+        "loaded": true,
+        "height": 40,
+        "width": 298,
+        "opacity": "1",
+        "label": "BeautyShop – Trang chủ"
+      },
+      "headerOverlap": [],
+      "pass": true
+    },
+    "1920x1080": {
+      "overflowX": false,
+      "h1": 1,
+      "logo": {
+        "src": "/img/brand/beautyshop-lockup.svg",
+        "loaded": true,
+        "height": 40,
+        "width": 298,
+        "opacity": "1",
+        "label": "BeautyShop – Trang chủ"
+      },
+      "headerOverlap": [],
+      "pass": true
+    },
+    "1366x768-zoom200": {
+      "overflowX": false,
+      "h1": 1,
+      "logo": {
+        "src": "/img/brand/beautyshop-lockup.svg",
+        "loaded": true,
+        "height": 32,
+        "width": 238,
+        "opacity": "1",
+        "label": "BeautyShop – Trang chủ"
+      },
+      "headerOverlap": [],
+      "pass": true
+    }
+  },
+  "animation": {
+    "earlyLetterOpacity": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "timing": {
+      "draw": [
+        "0.1s",
+        "0.45s",
+        "0.1s"
+      ],
+      "letters": [
+        "0.55s",
+        "0.61s",
+        "0.67s",
+        "0.73s",
+        "0.79s",
+        "0.85s",
+        "0.91s",
+        "0.97s",
+        "1.03s",
+        "1.09s"
+      ],
+      "mono": [
+        "0.9s"
+      ],
+      "rules": [
+        "1.5s",
+        "1.5s"
+      ],
+      "tagline": [
+        "1.6s"
+      ],
+      "sheen": [
+        "1.9s"
+      ],
+      "iterations": [
+        "1"
+      ]
+    },
+    "finalOpacity": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "runningAfter4_5s": 0,
+    "runningAfterReturnToChapter1": 0,
+    "pass": true
+  },
+  "reducedMotion": {
+    "opacities": [
+      1
+    ],
+    "heroAnimations": 0,
+    "sheenOpacity": "0",
+    "pass": true
+  },
+  "noJs": {
+    "heroOpacities": [
+      1
+    ],
+    "logo": {
+      "src": "/img/brand/beautyshop-lockup.svg",
+      "loaded": true,
+      "height": 40,
+      "width": 298,
+      "opacity": "1",
+      "label": "BeautyShop – Trang chủ"
+    },
+    "overflowX": false,
+    "heroOverlap": [],
+    "pass": true
+  },
+  "carousel": {
+    "seq": "2@0 3@0 4@0 5@0 6@0 6@294 6@294 6@0 5@0 4@0 3@0 2@0 1@0 1@0 1@0 1@0",
+    "pass": true
+  },
+  "favicon": {
+    "href": "/img/favicon.svg",
+    "type": "image/svg+xml",
+    "status": 200,
+    "contentType": "image/svg+xml;charset=UTF-8",
+    "hasMark": true,
+    "tabDisplay": "chưa kiểm chứng (headless không có thanh tab)",
+    "pass": true
+  },
+  "footer": {
+    "src": "/img/brand/beautyshop-wordmark.svg",
+    "alt": "BeautyShop",
+    "loaded": true,
+    "h": 28,
+    "w": 340,
+    "pass": true
+  },
+  "placeholder": {
+    "visible": 12,
+    "loaded": true,
+    "w": 48,
+    "h": 64,
+    "inside": true,
+    "pass": true
+  },
+  "error": {
+    "h1": 1,
+    "logo": {
+      "src": "/img/brand/beautyshop-lockup.svg",
+      "loaded": true,
+      "height": 40,
+      "width": 298,
+      "opacity": "1",
+      "label": "BeautyShop – Trang chủ"
+    },
+    "overflowX": false,
+    "pass": true
+  },
+  "admin": {
+    "verified": false,
+    "note": "Thiếu DB env hoặc MariaDB CLI: chưa kiểm chứng trên trình duyệt."
+  },
+  "exceptions": [],
+  "finishedAt": "2026-11-23T14:02:32.772Z",
+  "summary": {
+    "pass": 22,
+    "fail": 0,
+    "jsExceptions": 0,
+    "adminVerified": false
+  }
+}

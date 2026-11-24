@@ -1,5 +1,6 @@
 package com.beautyshop.service;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import com.beautyshop.dto.DanhGia_Form;
 import com.beautyshop.dto.DoiTra_Form;
 import com.beautyshop.order.ReturnStatus;
@@ -35,6 +36,7 @@ public class SauMua_Service {
     }
 
     public List<DanhGia> danhGiaCongKhai(long maSanPham) { return danhGia.congKhai(maSanPham); }
+    @PreAuthorize("hasRole('ADMIN')")
     public List<DanhGia_Repository.DanhGiaAdmin> danhSachDanhGiaAdmin() { return danhGia.danhSachAdmin(); }
     public List<DoiTra_Repository.YeuCau> danhSachDoiTra(Long maNguoiDung) { return doiTra.danhSach(maNguoiDung); }
     public List<YeuThich_Repository.Muc> danhSachYeuThich(long maNguoiDung) { return yeuThich.danhSach(maNguoiDung); }
@@ -61,6 +63,7 @@ public class SauMua_Service {
         return muc.maDon();
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     public void datHienThi(long maDanhGia, boolean hienThi, String phienBan) {
         if (hienThi && (phienBan == null || !phienBan.matches("[a-fA-F0-9]{64}"))) {
             throw new IllegalStateException("Vui lòng tải lại đánh giá để duyệt.");
@@ -119,6 +122,7 @@ public class SauMua_Service {
     }
 
     @Transactional
+    @PreAuthorize("hasRole('ADMIN')")
     public void chuyenDoiTra(long maYeuCau, ReturnStatus dich) {
         var hienTai = doiTra.chiTiet(maYeuCau, null).orElseThrow(SauMua_Service::khongTimThay).yeuCau().trangThai();
         if (!hienTai.buocTiepTheo().contains(dich) || !doiTra.chuyen(maYeuCau, hienTai, dich)) {

@@ -1,5 +1,6 @@
 package com.beautyshop.service;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import com.beautyshop.dto.DangKy_Form;
 import com.beautyshop.dto.HoSo_Form;
 import com.beautyshop.entity.NguoiDung;
@@ -54,6 +55,7 @@ public class NguoiDung_Service {
     }
 
     @Transactional(readOnly = true)
+    @PreAuthorize("hasRole('ADMIN')")
     public Page<NguoiDung_Repository.TomTat> timNguoiDung(String q, Pageable pageable) {
         String mau = q.isEmpty() ? "" : "%" + q.toLowerCase(Locale.ROOT)
             .replace("!", "!!").replace("%", "!%").replace("_", "!_") + "%";
@@ -61,6 +63,7 @@ public class NguoiDung_Service {
     }
 
     @Transactional
+    @PreAuthorize("hasRole('ADMIN')")
     public boolean datTrangThai(long maAdmin, long phienBanXacThuc, long maMucTieu, boolean kichHoat) {
         if (maAdmin == maMucTieu && !kichHoat) {
             return false;

@@ -6,7 +6,30 @@
   <a class="skip-link" href="#main">Đến nội dung chính</a>
 
   <div class="nav-shell">
-    <a class="brand" th:href="@{/}" aria-label="BeautyShop · Trang chủ">BEAUTY<span>SHOP</span></a>
+    <div class="header-start">
+      <a class="header-account" th:href="@{/login}" sec:authorize="isAnonymous()"
+         th:attr="aria-current=${path == '/login' ? 'page' : null}">
+        <svg class="header-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <circle cx="12" cy="8" r="4"/><path d="M4.5 21a7.5 7.5 0 0 1 15 0"/>
+        </svg>
+        <span class="header-account-label">Đăng nhập</span>
+      </a>
+      <form class="header-account-form" method="post" th:action="@{/logout}" sec:authorize="isAuthenticated()">
+        <button class="header-account" type="submit">
+          <svg class="header-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M14 4h4a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-4"/><path d="M10 16l-4-4 4-4"/><path d="M6 12h10"/>
+          </svg>
+          <span class="header-account-label">Đăng xuất</span>
+        </button>
+      </form>
+    <a class="brand" th:href="@{/}" aria-label="BeautyShop – Trang chủ">
+      <picture>
+        <source media="(max-width: 359px)" th:srcset="@{/img/brand/beautyshop-mark.svg}" width="120" height="160">
+        <img class="brand-logo" th:src="@{${#strings.startsWith(path, '/admin') ? '/img/brand/beautyshop-lockup-light.svg' : '/img/brand/beautyshop-lockup.svg'}}"
+             alt="BeautyShop" width="402" height="54">
+      </picture>
+    </a>
+    </div>
     <form class="header-search" method="get" th:action="@{/products}" role="search" aria-label="Tìm sản phẩm">
       <label class="visually-hidden" for="header-search">Tên sản phẩm hoặc SKU</label>
       <input id="header-search" name="q" type="search" maxlength="160" placeholder="Tìm sản phẩm, SKU…">
@@ -15,6 +38,7 @@
     <details class="header-menu">
       <summary><span class="menu-closed">Menu cửa hàng</span><span class="menu-open">Đóng menu</span></summary>
       <nav class="nav-links" aria-label="Điều hướng chính">
+        <a th:href="@{/admin/dashboard}" sec:authorize="hasRole('ADMIN')" th:attr="aria-current=${path == '/admin/dashboard' ? 'page' : null}">Tổng quan</a>
         <a th:href="@{/}" th:attr="aria-current=${path == '/' ? 'page' : null}">Trang chủ</a>
         <a th:href="@{/products}" th:attr="aria-current=${path == '/products' ? 'page' : null}, data-active-group=${#strings.startsWith(path, '/products/') ? 'products' : null}">Sản phẩm</a>
         <a th:href="@{/chat}" th:attr="aria-current=${path == '/chat' ? 'page' : null}">Tư vấn</a>

@@ -96,7 +96,7 @@ class XacThuc_MariaDb_Test {
             .andExpect(redirectedUrl("/?logout")).andExpect(unauthenticated());
         assertThat(session.isInvalid()).isTrue();
 
-        var adminSession = dangNhap(admin, new MockHttpSession(), "ADMIN", "/");
+        var adminSession = dangNhap(admin, new MockHttpSession(), "ADMIN", "/admin/dashboard"); // P20: Admin vào Dashboard
         mvc.perform(get("/admin/catalog/products").session(adminSession)).andExpect(status().isOk());
         mvc.perform(get("/account").session(adminSession)).andExpect(status().isForbidden());
         mvc.perform(get("/checkout").session(adminSession)).andExpect(status().isForbidden());
@@ -259,7 +259,7 @@ class XacThuc_MariaDb_Test {
             jdbc.sql("INSERT INTO nguoi_dung (email, mat_khau_bam, ho_ten, kich_hoat) VALUES (?, '', ?, FALSE)")
                 .params(email(), q).update();
         }
-        var phienAdmin = dangNhap(admin, new MockHttpSession(), "ADMIN", "/");
+        var phienAdmin = dangNhap(admin, new MockHttpSession(), "ADMIN", "/admin/dashboard"); // P20: Admin vào Dashboard
         var phienCustomer = dangNhap(customer, new MockHttpSession(), "CUSTOMER", "/");
         var phienChuaDung = dangNhap(customer, new MockHttpSession(), "CUSTOMER", "/");
         mvc.perform(get("/admin/users").session(phienCustomer)).andExpect(status().isForbidden());

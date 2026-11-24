@@ -1,5 +1,6 @@
 package com.beautyshop.service;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import com.beautyshop.domain.catalog.NhomDanhMucSanPhamThuongHieu;
 import com.beautyshop.dto.DanhMucSanPhamThuongHieu_Form;
 import com.beautyshop.entity.ThuongHieu;
@@ -20,6 +21,7 @@ import org.springframework.validation.Errors;
 import org.springframework.web.server.ResponseStatusException;
 
 @Service
+@PreAuthorize("hasRole('ADMIN')")
 public class DanhMucSanPhamThuongHieu_Service {
     private final DanhMuc_Repository danhMucRepository;
     private final ThuongHieu_Repository thuongHieuRepository;
