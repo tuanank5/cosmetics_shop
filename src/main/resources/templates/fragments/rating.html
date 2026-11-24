@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<body>
+<!-- P23: hiển thị sao. nuaSao = số nửa sao được tô (0–10); nhan = chữ thay thế, ví dụ "4,5 trên 5 sao". -->
+<span th:fragment="stars(nuaSao, nhan)" class="rating-stars" role="img" th:attr="aria-label=${nhan}">
+    <span th:each="i : ${#numbers.sequence(1, 5)}" class="rating-star" aria-hidden="true"
+          th:classappend="${nuaSao >= i * 2 ? 'is-full' : (nuaSao == i * 2 - 1 ? 'is-half' : '')}">★</span>
+</span>
+</body>
+</html>

@@ -1,0 +1,34 @@
+Waiting for the owner to sign in as Admin in the opened Chrome window (up to 10 minutes)...
+PASS owner signed in as Admin {"path":"/admin/dashboard"}
+PASS customer registered and signed in (storefront, separate context) {"path":"/"}
+PASS found an in-stock product {"pdp":"/products/demo-r031"}
+NOTE pdp before {"pdp":"/products/demo-r031","diem":"5,0","soDanhGia":2,"bars":["2","0","0","0","0"]}
+PASS two COD orders placed through the UI {"don1":122,"don2":123}
+PASS Admin moved order 1 to DELIVERED via status buttons {"buoc":["CONFIRMED","PACKING","SHIPPING","DELIVERED"],"adminErr":null}
+PASS delivered order shows review link {"link":"/orders/items/207/review"}
+PASS undelivered order: no review link, GET/POST review -> 409 {"link2":false,"mucChuaGiao":208,"tryUndelivered":[409,409]}
+PASS review form: 5 star radios, 0/1000 counter, maxlength 1000 {"radios":5,"count":"0/1000 ký tự","maxlength":"1000","overflowX":false}
+PASS keyboard: ArrowRight x4 selects 5 stars, stars recolor {"checked":"5","focused":"soSao5","color5":"rgb(168, 138, 90)","color1":"rgb(168, 138, 90)"}
+PASS character counter follows typing {"counter":"57","expected":57}
+PASS review form 390px: no horizontal scroll
+PASS review submitted -> back to order with message {"path":"/orders/122","msg":"Đã gửi đánh giá để duyệt."}
+PASS pending review not public yet {"mine":null,"soDanhGia":2}
+PASS Admin: review appears under "Chờ duyệt" with version 0 {"badge":"Chờ duyệt","revision":"0","button":"Duyệt đánh giá","text":true}
+PASS Admin approve (version 0) succeeds {"duyet1":"Đã duyệt đánh giá."}
+PASS approved review is public: text, "Đã mua hàng", 5 stars, count +1 {"h1":"Resist Youth-Extending Daily Hydrating Fluid SPF 50","tamThoi":false,"chuaCo":false,"diem":"5,0","soDanhGia":3,"starsLabel":"5,0 trên 5 sao","bars":["3","0","0","0","0"],"items":3,"mine":{"text":"QA-P23-6f391b thấm nhanh, mùi dễ chịu, da mềm sau 2 tuần.","badge":true,"stars":"5 trên 5 sao","name":"P23 K.","date":"24/11/2026"},"cartForm":true,"overflowX":false}
+NOTE pdp after approval {"diem":"5,0","starsLabel":"5,0 trên 5 sao","soDanhGia":3,"bars":["3","0","0","0","0"],"mine":{"text":"QA-P23-6f391b thấm nhanh, mùi dễ chịu, da mềm sau 2 tuần.","badge":true,"stars":"5 trên 5 sao","name":"P23 K.","date":"24/11/2026"}}
+PASS pdp 390px: reviews visible, no horizontal scroll {"overflowX":false}
+PASS edit form prefilled (5 stars) and posts to /edit {"action":"/orders/items/207/review/edit","checked":"5","button":"Lưu và gửi duyệt lại"}
+PASS edit hides the review pending re-approval (count back) {"mine":null,"soDanhGia":2}
+PASS Admin sees edited review pending again with version 2 {"badge":"Chờ duyệt","revision":"2","button":"Duyệt đánh giá","text":true}
+PASS Admin approving a stale version is rejected {"stale":"Đánh giá đã thay đổi. Vui lòng kiểm tra lại."}
+PASS Admin re-approves the version they saw (3) {"a3":{"badge":"Chờ duyệt","revision":"3","button":"Duyệt đánh giá","text":true},"duyet3":"Đã duyệt đánh giá."}
+PASS public review shows latest edit with 3 stars {"text":"QA-P23-6f391b sửa lần 2: vẫn dùng tiếp, thấm nhanh.","badge":true,"stars":"3 trên 5 sao","name":"P23 K.","date":"24/11/2026"}
+PASS Admin filter "Đang hiện" + 3 sao includes the review, only 3-star items {"mine":true,"allThree":true,"total":"9 đánh giá"}
+PASS Admin reviews 390px: no horizontal scroll
+NOTE dashboard (30d) {"todo":[{"n":"7","label":"7 Đánh giá chờ duyệt hiển thị Duyệt đánh giá"},{"n":"0","label":"0 Yêu cầu đổi trả chờ xử lý Xem đổi trả"},{"n":"0","label":"0 Voucher đang bật hết hạn trong 7 ngày Xem voucher"}],"sao":["5 sao 11","4 sao 9","3 sao 6","2 sao 3","1 sao 0"]}
+PASS Dashboard shows review counters {"todo":[{"n":"7","label":"7 Đánh giá chờ duyệt hiển thị Duyệt đánh giá"},{"n":"0","label":"0 Yêu cầu đổi trả chờ xử lý Xem đổi trả"},{"n":"0","label":"0 Voucher đang bật hết hạn trong 7 ngày Xem voucher"}],"sao":["5 sao 11","4 sao 9","3 sao 6","2 sao 3","1 sao 0"]}
+PASS /products cards show average stars + count {"cards":12,"rated":11,"sample":["★★★★★ 4,3 · 3 đánh giá","★★★★★ 3,3 · 3 đánh giá","★★★★★ 4,7 · 3 đánh giá"],"overflowX":false}
+NOTE home popular (Mongo-backed reviews + demo wishlists) [{"href":"/products/demo-r026","rating":"★★★★★ 3,6 · 5 đánh giá"},{"href":"/products/demo-r001","rating":"★★★★★ 4,7 · 3 đánh giá"},{"href":"/products/demo-r009","rating":"★★★★★ 4,5 · 2 đánh giá"},{"href":"/products/demo-r021","rating":"★★★★★ 4,3 · 3 đánh giá"},{"href":"/products/demo-r029","rating":"★★★★★ 4,7 · 3 đánh giá"}]
+PASS home popular section renders 5
+ALL PASS; page exceptions: 0

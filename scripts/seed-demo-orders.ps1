@@ -12,6 +12,10 @@
         thanh toán FAILED -> RELEASED, đơn EXPIRED (tồn không đổi), giống ThanhToanMomo_Service.ketThucDon.
       - Không áp voucher. Phí giao hàng theo ShippingFee_Policy (25.000 ₫, miễn phí từ 500.000 ₫). Giá = gia_ban hiện hành.
       - Đánh giá demo chỉ cho dòng hàng của đơn DELIVERED thuộc chính người mua, tối đa một lần mỗi dòng, sau ngày giao.
+        P23: đánh giá được ghi vào bảng MariaDB danh_gia như trước; app đọc đánh giá từ MongoDB, nên sau khi seed
+        chạy app MỘT lần với REVIEWS_MIGRATE_FROM_MARIADB=true để chuyển sang MongoDB (xem docs/deployment/07-mongodb-danh-gia.md).
+      - P23: 30 lượt yêu thích demo (san_pham_yeu_thich) của các khách demo cho sản phẩm demo, chọn tất định theo -Seed.
+        Idempotent: chỉ thêm cặp chưa có; chạy lại (kể cả khi đơn demo đã có) không nhân đôi.
     Đánh dấu demo: mã đơn DEMO-ORD-NNN, tên người nhận/địa chỉ/nội dung đánh giá bắt đầu "[DEMO]"
     (don_hang không có cột ghi chú). Chạy lại: nếu đã có đơn DEMO-ORD-% thì dừng, không tạo trùng.
     Tồn kho: kế hoạch lập từ tồn khả dụng hiện tại, mỗi SKU giữ lại tối thiểu 2; CHECK của schema
@@ -77,9 +81,43 @@ function New-RandomBcryptShape {
     return '$2a$10$' + (-join ($bytes | ForEach-Object { $alphabet[$_ % 64] }))
 }
 
+# P23: lượt yêu thích demo để thành phần "yêu thích" trong điểm phổ biến P21 có dữ liệu. Không đổi schema.
+function Add-DemoWishlists([int] $Target = 30) {
+    $customerIds = @(Invoke-DemoSql "SELECT ma_nguoi_dung FROM nguoi_dung WHERE email LIKE 'demo-khach-%@example.test' ORDER BY email;" -Query |
+        Where-Object { $_ } | ForEach-Object { [long]$_ })
+    $productIds = @(Invoke-DemoSql "SELECT ma_san_pham FROM san_pham WHERE duong_dan LIKE 'demo-r%' AND dang_hoat_dong = TRUE ORDER BY ma_san_pham;" -Query |
+        Where-Object { $_ } | ForEach-Object { [long]$_ })
+    if ($customerIds.Count -eq 0 -or $productIds.Count -eq 0) {
+        Write-Output 'Wishlists: no demo customers/products yet, skipped.'
+        return
+    }
+    $wishRand = New-Object Random ($Seed + 7)
+    $pairs = New-Object 'Collections.Generic.HashSet[string]'
+    $max = [Math]::Min($Target, $customerIds.Count * $productIds.Count)
+    $guard = 0
+    while ($pairs.Count -lt $max -and $guard -lt 10000) {
+        $guard++
+        # Skewed towards the first products so a few products clearly lead the wishlist component.
+        $p = $productIds[[int][Math]::Floor([Math]::Pow($wishRand.NextDouble(), 1.8) * $productIds.Count)]
+        $c = $customerIds[$wishRand.Next($customerIds.Count)]
+        [void]$pairs.Add("$c,$p")
+    }
+    $sql = New-Object 'Collections.Generic.List[string]'
+    $sql.Add('START TRANSACTION;')
+    foreach ($pair in $pairs) {
+        $c, $p = $pair -split ','
+        $sql.Add("INSERT INTO san_pham_yeu_thich (ma_nguoi_dung, ma_san_pham) SELECT $c, $p FROM DUAL WHERE NOT EXISTS (SELECT 1 FROM san_pham_yeu_thich WHERE ma_nguoi_dung = $c AND ma_san_pham = $p);")
+    }
+    $sql.Add('COMMIT;')
+    Invoke-DemoSql ($sql -join "`n") | Out-Null
+    $count = Invoke-DemoSql "SELECT COUNT(*) FROM san_pham_yeu_thich y JOIN nguoi_dung n ON n.ma_nguoi_dung = y.ma_nguoi_dung WHERE n.email LIKE 'demo-khach-%@example.test';" -Query
+    Write-Output "Demo wishlists: $count (target $max)."
+}
+
 $existing = [int](Invoke-DemoSql "SELECT COUNT(*) FROM don_hang WHERE ma_don_hang_hien_thi LIKE 'DEMO-ORD-%';" -Query)
 if ($existing -gt 0) {
-    Write-Output "Demo orders already exist ($existing). Nothing to do."
+    Write-Output "Demo orders already exist ($existing). Nothing to do for orders."
+    Add-DemoWishlists
     return
 }
 
@@ -242,3 +280,5 @@ $summary = ($counts.GetEnumerator() | Sort-Object Name | ForEach-Object { "$($_.
 Write-Output "Demo orders created: $total ($summary); reviews: $reviews; customers: $CustomerCount."
 $check = Invoke-DemoSql 'SELECT COUNT(*), SUM(so_luong_trong_kho < 0), SUM(so_luong_tam_giu > so_luong_trong_kho), MIN(so_luong_trong_kho) FROM bien_the_san_pham;' -Query
 Write-Output "Stock check (SKUs, negative, reserved>onHand, min onHand): $check"
+Add-DemoWishlists
+Write-Output 'Next (P23): run the app once with REVIEWS_MIGRATE_FROM_MARIADB=true to copy demo reviews into MongoDB.' 

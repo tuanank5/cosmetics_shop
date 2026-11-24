@@ -1,0 +1,6 @@
+templates/product/detail.html              utext=0 style=0 on*=0 inline-script=0 http=1
+templates/order/review.html                utext=0 style=0 on*=0 inline-script=0 http=1
+templates/admin/user/reviews.html          utext=0 style=0 on*=0 inline-script=0 http=1
+templates/fragments/product-card.html      utext=0 style=0 on*=0 inline-script=0 http=1
+templates/fragments/rating.html            utext=0 style=0 on*=0 inline-script=0 http=1
+http=1 = xmlns:th="http://www.thymeleaf.org" (namespace), khong tai tai nguyen ngoai: http://www.thymeleaf.org http://www.thymeleaf.org/extras/spring-security 

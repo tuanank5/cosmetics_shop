@@ -12,6 +12,8 @@ import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.dao.DataAccessException;
 import com.beautyshop.security.PhienNguoiDung;
 import com.beautyshop.service.GoiYSanPham_Service;
+import com.beautyshop.service.SauMua_Service;
+import com.beautyshop.repository.DanhGia_Store;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
@@ -35,12 +37,15 @@ public class Bootstrap_Controller {
     private final ObjectProvider<CuaHang_Service> cuaHangService;
     private final ObjectProvider<TrangChu_Service> trangChuService;
     private final ObjectProvider<GoiYSanPham_Service> goiYService;
+    private final ObjectProvider<SauMua_Service> sauMuaService;
 
     public Bootstrap_Controller(ObjectProvider<CuaHang_Service> cuaHangService,
-            ObjectProvider<TrangChu_Service> trangChuService, ObjectProvider<GoiYSanPham_Service> goiYService) {
+            ObjectProvider<TrangChu_Service> trangChuService, ObjectProvider<GoiYSanPham_Service> goiYService,
+            ObjectProvider<SauMua_Service> sauMuaService) {
         this.cuaHangService = cuaHangService;
         this.trangChuService = trangChuService;
         this.goiYService = goiYService;
+        this.sauMuaService = sauMuaService;
     }
 
     @GetMapping("/")
@@ -64,6 +69,15 @@ public class Bootstrap_Controller {
                 return trang == null ? List.<CuaHang_Repository.TheSanPham>of() : trang.getContent();
             },
             List.<CuaHang_Repository.TheSanPham>of()));
+        // P23: sao trung bình cho mọi thẻ trên trang chủ trong một truy vấn tóm tắt.
+        java.util.Set<Long> maThe = new java.util.LinkedHashSet<>();
+        for (String khu : List.of("sanPhamNoiBat", "sanPhamPhoBien", "tatCaSanPham")) {
+            if (model.getAttribute(khu) instanceof Collection<?> the) {
+                the.forEach(t -> { if (t instanceof CuaHang_Repository.TheSanPham sp) { maThe.add(sp.getMaSanPham()); } });
+            }
+        }
+        model.addAttribute("tomTatDanhGia", doc(sauMuaService, "tom tat danh gia", service -> service.tomTatDanhGia(maThe),
+            java.util.Map.<Long, DanhGia_Store.TomTatDanhGia>of()));
         return "home/index";
     }
 

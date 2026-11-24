@@ -37,7 +37,7 @@ class AdminServiceMethodSecurityTest {
             return repository;
         }
         @Bean ThongKe_Repository thongKeRepository() { return mock(ThongKe_Repository.class); }
-        @Bean ThongKe_Service thongKeService(ThongKe_Repository repository) { return new ThongKe_Service(repository); }
+        @Bean ThongKe_Service thongKeService(ThongKe_Repository repository) { return new ThongKe_Service(repository, org.mockito.Mockito.mock(com.beautyshop.repository.DanhGia_Store.class)); }
         @Bean NguoiDung_Service nguoiDungService(NguoiDung_Repository repository) {
             return new NguoiDung_Service(repository, NoOpPasswordEncoder.getInstance());
         }

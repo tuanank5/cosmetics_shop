@@ -1,10 +1,13 @@
 package com.beautyshop.controller;
 
 import com.beautyshop.dto.DanhGia_Form;
+import com.beautyshop.entity.DanhGia_Document;
 import com.beautyshop.dto.DoiTra_Form;
 import com.beautyshop.security.PhienNguoiDung;
 import com.beautyshop.service.SauMua_Service;
 import jakarta.validation.Valid;
+import org.springframework.dao.DataAccessException;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -41,17 +44,27 @@ class SauMua_Controller {
                        @AuthenticationPrincipal PhienNguoiDung phien,
                        @Valid @ModelAttribute("form") DanhGia_Form form, BindingResult errors,
                        Model model, RedirectAttributes flash) {
-        if (errors.hasErrors()) {
-            return hienDanhGia(id, sauMua.xemDanhGia(phien.getMaNguoiDung(), id), model);
+        if (!errors.hasErrors()) {
+            try {
+                long maDon = sauMua.luuDanhGia(phien.getMaNguoiDung(), id, form, action != null);
+                flash.addFlashAttribute("message", "Đã gửi đánh giá để duyệt.");
+                return "redirect:/orders/" + maDon;
+            } catch (IllegalArgumentException exception) {
+                errors.rejectValue("noiDung", "review.invalid", exception.getMessage());
+            } catch (DuplicateKeyException exception) {
+                throw exception;
+            } catch (DataAccessException exception) {
+                // Kho đánh giá (MongoDB) không phản hồi: giữ nguyên form để khách gửi lại sau.
+                model.addAttribute("loiLuu", SauMua_Service.LOI_KHO_DANH_GIA);
+            }
         }
-        long maDon = sauMua.luuDanhGia(phien.getMaNguoiDung(), id, form, action != null);
-        flash.addFlashAttribute("message", "Đã gửi đánh giá để duyệt.");
-        return "redirect:/orders/" + maDon;
+        return hienDanhGia(id, sauMua.xemDanhGia(phien.getMaNguoiDung(), id), model);
     }
 
     private String hienDanhGia(long id, SauMua_Service.TrangDanhGia trang, Model model) {
         model.addAttribute("trang", trang);
         model.addAttribute("action", "/orders/items/" + id + "/review" + (trang.hienTai() == null ? "" : "/edit"));
+        model.addAttribute("noiDungToiDa", DanhGia_Document.NOI_DUNG_TOI_DA);
         return "order/review";
     }
 

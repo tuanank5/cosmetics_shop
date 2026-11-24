@@ -31,6 +31,7 @@ class AdminDashboardPagesTest {
     @MockitoBean LoginSuccess_Handler loginSuccess;
     @MockitoBean NguoiDung_Repository nguoiDungRepository;
     @MockitoBean ThongKe_Repository repository;
+    @MockitoBean com.beautyshop.repository.DanhGia_Store danhGiaStore;
 
     @BeforeEach
     void stub() {
@@ -38,7 +39,8 @@ class AdminDashboardPagesTest {
             new ThongKe_Repository.DoanhThu(new BigDecimal("1250000"), 3, BigDecimal.ZERO, 0));
         when(repository.demDon(any(), any(), any())).thenReturn(new ThongKe_Repository.DemDon(4, 1, 2, 0));
         when(repository.khachMoi(any(), any(), any())).thenReturn(new long[] {2, 1});
-        when(repository.hienTai(any())).thenReturn(new ThongKe_Repository.HienTai(3, 1, 0, 2));
+        when(repository.hienTai(any())).thenReturn(new ThongKe_Repository.HienTai(3, 0, 2));
+        when(danhGiaStore.thongKe(any(), any())).thenReturn(new com.beautyshop.repository.DanhGia_Store.ThongKeDanhGia(1, new long[5]));
         when(repository.skuSapHet(anyInt(), anyInt())).thenReturn(java.util.List.of(
             new ThongKe_Repository.SkuSapHet(9, 4, "DEMO-004", "Serum", "30 ml", 1)));
     }

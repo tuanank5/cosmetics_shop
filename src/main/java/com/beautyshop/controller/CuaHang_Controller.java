@@ -1,5 +1,6 @@
 package com.beautyshop.controller;
 
+import com.beautyshop.repository.CuaHang_Repository.TheSanPham;
 import com.beautyshop.service.CuaHang_Service;
 import com.beautyshop.service.SauMua_Service;
 import org.springframework.data.domain.PageRequest;
@@ -42,6 +43,7 @@ class CuaHang_Controller {
                 pageable.withPage(Math.max(0, ketQua.getTotalPages() - 1)));
         }
         model.addAttribute("ketQua", ketQua);
+        model.addAttribute("tomTatDanhGia", sauMua.tomTatDanhGia(ketQua.getContent().stream().map(TheSanPham::getMaSanPham).toList()));
         model.addAttribute("thuongHieu", cuaHangService.thuongHieu());
         model.addAttribute("danhMuc", cuaHangService.danhMuc());
         model.addAttribute("q", q);
@@ -53,10 +55,11 @@ class CuaHang_Controller {
     }
 
     @GetMapping("/{slug}")
-    String chiTiet(@PathVariable String slug, @RequestParam(required = false) Long variant, Model model) {
+    String chiTiet(@PathVariable String slug, @RequestParam(required = false) Long variant,
+                   @RequestParam(name = "reviewPage", defaultValue = "0") int reviewPage, Model model) {
         var chiTiet = cuaHangService.chiTiet(slug, variant);
         model.addAttribute("chiTiet", chiTiet);
-        model.addAttribute("danhGia", sauMua.danhGiaCongKhai(chiTiet.sanPham().getMa()));
+        model.addAttribute("danhGia", sauMua.danhGiaSanPham(chiTiet.sanPham().getMa(), reviewPage));
         return "product/detail";
     }
 

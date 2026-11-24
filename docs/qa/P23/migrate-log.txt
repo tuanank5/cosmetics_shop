@@ -1,0 +1,4 @@
+== app-migrate-1
+c.b.r.ChuyenDanhGiaSangMongo_Runner      : P23 migrate danh_gia MariaDB -> MongoDB: doc=71, ghi=71, bo qua=0 (da co trong MongoDB=0, khong hop le=0)
+== app-migrate-2
+c.b.r.ChuyenDanhGiaSangMongo_Runner      : P23 migrate danh_gia MariaDB -> MongoDB: doc=71, ghi=0, bo qua=71 (da co trong MongoDB=71, khong hop le=0)

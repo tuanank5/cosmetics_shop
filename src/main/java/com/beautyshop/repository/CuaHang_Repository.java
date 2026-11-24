@@ -29,7 +29,7 @@ public interface CuaHang_Repository extends Repository<SanPham, Long> {
         """;
 
     @Query(value = """
-        select s.duongDan as duongDan, s.tenSanPham as tenSanPham, t.tenThuongHieu as tenThuongHieu,
+        select s.maSanPham as maSanPham, s.duongDan as duongDan, s.tenSanPham as tenSanPham, t.tenThuongHieu as tenThuongHieu,
                min(b.giaBan) as giaTu, min(b.urlHinhAnh) as urlHinhAnh,
                max(b.soLuongTrongKho - b.soLuongTamGiu) as soLuongKhaDungLonNhat
         """ + LOC + """
@@ -44,7 +44,7 @@ public interface CuaHang_Repository extends Repository<SanPham, Long> {
 
     /** Trang chủ: sản phẩm active mới nhất có ít nhất một SKU active còn hàng khả dụng; không có cờ "nổi bật" trong schema. */
     @Query("""
-        select s.duongDan as duongDan, s.tenSanPham as tenSanPham, t.tenThuongHieu as tenThuongHieu,
+        select s.maSanPham as maSanPham, s.duongDan as duongDan, s.tenSanPham as tenSanPham, t.tenThuongHieu as tenThuongHieu,
                min(b.giaBan) as giaTu, min(b.urlHinhAnh) as urlHinhAnh,
                max(b.soLuongTrongKho - b.soLuongTamGiu) as soLuongKhaDungLonNhat
         from BienTheSanPham b
@@ -108,11 +108,12 @@ public interface CuaHang_Repository extends Repository<SanPham, Long> {
         long getSoSanPham();
     }
 
+    /** Giữ tên cũ của P21; mọi thẻ đều có mã sản phẩm từ P23 (tóm tắt đánh giá theo lô). */
     interface TheSanPhamCoMa extends TheSanPham {
-        Long getMaSanPham();
     }
 
     interface TheSanPham {
+        Long getMaSanPham();
         String getDuongDan();
         String getTenSanPham();
         String getTenThuongHieu();

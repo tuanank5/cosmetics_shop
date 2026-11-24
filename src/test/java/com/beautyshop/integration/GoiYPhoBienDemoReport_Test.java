@@ -10,6 +10,7 @@ import org.junit.jupiter.api.condition.EnabledIfEnvironmentVariable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.jdbc.core.simple.JdbcClient;
+import org.springframework.test.context.TestPropertySource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -18,6 +19,8 @@ import static org.assertj.core.api.Assertions.assertThat;
  * và đối chiếu thứ tự với đúng danh sách trang chủ đang dùng. Bật bằng P21_DEMO_REPORT=true.
  */
 @SpringBootTest
+// P23: báo cáo demo đọc đánh giá ở MongoDB demo (không phải beautyshop_test_mongo của các test khác).
+@TestPropertySource(properties = "spring.data.mongodb.uri=${MONGODB_URI:mongodb://127.0.0.1:27017/beautyshop_demo}")
 @EnabledIfEnvironmentVariable(named = "P21_DEMO_REPORT", matches = "true")
 class GoiYPhoBienDemoReport_Test {
     @Autowired GoiYPhoBien_Service goiYService;

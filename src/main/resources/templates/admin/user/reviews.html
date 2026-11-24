@@ -2,25 +2,61 @@
 <html lang="vi" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="~{fragments/head :: head('Duyệt đánh giá · BeautyShop')}"></head>
 <body><div th:replace="~{fragments/header :: siteHeader}"></div>
-<main id="main" tabindex="-1" class="page-content">
+<main id="main" tabindex="-1" class="page-content admin-reviews">
     <h1>Duyệt đánh giá</h1>
     <p class="notice" role="status" th:if="${message}" th:text="${message}"></p>
     <p class="form-error" role="alert" th:if="${error}" th:text="${error}"></p>
-    <p class="notice" th:if="${#lists.isEmpty(danhGia)}">Chưa có đánh giá.</p>
-    <ul class="catalog-list">
-        <li th:each="muc : ${danhGia}" th:with="dg=${muc.danhGia}">
+    <form class="review-filter" method="get" th:action="@{/admin/reviews}" aria-label="Lọc đánh giá">
+        <label>Trạng thái
+            <select name="status">
+                <option value="TAT_CA" th:selected="${locTrangThai == 'TAT_CA'}">Tất cả</option>
+                <option value="CHO_DUYET" th:selected="${locTrangThai == 'CHO_DUYET'}">Chờ duyệt</option>
+                <option value="DANG_HIEN" th:selected="${locTrangThai == 'DANG_HIEN'}">Đang hiện</option>
+                <option value="DA_AN" th:selected="${locTrangThai == 'DA_AN'}">Đã ẩn</option>
+            </select>
+        </label>
+        <label>Số sao
+            <select name="stars">
+                <option value="">Mọi số sao</option>
+                <option th:each="sao : ${#numbers.sequence(5, 1, -1)}" th:value="${sao}" th:text="|${sao} sao|"
+                        th:selected="${locSao == sao}"></option>
+            </select>
+        </label>
+        <label>Sản phẩm
+            <select name="product">
+                <option value="">Mọi sản phẩm</option>
+                <option th:each="sp : ${trang.sanPham}" th:value="${sp.ma}" th:text="${sp.ten}" th:selected="${locSanPham == sp.ma}"></option>
+            </select>
+        </label>
+        <button type="submit" class="btn btn--secondary">Lọc</button>
+    </form>
+    <p class="notice" role="status" th:if="${trang.khongTaiDuoc}">Tạm thời chưa tải được đánh giá (kho đánh giá không phản hồi).</p>
+    <p class="notice" th:if="${!trang.khongTaiDuoc and trang.danhSach.empty}">Không có đánh giá phù hợp.</p>
+    <p class="muted" th:unless="${trang.danhSach.empty}" th:text="|${trang.danhSach.totalElements} đánh giá|"></p>
+    <ul class="catalog-list admin-review-list">
+        <li th:each="dg : ${trang.danhSach.content}">
             <div>
-                <strong th:text="|${muc.tenSanPham} · ${dg.soSao}/5 sao|"></strong>
-                <p th:text="${dg.noiDung}"></p>
-                <a th:href="@{/admin/orders/{id}(id=${muc.maDon})}" class="text-link">Xem đơn mua</a>
-                <small th:text="${dg.hienThi ? 'Đang hiển thị' : 'Chờ duyệt hoặc đã ẩn'}"></small>
+                <strong th:text="${dg.tenSanPham}"></strong>
+                <p class="admin-review-meta">
+                    <span th:replace="~{fragments/rating :: stars(${dg.soSao * 2}, |${dg.soSao} trên 5 sao|)}"></span>
+                    <span th:text="|${dg.soSao}/5 · ${dg.tenHienThi} · ${dg.ngayHienThi}|"></span>
+                </p>
+                <p th:unless="${#strings.isEmpty(dg.noiDung)}" th:text="${dg.noiDung}"></p>
+                <p class="muted" th:if="${#strings.isEmpty(dg.noiDung)}">(Không có nhận xét)</p>
+                <a th:href="@{/admin/orders/{id}(id=${dg.maDonHang})}" class="text-link">Xem đơn mua</a>
+                <span class="badge" th:classappend="${dg.hienThi ? 'badge--success' : ''}"
+                      th:text="${dg.hienThi ? 'Đang hiện' : (dg.daDuyet ? 'Đã ẩn' : 'Chờ duyệt')}"></span>
             </div>
             <form method="post" th:action="@{/admin/reviews/{id}/visibility(id=${dg.ma})}">
-                <input type="hidden" name="revision" th:value="${muc.phienBan}">
-                <button type="submit" name="visible" th:value="${!dg.hienThi}" class="btn btn--primary"
+                <input type="hidden" name="revision" th:value="${dg.phienBan}">
+                <button type="submit" name="visible" th:value="${!dg.hienThi}" class="btn"
+                        th:classappend="${dg.hienThi ? 'btn--secondary' : 'btn--primary'}"
                         th:text="${dg.hienThi ? 'Ẩn đánh giá' : 'Duyệt đánh giá'}"></button>
             </form>
         </li>
     </ul>
+    <div th:replace="~{fragments/ui :: pagination(${trang.danhSach},
+        @{/admin/reviews(status=${locTrangThai}, stars=${locSao}, product=${locSanPham}, page=${trang.danhSach.number - 1})},
+        @{/admin/reviews(status=${locTrangThai}, stars=${locSao}, product=${locSanPham}, page=${trang.danhSach.number + 1})})}"></div>
 </main>
 <div th:replace="~{fragments/footer :: siteFooter}"></div></body></html>

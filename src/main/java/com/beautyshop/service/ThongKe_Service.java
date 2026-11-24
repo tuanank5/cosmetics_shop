@@ -2,6 +2,7 @@ package com.beautyshop.service;
 
 import com.beautyshop.dto.BoLocThongKe_Form;
 import com.beautyshop.order.OrderStatus;
+import com.beautyshop.repository.DanhGia_Store;
 import com.beautyshop.repository.ThongKe_Repository;
 import com.beautyshop.repository.ThongKe_Repository.DonMoi;
 import com.beautyshop.repository.ThongKe_Repository.Ngay;
@@ -22,7 +23,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -36,22 +40,35 @@ import org.springframework.validation.Errors;
 @PreAuthorize("hasRole('ADMIN')")
 @Transactional(readOnly = true)
 public class ThongKe_Service {
+    private static final Logger log = LoggerFactory.getLogger(ThongKe_Service.class);
     public static final ZoneId MUI_GIO = ZoneId.of("Asia/Ho_Chi_Minh");
     public static final int NGUONG_TON_MAC_DINH = 5;
     static final int SO_NGAY_TOI_DA = 366;
     private static final Map<String, Integer> KY_NHANH = Map.of("7d", 7, "30d", 30, "90d", 90);
 
     private final ThongKe_Repository repository;
+    private final DanhGia_Store danhGia;
     private final Clock clock;
 
     @Autowired
-    public ThongKe_Service(ThongKe_Repository repository) {
-        this(repository, Clock.systemUTC());
+    public ThongKe_Service(ThongKe_Repository repository, DanhGia_Store danhGia) {
+        this(repository, danhGia, Clock.systemUTC());
     }
 
-    ThongKe_Service(ThongKe_Repository repository, Clock clock) {
+    ThongKe_Service(ThongKe_Repository repository, DanhGia_Store danhGia, Clock clock) {
         this.repository = repository;
+        this.danhGia = danhGia;
         this.clock = clock;
+    }
+
+    /** P23: đánh giá đọc từ DanhGia_Store (MongoDB); lỗi thì phần đánh giá rỗng, Dashboard vẫn hiển thị. */
+    private DanhGia_Store.ThongKeDanhGia thongKeDanhGia(LocalDateTime a, LocalDateTime b) {
+        try {
+            return danhGia.thongKe(a.toInstant(ZoneOffset.UTC), b.toInstant(ZoneOffset.UTC));
+        } catch (DataAccessException exception) {
+            log.warn("Dashboard: khong doc duoc thong ke danh gia: {}", exception.getMessage());
+            return DanhGia_Store.ThongKeDanhGia.RONG;
+        }
     }
 
     public LocalDate homNay() { return LocalDate.now(clock.withZone(MUI_GIO)); }
@@ -128,16 +145,16 @@ public class ThongKe_Service {
         List<Nhom> theoPhuongThuc = List.of(
             doiNhan(phuongThuc.get("COD"), "COD (thu khi giao)"),
             doiNhan(phuongThuc.get("MOMO"), "MoMo"));
-        Map<String, Nhom> sao = theoMa(repository.danhGiaTheoSao(a, b));
+        var thongKeDanhGia = thongKeDanhGia(a, b);
         List<Nhom> theoSao = new ArrayList<>();
         for (int s = 5; s >= 1; s--) {
-            theoSao.add(doiNhan(sao.get(String.valueOf(s)), s + " sao"));
+            theoSao.add(new Nhom(s + " sao", thongKeDanhGia.phanBoTrongKy()[s - 1], BigDecimal.ZERO));
         }
         List<DonGanDay> donMoi = repository.donMoiNhat(8).stream().map(this::donGanDay).toList();
         List<SkuSapHet> sapHet = repository.skuSapHet(nguongTon, 20);
         return new TongQuan(ky, truoc, kpi, hienTai.choXuLy(), theoNgay, theoTrangThai,
             repository.topSanPham(a, b, 5), repository.doanhThuTheoDanhMuc(a, b), theoPhuongThuc, theoSao,
-            donMoi, sapHet, nguongTon, hienTai.danhGiaChoDuyet(), hienTai.doiTraCho(), hienTai.voucherSapHetHan());
+            donMoi, sapHet, nguongTon, thongKeDanhGia.choDuyet(), hienTai.doiTraCho(), hienTai.voucherSapHetHan());
     }
 
     static LocalDateTime utc(LocalDate ngay) {

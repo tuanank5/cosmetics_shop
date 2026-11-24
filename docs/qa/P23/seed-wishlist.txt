@@ -1,0 +1,15 @@
+﻿Before: wishlist rows total = 0
+--- run 1
+Demo orders already exist (120). Nothing to do for orders.
+Demo wishlists: 30 (target 30).
+--- run 2
+Demo orders already exist (120). Nothing to do for orders.
+Demo wishlists: 30 (target 30).
+After: wishlist rows total = 30
+Top products by demo wishlists:
+duong_dan	luot
+demo-r001	4
+demo-r004	3
+demo-r006	2
+demo-r007	2
+demo-r009	2

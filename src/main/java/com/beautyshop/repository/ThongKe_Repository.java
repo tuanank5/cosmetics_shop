@@ -78,16 +78,15 @@ public class ThongKe_Repository {
             .query((rs, row) -> new long[] {rs.getLong(1), rs.getLong(2)}).single();
     }
 
-    /** Số liệu hiện tại (không theo kỳ): đơn chờ xử lý, đánh giá chờ duyệt, đổi trả chờ, voucher sắp hết hạn. */
+    /** Số liệu hiện tại (không theo kỳ): đơn chờ xử lý, đổi trả chờ, voucher sắp hết hạn. Đánh giá chờ duyệt: DanhGia_Store (P23). */
     public HienTai hienTai(LocalDateTime nowUtc) {
         return jdbc.sql("""
             SELECT (SELECT COUNT(*) FROM don_hang WHERE trang_thai IN ('PENDING_CONFIRMATION', 'CONFIRMED', 'PACKING')),
-                   (SELECT COUNT(*) FROM danh_gia WHERE hien_thi = FALSE),
                    (SELECT COUNT(*) FROM yeu_cau_doi_tra WHERE trang_thai = 'PENDING'),
                    (SELECT COUNT(*) FROM phieu_giam_gia WHERE dang_hoat_dong = TRUE
                         AND ket_thuc_luc > :now AND ket_thuc_luc <= :han)
             """).param("now", nowUtc).param("han", nowUtc.plusDays(7))
-            .query((rs, row) -> new HienTai(rs.getLong(1), rs.getLong(2), rs.getLong(3), rs.getLong(4))).single();
+            .query((rs, row) -> new HienTai(rs.getLong(1), rs.getLong(2), rs.getLong(3))).single();
     }
 
     public List<Ngay> doanhThuTheoNgay(LocalDateTime a, LocalDateTime b) {
@@ -153,14 +152,6 @@ public class ThongKe_Repository {
             .query((rs, row) -> new Nhom(rs.getString(1), rs.getLong(2), rs.getBigDecimal(3))).list();
     }
 
-    /** Đánh giá tạo trong kỳ theo số sao (cả đã hiển thị và chờ duyệt). */
-    public List<Nhom> danhGiaTheoSao(LocalDateTime a, LocalDateTime b) {
-        return jdbc.sql("""
-            SELECT so_sao, COUNT(*) FROM danh_gia WHERE ngay_tao >= :a AND ngay_tao < :b GROUP BY so_sao
-            """).param("a", a).param("b", b)
-            .query((rs, row) -> new Nhom(String.valueOf(rs.getInt(1)), rs.getLong(2), BigDecimal.ZERO)).list();
-    }
-
     public List<DonMoi> donMoiNhat(int gioiHan) {
         return jdbc.sql("""
             SELECT d.ma_don_hang, d.ma_don_hang_hien_thi, n.ho_ten, d.tong_thanh_toan, d.trang_thai, d.ngay_tao
@@ -187,7 +178,7 @@ public class ThongKe_Repository {
 
     public record DoanhThu(BigDecimal hienTai, long soDonThu, BigDecimal kyTruoc, long soDonThuKyTruoc) {}
     public record DemDon(long soDon, long soHuy, long soDonKyTruoc, long soHuyKyTruoc) {}
-    public record HienTai(long choXuLy, long danhGiaChoDuyet, long doiTraCho, long voucherSapHetHan) {}
+    public record HienTai(long choXuLy, long doiTraCho, long voucherSapHetHan) {}
     public record Ngay(LocalDate ngay, BigDecimal doanhThu, long soDon) {}
     public record Nhom(String nhan, long soLuong, BigDecimal soTien) {}
     public record DonMoi(long maDonHang, String maHienThi, String khachHang, BigDecimal tong, String trangThai,

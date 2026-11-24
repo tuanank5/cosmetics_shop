@@ -32,7 +32,8 @@ class ThongKeServiceTest {
 
     @BeforeEach
     void setUp() {
-        service = new ThongKe_Service(new ThongKe_Repository(jdbc), CLOCK);
+        // P23: đánh giá qua DanhGia_Store; bản MariaDB đọc đúng bảng danh_gia H2 dựng bên dưới.
+        service = new ThongKe_Service(new ThongKe_Repository(jdbc), new com.beautyshop.repository.MariaDbDanhGia_Store(jdbc), CLOCK);
         jdbc.sql("ALTER TABLE nguoi_dung ADD COLUMN IF NOT EXISTS ngay_tao TIMESTAMP(6) DEFAULT CURRENT_TIMESTAMP").update();
         jdbc.sql("""
             CREATE TABLE IF NOT EXISTS don_hang (ma_don_hang BIGINT PRIMARY KEY, ma_don_hang_hien_thi VARCHAR(80) NOT NULL,

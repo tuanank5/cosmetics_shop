@@ -1,0 +1,152 @@
+{
+  "mode": "mongo-off",
+  "base": "http://127.0.0.1:8081",
+  "startedAt": "2026-11-24T00:56:02.960Z",
+  "checks": [
+    {
+      "name": "all main pages 200 while MongoDB is stopped",
+      "pass": true,
+      "detail": [
+        "/:200",
+        "/products:200",
+        "/products/demo-r001:200",
+        "/cart:200",
+        "/products/demo-r001:200",
+        "/:200"
+      ]
+    },
+    {
+      "name": "product page shows temporary review notice",
+      "pass": true
+    },
+    {
+      "name": "/ 1366px 200, no horizontal scroll (Mongo stopped)",
+      "pass": true,
+      "detail": {
+        "status": 200,
+        "overflowX": false
+      }
+    },
+    {
+      "name": "/products 1366px 200, no horizontal scroll (Mongo stopped)",
+      "pass": true,
+      "detail": {
+        "status": 200,
+        "overflowX": false
+      }
+    },
+    {
+      "name": "/cart 1366px 200, no horizontal scroll (Mongo stopped)",
+      "pass": true,
+      "detail": {
+        "status": 200,
+        "overflowX": false
+      }
+    },
+    {
+      "name": "pdp 1366px: 200, notice, cart form, no overflow (Mongo stopped)",
+      "pass": true,
+      "detail": {
+        "status": 200,
+        "h1": "Moisturizing Cream",
+        "tamThoi": true,
+        "chuaCo": false,
+        "diem": null,
+        "soDanhGia": 0,
+        "starsLabel": null,
+        "bars": [],
+        "items": 0,
+        "mine": null,
+        "cartForm": true,
+        "overflowX": false
+      }
+    },
+    {
+      "name": "/ 390px 200, no horizontal scroll (Mongo stopped)",
+      "pass": true,
+      "detail": {
+        "status": 200,
+        "overflowX": false
+      }
+    },
+    {
+      "name": "/products 390px 200, no horizontal scroll (Mongo stopped)",
+      "pass": true,
+      "detail": {
+        "status": 200,
+        "overflowX": false
+      }
+    },
+    {
+      "name": "/cart 390px 200, no horizontal scroll (Mongo stopped)",
+      "pass": true,
+      "detail": {
+        "status": 200,
+        "overflowX": false
+      }
+    },
+    {
+      "name": "pdp 390px: 200, notice, cart form, no overflow (Mongo stopped)",
+      "pass": true,
+      "detail": {
+        "status": 200,
+        "h1": "Moisturizing Cream",
+        "tamThoi": true,
+        "chuaCo": false,
+        "diem": null,
+        "soDanhGia": 0,
+        "starsLabel": null,
+        "bars": [],
+        "items": 0,
+        "mine": null,
+        "cartForm": true,
+        "overflowX": false
+      }
+    }
+  ],
+  "notes": [
+    {
+      "server timing (Mongo stopped)": [
+        {
+          "path": "/",
+          "status": 200,
+          "ms": 2375,
+          "tamThoi": false
+        },
+        {
+          "path": "/products",
+          "status": 200,
+          "ms": 287,
+          "tamThoi": false
+        },
+        {
+          "path": "/products/demo-r001",
+          "status": 200,
+          "ms": 277,
+          "tamThoi": true
+        },
+        {
+          "path": "/cart",
+          "status": 200,
+          "ms": 41,
+          "tamThoi": false
+        },
+        {
+          "path": "/products/demo-r001",
+          "status": 200,
+          "ms": 63,
+          "tamThoi": true
+        },
+        {
+          "path": "/",
+          "status": 200,
+          "ms": 402,
+          "tamThoi": false
+        }
+      ]
+    }
+  ],
+  "exceptions": [],
+  "failures": 0,
+  "finishedAt": "2026-11-24T00:56:18.085Z"
+}
