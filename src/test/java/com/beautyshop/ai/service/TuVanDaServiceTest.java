@@ -1,0 +1,132 @@
+package com.beautyshop.ai.service;
+
+import com.beautyshop.ai.RagProvider;
+import com.beautyshop.ai.dto.TuVanDaRequest;
+import com.beautyshop.entity.BienTheSanPham;
+import com.beautyshop.entity.DanhMuc;
+import com.beautyshop.entity.SanPham;
+import com.beautyshop.repository.BienTheSanPham_Repository;
+import java.math.BigDecimal;
+import java.util.List;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.springframework.ai.chat.model.ChatModel;
+import org.springframework.ai.embedding.EmbeddingModel;
+import org.springframework.beans.factory.ObjectProvider;
+import org.springframework.data.domain.Pageable;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.Mockito.*;
+
+class TuVanDaServiceTest {
+    private BienTheSanPham_Repository repository;
+    private ObjectProvider<RagProvider> provider;
+    private ChatModel chatModel;
+    private TuVanDaService service;
+
+    @BeforeEach
+    @SuppressWarnings("unchecked")
+    void setUp() {
+        repository = mock(BienTheSanPham_Repository.class);
+        provider = mock(ObjectProvider.class);
+        chatModel = mock(ChatModel.class);
+        when(provider.getIfAvailable()).thenReturn(
+                new RagProvider(mock(EmbeddingModel.class), chatModel));
+        service = new TuVanDaService(repository, provider);
+    }
+
+    @Test
+    void chiTimSerumKhiKhachGhiRoLoaiSanPham() {
+        when(repository.findDangBanConHangTheoLoai(anyString(), any(Pageable.class)))
+                .thenReturn(List.of());
+
+        String ketQua = service.tuVan(yeuCau("Da dầu, tôi muốn tìm serum."));
+
+        assertThat(ketQua).contains("serum", "không thay bằng loại sản phẩm khác");
+        verify(repository).findDangBanConHangTheoLoai(eq("serum"), any(Pageable.class));
+        verify(repository).findDangBanConHangTheoLoai(eq("tinh chất"), any(Pageable.class));
+        verify(repository, never()).findAllDangBanConHang(any(Pageable.class));
+        verifyNoInteractions(chatModel);
+    }
+
+    @Test
+    void nhanDienSuaRuaMatVaTonerKhongNhamLoaiDa() {
+        assertThat(LoaiSanPham_TimKiem.nhanDien("Sữa rửa mặt cho da nhạy cảm"))
+                .extracting(LoaiSanPham_TimKiem.LoaiSanPham::tenHienThi)
+                .containsExactly("sữa rửa mặt");
+        assertThat(LoaiSanPham_TimKiem.nhanDien("sua rua mat cho da nhay cam"))
+                .extracting(LoaiSanPham_TimKiem.LoaiSanPham::tenHienThi)
+                .containsExactly("sữa rửa mặt");
+        assertThat(LoaiSanPham_TimKiem.nhanDien("ToNeR cho da khô"))
+                .extracting(LoaiSanPham_TimKiem.LoaiSanPham::tenHienThi)
+                .containsExactly("toner");
+        assertThat(LoaiSanPham_TimKiem.nhanDien("tinh chat cho da dau"))
+                .extracting(LoaiSanPham_TimKiem.LoaiSanPham::tenHienThi)
+                .containsExactly("serum");
+        assertThat(LoaiSanPham_TimKiem.nhanDien("Da dầu, thường xuyên nổi mụn"))
+                .isEmpty();
+    }
+
+    @Test
+    void nhuCauDuongAmKhongTuDongBiCoiLaYeuCauKemDuong() {
+        when(repository.findAllDangBanConHang(any(Pageable.class))).thenReturn(List.of());
+
+        service.tuVan(yeuCau("Da dầu, hay nổi mụn và dễ kích ứng."));
+
+        verify(repository).findAllDangBanConHang(any(Pageable.class));
+        verify(repository, never()).findDangBanConHangTheoLoai(anyString(), any(Pageable.class));
+    }
+
+    @Test
+    void hienThiThongTinSanPhamTuDatabaseKhongDungVanBanModelSinhRa() {
+        BienTheSanPham bienThe = sanPhamMau(42L);
+        when(repository.findDangBanConHangTheoLoai(anyString(), any(Pageable.class)))
+                .thenReturn(List.of(bienThe));
+        when(chatModel.call(anyString())).thenReturn("42");
+
+        String ketQua = service.tuVan(yeuCau("Serum cho da dầu."));
+
+        assertThat(ketQua)
+                .contains("Serum chính xác từ database", "125.000 ₫", "Niacinamide",
+                        "Dùng theo hướng dẫn DB", "Tồn khả dụng: 3")
+                .doesNotContain("42");
+    }
+
+    @Test
+    void khongChapNhanIdSanPhamModelTuBia() {
+        BienTheSanPham bienThe = sanPhamMau(42L);
+        when(repository.findDangBanConHangTheoLoai(anyString(), any(Pageable.class)))
+                .thenReturn(List.of(bienThe));
+        when(chatModel.call(anyString())).thenReturn("999999");
+
+        assertThatThrownBy(() -> service.tuVan(yeuCau("Serum cho da dầu.")))
+                .isInstanceOf(IllegalStateException.class)
+                .hasMessageContaining("không có trong dữ liệu truy vấn");
+    }
+
+    private TuVanDaRequest yeuCau(String vanDeDa) {
+        return new TuVanDaRequest("Da dầu", vanDeDa, "Ít nhạy cảm", "Dưỡng ẩm");
+    }
+
+    private BienTheSanPham sanPhamMau(long maSanPham) {
+        DanhMuc danhMuc = mock(DanhMuc.class);
+        when(danhMuc.getTenDanhMuc()).thenReturn("Tinh chất");
+        SanPham sanPham = mock(SanPham.class);
+        when(sanPham.getMaSanPham()).thenReturn(maSanPham);
+        when(sanPham.getTenSanPham()).thenReturn("Serum chính xác từ database");
+        when(sanPham.getDanhMuc()).thenReturn(danhMuc);
+        when(sanPham.getLoaiDaPhuHop()).thenReturn("Da dầu");
+        when(sanPham.getThanhPhan()).thenReturn("Niacinamide");
+        when(sanPham.getMoTa()).thenReturn("Mô tả đã lưu");
+        when(sanPham.getHuongDanSuDung()).thenReturn("Dùng theo hướng dẫn DB");
+
+        BienTheSanPham bienThe = mock(BienTheSanPham.class);
+        when(bienThe.getSanPham()).thenReturn(sanPham);
+        when(bienThe.getTenBienThe()).thenReturn("30 ml");
+        when(bienThe.getGiaBan()).thenReturn(new BigDecimal("125000"));
+        when(bienThe.getSoLuongKhaDung()).thenReturn(3);
+        return bienThe;
+    }
+}

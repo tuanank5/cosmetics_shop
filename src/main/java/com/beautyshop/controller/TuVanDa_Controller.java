@@ -60,7 +60,8 @@ public class TuVanDa_Controller {
                     "Lỗi khi thực hiện AI tư vấn da", e);
 
             model.addAttribute("loi",
-                    "AI hiện chưa thể phản hồi. Vui lòng kiểm tra Ollama và thử lại.");
+                    "AI tư vấn hiện chưa sẵn sàng. Vui lòng thử lại sau; "
+                            + "thông tin bạn vừa nhập vẫn được giữ lại.");
         }
 
         return "chat/TuVanDa";

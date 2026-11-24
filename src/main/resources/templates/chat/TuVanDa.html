@@ -161,6 +161,9 @@
                     <button type="submit" class="submit-button">
                         Gửi thông tin tư vấn
                     </button>
+                    <p class="submit-status" id="submitStatus" role="status" aria-live="polite" hidden>
+                        Đang tìm sản phẩm phù hợp và chuẩn bị tư vấn…
+                    </p>
 
                 </form>
 
@@ -178,6 +181,21 @@
         const chatMessages = document.getElementById("chatMessages");
         if (chatMessages) {
             chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        const form = document.querySelector(".consultation-form");
+        const submitButton = form?.querySelector(".submit-button");
+        const submitStatus = document.getElementById("submitStatus");
+        if (form && submitButton && submitStatus) {
+            form.addEventListener("submit", function () {
+                if (!form.reportValidity()) {
+                    return;
+                }
+                submitButton.disabled = true;
+                submitButton.textContent = "Đang xử lý…";
+                form.setAttribute("aria-busy", "true");
+                submitStatus.hidden = false;
+            });
         }
     });
 </script>

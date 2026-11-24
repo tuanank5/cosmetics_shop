@@ -281,6 +281,18 @@ body {
     background: var(--primary-dark);
 }
 
+.submit-button:disabled {
+    cursor: wait;
+    opacity: 0.75;
+}
+
+.submit-status {
+    margin: -8px 0 0;
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.5;
+}
+
 /* Responsive */
 
 @media (max-width: 850px) {
