@@ -1,0 +1,186 @@
+
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tư Vấn Da | BeautyShop</title>
+
+    <th:block th:replace="~{fragments/head :: head('Tư Vấn Da | BeautyShop')}"></th:block>
+
+    <link rel="stylesheet" th:href="@{/css/tuvanda.css}">
+</head>
+
+<body>
+
+<div th:replace="~{fragments/header :: siteHeader}"></div>
+
+<main class="advisor-page">
+
+    <div class="advisor-container">
+
+        <!-- Tiêu đề -->
+        <div class="page-heading">
+            <h1>Tư Vấn Da</h1>
+        </div>
+
+        <div class="advisor-layout">
+
+            <!-- BÊN TRÁI: KHUNG CHAT -->
+            <section class="chat-panel">
+
+                <div class="chat-header">
+                    <div class="bot-avatar">B</div>
+                    <div>
+                        <h2>Tư Vấn Da</h2>
+                        <span class="online-status">Đang hoạt động</span>
+                    </div>
+                </div>
+
+                <div class="chat-messages" id="chatMessages">
+
+                    <!-- Tin nhắn chào -->
+                    <div class="message-row assistant-row">
+                        <div class="message-avatar">B</div>
+                        <div class="message-content">
+                            <div class="message-bubble assistant-bubble">
+                                Xin chào! Mình có thể giúp bạn tìm hiểu tình trạng da
+                                và lựa chọn sản phẩm chăm sóc da phù hợp tại BeautyShop.
+                                Hãy cung cấp thông tin ở khung bên phải nhé!
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tin nhắn người dùng -->
+                    <div class="message-row user-row" th:if="${daGui}">
+                        <div class="message-content">
+                            <div class="message-bubble user-bubble"
+                                 th:text="${noiDungDaGui}">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Câu trả lời AI -->
+                    <div class="message-row assistant-row" th:if="${traLoi != null}">
+                        <div class="message-avatar">B</div>
+                        <div class="message-content">
+                            <div class="message-bubble assistant-bubble ai-answer"
+                                 th:text="${traLoi}">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Lỗi -->
+                    <div class="error-message" th:if="${loi != null}"
+                         th:text="${loi}">
+                    </div>
+
+                </div>
+
+                <div class="chat-footer">
+                    <span>BeautyShop AI · Tư vấn chăm sóc da</span>
+                </div>
+
+            </section>
+
+
+            <!-- BÊN PHẢI: KHUNG CHỌN THÔNG TIN -->
+            <aside class="form-panel">
+
+                <div class="form-heading">
+                    <h2>Thông tin làn da</h2>
+                    <p>Cung cấp thông tin để nhận tư vấn phù hợp.</p>
+                </div>
+
+                <form th:action="@{/tu-van-da}"
+                      th:object="${form}"
+                      method="post"
+                      class="consultation-form">
+
+                    <!-- Loại da -->
+                    <div class="form-group">
+                        <label for="loaiDa">Loại da</label>
+                        <select id="loaiDa" th:field="*{loaiDa}" required>
+                            <option value="">-- Chọn loại da --</option>
+                            <option value="Da dầu">Da dầu</option>
+                            <option value="Da khô">Da khô</option>
+                            <option value="Da hỗn hợp">Da hỗn hợp</option>
+                            <option value="Da thường">Da thường</option>
+                            <option value="Da nhạy cảm">Da nhạy cảm</option>
+                        </select>
+                        <small class="field-error"
+                               th:if="${#fields.hasErrors('loaiDa')}"
+                               th:errors="*{loaiDa}"></small>
+                    </div>
+
+                    <!-- Độ nhạy cảm -->
+                    <div class="form-group">
+                        <label for="daNhayCam">Độ nhạy cảm</label>
+                        <select id="daNhayCam" th:field="*{daNhayCam}" required>
+                            <option value="">-- Chọn mức độ --</option>
+                            <option value="Không nhạy cảm">Không nhạy cảm</option>
+                            <option value="Ít nhạy cảm">Ít nhạy cảm</option>
+                            <option value="Nhạy cảm">Nhạy cảm</option>
+                            <option value="Rất nhạy cảm">Rất nhạy cảm</option>
+                        </select>
+                        <small class="field-error"
+                               th:if="${#fields.hasErrors('daNhayCam')}"
+                               th:errors="*{daNhayCam}"></small>
+                    </div>
+
+                    <!-- Nhu cầu -->
+                    <div class="form-group">
+                        <label for="nhuCau">Nhu cầu chăm sóc</label>
+                        <select id="nhuCau" th:field="*{nhuCau}" required>
+                            <option value="">-- Chọn nhu cầu --</option>
+                            <option value="Dưỡng ẩm">Dưỡng ẩm</option>
+                            <option value="Kiểm soát dầu">Kiểm soát dầu</option>
+                            <option value="Giảm mụn">Giảm mụn</option>
+                            <option value="Làm sáng da">Làm sáng da</option>
+                            <option value="Phục hồi da">Phục hồi da</option>
+                            <option value="Chăm sóc da cơ bản">Chăm sóc da cơ bản</option>
+                        </select>
+                        <small class="field-error"
+                               th:if="${#fields.hasErrors('nhuCau')}"
+                               th:errors="*{nhuCau}"></small>
+                    </div>
+
+                    <!-- Vấn đề da -->
+                    <div class="form-group">
+                        <label for="vanDeDa">Vấn đề da đang gặp phải</label>
+                        <textarea id="vanDeDa"
+                                  th:field="*{vanDeDa}"
+                                  rows="5"
+                                  placeholder="Ví dụ: Da thường xuyên nổi mụn, đổ dầu vùng chữ T..."
+                                  required></textarea>
+                        <small class="field-error"
+                               th:if="${#fields.hasErrors('vanDeDa')}"
+                               th:errors="*{vanDeDa}"></small>
+                    </div>
+
+                    <button type="submit" class="submit-button">
+                        Gửi thông tin tư vấn
+                    </button>
+
+                </form>
+
+            </aside>
+
+        </div>
+    </div>
+
+</main>
+
+<div th:replace="~{fragments/footer :: siteFooter}"></div>
+
+<script>
+    window.addEventListener("load", function () {
+        const chatMessages = document.getElementById("chatMessages");
+        if (chatMessages) {
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+    });
+</script>
+
+</body>
+</html>

@@ -26,7 +26,7 @@ class OllamaRag_Config {
                           @Value("${app.ai.ollama.embed-model}") String embedModel) {
         var requestFactory = new SimpleClientHttpRequestFactory();
         requestFactory.setConnectTimeout(Duration.ofSeconds(2));
-        requestFactory.setReadTimeout(Duration.ofSeconds(8));
+        requestFactory.setReadTimeout(Duration.ofSeconds(120));
         var api = OllamaApi.builder().baseUrl(baseUrl)
             .restClientBuilder(RestClient.builder().requestFactory(requestFactory)).build();
         var management = ModelManagementOptions.builder().pullModelStrategy(PullModelStrategy.NEVER).build();
@@ -34,7 +34,7 @@ class OllamaRag_Config {
             .defaultOptions(OllamaEmbeddingOptions.builder().model(embedModel).build()).build();
         var chat = OllamaChatModel.builder().ollamaApi(api).modelManagementOptions(management)
             .retryTemplate(RetryTemplate.builder().maxAttempts(1).build())
-            .defaultOptions(OllamaChatOptions.builder().model(chatModel).temperature(0.0).numPredict(12)
+            .defaultOptions(OllamaChatOptions.builder().model(chatModel).temperature(0.0).numPredict(512)
                 .internalToolExecutionEnabled(false).build()).build();
         return new RagProvider(embed, chat);
     }

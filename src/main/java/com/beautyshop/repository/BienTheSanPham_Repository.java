@@ -29,4 +29,16 @@ public interface BienTheSanPham_Repository extends JpaRepository<BienTheSanPham,
     Optional<BienTheSanPham> findByMaBienTheAndSanPhamMaSanPham(long maBienThe, long maSanPham);
 
     boolean existsByUrlHinhAnh(String urlHinhAnh);
+
+    @Query("""
+    select b
+    from BienTheSanPham b
+    join fetch b.sanPham sp
+    where b.dangHoatDong = true
+      and sp.dangHoatDong = true
+      and b.soLuongTrongKho > b.soLuongTamGiu
+    order by b.giaBan asc
+    """)
+    List<BienTheSanPham> findAllDangBanConHang();
+
 }
