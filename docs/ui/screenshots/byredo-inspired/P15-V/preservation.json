@@ -1,0 +1,22 @@
+﻿{
+    "BeforeFiles":  200,
+    "AfterFiles":  201,
+    "ChangedExisting":  [
+
+                        ],
+    "Added":  [
+                  "E:\\Nam 4 HK 1\\WWW\\cosmetics_shop\\docs\\reviews\\P15-V-visual-fidelity-audit.md"
+              ],
+    "SourceFiles":  190,
+    "GSAP":  [
+                 {
+                     "Path":  "E:\\Nam 4 HK 1\\WWW\\cosmetics_shop\\src\\main\\resources\\static\\js\\vendor\\gsap-3.15.1.min.js",
+                     "Hash":  "3D1BEA374AB1B703CC5C4105358EEC63C4465EFDC573931DC116E34A0A190C1B"
+                 },
+                 {
+                     "Path":  "E:\\Nam 4 HK 1\\WWW\\cosmetics_shop\\src\\main\\resources\\static\\js\\home-motion.js",
+                     "Hash":  "E804B020D6FCDA54A2617D7552A68A7FBEFA859EFFDD7A214B2E377D34FFE88C"
+                 }
+             ],
+    "CredentialRemoved":  true
+}

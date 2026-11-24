@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/head :: head('Đơn hàng · BeautyShop')}"></head>
+<body><div th:replace="~{fragments/header :: siteHeader}"></div>
+<main id="main" tabindex="-1" class="page-content">
+    <h1 th:text="${base == '/admin/orders' ? 'Quản lý đơn hàng' : 'Đơn hàng của bạn'}">Đơn hàng</h1>
+    <dl class="order-summary" th:if="${tongQuan}" aria-label="Tổng quan đơn hàng">
+        <div><dt>Tổng số đơn</dt><dd th:text="${tongQuan.tongSoDon}"></dd></div>
+        <div><dt>Đơn đã thu tiền</dt><dd th:text="${tongQuan.soDonDaThu}"></dd></div>
+        <div><dt>Doanh thu đã xác nhận</dt><dd th:text="|${#numbers.formatInteger(tongQuan.doanhThuDaThu, 1, 'POINT')} ₫|"></dd></div>
+    </dl>
+    <nav th:if="${base == '/admin/orders'}" class="catalog-actions" aria-label="Sau mua">
+        <a class="text-link" th:href="@{/admin/reviews}">Duyệt đánh giá</a>
+        <a class="text-link" th:href="@{/admin/returns}">Quản lý đổi trả</a>
+        <a class="text-link" th:href="@{/admin/ai}">Kho tri thức tư vấn</a>
+    </nav>
+    <p class="notice" role="status" th:if="${locTrangThai != null}">
+        <span th:text="|Đang lọc ${#lists.size(donHang)} đơn: ${#strings.listJoin(locTrangThai.![label], ', ')}.|"></span>
+        <a class="text-link" th:href="@{/admin/orders}">Xem tất cả đơn</a>
+    </p>
+    <p class="notice" th:if="${#lists.isEmpty(donHang)}">Chưa có đơn hàng.</p>
+    <ul class="catalog-list">
+        <li th:each="muc : ${donHang}">
+            <a class="text-link" th:href="@{${base + '/' + muc.maDonHang}}" th:text="${muc.maHienThi}"></a>
+            <span th:text="${muc.trangThai.label}"></span>
+            <span th:text="|${#numbers.formatInteger(muc.tong, 1, 'POINT')} ₫|"></span>
+        </li>
+    </ul>
+</main>
+<div th:replace="~{fragments/footer :: siteFooter}"></div></body></html>

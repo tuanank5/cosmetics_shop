@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/head :: head('Kết quả MoMo · BeautyShop')}"></head>
+<body><div th:replace="~{fragments/header :: siteHeader}"></div>
+<main id="main" tabindex="-1" class="page-content">
+    <h1>Kiểm tra thanh toán</h1>
+    <p>Trạng thái thanh toán sẽ cập nhật sau khi BeautyShop xác minh kết quả từ MoMo.</p>
+    <a class="btn btn--primary" th:href="@{/orders}">Xem đơn hàng</a>
+</main>
+<div th:replace="~{fragments/footer :: siteFooter}"></div></body></html>

@@ -1,0 +1,1642 @@
+[
+  {
+    "role": "guest",
+    "path": "/",
+    "w": 360,
+    "h": 800,
+    "zoom": 1,
+    "height": 109,
+    "width": 345,
+    "scroll": 345,
+    "dpr": 1,
+    "submenu": false,
+    "panel": {
+      "left": 32,
+      "right": 313,
+      "width": 281,
+      "summaryW": 255,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "guest",
+    "path": "/products",
+    "w": 360,
+    "h": 800,
+    "zoom": 1,
+    "height": 109,
+    "width": 345,
+    "scroll": 345,
+    "dpr": 1,
+    "submenu": false,
+    "panel": {
+      "left": 32,
+      "right": 313,
+      "width": 281,
+      "summaryW": 255,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "guest",
+    "path": "/products/demo-r026?variant=22",
+    "w": 360,
+    "h": 800,
+    "zoom": 1,
+    "height": 109,
+    "width": 345,
+    "scroll": 345,
+    "dpr": 1,
+    "submenu": false,
+    "panel": {
+      "left": 32,
+      "right": 313,
+      "width": 281,
+      "summaryW": 255,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "guest",
+    "path": "/cart",
+    "w": 360,
+    "h": 800,
+    "zoom": 1,
+    "height": 109,
+    "width": 345,
+    "scroll": 345,
+    "dpr": 1,
+    "submenu": false,
+    "panel": {
+      "left": 32,
+      "right": 313,
+      "width": 281,
+      "summaryW": 255,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "guest",
+    "path": "/login",
+    "w": 360,
+    "h": 800,
+    "zoom": 1,
+    "height": 109,
+    "width": 345,
+    "scroll": 345,
+    "dpr": 1,
+    "submenu": false,
+    "panel": {
+      "left": 32,
+      "right": 313,
+      "width": 281,
+      "summaryW": 255,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "guest",
+    "path": "/products/no-such-product",
+    "w": 360,
+    "h": 800,
+    "zoom": 1,
+    "height": 109,
+    "width": 345,
+    "scroll": 345,
+    "dpr": 1,
+    "submenu": false,
+    "panel": {
+      "left": 32,
+      "right": 313,
+      "width": 281,
+      "summaryW": 255,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "guest",
+    "path": "/",
+    "w": 390,
+    "h": 844,
+    "zoom": 1,
+    "height": 109,
+    "width": 375,
+    "scroll": 375,
+    "dpr": 1,
+    "submenu": false,
+    "panel": {
+      "left": 32,
+      "right": 343,
+      "width": 311,
+      "summaryW": 285,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "guest",
+    "path": "/products",
+    "w": 390,
+    "h": 844,
+    "zoom": 1,
+    "height": 109,
+    "width": 375,
+    "scroll": 375,
+    "dpr": 1,
+    "submenu": false,
+    "panel": {
+      "left": 32,
+      "right": 343,
+      "width": 311,
+      "summaryW": 285,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "guest",
+    "path": "/products/demo-r026?variant=22",
+    "w": 390,
+    "h": 844,
+    "zoom": 1,
+    "height": 109,
+    "width": 375,
+    "scroll": 375,
+    "dpr": 1,
+    "submenu": false,
+    "panel": {
+      "left": 32,
+      "right": 343,
+      "width": 311,
+      "summaryW": 285,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "guest",
+    "path": "/cart",
+    "w": 390,
+    "h": 844,
+    "zoom": 1,
+    "height": 109,
+    "width": 375,
+    "scroll": 375,
+    "dpr": 1,
+    "submenu": false,
+    "panel": {
+      "left": 32,
+      "right": 343,
+      "width": 311,
+      "summaryW": 285,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "guest",
+    "path": "/login",
+    "w": 390,
+    "h": 844,
+    "zoom": 1,
+    "height": 109,
+    "width": 375,
+    "scroll": 375,
+    "dpr": 1,
+    "submenu": false,
+    "panel": {
+      "left": 32,
+      "right": 343,
+      "width": 311,
+      "summaryW": 285,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "guest",
+    "path": "/products/no-such-product",
+    "w": 390,
+    "h": 844,
+    "zoom": 1,
+    "height": 109,
+    "width": 375,
+    "scroll": 375,
+    "dpr": 1,
+    "submenu": false,
+    "panel": {
+      "left": 32,
+      "right": 343,
+      "width": 311,
+      "summaryW": 285,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "guest",
+    "path": "/",
+    "w": 768,
+    "h": 1024,
+    "zoom": 1,
+    "height": 109,
+    "width": 753,
+    "scroll": 753,
+    "dpr": 1,
+    "submenu": false,
+    "panel": {
+      "left": 32,
+      "right": 721,
+      "width": 689,
+      "summaryW": 663,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "guest",
+    "path": "/products",
+    "w": 768,
+    "h": 1024,
+    "zoom": 1,
+    "height": 109,
+    "width": 753,
+    "scroll": 753,
+    "dpr": 1,
+    "submenu": false,
+    "panel": {
+      "left": 32,
+      "right": 721,
+      "width": 689,
+      "summaryW": 663,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "guest",
+    "path": "/products/demo-r026?variant=22",
+    "w": 768,
+    "h": 1024,
+    "zoom": 1,
+    "height": 109,
+    "width": 753,
+    "scroll": 753,
+    "dpr": 1,
+    "submenu": false,
+    "panel": {
+      "left": 32,
+      "right": 721,
+      "width": 689,
+      "summaryW": 663,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "guest",
+    "path": "/cart",
+    "w": 768,
+    "h": 1024,
+    "zoom": 1,
+    "height": 109,
+    "width": 753,
+    "scroll": 753,
+    "dpr": 1,
+    "submenu": false,
+    "panel": {
+      "left": 32,
+      "right": 721,
+      "width": 689,
+      "summaryW": 663,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "guest",
+    "path": "/login",
+    "w": 768,
+    "h": 1024,
+    "zoom": 1,
+    "height": 109,
+    "width": 753,
+    "scroll": 753,
+    "dpr": 1,
+    "submenu": false,
+    "panel": {
+      "left": 32,
+      "right": 721,
+      "width": 689,
+      "summaryW": 663,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "guest",
+    "path": "/products/no-such-product",
+    "w": 768,
+    "h": 1024,
+    "zoom": 1,
+    "height": 109,
+    "width": 753,
+    "scroll": 753,
+    "dpr": 1,
+    "submenu": false,
+    "panel": {
+      "left": 32,
+      "right": 721,
+      "width": 689,
+      "summaryW": 663,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "guest",
+    "path": "/",
+    "w": 1366,
+    "h": 768,
+    "zoom": 1,
+    "height": 113,
+    "width": 1351,
+    "scroll": 1351,
+    "dpr": 1,
+    "submenu": false,
+    "panel": {
+      "left": 107.5,
+      "right": 1243.5,
+      "width": 1136,
+      "summaryW": 253.5,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "guest",
+    "path": "/products",
+    "w": 1366,
+    "h": 768,
+    "zoom": 1,
+    "height": 113,
+    "width": 1351,
+    "scroll": 1351,
+    "dpr": 1,
+    "submenu": false,
+    "panel": {
+      "left": 107.5,
+      "right": 1243.5,
+      "width": 1136,
+      "summaryW": 253.5,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "guest",
+    "path": "/products/demo-r026?variant=22",
+    "w": 1366,
+    "h": 768,
+    "zoom": 1,
+    "height": 113,
+    "width": 1351,
+    "scroll": 1351,
+    "dpr": 1,
+    "submenu": false,
+    "panel": {
+      "left": 107.5,
+      "right": 1243.5,
+      "width": 1136,
+      "summaryW": 253.5,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "guest",
+    "path": "/cart",
+    "w": 1366,
+    "h": 768,
+    "zoom": 1,
+    "height": 113,
+    "width": 1351,
+    "scroll": 1351,
+    "dpr": 1,
+    "submenu": false,
+    "panel": {
+      "left": 107.5,
+      "right": 1243.5,
+      "width": 1136,
+      "summaryW": 253.5,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "guest",
+    "path": "/login",
+    "w": 1366,
+    "h": 768,
+    "zoom": 1,
+    "height": 113,
+    "width": 1351,
+    "scroll": 1351,
+    "dpr": 1,
+    "submenu": false,
+    "panel": {
+      "left": 107.5,
+      "right": 1243.5,
+      "width": 1136,
+      "summaryW": 253.5,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "guest",
+    "path": "/products/no-such-product",
+    "w": 1366,
+    "h": 768,
+    "zoom": 1,
+    "height": 113,
+    "width": 1351,
+    "scroll": 1351,
+    "dpr": 1,
+    "submenu": false,
+    "panel": {
+      "left": 107.5,
+      "right": 1243.5,
+      "width": 1136,
+      "summaryW": 253.5,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "guest",
+    "path": "/",
+    "w": 1920,
+    "h": 1080,
+    "zoom": 1,
+    "height": 113,
+    "width": 1905,
+    "scroll": 1905,
+    "dpr": 1,
+    "submenu": false,
+    "panel": {
+      "left": 384.5,
+      "right": 1520.5,
+      "width": 1136,
+      "summaryW": 253.5,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "guest",
+    "path": "/products",
+    "w": 1920,
+    "h": 1080,
+    "zoom": 1,
+    "height": 113,
+    "width": 1905,
+    "scroll": 1905,
+    "dpr": 1,
+    "submenu": false,
+    "panel": {
+      "left": 384.5,
+      "right": 1520.5,
+      "width": 1136,
+      "summaryW": 253.5,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "guest",
+    "path": "/products/demo-r026?variant=22",
+    "w": 1920,
+    "h": 1080,
+    "zoom": 1,
+    "height": 113,
+    "width": 1905,
+    "scroll": 1905,
+    "dpr": 1,
+    "submenu": false,
+    "panel": {
+      "left": 384.5,
+      "right": 1520.5,
+      "width": 1136,
+      "summaryW": 253.5,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "guest",
+    "path": "/cart",
+    "w": 1920,
+    "h": 1080,
+    "zoom": 1,
+    "height": 113,
+    "width": 1920,
+    "scroll": 1920,
+    "dpr": 1,
+    "submenu": false,
+    "panel": {
+      "left": 392,
+      "right": 1528,
+      "width": 1136,
+      "summaryW": 253.5,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "guest",
+    "path": "/login",
+    "w": 1920,
+    "h": 1080,
+    "zoom": 1,
+    "height": 113,
+    "width": 1905,
+    "scroll": 1905,
+    "dpr": 1,
+    "submenu": false,
+    "panel": {
+      "left": 384.5,
+      "right": 1520.5,
+      "width": 1136,
+      "summaryW": 253.5,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "guest",
+    "path": "/products/no-such-product",
+    "w": 1920,
+    "h": 1080,
+    "zoom": 1,
+    "height": 113,
+    "width": 1920,
+    "scroll": 1920,
+    "dpr": 1,
+    "submenu": false,
+    "panel": {
+      "left": 392,
+      "right": 1528,
+      "width": 1136,
+      "summaryW": 253.5,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "guest",
+    "path": "/",
+    "w": 360,
+    "h": 800,
+    "zoom": 2,
+    "height": 226,
+    "width": 172,
+    "scroll": 208,
+    "dpr": 2,
+    "submenu": false,
+    "panel": {
+      "left": 32,
+      "right": 140.5,
+      "width": 108.5,
+      "summaryW": 75,
+      "summaryH": 124.890625
+    }
+  },
+  {
+    "role": "guest",
+    "path": "/products",
+    "w": 360,
+    "h": 800,
+    "zoom": 2,
+    "height": 226,
+    "width": 172,
+    "scroll": 208,
+    "dpr": 2,
+    "submenu": false,
+    "panel": {
+      "left": 32,
+      "right": 140.5,
+      "width": 108.5,
+      "summaryW": 75,
+      "summaryH": 124.890625
+    }
+  },
+  {
+    "role": "guest",
+    "path": "/products/demo-r026?variant=22",
+    "w": 360,
+    "h": 800,
+    "zoom": 2,
+    "height": 226,
+    "width": 172,
+    "scroll": 172,
+    "dpr": 2,
+    "submenu": false,
+    "panel": {
+      "left": 32,
+      "right": 140.5,
+      "width": 108.5,
+      "summaryW": 75,
+      "summaryH": 124.890625
+    }
+  },
+  {
+    "role": "guest",
+    "path": "/cart",
+    "w": 360,
+    "h": 800,
+    "zoom": 2,
+    "height": 226,
+    "width": 172,
+    "scroll": 172,
+    "dpr": 2,
+    "submenu": false,
+    "panel": {
+      "left": 32,
+      "right": 140.5,
+      "width": 108.5,
+      "summaryW": 75,
+      "summaryH": 124.890625
+    }
+  },
+  {
+    "role": "guest",
+    "path": "/login",
+    "w": 360,
+    "h": 800,
+    "zoom": 2,
+    "height": 226,
+    "width": 172,
+    "scroll": 208,
+    "dpr": 2,
+    "submenu": false,
+    "panel": {
+      "left": 32,
+      "right": 140.5,
+      "width": 108.5,
+      "summaryW": 75,
+      "summaryH": 124.890625
+    }
+  },
+  {
+    "role": "guest",
+    "path": "/products/no-such-product",
+    "w": 360,
+    "h": 800,
+    "zoom": 2,
+    "height": 226,
+    "width": 172,
+    "scroll": 208,
+    "dpr": 2,
+    "submenu": false,
+    "panel": {
+      "left": 32,
+      "right": 140.5,
+      "width": 108.5,
+      "summaryW": 75,
+      "summaryH": 124.890625
+    }
+  },
+  {
+    "role": "guest",
+    "path": "/",
+    "w": 390,
+    "h": 844,
+    "zoom": 2,
+    "height": 226,
+    "width": 187,
+    "scroll": 208,
+    "dpr": 2,
+    "submenu": false,
+    "panel": {
+      "left": 32,
+      "right": 155.5,
+      "width": 123.5,
+      "summaryW": 90,
+      "summaryH": 124.890625
+    }
+  },
+  {
+    "role": "guest",
+    "path": "/products",
+    "w": 390,
+    "h": 844,
+    "zoom": 2,
+    "height": 226,
+    "width": 187,
+    "scroll": 208,
+    "dpr": 2,
+    "submenu": false,
+    "panel": {
+      "left": 32,
+      "right": 155.5,
+      "width": 123.5,
+      "summaryW": 90,
+      "summaryH": 124.890625
+    }
+  },
+  {
+    "role": "guest",
+    "path": "/products/demo-r026?variant=22",
+    "w": 390,
+    "h": 844,
+    "zoom": 2,
+    "height": 226,
+    "width": 187,
+    "scroll": 187,
+    "dpr": 2,
+    "submenu": false,
+    "panel": {
+      "left": 32,
+      "right": 155.5,
+      "width": 123.5,
+      "summaryW": 90,
+      "summaryH": 124.890625
+    }
+  },
+  {
+    "role": "guest",
+    "path": "/cart",
+    "w": 390,
+    "h": 844,
+    "zoom": 2,
+    "height": 226,
+    "width": 187,
+    "scroll": 187,
+    "dpr": 2,
+    "submenu": false,
+    "panel": {
+      "left": 32,
+      "right": 155.5,
+      "width": 123.5,
+      "summaryW": 90,
+      "summaryH": 124.890625
+    }
+  },
+  {
+    "role": "guest",
+    "path": "/login",
+    "w": 390,
+    "h": 844,
+    "zoom": 2,
+    "height": 226,
+    "width": 187,
+    "scroll": 208,
+    "dpr": 2,
+    "submenu": false,
+    "panel": {
+      "left": 32,
+      "right": 155.5,
+      "width": 123.5,
+      "summaryW": 90,
+      "summaryH": 124.890625
+    }
+  },
+  {
+    "role": "guest",
+    "path": "/products/no-such-product",
+    "w": 390,
+    "h": 844,
+    "zoom": 2,
+    "height": 226,
+    "width": 187,
+    "scroll": 208,
+    "dpr": 2,
+    "submenu": false,
+    "panel": {
+      "left": 32,
+      "right": 155.5,
+      "width": 123.5,
+      "summaryW": 90,
+      "summaryH": 124.890625
+    }
+  },
+  {
+    "role": "guest",
+    "path": "/",
+    "w": 768,
+    "h": 1024,
+    "zoom": 2,
+    "height": 109,
+    "width": 376,
+    "scroll": 376,
+    "dpr": 2,
+    "submenu": false,
+    "panel": {
+      "left": 32,
+      "right": 344.5,
+      "width": 312.5,
+      "summaryW": 279,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "guest",
+    "path": "/products",
+    "w": 768,
+    "h": 1024,
+    "zoom": 2,
+    "height": 109,
+    "width": 376,
+    "scroll": 376,
+    "dpr": 2,
+    "submenu": false,
+    "panel": {
+      "left": 32,
+      "right": 344.5,
+      "width": 312.5,
+      "summaryW": 279,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "guest",
+    "path": "/products/demo-r026?variant=22",
+    "w": 768,
+    "h": 1024,
+    "zoom": 2,
+    "height": 109,
+    "width": 376,
+    "scroll": 376,
+    "dpr": 2,
+    "submenu": false,
+    "panel": {
+      "left": 32,
+      "right": 344.5,
+      "width": 312.5,
+      "summaryW": 279,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "guest",
+    "path": "/cart",
+    "w": 768,
+    "h": 1024,
+    "zoom": 2,
+    "height": 109,
+    "width": 376,
+    "scroll": 376,
+    "dpr": 2,
+    "submenu": false,
+    "panel": {
+      "left": 32,
+      "right": 344.5,
+      "width": 312.5,
+      "summaryW": 279,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "guest",
+    "path": "/login",
+    "w": 768,
+    "h": 1024,
+    "zoom": 2,
+    "height": 109,
+    "width": 376,
+    "scroll": 376,
+    "dpr": 2,
+    "submenu": false,
+    "panel": {
+      "left": 32,
+      "right": 344.5,
+      "width": 312.5,
+      "summaryW": 279,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "guest",
+    "path": "/products/no-such-product",
+    "w": 768,
+    "h": 1024,
+    "zoom": 2,
+    "height": 109,
+    "width": 376,
+    "scroll": 376,
+    "dpr": 2,
+    "submenu": false,
+    "panel": {
+      "left": 32,
+      "right": 344.5,
+      "width": 312.5,
+      "summaryW": 279,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "guest",
+    "path": "/",
+    "w": 1366,
+    "h": 768,
+    "zoom": 2,
+    "height": 109,
+    "width": 675,
+    "scroll": 675,
+    "dpr": 2,
+    "submenu": false,
+    "panel": {
+      "left": 32,
+      "right": 643.5,
+      "width": 611.5,
+      "summaryW": 578,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "guest",
+    "path": "/products",
+    "w": 1366,
+    "h": 768,
+    "zoom": 2,
+    "height": 109,
+    "width": 675,
+    "scroll": 675,
+    "dpr": 2,
+    "submenu": false,
+    "panel": {
+      "left": 32,
+      "right": 643.5,
+      "width": 611.5,
+      "summaryW": 578,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "guest",
+    "path": "/products/demo-r026?variant=22",
+    "w": 1366,
+    "h": 768,
+    "zoom": 2,
+    "height": 109,
+    "width": 675,
+    "scroll": 675,
+    "dpr": 2,
+    "submenu": false,
+    "panel": {
+      "left": 32,
+      "right": 643.5,
+      "width": 611.5,
+      "summaryW": 578,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "guest",
+    "path": "/cart",
+    "w": 1366,
+    "h": 768,
+    "zoom": 2,
+    "height": 109,
+    "width": 675,
+    "scroll": 675,
+    "dpr": 2,
+    "submenu": false,
+    "panel": {
+      "left": 32,
+      "right": 643.5,
+      "width": 611.5,
+      "summaryW": 578,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "guest",
+    "path": "/login",
+    "w": 1366,
+    "h": 768,
+    "zoom": 2,
+    "height": 109,
+    "width": 675,
+    "scroll": 675,
+    "dpr": 2,
+    "submenu": false,
+    "panel": {
+      "left": 32,
+      "right": 643.5,
+      "width": 611.5,
+      "summaryW": 578,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "guest",
+    "path": "/products/no-such-product",
+    "w": 1366,
+    "h": 768,
+    "zoom": 2,
+    "height": 109,
+    "width": 675,
+    "scroll": 675,
+    "dpr": 2,
+    "submenu": false,
+    "panel": {
+      "left": 32,
+      "right": 643.5,
+      "width": 611.5,
+      "summaryW": 578,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "guest",
+    "path": "/",
+    "w": 1920,
+    "h": 1080,
+    "zoom": 2,
+    "height": 109,
+    "width": 952,
+    "scroll": 952,
+    "dpr": 2,
+    "submenu": false,
+    "panel": {
+      "left": 32,
+      "right": 920.5,
+      "width": 888.5,
+      "summaryW": 862.5,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "guest",
+    "path": "/products",
+    "w": 1920,
+    "h": 1080,
+    "zoom": 2,
+    "height": 109,
+    "width": 952,
+    "scroll": 952,
+    "dpr": 2,
+    "submenu": false,
+    "panel": {
+      "left": 32,
+      "right": 920.5,
+      "width": 888.5,
+      "summaryW": 862.5,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "guest",
+    "path": "/products/demo-r026?variant=22",
+    "w": 1920,
+    "h": 1080,
+    "zoom": 2,
+    "height": 109,
+    "width": 952,
+    "scroll": 952,
+    "dpr": 2,
+    "submenu": false,
+    "panel": {
+      "left": 32,
+      "right": 920.5,
+      "width": 888.5,
+      "summaryW": 862.5,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "guest",
+    "path": "/cart",
+    "w": 1920,
+    "h": 1080,
+    "zoom": 2,
+    "height": 109,
+    "width": 952,
+    "scroll": 952,
+    "dpr": 2,
+    "submenu": false,
+    "panel": {
+      "left": 32,
+      "right": 920.5,
+      "width": 888.5,
+      "summaryW": 862.5,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "guest",
+    "path": "/login",
+    "w": 1920,
+    "h": 1080,
+    "zoom": 2,
+    "height": 109,
+    "width": 952,
+    "scroll": 952,
+    "dpr": 2,
+    "submenu": false,
+    "panel": {
+      "left": 32,
+      "right": 920.5,
+      "width": 888.5,
+      "summaryW": 862.5,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "guest",
+    "path": "/products/no-such-product",
+    "w": 1920,
+    "h": 1080,
+    "zoom": 2,
+    "height": 109,
+    "width": 952,
+    "scroll": 952,
+    "dpr": 2,
+    "submenu": false,
+    "panel": {
+      "left": 32,
+      "right": 920.5,
+      "width": 888.5,
+      "summaryW": 862.5,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "customer",
+    "path": "/checkout",
+    "w": 360,
+    "h": 800,
+    "zoom": 1,
+    "height": 109,
+    "width": 345,
+    "scroll": 345,
+    "dpr": 1,
+    "submenu": false,
+    "panel": {
+      "left": 32,
+      "right": 313,
+      "width": 281,
+      "summaryW": 255,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "customer",
+    "path": "/account",
+    "w": 360,
+    "h": 800,
+    "zoom": 1,
+    "height": 109,
+    "width": 345,
+    "scroll": 345,
+    "dpr": 1,
+    "submenu": false,
+    "panel": {
+      "left": 32,
+      "right": 313,
+      "width": 281,
+      "summaryW": 255,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "customer",
+    "path": "/checkout",
+    "w": 390,
+    "h": 844,
+    "zoom": 1,
+    "height": 109,
+    "width": 375,
+    "scroll": 375,
+    "dpr": 1,
+    "submenu": false,
+    "panel": {
+      "left": 32,
+      "right": 343,
+      "width": 311,
+      "summaryW": 285,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "customer",
+    "path": "/account",
+    "w": 390,
+    "h": 844,
+    "zoom": 1,
+    "height": 109,
+    "width": 375,
+    "scroll": 375,
+    "dpr": 1,
+    "submenu": false,
+    "panel": {
+      "left": 32,
+      "right": 343,
+      "width": 311,
+      "summaryW": 285,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "customer",
+    "path": "/checkout",
+    "w": 768,
+    "h": 1024,
+    "zoom": 1,
+    "height": 109,
+    "width": 753,
+    "scroll": 753,
+    "dpr": 1,
+    "submenu": false,
+    "panel": {
+      "left": 32,
+      "right": 721,
+      "width": 689,
+      "summaryW": 663,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "customer",
+    "path": "/account",
+    "w": 768,
+    "h": 1024,
+    "zoom": 1,
+    "height": 109,
+    "width": 753,
+    "scroll": 753,
+    "dpr": 1,
+    "submenu": false,
+    "panel": {
+      "left": 32,
+      "right": 721,
+      "width": 689,
+      "summaryW": 663,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "customer",
+    "path": "/checkout",
+    "w": 1366,
+    "h": 768,
+    "zoom": 1,
+    "height": 116,
+    "width": 1351,
+    "scroll": 1351,
+    "dpr": 1,
+    "submenu": false,
+    "panel": {
+      "left": 107.5,
+      "right": 1243.5,
+      "width": 1136,
+      "summaryW": 253.5,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "customer",
+    "path": "/account",
+    "w": 1366,
+    "h": 768,
+    "zoom": 1,
+    "height": 116,
+    "width": 1351,
+    "scroll": 1351,
+    "dpr": 1,
+    "submenu": false,
+    "panel": {
+      "left": 107.5,
+      "right": 1243.5,
+      "width": 1136,
+      "summaryW": 253.5,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "customer",
+    "path": "/checkout",
+    "w": 1920,
+    "h": 1080,
+    "zoom": 1,
+    "height": 116,
+    "width": 1905,
+    "scroll": 1905,
+    "dpr": 1,
+    "submenu": false,
+    "panel": {
+      "left": 384.5,
+      "right": 1520.5,
+      "width": 1136,
+      "summaryW": 253.5,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "customer",
+    "path": "/account",
+    "w": 1920,
+    "h": 1080,
+    "zoom": 1,
+    "height": 116,
+    "width": 1905,
+    "scroll": 1905,
+    "dpr": 1,
+    "submenu": false,
+    "panel": {
+      "left": 384.5,
+      "right": 1520.5,
+      "width": 1136,
+      "summaryW": 253.5,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "customer",
+    "path": "/checkout",
+    "w": 360,
+    "h": 800,
+    "zoom": 2,
+    "height": 226,
+    "width": 172,
+    "scroll": 208,
+    "dpr": 2,
+    "submenu": false,
+    "panel": {
+      "left": 32,
+      "right": 140.5,
+      "width": 108.5,
+      "summaryW": 75,
+      "summaryH": 124.890625
+    }
+  },
+  {
+    "role": "customer",
+    "path": "/account",
+    "w": 360,
+    "h": 800,
+    "zoom": 2,
+    "height": 226,
+    "width": 172,
+    "scroll": 208,
+    "dpr": 2,
+    "submenu": false,
+    "panel": {
+      "left": 32,
+      "right": 140.5,
+      "width": 108.5,
+      "summaryW": 75,
+      "summaryH": 124.890625
+    }
+  },
+  {
+    "role": "customer",
+    "path": "/checkout",
+    "w": 390,
+    "h": 844,
+    "zoom": 2,
+    "height": 226,
+    "width": 187,
+    "scroll": 208,
+    "dpr": 2,
+    "submenu": false,
+    "panel": {
+      "left": 32,
+      "right": 155.5,
+      "width": 123.5,
+      "summaryW": 90,
+      "summaryH": 124.890625
+    }
+  },
+  {
+    "role": "customer",
+    "path": "/account",
+    "w": 390,
+    "h": 844,
+    "zoom": 2,
+    "height": 226,
+    "width": 187,
+    "scroll": 208,
+    "dpr": 2,
+    "submenu": false,
+    "panel": {
+      "left": 32,
+      "right": 155.5,
+      "width": 123.5,
+      "summaryW": 90,
+      "summaryH": 124.890625
+    }
+  },
+  {
+    "role": "customer",
+    "path": "/checkout",
+    "w": 768,
+    "h": 1024,
+    "zoom": 2,
+    "height": 109,
+    "width": 376,
+    "scroll": 376,
+    "dpr": 2,
+    "submenu": false,
+    "panel": {
+      "left": 32,
+      "right": 344.5,
+      "width": 312.5,
+      "summaryW": 279,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "customer",
+    "path": "/account",
+    "w": 768,
+    "h": 1024,
+    "zoom": 2,
+    "height": 109,
+    "width": 376,
+    "scroll": 376,
+    "dpr": 2,
+    "submenu": false,
+    "panel": {
+      "left": 32,
+      "right": 344.5,
+      "width": 312.5,
+      "summaryW": 279,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "customer",
+    "path": "/checkout",
+    "w": 1366,
+    "h": 768,
+    "zoom": 2,
+    "height": 109,
+    "width": 675,
+    "scroll": 675,
+    "dpr": 2,
+    "submenu": false,
+    "panel": {
+      "left": 32,
+      "right": 643.5,
+      "width": 611.5,
+      "summaryW": 578,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "customer",
+    "path": "/account",
+    "w": 1366,
+    "h": 768,
+    "zoom": 2,
+    "height": 109,
+    "width": 675,
+    "scroll": 675,
+    "dpr": 2,
+    "submenu": false,
+    "panel": {
+      "left": 32,
+      "right": 643.5,
+      "width": 611.5,
+      "summaryW": 578,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "customer",
+    "path": "/checkout",
+    "w": 1920,
+    "h": 1080,
+    "zoom": 2,
+    "height": 109,
+    "width": 952,
+    "scroll": 952,
+    "dpr": 2,
+    "submenu": false,
+    "panel": {
+      "left": 32,
+      "right": 920.5,
+      "width": 888.5,
+      "summaryW": 862.5,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "customer",
+    "path": "/account",
+    "w": 1920,
+    "h": 1080,
+    "zoom": 2,
+    "height": 109,
+    "width": 952,
+    "scroll": 952,
+    "dpr": 2,
+    "submenu": false,
+    "panel": {
+      "left": 32,
+      "right": 920.5,
+      "width": 888.5,
+      "summaryW": 862.5,
+      "summaryH": 52.296875
+    }
+  },
+  {
+    "role": "admin",
+    "path": "/admin/catalog/categories",
+    "w": 360,
+    "h": 800,
+    "zoom": 1,
+    "height": 109,
+    "width": 345,
+    "scroll": 345,
+    "dpr": 1,
+    "submenu": false
+  },
+  {
+    "role": "admin",
+    "path": "/admin/catalog/categories",
+    "w": 390,
+    "h": 844,
+    "zoom": 1,
+    "height": 109,
+    "width": 375,
+    "scroll": 375,
+    "dpr": 1,
+    "submenu": false
+  },
+  {
+    "role": "admin",
+    "path": "/admin/catalog/categories",
+    "w": 768,
+    "h": 1024,
+    "zoom": 1,
+    "height": 109,
+    "width": 768,
+    "scroll": 768,
+    "dpr": 1,
+    "submenu": false
+  },
+  {
+    "role": "admin",
+    "path": "/admin/catalog/categories",
+    "w": 1366,
+    "h": 768,
+    "zoom": 1,
+    "height": 116,
+    "width": 1351,
+    "scroll": 1351,
+    "dpr": 1,
+    "submenu": false
+  },
+  {
+    "role": "admin",
+    "path": "/admin/catalog/categories",
+    "w": 1920,
+    "h": 1080,
+    "zoom": 1,
+    "height": 116,
+    "width": 1920,
+    "scroll": 1920,
+    "dpr": 1,
+    "submenu": false
+  },
+  {
+    "role": "admin",
+    "path": "/admin/catalog/categories",
+    "w": 360,
+    "h": 800,
+    "zoom": 2,
+    "height": 226,
+    "width": 172,
+    "scroll": 208,
+    "dpr": 2,
+    "submenu": false
+  },
+  {
+    "role": "admin",
+    "path": "/admin/catalog/categories",
+    "w": 390,
+    "h": 844,
+    "zoom": 2,
+    "height": 226,
+    "width": 187,
+    "scroll": 208,
+    "dpr": 2,
+    "submenu": false
+  },
+  {
+    "role": "admin",
+    "path": "/admin/catalog/categories",
+    "w": 768,
+    "h": 1024,
+    "zoom": 2,
+    "height": 109,
+    "width": 376,
+    "scroll": 376,
+    "dpr": 2,
+    "submenu": false
+  },
+  {
+    "role": "admin",
+    "path": "/admin/catalog/categories",
+    "w": 1366,
+    "h": 768,
+    "zoom": 2,
+    "height": 109,
+    "width": 675,
+    "scroll": 675,
+    "dpr": 2,
+    "submenu": false
+  },
+  {
+    "role": "admin",
+    "path": "/admin/catalog/categories",
+    "w": 1920,
+    "h": 1080,
+    "zoom": 2,
+    "height": 109,
+    "width": 952,
+    "scroll": 952,
+    "dpr": 2,
+    "submenu": false
+  }
+]

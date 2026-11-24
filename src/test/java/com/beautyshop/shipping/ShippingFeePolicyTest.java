@@ -6,13 +6,13 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class ShippingFeePolicyTest {
     @Test void feeBelowThreshold() {
-        assertEquals(new BigDecimal("25000"), ShippingFeePolicy.calculate(new BigDecimal("499999")));
+        assertEquals(new BigDecimal("25000"), ShippingFee_Policy.calculate(new BigDecimal("499999")));
     }
     @Test void freeAtThreshold() {
-        assertEquals(BigDecimal.ZERO, ShippingFeePolicy.calculate(new BigDecimal("500000")));
+        assertEquals(BigDecimal.ZERO, ShippingFee_Policy.calculate(new BigDecimal("500000")));
     }
     @Test void rejectNegativeAmount() {
         assertThrows(IllegalArgumentException.class,
-            () -> ShippingFeePolicy.calculate(new BigDecimal("-1")));
+            () -> ShippingFee_Policy.calculate(new BigDecimal("-1")));
     }
 }

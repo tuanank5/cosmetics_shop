@@ -1,0 +1,62 @@
+﻿{
+    "Jar":  "target/beautyshop-0.0.1-SNAPSHOT.jar",
+    "Bytes":  70025098,
+    "SHA256":  "4B1013B2C58AF8642D0B9482AF62A7491347C5F44C2F88F2B94CF08238A7A78B",
+    "Assets":  [
+                   {
+                       "Entry":  "BOOT-INF/classes/static/css/storefront.css",
+                       "SHA256":  "9D633AE96F83C5C26EF141C59F629F1ACC04E1AEF831EA8307A0C4098BB7D528",
+                       "MatchesSource":  true
+                   },
+                   {
+                       "Entry":  "BOOT-INF/classes/templates/home/index.html",
+                       "SHA256":  "8303C322C1D31E53C50346498C0744F28FFB13CB0D48FFDF84CC5CA7A1322252",
+                       "MatchesSource":  true
+                   },
+                   {
+                       "Entry":  "BOOT-INF/classes/templates/product/list.html",
+                       "SHA256":  "93F4AD3EF1B78C8FC10D2C85FCA43E4AC4F2C61944A24CC88259CBBE828FBB26",
+                       "MatchesSource":  true
+                   },
+                   {
+                       "Entry":  "BOOT-INF/classes/templates/fragments/product-card.html",
+                       "SHA256":  "F5C521EC6B6D6BB1F4087246D561B301224259B657762D68F53D4918C11300B2",
+                       "MatchesSource":  true
+                   },
+                   {
+                       "Entry":  "BOOT-INF/classes/static/js/home-story.js",
+                       "SHA256":  "EB3215454C43AA949DCB38BD13057005851CA8F41051507CA23B775CD7F19C7B",
+                       "MatchesSource":  true
+                   },
+                   {
+                       "Entry":  "BOOT-INF/classes/static/js/catalog-preview.js",
+                       "SHA256":  "9E5FF68D75BCFCD4E557F9DBCE0A53E2D781A75AC4472C76B4E30FD5C60C798E",
+                       "MatchesSource":  true
+                   },
+                   {
+                       "Entry":  "BOOT-INF/classes/static/js/home-motion.js",
+                       "SHA256":  "E804B020D6FCDA54A2617D7552A68A7FBEFA859EFFDD7A214B2E377D34FFE88C",
+                       "MatchesSource":  true
+                   },
+                   {
+                       "Entry":  "BOOT-INF/classes/static/js/vendor/gsap-3.15.1.min.js",
+                       "SHA256":  "3D1BEA374AB1B703CC5C4105358EEC63C4465EFDC573931DC116E34A0A190C1B",
+                       "MatchesSource":  true
+                   },
+                   {
+                       "Entry":  "BOOT-INF/classes/static/js/vendor/ScrollTrigger-3.15.1.min.js",
+                       "SHA256":  "B5BB360661F478F0FF6FFA11500D8CE5E2B6AAF6F7288237CDCA3AAC9548035A",
+                       "MatchesSource":  true
+                   },
+                   {
+                       "Entry":  "BOOT-INF/classes/static/js/vendor/ScrollTrigger-3.15.1.provenance.md",
+                       "SHA256":  "F38672EC71E46C9C0D0948F6D65E3F829AC549887E7B2C8F26B2F528D35E26A7",
+                       "MatchesSource":  true
+                   },
+                   {
+                       "Entry":  "BOOT-INF/classes/static/js/vendor/ScrollTrigger-3.15.1.LICENSE-NOTICE.txt",
+                       "SHA256":  "BAF4726913AF59ABA13D5CC8FFBC0A10A9E7061D69A88223A478F05CDD6B9522",
+                       "MatchesSource":  true
+                   }
+               ]
+}

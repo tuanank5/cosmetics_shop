@@ -1,6 +1,25 @@
-# Dữ liệu demo — 30–50 mỹ phẩm từ thông tin công khai thực tế
+# Tên SQL và dữ liệu demo
 
-**Chưa có bộ seed đã kiểm chứng** trong scaffold. Để tránh bịa thành phần/giá/hình và rủi ro bản quyền, nhóm cần chuẩn bị dữ liệu từ website chính thức của thương hiệu/nhà bán có quyền phù hợp, ghi nguồn và ngày kiểm tra từng sản phẩm.
+## Ánh xạ MariaDB v5
+
+[Bảng đối chiếu CSV](bang_doi_chieu_ten.csv) liệt kê tên bảng và cột cũ → mới. [ERD v5](../design/02-erd.md) mô tả quan hệ, còn [Flyway V1](../../src/main/resources/db/migration/V1__khoi_tao_co_so_du_lieu.sql) chứa định nghĩa SQL thực tế. Trong truy vấn SQL dùng tên vật lý MariaDB. Trong JPQL dùng tên entity và thuộc tính Java.
+
+P01 ánh xạ `DanhMuc` → `danh_muc`, `ThuongHieu` → `thuong_hieu`, `SanPham` → `san_pham`. Thuộc tính JPA dùng camelCase, ví dụ `maThuongHieu` → `ma_thuong_hieu`. JPA liên kết thuộc tính và quan hệ với các cột qua `@Column` và `@JoinColumn`. Tên kỹ thuật như `email`, `sku` và mã trạng thái như `PENDING_PAYMENT`, `PAID` giữ theo schema và quy tắc nghiệp vụ.
+
+## Dữ liệu demo
+
+[Catalog P10](product-research.csv) có 31 sản phẩm, 32 SKU demo, 8 thương hiệu và 6 danh mục. Mỗi sản phẩm ghi trang chính thức và ngày đối chiếu. Một số SKU dùng nhãn minh họa khi chưa xác minh dung tích. Ô thành phần hoặc loại da để trống khi chưa có dữ liệu được đối chiếu.
+
+Giá và tồn dành cho kịch bản demo. Các thẻ dùng minh họa CSS nguyên gốc của BeautyShop với tỷ lệ 4:3. Tệp CSV ghi rõ xuất xứ của minh họa. [Cách nạp catalog](../deployment/06-p10-demo.md).
+
+### Ảnh sản phẩm demo (P16)
+
+Ảnh demo nằm trong JAR, tại `src/main/resources/static/img/products/`, để không bị mất khi host restart hoặc redeploy. Ảnh Admin upload vào `uploads/sku` vẫn dùng cơ chế cũ.
+
+- Tên file viết thường, không dấu, không khoảng trắng, ví dụ `r001.webp`. Định dạng `.webp`, `.jpg` hoặc `.png`, tỉ lệ 4:5 (khoảng 800×1000 px), mỗi file ≤ 300 KB. Chỉ dùng ảnh nhóm có quyền sử dụng và ghi nguồn tại `image_source`/`image_license`.
+- Cột `image_path` của CSV ghi `/img/products/<tên file>`. Để trống nếu chưa có ảnh: SKU nhận `NULL` và giao diện hiện placeholder.
+- `scripts/seed-demo.ps1` từ chối đường dẫn sai mẫu, file không tồn tại hoặc file > 300 KB, rồi ghi giá trị vào `bien_the_san_pham.url_hinh_anh` (`san_pham` không có cột ảnh). Chạy lại seed chỉ cập nhật ảnh còn trống hoặc ảnh `/img/products/`, không đè ảnh Admin đã upload.
+- Tại thời điểm P16, thư mục chưa có ảnh và mọi `image_path` đều trống.
 
 ## Tiêu chí dữ liệu
 
@@ -11,15 +30,11 @@
 
 ## Quy trình
 
-1. Thu thập vào `product-research.csv` (template chưa xác minh).
+1. Thu thập vào `product-research.csv`. Dùng cùng `research_id` cho các SKU của một sản phẩm.
 2. Điền `source_url`, `reviewed_at`, `image_license`, reviewer.
 3. Chủ sản phẩm module A kiểm tra; D kiểm tra ảnh và metadata RAG.
-4. Sau khi xác minh, xuất `db/migration/Vxxx__seed_demo.sql` hoặc code seeder dev theo commit riêng; production không tự seed dữ liệu demo.
+4. Sau khi xác minh, chạy seeder dev trên database demo riêng đã được Flyway khởi tạo.
 
 CSV `verified=no` nghĩa là **không được coi là sản phẩm thực tế đã kiểm chứng**.
 
-## Kế hoạch dữ liệu thực tế (v4)
-- 4 thành viên chia 10–15 SKU/người theo `docs/03-roadmap-and-team.md`. Owner A/D lead nguồn và ảnh; B/C kiểm theo nghiệp vụ.
-- Không trộn `giá tham khảo` với giá bán tại Shop: price trong seed là **giá demo**, cần ghi rõ.
-- Ghi URL nguồn hãng cho tên/INCI/công dụng; quyền dùng ảnh phải rõ. Nếu không có quyền, dùng ảnh tự chụp hoặc placeholder do nhóm tạo. Không tải lại ảnh có watermark.
-- Mẫu CSV hiện mới có header và chưa xác minh sản phẩm; không coi là seed hoàn thành.
+Phân công và mốc kiểm tra nguồn nằm trong [roadmap](../03-roadmap-and-team.md).

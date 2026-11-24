@@ -1,0 +1,4682 @@
+[
+  {
+    "url": "http://127.0.0.1:61948/products",
+    "width": 345,
+    "scroll": 345,
+    "dpr": 1,
+    "count": "0",
+    "progress": "Đang hiển thị 1–12 trong tổng 27 sản phẩm",
+    "cards": 12,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": true,
+    "images": [
+      {
+        "index": 0,
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+        "complete": true,
+        "naturalWidth": 1280,
+        "imageHidden": false,
+        "placeholderVisible": false,
+        "width": 146.5,
+        "height": 183.125,
+        "loading": "eager",
+        "fit": "contain"
+      },
+      {
+        "index": 1,
+        "src": null,
+        "complete": null,
+        "naturalWidth": null,
+        "imageHidden": null,
+        "placeholderVisible": true,
+        "width": 146.5,
+        "height": 183.125,
+        "loading": null,
+        "fit": null
+      },
+      {
+        "index": 2,
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+        "complete": true,
+        "naturalWidth": 0,
+        "imageHidden": true,
+        "placeholderVisible": true,
+        "width": 146.5,
+        "height": 183.125,
+        "loading": "lazy",
+        "fit": "contain"
+      },
+      {
+        "index": 3,
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+        "complete": true,
+        "naturalWidth": 0,
+        "imageHidden": true,
+        "placeholderVisible": true,
+        "width": 146.5,
+        "height": 183.125,
+        "loading": "lazy",
+        "fit": "contain"
+      },
+      {
+        "index": 4,
+        "src": null,
+        "complete": null,
+        "naturalWidth": null,
+        "imageHidden": null,
+        "placeholderVisible": true,
+        "width": 146.5,
+        "height": 183.125,
+        "loading": null,
+        "fit": null
+      },
+      {
+        "index": 5,
+        "src": null,
+        "complete": null,
+        "naturalWidth": null,
+        "imageHidden": null,
+        "placeholderVisible": true,
+        "width": 146.5,
+        "height": 183.125,
+        "loading": null,
+        "fit": null
+      }
+    ],
+    "viewport": [
+      360,
+      800
+    ],
+    "zoom": 1,
+    "js": true,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?page=1",
+    "width": 345,
+    "scroll": 345,
+    "dpr": 1,
+    "count": "0",
+    "progress": "Đang hiển thị 13–24 trong tổng 27 sản phẩm",
+    "cards": 12,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": true,
+    "viewport": [
+      360,
+      800
+    ],
+    "zoom": 1,
+    "js": true,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?page=2",
+    "width": 345,
+    "scroll": 345,
+    "dpr": 1,
+    "count": "0",
+    "progress": "Đang hiển thị 25–27 trong tổng 27 sản phẩm",
+    "cards": 3,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": true,
+    "viewport": [
+      360,
+      800
+    ],
+    "zoom": 1,
+    "js": true,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?page=99",
+    "width": 345,
+    "scroll": 345,
+    "dpr": 1,
+    "count": "0",
+    "progress": "Đang hiển thị 25–27 trong tổng 27 sản phẩm",
+    "cards": 3,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": true,
+    "viewport": [
+      360,
+      800
+    ],
+    "zoom": 1,
+    "js": true,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?q=qa-one",
+    "width": 345,
+    "scroll": 345,
+    "dpr": 1,
+    "count": "0",
+    "progress": "Đang hiển thị 1–1 trong tổng 1 sản phẩm",
+    "cards": 1,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": true,
+    "viewport": [
+      360,
+      800
+    ],
+    "zoom": 1,
+    "js": true,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?q=qa-twelve",
+    "width": 345,
+    "scroll": 345,
+    "dpr": 1,
+    "count": "0",
+    "progress": "Đang hiển thị 1–12 trong tổng 12 sản phẩm",
+    "cards": 12,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": true,
+    "viewport": [
+      360,
+      800
+    ],
+    "zoom": 1,
+    "js": true,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?q=qa-zero",
+    "width": 345,
+    "scroll": 345,
+    "dpr": 1,
+    "count": "0",
+    "progress": "0 sản phẩm",
+    "cards": 0,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": true,
+    "viewport": [
+      360,
+      800
+    ],
+    "zoom": 1,
+    "js": true,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?q=qa-all&brand=cerave&category=duong-am&skinType=da%20kh%C3%B4&sort=priceAsc&page=1&size=1",
+    "width": 345,
+    "scroll": 345,
+    "dpr": 1,
+    "count": "3",
+    "progress": "Đang hiển thị 1–1 trong tổng 1 sản phẩm",
+    "cards": 1,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": true,
+    "viewport": [
+      360,
+      800
+    ],
+    "zoom": 1,
+    "js": true,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products",
+    "width": 375,
+    "scroll": 375,
+    "dpr": 1,
+    "count": "0",
+    "progress": "Đang hiển thị 1–12 trong tổng 27 sản phẩm",
+    "cards": 12,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": true,
+    "images": [
+      {
+        "index": 0,
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+        "complete": true,
+        "naturalWidth": 1280,
+        "imageHidden": false,
+        "placeholderVisible": false,
+        "width": 161.5,
+        "height": 201.875,
+        "loading": "eager",
+        "fit": "contain"
+      },
+      {
+        "index": 1,
+        "src": null,
+        "complete": null,
+        "naturalWidth": null,
+        "imageHidden": null,
+        "placeholderVisible": true,
+        "width": 161.5,
+        "height": 201.875,
+        "loading": null,
+        "fit": null
+      },
+      {
+        "index": 2,
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+        "complete": true,
+        "naturalWidth": 0,
+        "imageHidden": true,
+        "placeholderVisible": true,
+        "width": 161.5,
+        "height": 201.875,
+        "loading": "lazy",
+        "fit": "contain"
+      },
+      {
+        "index": 3,
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+        "complete": true,
+        "naturalWidth": 0,
+        "imageHidden": true,
+        "placeholderVisible": true,
+        "width": 161.5,
+        "height": 201.875,
+        "loading": "lazy",
+        "fit": "contain"
+      },
+      {
+        "index": 4,
+        "src": null,
+        "complete": null,
+        "naturalWidth": null,
+        "imageHidden": null,
+        "placeholderVisible": true,
+        "width": 161.5,
+        "height": 201.875,
+        "loading": null,
+        "fit": null
+      },
+      {
+        "index": 5,
+        "src": null,
+        "complete": null,
+        "naturalWidth": null,
+        "imageHidden": null,
+        "placeholderVisible": true,
+        "width": 161.5,
+        "height": 201.875,
+        "loading": null,
+        "fit": null
+      }
+    ],
+    "viewport": [
+      390,
+      844
+    ],
+    "zoom": 1,
+    "js": true,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?page=1",
+    "width": 375,
+    "scroll": 375,
+    "dpr": 1,
+    "count": "0",
+    "progress": "Đang hiển thị 13–24 trong tổng 27 sản phẩm",
+    "cards": 12,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": true,
+    "viewport": [
+      390,
+      844
+    ],
+    "zoom": 1,
+    "js": true,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?page=2",
+    "width": 375,
+    "scroll": 375,
+    "dpr": 1,
+    "count": "0",
+    "progress": "Đang hiển thị 25–27 trong tổng 27 sản phẩm",
+    "cards": 3,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": true,
+    "viewport": [
+      390,
+      844
+    ],
+    "zoom": 1,
+    "js": true,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?page=99",
+    "width": 375,
+    "scroll": 375,
+    "dpr": 1,
+    "count": "0",
+    "progress": "Đang hiển thị 25–27 trong tổng 27 sản phẩm",
+    "cards": 3,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": true,
+    "viewport": [
+      390,
+      844
+    ],
+    "zoom": 1,
+    "js": true,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?q=qa-one",
+    "width": 375,
+    "scroll": 375,
+    "dpr": 1,
+    "count": "0",
+    "progress": "Đang hiển thị 1–1 trong tổng 1 sản phẩm",
+    "cards": 1,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": true,
+    "viewport": [
+      390,
+      844
+    ],
+    "zoom": 1,
+    "js": true,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?q=qa-twelve",
+    "width": 375,
+    "scroll": 375,
+    "dpr": 1,
+    "count": "0",
+    "progress": "Đang hiển thị 1–12 trong tổng 12 sản phẩm",
+    "cards": 12,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": true,
+    "viewport": [
+      390,
+      844
+    ],
+    "zoom": 1,
+    "js": true,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?q=qa-zero",
+    "width": 375,
+    "scroll": 375,
+    "dpr": 1,
+    "count": "0",
+    "progress": "0 sản phẩm",
+    "cards": 0,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": true,
+    "viewport": [
+      390,
+      844
+    ],
+    "zoom": 1,
+    "js": true,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?q=qa-all&brand=cerave&category=duong-am&skinType=da%20kh%C3%B4&sort=priceAsc&page=1&size=1",
+    "width": 375,
+    "scroll": 375,
+    "dpr": 1,
+    "count": "3",
+    "progress": "Đang hiển thị 1–1 trong tổng 1 sản phẩm",
+    "cards": 1,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": true,
+    "viewport": [
+      390,
+      844
+    ],
+    "zoom": 1,
+    "js": true,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products",
+    "width": 753,
+    "scroll": 753,
+    "dpr": 1,
+    "count": "0",
+    "progress": "Đang hiển thị 1–12 trong tổng 27 sản phẩm",
+    "cards": 12,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": false,
+    "images": [
+      {
+        "index": 0,
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+        "complete": true,
+        "naturalWidth": 1280,
+        "imageHidden": false,
+        "placeholderVisible": false,
+        "width": 222.5,
+        "height": 278.125,
+        "loading": "eager",
+        "fit": "contain"
+      },
+      {
+        "index": 1,
+        "src": null,
+        "complete": null,
+        "naturalWidth": null,
+        "imageHidden": null,
+        "placeholderVisible": true,
+        "width": 222.5,
+        "height": 278.125,
+        "loading": null,
+        "fit": null
+      },
+      {
+        "index": 2,
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+        "complete": true,
+        "naturalWidth": 0,
+        "imageHidden": true,
+        "placeholderVisible": true,
+        "width": 222.5,
+        "height": 278.125,
+        "loading": "lazy",
+        "fit": "contain"
+      },
+      {
+        "index": 3,
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+        "complete": true,
+        "naturalWidth": 0,
+        "imageHidden": true,
+        "placeholderVisible": true,
+        "width": 222.5,
+        "height": 278.125,
+        "loading": "lazy",
+        "fit": "contain"
+      },
+      {
+        "index": 4,
+        "src": null,
+        "complete": null,
+        "naturalWidth": null,
+        "imageHidden": null,
+        "placeholderVisible": true,
+        "width": 222.5,
+        "height": 278.125,
+        "loading": null,
+        "fit": null
+      },
+      {
+        "index": 5,
+        "src": null,
+        "complete": null,
+        "naturalWidth": null,
+        "imageHidden": null,
+        "placeholderVisible": true,
+        "width": 222.5,
+        "height": 278.125,
+        "loading": null,
+        "fit": null
+      }
+    ],
+    "viewport": [
+      768,
+      1024
+    ],
+    "zoom": 1,
+    "js": true,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?page=1",
+    "width": 753,
+    "scroll": 753,
+    "dpr": 1,
+    "count": "0",
+    "progress": "Đang hiển thị 13–24 trong tổng 27 sản phẩm",
+    "cards": 12,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": false,
+    "viewport": [
+      768,
+      1024
+    ],
+    "zoom": 1,
+    "js": true,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?page=2",
+    "width": 753,
+    "scroll": 753,
+    "dpr": 1,
+    "count": "0",
+    "progress": "Đang hiển thị 25–27 trong tổng 27 sản phẩm",
+    "cards": 3,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": false,
+    "viewport": [
+      768,
+      1024
+    ],
+    "zoom": 1,
+    "js": true,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?page=99",
+    "width": 753,
+    "scroll": 753,
+    "dpr": 1,
+    "count": "0",
+    "progress": "Đang hiển thị 25–27 trong tổng 27 sản phẩm",
+    "cards": 3,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": false,
+    "viewport": [
+      768,
+      1024
+    ],
+    "zoom": 1,
+    "js": true,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?q=qa-one",
+    "width": 753,
+    "scroll": 753,
+    "dpr": 1,
+    "count": "0",
+    "progress": "Đang hiển thị 1–1 trong tổng 1 sản phẩm",
+    "cards": 1,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": false,
+    "viewport": [
+      768,
+      1024
+    ],
+    "zoom": 1,
+    "js": true,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?q=qa-twelve",
+    "width": 753,
+    "scroll": 753,
+    "dpr": 1,
+    "count": "0",
+    "progress": "Đang hiển thị 1–12 trong tổng 12 sản phẩm",
+    "cards": 12,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": false,
+    "viewport": [
+      768,
+      1024
+    ],
+    "zoom": 1,
+    "js": true,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?q=qa-zero",
+    "width": 753,
+    "scroll": 753,
+    "dpr": 1,
+    "count": "0",
+    "progress": "0 sản phẩm",
+    "cards": 0,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": false,
+    "viewport": [
+      768,
+      1024
+    ],
+    "zoom": 1,
+    "js": true,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?q=qa-all&brand=cerave&category=duong-am&skinType=da%20kh%C3%B4&sort=priceAsc&page=1&size=1",
+    "width": 753,
+    "scroll": 753,
+    "dpr": 1,
+    "count": "3",
+    "progress": "Đang hiển thị 1–1 trong tổng 1 sản phẩm",
+    "cards": 1,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": false,
+    "viewport": [
+      768,
+      1024
+    ],
+    "zoom": 1,
+    "js": true,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products",
+    "width": 1351,
+    "scroll": 1351,
+    "dpr": 1,
+    "count": "0",
+    "progress": "Đang hiển thị 1–12 trong tổng 27 sản phẩm",
+    "cards": 12,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": false,
+    "images": [
+      {
+        "index": 0,
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+        "complete": true,
+        "naturalWidth": 1280,
+        "imageHidden": false,
+        "placeholderVisible": false,
+        "width": 264.65625,
+        "height": 330.8125,
+        "loading": "eager",
+        "fit": "contain"
+      },
+      {
+        "index": 1,
+        "src": null,
+        "complete": null,
+        "naturalWidth": null,
+        "imageHidden": null,
+        "placeholderVisible": true,
+        "width": 264.671875,
+        "height": 330.828125,
+        "loading": null,
+        "fit": null
+      },
+      {
+        "index": 2,
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+        "complete": true,
+        "naturalWidth": 0,
+        "imageHidden": true,
+        "placeholderVisible": true,
+        "width": 264.65625,
+        "height": 330.8125,
+        "loading": "lazy",
+        "fit": "contain"
+      },
+      {
+        "index": 3,
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+        "complete": true,
+        "naturalWidth": 0,
+        "imageHidden": true,
+        "placeholderVisible": true,
+        "width": 264.65625,
+        "height": 330.8125,
+        "loading": "lazy",
+        "fit": "contain"
+      },
+      {
+        "index": 4,
+        "src": null,
+        "complete": null,
+        "naturalWidth": null,
+        "imageHidden": null,
+        "placeholderVisible": true,
+        "width": 264.671875,
+        "height": 330.828125,
+        "loading": null,
+        "fit": null
+      },
+      {
+        "index": 5,
+        "src": null,
+        "complete": null,
+        "naturalWidth": null,
+        "imageHidden": null,
+        "placeholderVisible": true,
+        "width": 264.65625,
+        "height": 330.8125,
+        "loading": null,
+        "fit": null
+      }
+    ],
+    "viewport": [
+      1366,
+      768
+    ],
+    "zoom": 1,
+    "js": true,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?page=1",
+    "width": 1351,
+    "scroll": 1351,
+    "dpr": 1,
+    "count": "0",
+    "progress": "Đang hiển thị 13–24 trong tổng 27 sản phẩm",
+    "cards": 12,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": false,
+    "viewport": [
+      1366,
+      768
+    ],
+    "zoom": 1,
+    "js": true,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?page=2",
+    "width": 1351,
+    "scroll": 1351,
+    "dpr": 1,
+    "count": "0",
+    "progress": "Đang hiển thị 25–27 trong tổng 27 sản phẩm",
+    "cards": 3,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": false,
+    "viewport": [
+      1366,
+      768
+    ],
+    "zoom": 1,
+    "js": true,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?page=99",
+    "width": 1351,
+    "scroll": 1351,
+    "dpr": 1,
+    "count": "0",
+    "progress": "Đang hiển thị 25–27 trong tổng 27 sản phẩm",
+    "cards": 3,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": false,
+    "viewport": [
+      1366,
+      768
+    ],
+    "zoom": 1,
+    "js": true,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?q=qa-one",
+    "width": 1351,
+    "scroll": 1351,
+    "dpr": 1,
+    "count": "0",
+    "progress": "Đang hiển thị 1–1 trong tổng 1 sản phẩm",
+    "cards": 1,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": false,
+    "viewport": [
+      1366,
+      768
+    ],
+    "zoom": 1,
+    "js": true,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?q=qa-twelve",
+    "width": 1351,
+    "scroll": 1351,
+    "dpr": 1,
+    "count": "0",
+    "progress": "Đang hiển thị 1–12 trong tổng 12 sản phẩm",
+    "cards": 12,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": false,
+    "viewport": [
+      1366,
+      768
+    ],
+    "zoom": 1,
+    "js": true,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?q=qa-zero",
+    "width": 1351,
+    "scroll": 1351,
+    "dpr": 1,
+    "count": "0",
+    "progress": "0 sản phẩm",
+    "cards": 0,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": false,
+    "viewport": [
+      1366,
+      768
+    ],
+    "zoom": 1,
+    "js": true,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?q=qa-all&brand=cerave&category=duong-am&skinType=da%20kh%C3%B4&sort=priceAsc&page=1&size=1",
+    "width": 1351,
+    "scroll": 1351,
+    "dpr": 1,
+    "count": "3",
+    "progress": "Đang hiển thị 1–1 trong tổng 1 sản phẩm",
+    "cards": 1,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": false,
+    "viewport": [
+      1366,
+      768
+    ],
+    "zoom": 1,
+    "js": true,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products",
+    "width": 1905,
+    "scroll": 1905,
+    "dpr": 1,
+    "count": "0",
+    "progress": "Đang hiển thị 1–12 trong tổng 27 sản phẩm",
+    "cards": 12,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": false,
+    "images": [
+      {
+        "index": 0,
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+        "complete": true,
+        "naturalWidth": 1280,
+        "imageHidden": false,
+        "placeholderVisible": false,
+        "width": 264.65625,
+        "height": 330.8125,
+        "loading": "eager",
+        "fit": "contain"
+      },
+      {
+        "index": 1,
+        "src": null,
+        "complete": null,
+        "naturalWidth": null,
+        "imageHidden": null,
+        "placeholderVisible": true,
+        "width": 264.671875,
+        "height": 330.828125,
+        "loading": null,
+        "fit": null
+      },
+      {
+        "index": 2,
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+        "complete": true,
+        "naturalWidth": 0,
+        "imageHidden": true,
+        "placeholderVisible": true,
+        "width": 264.65625,
+        "height": 330.8125,
+        "loading": "lazy",
+        "fit": "contain"
+      },
+      {
+        "index": 3,
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+        "complete": true,
+        "naturalWidth": 0,
+        "imageHidden": true,
+        "placeholderVisible": true,
+        "width": 264.65625,
+        "height": 330.8125,
+        "loading": "lazy",
+        "fit": "contain"
+      },
+      {
+        "index": 4,
+        "src": null,
+        "complete": null,
+        "naturalWidth": null,
+        "imageHidden": null,
+        "placeholderVisible": true,
+        "width": 264.671875,
+        "height": 330.828125,
+        "loading": null,
+        "fit": null
+      },
+      {
+        "index": 5,
+        "src": null,
+        "complete": null,
+        "naturalWidth": null,
+        "imageHidden": null,
+        "placeholderVisible": true,
+        "width": 264.65625,
+        "height": 330.8125,
+        "loading": null,
+        "fit": null
+      }
+    ],
+    "viewport": [
+      1920,
+      1080
+    ],
+    "zoom": 1,
+    "js": true,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?page=1",
+    "width": 1905,
+    "scroll": 1905,
+    "dpr": 1,
+    "count": "0",
+    "progress": "Đang hiển thị 13–24 trong tổng 27 sản phẩm",
+    "cards": 12,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": false,
+    "viewport": [
+      1920,
+      1080
+    ],
+    "zoom": 1,
+    "js": true,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?page=2",
+    "width": 1905,
+    "scroll": 1905,
+    "dpr": 1,
+    "count": "0",
+    "progress": "Đang hiển thị 25–27 trong tổng 27 sản phẩm",
+    "cards": 3,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": false,
+    "viewport": [
+      1920,
+      1080
+    ],
+    "zoom": 1,
+    "js": true,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?page=99",
+    "width": 1905,
+    "scroll": 1905,
+    "dpr": 1,
+    "count": "0",
+    "progress": "Đang hiển thị 25–27 trong tổng 27 sản phẩm",
+    "cards": 3,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": false,
+    "viewport": [
+      1920,
+      1080
+    ],
+    "zoom": 1,
+    "js": true,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?q=qa-one",
+    "width": 1905,
+    "scroll": 1905,
+    "dpr": 1,
+    "count": "0",
+    "progress": "Đang hiển thị 1–1 trong tổng 1 sản phẩm",
+    "cards": 1,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": false,
+    "viewport": [
+      1920,
+      1080
+    ],
+    "zoom": 1,
+    "js": true,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?q=qa-twelve",
+    "width": 1905,
+    "scroll": 1905,
+    "dpr": 1,
+    "count": "0",
+    "progress": "Đang hiển thị 1–12 trong tổng 12 sản phẩm",
+    "cards": 12,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": false,
+    "viewport": [
+      1920,
+      1080
+    ],
+    "zoom": 1,
+    "js": true,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?q=qa-zero",
+    "width": 1905,
+    "scroll": 1905,
+    "dpr": 1,
+    "count": "0",
+    "progress": "0 sản phẩm",
+    "cards": 0,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": false,
+    "viewport": [
+      1920,
+      1080
+    ],
+    "zoom": 1,
+    "js": true,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?q=qa-all&brand=cerave&category=duong-am&skinType=da%20kh%C3%B4&sort=priceAsc&page=1&size=1",
+    "width": 1905,
+    "scroll": 1905,
+    "dpr": 1,
+    "count": "3",
+    "progress": "Đang hiển thị 1–1 trong tổng 1 sản phẩm",
+    "cards": 1,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": false,
+    "viewport": [
+      1920,
+      1080
+    ],
+    "zoom": 1,
+    "js": true,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products",
+    "width": 172,
+    "scroll": 172,
+    "dpr": 2,
+    "count": "0",
+    "progress": "Đang hiển thị 1–12 trong tổng 27 sản phẩm",
+    "cards": 12,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": true,
+    "images": [
+      {
+        "index": 0,
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+        "complete": true,
+        "naturalWidth": 1280,
+        "imageHidden": false,
+        "placeholderVisible": false,
+        "width": 60.25,
+        "height": 75.3125,
+        "loading": "eager",
+        "fit": "contain"
+      },
+      {
+        "index": 1,
+        "src": null,
+        "complete": null,
+        "naturalWidth": null,
+        "imageHidden": null,
+        "placeholderVisible": true,
+        "width": 60.25,
+        "height": 75.3125,
+        "loading": null,
+        "fit": null
+      },
+      {
+        "index": 2,
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+        "complete": true,
+        "naturalWidth": 0,
+        "imageHidden": true,
+        "placeholderVisible": true,
+        "width": 60.25,
+        "height": 75.3125,
+        "loading": "lazy",
+        "fit": "contain"
+      },
+      {
+        "index": 3,
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+        "complete": true,
+        "naturalWidth": 0,
+        "imageHidden": true,
+        "placeholderVisible": true,
+        "width": 60.25,
+        "height": 75.3125,
+        "loading": "lazy",
+        "fit": "contain"
+      },
+      {
+        "index": 4,
+        "src": null,
+        "complete": null,
+        "naturalWidth": null,
+        "imageHidden": null,
+        "placeholderVisible": true,
+        "width": 60.25,
+        "height": 75.3125,
+        "loading": null,
+        "fit": null
+      },
+      {
+        "index": 5,
+        "src": null,
+        "complete": null,
+        "naturalWidth": null,
+        "imageHidden": null,
+        "placeholderVisible": true,
+        "width": 60.25,
+        "height": 75.3125,
+        "loading": null,
+        "fit": null
+      }
+    ],
+    "viewport": [
+      360,
+      800
+    ],
+    "zoom": 2,
+    "js": true,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?page=1",
+    "width": 172,
+    "scroll": 172,
+    "dpr": 2,
+    "count": "0",
+    "progress": "Đang hiển thị 13–24 trong tổng 27 sản phẩm",
+    "cards": 12,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": true,
+    "viewport": [
+      360,
+      800
+    ],
+    "zoom": 2,
+    "js": true,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?page=2",
+    "width": 172,
+    "scroll": 172,
+    "dpr": 2,
+    "count": "0",
+    "progress": "Đang hiển thị 25–27 trong tổng 27 sản phẩm",
+    "cards": 3,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": true,
+    "viewport": [
+      360,
+      800
+    ],
+    "zoom": 2,
+    "js": true,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?page=99",
+    "width": 172,
+    "scroll": 172,
+    "dpr": 2,
+    "count": "0",
+    "progress": "Đang hiển thị 25–27 trong tổng 27 sản phẩm",
+    "cards": 3,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": true,
+    "viewport": [
+      360,
+      800
+    ],
+    "zoom": 2,
+    "js": true,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?q=qa-one",
+    "width": 172,
+    "scroll": 172,
+    "dpr": 2,
+    "count": "0",
+    "progress": "Đang hiển thị 1–1 trong tổng 1 sản phẩm",
+    "cards": 1,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": true,
+    "viewport": [
+      360,
+      800
+    ],
+    "zoom": 2,
+    "js": true,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?q=qa-twelve",
+    "width": 172,
+    "scroll": 172,
+    "dpr": 2,
+    "count": "0",
+    "progress": "Đang hiển thị 1–12 trong tổng 12 sản phẩm",
+    "cards": 12,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": true,
+    "viewport": [
+      360,
+      800
+    ],
+    "zoom": 2,
+    "js": true,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?q=qa-zero",
+    "width": 172,
+    "scroll": 172,
+    "dpr": 2,
+    "count": "0",
+    "progress": "0 sản phẩm",
+    "cards": 0,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": true,
+    "viewport": [
+      360,
+      800
+    ],
+    "zoom": 2,
+    "js": true,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?q=qa-all&brand=cerave&category=duong-am&skinType=da%20kh%C3%B4&sort=priceAsc&page=1&size=1",
+    "width": 172,
+    "scroll": 172,
+    "dpr": 2,
+    "count": "3",
+    "progress": "Đang hiển thị 1–1 trong tổng 1 sản phẩm",
+    "cards": 1,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": true,
+    "viewport": [
+      360,
+      800
+    ],
+    "zoom": 2,
+    "js": true,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products",
+    "width": 187,
+    "scroll": 187,
+    "dpr": 2,
+    "count": "0",
+    "progress": "Đang hiển thị 1–12 trong tổng 27 sản phẩm",
+    "cards": 12,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": true,
+    "images": [
+      {
+        "index": 0,
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+        "complete": true,
+        "naturalWidth": 1280,
+        "imageHidden": false,
+        "placeholderVisible": false,
+        "width": 67.75,
+        "height": 84.6875,
+        "loading": "eager",
+        "fit": "contain"
+      },
+      {
+        "index": 1,
+        "src": null,
+        "complete": null,
+        "naturalWidth": null,
+        "imageHidden": null,
+        "placeholderVisible": true,
+        "width": 67.75,
+        "height": 84.6875,
+        "loading": null,
+        "fit": null
+      },
+      {
+        "index": 2,
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+        "complete": true,
+        "naturalWidth": 0,
+        "imageHidden": true,
+        "placeholderVisible": true,
+        "width": 67.75,
+        "height": 84.6875,
+        "loading": "lazy",
+        "fit": "contain"
+      },
+      {
+        "index": 3,
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+        "complete": true,
+        "naturalWidth": 0,
+        "imageHidden": true,
+        "placeholderVisible": true,
+        "width": 67.75,
+        "height": 84.6875,
+        "loading": "lazy",
+        "fit": "contain"
+      },
+      {
+        "index": 4,
+        "src": null,
+        "complete": null,
+        "naturalWidth": null,
+        "imageHidden": null,
+        "placeholderVisible": true,
+        "width": 67.75,
+        "height": 84.6875,
+        "loading": null,
+        "fit": null
+      },
+      {
+        "index": 5,
+        "src": null,
+        "complete": null,
+        "naturalWidth": null,
+        "imageHidden": null,
+        "placeholderVisible": true,
+        "width": 67.75,
+        "height": 84.6875,
+        "loading": null,
+        "fit": null
+      }
+    ],
+    "viewport": [
+      390,
+      844
+    ],
+    "zoom": 2,
+    "js": true,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?page=1",
+    "width": 187,
+    "scroll": 187,
+    "dpr": 2,
+    "count": "0",
+    "progress": "Đang hiển thị 13–24 trong tổng 27 sản phẩm",
+    "cards": 12,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": true,
+    "viewport": [
+      390,
+      844
+    ],
+    "zoom": 2,
+    "js": true,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?page=2",
+    "width": 187,
+    "scroll": 187,
+    "dpr": 2,
+    "count": "0",
+    "progress": "Đang hiển thị 25–27 trong tổng 27 sản phẩm",
+    "cards": 3,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": true,
+    "viewport": [
+      390,
+      844
+    ],
+    "zoom": 2,
+    "js": true,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?page=99",
+    "width": 187,
+    "scroll": 187,
+    "dpr": 2,
+    "count": "0",
+    "progress": "Đang hiển thị 25–27 trong tổng 27 sản phẩm",
+    "cards": 3,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": true,
+    "viewport": [
+      390,
+      844
+    ],
+    "zoom": 2,
+    "js": true,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?q=qa-one",
+    "width": 187,
+    "scroll": 187,
+    "dpr": 2,
+    "count": "0",
+    "progress": "Đang hiển thị 1–1 trong tổng 1 sản phẩm",
+    "cards": 1,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": true,
+    "viewport": [
+      390,
+      844
+    ],
+    "zoom": 2,
+    "js": true,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?q=qa-twelve",
+    "width": 187,
+    "scroll": 187,
+    "dpr": 2,
+    "count": "0",
+    "progress": "Đang hiển thị 1–12 trong tổng 12 sản phẩm",
+    "cards": 12,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": true,
+    "viewport": [
+      390,
+      844
+    ],
+    "zoom": 2,
+    "js": true,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?q=qa-zero",
+    "width": 187,
+    "scroll": 187,
+    "dpr": 2,
+    "count": "0",
+    "progress": "0 sản phẩm",
+    "cards": 0,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": true,
+    "viewport": [
+      390,
+      844
+    ],
+    "zoom": 2,
+    "js": true,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?q=qa-all&brand=cerave&category=duong-am&skinType=da%20kh%C3%B4&sort=priceAsc&page=1&size=1",
+    "width": 187,
+    "scroll": 187,
+    "dpr": 2,
+    "count": "3",
+    "progress": "Đang hiển thị 1–1 trong tổng 1 sản phẩm",
+    "cards": 1,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": true,
+    "viewport": [
+      390,
+      844
+    ],
+    "zoom": 2,
+    "js": true,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products",
+    "width": 376,
+    "scroll": 376,
+    "dpr": 2,
+    "count": "0",
+    "progress": "Đang hiển thị 1–12 trong tổng 27 sản phẩm",
+    "cards": 12,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": true,
+    "images": [
+      {
+        "index": 0,
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+        "complete": true,
+        "naturalWidth": 1280,
+        "imageHidden": false,
+        "placeholderVisible": false,
+        "width": 162.25,
+        "height": 202.8125,
+        "loading": "eager",
+        "fit": "contain"
+      },
+      {
+        "index": 1,
+        "src": null,
+        "complete": null,
+        "naturalWidth": null,
+        "imageHidden": null,
+        "placeholderVisible": true,
+        "width": 162.25,
+        "height": 202.8125,
+        "loading": null,
+        "fit": null
+      },
+      {
+        "index": 2,
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+        "complete": true,
+        "naturalWidth": 0,
+        "imageHidden": true,
+        "placeholderVisible": true,
+        "width": 162.25,
+        "height": 202.8125,
+        "loading": "lazy",
+        "fit": "contain"
+      },
+      {
+        "index": 3,
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+        "complete": true,
+        "naturalWidth": 0,
+        "imageHidden": true,
+        "placeholderVisible": true,
+        "width": 162.25,
+        "height": 202.8125,
+        "loading": "lazy",
+        "fit": "contain"
+      },
+      {
+        "index": 4,
+        "src": null,
+        "complete": null,
+        "naturalWidth": null,
+        "imageHidden": null,
+        "placeholderVisible": true,
+        "width": 162.25,
+        "height": 202.8125,
+        "loading": null,
+        "fit": null
+      },
+      {
+        "index": 5,
+        "src": null,
+        "complete": null,
+        "naturalWidth": null,
+        "imageHidden": null,
+        "placeholderVisible": true,
+        "width": 162.25,
+        "height": 202.8125,
+        "loading": null,
+        "fit": null
+      }
+    ],
+    "viewport": [
+      768,
+      1024
+    ],
+    "zoom": 2,
+    "js": true,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?page=1",
+    "width": 376,
+    "scroll": 376,
+    "dpr": 2,
+    "count": "0",
+    "progress": "Đang hiển thị 13–24 trong tổng 27 sản phẩm",
+    "cards": 12,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": true,
+    "viewport": [
+      768,
+      1024
+    ],
+    "zoom": 2,
+    "js": true,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?page=2",
+    "width": 376,
+    "scroll": 376,
+    "dpr": 2,
+    "count": "0",
+    "progress": "Đang hiển thị 25–27 trong tổng 27 sản phẩm",
+    "cards": 3,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": true,
+    "viewport": [
+      768,
+      1024
+    ],
+    "zoom": 2,
+    "js": true,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?page=99",
+    "width": 376,
+    "scroll": 376,
+    "dpr": 2,
+    "count": "0",
+    "progress": "Đang hiển thị 25–27 trong tổng 27 sản phẩm",
+    "cards": 3,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": true,
+    "viewport": [
+      768,
+      1024
+    ],
+    "zoom": 2,
+    "js": true,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?q=qa-one",
+    "width": 376,
+    "scroll": 376,
+    "dpr": 2,
+    "count": "0",
+    "progress": "Đang hiển thị 1–1 trong tổng 1 sản phẩm",
+    "cards": 1,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": true,
+    "viewport": [
+      768,
+      1024
+    ],
+    "zoom": 2,
+    "js": true,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?q=qa-twelve",
+    "width": 376,
+    "scroll": 376,
+    "dpr": 2,
+    "count": "0",
+    "progress": "Đang hiển thị 1–12 trong tổng 12 sản phẩm",
+    "cards": 12,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": true,
+    "viewport": [
+      768,
+      1024
+    ],
+    "zoom": 2,
+    "js": true,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?q=qa-zero",
+    "width": 376,
+    "scroll": 376,
+    "dpr": 2,
+    "count": "0",
+    "progress": "0 sản phẩm",
+    "cards": 0,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": true,
+    "viewport": [
+      768,
+      1024
+    ],
+    "zoom": 2,
+    "js": true,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?q=qa-all&brand=cerave&category=duong-am&skinType=da%20kh%C3%B4&sort=priceAsc&page=1&size=1",
+    "width": 376,
+    "scroll": 376,
+    "dpr": 2,
+    "count": "3",
+    "progress": "Đang hiển thị 1–1 trong tổng 1 sản phẩm",
+    "cards": 1,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": true,
+    "viewport": [
+      768,
+      1024
+    ],
+    "zoom": 2,
+    "js": true,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products",
+    "width": 675,
+    "scroll": 675,
+    "dpr": 2,
+    "count": "0",
+    "progress": "Đang hiển thị 1–12 trong tổng 27 sản phẩm",
+    "cards": 12,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": false,
+    "images": [
+      {
+        "index": 0,
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+        "complete": true,
+        "naturalWidth": 1280,
+        "imageHidden": false,
+        "placeholderVisible": false,
+        "width": 183.75,
+        "height": 229.6875,
+        "loading": "eager",
+        "fit": "contain"
+      },
+      {
+        "index": 1,
+        "src": null,
+        "complete": null,
+        "naturalWidth": null,
+        "imageHidden": null,
+        "placeholderVisible": true,
+        "width": 183.75,
+        "height": 229.6875,
+        "loading": null,
+        "fit": null
+      },
+      {
+        "index": 2,
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+        "complete": true,
+        "naturalWidth": 0,
+        "imageHidden": true,
+        "placeholderVisible": true,
+        "width": 183.75,
+        "height": 229.6875,
+        "loading": "lazy",
+        "fit": "contain"
+      },
+      {
+        "index": 3,
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+        "complete": true,
+        "naturalWidth": 0,
+        "imageHidden": true,
+        "placeholderVisible": true,
+        "width": 183.75,
+        "height": 229.6875,
+        "loading": "lazy",
+        "fit": "contain"
+      },
+      {
+        "index": 4,
+        "src": null,
+        "complete": null,
+        "naturalWidth": null,
+        "imageHidden": null,
+        "placeholderVisible": true,
+        "width": 183.75,
+        "height": 229.6875,
+        "loading": null,
+        "fit": null
+      },
+      {
+        "index": 5,
+        "src": null,
+        "complete": null,
+        "naturalWidth": null,
+        "imageHidden": null,
+        "placeholderVisible": true,
+        "width": 183.75,
+        "height": 229.6875,
+        "loading": null,
+        "fit": null
+      }
+    ],
+    "viewport": [
+      1366,
+      768
+    ],
+    "zoom": 2,
+    "js": true,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?page=1",
+    "width": 675,
+    "scroll": 675,
+    "dpr": 2,
+    "count": "0",
+    "progress": "Đang hiển thị 13–24 trong tổng 27 sản phẩm",
+    "cards": 12,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": false,
+    "viewport": [
+      1366,
+      768
+    ],
+    "zoom": 2,
+    "js": true,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?page=2",
+    "width": 675,
+    "scroll": 675,
+    "dpr": 2,
+    "count": "0",
+    "progress": "Đang hiển thị 25–27 trong tổng 27 sản phẩm",
+    "cards": 3,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": false,
+    "viewport": [
+      1366,
+      768
+    ],
+    "zoom": 2,
+    "js": true,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?page=99",
+    "width": 675,
+    "scroll": 675,
+    "dpr": 2,
+    "count": "0",
+    "progress": "Đang hiển thị 25–27 trong tổng 27 sản phẩm",
+    "cards": 3,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": false,
+    "viewport": [
+      1366,
+      768
+    ],
+    "zoom": 2,
+    "js": true,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?q=qa-one",
+    "width": 675,
+    "scroll": 675,
+    "dpr": 2,
+    "count": "0",
+    "progress": "Đang hiển thị 1–1 trong tổng 1 sản phẩm",
+    "cards": 1,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": false,
+    "viewport": [
+      1366,
+      768
+    ],
+    "zoom": 2,
+    "js": true,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?q=qa-twelve",
+    "width": 675,
+    "scroll": 675,
+    "dpr": 2,
+    "count": "0",
+    "progress": "Đang hiển thị 1–12 trong tổng 12 sản phẩm",
+    "cards": 12,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": false,
+    "viewport": [
+      1366,
+      768
+    ],
+    "zoom": 2,
+    "js": true,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?q=qa-zero",
+    "width": 675,
+    "scroll": 675,
+    "dpr": 2,
+    "count": "0",
+    "progress": "0 sản phẩm",
+    "cards": 0,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": false,
+    "viewport": [
+      1366,
+      768
+    ],
+    "zoom": 2,
+    "js": true,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?q=qa-all&brand=cerave&category=duong-am&skinType=da%20kh%C3%B4&sort=priceAsc&page=1&size=1",
+    "width": 675,
+    "scroll": 675,
+    "dpr": 2,
+    "count": "3",
+    "progress": "Đang hiển thị 1–1 trong tổng 1 sản phẩm",
+    "cards": 1,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": false,
+    "viewport": [
+      1366,
+      768
+    ],
+    "zoom": 2,
+    "js": true,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products",
+    "width": 952,
+    "scroll": 952,
+    "dpr": 2,
+    "count": "0",
+    "progress": "Đang hiển thị 1–12 trong tổng 27 sản phẩm",
+    "cards": 12,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": false,
+    "images": [
+      {
+        "index": 0,
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+        "complete": true,
+        "naturalWidth": 1280,
+        "imageHidden": false,
+        "placeholderVisible": false,
+        "width": 286.25,
+        "height": 357.8125,
+        "loading": "eager",
+        "fit": "contain"
+      },
+      {
+        "index": 1,
+        "src": null,
+        "complete": null,
+        "naturalWidth": null,
+        "imageHidden": null,
+        "placeholderVisible": true,
+        "width": 286.25,
+        "height": 357.8125,
+        "loading": null,
+        "fit": null
+      },
+      {
+        "index": 2,
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+        "complete": true,
+        "naturalWidth": 0,
+        "imageHidden": true,
+        "placeholderVisible": true,
+        "width": 286.25,
+        "height": 357.8125,
+        "loading": "lazy",
+        "fit": "contain"
+      },
+      {
+        "index": 3,
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+        "complete": true,
+        "naturalWidth": 0,
+        "imageHidden": true,
+        "placeholderVisible": true,
+        "width": 286.25,
+        "height": 357.8125,
+        "loading": "lazy",
+        "fit": "contain"
+      },
+      {
+        "index": 4,
+        "src": null,
+        "complete": null,
+        "naturalWidth": null,
+        "imageHidden": null,
+        "placeholderVisible": true,
+        "width": 286.25,
+        "height": 357.8125,
+        "loading": null,
+        "fit": null
+      },
+      {
+        "index": 5,
+        "src": null,
+        "complete": null,
+        "naturalWidth": null,
+        "imageHidden": null,
+        "placeholderVisible": true,
+        "width": 286.25,
+        "height": 357.8125,
+        "loading": null,
+        "fit": null
+      }
+    ],
+    "viewport": [
+      1920,
+      1080
+    ],
+    "zoom": 2,
+    "js": true,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?page=1",
+    "width": 952,
+    "scroll": 952,
+    "dpr": 2,
+    "count": "0",
+    "progress": "Đang hiển thị 13–24 trong tổng 27 sản phẩm",
+    "cards": 12,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": false,
+    "viewport": [
+      1920,
+      1080
+    ],
+    "zoom": 2,
+    "js": true,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?page=2",
+    "width": 952,
+    "scroll": 952,
+    "dpr": 2,
+    "count": "0",
+    "progress": "Đang hiển thị 25–27 trong tổng 27 sản phẩm",
+    "cards": 3,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": false,
+    "viewport": [
+      1920,
+      1080
+    ],
+    "zoom": 2,
+    "js": true,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?page=99",
+    "width": 952,
+    "scroll": 952,
+    "dpr": 2,
+    "count": "0",
+    "progress": "Đang hiển thị 25–27 trong tổng 27 sản phẩm",
+    "cards": 3,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": false,
+    "viewport": [
+      1920,
+      1080
+    ],
+    "zoom": 2,
+    "js": true,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?q=qa-one",
+    "width": 952,
+    "scroll": 952,
+    "dpr": 2,
+    "count": "0",
+    "progress": "Đang hiển thị 1–1 trong tổng 1 sản phẩm",
+    "cards": 1,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": false,
+    "viewport": [
+      1920,
+      1080
+    ],
+    "zoom": 2,
+    "js": true,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?q=qa-twelve",
+    "width": 952,
+    "scroll": 952,
+    "dpr": 2,
+    "count": "0",
+    "progress": "Đang hiển thị 1–12 trong tổng 12 sản phẩm",
+    "cards": 12,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": false,
+    "viewport": [
+      1920,
+      1080
+    ],
+    "zoom": 2,
+    "js": true,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?q=qa-zero",
+    "width": 952,
+    "scroll": 952,
+    "dpr": 2,
+    "count": "0",
+    "progress": "0 sản phẩm",
+    "cards": 0,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": false,
+    "viewport": [
+      1920,
+      1080
+    ],
+    "zoom": 2,
+    "js": true,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?q=qa-all&brand=cerave&category=duong-am&skinType=da%20kh%C3%B4&sort=priceAsc&page=1&size=1",
+    "width": 952,
+    "scroll": 952,
+    "dpr": 2,
+    "count": "3",
+    "progress": "Đang hiển thị 1–1 trong tổng 1 sản phẩm",
+    "cards": 1,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": false,
+    "viewport": [
+      1920,
+      1080
+    ],
+    "zoom": 2,
+    "js": true,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products",
+    "width": 345,
+    "scroll": 345,
+    "dpr": 1,
+    "count": "0",
+    "progress": "Đang hiển thị 1–12 trong tổng 27 sản phẩm",
+    "cards": 12,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": false,
+    "images": [
+      {
+        "index": 0,
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+        "complete": true,
+        "naturalWidth": 1280,
+        "imageHidden": false,
+        "placeholderVisible": false,
+        "width": 146.5,
+        "height": 183.125,
+        "loading": "eager",
+        "fit": "contain"
+      },
+      {
+        "index": 1,
+        "src": null,
+        "complete": null,
+        "naturalWidth": null,
+        "imageHidden": null,
+        "placeholderVisible": true,
+        "width": 146.5,
+        "height": 183.125,
+        "loading": null,
+        "fit": null
+      },
+      {
+        "index": 2,
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+        "complete": true,
+        "naturalWidth": 0,
+        "imageHidden": false,
+        "placeholderVisible": false,
+        "width": 146.5,
+        "height": 183.125,
+        "loading": "lazy",
+        "fit": "contain"
+      },
+      {
+        "index": 3,
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+        "complete": true,
+        "naturalWidth": 0,
+        "imageHidden": false,
+        "placeholderVisible": false,
+        "width": 146.5,
+        "height": 183.125,
+        "loading": "lazy",
+        "fit": "contain"
+      },
+      {
+        "index": 4,
+        "src": null,
+        "complete": null,
+        "naturalWidth": null,
+        "imageHidden": null,
+        "placeholderVisible": true,
+        "width": 146.5,
+        "height": 183.125,
+        "loading": null,
+        "fit": null
+      },
+      {
+        "index": 5,
+        "src": null,
+        "complete": null,
+        "naturalWidth": null,
+        "imageHidden": null,
+        "placeholderVisible": true,
+        "width": 146.5,
+        "height": 183.125,
+        "loading": null,
+        "fit": null
+      }
+    ],
+    "viewport": [
+      360,
+      800
+    ],
+    "zoom": 1,
+    "js": false,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?page=1",
+    "width": 345,
+    "scroll": 345,
+    "dpr": 1,
+    "count": "0",
+    "progress": "Đang hiển thị 13–24 trong tổng 27 sản phẩm",
+    "cards": 12,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": false,
+    "viewport": [
+      360,
+      800
+    ],
+    "zoom": 1,
+    "js": false,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?page=2",
+    "width": 345,
+    "scroll": 345,
+    "dpr": 1,
+    "count": "0",
+    "progress": "Đang hiển thị 25–27 trong tổng 27 sản phẩm",
+    "cards": 3,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": false,
+    "viewport": [
+      360,
+      800
+    ],
+    "zoom": 1,
+    "js": false,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?page=99",
+    "width": 345,
+    "scroll": 345,
+    "dpr": 1,
+    "count": "0",
+    "progress": "Đang hiển thị 25–27 trong tổng 27 sản phẩm",
+    "cards": 3,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": false,
+    "viewport": [
+      360,
+      800
+    ],
+    "zoom": 1,
+    "js": false,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?q=qa-one",
+    "width": 345,
+    "scroll": 345,
+    "dpr": 1,
+    "count": "0",
+    "progress": "Đang hiển thị 1–1 trong tổng 1 sản phẩm",
+    "cards": 1,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": false,
+    "viewport": [
+      360,
+      800
+    ],
+    "zoom": 1,
+    "js": false,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?q=qa-twelve",
+    "width": 345,
+    "scroll": 345,
+    "dpr": 1,
+    "count": "0",
+    "progress": "Đang hiển thị 1–12 trong tổng 12 sản phẩm",
+    "cards": 12,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": false,
+    "viewport": [
+      360,
+      800
+    ],
+    "zoom": 1,
+    "js": false,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?q=qa-zero",
+    "width": 345,
+    "scroll": 345,
+    "dpr": 1,
+    "count": "0",
+    "progress": "0 sản phẩm",
+    "cards": 0,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": false,
+    "viewport": [
+      360,
+      800
+    ],
+    "zoom": 1,
+    "js": false,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?q=qa-all&brand=cerave&category=duong-am&skinType=da%20kh%C3%B4&sort=priceAsc&page=1&size=1",
+    "width": 345,
+    "scroll": 345,
+    "dpr": 1,
+    "count": "3",
+    "progress": "Đang hiển thị 1–1 trong tổng 1 sản phẩm",
+    "cards": 1,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": false,
+    "viewport": [
+      360,
+      800
+    ],
+    "zoom": 1,
+    "js": false,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products",
+    "width": 375,
+    "scroll": 375,
+    "dpr": 1,
+    "count": "0",
+    "progress": "Đang hiển thị 1–12 trong tổng 27 sản phẩm",
+    "cards": 12,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": false,
+    "images": [
+      {
+        "index": 0,
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+        "complete": true,
+        "naturalWidth": 1280,
+        "imageHidden": false,
+        "placeholderVisible": false,
+        "width": 161.5,
+        "height": 201.875,
+        "loading": "eager",
+        "fit": "contain"
+      },
+      {
+        "index": 1,
+        "src": null,
+        "complete": null,
+        "naturalWidth": null,
+        "imageHidden": null,
+        "placeholderVisible": true,
+        "width": 161.5,
+        "height": 201.875,
+        "loading": null,
+        "fit": null
+      },
+      {
+        "index": 2,
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+        "complete": true,
+        "naturalWidth": 0,
+        "imageHidden": false,
+        "placeholderVisible": false,
+        "width": 161.5,
+        "height": 201.875,
+        "loading": "lazy",
+        "fit": "contain"
+      },
+      {
+        "index": 3,
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+        "complete": true,
+        "naturalWidth": 0,
+        "imageHidden": false,
+        "placeholderVisible": false,
+        "width": 161.5,
+        "height": 201.875,
+        "loading": "lazy",
+        "fit": "contain"
+      },
+      {
+        "index": 4,
+        "src": null,
+        "complete": null,
+        "naturalWidth": null,
+        "imageHidden": null,
+        "placeholderVisible": true,
+        "width": 161.5,
+        "height": 201.875,
+        "loading": null,
+        "fit": null
+      },
+      {
+        "index": 5,
+        "src": null,
+        "complete": null,
+        "naturalWidth": null,
+        "imageHidden": null,
+        "placeholderVisible": true,
+        "width": 161.5,
+        "height": 201.875,
+        "loading": null,
+        "fit": null
+      }
+    ],
+    "viewport": [
+      390,
+      844
+    ],
+    "zoom": 1,
+    "js": false,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?page=1",
+    "width": 375,
+    "scroll": 375,
+    "dpr": 1,
+    "count": "0",
+    "progress": "Đang hiển thị 13–24 trong tổng 27 sản phẩm",
+    "cards": 12,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": false,
+    "viewport": [
+      390,
+      844
+    ],
+    "zoom": 1,
+    "js": false,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?page=2",
+    "width": 375,
+    "scroll": 375,
+    "dpr": 1,
+    "count": "0",
+    "progress": "Đang hiển thị 25–27 trong tổng 27 sản phẩm",
+    "cards": 3,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": false,
+    "viewport": [
+      390,
+      844
+    ],
+    "zoom": 1,
+    "js": false,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?page=99",
+    "width": 375,
+    "scroll": 375,
+    "dpr": 1,
+    "count": "0",
+    "progress": "Đang hiển thị 25–27 trong tổng 27 sản phẩm",
+    "cards": 3,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": false,
+    "viewport": [
+      390,
+      844
+    ],
+    "zoom": 1,
+    "js": false,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?q=qa-one",
+    "width": 375,
+    "scroll": 375,
+    "dpr": 1,
+    "count": "0",
+    "progress": "Đang hiển thị 1–1 trong tổng 1 sản phẩm",
+    "cards": 1,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": false,
+    "viewport": [
+      390,
+      844
+    ],
+    "zoom": 1,
+    "js": false,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?q=qa-twelve",
+    "width": 375,
+    "scroll": 375,
+    "dpr": 1,
+    "count": "0",
+    "progress": "Đang hiển thị 1–12 trong tổng 12 sản phẩm",
+    "cards": 12,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": false,
+    "viewport": [
+      390,
+      844
+    ],
+    "zoom": 1,
+    "js": false,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?q=qa-zero",
+    "width": 375,
+    "scroll": 375,
+    "dpr": 1,
+    "count": "0",
+    "progress": "0 sản phẩm",
+    "cards": 0,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": false,
+    "viewport": [
+      390,
+      844
+    ],
+    "zoom": 1,
+    "js": false,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?q=qa-all&brand=cerave&category=duong-am&skinType=da%20kh%C3%B4&sort=priceAsc&page=1&size=1",
+    "width": 375,
+    "scroll": 375,
+    "dpr": 1,
+    "count": "3",
+    "progress": "Đang hiển thị 1–1 trong tổng 1 sản phẩm",
+    "cards": 1,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": false,
+    "viewport": [
+      390,
+      844
+    ],
+    "zoom": 1,
+    "js": false,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products",
+    "width": 753,
+    "scroll": 753,
+    "dpr": 1,
+    "count": "0",
+    "progress": "Đang hiển thị 1–12 trong tổng 27 sản phẩm",
+    "cards": 12,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": false,
+    "images": [
+      {
+        "index": 0,
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+        "complete": true,
+        "naturalWidth": 1280,
+        "imageHidden": false,
+        "placeholderVisible": false,
+        "width": 222.5,
+        "height": 278.125,
+        "loading": "eager",
+        "fit": "contain"
+      },
+      {
+        "index": 1,
+        "src": null,
+        "complete": null,
+        "naturalWidth": null,
+        "imageHidden": null,
+        "placeholderVisible": true,
+        "width": 222.5,
+        "height": 278.125,
+        "loading": null,
+        "fit": null
+      },
+      {
+        "index": 2,
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+        "complete": true,
+        "naturalWidth": 0,
+        "imageHidden": false,
+        "placeholderVisible": false,
+        "width": 222.5,
+        "height": 278.125,
+        "loading": "lazy",
+        "fit": "contain"
+      },
+      {
+        "index": 3,
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+        "complete": true,
+        "naturalWidth": 0,
+        "imageHidden": false,
+        "placeholderVisible": false,
+        "width": 222.5,
+        "height": 278.125,
+        "loading": "lazy",
+        "fit": "contain"
+      },
+      {
+        "index": 4,
+        "src": null,
+        "complete": null,
+        "naturalWidth": null,
+        "imageHidden": null,
+        "placeholderVisible": true,
+        "width": 222.5,
+        "height": 278.125,
+        "loading": null,
+        "fit": null
+      },
+      {
+        "index": 5,
+        "src": null,
+        "complete": null,
+        "naturalWidth": null,
+        "imageHidden": null,
+        "placeholderVisible": true,
+        "width": 222.5,
+        "height": 278.125,
+        "loading": null,
+        "fit": null
+      }
+    ],
+    "viewport": [
+      768,
+      1024
+    ],
+    "zoom": 1,
+    "js": false,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?page=1",
+    "width": 753,
+    "scroll": 753,
+    "dpr": 1,
+    "count": "0",
+    "progress": "Đang hiển thị 13–24 trong tổng 27 sản phẩm",
+    "cards": 12,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": false,
+    "viewport": [
+      768,
+      1024
+    ],
+    "zoom": 1,
+    "js": false,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?page=2",
+    "width": 753,
+    "scroll": 753,
+    "dpr": 1,
+    "count": "0",
+    "progress": "Đang hiển thị 25–27 trong tổng 27 sản phẩm",
+    "cards": 3,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": false,
+    "viewport": [
+      768,
+      1024
+    ],
+    "zoom": 1,
+    "js": false,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?page=99",
+    "width": 753,
+    "scroll": 753,
+    "dpr": 1,
+    "count": "0",
+    "progress": "Đang hiển thị 25–27 trong tổng 27 sản phẩm",
+    "cards": 3,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": false,
+    "viewport": [
+      768,
+      1024
+    ],
+    "zoom": 1,
+    "js": false,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?q=qa-one",
+    "width": 753,
+    "scroll": 753,
+    "dpr": 1,
+    "count": "0",
+    "progress": "Đang hiển thị 1–1 trong tổng 1 sản phẩm",
+    "cards": 1,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": false,
+    "viewport": [
+      768,
+      1024
+    ],
+    "zoom": 1,
+    "js": false,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?q=qa-twelve",
+    "width": 753,
+    "scroll": 753,
+    "dpr": 1,
+    "count": "0",
+    "progress": "Đang hiển thị 1–12 trong tổng 12 sản phẩm",
+    "cards": 12,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": false,
+    "viewport": [
+      768,
+      1024
+    ],
+    "zoom": 1,
+    "js": false,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?q=qa-zero",
+    "width": 753,
+    "scroll": 753,
+    "dpr": 1,
+    "count": "0",
+    "progress": "0 sản phẩm",
+    "cards": 0,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": false,
+    "viewport": [
+      768,
+      1024
+    ],
+    "zoom": 1,
+    "js": false,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?q=qa-all&brand=cerave&category=duong-am&skinType=da%20kh%C3%B4&sort=priceAsc&page=1&size=1",
+    "width": 753,
+    "scroll": 753,
+    "dpr": 1,
+    "count": "3",
+    "progress": "Đang hiển thị 1–1 trong tổng 1 sản phẩm",
+    "cards": 1,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": false,
+    "viewport": [
+      768,
+      1024
+    ],
+    "zoom": 1,
+    "js": false,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products",
+    "width": 1351,
+    "scroll": 1351,
+    "dpr": 1,
+    "count": "0",
+    "progress": "Đang hiển thị 1–12 trong tổng 27 sản phẩm",
+    "cards": 12,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": false,
+    "images": [
+      {
+        "index": 0,
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+        "complete": true,
+        "naturalWidth": 1280,
+        "imageHidden": false,
+        "placeholderVisible": false,
+        "width": 264.65625,
+        "height": 330.8125,
+        "loading": "eager",
+        "fit": "contain"
+      },
+      {
+        "index": 1,
+        "src": null,
+        "complete": null,
+        "naturalWidth": null,
+        "imageHidden": null,
+        "placeholderVisible": true,
+        "width": 264.671875,
+        "height": 330.828125,
+        "loading": null,
+        "fit": null
+      },
+      {
+        "index": 2,
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+        "complete": true,
+        "naturalWidth": 0,
+        "imageHidden": false,
+        "placeholderVisible": false,
+        "width": 264.65625,
+        "height": 330.8125,
+        "loading": "lazy",
+        "fit": "contain"
+      },
+      {
+        "index": 3,
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+        "complete": true,
+        "naturalWidth": 0,
+        "imageHidden": false,
+        "placeholderVisible": false,
+        "width": 264.65625,
+        "height": 330.8125,
+        "loading": "lazy",
+        "fit": "contain"
+      },
+      {
+        "index": 4,
+        "src": null,
+        "complete": null,
+        "naturalWidth": null,
+        "imageHidden": null,
+        "placeholderVisible": true,
+        "width": 264.671875,
+        "height": 330.828125,
+        "loading": null,
+        "fit": null
+      },
+      {
+        "index": 5,
+        "src": null,
+        "complete": null,
+        "naturalWidth": null,
+        "imageHidden": null,
+        "placeholderVisible": true,
+        "width": 264.65625,
+        "height": 330.8125,
+        "loading": null,
+        "fit": null
+      }
+    ],
+    "viewport": [
+      1366,
+      768
+    ],
+    "zoom": 1,
+    "js": false,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?page=1",
+    "width": 1351,
+    "scroll": 1351,
+    "dpr": 1,
+    "count": "0",
+    "progress": "Đang hiển thị 13–24 trong tổng 27 sản phẩm",
+    "cards": 12,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": false,
+    "viewport": [
+      1366,
+      768
+    ],
+    "zoom": 1,
+    "js": false,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?page=2",
+    "width": 1351,
+    "scroll": 1351,
+    "dpr": 1,
+    "count": "0",
+    "progress": "Đang hiển thị 25–27 trong tổng 27 sản phẩm",
+    "cards": 3,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": false,
+    "viewport": [
+      1366,
+      768
+    ],
+    "zoom": 1,
+    "js": false,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?page=99",
+    "width": 1351,
+    "scroll": 1351,
+    "dpr": 1,
+    "count": "0",
+    "progress": "Đang hiển thị 25–27 trong tổng 27 sản phẩm",
+    "cards": 3,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": false,
+    "viewport": [
+      1366,
+      768
+    ],
+    "zoom": 1,
+    "js": false,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?q=qa-one",
+    "width": 1351,
+    "scroll": 1351,
+    "dpr": 1,
+    "count": "0",
+    "progress": "Đang hiển thị 1–1 trong tổng 1 sản phẩm",
+    "cards": 1,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": false,
+    "viewport": [
+      1366,
+      768
+    ],
+    "zoom": 1,
+    "js": false,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?q=qa-twelve",
+    "width": 1351,
+    "scroll": 1351,
+    "dpr": 1,
+    "count": "0",
+    "progress": "Đang hiển thị 1–12 trong tổng 12 sản phẩm",
+    "cards": 12,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": false,
+    "viewport": [
+      1366,
+      768
+    ],
+    "zoom": 1,
+    "js": false,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?q=qa-zero",
+    "width": 1351,
+    "scroll": 1351,
+    "dpr": 1,
+    "count": "0",
+    "progress": "0 sản phẩm",
+    "cards": 0,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": false,
+    "viewport": [
+      1366,
+      768
+    ],
+    "zoom": 1,
+    "js": false,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?q=qa-all&brand=cerave&category=duong-am&skinType=da%20kh%C3%B4&sort=priceAsc&page=1&size=1",
+    "width": 1351,
+    "scroll": 1351,
+    "dpr": 1,
+    "count": "3",
+    "progress": "Đang hiển thị 1–1 trong tổng 1 sản phẩm",
+    "cards": 1,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": false,
+    "viewport": [
+      1366,
+      768
+    ],
+    "zoom": 1,
+    "js": false,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products",
+    "width": 1905,
+    "scroll": 1905,
+    "dpr": 1,
+    "count": "0",
+    "progress": "Đang hiển thị 1–12 trong tổng 27 sản phẩm",
+    "cards": 12,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": false,
+    "images": [
+      {
+        "index": 0,
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+        "complete": true,
+        "naturalWidth": 1280,
+        "imageHidden": false,
+        "placeholderVisible": false,
+        "width": 264.65625,
+        "height": 330.8125,
+        "loading": "eager",
+        "fit": "contain"
+      },
+      {
+        "index": 1,
+        "src": null,
+        "complete": null,
+        "naturalWidth": null,
+        "imageHidden": null,
+        "placeholderVisible": true,
+        "width": 264.671875,
+        "height": 330.828125,
+        "loading": null,
+        "fit": null
+      },
+      {
+        "index": 2,
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+        "complete": true,
+        "naturalWidth": 0,
+        "imageHidden": false,
+        "placeholderVisible": false,
+        "width": 264.65625,
+        "height": 330.8125,
+        "loading": "lazy",
+        "fit": "contain"
+      },
+      {
+        "index": 3,
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+        "complete": true,
+        "naturalWidth": 0,
+        "imageHidden": false,
+        "placeholderVisible": false,
+        "width": 264.65625,
+        "height": 330.8125,
+        "loading": "lazy",
+        "fit": "contain"
+      },
+      {
+        "index": 4,
+        "src": null,
+        "complete": null,
+        "naturalWidth": null,
+        "imageHidden": null,
+        "placeholderVisible": true,
+        "width": 264.671875,
+        "height": 330.828125,
+        "loading": null,
+        "fit": null
+      },
+      {
+        "index": 5,
+        "src": null,
+        "complete": null,
+        "naturalWidth": null,
+        "imageHidden": null,
+        "placeholderVisible": true,
+        "width": 264.65625,
+        "height": 330.8125,
+        "loading": null,
+        "fit": null
+      }
+    ],
+    "viewport": [
+      1920,
+      1080
+    ],
+    "zoom": 1,
+    "js": false,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?page=1",
+    "width": 1905,
+    "scroll": 1905,
+    "dpr": 1,
+    "count": "0",
+    "progress": "Đang hiển thị 13–24 trong tổng 27 sản phẩm",
+    "cards": 12,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": false,
+    "viewport": [
+      1920,
+      1080
+    ],
+    "zoom": 1,
+    "js": false,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?page=2",
+    "width": 1905,
+    "scroll": 1905,
+    "dpr": 1,
+    "count": "0",
+    "progress": "Đang hiển thị 25–27 trong tổng 27 sản phẩm",
+    "cards": 3,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": false,
+    "viewport": [
+      1920,
+      1080
+    ],
+    "zoom": 1,
+    "js": false,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?page=99",
+    "width": 1905,
+    "scroll": 1905,
+    "dpr": 1,
+    "count": "0",
+    "progress": "Đang hiển thị 25–27 trong tổng 27 sản phẩm",
+    "cards": 3,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": false,
+    "viewport": [
+      1920,
+      1080
+    ],
+    "zoom": 1,
+    "js": false,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?q=qa-one",
+    "width": 1905,
+    "scroll": 1905,
+    "dpr": 1,
+    "count": "0",
+    "progress": "Đang hiển thị 1–1 trong tổng 1 sản phẩm",
+    "cards": 1,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": false,
+    "viewport": [
+      1920,
+      1080
+    ],
+    "zoom": 1,
+    "js": false,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?q=qa-twelve",
+    "width": 1905,
+    "scroll": 1905,
+    "dpr": 1,
+    "count": "0",
+    "progress": "Đang hiển thị 1–12 trong tổng 12 sản phẩm",
+    "cards": 12,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": false,
+    "viewport": [
+      1920,
+      1080
+    ],
+    "zoom": 1,
+    "js": false,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?q=qa-zero",
+    "width": 1905,
+    "scroll": 1905,
+    "dpr": 1,
+    "count": "0",
+    "progress": "0 sản phẩm",
+    "cards": 0,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": false,
+    "viewport": [
+      1920,
+      1080
+    ],
+    "zoom": 1,
+    "js": false,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?q=qa-all&brand=cerave&category=duong-am&skinType=da%20kh%C3%B4&sort=priceAsc&page=1&size=1",
+    "width": 1905,
+    "scroll": 1905,
+    "dpr": 1,
+    "count": "3",
+    "progress": "Đang hiển thị 1–1 trong tổng 1 sản phẩm",
+    "cards": 1,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": false,
+    "viewport": [
+      1920,
+      1080
+    ],
+    "zoom": 1,
+    "js": false,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products",
+    "width": 172,
+    "scroll": 172,
+    "dpr": 2,
+    "count": "0",
+    "progress": "Đang hiển thị 1–12 trong tổng 27 sản phẩm",
+    "cards": 12,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": false,
+    "images": [
+      {
+        "index": 0,
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+        "complete": true,
+        "naturalWidth": 1280,
+        "imageHidden": false,
+        "placeholderVisible": false,
+        "width": 60.25,
+        "height": 75.3125,
+        "loading": "eager",
+        "fit": "contain"
+      },
+      {
+        "index": 1,
+        "src": null,
+        "complete": null,
+        "naturalWidth": null,
+        "imageHidden": null,
+        "placeholderVisible": true,
+        "width": 60.25,
+        "height": 75.3125,
+        "loading": null,
+        "fit": null
+      },
+      {
+        "index": 2,
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+        "complete": true,
+        "naturalWidth": 0,
+        "imageHidden": false,
+        "placeholderVisible": false,
+        "width": 60.25,
+        "height": 75.3125,
+        "loading": "lazy",
+        "fit": "contain"
+      },
+      {
+        "index": 3,
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+        "complete": true,
+        "naturalWidth": 0,
+        "imageHidden": false,
+        "placeholderVisible": false,
+        "width": 60.25,
+        "height": 75.3125,
+        "loading": "lazy",
+        "fit": "contain"
+      },
+      {
+        "index": 4,
+        "src": null,
+        "complete": null,
+        "naturalWidth": null,
+        "imageHidden": null,
+        "placeholderVisible": true,
+        "width": 60.25,
+        "height": 75.3125,
+        "loading": null,
+        "fit": null
+      },
+      {
+        "index": 5,
+        "src": null,
+        "complete": null,
+        "naturalWidth": null,
+        "imageHidden": null,
+        "placeholderVisible": true,
+        "width": 60.25,
+        "height": 75.3125,
+        "loading": null,
+        "fit": null
+      }
+    ],
+    "viewport": [
+      360,
+      800
+    ],
+    "zoom": 2,
+    "js": false,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?page=1",
+    "width": 172,
+    "scroll": 172,
+    "dpr": 2,
+    "count": "0",
+    "progress": "Đang hiển thị 13–24 trong tổng 27 sản phẩm",
+    "cards": 12,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": false,
+    "viewport": [
+      360,
+      800
+    ],
+    "zoom": 2,
+    "js": false,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?page=2",
+    "width": 172,
+    "scroll": 172,
+    "dpr": 2,
+    "count": "0",
+    "progress": "Đang hiển thị 25–27 trong tổng 27 sản phẩm",
+    "cards": 3,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": false,
+    "viewport": [
+      360,
+      800
+    ],
+    "zoom": 2,
+    "js": false,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?page=99",
+    "width": 172,
+    "scroll": 172,
+    "dpr": 2,
+    "count": "0",
+    "progress": "Đang hiển thị 25–27 trong tổng 27 sản phẩm",
+    "cards": 3,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": false,
+    "viewport": [
+      360,
+      800
+    ],
+    "zoom": 2,
+    "js": false,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?q=qa-one",
+    "width": 172,
+    "scroll": 172,
+    "dpr": 2,
+    "count": "0",
+    "progress": "Đang hiển thị 1–1 trong tổng 1 sản phẩm",
+    "cards": 1,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": false,
+    "viewport": [
+      360,
+      800
+    ],
+    "zoom": 2,
+    "js": false,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?q=qa-twelve",
+    "width": 172,
+    "scroll": 172,
+    "dpr": 2,
+    "count": "0",
+    "progress": "Đang hiển thị 1–12 trong tổng 12 sản phẩm",
+    "cards": 12,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": false,
+    "viewport": [
+      360,
+      800
+    ],
+    "zoom": 2,
+    "js": false,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?q=qa-zero",
+    "width": 172,
+    "scroll": 172,
+    "dpr": 2,
+    "count": "0",
+    "progress": "0 sản phẩm",
+    "cards": 0,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": false,
+    "viewport": [
+      360,
+      800
+    ],
+    "zoom": 2,
+    "js": false,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?q=qa-all&brand=cerave&category=duong-am&skinType=da%20kh%C3%B4&sort=priceAsc&page=1&size=1",
+    "width": 172,
+    "scroll": 172,
+    "dpr": 2,
+    "count": "3",
+    "progress": "Đang hiển thị 1–1 trong tổng 1 sản phẩm",
+    "cards": 1,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": false,
+    "viewport": [
+      360,
+      800
+    ],
+    "zoom": 2,
+    "js": false,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products",
+    "width": 187,
+    "scroll": 187,
+    "dpr": 2,
+    "count": "0",
+    "progress": "Đang hiển thị 1–12 trong tổng 27 sản phẩm",
+    "cards": 12,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": false,
+    "images": [
+      {
+        "index": 0,
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+        "complete": true,
+        "naturalWidth": 1280,
+        "imageHidden": false,
+        "placeholderVisible": false,
+        "width": 67.75,
+        "height": 84.6875,
+        "loading": "eager",
+        "fit": "contain"
+      },
+      {
+        "index": 1,
+        "src": null,
+        "complete": null,
+        "naturalWidth": null,
+        "imageHidden": null,
+        "placeholderVisible": true,
+        "width": 67.75,
+        "height": 84.6875,
+        "loading": null,
+        "fit": null
+      },
+      {
+        "index": 2,
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+        "complete": true,
+        "naturalWidth": 0,
+        "imageHidden": false,
+        "placeholderVisible": false,
+        "width": 67.75,
+        "height": 84.6875,
+        "loading": "lazy",
+        "fit": "contain"
+      },
+      {
+        "index": 3,
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+        "complete": true,
+        "naturalWidth": 0,
+        "imageHidden": false,
+        "placeholderVisible": false,
+        "width": 67.75,
+        "height": 84.6875,
+        "loading": "lazy",
+        "fit": "contain"
+      },
+      {
+        "index": 4,
+        "src": null,
+        "complete": null,
+        "naturalWidth": null,
+        "imageHidden": null,
+        "placeholderVisible": true,
+        "width": 67.75,
+        "height": 84.6875,
+        "loading": null,
+        "fit": null
+      },
+      {
+        "index": 5,
+        "src": null,
+        "complete": null,
+        "naturalWidth": null,
+        "imageHidden": null,
+        "placeholderVisible": true,
+        "width": 67.75,
+        "height": 84.6875,
+        "loading": null,
+        "fit": null
+      }
+    ],
+    "viewport": [
+      390,
+      844
+    ],
+    "zoom": 2,
+    "js": false,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?page=1",
+    "width": 187,
+    "scroll": 187,
+    "dpr": 2,
+    "count": "0",
+    "progress": "Đang hiển thị 13–24 trong tổng 27 sản phẩm",
+    "cards": 12,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": false,
+    "viewport": [
+      390,
+      844
+    ],
+    "zoom": 2,
+    "js": false,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?page=2",
+    "width": 187,
+    "scroll": 187,
+    "dpr": 2,
+    "count": "0",
+    "progress": "Đang hiển thị 25–27 trong tổng 27 sản phẩm",
+    "cards": 3,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": false,
+    "viewport": [
+      390,
+      844
+    ],
+    "zoom": 2,
+    "js": false,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?page=99",
+    "width": 187,
+    "scroll": 187,
+    "dpr": 2,
+    "count": "0",
+    "progress": "Đang hiển thị 25–27 trong tổng 27 sản phẩm",
+    "cards": 3,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": false,
+    "viewport": [
+      390,
+      844
+    ],
+    "zoom": 2,
+    "js": false,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?q=qa-one",
+    "width": 187,
+    "scroll": 187,
+    "dpr": 2,
+    "count": "0",
+    "progress": "Đang hiển thị 1–1 trong tổng 1 sản phẩm",
+    "cards": 1,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": false,
+    "viewport": [
+      390,
+      844
+    ],
+    "zoom": 2,
+    "js": false,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?q=qa-twelve",
+    "width": 187,
+    "scroll": 187,
+    "dpr": 2,
+    "count": "0",
+    "progress": "Đang hiển thị 1–12 trong tổng 12 sản phẩm",
+    "cards": 12,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": false,
+    "viewport": [
+      390,
+      844
+    ],
+    "zoom": 2,
+    "js": false,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?q=qa-zero",
+    "width": 187,
+    "scroll": 187,
+    "dpr": 2,
+    "count": "0",
+    "progress": "0 sản phẩm",
+    "cards": 0,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": false,
+    "viewport": [
+      390,
+      844
+    ],
+    "zoom": 2,
+    "js": false,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?q=qa-all&brand=cerave&category=duong-am&skinType=da%20kh%C3%B4&sort=priceAsc&page=1&size=1",
+    "width": 187,
+    "scroll": 187,
+    "dpr": 2,
+    "count": "3",
+    "progress": "Đang hiển thị 1–1 trong tổng 1 sản phẩm",
+    "cards": 1,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": false,
+    "viewport": [
+      390,
+      844
+    ],
+    "zoom": 2,
+    "js": false,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products",
+    "width": 376,
+    "scroll": 376,
+    "dpr": 2,
+    "count": "0",
+    "progress": "Đang hiển thị 1–12 trong tổng 27 sản phẩm",
+    "cards": 12,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": false,
+    "images": [
+      {
+        "index": 0,
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+        "complete": true,
+        "naturalWidth": 1280,
+        "imageHidden": false,
+        "placeholderVisible": false,
+        "width": 162.25,
+        "height": 202.8125,
+        "loading": "eager",
+        "fit": "contain"
+      },
+      {
+        "index": 1,
+        "src": null,
+        "complete": null,
+        "naturalWidth": null,
+        "imageHidden": null,
+        "placeholderVisible": true,
+        "width": 162.25,
+        "height": 202.8125,
+        "loading": null,
+        "fit": null
+      },
+      {
+        "index": 2,
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+        "complete": true,
+        "naturalWidth": 0,
+        "imageHidden": false,
+        "placeholderVisible": false,
+        "width": 162.25,
+        "height": 202.8125,
+        "loading": "lazy",
+        "fit": "contain"
+      },
+      {
+        "index": 3,
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+        "complete": true,
+        "naturalWidth": 0,
+        "imageHidden": false,
+        "placeholderVisible": false,
+        "width": 162.25,
+        "height": 202.8125,
+        "loading": "lazy",
+        "fit": "contain"
+      },
+      {
+        "index": 4,
+        "src": null,
+        "complete": null,
+        "naturalWidth": null,
+        "imageHidden": null,
+        "placeholderVisible": true,
+        "width": 162.25,
+        "height": 202.8125,
+        "loading": null,
+        "fit": null
+      },
+      {
+        "index": 5,
+        "src": null,
+        "complete": null,
+        "naturalWidth": null,
+        "imageHidden": null,
+        "placeholderVisible": true,
+        "width": 162.25,
+        "height": 202.8125,
+        "loading": null,
+        "fit": null
+      }
+    ],
+    "viewport": [
+      768,
+      1024
+    ],
+    "zoom": 2,
+    "js": false,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?page=1",
+    "width": 376,
+    "scroll": 376,
+    "dpr": 2,
+    "count": "0",
+    "progress": "Đang hiển thị 13–24 trong tổng 27 sản phẩm",
+    "cards": 12,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": false,
+    "viewport": [
+      768,
+      1024
+    ],
+    "zoom": 2,
+    "js": false,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?page=2",
+    "width": 376,
+    "scroll": 376,
+    "dpr": 2,
+    "count": "0",
+    "progress": "Đang hiển thị 25–27 trong tổng 27 sản phẩm",
+    "cards": 3,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": false,
+    "viewport": [
+      768,
+      1024
+    ],
+    "zoom": 2,
+    "js": false,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?page=99",
+    "width": 376,
+    "scroll": 376,
+    "dpr": 2,
+    "count": "0",
+    "progress": "Đang hiển thị 25–27 trong tổng 27 sản phẩm",
+    "cards": 3,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": false,
+    "viewport": [
+      768,
+      1024
+    ],
+    "zoom": 2,
+    "js": false,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?q=qa-one",
+    "width": 376,
+    "scroll": 376,
+    "dpr": 2,
+    "count": "0",
+    "progress": "Đang hiển thị 1–1 trong tổng 1 sản phẩm",
+    "cards": 1,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": false,
+    "viewport": [
+      768,
+      1024
+    ],
+    "zoom": 2,
+    "js": false,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?q=qa-twelve",
+    "width": 376,
+    "scroll": 376,
+    "dpr": 2,
+    "count": "0",
+    "progress": "Đang hiển thị 1–12 trong tổng 12 sản phẩm",
+    "cards": 12,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": false,
+    "viewport": [
+      768,
+      1024
+    ],
+    "zoom": 2,
+    "js": false,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?q=qa-zero",
+    "width": 376,
+    "scroll": 376,
+    "dpr": 2,
+    "count": "0",
+    "progress": "0 sản phẩm",
+    "cards": 0,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": false,
+    "viewport": [
+      768,
+      1024
+    ],
+    "zoom": 2,
+    "js": false,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?q=qa-all&brand=cerave&category=duong-am&skinType=da%20kh%C3%B4&sort=priceAsc&page=1&size=1",
+    "width": 376,
+    "scroll": 376,
+    "dpr": 2,
+    "count": "3",
+    "progress": "Đang hiển thị 1–1 trong tổng 1 sản phẩm",
+    "cards": 1,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": false,
+    "viewport": [
+      768,
+      1024
+    ],
+    "zoom": 2,
+    "js": false,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products",
+    "width": 675,
+    "scroll": 675,
+    "dpr": 2,
+    "count": "0",
+    "progress": "Đang hiển thị 1–12 trong tổng 27 sản phẩm",
+    "cards": 12,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": false,
+    "images": [
+      {
+        "index": 0,
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+        "complete": true,
+        "naturalWidth": 1280,
+        "imageHidden": false,
+        "placeholderVisible": false,
+        "width": 183.75,
+        "height": 229.6875,
+        "loading": "eager",
+        "fit": "contain"
+      },
+      {
+        "index": 1,
+        "src": null,
+        "complete": null,
+        "naturalWidth": null,
+        "imageHidden": null,
+        "placeholderVisible": true,
+        "width": 183.75,
+        "height": 229.6875,
+        "loading": null,
+        "fit": null
+      },
+      {
+        "index": 2,
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+        "complete": true,
+        "naturalWidth": 0,
+        "imageHidden": false,
+        "placeholderVisible": false,
+        "width": 183.75,
+        "height": 229.6875,
+        "loading": "lazy",
+        "fit": "contain"
+      },
+      {
+        "index": 3,
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+        "complete": true,
+        "naturalWidth": 0,
+        "imageHidden": false,
+        "placeholderVisible": false,
+        "width": 183.75,
+        "height": 229.6875,
+        "loading": "lazy",
+        "fit": "contain"
+      },
+      {
+        "index": 4,
+        "src": null,
+        "complete": null,
+        "naturalWidth": null,
+        "imageHidden": null,
+        "placeholderVisible": true,
+        "width": 183.75,
+        "height": 229.6875,
+        "loading": null,
+        "fit": null
+      },
+      {
+        "index": 5,
+        "src": null,
+        "complete": null,
+        "naturalWidth": null,
+        "imageHidden": null,
+        "placeholderVisible": true,
+        "width": 183.75,
+        "height": 229.6875,
+        "loading": null,
+        "fit": null
+      }
+    ],
+    "viewport": [
+      1366,
+      768
+    ],
+    "zoom": 2,
+    "js": false,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?page=1",
+    "width": 675,
+    "scroll": 675,
+    "dpr": 2,
+    "count": "0",
+    "progress": "Đang hiển thị 13–24 trong tổng 27 sản phẩm",
+    "cards": 12,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": false,
+    "viewport": [
+      1366,
+      768
+    ],
+    "zoom": 2,
+    "js": false,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?page=2",
+    "width": 675,
+    "scroll": 675,
+    "dpr": 2,
+    "count": "0",
+    "progress": "Đang hiển thị 25–27 trong tổng 27 sản phẩm",
+    "cards": 3,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": false,
+    "viewport": [
+      1366,
+      768
+    ],
+    "zoom": 2,
+    "js": false,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?page=99",
+    "width": 675,
+    "scroll": 675,
+    "dpr": 2,
+    "count": "0",
+    "progress": "Đang hiển thị 25–27 trong tổng 27 sản phẩm",
+    "cards": 3,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": false,
+    "viewport": [
+      1366,
+      768
+    ],
+    "zoom": 2,
+    "js": false,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?q=qa-one",
+    "width": 675,
+    "scroll": 675,
+    "dpr": 2,
+    "count": "0",
+    "progress": "Đang hiển thị 1–1 trong tổng 1 sản phẩm",
+    "cards": 1,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": false,
+    "viewport": [
+      1366,
+      768
+    ],
+    "zoom": 2,
+    "js": false,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?q=qa-twelve",
+    "width": 675,
+    "scroll": 675,
+    "dpr": 2,
+    "count": "0",
+    "progress": "Đang hiển thị 1–12 trong tổng 12 sản phẩm",
+    "cards": 12,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": false,
+    "viewport": [
+      1366,
+      768
+    ],
+    "zoom": 2,
+    "js": false,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?q=qa-zero",
+    "width": 675,
+    "scroll": 675,
+    "dpr": 2,
+    "count": "0",
+    "progress": "0 sản phẩm",
+    "cards": 0,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": false,
+    "viewport": [
+      1366,
+      768
+    ],
+    "zoom": 2,
+    "js": false,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?q=qa-all&brand=cerave&category=duong-am&skinType=da%20kh%C3%B4&sort=priceAsc&page=1&size=1",
+    "width": 675,
+    "scroll": 675,
+    "dpr": 2,
+    "count": "3",
+    "progress": "Đang hiển thị 1–1 trong tổng 1 sản phẩm",
+    "cards": 1,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": false,
+    "viewport": [
+      1366,
+      768
+    ],
+    "zoom": 2,
+    "js": false,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products",
+    "width": 952,
+    "scroll": 952,
+    "dpr": 2,
+    "count": "0",
+    "progress": "Đang hiển thị 1–12 trong tổng 27 sản phẩm",
+    "cards": 12,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": false,
+    "images": [
+      {
+        "index": 0,
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000000026.png",
+        "complete": true,
+        "naturalWidth": 1280,
+        "imageHidden": false,
+        "placeholderVisible": false,
+        "width": 286.25,
+        "height": 357.8125,
+        "loading": "eager",
+        "fit": "contain"
+      },
+      {
+        "index": 1,
+        "src": null,
+        "complete": null,
+        "naturalWidth": null,
+        "imageHidden": null,
+        "placeholderVisible": true,
+        "width": 286.25,
+        "height": 357.8125,
+        "loading": null,
+        "fit": null
+      },
+      {
+        "index": 2,
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000000028.png",
+        "complete": true,
+        "naturalWidth": 0,
+        "imageHidden": false,
+        "placeholderVisible": false,
+        "width": 286.25,
+        "height": 357.8125,
+        "loading": "lazy",
+        "fit": "contain"
+      },
+      {
+        "index": 3,
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000000029.png",
+        "complete": true,
+        "naturalWidth": 0,
+        "imageHidden": false,
+        "placeholderVisible": false,
+        "width": 286.25,
+        "height": 357.8125,
+        "loading": "lazy",
+        "fit": "contain"
+      },
+      {
+        "index": 4,
+        "src": null,
+        "complete": null,
+        "naturalWidth": null,
+        "imageHidden": null,
+        "placeholderVisible": true,
+        "width": 286.25,
+        "height": 357.8125,
+        "loading": null,
+        "fit": null
+      },
+      {
+        "index": 5,
+        "src": null,
+        "complete": null,
+        "naturalWidth": null,
+        "imageHidden": null,
+        "placeholderVisible": true,
+        "width": 286.25,
+        "height": 357.8125,
+        "loading": null,
+        "fit": null
+      }
+    ],
+    "viewport": [
+      1920,
+      1080
+    ],
+    "zoom": 2,
+    "js": false,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?page=1",
+    "width": 952,
+    "scroll": 952,
+    "dpr": 2,
+    "count": "0",
+    "progress": "Đang hiển thị 13–24 trong tổng 27 sản phẩm",
+    "cards": 12,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": false,
+    "viewport": [
+      1920,
+      1080
+    ],
+    "zoom": 2,
+    "js": false,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?page=2",
+    "width": 952,
+    "scroll": 952,
+    "dpr": 2,
+    "count": "0",
+    "progress": "Đang hiển thị 25–27 trong tổng 27 sản phẩm",
+    "cards": 3,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": false,
+    "viewport": [
+      1920,
+      1080
+    ],
+    "zoom": 2,
+    "js": false,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?page=99",
+    "width": 952,
+    "scroll": 952,
+    "dpr": 2,
+    "count": "0",
+    "progress": "Đang hiển thị 25–27 trong tổng 27 sản phẩm",
+    "cards": 3,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": false,
+    "viewport": [
+      1920,
+      1080
+    ],
+    "zoom": 2,
+    "js": false,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?q=qa-one",
+    "width": 952,
+    "scroll": 952,
+    "dpr": 2,
+    "count": "0",
+    "progress": "Đang hiển thị 1–1 trong tổng 1 sản phẩm",
+    "cards": 1,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": false,
+    "viewport": [
+      1920,
+      1080
+    ],
+    "zoom": 2,
+    "js": false,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?q=qa-twelve",
+    "width": 952,
+    "scroll": 952,
+    "dpr": 2,
+    "count": "0",
+    "progress": "Đang hiển thị 1–12 trong tổng 12 sản phẩm",
+    "cards": 12,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": false,
+    "viewport": [
+      1920,
+      1080
+    ],
+    "zoom": 2,
+    "js": false,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?q=qa-zero",
+    "width": 952,
+    "scroll": 952,
+    "dpr": 2,
+    "count": "0",
+    "progress": "0 sản phẩm",
+    "cards": 0,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": false,
+    "viewport": [
+      1920,
+      1080
+    ],
+    "zoom": 2,
+    "js": false,
+    "pass": true
+  },
+  {
+    "url": "http://127.0.0.1:61948/products?q=qa-all&brand=cerave&category=duong-am&skinType=da%20kh%C3%B4&sort=priceAsc&page=1&size=1",
+    "width": 952,
+    "scroll": 952,
+    "dpr": 2,
+    "count": "3",
+    "progress": "Đang hiển thị 1–1 trong tổng 1 sản phẩm",
+    "cards": 1,
+    "scripts": [
+      "http://127.0.0.1:61948/js/app.js"
+    ],
+    "closed": false,
+    "viewport": [
+      1920,
+      1080
+    ],
+    "zoom": 2,
+    "js": false,
+    "pass": true
+  }
+]

@@ -1,9 +1,122 @@
 <!DOCTYPE html>
-<html lang="vi" xmlns:th="http://www.thymeleaf.org"><head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Danh mục sản phẩm · BeautyShop</title><link rel="stylesheet" th:href="@{/css/theme.css}"></head>
-<body><div th:replace="~{fragments/header :: siteHeader}"></div>
-<main class="page-content"><p class="eyebrow">BỘ SƯU TẬP</p><h1>Sản phẩm mỹ phẩm</h1>
-<div class="notice"><strong>Catalog chưa được triển khai.</strong><p>Module P01–P03 sẽ bổ sung danh mục, thương hiệu, các SKU và 30–50 sản phẩm demo đã kiểm chứng nguồn.</p></div>
-<a class="text-link" th:href="@{/}">Trở về trang chủ</a></main>
-<div th:replace="~{fragments/footer :: siteFooter}"></div></body></html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/head :: head('Sản phẩm · BeautyShop')}"></head>
+<body>
+<div th:replace="~{fragments/header :: siteHeader}"></div>
+<main id="main" tabindex="-1" class="page-content storefront shop-catalog"
+      th:with="coBoLoc=${q != '' or brand != '' or category != '' or skinType != ''},
+               soBoLoc=${(brand != '' ? 1 : 0) + (category != '' ? 1 : 0) + (skinType != '' ? 1 : 0)}">
+    <header class="catalog-intro">
+        <p class="eyebrow">BeautyShop / Bộ sưu tập</p>
+        <h1>Sản phẩm mỹ phẩm</h1>
+        <p class="muted">Khám phá mỹ phẩm theo danh mục, thương hiệu và loại da.</p>
+    </header>
+
+    <div class="catalog-layout">
+        <details class="catalog-filter-panel card" data-catalog-filters>
+            <summary>Bộ lọc (<span id="catalog-filter-count" th:text="${soBoLoc}">0</span>)<span class="visually-hidden"> đang áp dụng</span> và sắp xếp</summary>
+            <form class="store-filters" method="get" th:action="@{/products}" role="search" aria-label="Lọc sản phẩm">
+                <div class="field">
+                    <label for="catalog-q">Tìm kiếm</label>
+                    <input id="catalog-q" type="search" name="q" th:value="${q}" maxlength="160" placeholder="Tên sản phẩm hoặc SKU">
+                </div>
+                <div class="field">
+                    <label for="categories">Danh mục</label>
+                    <select id="categories" name="category">
+                        <option value="">Tất cả danh mục</option>
+                        <option th:each="muc : ${danhMuc}" th:value="${muc.duongDan}" th:text="${muc.ten}" th:selected="${muc.duongDan == category}"></option>
+                    </select>
+                </div>
+                <div class="field">
+                    <label for="brands">Thương hiệu</label>
+                    <select id="brands" name="brand">
+                        <option value="">Tất cả thương hiệu</option>
+                        <option th:each="muc : ${thuongHieu}" th:value="${muc.duongDan}" th:text="${muc.ten}" th:selected="${muc.duongDan == brand}"></option>
+                    </select>
+                </div>
+                <div class="field">
+                    <label for="skin-type">Loại da</label>
+                    <input id="skin-type" type="text" name="skinType" th:value="${skinType}" maxlength="100" placeholder="Ví dụ: da dầu">
+                </div>
+                <div class="field">
+                    <label for="catalog-sort">Sắp xếp</label>
+                    <select id="catalog-sort" name="sort">
+                        <option value="newest" th:selected="${sort == 'newest'}">Mới nhất</option>
+                        <option value="priceAsc" th:selected="${sort == 'priceAsc'}">Giá tăng dần</option>
+                        <option value="priceDesc" th:selected="${sort == 'priceDesc'}">Giá giảm dần</option>
+                    </select>
+                </div>
+                <button class="btn btn--primary" type="submit">Áp dụng</button>
+                <a class="btn btn--link" th:href="@{/products}" th:if="${coBoLoc or sort != 'newest'}">Xóa tất cả</a>
+            </form>
+        </details>
+
+        <section class="catalog-results" aria-labelledby="catalog-results-title">
+            <div class="catalog-results-head">
+                <h2 id="catalog-results-title">Kết quả</h2>
+                <p class="catalog-count muted" th:text="|${ketQua.totalElements} sản phẩm|">0 sản phẩm</p>
+            </div>
+            <p class="catalog-progress muted" th:with="batDau=${1L * ketQua.number * ketQua.size + 1},
+                    ketThuc=${batDau + ketQua.numberOfElements - 1}">
+                <span th:if="${ketQua.numberOfElements > 0 and batDau <= ketQua.totalElements}"
+                      th:text="|Đang hiển thị ${batDau}–${ketThuc > ketQua.totalElements ? ketQua.totalElements : ketThuc} trong tổng ${ketQua.totalElements} sản phẩm|"></span>
+                <span th:if="${ketQua.totalElements == 0}">0 sản phẩm</span>
+                <span th:if="${ketQua.totalElements > 0 and (ketQua.numberOfElements == 0 or batDau > ketQua.totalElements)}"
+                      th:text="|Không có sản phẩm ở trang này trong tổng ${ketQua.totalElements} sản phẩm|"></span>
+            </p>
+            <nav th:if="${coBoLoc or sort != 'newest'}" aria-label="Bộ lọc đang áp dụng"
+                 th:with="mucDanhMuc=${danhMuc.^[duongDan == #ctx.getVariable('category')]},
+                          mucThuongHieu=${thuongHieu.^[duongDan == #ctx.getVariable('brand')]}">
+                <ul class="catalog-active">
+                    <li th:if="${q != ''}">
+                        <a class="btn btn--secondary catalog-chip" th:href="@{/products(brand=${brand},category=${category},skinType=${skinType},sort=${sort},size=${ketQua.size})}">
+                            <span class="visually-hidden">Bỏ tìm kiếm </span><span th:text="|Từ khóa: ${q}|"></span><span aria-hidden="true">×</span>
+                        </a>
+                    </li>
+                    <li th:if="${category != ''}">
+                        <a class="btn btn--secondary catalog-chip" th:href="@{/products(q=${q},brand=${brand},skinType=${skinType},sort=${sort},size=${ketQua.size})}">
+                            <span class="visually-hidden">Bỏ lọc </span><span th:text="|Danh mục: ${mucDanhMuc != null ? mucDanhMuc.ten : category}|"></span><span aria-hidden="true">×</span>
+                        </a>
+                    </li>
+                    <li th:if="${brand != ''}">
+                        <a class="btn btn--secondary catalog-chip" th:href="@{/products(q=${q},category=${category},skinType=${skinType},sort=${sort},size=${ketQua.size})}">
+                            <span class="visually-hidden">Bỏ lọc </span><span th:text="|Thương hiệu: ${mucThuongHieu != null ? mucThuongHieu.ten : brand}|"></span><span aria-hidden="true">×</span>
+                        </a>
+                    </li>
+                    <li th:if="${skinType != ''}">
+                        <a class="btn btn--secondary catalog-chip" th:href="@{/products(q=${q},brand=${brand},category=${category},sort=${sort},size=${ketQua.size})}">
+                            <span class="visually-hidden">Bỏ lọc </span><span th:text="|Loại da: ${skinType}|"></span><span aria-hidden="true">×</span>
+                        </a>
+                    </li>
+                    <li th:if="${sort != 'newest'}">
+                        <a class="btn btn--secondary catalog-chip" th:href="@{/products(q=${q},brand=${brand},category=${category},skinType=${skinType},size=${ketQua.size})}">
+                            <span class="visually-hidden">Bỏ sắp xếp </span><span th:text="${sort == 'priceAsc' ? 'Giá tăng dần' : 'Giá giảm dần'}"></span><span aria-hidden="true">×</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="catalog-empty card" th:if="${ketQua.empty}">
+                <h3 th:text="${coBoLoc ? 'Không tìm thấy sản phẩm phù hợp' : 'Chưa có sản phẩm để hiển thị'}"></h3>
+                <p class="muted" th:text="${coBoLoc ? 'Thử từ khóa khác hoặc bỏ bộ lọc để xem danh sách đầy đủ.'
+                                                  : 'Bạn có thể quay lại trang chủ hoặc hỏi BeautyShop về sản phẩm đang tìm.'}"></p>
+                <a class="btn btn--secondary" th:if="${coBoLoc}" th:href="@{/products}">Xem tất cả sản phẩm</a>
+                <a class="btn btn--secondary" th:unless="${coBoLoc}" th:href="@{/}">Về trang chủ</a>
+                <a class="btn btn--link" th:unless="${coBoLoc}" th:href="@{/chat}">Hỏi về sản phẩm</a>
+            </div>
+
+            <ul class="store-grid" th:unless="${ketQua.empty}">
+                <li th:each="the : ${ketQua.content}">
+                    <div th:replace="~{fragments/product-card :: productCard(${the}, ${theStat.first})}"></div>
+                </li>
+            </ul>
+            <div th:replace="~{fragments/ui :: pagination(${ketQua},
+                @{/products(q=${q},brand=${brand},category=${category},skinType=${skinType},sort=${sort},page=${ketQua.number - 1},size=${ketQua.size})},
+                @{/products(q=${q},brand=${brand},category=${category},skinType=${skinType},sort=${sort},page=${ketQua.number + 1},size=${ketQua.size})})}"></div>
+        </section>
+    </div>
+</main>
+<div th:replace="~{fragments/footer :: siteFooter}"></div>
+<script defer th:src="@{/js/catalog-preview.js}"></script>
+</body>
+</html>

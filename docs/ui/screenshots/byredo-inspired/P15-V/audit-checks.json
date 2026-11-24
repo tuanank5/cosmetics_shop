@@ -1,0 +1,12 @@
+﻿{
+    "BeautyShopRecords":  6,
+    "BeautyShopJSExceptions":  0,
+    "OverflowRecords":  0,
+    "FailedReferenceNavigations":  6,
+    "PNGs":  29,
+    "MissingReportLinks":  [
+
+                           ],
+    "Maven":  "NOT RUN: documentation-only audit",
+    "Database":  "NOT ACCESSED"
+}

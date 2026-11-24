@@ -5,12 +5,12 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class OrderStatePolicyTest {
     @Test void allowNormalProgress() {
-        assertTrue(OrderStatePolicy.canMove(OrderStatus.CONFIRMED, OrderStatus.PACKING));
-        assertTrue(OrderStatePolicy.canMove(OrderStatus.SHIPPING, OrderStatus.DELIVERED));
+        assertTrue(OrderState_Policy.canMove(OrderStatus.CONFIRMED, OrderStatus.PACKING));
+        assertTrue(OrderState_Policy.canMove(OrderStatus.SHIPPING, OrderStatus.DELIVERED));
     }
     @Test void blockInvalidProgress() {
-        assertFalse(OrderStatePolicy.canMove(OrderStatus.PENDING_PAYMENT, OrderStatus.DELIVERED));
-        assertFalse(OrderStatePolicy.canMove(OrderStatus.CANCELLED, OrderStatus.CONFIRMED));
-        assertFalse(OrderStatePolicy.canMove(OrderStatus.DELIVERED, OrderStatus.CANCELLED));
+        assertFalse(OrderState_Policy.canMove(OrderStatus.PENDING_PAYMENT, OrderStatus.DELIVERED));
+        assertFalse(OrderState_Policy.canMove(OrderStatus.CANCELLED, OrderStatus.CONFIRMED));
+        assertFalse(OrderState_Policy.canMove(OrderStatus.DELIVERED, OrderStatus.CANCELLED));
     }
 }

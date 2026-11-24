@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/head :: head('Giao hàng và thanh toán · BeautyShop')}"></head>
+<body>
+<div th:replace="~{fragments/header :: siteHeader}"></div>
+<main id="main" tabindex="-1" class="page-content checkout-page">
+    <nav class="checkout-steps" aria-label="Tiến trình mua hàng">
+        <ol><li><a th:href="@{/cart}">Giỏ hàng</a></li><li aria-current="step">Giao hàng và thanh toán</li><li>Hoàn tất</li></ol>
+    </nav>
+    <h1>Giao hàng và thanh toán</h1>
+    <p class="muted">Kiểm tra địa chỉ và báo giá trước khi đặt hàng.</p>
+    <div class="card checkout-empty" th:if="${#lists.isEmpty(muc)}">
+        <h2>Giỏ hàng đang trống.</h2><a class="btn btn--secondary" th:href="@{/cart}">Quay lại giỏ hàng</a>
+    </div>
+    <div class="card checkout-empty" th:if="${#lists.isEmpty(diaChi)}">
+        <h2>Cần thêm địa chỉ giao hàng</h2><a class="btn btn--secondary" th:href="@{/account/addresses/new}">Thêm địa chỉ giao hàng</a>
+    </div>
+    <form method="post" th:action="@{/checkout}" th:object="${form}" data-checkout-form
+          th:attr="data-quote-valid=${baoGiaHopLe}">
+        <div class="error-summary" role="alert" tabindex="-1" th:if="${#fields.hasErrors('*')}">
+            <h2>Chưa thể hoàn tất</h2>
+            <ul>
+                <li th:each="loi : ${#fields.globalErrors()}" th:text="${loi}"></li>
+                <li th:if="${#fields.hasErrors('addressId')}"><a th:href="${#lists.isEmpty(muc) or #lists.isEmpty(diaChi) ? '#main' : '#addressId'}">Chọn địa chỉ giao hàng hợp lệ của bạn.</a></li>
+                <li th:if="${#fields.hasErrors('voucher')}"><a th:href="${#lists.isEmpty(muc) or #lists.isEmpty(diaChi) ? '#main' : '#voucher'}" th:errors="*{voucher}"></a></li>
+            </ul>
+        </div>
+        <div class="checkout-layout" th:unless="${#lists.isEmpty(muc) or #lists.isEmpty(diaChi)}">
+            <div class="checkout-fields">
+                <section class="card" aria-labelledby="checkout-address-title">
+                    <h2 id="checkout-address-title">Địa chỉ giao hàng</h2>
+                    <div class="field">
+                        <label for="addressId">Chọn địa chỉ</label>
+                        <select th:field="*{addressId}" required aria-describedby="addressId-error"
+                                th:attr="aria-invalid=${#fields.hasErrors('addressId') ? 'true' : null}">
+                            <option value="">Chọn địa chỉ</option>
+                            <option th:each="dc : ${diaChi}" th:value="${dc.maDiaChi}"
+                                    th:text="|${dc.tenNguoiNhan} · ${dc.diaChiChiTiet}|"></option>
+                        </select>
+                        <p class="field-error" id="addressId-error"><span th:if="${#fields.hasErrors('addressId')}">Chọn địa chỉ giao hàng hợp lệ của bạn.</span></p>
+                    </div>
+                    <a class="text-link" th:href="@{/account/addresses}">Quản lý địa chỉ</a>
+                </section>
+                <section class="card" aria-labelledby="checkout-voucher-title">
+                    <h2 id="checkout-voucher-title">Voucher và báo giá</h2>
+                    <div class="field">
+                        <label for="voucher">Mã voucher (không bắt buộc)</label>
+                        <input th:field="*{voucher}" maxlength="80" aria-describedby="voucher-help voucher-error"
+                               th:attr="aria-invalid=${#fields.hasErrors('voucher') ? 'true' : null}">
+                        <p id="voucher-help" class="hint">Nhập mã rồi cập nhật báo giá. Để bỏ mã, xóa nội dung ô và cập nhật lại.</p>
+                        <div th:replace="~{fragments/ui :: fieldError('voucher', 'voucher-error')}"></div>
+                    </div>
+                    <button type="submit" class="btn btn--secondary" th:formaction="@{/checkout/quote}" data-update-quote>Cập nhật báo giá</button>
+                </section>
+            </div>
+            <aside class="card checkout-summary" aria-labelledby="checkout-summary-title">
+                <h2 id="checkout-summary-title">Đơn hàng của bạn</h2>
+                <ul class="checkout-items">
+                    <li th:each="sku : ${muc}">
+                        <strong th:text="${sku.tenSanPham}"></strong>
+                        <span th:text="|${sku.tenBienThe} · SKU ${sku.sku}|"></span>
+                        <span>Đơn giá <span th:replace="~{fragments/ui :: money(${sku.giaBan})}"></span><span th:text="| × ${sku.soLuong}|"></span></span>
+                    </li>
+                </ul>
+                <dl class="checkout-totals">
+                    <dt>Tạm tính giỏ hàng</dt><dd data-checkout-subtotal><span th:replace="~{fragments/ui :: money(${tamTinh})}"></span></dd>
+                </dl>
+                <div class="checkout-quote-status" data-quote-stale th:hidden="${baoGiaHopLe}" role="status">
+                    <h3>Cần cập nhật báo giá</h3>
+                    <p>Giảm giá, phí giao hàng và tổng tiền chưa được xác nhận. Mã trong ô voucher chưa đồng nghĩa đã được áp dụng.</p>
+                </div>
+                <div th:if="${baoGiaHopLe}" data-quote-amounts>
+                    <p class="checkout-quote-status" data-quote-message>
+                        <strong>Báo giá lần tính gần nhất</strong><br>
+                        <span th:text="${#strings.isEmpty(voucherDaTinh) ? 'Không dùng voucher.' : 'Voucher được kiểm tra: ' + voucherDaTinh}"></span><br>
+                        <span th:each="dc : ${diaChi}" th:if="${dc.maDiaChi == form.addressId}"
+                              th:text="|Địa chỉ báo giá: ${dc.tenNguoiNhan} · ${dc.diaChiChiTiet}|"></span>
+                    </p>
+                    <dl class="checkout-totals">
+                        <dt>Giảm giá theo báo giá</dt><dd data-checkout-discount><span th:replace="~{fragments/ui :: money(${giam})}"></span></dd>
+                        <dt>Phí giao hàng theo báo giá</dt><dd data-checkout-shipping><span th:replace="~{fragments/ui :: money(${phi})}"></span></dd>
+                        <dt class="checkout-total">Tổng dự kiến theo báo giá</dt><dd class="checkout-total" data-checkout-total><span th:replace="~{fragments/ui :: money(${tong})}"></span></dd>
+                    </dl>
+                </div>
+                <p class="hint">Khi đổi địa chỉ hoặc voucher, hãy cập nhật lại báo giá. Giá, tồn và voucher luôn được kiểm tra lại khi đặt đơn.</p>
+                <section class="checkout-payment" aria-labelledby="checkout-payment-title">
+                    <h3 id="checkout-payment-title">Phương thức thanh toán</h3>
+                    <p>Thanh toán khi nhận hàng (COD)</p>
+                    <p th:if="${momoEnabled}" th:text="${momoMock ? 'MoMo · MÔ PHỎNG - KHÔNG THU TIỀN' : 'MoMo Sandbox'}"></p>
+                    <div class="checkout-actions">
+                        <button type="submit" class="btn btn--primary btn--lg" data-place-order
+                                th:disabled="${!baoGiaHopLe}">Đặt đơn · Thanh toán khi nhận hàng</button>
+                        <button th:if="${momoEnabled}" type="submit" name="payment" value="MOMO"
+                                class="btn btn--secondary btn--lg" data-place-order th:disabled="${!baoGiaHopLe}"
+                                th:text="${momoMock ? 'Đặt đơn MoMo · MÔ PHỎNG - KHÔNG THU TIỀN' : 'Đặt đơn · MoMo Sandbox'}"></button>
+                    </div>
+                </section>
+            </aside>
+        </div>
+    </form>
+</main>
+<div th:replace="~{fragments/footer :: siteFooter}"></div>
+<script defer th:src="@{/js/checkout.js}"></script>
+</body>
+</html>

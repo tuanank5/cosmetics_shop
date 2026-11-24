@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/head :: head('Tư vấn mua sắm · BeautyShop')}"></head>
+<body><div th:replace="~{fragments/header :: siteHeader}"></div>
+<main id="main" tabindex="-1" class="page-content">
+    <h1>Tư vấn mua sắm</h1>
+    <p>Hỏi về sản phẩm hoặc chính sách của BeautyShop. Vui lòng bỏ thông tin cá nhân khỏi câu hỏi.</p>
+    <form class="catalog-form" method="post" th:action="@{/chat}" th:object="${form}">
+        <label>Câu hỏi
+            <textarea name="cauHoi" rows="3" maxlength="500" required placeholder="Ví dụ: Đổi trả trong bao lâu?"></textarea>
+        </label>
+        <p class="form-error" role="alert" th:each="loi : ${#fields.allErrors()}" th:text="${loi}"></p>
+        <button class="btn btn--primary" type="submit">Gửi câu hỏi</button>
+    </form>
+    <section th:if="${traLoi}" class="notice" aria-live="polite">
+        <strong th:text="${traLoi.nhan}"></strong>
+        <p th:text="${traLoi.noiDung}"></p>
+        <p th:if="${traLoi.gia != null}" th:text="|${#numbers.formatInteger(traLoi.gia, 1, 'POINT')} ₫ · ${traLoi.khaDung > 0 ? 'Còn ' + traLoi.khaDung : 'Hết hàng'}|"></p>
+        <p th:if="${traLoi.url}">Nguồn <a class="text-link" rel="noreferrer" th:href="@{${traLoi.url}}" th:text="${traLoi.tieuDeNguon}"></a></p>
+    </section>
+</main>
+<div th:replace="~{fragments/footer :: siteFooter}"></div></body></html>

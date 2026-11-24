@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/head :: head('Chi tiết đổi trả · BeautyShop')}"></head>
+<body><div th:replace="~{fragments/header :: siteHeader}"></div>
+<main id="main" tabindex="-1" class="page-content">
+    <a class="text-link" th:href="@{${base}}">Quay lại yêu cầu đổi trả</a>
+    <article th:with="yc=${trang.chiTiet.yeuCau}">
+        <h1 th:text="|Yêu cầu #${yc.ma}|">Yêu cầu đổi trả</h1>
+        <p class="notice" role="status" th:if="${message}" th:text="${message}"></p>
+        <p class="form-error" role="alert" th:if="${error}" th:text="${error}"></p>
+        <p th:text="|${yc.maHienThi} · ${yc.trangThai.label}|"></p>
+        <p th:text="${trang.chiTiet.lyDo}"></p>
+        <ul class="catalog-list">
+            <li th:each="muc : ${trang.muc}" th:text="|${muc.tenSanPham} · ${muc.tenBienThe} × ${muc.soLuong}|"></li>
+        </ul>
+        <form class="catalog-actions" th:if="${base == '/admin/returns'}" method="post"
+              th:action="@{/admin/returns/{id}/status(id=${yc.ma})}">
+            <button th:each="dich : ${yc.trangThai.buocTiepTheo()}" class="btn btn--primary" type="submit"
+                    name="status" th:value="${dich.name()}" th:text="${dich.label}"></button>
+        </form>
+    </article>
+</main>
+<div th:replace="~{fragments/footer :: siteFooter}"></div></body></html>

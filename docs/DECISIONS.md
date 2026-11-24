@@ -18,13 +18,31 @@
 | D14 | Spring AI + RAG đọc catalog/FAQ, không dùng lịch sử cá nhân ở MVP; demo timebox P1 ưu tiên cao | Không chẩn đoán y khoa; giá/tồn truy vấn SQL |
 | D15 | UX Luxury/Premium responsive; ngân sách hosting/API AI ưu tiên miễn phí | Không giả vờ API/hosting free vận hành production |
 | D16 | Trọn bộ tài liệu SDLC | SRS, UML, ERD, test, deploy, slide và demo |
-| D17 | Chia source theo module, giữ 1 Spring Boot monolith, Form Login + Session | Không yêu cầu JWT cho web MVP |
+| D17 | Tổ chức source theo tầng MVC dưới `com.beautyshop`, giữ 1 Spring Boot monolith và Form Login + Session | Quy tắc domain độc lập giữ package theo trách nhiệm |
 
 | D18 | Flyway V1 toàn bộ schema, bật migrate ở dev/prod, JPA validate; DB local 3306 | Không dùng ddl-auto=update |
-| D19 | Class Diagram & ERD nộp theo v4; sơ đồ gốc nhóm là tài liệu tham chiếu lịch sử | `docs/design/07-group-diagram-mapping.md` |
+| D19 | Class Diagram mô tả mô hình nghiệp vụ v4. ERD và tên vật lý MariaDB theo v5. | Xem `docs/design/07-group-diagram-mapping.md` cho sơ đồ nhóm và `docs/design/02-erd.md` cho schema v5 |
 | D20 | Ollama qwen2.5:3b / bge-m3 dùng cho P09 khi có tài nguyên, AI disabled mặc định | Không cam kết chạy AI trên free host |
+| D21 | P01 thực hiện thao tác xóa sản phẩm bằng cách chuyển sang ngừng hoạt động để giữ tham chiếu và lịch sử đơn. | Danh mục và thương hiệu chỉ xóa vật lý khi chưa có sản phẩm tham chiếu. Tính duy nhất của đường dẫn do khóa UNIQUE trong V1 bảo đảm. |
+| D22 | Tên nghiệp vụ và biến nội bộ dùng tiếng Việt không dấu. Thuộc tính JPA dùng camelCase theo cột. Giữ thuật ngữ tiếng Anh và dùng dấu `_` trước hậu tố kỹ thuật như `_Controller`, `_Repository` và `_Policy`. | Giữ tên kỹ thuật như `path`, `label`, URL và tham số form hiện hành, cùng schema V1. |
+| D23 | P02 dùng khóa hàng theo thứ tự đơn → biến thể. Giữ tồn dùng bảng V1. V2 thêm dấu ghi nhận COD theo cặp đơn–SKU để chống trừ lặp. | SKU được ngừng bán bằng trạng thái. Một SKU có tối đa một bộ mã lô/hạn dùng minh họa. |
+| D24 | P03 chỉ công khai sản phẩm và SKU đang hoạt động, thuộc danh mục và thương hiệu đang hoạt động. Giá từ là giá thấp nhất trong các SKU hoạt động khớp truy vấn. | SKU hết hàng vẫn xem được và ghi rõ trạng thái. Chi tiết mặc định chọn SKU khả dụng có giá thấp nhất, rồi đến SKU giá thấp nhất nếu tất cả hết hàng. |
+| D25 | P04 đăng ký CUSTOMER bằng email và BCrypt. Admin được cấp quyền theo quy trình vận hành. V3 ghi mã snapshot giỏ Guest trong cùng transaction hợp nhất giỏ. | Khi hợp nhất, giới hạn số lượng theo tồn hiện hành. Giữ CSRF cho IPN đến khi P07 triển khai HMAC. |
+| D26 | P05 dùng khóa hàng tài khoản để giữ một địa chỉ mặc định nếu còn địa chỉ. Khi xóa địa chỉ mặc định, chọn địa chỉ còn lại có mã nhỏ nhất. | Admin chỉ đổi trạng thái kích hoạt và không thể tự khóa. V4 tăng phiên bản xác thực khi khóa để mở khóa không khôi phục phiên cũ. |
+| D27 | P06 chốt COD trong transaction, lấy giá từ SKU, làm tròn voucher phần trăm xuống đồng và miễn phí giao từ 500.000 ₫ sau giảm. | Đặt đơn tạo thanh toán COD `UNPAID`. Admin dùng thao tác “Xác nhận đã giao và thu tiền” để chuyển vận chuyển/đơn sang `DELIVERED` và thanh toán sang `PAID` trong cùng transaction. |
+| D28 | P07 dùng MoMo One-Time Wallet `captureWallet` với `autoCapture=true`, API v2 create/query và IPN HMAC-SHA256. | Giữ tồn và voucher trước khi gọi gateway. Kết quả không rõ giữ nguyên tài nguyên đến đối soát. MoMo Sandbox thật đang `BLOCKED_EXTERNAL` vì thiếu merchant và HTTPS public. |
+| D29 | P08 dùng các bảng V1 cho đánh giá, yêu thích và đổi trả. Đánh giá mới hoặc vừa sửa chỉ công khai sau duyệt. | Khóa hàng đơn khi gửi yêu cầu đổi trả. Yêu cầu chờ duyệt, đã duyệt, đã nhận và hoàn tất đều tính vào số lượng đã yêu cầu. Từ chối trả lại hạn mức. |
+| D30 | P09 dùng Spring AI 1.1.8, Ollama và vector store trong RAM. Model chọn đoạn nguồn hoặc từ chối. MariaDB cung cấp giá/tồn SKU tại thời điểm trả lời. | Mặc định tìm FAQ, Admin nạp lại chỉ mục khi bật AI. V5 nạp FAQ chính sách. Ollama thật là `BLOCKED_AI` trong môi trường kiểm thử. |
+| D31 | P11 dùng bảng voucher V1 và khóa dòng voucher khi Admin lưu hoặc xóa. Giờ quản trị dùng UTC. Các bộ đếm lượt do checkout và đối soát cập nhật. | Chỉ xóa voucher chưa có lượt sử dụng hoặc tham chiếu. Voucher có lịch sử có thể ngừng hoạt động. Các lượt MoMo đã giữ vẫn được chốt hoặc trả theo kết quả đối soát. |
 
 ## Điểm còn cần xác minh/định cấu hình
+
+**P15-V · 23/11/2026 — quyết định đã được owner duyệt:** storefront chuyển sang
+Dark Luxury (đen/gold muted), giữ U1 cho Admin. Chỉ sửa frontend, giữ các contract,
+CSRF và nghiệp vụ. Bổ sung ScrollTrigger3.15.1 từ artifact local khớp SHA-256 owner
+cung cấp; GSAP Core/pilot giữ nguyên. Video chỉ dùng khi có nguồn hợp lệ; không
+thêm field database, không dùng fixture để khẳng định có media thương phẩm.
+[Báo cáo triển khai](reviews/P15-V-dark-luxury-redesign.md).
 
 - Tên, logo và thương hiệu chính thức của nhóm; domain thực tế và tài khoản Sandbox.
 - Nguồn hợp lệ và quyền sử dụng hình ảnh, tuyên bố thành phần mỹ phẩm.

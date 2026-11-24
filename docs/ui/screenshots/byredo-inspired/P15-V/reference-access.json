@@ -1,0 +1,146 @@
+[
+  {
+    "name": "home",
+    "url": "https://www.byredo.com/us_en",
+    "viewport": [
+      1366,
+      768
+    ],
+    "navigation": {
+      "frameId": "1D8CC96713354B0E6D4B9A825C1E791F",
+      "loaderId": "A17A631343E63D9F928970ED4EEF45AE",
+      "errorText": "net::ERR_NETWORK_ACCESS_DENIED",
+      "isDownload": false
+    },
+    "state": {
+      "url": "chrome-error://chromewebdata/",
+      "title": "www.byredo.com",
+      "text": "Your Internet access is blocked\n\nFirewall or antivirus software may have blocked the connection.\n\nTry:\n\nChecking the connection\nChecking firewall and antivirus configurations\nRunning Windows Network Diagnostics\nERR_NETWORK_ACCESS_DENIED\nDetails"
+    },
+    "failures": [
+      "net::ERR_NETWORK_ACCESS_DENIED",
+      "net::ERR_NETWORK_ACCESS_DENIED",
+      "net::ERR_ABORTED"
+    ]
+  },
+  {
+    "name": "catalog",
+    "url": "https://www.byredo.com/us_en/c/holiday-selection",
+    "viewport": [
+      1366,
+      768
+    ],
+    "navigation": {
+      "frameId": "1D8CC96713354B0E6D4B9A825C1E791F",
+      "loaderId": "B765A5179D96A2A84D9FDAE2A1E91516",
+      "errorText": "net::ERR_NETWORK_ACCESS_DENIED",
+      "isDownload": false
+    },
+    "state": {
+      "url": "chrome-error://chromewebdata/",
+      "title": "www.byredo.com",
+      "text": "Your Internet access is blocked\n\nFirewall or antivirus software may have blocked the connection.\n\nTry:\n\nChecking the connection\nChecking firewall and antivirus configurations\nRunning Windows Network Diagnostics\nERR_NETWORK_ACCESS_DENIED\nDetails"
+    },
+    "failures": [
+      "net::ERR_NETWORK_ACCESS_DENIED",
+      "net::ERR_NETWORK_ACCESS_DENIED",
+      "net::ERR_ABORTED"
+    ]
+  },
+  {
+    "name": "pdp",
+    "url": "https://www.byredo.com/us_en/p/mojave-ghost-eau-de-parfum",
+    "viewport": [
+      1366,
+      768
+    ],
+    "navigation": {
+      "frameId": "1D8CC96713354B0E6D4B9A825C1E791F",
+      "loaderId": "CD2B7A511371F6001D1A5569209055F5",
+      "errorText": "net::ERR_NETWORK_ACCESS_DENIED",
+      "isDownload": false
+    },
+    "state": {
+      "url": "chrome-error://chromewebdata/",
+      "title": "www.byredo.com",
+      "text": "Your Internet access is blocked\n\nFirewall or antivirus software may have blocked the connection.\n\nTry:\n\nChecking the connection\nChecking firewall and antivirus configurations\nRunning Windows Network Diagnostics\nERR_NETWORK_ACCESS_DENIED\nDetails"
+    },
+    "failures": [
+      "net::ERR_NETWORK_ACCESS_DENIED",
+      "net::ERR_NETWORK_ACCESS_DENIED",
+      "net::ERR_ABORTED"
+    ]
+  },
+  {
+    "name": "home",
+    "url": "https://www.byredo.com/us_en",
+    "viewport": [
+      390,
+      844
+    ],
+    "navigation": {
+      "frameId": "1D8CC96713354B0E6D4B9A825C1E791F",
+      "loaderId": "0078D68B1E911B780E6C76C4CDEB0F6E",
+      "errorText": "net::ERR_NETWORK_ACCESS_DENIED",
+      "isDownload": false
+    },
+    "state": {
+      "url": "chrome-error://chromewebdata/",
+      "title": "www.byredo.com",
+      "text": "Your Internet access is blocked\n\nFirewall or antivirus software may have blocked the connection.\n\nTry:\n\nChecking the connection\nChecking firewall and antivirus configurations\nRunning Windows Network Diagnostics\nERR_NETWORK_ACCESS_DENIED\nDetails"
+    },
+    "failures": [
+      "net::ERR_NETWORK_ACCESS_DENIED",
+      "net::ERR_NETWORK_ACCESS_DENIED",
+      "net::ERR_ABORTED"
+    ]
+  },
+  {
+    "name": "catalog",
+    "url": "https://www.byredo.com/us_en/c/holiday-selection",
+    "viewport": [
+      390,
+      844
+    ],
+    "navigation": {
+      "frameId": "1D8CC96713354B0E6D4B9A825C1E791F",
+      "loaderId": "16E09F8DD5D88BDD9EED0B17C7924847",
+      "errorText": "net::ERR_NETWORK_ACCESS_DENIED",
+      "isDownload": false
+    },
+    "state": {
+      "url": "chrome-error://chromewebdata/",
+      "title": "www.byredo.com",
+      "text": "Your Internet access is blocked\n\nFirewall or antivirus software may have blocked the connection.\n\nTry:\n\nChecking the connection\nChecking firewall and antivirus configurations\nRunning Windows Network Diagnostics\nERR_NETWORK_ACCESS_DENIED\nDetails"
+    },
+    "failures": [
+      "net::ERR_NETWORK_ACCESS_DENIED",
+      "net::ERR_NETWORK_ACCESS_DENIED",
+      "net::ERR_ABORTED"
+    ]
+  },
+  {
+    "name": "pdp",
+    "url": "https://www.byredo.com/us_en/p/mojave-ghost-eau-de-parfum",
+    "viewport": [
+      390,
+      844
+    ],
+    "navigation": {
+      "frameId": "1D8CC96713354B0E6D4B9A825C1E791F",
+      "loaderId": "CEC80DF28CC5C0F79CE306F303ED594D",
+      "errorText": "net::ERR_NETWORK_ACCESS_DENIED",
+      "isDownload": false
+    },
+    "state": {
+      "url": "chrome-error://chromewebdata/",
+      "title": "www.byredo.com",
+      "text": "Your Internet access is blocked\n\nFirewall or antivirus software may have blocked the connection.\n\nTry:\n\nChecking the connection\nChecking firewall and antivirus configurations\nRunning Windows Network Diagnostics\nERR_NETWORK_ACCESS_DENIED\nDetails"
+    },
+    "failures": [
+      "net::ERR_NETWORK_ACCESS_DENIED",
+      "net::ERR_NETWORK_ACCESS_DENIED",
+      "net::ERR_ABORTED"
+    ]
+  }
+]

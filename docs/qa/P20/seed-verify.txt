@@ -1,0 +1,24 @@
+﻿orders_without_exactly_one_payment	0
+total_mismatch	0
+fee_rule_violation	0
+delivered_not_paid_or_no_shipment	0
+paid_but_cancelled_or_expired	0
+cod_lines_without_v2_record	0
+momo_lines_wrong_hold	0
+review_rule_violation	0
+reviews_hidden_pending	19	visible	52
+stock_ledger_mismatch	0
+demo_customers	6
+sample_name_utf8	XeraCalm A.D Replenishing Cleansing Oil	[DEMO] Khách demo 3
+orders_by_method_status	COD	CANCELLED	10
+orders_by_method_status	COD	CONFIRMED	3
+orders_by_method_status	COD	DELIVERED	61
+orders_by_method_status	COD	PACKING	2
+orders_by_method_status	COD	PENDING_CONFIRMATION	3
+orders_by_method_status	COD	SHIPPING	1
+orders_by_method_status	MOMO	CONFIRMED	1
+orders_by_method_status	MOMO	DELIVERED	27
+orders_by_method_status	MOMO	EXPIRED	7
+orders_by_method_status	MOMO	PACKING	1
+orders_by_method_status	MOMO	PENDING_CONFIRMATION	4
+date_span_utc	2026-08-28 12:01:00.566938	2026-11-23 12:44:00.612377

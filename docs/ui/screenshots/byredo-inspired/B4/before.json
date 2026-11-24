@@ -1,0 +1,35 @@
+[
+  {
+    "viewport": [
+      1366,
+      768
+    ],
+    "zoom": 1,
+    "voucher": "SAVE50",
+    "summary": "\n                Tạm tính490.000 ₫\n                Giảm giá0 ₫\n                Phí giao hàng25.000 ₫\n                Tổng dự kiến515.000 ₫\n            ",
+    "error": "Giỏ hàng hoặc tồn kho vừa thay đổi. Vui lòng thử lại.",
+    "url": "http://127.0.0.1:51111/checkout"
+  },
+  {
+    "viewport": [
+      390,
+      844
+    ],
+    "zoom": 1,
+    "voucher": "SAVE50",
+    "summary": "\n                Tạm tính490.000 ₫\n                Giảm giá0 ₫\n                Phí giao hàng25.000 ₫\n                Tổng dự kiến515.000 ₫\n            ",
+    "error": "Giỏ hàng hoặc tồn kho vừa thay đổi. Vui lòng thử lại.",
+    "url": "http://127.0.0.1:51111/checkout"
+  },
+  {
+    "viewport": [
+      390,
+      844
+    ],
+    "zoom": 2,
+    "voucher": "SAVE50",
+    "summary": "\n                Tạm tính490.000 ₫\n                Giảm giá0 ₫\n                Phí giao hàng25.000 ₫\n                Tổng dự kiến515.000 ₫\n            ",
+    "error": "Giỏ hàng hoặc tồn kho vừa thay đổi. Vui lòng thử lại.",
+    "url": "http://127.0.0.1:51111/checkout"
+  }
+]

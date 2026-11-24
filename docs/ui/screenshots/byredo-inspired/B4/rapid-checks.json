@@ -1,0 +1,50 @@
+[
+  {
+    "payment": "COD",
+    "posts": 1,
+    "probes": [
+      {
+        "loading": true,
+        "busy": "true",
+        "sameWidth": true,
+        "sameHeight": true,
+        "submitter": null,
+        "prevented": false
+      },
+      {
+        "loading": true,
+        "busy": "true",
+        "sameWidth": true,
+        "sameHeight": true,
+        "submitter": null,
+        "prevented": true
+      }
+    ],
+    "csrf": true,
+    "submitterPreserved": true
+  },
+  {
+    "payment": "MOMO",
+    "posts": 1,
+    "probes": [
+      {
+        "loading": true,
+        "busy": "true",
+        "sameWidth": true,
+        "sameHeight": true,
+        "submitter": "MOMO",
+        "prevented": false
+      },
+      {
+        "loading": true,
+        "busy": "true",
+        "sameWidth": true,
+        "sameHeight": true,
+        "submitter": "MOMO",
+        "prevented": true
+      }
+    ],
+    "csrf": true,
+    "submitterPreserved": true
+  }
+]

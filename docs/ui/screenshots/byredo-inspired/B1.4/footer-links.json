@@ -1,0 +1,476 @@
+[
+  {
+    "role": "guest",
+    "js": true,
+    "href": "/products",
+    "text": "Cửa hàng",
+    "status": 200,
+    "url": "http://127.0.0.1:56948/products",
+    "keyboard": true,
+    "focus": "3px"
+  },
+  {
+    "role": "guest",
+    "js": true,
+    "href": "/products#categories",
+    "text": "Danh mục",
+    "status": 200,
+    "url": "http://127.0.0.1:56948/products",
+    "keyboard": true,
+    "focus": "3px"
+  },
+  {
+    "role": "guest",
+    "js": true,
+    "href": "/products#brands",
+    "text": "Thương hiệu",
+    "status": 200,
+    "url": "http://127.0.0.1:56948/products",
+    "keyboard": true,
+    "focus": "3px"
+  },
+  {
+    "role": "guest",
+    "js": true,
+    "href": "/login",
+    "text": "Đăng nhập",
+    "status": 200,
+    "url": "http://127.0.0.1:56948/login",
+    "keyboard": true,
+    "focus": "3px"
+  },
+  {
+    "role": "guest",
+    "js": true,
+    "href": "/register",
+    "text": "Tạo tài khoản",
+    "status": 200,
+    "url": "http://127.0.0.1:56948/register",
+    "keyboard": true,
+    "focus": "3px"
+  },
+  {
+    "role": "guest",
+    "js": true,
+    "href": "/cart",
+    "text": "Giỏ hàng",
+    "status": 200,
+    "url": "http://127.0.0.1:56948/cart",
+    "keyboard": true,
+    "focus": "3px"
+  },
+  {
+    "role": "guest",
+    "js": true,
+    "href": "/chat",
+    "text": "Tư vấn sản phẩm",
+    "status": 200,
+    "url": "http://127.0.0.1:56948/chat",
+    "keyboard": true,
+    "focus": "3px"
+  },
+  {
+    "role": "guest",
+    "js": false,
+    "href": "/products",
+    "text": "Cửa hàng",
+    "status": 200,
+    "url": "http://127.0.0.1:56948/products",
+    "keyboard": true,
+    "focus": "3px"
+  },
+  {
+    "role": "guest",
+    "js": false,
+    "href": "/products#categories",
+    "text": "Danh mục",
+    "status": 200,
+    "url": "http://127.0.0.1:56948/products",
+    "keyboard": true,
+    "focus": "3px"
+  },
+  {
+    "role": "guest",
+    "js": false,
+    "href": "/products#brands",
+    "text": "Thương hiệu",
+    "status": 200,
+    "url": "http://127.0.0.1:56948/products",
+    "keyboard": true,
+    "focus": "3px"
+  },
+  {
+    "role": "guest",
+    "js": false,
+    "href": "/login",
+    "text": "Đăng nhập",
+    "status": 200,
+    "url": "http://127.0.0.1:56948/login",
+    "keyboard": true,
+    "focus": "3px"
+  },
+  {
+    "role": "guest",
+    "js": false,
+    "href": "/register",
+    "text": "Tạo tài khoản",
+    "status": 200,
+    "url": "http://127.0.0.1:56948/register",
+    "keyboard": true,
+    "focus": "3px"
+  },
+  {
+    "role": "guest",
+    "js": false,
+    "href": "/cart",
+    "text": "Giỏ hàng",
+    "status": 200,
+    "url": "http://127.0.0.1:56948/cart",
+    "keyboard": true,
+    "focus": "3px"
+  },
+  {
+    "role": "guest",
+    "js": false,
+    "href": "/chat",
+    "text": "Tư vấn sản phẩm",
+    "status": 200,
+    "url": "http://127.0.0.1:56948/chat",
+    "keyboard": true,
+    "focus": "3px"
+  },
+  {
+    "role": "customer",
+    "js": true,
+    "href": "/products",
+    "text": "Cửa hàng",
+    "status": 200,
+    "url": "http://127.0.0.1:56948/products",
+    "keyboard": true,
+    "focus": "3px"
+  },
+  {
+    "role": "customer",
+    "js": true,
+    "href": "/products#categories",
+    "text": "Danh mục",
+    "status": 200,
+    "url": "http://127.0.0.1:56948/products",
+    "keyboard": true,
+    "focus": "3px"
+  },
+  {
+    "role": "customer",
+    "js": true,
+    "href": "/products#brands",
+    "text": "Thương hiệu",
+    "status": 200,
+    "url": "http://127.0.0.1:56948/products",
+    "keyboard": true,
+    "focus": "3px"
+  },
+  {
+    "role": "customer",
+    "js": true,
+    "href": "/account",
+    "text": "Hồ sơ",
+    "status": 200,
+    "url": "http://127.0.0.1:56948/account",
+    "keyboard": true,
+    "focus": "3px"
+  },
+  {
+    "role": "customer",
+    "js": true,
+    "href": "/orders",
+    "text": "Đơn hàng",
+    "status": 200,
+    "url": "http://127.0.0.1:56948/orders",
+    "keyboard": true,
+    "focus": "3px"
+  },
+  {
+    "role": "customer",
+    "js": true,
+    "href": "/account/wishlist",
+    "text": "Sản phẩm yêu thích",
+    "status": 200,
+    "url": "http://127.0.0.1:56948/account/wishlist",
+    "keyboard": true,
+    "focus": "3px"
+  },
+  {
+    "role": "customer",
+    "js": true,
+    "href": "/cart",
+    "text": "Giỏ hàng",
+    "status": 200,
+    "url": "http://127.0.0.1:56948/cart",
+    "keyboard": true,
+    "focus": "3px"
+  },
+  {
+    "role": "customer",
+    "js": true,
+    "href": "/chat",
+    "text": "Tư vấn sản phẩm",
+    "status": 200,
+    "url": "http://127.0.0.1:56948/chat",
+    "keyboard": true,
+    "focus": "3px"
+  },
+  {
+    "role": "customer",
+    "js": true,
+    "href": "/account/returns",
+    "text": "Yêu cầu đổi trả",
+    "status": 200,
+    "url": "http://127.0.0.1:56948/account/returns",
+    "keyboard": true,
+    "focus": "3px"
+  },
+  {
+    "role": "customer",
+    "js": false,
+    "href": "/products",
+    "text": "Cửa hàng",
+    "status": 200,
+    "url": "http://127.0.0.1:56948/products",
+    "keyboard": true,
+    "focus": "3px"
+  },
+  {
+    "role": "customer",
+    "js": false,
+    "href": "/products#categories",
+    "text": "Danh mục",
+    "status": 200,
+    "url": "http://127.0.0.1:56948/products",
+    "keyboard": true,
+    "focus": "3px"
+  },
+  {
+    "role": "customer",
+    "js": false,
+    "href": "/products#brands",
+    "text": "Thương hiệu",
+    "status": 200,
+    "url": "http://127.0.0.1:56948/products",
+    "keyboard": true,
+    "focus": "3px"
+  },
+  {
+    "role": "customer",
+    "js": false,
+    "href": "/account",
+    "text": "Hồ sơ",
+    "status": 200,
+    "url": "http://127.0.0.1:56948/account",
+    "keyboard": true,
+    "focus": "3px"
+  },
+  {
+    "role": "customer",
+    "js": false,
+    "href": "/orders",
+    "text": "Đơn hàng",
+    "status": 200,
+    "url": "http://127.0.0.1:56948/orders",
+    "keyboard": true,
+    "focus": "3px"
+  },
+  {
+    "role": "customer",
+    "js": false,
+    "href": "/account/wishlist",
+    "text": "Sản phẩm yêu thích",
+    "status": 200,
+    "url": "http://127.0.0.1:56948/account/wishlist",
+    "keyboard": true,
+    "focus": "3px"
+  },
+  {
+    "role": "customer",
+    "js": false,
+    "href": "/cart",
+    "text": "Giỏ hàng",
+    "status": 200,
+    "url": "http://127.0.0.1:56948/cart",
+    "keyboard": true,
+    "focus": "3px"
+  },
+  {
+    "role": "customer",
+    "js": false,
+    "href": "/chat",
+    "text": "Tư vấn sản phẩm",
+    "status": 200,
+    "url": "http://127.0.0.1:56948/chat",
+    "keyboard": true,
+    "focus": "3px"
+  },
+  {
+    "role": "customer",
+    "js": false,
+    "href": "/account/returns",
+    "text": "Yêu cầu đổi trả",
+    "status": 200,
+    "url": "http://127.0.0.1:56948/account/returns",
+    "keyboard": true,
+    "focus": "3px"
+  },
+  {
+    "role": "admin",
+    "js": true,
+    "href": "/products",
+    "text": "Cửa hàng",
+    "status": 200,
+    "url": "http://127.0.0.1:56948/products",
+    "keyboard": true,
+    "focus": "3px"
+  },
+  {
+    "role": "admin",
+    "js": true,
+    "href": "/products#categories",
+    "text": "Danh mục",
+    "status": 200,
+    "url": "http://127.0.0.1:56948/products",
+    "keyboard": true,
+    "focus": "3px"
+  },
+  {
+    "role": "admin",
+    "js": true,
+    "href": "/products#brands",
+    "text": "Thương hiệu",
+    "status": 200,
+    "url": "http://127.0.0.1:56948/products",
+    "keyboard": true,
+    "focus": "3px"
+  },
+  {
+    "role": "admin",
+    "js": true,
+    "href": "/admin/catalog/categories",
+    "text": "Danh mục",
+    "status": 200,
+    "url": "http://127.0.0.1:56948/admin/catalog/categories",
+    "keyboard": true,
+    "focus": "3px"
+  },
+  {
+    "role": "admin",
+    "js": true,
+    "href": "/admin/catalog/brands",
+    "text": "Thương hiệu",
+    "status": 200,
+    "url": "http://127.0.0.1:56948/admin/catalog/brands",
+    "keyboard": true,
+    "focus": "3px"
+  },
+  {
+    "role": "admin",
+    "js": true,
+    "href": "/admin/catalog/products",
+    "text": "Sản phẩm",
+    "status": 200,
+    "url": "http://127.0.0.1:56948/admin/catalog/products",
+    "keyboard": true,
+    "focus": "3px"
+  },
+  {
+    "role": "admin",
+    "js": true,
+    "href": "/chat",
+    "text": "Tư vấn sản phẩm",
+    "status": 200,
+    "url": "http://127.0.0.1:56948/chat",
+    "keyboard": true,
+    "focus": "3px"
+  },
+  {
+    "role": "admin",
+    "js": false,
+    "href": "/products",
+    "text": "Cửa hàng",
+    "status": 200,
+    "url": "http://127.0.0.1:56948/products",
+    "keyboard": true,
+    "focus": "3px"
+  },
+  {
+    "role": "admin",
+    "js": false,
+    "href": "/products#categories",
+    "text": "Danh mục",
+    "status": 200,
+    "url": "http://127.0.0.1:56948/products",
+    "keyboard": true,
+    "focus": "3px"
+  },
+  {
+    "role": "admin",
+    "js": false,
+    "href": "/products#brands",
+    "text": "Thương hiệu",
+    "status": 200,
+    "url": "http://127.0.0.1:56948/products",
+    "keyboard": true,
+    "focus": "3px"
+  },
+  {
+    "role": "admin",
+    "js": false,
+    "href": "/admin/catalog/categories",
+    "text": "Danh mục",
+    "status": 200,
+    "url": "http://127.0.0.1:56948/admin/catalog/categories",
+    "keyboard": true,
+    "focus": "3px"
+  },
+  {
+    "role": "admin",
+    "js": false,
+    "href": "/admin/catalog/brands",
+    "text": "Thương hiệu",
+    "status": 200,
+    "url": "http://127.0.0.1:56948/admin/catalog/brands",
+    "keyboard": true,
+    "focus": "3px"
+  },
+  {
+    "role": "admin",
+    "js": false,
+    "href": "/admin/catalog/products",
+    "text": "Sản phẩm",
+    "status": 200,
+    "url": "http://127.0.0.1:56948/admin/catalog/products",
+    "keyboard": true,
+    "focus": "3px"
+  },
+  {
+    "role": "admin",
+    "js": false,
+    "href": "/chat",
+    "text": "Tư vấn sản phẩm",
+    "status": 200,
+    "url": "http://127.0.0.1:56948/chat",
+    "keyboard": true,
+    "focus": "3px"
+  },
+  {
+    "role": "admin",
+    "beforeFooterTargets": [
+      {
+        "href": "/account",
+        "status": 403
+      },
+      {
+        "href": "/orders",
+        "status": 403
+      }
+    ],
+    "afterHidden": true
+  }
+]

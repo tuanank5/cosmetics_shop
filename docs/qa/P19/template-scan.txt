@@ -1,0 +1,8 @@
+th:utext: 0
+style= attr: 0
+inline <script> without src: 0
+on*= handler: 0
+external http(s) src/href: 0
+h1 per template:
+done
+pages without <h1> (excluding fragments):

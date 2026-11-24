@@ -1,0 +1,4422 @@
+[
+  {
+    "role": "guest",
+    "viewport": [
+      360,
+      800
+    ],
+    "zoom": 1,
+    "baseline": {
+      "width": 345,
+      "scroll": 345,
+      "dpr": 1,
+      "header": 109,
+      "copy": [
+        16,
+        142.390625,
+        313,
+        515.15625
+      ],
+      "h1": [
+        40,
+        236.578125,
+        265,
+        135
+      ],
+      "cta": [
+        40,
+        506.75,
+        265,
+        56
+      ],
+      "art": [
+        16,
+        657.546875,
+        313,
+        216
+      ],
+      "styles": [
+        {
+          "class": "shop-hero-arch",
+          "inline": "",
+          "opacity": "1",
+          "transform": "none"
+        },
+        {
+          "class": "shop-hero-vessel",
+          "inline": "",
+          "opacity": "1",
+          "transform": "none"
+        },
+        {
+          "class": "shop-hero-jar",
+          "inline": "",
+          "opacity": "1",
+          "transform": "none"
+        }
+      ]
+    },
+    "active": [
+      {
+        "duration": 0.38,
+        "targets": [
+          "shop-hero-arch",
+          "shop-hero-vessel",
+          "shop-hero-jar"
+        ]
+      }
+    ],
+    "during": {
+      "width": 345,
+      "scroll": 345,
+      "dpr": 1,
+      "header": 109,
+      "copy": [
+        16,
+        142.390625,
+        313,
+        515.15625
+      ],
+      "h1": [
+        40,
+        236.578125,
+        265,
+        135
+      ],
+      "cta": [
+        40,
+        506.75,
+        265,
+        56
+      ],
+      "art": [
+        16,
+        657.546875,
+        313,
+        216
+      ],
+      "styles": [
+        {
+          "class": "shop-hero-arch",
+          "inline": "translate: none; rotate: none; scale: none; opacity: 0.9069; transform: translate(0px, 3.9891px);",
+          "opacity": "0.9069",
+          "transform": "matrix(1, 0, 0, 1, 0, 3.9891)"
+        },
+        {
+          "class": "shop-hero-vessel",
+          "inline": "translate: none; rotate: none; scale: none; opacity: 0.86; transform: translate(0px, 6px);",
+          "opacity": "0.86",
+          "transform": "matrix(1, 0, 0, 1, 0, 6)"
+        },
+        {
+          "class": "shop-hero-jar",
+          "inline": "translate: none; rotate: none; scale: none; opacity: 0.86; transform: translate(0px, 6px);",
+          "opacity": "0.86",
+          "transform": "matrix(1, 0, 0, 1, 0, 6)"
+        }
+      ]
+    },
+    "after": {
+      "width": 345,
+      "scroll": 345,
+      "dpr": 1,
+      "header": 109,
+      "copy": [
+        16,
+        142.390625,
+        313,
+        515.15625
+      ],
+      "h1": [
+        40,
+        236.578125,
+        265,
+        135
+      ],
+      "cta": [
+        40,
+        506.75,
+        265,
+        56
+      ],
+      "art": [
+        16,
+        657.546875,
+        313,
+        216
+      ],
+      "styles": [
+        {
+          "class": "shop-hero-arch",
+          "inline": "",
+          "opacity": "1",
+          "transform": "none"
+        },
+        {
+          "class": "shop-hero-vessel",
+          "inline": "",
+          "opacity": "1",
+          "transform": "none"
+        },
+        {
+          "class": "shop-hero-jar",
+          "inline": "",
+          "opacity": "1",
+          "transform": "none"
+        }
+      ]
+    },
+    "cls": 0,
+    "baselineCLS": 0,
+    "initialCLS": 0,
+    "initialShifts": [],
+    "firstMotion": 51.6000000089407,
+    "initialTweens": [
+      {
+        "duration": 0.38,
+        "targets": [
+          "shop-hero-arch",
+          "shop-hero-vessel",
+          "shop-hero-jar"
+        ],
+        "keys": [
+          "y",
+          "opacity",
+          "duration",
+          "stagger",
+          "ease",
+          "force3D",
+          "onComplete",
+          "parent",
+          "immediateRender",
+          "runBackwards",
+          "overwrite",
+          "delay"
+        ]
+      }
+    ],
+    "keyboard": true,
+    "noJS": true,
+    "vendorBlocked": true,
+    "reducedInitial": true,
+    "reducedRuntime": true,
+    "jsErrors": 0
+  },
+  {
+    "role": "guest",
+    "viewport": [
+      390,
+      844
+    ],
+    "zoom": 1,
+    "baseline": {
+      "width": 375,
+      "scroll": 375,
+      "dpr": 1,
+      "header": 109,
+      "copy": [
+        16,
+        142.390625,
+        343,
+        447.0625
+      ],
+      "h1": [
+        40,
+        213.484375,
+        295,
+        90
+      ],
+      "cta": [
+        40,
+        438.65625,
+        295,
+        56
+      ],
+      "art": [
+        16,
+        589.453125,
+        343,
+        216
+      ],
+      "styles": [
+        {
+          "class": "shop-hero-arch",
+          "inline": "",
+          "opacity": "1",
+          "transform": "none"
+        },
+        {
+          "class": "shop-hero-vessel",
+          "inline": "",
+          "opacity": "1",
+          "transform": "none"
+        },
+        {
+          "class": "shop-hero-jar",
+          "inline": "",
+          "opacity": "1",
+          "transform": "none"
+        }
+      ]
+    },
+    "active": [
+      {
+        "duration": 0.38,
+        "targets": [
+          "shop-hero-arch",
+          "shop-hero-vessel",
+          "shop-hero-jar"
+        ]
+      }
+    ],
+    "during": {
+      "width": 375,
+      "scroll": 375,
+      "dpr": 1,
+      "header": 109,
+      "copy": [
+        16,
+        142.390625,
+        343,
+        447.0625
+      ],
+      "h1": [
+        40,
+        213.484375,
+        295,
+        90
+      ],
+      "cta": [
+        40,
+        438.65625,
+        295,
+        56
+      ],
+      "art": [
+        16,
+        589.453125,
+        343,
+        216
+      ],
+      "styles": [
+        {
+          "class": "shop-hero-arch",
+          "inline": "translate: none; rotate: none; scale: none; opacity: 0.9087; transform: translate(0px, 3.9142px);",
+          "opacity": "0.9087",
+          "transform": "matrix(1, 0, 0, 1, 0, 3.9142)"
+        },
+        {
+          "class": "shop-hero-vessel",
+          "inline": "translate: none; rotate: none; scale: none; opacity: 0.86; transform: translate(0px, 6px);",
+          "opacity": "0.86",
+          "transform": "matrix(1, 0, 0, 1, 0, 6)"
+        },
+        {
+          "class": "shop-hero-jar",
+          "inline": "translate: none; rotate: none; scale: none; opacity: 0.86; transform: translate(0px, 6px);",
+          "opacity": "0.86",
+          "transform": "matrix(1, 0, 0, 1, 0, 6)"
+        }
+      ]
+    },
+    "after": {
+      "width": 375,
+      "scroll": 375,
+      "dpr": 1,
+      "header": 109,
+      "copy": [
+        16,
+        142.390625,
+        343,
+        447.0625
+      ],
+      "h1": [
+        40,
+        213.484375,
+        295,
+        90
+      ],
+      "cta": [
+        40,
+        438.65625,
+        295,
+        56
+      ],
+      "art": [
+        16,
+        589.453125,
+        343,
+        216
+      ],
+      "styles": [
+        {
+          "class": "shop-hero-arch",
+          "inline": "",
+          "opacity": "1",
+          "transform": "none"
+        },
+        {
+          "class": "shop-hero-vessel",
+          "inline": "",
+          "opacity": "1",
+          "transform": "none"
+        },
+        {
+          "class": "shop-hero-jar",
+          "inline": "",
+          "opacity": "1",
+          "transform": "none"
+        }
+      ]
+    },
+    "cls": 0,
+    "baselineCLS": 0,
+    "initialCLS": 0,
+    "initialShifts": [],
+    "firstMotion": 38.70000000298023,
+    "initialTweens": [
+      {
+        "duration": 0.38,
+        "targets": [
+          "shop-hero-arch",
+          "shop-hero-vessel",
+          "shop-hero-jar"
+        ],
+        "keys": [
+          "y",
+          "opacity",
+          "duration",
+          "stagger",
+          "ease",
+          "force3D",
+          "onComplete",
+          "parent",
+          "immediateRender",
+          "runBackwards",
+          "overwrite",
+          "delay"
+        ]
+      }
+    ],
+    "keyboard": true,
+    "noJS": true,
+    "vendorBlocked": true,
+    "reducedInitial": true,
+    "reducedRuntime": true,
+    "jsErrors": 0
+  },
+  {
+    "role": "guest",
+    "viewport": [
+      768,
+      1024
+    ],
+    "zoom": 1,
+    "baseline": {
+      "width": 753,
+      "scroll": 753,
+      "dpr": 1,
+      "header": 109,
+      "copy": [
+        24,
+        158.390625,
+        384.53125,
+        479.0625
+      ],
+      "h1": [
+        48,
+        245.484375,
+        336.53125,
+        90
+      ],
+      "cta": [
+        48,
+        470.65625,
+        221.21875,
+        56
+      ],
+      "art": [
+        408.53125,
+        158.390625,
+        320.46875,
+        479.0625
+      ],
+      "styles": [
+        {
+          "class": "shop-hero-arch",
+          "inline": "",
+          "opacity": "1",
+          "transform": "none"
+        },
+        {
+          "class": "shop-hero-vessel",
+          "inline": "",
+          "opacity": "1",
+          "transform": "none"
+        },
+        {
+          "class": "shop-hero-jar",
+          "inline": "",
+          "opacity": "1",
+          "transform": "none"
+        }
+      ]
+    },
+    "active": [
+      {
+        "duration": 0.38,
+        "targets": [
+          "shop-hero-arch",
+          "shop-hero-vessel",
+          "shop-hero-jar"
+        ]
+      }
+    ],
+    "during": {
+      "width": 753,
+      "scroll": 753,
+      "dpr": 1,
+      "header": 109,
+      "copy": [
+        24,
+        158.390625,
+        384.53125,
+        479.0625
+      ],
+      "h1": [
+        48,
+        245.484375,
+        336.53125,
+        90
+      ],
+      "cta": [
+        48,
+        470.65625,
+        221.21875,
+        56
+      ],
+      "art": [
+        408.53125,
+        158.390625,
+        320.46875,
+        479.0625
+      ],
+      "styles": [
+        {
+          "class": "shop-hero-arch",
+          "inline": "translate: none; rotate: none; scale: none; opacity: 0.9087; transform: translate(0px, 3.9142px);",
+          "opacity": "0.9087",
+          "transform": "matrix(1, 0, 0, 1, 0, 3.9142)"
+        },
+        {
+          "class": "shop-hero-vessel",
+          "inline": "translate: none; rotate: none; scale: none; opacity: 0.86; transform: translate(0px, 6px);",
+          "opacity": "0.86",
+          "transform": "matrix(1, 0, 0, 1, 0, 6)"
+        },
+        {
+          "class": "shop-hero-jar",
+          "inline": "translate: none; rotate: none; scale: none; opacity: 0.86; transform: translate(0px, 6px);",
+          "opacity": "0.86",
+          "transform": "matrix(1, 0, 0, 1, 0, 6)"
+        }
+      ]
+    },
+    "after": {
+      "width": 753,
+      "scroll": 753,
+      "dpr": 1,
+      "header": 109,
+      "copy": [
+        24,
+        158.390625,
+        384.53125,
+        479.0625
+      ],
+      "h1": [
+        48,
+        245.484375,
+        336.53125,
+        90
+      ],
+      "cta": [
+        48,
+        470.65625,
+        221.21875,
+        56
+      ],
+      "art": [
+        408.53125,
+        158.390625,
+        320.46875,
+        479.0625
+      ],
+      "styles": [
+        {
+          "class": "shop-hero-arch",
+          "inline": "",
+          "opacity": "1",
+          "transform": "none"
+        },
+        {
+          "class": "shop-hero-vessel",
+          "inline": "",
+          "opacity": "1",
+          "transform": "none"
+        },
+        {
+          "class": "shop-hero-jar",
+          "inline": "",
+          "opacity": "1",
+          "transform": "none"
+        }
+      ]
+    },
+    "cls": 0,
+    "baselineCLS": 0,
+    "initialCLS": 0,
+    "initialShifts": [],
+    "firstMotion": 47.8999999910593,
+    "initialTweens": [
+      {
+        "duration": 0.38,
+        "targets": [
+          "shop-hero-arch",
+          "shop-hero-vessel",
+          "shop-hero-jar"
+        ],
+        "keys": [
+          "y",
+          "opacity",
+          "duration",
+          "stagger",
+          "ease",
+          "force3D",
+          "onComplete",
+          "parent",
+          "immediateRender",
+          "runBackwards",
+          "overwrite",
+          "delay"
+        ]
+      }
+    ],
+    "keyboard": true,
+    "noJS": true,
+    "vendorBlocked": true,
+    "reducedInitial": true,
+    "reducedRuntime": true,
+    "jsErrors": 0
+  },
+  {
+    "role": "guest",
+    "viewport": [
+      1366,
+      768
+    ],
+    "zoom": 1,
+    "baseline": {
+      "width": 1351,
+      "scroll": 1351,
+      "dpr": 1,
+      "header": 113,
+      "copy": [
+        107.5,
+        162.390625,
+        619.625,
+        510.859375
+      ],
+      "h1": [
+        155.5,
+        273.484375,
+        523.625,
+        136.59375
+      ],
+      "cta": [
+        155.5,
+        545.25,
+        221.21875,
+        56
+      ],
+      "art": [
+        727.125,
+        162.390625,
+        516.375,
+        510.859375
+      ],
+      "styles": [
+        {
+          "class": "shop-hero-arch",
+          "inline": "",
+          "opacity": "1",
+          "transform": "none"
+        },
+        {
+          "class": "shop-hero-vessel",
+          "inline": "",
+          "opacity": "1",
+          "transform": "none"
+        },
+        {
+          "class": "shop-hero-jar",
+          "inline": "",
+          "opacity": "1",
+          "transform": "none"
+        }
+      ]
+    },
+    "active": [
+      {
+        "duration": 0.38,
+        "targets": [
+          "shop-hero-arch",
+          "shop-hero-vessel",
+          "shop-hero-jar"
+        ]
+      }
+    ],
+    "during": {
+      "width": 1351,
+      "scroll": 1351,
+      "dpr": 1,
+      "header": 113,
+      "copy": [
+        107.5,
+        162.390625,
+        619.625,
+        510.859375
+      ],
+      "h1": [
+        155.5,
+        273.484375,
+        523.625,
+        136.59375
+      ],
+      "cta": [
+        155.5,
+        545.25,
+        221.21875,
+        56
+      ],
+      "art": [
+        727.125,
+        162.390625,
+        516.375,
+        510.859375
+      ],
+      "styles": [
+        {
+          "class": "shop-hero-arch",
+          "inline": "translate: none; rotate: none; scale: none; opacity: 0.9078; transform: translate(0px, 3.9516px);",
+          "opacity": "0.9078",
+          "transform": "matrix(1, 0, 0, 1, 0, 3.9516)"
+        },
+        {
+          "class": "shop-hero-vessel",
+          "inline": "translate: none; rotate: none; scale: none; opacity: 0.86; transform: translate(0px, 6px);",
+          "opacity": "0.86",
+          "transform": "matrix(1, 0, 0, 1, 0, 6)"
+        },
+        {
+          "class": "shop-hero-jar",
+          "inline": "translate: none; rotate: none; scale: none; opacity: 0.86; transform: translate(0px, 6px);",
+          "opacity": "0.86",
+          "transform": "matrix(1, 0, 0, 1, 0, 6)"
+        }
+      ]
+    },
+    "after": {
+      "width": 1351,
+      "scroll": 1351,
+      "dpr": 1,
+      "header": 113,
+      "copy": [
+        107.5,
+        162.390625,
+        619.625,
+        510.859375
+      ],
+      "h1": [
+        155.5,
+        273.484375,
+        523.625,
+        136.59375
+      ],
+      "cta": [
+        155.5,
+        545.25,
+        221.21875,
+        56
+      ],
+      "art": [
+        727.125,
+        162.390625,
+        516.375,
+        510.859375
+      ],
+      "styles": [
+        {
+          "class": "shop-hero-arch",
+          "inline": "",
+          "opacity": "1",
+          "transform": "none"
+        },
+        {
+          "class": "shop-hero-vessel",
+          "inline": "",
+          "opacity": "1",
+          "transform": "none"
+        },
+        {
+          "class": "shop-hero-jar",
+          "inline": "",
+          "opacity": "1",
+          "transform": "none"
+        }
+      ]
+    },
+    "cls": 0,
+    "baselineCLS": 0,
+    "initialCLS": 0,
+    "initialShifts": [],
+    "firstMotion": 27.899999991059303,
+    "initialTweens": [
+      {
+        "duration": 0.38,
+        "targets": [
+          "shop-hero-arch",
+          "shop-hero-vessel",
+          "shop-hero-jar"
+        ],
+        "keys": [
+          "y",
+          "opacity",
+          "duration",
+          "stagger",
+          "ease",
+          "force3D",
+          "onComplete",
+          "parent",
+          "immediateRender",
+          "runBackwards",
+          "overwrite",
+          "delay"
+        ]
+      }
+    ],
+    "keyboard": true,
+    "noJS": true,
+    "vendorBlocked": true,
+    "reducedInitial": true,
+    "reducedRuntime": true,
+    "jsErrors": 0
+  },
+  {
+    "role": "guest",
+    "viewport": [
+      1920,
+      1080
+    ],
+    "zoom": 1,
+    "baseline": {
+      "width": 1905,
+      "scroll": 1905,
+      "dpr": 1,
+      "header": 113,
+      "copy": [
+        384.5,
+        162.390625,
+        619.625,
+        514.265625
+      ],
+      "h1": [
+        432.5,
+        273.484375,
+        523.625,
+        140
+      ],
+      "cta": [
+        432.5,
+        548.65625,
+        221.21875,
+        56
+      ],
+      "art": [
+        1004.125,
+        162.390625,
+        516.375,
+        514.265625
+      ],
+      "styles": [
+        {
+          "class": "shop-hero-arch",
+          "inline": "",
+          "opacity": "1",
+          "transform": "none"
+        },
+        {
+          "class": "shop-hero-vessel",
+          "inline": "",
+          "opacity": "1",
+          "transform": "none"
+        },
+        {
+          "class": "shop-hero-jar",
+          "inline": "",
+          "opacity": "1",
+          "transform": "none"
+        }
+      ]
+    },
+    "active": [
+      {
+        "duration": 0.38,
+        "targets": [
+          "shop-hero-arch",
+          "shop-hero-vessel",
+          "shop-hero-jar"
+        ]
+      }
+    ],
+    "during": {
+      "width": 1905,
+      "scroll": 1905,
+      "dpr": 1,
+      "header": 113,
+      "copy": [
+        384.5,
+        162.390625,
+        619.625,
+        514.265625
+      ],
+      "h1": [
+        432.5,
+        273.484375,
+        523.625,
+        140
+      ],
+      "cta": [
+        432.5,
+        548.65625,
+        221.21875,
+        56
+      ],
+      "art": [
+        1004.125,
+        162.390625,
+        516.375,
+        514.265625
+      ],
+      "styles": [
+        {
+          "class": "shop-hero-arch",
+          "inline": "translate: none; rotate: none; scale: none; opacity: 0.9087; transform: translate(0px, 3.9142px);",
+          "opacity": "0.9087",
+          "transform": "matrix(1, 0, 0, 1, 0, 3.9142)"
+        },
+        {
+          "class": "shop-hero-vessel",
+          "inline": "translate: none; rotate: none; scale: none; opacity: 0.86; transform: translate(0px, 6px);",
+          "opacity": "0.86",
+          "transform": "matrix(1, 0, 0, 1, 0, 6)"
+        },
+        {
+          "class": "shop-hero-jar",
+          "inline": "translate: none; rotate: none; scale: none; opacity: 0.86; transform: translate(0px, 6px);",
+          "opacity": "0.86",
+          "transform": "matrix(1, 0, 0, 1, 0, 6)"
+        }
+      ]
+    },
+    "after": {
+      "width": 1905,
+      "scroll": 1905,
+      "dpr": 1,
+      "header": 113,
+      "copy": [
+        384.5,
+        162.390625,
+        619.625,
+        514.265625
+      ],
+      "h1": [
+        432.5,
+        273.484375,
+        523.625,
+        140
+      ],
+      "cta": [
+        432.5,
+        548.65625,
+        221.21875,
+        56
+      ],
+      "art": [
+        1004.125,
+        162.390625,
+        516.375,
+        514.265625
+      ],
+      "styles": [
+        {
+          "class": "shop-hero-arch",
+          "inline": "",
+          "opacity": "1",
+          "transform": "none"
+        },
+        {
+          "class": "shop-hero-vessel",
+          "inline": "",
+          "opacity": "1",
+          "transform": "none"
+        },
+        {
+          "class": "shop-hero-jar",
+          "inline": "",
+          "opacity": "1",
+          "transform": "none"
+        }
+      ]
+    },
+    "cls": 0,
+    "baselineCLS": 0,
+    "initialCLS": 0,
+    "initialShifts": [],
+    "firstMotion": 42.3999999910593,
+    "initialTweens": [
+      {
+        "duration": 0.38,
+        "targets": [
+          "shop-hero-arch",
+          "shop-hero-vessel",
+          "shop-hero-jar"
+        ],
+        "keys": [
+          "y",
+          "opacity",
+          "duration",
+          "stagger",
+          "ease",
+          "force3D",
+          "onComplete",
+          "parent",
+          "immediateRender",
+          "runBackwards",
+          "overwrite",
+          "delay"
+        ]
+      }
+    ],
+    "keyboard": true,
+    "noJS": true,
+    "vendorBlocked": true,
+    "reducedInitial": true,
+    "reducedRuntime": true,
+    "jsErrors": 0
+  },
+  {
+    "role": "guest",
+    "viewport": [
+      360,
+      800
+    ],
+    "zoom": 2,
+    "baseline": {
+      "width": 172,
+      "scroll": 172,
+      "dpr": 2,
+      "header": 226,
+      "copy": [
+        16,
+        258.9921875,
+        140.5,
+        1026.7265625
+      ],
+      "h1": [
+        40,
+        399.3671875,
+        92.5,
+        315
+      ],
+      "cta": [
+        40,
+        1007.953125,
+        120,
+        132.375
+      ],
+      "art": [
+        16,
+        1285.71875,
+        140.5,
+        216
+      ],
+      "styles": [
+        {
+          "class": "shop-hero-arch",
+          "inline": "",
+          "opacity": "1",
+          "transform": "none"
+        },
+        {
+          "class": "shop-hero-vessel",
+          "inline": "",
+          "opacity": "1",
+          "transform": "none"
+        },
+        {
+          "class": "shop-hero-jar",
+          "inline": "",
+          "opacity": "1",
+          "transform": "none"
+        }
+      ]
+    },
+    "active": [
+      {
+        "duration": 0.38,
+        "targets": [
+          "shop-hero-arch",
+          "shop-hero-vessel",
+          "shop-hero-jar"
+        ]
+      }
+    ],
+    "during": {
+      "width": 172,
+      "scroll": 172,
+      "dpr": 2,
+      "header": 226,
+      "copy": [
+        16,
+        258.9921875,
+        140.5,
+        1026.7265625
+      ],
+      "h1": [
+        40,
+        399.3671875,
+        92.5,
+        315
+      ],
+      "cta": [
+        40,
+        1007.953125,
+        120,
+        132.375
+      ],
+      "art": [
+        16,
+        1285.71875,
+        140.5,
+        216
+      ],
+      "styles": [
+        {
+          "class": "shop-hero-arch",
+          "inline": "translate: none; rotate: none; scale: none; opacity: 0.9087; transform: translate(0px, 3.9142px);",
+          "opacity": "0.9087",
+          "transform": "matrix(1, 0, 0, 1, 0, 3.9142)"
+        },
+        {
+          "class": "shop-hero-vessel",
+          "inline": "translate: none; rotate: none; scale: none; opacity: 0.86; transform: translate(0px, 6px);",
+          "opacity": "0.86",
+          "transform": "matrix(1, 0, 0, 1, 0, 6)"
+        },
+        {
+          "class": "shop-hero-jar",
+          "inline": "translate: none; rotate: none; scale: none; opacity: 0.86; transform: translate(0px, 6px);",
+          "opacity": "0.86",
+          "transform": "matrix(1, 0, 0, 1, 0, 6)"
+        }
+      ]
+    },
+    "after": {
+      "width": 172,
+      "scroll": 172,
+      "dpr": 2,
+      "header": 226,
+      "copy": [
+        16,
+        258.9921875,
+        140.5,
+        1026.7265625
+      ],
+      "h1": [
+        40,
+        399.3671875,
+        92.5,
+        315
+      ],
+      "cta": [
+        40,
+        1007.953125,
+        120,
+        132.375
+      ],
+      "art": [
+        16,
+        1285.71875,
+        140.5,
+        216
+      ],
+      "styles": [
+        {
+          "class": "shop-hero-arch",
+          "inline": "",
+          "opacity": "1",
+          "transform": "none"
+        },
+        {
+          "class": "shop-hero-vessel",
+          "inline": "",
+          "opacity": "1",
+          "transform": "none"
+        },
+        {
+          "class": "shop-hero-jar",
+          "inline": "",
+          "opacity": "1",
+          "transform": "none"
+        }
+      ]
+    },
+    "cls": 0,
+    "baselineCLS": 0,
+    "initialCLS": 0,
+    "initialShifts": [],
+    "firstMotion": 54.20000000298023,
+    "initialTweens": [
+      {
+        "duration": 0.38,
+        "targets": [
+          "shop-hero-arch",
+          "shop-hero-vessel",
+          "shop-hero-jar"
+        ],
+        "keys": [
+          "y",
+          "opacity",
+          "duration",
+          "stagger",
+          "ease",
+          "force3D",
+          "onComplete",
+          "parent",
+          "immediateRender",
+          "runBackwards",
+          "overwrite",
+          "delay"
+        ]
+      }
+    ],
+    "keyboard": true,
+    "noJS": true,
+    "vendorBlocked": true,
+    "reducedInitial": true,
+    "reducedRuntime": true,
+    "jsErrors": 0
+  },
+  {
+    "role": "guest",
+    "viewport": [
+      390,
+      844
+    ],
+    "zoom": 2,
+    "baseline": {
+      "width": 187,
+      "scroll": 187,
+      "dpr": 2,
+      "header": 226,
+      "copy": [
+        16,
+        258.9921875,
+        155.5,
+        977.234375
+      ],
+      "h1": [
+        40,
+        376.2734375,
+        107.5,
+        315
+      ],
+      "cta": [
+        40,
+        958.4609375,
+        120,
+        132.375
+      ],
+      "art": [
+        16,
+        1236.2265625,
+        155.5,
+        216
+      ],
+      "styles": [
+        {
+          "class": "shop-hero-arch",
+          "inline": "",
+          "opacity": "1",
+          "transform": "none"
+        },
+        {
+          "class": "shop-hero-vessel",
+          "inline": "",
+          "opacity": "1",
+          "transform": "none"
+        },
+        {
+          "class": "shop-hero-jar",
+          "inline": "",
+          "opacity": "1",
+          "transform": "none"
+        }
+      ]
+    },
+    "active": [
+      {
+        "duration": 0.38,
+        "targets": [
+          "shop-hero-arch",
+          "shop-hero-vessel",
+          "shop-hero-jar"
+        ]
+      }
+    ],
+    "during": {
+      "width": 187,
+      "scroll": 187,
+      "dpr": 2,
+      "header": 226,
+      "copy": [
+        16,
+        258.9921875,
+        155.5,
+        977.234375
+      ],
+      "h1": [
+        40,
+        376.2734375,
+        107.5,
+        315
+      ],
+      "cta": [
+        40,
+        958.4609375,
+        120,
+        132.375
+      ],
+      "art": [
+        16,
+        1236.2265625,
+        155.5,
+        216
+      ],
+      "styles": [
+        {
+          "class": "shop-hero-arch",
+          "inline": "translate: none; rotate: none; scale: none; opacity: 0.9078; transform: translate(0px, 3.9516px);",
+          "opacity": "0.9078",
+          "transform": "matrix(1, 0, 0, 1, 0, 3.9516)"
+        },
+        {
+          "class": "shop-hero-vessel",
+          "inline": "translate: none; rotate: none; scale: none; opacity: 0.86; transform: translate(0px, 6px);",
+          "opacity": "0.86",
+          "transform": "matrix(1, 0, 0, 1, 0, 6)"
+        },
+        {
+          "class": "shop-hero-jar",
+          "inline": "translate: none; rotate: none; scale: none; opacity: 0.86; transform: translate(0px, 6px);",
+          "opacity": "0.86",
+          "transform": "matrix(1, 0, 0, 1, 0, 6)"
+        }
+      ]
+    },
+    "after": {
+      "width": 187,
+      "scroll": 187,
+      "dpr": 2,
+      "header": 226,
+      "copy": [
+        16,
+        258.9921875,
+        155.5,
+        977.234375
+      ],
+      "h1": [
+        40,
+        376.2734375,
+        107.5,
+        315
+      ],
+      "cta": [
+        40,
+        958.4609375,
+        120,
+        132.375
+      ],
+      "art": [
+        16,
+        1236.2265625,
+        155.5,
+        216
+      ],
+      "styles": [
+        {
+          "class": "shop-hero-arch",
+          "inline": "",
+          "opacity": "1",
+          "transform": "none"
+        },
+        {
+          "class": "shop-hero-vessel",
+          "inline": "",
+          "opacity": "1",
+          "transform": "none"
+        },
+        {
+          "class": "shop-hero-jar",
+          "inline": "",
+          "opacity": "1",
+          "transform": "none"
+        }
+      ]
+    },
+    "cls": 0,
+    "baselineCLS": 0,
+    "initialCLS": 0,
+    "initialShifts": [],
+    "firstMotion": 40.400000005960464,
+    "initialTweens": [
+      {
+        "duration": 0.38,
+        "targets": [
+          "shop-hero-arch",
+          "shop-hero-vessel",
+          "shop-hero-jar"
+        ],
+        "keys": [
+          "y",
+          "opacity",
+          "duration",
+          "stagger",
+          "ease",
+          "force3D",
+          "onComplete",
+          "parent",
+          "immediateRender",
+          "runBackwards",
+          "overwrite",
+          "delay"
+        ]
+      }
+    ],
+    "keyboard": true,
+    "noJS": true,
+    "vendorBlocked": true,
+    "reducedInitial": true,
+    "reducedRuntime": true,
+    "jsErrors": 0
+  },
+  {
+    "role": "guest",
+    "viewport": [
+      768,
+      1024
+    ],
+    "zoom": 2,
+    "baseline": {
+      "width": 376,
+      "scroll": 376,
+      "dpr": 2,
+      "header": 109,
+      "copy": [
+        16,
+        142.3984375,
+        344.5,
+        448.0859375
+      ],
+      "h1": [
+        40,
+        213.4921875,
+        296.5,
+        90
+      ],
+      "cta": [
+        40,
+        438.6875,
+        296.5,
+        56
+      ],
+      "art": [
+        16,
+        590.484375,
+        344.5,
+        216
+      ],
+      "styles": [
+        {
+          "class": "shop-hero-arch",
+          "inline": "",
+          "opacity": "1",
+          "transform": "none"
+        },
+        {
+          "class": "shop-hero-vessel",
+          "inline": "",
+          "opacity": "1",
+          "transform": "none"
+        },
+        {
+          "class": "shop-hero-jar",
+          "inline": "",
+          "opacity": "1",
+          "transform": "none"
+        }
+      ]
+    },
+    "active": [
+      {
+        "duration": 0.38,
+        "targets": [
+          "shop-hero-arch",
+          "shop-hero-vessel",
+          "shop-hero-jar"
+        ]
+      }
+    ],
+    "during": {
+      "width": 376,
+      "scroll": 376,
+      "dpr": 2,
+      "header": 109,
+      "copy": [
+        16,
+        142.3984375,
+        344.5,
+        448.0859375
+      ],
+      "h1": [
+        40,
+        213.4921875,
+        296.5,
+        90
+      ],
+      "cta": [
+        40,
+        438.6875,
+        296.5,
+        56
+      ],
+      "art": [
+        16,
+        590.484375,
+        344.5,
+        216
+      ],
+      "styles": [
+        {
+          "class": "shop-hero-arch",
+          "inline": "translate: none; rotate: none; scale: none; opacity: 0.8942; transform: translate(0px, 4.5334px);",
+          "opacity": "0.8942",
+          "transform": "matrix(1, 0, 0, 1, 0, 4.5334)"
+        },
+        {
+          "class": "shop-hero-vessel",
+          "inline": "translate: none; rotate: none; scale: none; opacity: 0.86; transform: translate(0px, 6px);",
+          "opacity": "0.86",
+          "transform": "matrix(1, 0, 0, 1, 0, 6)"
+        },
+        {
+          "class": "shop-hero-jar",
+          "inline": "translate: none; rotate: none; scale: none; opacity: 0.86; transform: translate(0px, 6px);",
+          "opacity": "0.86",
+          "transform": "matrix(1, 0, 0, 1, 0, 6)"
+        }
+      ]
+    },
+    "after": {
+      "width": 376,
+      "scroll": 376,
+      "dpr": 2,
+      "header": 109,
+      "copy": [
+        16,
+        142.3984375,
+        344.5,
+        448.0859375
+      ],
+      "h1": [
+        40,
+        213.4921875,
+        296.5,
+        90
+      ],
+      "cta": [
+        40,
+        438.6875,
+        296.5,
+        56
+      ],
+      "art": [
+        16,
+        590.484375,
+        344.5,
+        216
+      ],
+      "styles": [
+        {
+          "class": "shop-hero-arch",
+          "inline": "",
+          "opacity": "1",
+          "transform": "none"
+        },
+        {
+          "class": "shop-hero-vessel",
+          "inline": "",
+          "opacity": "1",
+          "transform": "none"
+        },
+        {
+          "class": "shop-hero-jar",
+          "inline": "",
+          "opacity": "1",
+          "transform": "none"
+        }
+      ]
+    },
+    "cls": 0,
+    "baselineCLS": 0,
+    "initialCLS": 0,
+    "initialShifts": [],
+    "firstMotion": 47.29999999701977,
+    "initialTweens": [
+      {
+        "duration": 0.38,
+        "targets": [
+          "shop-hero-arch",
+          "shop-hero-vessel",
+          "shop-hero-jar"
+        ],
+        "keys": [
+          "y",
+          "opacity",
+          "duration",
+          "stagger",
+          "ease",
+          "force3D",
+          "onComplete",
+          "parent",
+          "immediateRender",
+          "runBackwards",
+          "overwrite",
+          "delay"
+        ]
+      }
+    ],
+    "keyboard": true,
+    "noJS": true,
+    "vendorBlocked": true,
+    "reducedInitial": true,
+    "reducedRuntime": true,
+    "jsErrors": 0
+  },
+  {
+    "role": "guest",
+    "viewport": [
+      1366,
+      768
+    ],
+    "zoom": 2,
+    "baseline": {
+      "width": 675,
+      "scroll": 675,
+      "dpr": 2,
+      "header": 109,
+      "copy": [
+        24,
+        158.3984375,
+        342.265625,
+        480.0859375
+      ],
+      "h1": [
+        48,
+        245.4921875,
+        294.265625,
+        90
+      ],
+      "cta": [
+        48,
+        470.6875,
+        222.21875,
+        56
+      ],
+      "art": [
+        366.265625,
+        158.3984375,
+        285.234375,
+        480.0859375
+      ],
+      "styles": [
+        {
+          "class": "shop-hero-arch",
+          "inline": "",
+          "opacity": "1",
+          "transform": "none"
+        },
+        {
+          "class": "shop-hero-vessel",
+          "inline": "",
+          "opacity": "1",
+          "transform": "none"
+        },
+        {
+          "class": "shop-hero-jar",
+          "inline": "",
+          "opacity": "1",
+          "transform": "none"
+        }
+      ]
+    },
+    "active": [
+      {
+        "duration": 0.38,
+        "targets": [
+          "shop-hero-arch",
+          "shop-hero-vessel",
+          "shop-hero-jar"
+        ]
+      }
+    ],
+    "during": {
+      "width": 675,
+      "scroll": 675,
+      "dpr": 2,
+      "header": 109,
+      "copy": [
+        24,
+        158.3984375,
+        342.265625,
+        480.0859375
+      ],
+      "h1": [
+        48,
+        245.4921875,
+        294.265625,
+        90
+      ],
+      "cta": [
+        48,
+        470.6875,
+        222.21875,
+        56
+      ],
+      "art": [
+        366.265625,
+        158.3984375,
+        285.234375,
+        480.0859375
+      ],
+      "styles": [
+        {
+          "class": "shop-hero-arch",
+          "inline": "translate: none; rotate: none; scale: none; opacity: 0.8942; transform: translate(0px, 4.5334px);",
+          "opacity": "0.8942",
+          "transform": "matrix(1, 0, 0, 1, 0, 4.5334)"
+        },
+        {
+          "class": "shop-hero-vessel",
+          "inline": "translate: none; rotate: none; scale: none; opacity: 0.86; transform: translate(0px, 6px);",
+          "opacity": "0.86",
+          "transform": "matrix(1, 0, 0, 1, 0, 6)"
+        },
+        {
+          "class": "shop-hero-jar",
+          "inline": "translate: none; rotate: none; scale: none; opacity: 0.86; transform: translate(0px, 6px);",
+          "opacity": "0.86",
+          "transform": "matrix(1, 0, 0, 1, 0, 6)"
+        }
+      ]
+    },
+    "after": {
+      "width": 675,
+      "scroll": 675,
+      "dpr": 2,
+      "header": 109,
+      "copy": [
+        24,
+        158.3984375,
+        342.265625,
+        480.0859375
+      ],
+      "h1": [
+        48,
+        245.4921875,
+        294.265625,
+        90
+      ],
+      "cta": [
+        48,
+        470.6875,
+        222.21875,
+        56
+      ],
+      "art": [
+        366.265625,
+        158.3984375,
+        285.234375,
+        480.0859375
+      ],
+      "styles": [
+        {
+          "class": "shop-hero-arch",
+          "inline": "",
+          "opacity": "1",
+          "transform": "none"
+        },
+        {
+          "class": "shop-hero-vessel",
+          "inline": "",
+          "opacity": "1",
+          "transform": "none"
+        },
+        {
+          "class": "shop-hero-jar",
+          "inline": "",
+          "opacity": "1",
+          "transform": "none"
+        }
+      ]
+    },
+    "cls": 0,
+    "baselineCLS": 0,
+    "initialCLS": 0,
+    "initialShifts": [],
+    "firstMotion": 44.6000000089407,
+    "initialTweens": [
+      {
+        "duration": 0.38,
+        "targets": [
+          "shop-hero-arch",
+          "shop-hero-vessel",
+          "shop-hero-jar"
+        ],
+        "keys": [
+          "y",
+          "opacity",
+          "duration",
+          "stagger",
+          "ease",
+          "force3D",
+          "onComplete",
+          "parent",
+          "immediateRender",
+          "runBackwards",
+          "overwrite",
+          "delay"
+        ]
+      }
+    ],
+    "keyboard": true,
+    "noJS": true,
+    "vendorBlocked": true,
+    "reducedInitial": true,
+    "reducedRuntime": true,
+    "jsErrors": 0
+  },
+  {
+    "role": "guest",
+    "viewport": [
+      1920,
+      1080
+    ],
+    "zoom": 2,
+    "baseline": {
+      "width": 952,
+      "scroll": 952,
+      "dpr": 2,
+      "header": 109,
+      "copy": [
+        32,
+        158.3984375,
+        484.6328125,
+        534.0703125
+      ],
+      "h1": [
+        80,
+        269.4921875,
+        388.6328125,
+        95.984375
+      ],
+      "cta": [
+        80,
+        500.671875,
+        222.21875,
+        56
+      ],
+      "art": [
+        516.6328125,
+        158.3984375,
+        403.8671875,
+        534.0703125
+      ],
+      "styles": [
+        {
+          "class": "shop-hero-arch",
+          "inline": "",
+          "opacity": "1",
+          "transform": "none"
+        },
+        {
+          "class": "shop-hero-vessel",
+          "inline": "",
+          "opacity": "1",
+          "transform": "none"
+        },
+        {
+          "class": "shop-hero-jar",
+          "inline": "",
+          "opacity": "1",
+          "transform": "none"
+        }
+      ]
+    },
+    "active": [
+      {
+        "duration": 0.38,
+        "targets": [
+          "shop-hero-arch",
+          "shop-hero-vessel",
+          "shop-hero-jar"
+        ]
+      }
+    ],
+    "during": {
+      "width": 952,
+      "scroll": 952,
+      "dpr": 2,
+      "header": 109,
+      "copy": [
+        32,
+        158.3984375,
+        484.6328125,
+        534.0703125
+      ],
+      "h1": [
+        80,
+        269.4921875,
+        388.6328125,
+        95.984375
+      ],
+      "cta": [
+        80,
+        500.671875,
+        222.21875,
+        56
+      ],
+      "art": [
+        516.6328125,
+        158.3984375,
+        403.8671875,
+        534.0703125
+      ],
+      "styles": [
+        {
+          "class": "shop-hero-arch",
+          "inline": "translate: none; rotate: none; scale: none; opacity: 0.8923; transform: translate(0px, 4.614px);",
+          "opacity": "0.8923",
+          "transform": "matrix(1, 0, 0, 1, 0, 4.614)"
+        },
+        {
+          "class": "shop-hero-vessel",
+          "inline": "translate: none; rotate: none; scale: none; opacity: 0.86; transform: translate(0px, 6px);",
+          "opacity": "0.86",
+          "transform": "matrix(1, 0, 0, 1, 0, 6)"
+        },
+        {
+          "class": "shop-hero-jar",
+          "inline": "translate: none; rotate: none; scale: none; opacity: 0.86; transform: translate(0px, 6px);",
+          "opacity": "0.86",
+          "transform": "matrix(1, 0, 0, 1, 0, 6)"
+        }
+      ]
+    },
+    "after": {
+      "width": 952,
+      "scroll": 952,
+      "dpr": 2,
+      "header": 109,
+      "copy": [
+        32,
+        158.3984375,
+        484.6328125,
+        534.0703125
+      ],
+      "h1": [
+        80,
+        269.4921875,
+        388.6328125,
+        95.984375
+      ],
+      "cta": [
+        80,
+        500.671875,
+        222.21875,
+        56
+      ],
+      "art": [
+        516.6328125,
+        158.3984375,
+        403.8671875,
+        534.0703125
+      ],
+      "styles": [
+        {
+          "class": "shop-hero-arch",
+          "inline": "",
+          "opacity": "1",
+          "transform": "none"
+        },
+        {
+          "class": "shop-hero-vessel",
+          "inline": "",
+          "opacity": "1",
+          "transform": "none"
+        },
+        {
+          "class": "shop-hero-jar",
+          "inline": "",
+          "opacity": "1",
+          "transform": "none"
+        }
+      ]
+    },
+    "cls": 0,
+    "baselineCLS": 0,
+    "initialCLS": 0,
+    "initialShifts": [],
+    "firstMotion": 46.599999994039536,
+    "initialTweens": [
+      {
+        "duration": 0.38,
+        "targets": [
+          "shop-hero-arch",
+          "shop-hero-vessel",
+          "shop-hero-jar"
+        ],
+        "keys": [
+          "y",
+          "opacity",
+          "duration",
+          "stagger",
+          "ease",
+          "force3D",
+          "onComplete",
+          "parent",
+          "immediateRender",
+          "runBackwards",
+          "overwrite",
+          "delay"
+        ]
+      }
+    ],
+    "keyboard": true,
+    "noJS": true,
+    "vendorBlocked": true,
+    "reducedInitial": true,
+    "reducedRuntime": true,
+    "jsErrors": 0
+  },
+  {
+    "role": "guest",
+    "path": "/",
+    "viewport": [
+      360,
+      800
+    ],
+    "zoom": 1,
+    "scripts": [
+      "/js/app.js",
+      "/js/vendor/gsap-3.15.1.min.js",
+      "/js/home-motion.js"
+    ],
+    "requests": [
+      "http://127.0.0.1:60912/js/vendor/gsap-3.15.1.min.js",
+      "http://127.0.0.1:60912/js/home-motion.js"
+    ],
+    "width": 345,
+    "scroll": 345,
+    "dpr": 1
+  },
+  {
+    "role": "guest",
+    "path": "/products",
+    "viewport": [
+      360,
+      800
+    ],
+    "zoom": 1,
+    "scripts": [
+      "/js/app.js"
+    ],
+    "requests": [],
+    "width": 345,
+    "scroll": 345,
+    "dpr": 1
+  },
+  {
+    "role": "guest",
+    "path": "/products/demo-r026?variant=22",
+    "viewport": [
+      360,
+      800
+    ],
+    "zoom": 1,
+    "scripts": [
+      "/js/app.js"
+    ],
+    "requests": [],
+    "width": 345,
+    "scroll": 345,
+    "dpr": 1
+  },
+  {
+    "role": "guest",
+    "path": "/cart",
+    "viewport": [
+      360,
+      800
+    ],
+    "zoom": 1,
+    "scripts": [
+      "/js/app.js"
+    ],
+    "requests": [],
+    "width": 345,
+    "scroll": 345,
+    "dpr": 1
+  },
+  {
+    "role": "guest",
+    "path": "/login",
+    "viewport": [
+      360,
+      800
+    ],
+    "zoom": 1,
+    "scripts": [
+      "/js/app.js"
+    ],
+    "requests": [],
+    "width": 345,
+    "scroll": 345,
+    "dpr": 1
+  },
+  {
+    "role": "guest",
+    "path": "/products/unknown-c19",
+    "viewport": [
+      360,
+      800
+    ],
+    "zoom": 1,
+    "scripts": [
+      "/js/app.js"
+    ],
+    "requests": [],
+    "width": 345,
+    "scroll": 345,
+    "dpr": 1
+  },
+  {
+    "role": "guest",
+    "path": "/",
+    "viewport": [
+      390,
+      844
+    ],
+    "zoom": 1,
+    "scripts": [
+      "/js/app.js",
+      "/js/vendor/gsap-3.15.1.min.js",
+      "/js/home-motion.js"
+    ],
+    "requests": [
+      "http://127.0.0.1:60912/js/vendor/gsap-3.15.1.min.js",
+      "http://127.0.0.1:60912/js/home-motion.js"
+    ],
+    "width": 375,
+    "scroll": 375,
+    "dpr": 1
+  },
+  {
+    "role": "guest",
+    "path": "/products",
+    "viewport": [
+      390,
+      844
+    ],
+    "zoom": 1,
+    "scripts": [
+      "/js/app.js"
+    ],
+    "requests": [],
+    "width": 375,
+    "scroll": 375,
+    "dpr": 1
+  },
+  {
+    "role": "guest",
+    "path": "/products/demo-r026?variant=22",
+    "viewport": [
+      390,
+      844
+    ],
+    "zoom": 1,
+    "scripts": [
+      "/js/app.js"
+    ],
+    "requests": [],
+    "width": 375,
+    "scroll": 375,
+    "dpr": 1
+  },
+  {
+    "role": "guest",
+    "path": "/cart",
+    "viewport": [
+      390,
+      844
+    ],
+    "zoom": 1,
+    "scripts": [
+      "/js/app.js"
+    ],
+    "requests": [],
+    "width": 375,
+    "scroll": 375,
+    "dpr": 1
+  },
+  {
+    "role": "guest",
+    "path": "/login",
+    "viewport": [
+      390,
+      844
+    ],
+    "zoom": 1,
+    "scripts": [
+      "/js/app.js"
+    ],
+    "requests": [],
+    "width": 375,
+    "scroll": 375,
+    "dpr": 1
+  },
+  {
+    "role": "guest",
+    "path": "/products/unknown-c19",
+    "viewport": [
+      390,
+      844
+    ],
+    "zoom": 1,
+    "scripts": [
+      "/js/app.js"
+    ],
+    "requests": [],
+    "width": 375,
+    "scroll": 375,
+    "dpr": 1
+  },
+  {
+    "role": "guest",
+    "path": "/",
+    "viewport": [
+      768,
+      1024
+    ],
+    "zoom": 1,
+    "scripts": [
+      "/js/app.js",
+      "/js/vendor/gsap-3.15.1.min.js",
+      "/js/home-motion.js"
+    ],
+    "requests": [
+      "http://127.0.0.1:60912/js/vendor/gsap-3.15.1.min.js",
+      "http://127.0.0.1:60912/js/home-motion.js"
+    ],
+    "width": 753,
+    "scroll": 753,
+    "dpr": 1
+  },
+  {
+    "role": "guest",
+    "path": "/products",
+    "viewport": [
+      768,
+      1024
+    ],
+    "zoom": 1,
+    "scripts": [
+      "/js/app.js"
+    ],
+    "requests": [],
+    "width": 753,
+    "scroll": 753,
+    "dpr": 1
+  },
+  {
+    "role": "guest",
+    "path": "/products/demo-r026?variant=22",
+    "viewport": [
+      768,
+      1024
+    ],
+    "zoom": 1,
+    "scripts": [
+      "/js/app.js"
+    ],
+    "requests": [],
+    "width": 753,
+    "scroll": 753,
+    "dpr": 1
+  },
+  {
+    "role": "guest",
+    "path": "/cart",
+    "viewport": [
+      768,
+      1024
+    ],
+    "zoom": 1,
+    "scripts": [
+      "/js/app.js"
+    ],
+    "requests": [],
+    "width": 753,
+    "scroll": 753,
+    "dpr": 1
+  },
+  {
+    "role": "guest",
+    "path": "/login",
+    "viewport": [
+      768,
+      1024
+    ],
+    "zoom": 1,
+    "scripts": [
+      "/js/app.js"
+    ],
+    "requests": [],
+    "width": 753,
+    "scroll": 753,
+    "dpr": 1
+  },
+  {
+    "role": "guest",
+    "path": "/products/unknown-c19",
+    "viewport": [
+      768,
+      1024
+    ],
+    "zoom": 1,
+    "scripts": [
+      "/js/app.js"
+    ],
+    "requests": [],
+    "width": 753,
+    "scroll": 753,
+    "dpr": 1
+  },
+  {
+    "role": "guest",
+    "path": "/",
+    "viewport": [
+      1366,
+      768
+    ],
+    "zoom": 1,
+    "scripts": [
+      "/js/app.js",
+      "/js/vendor/gsap-3.15.1.min.js",
+      "/js/home-motion.js"
+    ],
+    "requests": [
+      "http://127.0.0.1:60912/js/vendor/gsap-3.15.1.min.js",
+      "http://127.0.0.1:60912/js/home-motion.js"
+    ],
+    "width": 1351,
+    "scroll": 1351,
+    "dpr": 1
+  },
+  {
+    "role": "guest",
+    "path": "/products",
+    "viewport": [
+      1366,
+      768
+    ],
+    "zoom": 1,
+    "scripts": [
+      "/js/app.js"
+    ],
+    "requests": [],
+    "width": 1351,
+    "scroll": 1351,
+    "dpr": 1
+  },
+  {
+    "role": "guest",
+    "path": "/products/demo-r026?variant=22",
+    "viewport": [
+      1366,
+      768
+    ],
+    "zoom": 1,
+    "scripts": [
+      "/js/app.js"
+    ],
+    "requests": [],
+    "width": 1351,
+    "scroll": 1351,
+    "dpr": 1
+  },
+  {
+    "role": "guest",
+    "path": "/cart",
+    "viewport": [
+      1366,
+      768
+    ],
+    "zoom": 1,
+    "scripts": [
+      "/js/app.js"
+    ],
+    "requests": [],
+    "width": 1351,
+    "scroll": 1351,
+    "dpr": 1
+  },
+  {
+    "role": "guest",
+    "path": "/login",
+    "viewport": [
+      1366,
+      768
+    ],
+    "zoom": 1,
+    "scripts": [
+      "/js/app.js"
+    ],
+    "requests": [],
+    "width": 1351,
+    "scroll": 1351,
+    "dpr": 1
+  },
+  {
+    "role": "guest",
+    "path": "/products/unknown-c19",
+    "viewport": [
+      1366,
+      768
+    ],
+    "zoom": 1,
+    "scripts": [
+      "/js/app.js"
+    ],
+    "requests": [],
+    "width": 1351,
+    "scroll": 1351,
+    "dpr": 1
+  },
+  {
+    "role": "guest",
+    "path": "/",
+    "viewport": [
+      1920,
+      1080
+    ],
+    "zoom": 1,
+    "scripts": [
+      "/js/app.js",
+      "/js/vendor/gsap-3.15.1.min.js",
+      "/js/home-motion.js"
+    ],
+    "requests": [
+      "http://127.0.0.1:60912/js/vendor/gsap-3.15.1.min.js",
+      "http://127.0.0.1:60912/js/home-motion.js"
+    ],
+    "width": 1905,
+    "scroll": 1905,
+    "dpr": 1
+  },
+  {
+    "role": "guest",
+    "path": "/products",
+    "viewport": [
+      1920,
+      1080
+    ],
+    "zoom": 1,
+    "scripts": [
+      "/js/app.js"
+    ],
+    "requests": [],
+    "width": 1905,
+    "scroll": 1905,
+    "dpr": 1
+  },
+  {
+    "role": "guest",
+    "path": "/products/demo-r026?variant=22",
+    "viewport": [
+      1920,
+      1080
+    ],
+    "zoom": 1,
+    "scripts": [
+      "/js/app.js"
+    ],
+    "requests": [],
+    "width": 1905,
+    "scroll": 1905,
+    "dpr": 1
+  },
+  {
+    "role": "guest",
+    "path": "/cart",
+    "viewport": [
+      1920,
+      1080
+    ],
+    "zoom": 1,
+    "scripts": [
+      "/js/app.js"
+    ],
+    "requests": [],
+    "width": 1920,
+    "scroll": 1920,
+    "dpr": 1
+  },
+  {
+    "role": "guest",
+    "path": "/login",
+    "viewport": [
+      1920,
+      1080
+    ],
+    "zoom": 1,
+    "scripts": [
+      "/js/app.js"
+    ],
+    "requests": [],
+    "width": 1905,
+    "scroll": 1905,
+    "dpr": 1
+  },
+  {
+    "role": "guest",
+    "path": "/products/unknown-c19",
+    "viewport": [
+      1920,
+      1080
+    ],
+    "zoom": 1,
+    "scripts": [
+      "/js/app.js"
+    ],
+    "requests": [],
+    "width": 1920,
+    "scroll": 1920,
+    "dpr": 1
+  },
+  {
+    "role": "guest",
+    "path": "/",
+    "viewport": [
+      360,
+      800
+    ],
+    "zoom": 2,
+    "scripts": [
+      "/js/app.js",
+      "/js/vendor/gsap-3.15.1.min.js",
+      "/js/home-motion.js"
+    ],
+    "requests": [
+      "http://127.0.0.1:60912/js/vendor/gsap-3.15.1.min.js",
+      "http://127.0.0.1:60912/js/home-motion.js"
+    ],
+    "width": 172,
+    "scroll": 172,
+    "dpr": 2
+  },
+  {
+    "role": "guest",
+    "path": "/products",
+    "viewport": [
+      360,
+      800
+    ],
+    "zoom": 2,
+    "scripts": [
+      "/js/app.js"
+    ],
+    "requests": [],
+    "width": 172,
+    "scroll": 172,
+    "dpr": 2
+  },
+  {
+    "role": "guest",
+    "path": "/products/demo-r026?variant=22",
+    "viewport": [
+      360,
+      800
+    ],
+    "zoom": 2,
+    "scripts": [
+      "/js/app.js"
+    ],
+    "requests": [],
+    "width": 172,
+    "scroll": 172,
+    "dpr": 2
+  },
+  {
+    "role": "guest",
+    "path": "/cart",
+    "viewport": [
+      360,
+      800
+    ],
+    "zoom": 2,
+    "scripts": [
+      "/js/app.js"
+    ],
+    "requests": [],
+    "width": 172,
+    "scroll": 172,
+    "dpr": 2
+  },
+  {
+    "role": "guest",
+    "path": "/login",
+    "viewport": [
+      360,
+      800
+    ],
+    "zoom": 2,
+    "scripts": [
+      "/js/app.js"
+    ],
+    "requests": [],
+    "width": 172,
+    "scroll": 172,
+    "dpr": 2
+  },
+  {
+    "role": "guest",
+    "path": "/products/unknown-c19",
+    "viewport": [
+      360,
+      800
+    ],
+    "zoom": 2,
+    "scripts": [
+      "/js/app.js"
+    ],
+    "requests": [],
+    "width": 172,
+    "scroll": 172,
+    "dpr": 2
+  },
+  {
+    "role": "guest",
+    "path": "/",
+    "viewport": [
+      390,
+      844
+    ],
+    "zoom": 2,
+    "scripts": [
+      "/js/app.js",
+      "/js/vendor/gsap-3.15.1.min.js",
+      "/js/home-motion.js"
+    ],
+    "requests": [
+      "http://127.0.0.1:60912/js/vendor/gsap-3.15.1.min.js",
+      "http://127.0.0.1:60912/js/home-motion.js"
+    ],
+    "width": 187,
+    "scroll": 187,
+    "dpr": 2
+  },
+  {
+    "role": "guest",
+    "path": "/products",
+    "viewport": [
+      390,
+      844
+    ],
+    "zoom": 2,
+    "scripts": [
+      "/js/app.js"
+    ],
+    "requests": [],
+    "width": 187,
+    "scroll": 187,
+    "dpr": 2
+  },
+  {
+    "role": "guest",
+    "path": "/products/demo-r026?variant=22",
+    "viewport": [
+      390,
+      844
+    ],
+    "zoom": 2,
+    "scripts": [
+      "/js/app.js"
+    ],
+    "requests": [],
+    "width": 187,
+    "scroll": 187,
+    "dpr": 2
+  },
+  {
+    "role": "guest",
+    "path": "/cart",
+    "viewport": [
+      390,
+      844
+    ],
+    "zoom": 2,
+    "scripts": [
+      "/js/app.js"
+    ],
+    "requests": [],
+    "width": 187,
+    "scroll": 187,
+    "dpr": 2
+  },
+  {
+    "role": "guest",
+    "path": "/login",
+    "viewport": [
+      390,
+      844
+    ],
+    "zoom": 2,
+    "scripts": [
+      "/js/app.js"
+    ],
+    "requests": [],
+    "width": 187,
+    "scroll": 187,
+    "dpr": 2
+  },
+  {
+    "role": "guest",
+    "path": "/products/unknown-c19",
+    "viewport": [
+      390,
+      844
+    ],
+    "zoom": 2,
+    "scripts": [
+      "/js/app.js"
+    ],
+    "requests": [],
+    "width": 187,
+    "scroll": 187,
+    "dpr": 2
+  },
+  {
+    "role": "guest",
+    "path": "/",
+    "viewport": [
+      768,
+      1024
+    ],
+    "zoom": 2,
+    "scripts": [
+      "/js/app.js",
+      "/js/vendor/gsap-3.15.1.min.js",
+      "/js/home-motion.js"
+    ],
+    "requests": [
+      "http://127.0.0.1:60912/js/vendor/gsap-3.15.1.min.js",
+      "http://127.0.0.1:60912/js/home-motion.js"
+    ],
+    "width": 376,
+    "scroll": 376,
+    "dpr": 2
+  },
+  {
+    "role": "guest",
+    "path": "/products",
+    "viewport": [
+      768,
+      1024
+    ],
+    "zoom": 2,
+    "scripts": [
+      "/js/app.js"
+    ],
+    "requests": [],
+    "width": 376,
+    "scroll": 376,
+    "dpr": 2
+  },
+  {
+    "role": "guest",
+    "path": "/products/demo-r026?variant=22",
+    "viewport": [
+      768,
+      1024
+    ],
+    "zoom": 2,
+    "scripts": [
+      "/js/app.js"
+    ],
+    "requests": [],
+    "width": 376,
+    "scroll": 376,
+    "dpr": 2
+  },
+  {
+    "role": "guest",
+    "path": "/cart",
+    "viewport": [
+      768,
+      1024
+    ],
+    "zoom": 2,
+    "scripts": [
+      "/js/app.js"
+    ],
+    "requests": [],
+    "width": 376,
+    "scroll": 376,
+    "dpr": 2
+  },
+  {
+    "role": "guest",
+    "path": "/login",
+    "viewport": [
+      768,
+      1024
+    ],
+    "zoom": 2,
+    "scripts": [
+      "/js/app.js"
+    ],
+    "requests": [],
+    "width": 376,
+    "scroll": 376,
+    "dpr": 2
+  },
+  {
+    "role": "guest",
+    "path": "/products/unknown-c19",
+    "viewport": [
+      768,
+      1024
+    ],
+    "zoom": 2,
+    "scripts": [
+      "/js/app.js"
+    ],
+    "requests": [],
+    "width": 376,
+    "scroll": 376,
+    "dpr": 2
+  },
+  {
+    "role": "guest",
+    "path": "/",
+    "viewport": [
+      1366,
+      768
+    ],
+    "zoom": 2,
+    "scripts": [
+      "/js/app.js",
+      "/js/vendor/gsap-3.15.1.min.js",
+      "/js/home-motion.js"
+    ],
+    "requests": [
+      "http://127.0.0.1:60912/js/vendor/gsap-3.15.1.min.js",
+      "http://127.0.0.1:60912/js/home-motion.js"
+    ],
+    "width": 675,
+    "scroll": 675,
+    "dpr": 2
+  },
+  {
+    "role": "guest",
+    "path": "/products",
+    "viewport": [
+      1366,
+      768
+    ],
+    "zoom": 2,
+    "scripts": [
+      "/js/app.js"
+    ],
+    "requests": [],
+    "width": 675,
+    "scroll": 675,
+    "dpr": 2
+  },
+  {
+    "role": "guest",
+    "path": "/products/demo-r026?variant=22",
+    "viewport": [
+      1366,
+      768
+    ],
+    "zoom": 2,
+    "scripts": [
+      "/js/app.js"
+    ],
+    "requests": [],
+    "width": 675,
+    "scroll": 675,
+    "dpr": 2
+  },
+  {
+    "role": "guest",
+    "path": "/cart",
+    "viewport": [
+      1366,
+      768
+    ],
+    "zoom": 2,
+    "scripts": [
+      "/js/app.js"
+    ],
+    "requests": [],
+    "width": 675,
+    "scroll": 675,
+    "dpr": 2
+  },
+  {
+    "role": "guest",
+    "path": "/login",
+    "viewport": [
+      1366,
+      768
+    ],
+    "zoom": 2,
+    "scripts": [
+      "/js/app.js"
+    ],
+    "requests": [],
+    "width": 675,
+    "scroll": 675,
+    "dpr": 2
+  },
+  {
+    "role": "guest",
+    "path": "/products/unknown-c19",
+    "viewport": [
+      1366,
+      768
+    ],
+    "zoom": 2,
+    "scripts": [
+      "/js/app.js"
+    ],
+    "requests": [],
+    "width": 675,
+    "scroll": 675,
+    "dpr": 2
+  },
+  {
+    "role": "guest",
+    "path": "/",
+    "viewport": [
+      1920,
+      1080
+    ],
+    "zoom": 2,
+    "scripts": [
+      "/js/app.js",
+      "/js/vendor/gsap-3.15.1.min.js",
+      "/js/home-motion.js"
+    ],
+    "requests": [
+      "http://127.0.0.1:60912/js/vendor/gsap-3.15.1.min.js",
+      "http://127.0.0.1:60912/js/home-motion.js"
+    ],
+    "width": 952,
+    "scroll": 952,
+    "dpr": 2
+  },
+  {
+    "role": "guest",
+    "path": "/products",
+    "viewport": [
+      1920,
+      1080
+    ],
+    "zoom": 2,
+    "scripts": [
+      "/js/app.js"
+    ],
+    "requests": [],
+    "width": 952,
+    "scroll": 952,
+    "dpr": 2
+  },
+  {
+    "role": "guest",
+    "path": "/products/demo-r026?variant=22",
+    "viewport": [
+      1920,
+      1080
+    ],
+    "zoom": 2,
+    "scripts": [
+      "/js/app.js"
+    ],
+    "requests": [],
+    "width": 952,
+    "scroll": 952,
+    "dpr": 2
+  },
+  {
+    "role": "guest",
+    "path": "/cart",
+    "viewport": [
+      1920,
+      1080
+    ],
+    "zoom": 2,
+    "scripts": [
+      "/js/app.js"
+    ],
+    "requests": [],
+    "width": 952,
+    "scroll": 952,
+    "dpr": 2
+  },
+  {
+    "role": "guest",
+    "path": "/login",
+    "viewport": [
+      1920,
+      1080
+    ],
+    "zoom": 2,
+    "scripts": [
+      "/js/app.js"
+    ],
+    "requests": [],
+    "width": 952,
+    "scroll": 952,
+    "dpr": 2
+  },
+  {
+    "role": "guest",
+    "path": "/products/unknown-c19",
+    "viewport": [
+      1920,
+      1080
+    ],
+    "zoom": 2,
+    "scripts": [
+      "/js/app.js"
+    ],
+    "requests": [],
+    "width": 952,
+    "scroll": 952,
+    "dpr": 2
+  },
+  {
+    "role": "customer",
+    "path": "/",
+    "viewport": [
+      360,
+      800
+    ],
+    "zoom": 1,
+    "scripts": [
+      "/js/app.js",
+      "/js/vendor/gsap-3.15.1.min.js",
+      "/js/home-motion.js"
+    ],
+    "requests": [
+      "http://127.0.0.1:60912/js/vendor/gsap-3.15.1.min.js",
+      "http://127.0.0.1:60912/js/home-motion.js"
+    ],
+    "width": 345,
+    "scroll": 345,
+    "dpr": 1
+  },
+  {
+    "role": "customer",
+    "path": "/checkout",
+    "viewport": [
+      360,
+      800
+    ],
+    "zoom": 1,
+    "scripts": [
+      "/js/app.js"
+    ],
+    "requests": [],
+    "width": 345,
+    "scroll": 345,
+    "dpr": 1
+  },
+  {
+    "role": "customer",
+    "path": "/account",
+    "viewport": [
+      360,
+      800
+    ],
+    "zoom": 1,
+    "scripts": [
+      "/js/app.js"
+    ],
+    "requests": [],
+    "width": 345,
+    "scroll": 345,
+    "dpr": 1
+  },
+  {
+    "role": "customer",
+    "path": "/cart",
+    "viewport": [
+      360,
+      800
+    ],
+    "zoom": 1,
+    "scripts": [
+      "/js/app.js"
+    ],
+    "requests": [],
+    "width": 345,
+    "scroll": 345,
+    "dpr": 1
+  },
+  {
+    "role": "customer",
+    "path": "/account/wishlist",
+    "viewport": [
+      360,
+      800
+    ],
+    "zoom": 1,
+    "scripts": [
+      "/js/app.js"
+    ],
+    "requests": [],
+    "width": 345,
+    "scroll": 345,
+    "dpr": 1
+  },
+  {
+    "role": "customer",
+    "path": "/",
+    "viewport": [
+      390,
+      844
+    ],
+    "zoom": 1,
+    "scripts": [
+      "/js/app.js",
+      "/js/vendor/gsap-3.15.1.min.js",
+      "/js/home-motion.js"
+    ],
+    "requests": [
+      "http://127.0.0.1:60912/js/vendor/gsap-3.15.1.min.js",
+      "http://127.0.0.1:60912/js/home-motion.js"
+    ],
+    "width": 375,
+    "scroll": 375,
+    "dpr": 1
+  },
+  {
+    "role": "customer",
+    "path": "/checkout",
+    "viewport": [
+      390,
+      844
+    ],
+    "zoom": 1,
+    "scripts": [
+      "/js/app.js"
+    ],
+    "requests": [],
+    "width": 375,
+    "scroll": 375,
+    "dpr": 1
+  },
+  {
+    "role": "customer",
+    "path": "/account",
+    "viewport": [
+      390,
+      844
+    ],
+    "zoom": 1,
+    "scripts": [
+      "/js/app.js"
+    ],
+    "requests": [],
+    "width": 375,
+    "scroll": 375,
+    "dpr": 1
+  },
+  {
+    "role": "customer",
+    "path": "/cart",
+    "viewport": [
+      390,
+      844
+    ],
+    "zoom": 1,
+    "scripts": [
+      "/js/app.js"
+    ],
+    "requests": [],
+    "width": 375,
+    "scroll": 375,
+    "dpr": 1
+  },
+  {
+    "role": "customer",
+    "path": "/account/wishlist",
+    "viewport": [
+      390,
+      844
+    ],
+    "zoom": 1,
+    "scripts": [
+      "/js/app.js"
+    ],
+    "requests": [],
+    "width": 375,
+    "scroll": 375,
+    "dpr": 1
+  },
+  {
+    "role": "customer",
+    "path": "/",
+    "viewport": [
+      768,
+      1024
+    ],
+    "zoom": 1,
+    "scripts": [
+      "/js/app.js",
+      "/js/vendor/gsap-3.15.1.min.js",
+      "/js/home-motion.js"
+    ],
+    "requests": [
+      "http://127.0.0.1:60912/js/vendor/gsap-3.15.1.min.js",
+      "http://127.0.0.1:60912/js/home-motion.js"
+    ],
+    "width": 753,
+    "scroll": 753,
+    "dpr": 1
+  },
+  {
+    "role": "customer",
+    "path": "/checkout",
+    "viewport": [
+      768,
+      1024
+    ],
+    "zoom": 1,
+    "scripts": [
+      "/js/app.js"
+    ],
+    "requests": [],
+    "width": 753,
+    "scroll": 753,
+    "dpr": 1
+  },
+  {
+    "role": "customer",
+    "path": "/account",
+    "viewport": [
+      768,
+      1024
+    ],
+    "zoom": 1,
+    "scripts": [
+      "/js/app.js"
+    ],
+    "requests": [],
+    "width": 753,
+    "scroll": 753,
+    "dpr": 1
+  },
+  {
+    "role": "customer",
+    "path": "/cart",
+    "viewport": [
+      768,
+      1024
+    ],
+    "zoom": 1,
+    "scripts": [
+      "/js/app.js"
+    ],
+    "requests": [],
+    "width": 753,
+    "scroll": 753,
+    "dpr": 1
+  },
+  {
+    "role": "customer",
+    "path": "/account/wishlist",
+    "viewport": [
+      768,
+      1024
+    ],
+    "zoom": 1,
+    "scripts": [
+      "/js/app.js"
+    ],
+    "requests": [],
+    "width": 753,
+    "scroll": 753,
+    "dpr": 1
+  },
+  {
+    "role": "customer",
+    "path": "/",
+    "viewport": [
+      1366,
+      768
+    ],
+    "zoom": 1,
+    "scripts": [
+      "/js/app.js",
+      "/js/vendor/gsap-3.15.1.min.js",
+      "/js/home-motion.js"
+    ],
+    "requests": [
+      "http://127.0.0.1:60912/js/vendor/gsap-3.15.1.min.js",
+      "http://127.0.0.1:60912/js/home-motion.js"
+    ],
+    "width": 1351,
+    "scroll": 1351,
+    "dpr": 1
+  },
+  {
+    "role": "customer",
+    "path": "/checkout",
+    "viewport": [
+      1366,
+      768
+    ],
+    "zoom": 1,
+    "scripts": [
+      "/js/app.js"
+    ],
+    "requests": [],
+    "width": 1351,
+    "scroll": 1351,
+    "dpr": 1
+  },
+  {
+    "role": "customer",
+    "path": "/account",
+    "viewport": [
+      1366,
+      768
+    ],
+    "zoom": 1,
+    "scripts": [
+      "/js/app.js"
+    ],
+    "requests": [],
+    "width": 1351,
+    "scroll": 1351,
+    "dpr": 1
+  },
+  {
+    "role": "customer",
+    "path": "/cart",
+    "viewport": [
+      1366,
+      768
+    ],
+    "zoom": 1,
+    "scripts": [
+      "/js/app.js"
+    ],
+    "requests": [],
+    "width": 1351,
+    "scroll": 1351,
+    "dpr": 1
+  },
+  {
+    "role": "customer",
+    "path": "/account/wishlist",
+    "viewport": [
+      1366,
+      768
+    ],
+    "zoom": 1,
+    "scripts": [
+      "/js/app.js"
+    ],
+    "requests": [],
+    "width": 1351,
+    "scroll": 1351,
+    "dpr": 1
+  },
+  {
+    "role": "customer",
+    "path": "/",
+    "viewport": [
+      1920,
+      1080
+    ],
+    "zoom": 1,
+    "scripts": [
+      "/js/app.js",
+      "/js/vendor/gsap-3.15.1.min.js",
+      "/js/home-motion.js"
+    ],
+    "requests": [
+      "http://127.0.0.1:60912/js/vendor/gsap-3.15.1.min.js",
+      "http://127.0.0.1:60912/js/home-motion.js"
+    ],
+    "width": 1905,
+    "scroll": 1905,
+    "dpr": 1
+  },
+  {
+    "role": "customer",
+    "path": "/checkout",
+    "viewport": [
+      1920,
+      1080
+    ],
+    "zoom": 1,
+    "scripts": [
+      "/js/app.js"
+    ],
+    "requests": [],
+    "width": 1905,
+    "scroll": 1905,
+    "dpr": 1
+  },
+  {
+    "role": "customer",
+    "path": "/account",
+    "viewport": [
+      1920,
+      1080
+    ],
+    "zoom": 1,
+    "scripts": [
+      "/js/app.js"
+    ],
+    "requests": [],
+    "width": 1905,
+    "scroll": 1905,
+    "dpr": 1
+  },
+  {
+    "role": "customer",
+    "path": "/cart",
+    "viewport": [
+      1920,
+      1080
+    ],
+    "zoom": 1,
+    "scripts": [
+      "/js/app.js"
+    ],
+    "requests": [],
+    "width": 1905,
+    "scroll": 1905,
+    "dpr": 1
+  },
+  {
+    "role": "customer",
+    "path": "/account/wishlist",
+    "viewport": [
+      1920,
+      1080
+    ],
+    "zoom": 1,
+    "scripts": [
+      "/js/app.js"
+    ],
+    "requests": [],
+    "width": 1920,
+    "scroll": 1920,
+    "dpr": 1
+  },
+  {
+    "role": "customer",
+    "path": "/",
+    "viewport": [
+      360,
+      800
+    ],
+    "zoom": 2,
+    "scripts": [
+      "/js/app.js",
+      "/js/vendor/gsap-3.15.1.min.js",
+      "/js/home-motion.js"
+    ],
+    "requests": [
+      "http://127.0.0.1:60912/js/vendor/gsap-3.15.1.min.js",
+      "http://127.0.0.1:60912/js/home-motion.js"
+    ],
+    "width": 172,
+    "scroll": 172,
+    "dpr": 2
+  },
+  {
+    "role": "customer",
+    "path": "/checkout",
+    "viewport": [
+      360,
+      800
+    ],
+    "zoom": 2,
+    "scripts": [
+      "/js/app.js"
+    ],
+    "requests": [],
+    "width": 172,
+    "scroll": 172,
+    "dpr": 2
+  },
+  {
+    "role": "customer",
+    "path": "/account",
+    "viewport": [
+      360,
+      800
+    ],
+    "zoom": 2,
+    "scripts": [
+      "/js/app.js"
+    ],
+    "requests": [],
+    "width": 172,
+    "scroll": 172,
+    "dpr": 2
+  },
+  {
+    "role": "customer",
+    "path": "/cart",
+    "viewport": [
+      360,
+      800
+    ],
+    "zoom": 2,
+    "scripts": [
+      "/js/app.js"
+    ],
+    "requests": [],
+    "width": 172,
+    "scroll": 172,
+    "dpr": 2
+  },
+  {
+    "role": "customer",
+    "path": "/account/wishlist",
+    "viewport": [
+      360,
+      800
+    ],
+    "zoom": 2,
+    "scripts": [
+      "/js/app.js"
+    ],
+    "requests": [],
+    "width": 172,
+    "scroll": 172,
+    "dpr": 2
+  },
+  {
+    "role": "customer",
+    "path": "/",
+    "viewport": [
+      390,
+      844
+    ],
+    "zoom": 2,
+    "scripts": [
+      "/js/app.js",
+      "/js/vendor/gsap-3.15.1.min.js",
+      "/js/home-motion.js"
+    ],
+    "requests": [
+      "http://127.0.0.1:60912/js/vendor/gsap-3.15.1.min.js",
+      "http://127.0.0.1:60912/js/home-motion.js"
+    ],
+    "width": 187,
+    "scroll": 187,
+    "dpr": 2
+  },
+  {
+    "role": "customer",
+    "path": "/checkout",
+    "viewport": [
+      390,
+      844
+    ],
+    "zoom": 2,
+    "scripts": [
+      "/js/app.js"
+    ],
+    "requests": [],
+    "width": 187,
+    "scroll": 187,
+    "dpr": 2
+  },
+  {
+    "role": "customer",
+    "path": "/account",
+    "viewport": [
+      390,
+      844
+    ],
+    "zoom": 2,
+    "scripts": [
+      "/js/app.js"
+    ],
+    "requests": [],
+    "width": 187,
+    "scroll": 187,
+    "dpr": 2
+  },
+  {
+    "role": "customer",
+    "path": "/cart",
+    "viewport": [
+      390,
+      844
+    ],
+    "zoom": 2,
+    "scripts": [
+      "/js/app.js"
+    ],
+    "requests": [],
+    "width": 187,
+    "scroll": 187,
+    "dpr": 2
+  },
+  {
+    "role": "customer",
+    "path": "/account/wishlist",
+    "viewport": [
+      390,
+      844
+    ],
+    "zoom": 2,
+    "scripts": [
+      "/js/app.js"
+    ],
+    "requests": [],
+    "width": 187,
+    "scroll": 187,
+    "dpr": 2
+  },
+  {
+    "role": "customer",
+    "path": "/",
+    "viewport": [
+      768,
+      1024
+    ],
+    "zoom": 2,
+    "scripts": [
+      "/js/app.js",
+      "/js/vendor/gsap-3.15.1.min.js",
+      "/js/home-motion.js"
+    ],
+    "requests": [
+      "http://127.0.0.1:60912/js/vendor/gsap-3.15.1.min.js",
+      "http://127.0.0.1:60912/js/home-motion.js"
+    ],
+    "width": 376,
+    "scroll": 376,
+    "dpr": 2
+  },
+  {
+    "role": "customer",
+    "path": "/checkout",
+    "viewport": [
+      768,
+      1024
+    ],
+    "zoom": 2,
+    "scripts": [
+      "/js/app.js"
+    ],
+    "requests": [],
+    "width": 376,
+    "scroll": 376,
+    "dpr": 2
+  },
+  {
+    "role": "customer",
+    "path": "/account",
+    "viewport": [
+      768,
+      1024
+    ],
+    "zoom": 2,
+    "scripts": [
+      "/js/app.js"
+    ],
+    "requests": [],
+    "width": 376,
+    "scroll": 376,
+    "dpr": 2
+  },
+  {
+    "role": "customer",
+    "path": "/cart",
+    "viewport": [
+      768,
+      1024
+    ],
+    "zoom": 2,
+    "scripts": [
+      "/js/app.js"
+    ],
+    "requests": [],
+    "width": 376,
+    "scroll": 376,
+    "dpr": 2
+  },
+  {
+    "role": "customer",
+    "path": "/account/wishlist",
+    "viewport": [
+      768,
+      1024
+    ],
+    "zoom": 2,
+    "scripts": [
+      "/js/app.js"
+    ],
+    "requests": [],
+    "width": 376,
+    "scroll": 376,
+    "dpr": 2
+  },
+  {
+    "role": "customer",
+    "path": "/",
+    "viewport": [
+      1366,
+      768
+    ],
+    "zoom": 2,
+    "scripts": [
+      "/js/app.js",
+      "/js/vendor/gsap-3.15.1.min.js",
+      "/js/home-motion.js"
+    ],
+    "requests": [
+      "http://127.0.0.1:60912/js/vendor/gsap-3.15.1.min.js",
+      "http://127.0.0.1:60912/js/home-motion.js"
+    ],
+    "width": 675,
+    "scroll": 675,
+    "dpr": 2
+  },
+  {
+    "role": "customer",
+    "path": "/checkout",
+    "viewport": [
+      1366,
+      768
+    ],
+    "zoom": 2,
+    "scripts": [
+      "/js/app.js"
+    ],
+    "requests": [],
+    "width": 675,
+    "scroll": 675,
+    "dpr": 2
+  },
+  {
+    "role": "customer",
+    "path": "/account",
+    "viewport": [
+      1366,
+      768
+    ],
+    "zoom": 2,
+    "scripts": [
+      "/js/app.js"
+    ],
+    "requests": [],
+    "width": 675,
+    "scroll": 675,
+    "dpr": 2
+  },
+  {
+    "role": "customer",
+    "path": "/cart",
+    "viewport": [
+      1366,
+      768
+    ],
+    "zoom": 2,
+    "scripts": [
+      "/js/app.js"
+    ],
+    "requests": [],
+    "width": 675,
+    "scroll": 675,
+    "dpr": 2
+  },
+  {
+    "role": "customer",
+    "path": "/account/wishlist",
+    "viewport": [
+      1366,
+      768
+    ],
+    "zoom": 2,
+    "scripts": [
+      "/js/app.js"
+    ],
+    "requests": [],
+    "width": 675,
+    "scroll": 675,
+    "dpr": 2
+  },
+  {
+    "role": "customer",
+    "path": "/",
+    "viewport": [
+      1920,
+      1080
+    ],
+    "zoom": 2,
+    "scripts": [
+      "/js/app.js",
+      "/js/vendor/gsap-3.15.1.min.js",
+      "/js/home-motion.js"
+    ],
+    "requests": [
+      "http://127.0.0.1:60912/js/vendor/gsap-3.15.1.min.js",
+      "http://127.0.0.1:60912/js/home-motion.js"
+    ],
+    "width": 952,
+    "scroll": 952,
+    "dpr": 2
+  },
+  {
+    "role": "customer",
+    "path": "/checkout",
+    "viewport": [
+      1920,
+      1080
+    ],
+    "zoom": 2,
+    "scripts": [
+      "/js/app.js"
+    ],
+    "requests": [],
+    "width": 952,
+    "scroll": 952,
+    "dpr": 2
+  },
+  {
+    "role": "customer",
+    "path": "/account",
+    "viewport": [
+      1920,
+      1080
+    ],
+    "zoom": 2,
+    "scripts": [
+      "/js/app.js"
+    ],
+    "requests": [],
+    "width": 952,
+    "scroll": 952,
+    "dpr": 2
+  },
+  {
+    "role": "customer",
+    "path": "/cart",
+    "viewport": [
+      1920,
+      1080
+    ],
+    "zoom": 2,
+    "scripts": [
+      "/js/app.js"
+    ],
+    "requests": [],
+    "width": 952,
+    "scroll": 952,
+    "dpr": 2
+  },
+  {
+    "role": "customer",
+    "path": "/account/wishlist",
+    "viewport": [
+      1920,
+      1080
+    ],
+    "zoom": 2,
+    "scripts": [
+      "/js/app.js"
+    ],
+    "requests": [],
+    "width": 952,
+    "scroll": 952,
+    "dpr": 2
+  },
+  {
+    "role": "admin",
+    "path": "/",
+    "viewport": [
+      360,
+      800
+    ],
+    "zoom": 1,
+    "scripts": [
+      "/js/app.js",
+      "/js/vendor/gsap-3.15.1.min.js",
+      "/js/home-motion.js"
+    ],
+    "requests": [
+      "http://127.0.0.1:60912/js/vendor/gsap-3.15.1.min.js",
+      "http://127.0.0.1:60912/js/home-motion.js"
+    ],
+    "width": 345,
+    "scroll": 345,
+    "dpr": 1
+  },
+  {
+    "role": "admin",
+    "path": "/admin/catalog/categories",
+    "viewport": [
+      360,
+      800
+    ],
+    "zoom": 1,
+    "scripts": [
+      "/js/app.js"
+    ],
+    "requests": [],
+    "width": 345,
+    "scroll": 345,
+    "dpr": 1
+  },
+  {
+    "role": "admin",
+    "path": "/products",
+    "viewport": [
+      360,
+      800
+    ],
+    "zoom": 1,
+    "scripts": [
+      "/js/app.js"
+    ],
+    "requests": [],
+    "width": 345,
+    "scroll": 345,
+    "dpr": 1
+  },
+  {
+    "role": "admin",
+    "path": "/",
+    "viewport": [
+      390,
+      844
+    ],
+    "zoom": 1,
+    "scripts": [
+      "/js/app.js",
+      "/js/vendor/gsap-3.15.1.min.js",
+      "/js/home-motion.js"
+    ],
+    "requests": [
+      "http://127.0.0.1:60912/js/vendor/gsap-3.15.1.min.js",
+      "http://127.0.0.1:60912/js/home-motion.js"
+    ],
+    "width": 375,
+    "scroll": 375,
+    "dpr": 1
+  },
+  {
+    "role": "admin",
+    "path": "/admin/catalog/categories",
+    "viewport": [
+      390,
+      844
+    ],
+    "zoom": 1,
+    "scripts": [
+      "/js/app.js"
+    ],
+    "requests": [],
+    "width": 375,
+    "scroll": 375,
+    "dpr": 1
+  },
+  {
+    "role": "admin",
+    "path": "/products",
+    "viewport": [
+      390,
+      844
+    ],
+    "zoom": 1,
+    "scripts": [
+      "/js/app.js"
+    ],
+    "requests": [],
+    "width": 375,
+    "scroll": 375,
+    "dpr": 1
+  },
+  {
+    "role": "admin",
+    "path": "/",
+    "viewport": [
+      768,
+      1024
+    ],
+    "zoom": 1,
+    "scripts": [
+      "/js/app.js",
+      "/js/vendor/gsap-3.15.1.min.js",
+      "/js/home-motion.js"
+    ],
+    "requests": [
+      "http://127.0.0.1:60912/js/vendor/gsap-3.15.1.min.js",
+      "http://127.0.0.1:60912/js/home-motion.js"
+    ],
+    "width": 753,
+    "scroll": 753,
+    "dpr": 1
+  },
+  {
+    "role": "admin",
+    "path": "/admin/catalog/categories",
+    "viewport": [
+      768,
+      1024
+    ],
+    "zoom": 1,
+    "scripts": [
+      "/js/app.js"
+    ],
+    "requests": [],
+    "width": 768,
+    "scroll": 768,
+    "dpr": 1
+  },
+  {
+    "role": "admin",
+    "path": "/products",
+    "viewport": [
+      768,
+      1024
+    ],
+    "zoom": 1,
+    "scripts": [
+      "/js/app.js"
+    ],
+    "requests": [],
+    "width": 753,
+    "scroll": 753,
+    "dpr": 1
+  },
+  {
+    "role": "admin",
+    "path": "/",
+    "viewport": [
+      1366,
+      768
+    ],
+    "zoom": 1,
+    "scripts": [
+      "/js/app.js",
+      "/js/vendor/gsap-3.15.1.min.js",
+      "/js/home-motion.js"
+    ],
+    "requests": [
+      "http://127.0.0.1:60912/js/vendor/gsap-3.15.1.min.js",
+      "http://127.0.0.1:60912/js/home-motion.js"
+    ],
+    "width": 1351,
+    "scroll": 1351,
+    "dpr": 1
+  },
+  {
+    "role": "admin",
+    "path": "/admin/catalog/categories",
+    "viewport": [
+      1366,
+      768
+    ],
+    "zoom": 1,
+    "scripts": [
+      "/js/app.js"
+    ],
+    "requests": [],
+    "width": 1351,
+    "scroll": 1351,
+    "dpr": 1
+  },
+  {
+    "role": "admin",
+    "path": "/products",
+    "viewport": [
+      1366,
+      768
+    ],
+    "zoom": 1,
+    "scripts": [
+      "/js/app.js"
+    ],
+    "requests": [],
+    "width": 1351,
+    "scroll": 1351,
+    "dpr": 1
+  },
+  {
+    "role": "admin",
+    "path": "/",
+    "viewport": [
+      1920,
+      1080
+    ],
+    "zoom": 1,
+    "scripts": [
+      "/js/app.js",
+      "/js/vendor/gsap-3.15.1.min.js",
+      "/js/home-motion.js"
+    ],
+    "requests": [
+      "http://127.0.0.1:60912/js/vendor/gsap-3.15.1.min.js",
+      "http://127.0.0.1:60912/js/home-motion.js"
+    ],
+    "width": 1905,
+    "scroll": 1905,
+    "dpr": 1
+  },
+  {
+    "role": "admin",
+    "path": "/admin/catalog/categories",
+    "viewport": [
+      1920,
+      1080
+    ],
+    "zoom": 1,
+    "scripts": [
+      "/js/app.js"
+    ],
+    "requests": [],
+    "width": 1920,
+    "scroll": 1920,
+    "dpr": 1
+  },
+  {
+    "role": "admin",
+    "path": "/products",
+    "viewport": [
+      1920,
+      1080
+    ],
+    "zoom": 1,
+    "scripts": [
+      "/js/app.js"
+    ],
+    "requests": [],
+    "width": 1905,
+    "scroll": 1905,
+    "dpr": 1
+  },
+  {
+    "role": "admin",
+    "path": "/",
+    "viewport": [
+      360,
+      800
+    ],
+    "zoom": 2,
+    "scripts": [
+      "/js/app.js",
+      "/js/vendor/gsap-3.15.1.min.js",
+      "/js/home-motion.js"
+    ],
+    "requests": [
+      "http://127.0.0.1:60912/js/vendor/gsap-3.15.1.min.js",
+      "http://127.0.0.1:60912/js/home-motion.js"
+    ],
+    "width": 172,
+    "scroll": 172,
+    "dpr": 2
+  },
+  {
+    "role": "admin",
+    "path": "/admin/catalog/categories",
+    "viewport": [
+      360,
+      800
+    ],
+    "zoom": 2,
+    "scripts": [
+      "/js/app.js"
+    ],
+    "requests": [],
+    "width": 172,
+    "scroll": 172,
+    "dpr": 2
+  },
+  {
+    "role": "admin",
+    "path": "/products",
+    "viewport": [
+      360,
+      800
+    ],
+    "zoom": 2,
+    "scripts": [
+      "/js/app.js"
+    ],
+    "requests": [],
+    "width": 172,
+    "scroll": 172,
+    "dpr": 2
+  },
+  {
+    "role": "admin",
+    "path": "/",
+    "viewport": [
+      390,
+      844
+    ],
+    "zoom": 2,
+    "scripts": [
+      "/js/app.js",
+      "/js/vendor/gsap-3.15.1.min.js",
+      "/js/home-motion.js"
+    ],
+    "requests": [
+      "http://127.0.0.1:60912/js/vendor/gsap-3.15.1.min.js",
+      "http://127.0.0.1:60912/js/home-motion.js"
+    ],
+    "width": 187,
+    "scroll": 187,
+    "dpr": 2
+  },
+  {
+    "role": "admin",
+    "path": "/admin/catalog/categories",
+    "viewport": [
+      390,
+      844
+    ],
+    "zoom": 2,
+    "scripts": [
+      "/js/app.js"
+    ],
+    "requests": [],
+    "width": 187,
+    "scroll": 187,
+    "dpr": 2
+  },
+  {
+    "role": "admin",
+    "path": "/products",
+    "viewport": [
+      390,
+      844
+    ],
+    "zoom": 2,
+    "scripts": [
+      "/js/app.js"
+    ],
+    "requests": [],
+    "width": 187,
+    "scroll": 187,
+    "dpr": 2
+  },
+  {
+    "role": "admin",
+    "path": "/",
+    "viewport": [
+      768,
+      1024
+    ],
+    "zoom": 2,
+    "scripts": [
+      "/js/app.js",
+      "/js/vendor/gsap-3.15.1.min.js",
+      "/js/home-motion.js"
+    ],
+    "requests": [
+      "http://127.0.0.1:60912/js/vendor/gsap-3.15.1.min.js",
+      "http://127.0.0.1:60912/js/home-motion.js"
+    ],
+    "width": 376,
+    "scroll": 376,
+    "dpr": 2
+  },
+  {
+    "role": "admin",
+    "path": "/admin/catalog/categories",
+    "viewport": [
+      768,
+      1024
+    ],
+    "zoom": 2,
+    "scripts": [
+      "/js/app.js"
+    ],
+    "requests": [],
+    "width": 376,
+    "scroll": 376,
+    "dpr": 2
+  },
+  {
+    "role": "admin",
+    "path": "/products",
+    "viewport": [
+      768,
+      1024
+    ],
+    "zoom": 2,
+    "scripts": [
+      "/js/app.js"
+    ],
+    "requests": [],
+    "width": 376,
+    "scroll": 376,
+    "dpr": 2
+  },
+  {
+    "role": "admin",
+    "path": "/",
+    "viewport": [
+      1366,
+      768
+    ],
+    "zoom": 2,
+    "scripts": [
+      "/js/app.js",
+      "/js/vendor/gsap-3.15.1.min.js",
+      "/js/home-motion.js"
+    ],
+    "requests": [
+      "http://127.0.0.1:60912/js/vendor/gsap-3.15.1.min.js",
+      "http://127.0.0.1:60912/js/home-motion.js"
+    ],
+    "width": 675,
+    "scroll": 675,
+    "dpr": 2
+  },
+  {
+    "role": "admin",
+    "path": "/admin/catalog/categories",
+    "viewport": [
+      1366,
+      768
+    ],
+    "zoom": 2,
+    "scripts": [
+      "/js/app.js"
+    ],
+    "requests": [],
+    "width": 675,
+    "scroll": 675,
+    "dpr": 2
+  },
+  {
+    "role": "admin",
+    "path": "/products",
+    "viewport": [
+      1366,
+      768
+    ],
+    "zoom": 2,
+    "scripts": [
+      "/js/app.js"
+    ],
+    "requests": [],
+    "width": 675,
+    "scroll": 675,
+    "dpr": 2
+  },
+  {
+    "role": "admin",
+    "path": "/",
+    "viewport": [
+      1920,
+      1080
+    ],
+    "zoom": 2,
+    "scripts": [
+      "/js/app.js",
+      "/js/vendor/gsap-3.15.1.min.js",
+      "/js/home-motion.js"
+    ],
+    "requests": [
+      "http://127.0.0.1:60912/js/vendor/gsap-3.15.1.min.js",
+      "http://127.0.0.1:60912/js/home-motion.js"
+    ],
+    "width": 952,
+    "scroll": 952,
+    "dpr": 2
+  },
+  {
+    "role": "admin",
+    "path": "/admin/catalog/categories",
+    "viewport": [
+      1920,
+      1080
+    ],
+    "zoom": 2,
+    "scripts": [
+      "/js/app.js"
+    ],
+    "requests": [],
+    "width": 952,
+    "scroll": 952,
+    "dpr": 2
+  },
+  {
+    "role": "admin",
+    "path": "/products",
+    "viewport": [
+      1920,
+      1080
+    ],
+    "zoom": 2,
+    "scripts": [
+      "/js/app.js"
+    ],
+    "requests": [],
+    "width": 952,
+    "scroll": 952,
+    "dpr": 2
+  }
+]

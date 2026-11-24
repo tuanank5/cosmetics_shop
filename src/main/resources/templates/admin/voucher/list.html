@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/head :: head('Voucher · Quản trị BeautyShop')}"></head>
+<body>
+<div th:replace="~{fragments/header :: siteHeader}"></div>
+<main id="main" tabindex="-1" class="page-content catalog-admin">
+    <h1>Quản lý voucher</h1>
+    <p class="notice" role="status" th:if="${message}" th:text="${message}"></p>
+    <p class="notice catalog-error" role="alert" th:if="${error}" th:text="${error}"></p>
+    <a class="btn btn--primary" th:href="@{/admin/vouchers/new}">Tạo voucher</a>
+    <p class="notice" th:if="${#lists.isEmpty(danhSach)}">Chưa có voucher.</p>
+    <ul class="catalog-list">
+        <li th:each="phieu : ${danhSach}" th:with="cauHinh=${phieu.cauHinh}">
+            <div>
+                <strong th:text="${cauHinh.maApDung}"></strong>
+                <span th:text="${cauHinh.dangHoatDong ? 'Đang bật' : 'Ngừng hoạt động'}"></span>
+                <p>
+                    <span th:text="${#numbers.formatInteger(cauHinh.giaTriGiam, 1, 'POINT') + (cauHinh.loaiGiamGia == 'PERCENT' ? '%' : ' ₫')}"></span>
+                    <span th:if="${cauHinh.mucGiamToiDa != null}" th:text="| · Tối đa ${#numbers.formatInteger(cauHinh.mucGiamToiDa, 1, 'POINT')} ₫|"></span>
+                    <span th:text="| · Tạm tính từ ${#numbers.formatInteger(cauHinh.donToiThieu, 1, 'POINT')} ₫|"></span>
+                </p>
+                <p th:text="|${#temporals.format(cauHinh.batDauLuc, 'dd/MM/yyyy HH:mm:ss')} – ${#temporals.format(cauHinh.ketThucLuc, 'dd/MM/yyyy HH:mm:ss')} UTC|"></p>
+                <p th:text="|Giới hạn ${cauHinh.gioiHanSuDung} · Đã dùng ${phieu.soLuotDaDung} · Đang giữ ${phieu.soLuotTamGiu} · Còn ${phieu.soLuotConLai()}|"></p>
+            </div>
+            <div class="catalog-actions">
+                <a class="btn btn--secondary" th:href="@{/admin/vouchers/{id}/edit(id=${phieu.maPhieuGiamGia})}">Sửa</a>
+                <form method="post" th:action="@{/admin/vouchers/{id}/delete(id=${phieu.maPhieuGiamGia})}">
+                    <button class="btn btn--secondary" type="submit" th:aria-label="|Xóa voucher ${cauHinh.maApDung}|">Xóa nếu chưa sử dụng</button>
+                </form>
+            </div>
+        </li>
+    </ul>
+</main>
+<div th:replace="~{fragments/footer :: siteFooter}"></div>
+</body>
+</html>

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/head :: head('Đổi trả · BeautyShop')}"></head>
+<body><div th:replace="~{fragments/header :: siteHeader}"></div>
+<main id="main" tabindex="-1" class="page-content">
+    <h1>Yêu cầu đổi trả</h1>
+    <p class="notice" th:if="${#lists.isEmpty(yeuCau)}">Chưa có yêu cầu đổi trả.</p>
+    <ul class="catalog-list">
+        <li th:each="muc : ${yeuCau}">
+            <a class="text-link" th:href="@{${base + '/' + muc.ma}}" th:text="|Yêu cầu #${muc.ma} · ${muc.maHienThi}|"></a>
+            <span th:text="${muc.trangThai.label}"></span>
+        </li>
+    </ul>
+</main>
+<div th:replace="~{fragments/footer :: siteFooter}"></div></body></html>

@@ -1,0 +1,1551 @@
+{
+  "rows": [
+    {
+      "viewport": [
+        360,
+        800
+      ],
+      "zoom": 1,
+      "js": true,
+      "slide": 1,
+      "mode": "native fallback; Swiper BLOCKED",
+      "width": 345,
+      "scroll": 345,
+      "dpr": 1,
+      "heading": "Vẻ đẹp.Theo cách bạn.",
+      "wordmark": "BEAUTYSHOP",
+      "link": "/products",
+      "buttonHeight": 56,
+      "sectionHeight": 691
+    },
+    {
+      "viewport": [
+        360,
+        800
+      ],
+      "zoom": 1,
+      "js": true,
+      "slide": 2,
+      "mode": "native fallback; Swiper BLOCKED",
+      "width": 345,
+      "scroll": 345,
+      "dpr": 1,
+      "heading": "Chọn mỹ phẩm.Chọn nhịp riêng.",
+      "wordmark": "BEAUTYSHOP",
+      "link": "/products#skin-type",
+      "buttonHeight": 56,
+      "sectionHeight": 800
+    },
+    {
+      "viewport": [
+        360,
+        800
+      ],
+      "zoom": 1,
+      "js": true,
+      "slide": 3,
+      "mode": "native fallback; Swiper BLOCKED",
+      "width": 345,
+      "scroll": 345,
+      "dpr": 1,
+      "heading": "Một góc nhìn mới.",
+      "wordmark": "BEAUTYSHOP",
+      "link": "/products?sort=newest",
+      "buttonHeight": 56,
+      "sectionHeight": 800
+    },
+    {
+      "viewport": [
+        360,
+        800
+      ],
+      "zoom": 1,
+      "js": true,
+      "slide": "footer",
+      "mode": "native fallback",
+      "width": 345,
+      "scroll": 345,
+      "y": 2380,
+      "normal": true
+    },
+    {
+      "viewport": [
+        360,
+        800
+      ],
+      "zoom": 1,
+      "js": false,
+      "slide": 1,
+      "mode": "native fallback; Swiper BLOCKED",
+      "width": 345,
+      "scroll": 345,
+      "dpr": 1,
+      "heading": "Vẻ đẹp.Theo cách bạn.",
+      "wordmark": "BEAUTYSHOP",
+      "link": "/products",
+      "buttonHeight": 56,
+      "sectionHeight": 691
+    },
+    {
+      "viewport": [
+        360,
+        800
+      ],
+      "zoom": 1,
+      "js": false,
+      "slide": 2,
+      "mode": "native fallback; Swiper BLOCKED",
+      "width": 345,
+      "scroll": 345,
+      "dpr": 1,
+      "heading": "Chọn mỹ phẩm.Chọn nhịp riêng.",
+      "wordmark": "BEAUTYSHOP",
+      "link": "/products#skin-type",
+      "buttonHeight": 56,
+      "sectionHeight": 800
+    },
+    {
+      "viewport": [
+        360,
+        800
+      ],
+      "zoom": 1,
+      "js": false,
+      "slide": 3,
+      "mode": "native fallback; Swiper BLOCKED",
+      "width": 345,
+      "scroll": 345,
+      "dpr": 1,
+      "heading": "Một góc nhìn mới.",
+      "wordmark": "BEAUTYSHOP",
+      "link": "/products?sort=newest",
+      "buttonHeight": 56,
+      "sectionHeight": 800
+    },
+    {
+      "viewport": [
+        360,
+        800
+      ],
+      "zoom": 1,
+      "js": false,
+      "slide": "footer",
+      "mode": "native fallback",
+      "width": 345,
+      "scroll": 345,
+      "y": 2380,
+      "normal": true
+    },
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "zoom": 1,
+      "js": true,
+      "slide": 1,
+      "mode": "native fallback; Swiper BLOCKED",
+      "width": 375,
+      "scroll": 375,
+      "dpr": 1,
+      "heading": "Vẻ đẹp.Theo cách bạn.",
+      "wordmark": "BEAUTYSHOP",
+      "link": "/products",
+      "buttonHeight": 56,
+      "sectionHeight": 735
+    },
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "zoom": 1,
+      "js": true,
+      "slide": 2,
+      "mode": "native fallback; Swiper BLOCKED",
+      "width": 375,
+      "scroll": 375,
+      "dpr": 1,
+      "heading": "Chọn mỹ phẩm.Chọn nhịp riêng.",
+      "wordmark": "BEAUTYSHOP",
+      "link": "/products#skin-type",
+      "buttonHeight": 56,
+      "sectionHeight": 844
+    },
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "zoom": 1,
+      "js": true,
+      "slide": 3,
+      "mode": "native fallback; Swiper BLOCKED",
+      "width": 375,
+      "scroll": 375,
+      "dpr": 1,
+      "heading": "Một góc nhìn mới.",
+      "wordmark": "BEAUTYSHOP",
+      "link": "/products?sort=newest",
+      "buttonHeight": 56,
+      "sectionHeight": 844
+    },
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "zoom": 1,
+      "js": true,
+      "slide": "footer",
+      "mode": "native fallback",
+      "width": 375,
+      "scroll": 375,
+      "y": 2468,
+      "normal": true
+    },
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "zoom": 1,
+      "js": false,
+      "slide": 1,
+      "mode": "native fallback; Swiper BLOCKED",
+      "width": 375,
+      "scroll": 375,
+      "dpr": 1,
+      "heading": "Vẻ đẹp.Theo cách bạn.",
+      "wordmark": "BEAUTYSHOP",
+      "link": "/products",
+      "buttonHeight": 56,
+      "sectionHeight": 735
+    },
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "zoom": 1,
+      "js": false,
+      "slide": 2,
+      "mode": "native fallback; Swiper BLOCKED",
+      "width": 375,
+      "scroll": 375,
+      "dpr": 1,
+      "heading": "Chọn mỹ phẩm.Chọn nhịp riêng.",
+      "wordmark": "BEAUTYSHOP",
+      "link": "/products#skin-type",
+      "buttonHeight": 56,
+      "sectionHeight": 844
+    },
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "zoom": 1,
+      "js": false,
+      "slide": 3,
+      "mode": "native fallback; Swiper BLOCKED",
+      "width": 375,
+      "scroll": 375,
+      "dpr": 1,
+      "heading": "Một góc nhìn mới.",
+      "wordmark": "BEAUTYSHOP",
+      "link": "/products?sort=newest",
+      "buttonHeight": 56,
+      "sectionHeight": 844
+    },
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "zoom": 1,
+      "js": false,
+      "slide": "footer",
+      "mode": "native fallback",
+      "width": 375,
+      "scroll": 375,
+      "y": 2468,
+      "normal": true
+    },
+    {
+      "viewport": [
+        768,
+        1024
+      ],
+      "zoom": 1,
+      "js": true,
+      "slide": 1,
+      "mode": "native fallback; Swiper BLOCKED",
+      "width": 753,
+      "scroll": 753,
+      "dpr": 1,
+      "heading": "Vẻ đẹp.Theo cách bạn.",
+      "wordmark": "BEAUTYSHOP",
+      "link": "/products",
+      "buttonHeight": 56,
+      "sectionHeight": 911
+    },
+    {
+      "viewport": [
+        768,
+        1024
+      ],
+      "zoom": 1,
+      "js": true,
+      "slide": 2,
+      "mode": "native fallback; Swiper BLOCKED",
+      "width": 753,
+      "scroll": 753,
+      "dpr": 1,
+      "heading": "Chọn mỹ phẩm.Chọn nhịp riêng.",
+      "wordmark": "BEAUTYSHOP",
+      "link": "/products#skin-type",
+      "buttonHeight": 56,
+      "sectionHeight": 1024
+    },
+    {
+      "viewport": [
+        768,
+        1024
+      ],
+      "zoom": 1,
+      "js": true,
+      "slide": 3,
+      "mode": "native fallback; Swiper BLOCKED",
+      "width": 753,
+      "scroll": 753,
+      "dpr": 1,
+      "heading": "Một góc nhìn mới.",
+      "wordmark": "BEAUTYSHOP",
+      "link": "/products?sort=newest",
+      "buttonHeight": 56,
+      "sectionHeight": 1024
+    },
+    {
+      "viewport": [
+        768,
+        1024
+      ],
+      "zoom": 1,
+      "js": true,
+      "slide": "footer",
+      "mode": "native fallback",
+      "width": 753,
+      "scroll": 753,
+      "y": 2534,
+      "normal": true
+    },
+    {
+      "viewport": [
+        768,
+        1024
+      ],
+      "zoom": 1,
+      "js": false,
+      "slide": 1,
+      "mode": "native fallback; Swiper BLOCKED",
+      "width": 753,
+      "scroll": 753,
+      "dpr": 1,
+      "heading": "Vẻ đẹp.Theo cách bạn.",
+      "wordmark": "BEAUTYSHOP",
+      "link": "/products",
+      "buttonHeight": 56,
+      "sectionHeight": 911
+    },
+    {
+      "viewport": [
+        768,
+        1024
+      ],
+      "zoom": 1,
+      "js": false,
+      "slide": 2,
+      "mode": "native fallback; Swiper BLOCKED",
+      "width": 753,
+      "scroll": 753,
+      "dpr": 1,
+      "heading": "Chọn mỹ phẩm.Chọn nhịp riêng.",
+      "wordmark": "BEAUTYSHOP",
+      "link": "/products#skin-type",
+      "buttonHeight": 56,
+      "sectionHeight": 1024
+    },
+    {
+      "viewport": [
+        768,
+        1024
+      ],
+      "zoom": 1,
+      "js": false,
+      "slide": 3,
+      "mode": "native fallback; Swiper BLOCKED",
+      "width": 753,
+      "scroll": 753,
+      "dpr": 1,
+      "heading": "Một góc nhìn mới.",
+      "wordmark": "BEAUTYSHOP",
+      "link": "/products?sort=newest",
+      "buttonHeight": 56,
+      "sectionHeight": 1024
+    },
+    {
+      "viewport": [
+        768,
+        1024
+      ],
+      "zoom": 1,
+      "js": false,
+      "slide": "footer",
+      "mode": "native fallback",
+      "width": 753,
+      "scroll": 753,
+      "y": 2534,
+      "normal": true
+    },
+    {
+      "viewport": [
+        1366,
+        768
+      ],
+      "zoom": 1,
+      "js": true,
+      "slide": 1,
+      "mode": "native fallback; Swiper BLOCKED",
+      "width": 1351,
+      "scroll": 1351,
+      "dpr": 1,
+      "heading": "Vẻ đẹp.Theo cách bạn.",
+      "wordmark": "BEAUTYSHOP",
+      "link": "/products",
+      "buttonHeight": 56,
+      "sectionHeight": 655
+    },
+    {
+      "viewport": [
+        1366,
+        768
+      ],
+      "zoom": 1,
+      "js": true,
+      "slide": 2,
+      "mode": "native fallback; Swiper BLOCKED",
+      "width": 1351,
+      "scroll": 1351,
+      "dpr": 1,
+      "heading": "Chọn mỹ phẩm.Chọn nhịp riêng.",
+      "wordmark": "BEAUTYSHOP",
+      "link": "/products#skin-type",
+      "buttonHeight": 56,
+      "sectionHeight": 768
+    },
+    {
+      "viewport": [
+        1366,
+        768
+      ],
+      "zoom": 1,
+      "js": true,
+      "slide": 3,
+      "mode": "native fallback; Swiper BLOCKED",
+      "width": 1351,
+      "scroll": 1351,
+      "dpr": 1,
+      "heading": "Một góc nhìn mới.",
+      "wordmark": "BEAUTYSHOP",
+      "link": "/products?sort=newest",
+      "buttonHeight": 56,
+      "sectionHeight": 768
+    },
+    {
+      "viewport": [
+        1366,
+        768
+      ],
+      "zoom": 1,
+      "js": true,
+      "slide": "footer",
+      "mode": "native fallback",
+      "width": 1351,
+      "scroll": 1351,
+      "y": 1829,
+      "normal": true
+    },
+    {
+      "viewport": [
+        1366,
+        768
+      ],
+      "zoom": 1,
+      "js": false,
+      "slide": 1,
+      "mode": "native fallback; Swiper BLOCKED",
+      "width": 1351,
+      "scroll": 1351,
+      "dpr": 1,
+      "heading": "Vẻ đẹp.Theo cách bạn.",
+      "wordmark": "BEAUTYSHOP",
+      "link": "/products",
+      "buttonHeight": 56,
+      "sectionHeight": 655
+    },
+    {
+      "viewport": [
+        1366,
+        768
+      ],
+      "zoom": 1,
+      "js": false,
+      "slide": 2,
+      "mode": "native fallback; Swiper BLOCKED",
+      "width": 1351,
+      "scroll": 1351,
+      "dpr": 1,
+      "heading": "Chọn mỹ phẩm.Chọn nhịp riêng.",
+      "wordmark": "BEAUTYSHOP",
+      "link": "/products#skin-type",
+      "buttonHeight": 56,
+      "sectionHeight": 768
+    },
+    {
+      "viewport": [
+        1366,
+        768
+      ],
+      "zoom": 1,
+      "js": false,
+      "slide": 3,
+      "mode": "native fallback; Swiper BLOCKED",
+      "width": 1351,
+      "scroll": 1351,
+      "dpr": 1,
+      "heading": "Một góc nhìn mới.",
+      "wordmark": "BEAUTYSHOP",
+      "link": "/products?sort=newest",
+      "buttonHeight": 56,
+      "sectionHeight": 768
+    },
+    {
+      "viewport": [
+        1366,
+        768
+      ],
+      "zoom": 1,
+      "js": false,
+      "slide": "footer",
+      "mode": "native fallback",
+      "width": 1351,
+      "scroll": 1351,
+      "y": 1777,
+      "normal": true
+    },
+    {
+      "viewport": [
+        1920,
+        1080
+      ],
+      "zoom": 1,
+      "js": true,
+      "slide": 1,
+      "mode": "native fallback; Swiper BLOCKED",
+      "width": 1905,
+      "scroll": 1905,
+      "dpr": 1,
+      "heading": "Vẻ đẹp.Theo cách bạn.",
+      "wordmark": "BEAUTYSHOP",
+      "link": "/products",
+      "buttonHeight": 56,
+      "sectionHeight": 967
+    },
+    {
+      "viewport": [
+        1920,
+        1080
+      ],
+      "zoom": 1,
+      "js": true,
+      "slide": 2,
+      "mode": "native fallback; Swiper BLOCKED",
+      "width": 1905,
+      "scroll": 1905,
+      "dpr": 1,
+      "heading": "Chọn mỹ phẩm.Chọn nhịp riêng.",
+      "wordmark": "BEAUTYSHOP",
+      "link": "/products#skin-type",
+      "buttonHeight": 56,
+      "sectionHeight": 1080
+    },
+    {
+      "viewport": [
+        1920,
+        1080
+      ],
+      "zoom": 1,
+      "js": true,
+      "slide": 3,
+      "mode": "native fallback; Swiper BLOCKED",
+      "width": 1905,
+      "scroll": 1905,
+      "dpr": 1,
+      "heading": "Một góc nhìn mới.",
+      "wordmark": "BEAUTYSHOP",
+      "link": "/products?sort=newest",
+      "buttonHeight": 56,
+      "sectionHeight": 1080
+    },
+    {
+      "viewport": [
+        1920,
+        1080
+      ],
+      "zoom": 1,
+      "js": true,
+      "slide": "footer",
+      "mode": "native fallback",
+      "width": 1905,
+      "scroll": 1905,
+      "y": 2453,
+      "normal": true
+    },
+    {
+      "viewport": [
+        1920,
+        1080
+      ],
+      "zoom": 1,
+      "js": false,
+      "slide": 1,
+      "mode": "native fallback; Swiper BLOCKED",
+      "width": 1905,
+      "scroll": 1905,
+      "dpr": 1,
+      "heading": "Vẻ đẹp.Theo cách bạn.",
+      "wordmark": "BEAUTYSHOP",
+      "link": "/products",
+      "buttonHeight": 56,
+      "sectionHeight": 967
+    },
+    {
+      "viewport": [
+        1920,
+        1080
+      ],
+      "zoom": 1,
+      "js": false,
+      "slide": 2,
+      "mode": "native fallback; Swiper BLOCKED",
+      "width": 1905,
+      "scroll": 1905,
+      "dpr": 1,
+      "heading": "Chọn mỹ phẩm.Chọn nhịp riêng.",
+      "wordmark": "BEAUTYSHOP",
+      "link": "/products#skin-type",
+      "buttonHeight": 56,
+      "sectionHeight": 1080
+    },
+    {
+      "viewport": [
+        1920,
+        1080
+      ],
+      "zoom": 1,
+      "js": false,
+      "slide": 3,
+      "mode": "native fallback; Swiper BLOCKED",
+      "width": 1905,
+      "scroll": 1905,
+      "dpr": 1,
+      "heading": "Một góc nhìn mới.",
+      "wordmark": "BEAUTYSHOP",
+      "link": "/products?sort=newest",
+      "buttonHeight": 56,
+      "sectionHeight": 1080
+    },
+    {
+      "viewport": [
+        1920,
+        1080
+      ],
+      "zoom": 1,
+      "js": false,
+      "slide": "footer",
+      "mode": "native fallback",
+      "width": 1905,
+      "scroll": 1905,
+      "y": 2401,
+      "normal": true
+    },
+    {
+      "viewport": [
+        360,
+        800
+      ],
+      "zoom": 2,
+      "js": true,
+      "slide": 1,
+      "mode": "native fallback; Swiper BLOCKED",
+      "width": 172,
+      "scroll": 172,
+      "dpr": 2,
+      "heading": "Vẻ đẹp.Theo cách bạn.",
+      "wordmark": "BEAUTYSHOP",
+      "link": "/products",
+      "buttonHeight": 70.390625,
+      "sectionHeight": 809.90625
+    },
+    {
+      "viewport": [
+        360,
+        800
+      ],
+      "zoom": 2,
+      "js": true,
+      "slide": 2,
+      "mode": "native fallback; Swiper BLOCKED",
+      "width": 172,
+      "scroll": 172,
+      "dpr": 2,
+      "heading": "Chọn mỹ phẩm.Chọn nhịp riêng.",
+      "wordmark": "BEAUTYSHOP",
+      "link": "/products#skin-type",
+      "buttonHeight": 70.390625,
+      "sectionHeight": 907.9765625
+    },
+    {
+      "viewport": [
+        360,
+        800
+      ],
+      "zoom": 2,
+      "js": true,
+      "slide": 3,
+      "mode": "native fallback; Swiper BLOCKED",
+      "width": 172,
+      "scroll": 172,
+      "dpr": 2,
+      "heading": "Một góc nhìn mới.",
+      "wordmark": "BEAUTYSHOP",
+      "link": "/products?sort=newest",
+      "buttonHeight": 92.0859375,
+      "sectionHeight": 671.9765625
+    },
+    {
+      "viewport": [
+        360,
+        800
+      ],
+      "zoom": 2,
+      "js": true,
+      "slide": "footer",
+      "mode": "native fallback",
+      "width": 172,
+      "scroll": 172,
+      "y": 2606,
+      "normal": true
+    },
+    {
+      "viewport": [
+        360,
+        800
+      ],
+      "zoom": 2,
+      "js": false,
+      "slide": 1,
+      "mode": "native fallback; Swiper BLOCKED",
+      "width": 172,
+      "scroll": 172,
+      "dpr": 2,
+      "heading": "Vẻ đẹp.Theo cách bạn.",
+      "wordmark": "BEAUTYSHOP",
+      "link": "/products",
+      "buttonHeight": 70.390625,
+      "sectionHeight": 809.90625
+    },
+    {
+      "viewport": [
+        360,
+        800
+      ],
+      "zoom": 2,
+      "js": false,
+      "slide": 2,
+      "mode": "native fallback; Swiper BLOCKED",
+      "width": 172,
+      "scroll": 172,
+      "dpr": 2,
+      "heading": "Chọn mỹ phẩm.Chọn nhịp riêng.",
+      "wordmark": "BEAUTYSHOP",
+      "link": "/products#skin-type",
+      "buttonHeight": 70.390625,
+      "sectionHeight": 907.9765625
+    },
+    {
+      "viewport": [
+        360,
+        800
+      ],
+      "zoom": 2,
+      "js": false,
+      "slide": 3,
+      "mode": "native fallback; Swiper BLOCKED",
+      "width": 172,
+      "scroll": 172,
+      "dpr": 2,
+      "heading": "Một góc nhìn mới.",
+      "wordmark": "BEAUTYSHOP",
+      "link": "/products?sort=newest",
+      "buttonHeight": 92.0859375,
+      "sectionHeight": 671.9765625
+    },
+    {
+      "viewport": [
+        360,
+        800
+      ],
+      "zoom": 2,
+      "js": false,
+      "slide": "footer",
+      "mode": "native fallback",
+      "width": 172,
+      "scroll": 172,
+      "y": 2606,
+      "normal": true
+    },
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "zoom": 2,
+      "js": true,
+      "slide": 1,
+      "mode": "native fallback; Swiper BLOCKED",
+      "width": 187,
+      "scroll": 187,
+      "dpr": 2,
+      "heading": "Vẻ đẹp.Theo cách bạn.",
+      "wordmark": "BEAUTYSHOP",
+      "link": "/products",
+      "buttonHeight": 70.390625,
+      "sectionHeight": 756.4765625
+    },
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "zoom": 2,
+      "js": true,
+      "slide": 2,
+      "mode": "native fallback; Swiper BLOCKED",
+      "width": 187,
+      "scroll": 187,
+      "dpr": 2,
+      "heading": "Chọn mỹ phẩm.Chọn nhịp riêng.",
+      "wordmark": "BEAUTYSHOP",
+      "link": "/products#skin-type",
+      "buttonHeight": 70.390625,
+      "sectionHeight": 771.546875
+    },
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "zoom": 2,
+      "js": true,
+      "slide": 3,
+      "mode": "native fallback; Swiper BLOCKED",
+      "width": 187,
+      "scroll": 187,
+      "dpr": 2,
+      "heading": "Một góc nhìn mới.",
+      "wordmark": "BEAUTYSHOP",
+      "link": "/products?sort=newest",
+      "buttonHeight": 70.390625,
+      "sectionHeight": 616.046875
+    },
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "zoom": 2,
+      "js": true,
+      "slide": "footer",
+      "mode": "native fallback",
+      "width": 187,
+      "scroll": 187,
+      "y": 2360.5,
+      "normal": true
+    },
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "zoom": 2,
+      "js": false,
+      "slide": 1,
+      "mode": "native fallback; Swiper BLOCKED",
+      "width": 187,
+      "scroll": 187,
+      "dpr": 2,
+      "heading": "Vẻ đẹp.Theo cách bạn.",
+      "wordmark": "BEAUTYSHOP",
+      "link": "/products",
+      "buttonHeight": 70.390625,
+      "sectionHeight": 756.4765625
+    },
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "zoom": 2,
+      "js": false,
+      "slide": 2,
+      "mode": "native fallback; Swiper BLOCKED",
+      "width": 187,
+      "scroll": 187,
+      "dpr": 2,
+      "heading": "Chọn mỹ phẩm.Chọn nhịp riêng.",
+      "wordmark": "BEAUTYSHOP",
+      "link": "/products#skin-type",
+      "buttonHeight": 70.390625,
+      "sectionHeight": 771.546875
+    },
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "zoom": 2,
+      "js": false,
+      "slide": 3,
+      "mode": "native fallback; Swiper BLOCKED",
+      "width": 187,
+      "scroll": 187,
+      "dpr": 2,
+      "heading": "Một góc nhìn mới.",
+      "wordmark": "BEAUTYSHOP",
+      "link": "/products?sort=newest",
+      "buttonHeight": 70.390625,
+      "sectionHeight": 616.046875
+    },
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "zoom": 2,
+      "js": false,
+      "slide": "footer",
+      "mode": "native fallback",
+      "width": 187,
+      "scroll": 187,
+      "y": 2360.5,
+      "normal": true
+    },
+    {
+      "viewport": [
+        768,
+        1024
+      ],
+      "zoom": 2,
+      "js": true,
+      "slide": 1,
+      "mode": "native fallback; Swiper BLOCKED",
+      "width": 376,
+      "scroll": 376,
+      "dpr": 2,
+      "heading": "Vẻ đẹp.Theo cách bạn.",
+      "wordmark": "BEAUTYSHOP",
+      "link": "/products",
+      "buttonHeight": 56,
+      "sectionHeight": 538.7578125
+    },
+    {
+      "viewport": [
+        768,
+        1024
+      ],
+      "zoom": 2,
+      "js": true,
+      "slide": 2,
+      "mode": "native fallback; Swiper BLOCKED",
+      "width": 376,
+      "scroll": 376,
+      "dpr": 2,
+      "heading": "Chọn mỹ phẩm.Chọn nhịp riêng.",
+      "wordmark": "BEAUTYSHOP",
+      "link": "/products#skin-type",
+      "buttonHeight": 56,
+      "sectionHeight": 512.359375
+    },
+    {
+      "viewport": [
+        768,
+        1024
+      ],
+      "zoom": 2,
+      "js": true,
+      "slide": 3,
+      "mode": "native fallback; Swiper BLOCKED",
+      "width": 376,
+      "scroll": 376,
+      "dpr": 2,
+      "heading": "Một góc nhìn mới.",
+      "wordmark": "BEAUTYSHOP",
+      "link": "/products?sort=newest",
+      "buttonHeight": 56,
+      "sectionHeight": 512
+    },
+    {
+      "viewport": [
+        768,
+        1024
+      ],
+      "zoom": 2,
+      "js": true,
+      "slide": "footer",
+      "mode": "native fallback",
+      "width": 376,
+      "scroll": 376,
+      "y": 1672,
+      "normal": true
+    },
+    {
+      "viewport": [
+        768,
+        1024
+      ],
+      "zoom": 2,
+      "js": false,
+      "slide": 1,
+      "mode": "native fallback; Swiper BLOCKED",
+      "width": 376,
+      "scroll": 376,
+      "dpr": 2,
+      "heading": "Vẻ đẹp.Theo cách bạn.",
+      "wordmark": "BEAUTYSHOP",
+      "link": "/products",
+      "buttonHeight": 56,
+      "sectionHeight": 538.7578125
+    },
+    {
+      "viewport": [
+        768,
+        1024
+      ],
+      "zoom": 2,
+      "js": false,
+      "slide": 2,
+      "mode": "native fallback; Swiper BLOCKED",
+      "width": 376,
+      "scroll": 376,
+      "dpr": 2,
+      "heading": "Chọn mỹ phẩm.Chọn nhịp riêng.",
+      "wordmark": "BEAUTYSHOP",
+      "link": "/products#skin-type",
+      "buttonHeight": 56,
+      "sectionHeight": 512.359375
+    },
+    {
+      "viewport": [
+        768,
+        1024
+      ],
+      "zoom": 2,
+      "js": false,
+      "slide": 3,
+      "mode": "native fallback; Swiper BLOCKED",
+      "width": 376,
+      "scroll": 376,
+      "dpr": 2,
+      "heading": "Một góc nhìn mới.",
+      "wordmark": "BEAUTYSHOP",
+      "link": "/products?sort=newest",
+      "buttonHeight": 56,
+      "sectionHeight": 512
+    },
+    {
+      "viewport": [
+        768,
+        1024
+      ],
+      "zoom": 2,
+      "js": false,
+      "slide": "footer",
+      "mode": "native fallback",
+      "width": 376,
+      "scroll": 376,
+      "y": 1672,
+      "normal": true
+    },
+    {
+      "viewport": [
+        1366,
+        768
+      ],
+      "zoom": 2,
+      "js": true,
+      "slide": 1,
+      "mode": "native fallback; Swiper BLOCKED",
+      "width": 675,
+      "scroll": 675,
+      "dpr": 2,
+      "heading": "Vẻ đẹp.Theo cách bạn.",
+      "wordmark": "BEAUTYSHOP",
+      "link": "/products",
+      "buttonHeight": 56,
+      "sectionHeight": 538.7578125
+    },
+    {
+      "viewport": [
+        1366,
+        768
+      ],
+      "zoom": 2,
+      "js": true,
+      "slide": 2,
+      "mode": "native fallback; Swiper BLOCKED",
+      "width": 675,
+      "scroll": 675,
+      "dpr": 2,
+      "heading": "Chọn mỹ phẩm.Chọn nhịp riêng.",
+      "wordmark": "BEAUTYSHOP",
+      "link": "/products#skin-type",
+      "buttonHeight": 56,
+      "sectionHeight": 512.359375
+    },
+    {
+      "viewport": [
+        1366,
+        768
+      ],
+      "zoom": 2,
+      "js": true,
+      "slide": 3,
+      "mode": "native fallback; Swiper BLOCKED",
+      "width": 675,
+      "scroll": 675,
+      "dpr": 2,
+      "heading": "Một góc nhìn mới.",
+      "wordmark": "BEAUTYSHOP",
+      "link": "/products?sort=newest",
+      "buttonHeight": 56,
+      "sectionHeight": 451.7265625
+    },
+    {
+      "viewport": [
+        1366,
+        768
+      ],
+      "zoom": 2,
+      "js": true,
+      "slide": "footer",
+      "mode": "native fallback",
+      "width": 675,
+      "scroll": 675,
+      "y": 1611.5,
+      "normal": true
+    },
+    {
+      "viewport": [
+        1366,
+        768
+      ],
+      "zoom": 2,
+      "js": false,
+      "slide": 1,
+      "mode": "native fallback; Swiper BLOCKED",
+      "width": 675,
+      "scroll": 675,
+      "dpr": 2,
+      "heading": "Vẻ đẹp.Theo cách bạn.",
+      "wordmark": "BEAUTYSHOP",
+      "link": "/products",
+      "buttonHeight": 56,
+      "sectionHeight": 538.7578125
+    },
+    {
+      "viewport": [
+        1366,
+        768
+      ],
+      "zoom": 2,
+      "js": false,
+      "slide": 2,
+      "mode": "native fallback; Swiper BLOCKED",
+      "width": 675,
+      "scroll": 675,
+      "dpr": 2,
+      "heading": "Chọn mỹ phẩm.Chọn nhịp riêng.",
+      "wordmark": "BEAUTYSHOP",
+      "link": "/products#skin-type",
+      "buttonHeight": 56,
+      "sectionHeight": 512.359375
+    },
+    {
+      "viewport": [
+        1366,
+        768
+      ],
+      "zoom": 2,
+      "js": false,
+      "slide": 3,
+      "mode": "native fallback; Swiper BLOCKED",
+      "width": 675,
+      "scroll": 675,
+      "dpr": 2,
+      "heading": "Một góc nhìn mới.",
+      "wordmark": "BEAUTYSHOP",
+      "link": "/products?sort=newest",
+      "buttonHeight": 56,
+      "sectionHeight": 451.7265625
+    },
+    {
+      "viewport": [
+        1366,
+        768
+      ],
+      "zoom": 2,
+      "js": false,
+      "slide": "footer",
+      "mode": "native fallback",
+      "width": 675,
+      "scroll": 675,
+      "y": 1611.5,
+      "normal": true
+    },
+    {
+      "viewport": [
+        1920,
+        1080
+      ],
+      "zoom": 2,
+      "js": true,
+      "slide": 1,
+      "mode": "native fallback; Swiper BLOCKED",
+      "width": 952,
+      "scroll": 952,
+      "dpr": 2,
+      "heading": "Vẻ đẹp.Theo cách bạn.",
+      "wordmark": "BEAUTYSHOP",
+      "link": "/products",
+      "buttonHeight": 56,
+      "sectionHeight": 604.40625
+    },
+    {
+      "viewport": [
+        1920,
+        1080
+      ],
+      "zoom": 2,
+      "js": true,
+      "slide": 2,
+      "mode": "native fallback; Swiper BLOCKED",
+      "width": 952,
+      "scroll": 952,
+      "dpr": 2,
+      "heading": "Chọn mỹ phẩm.Chọn nhịp riêng.",
+      "wordmark": "BEAUTYSHOP",
+      "link": "/products#skin-type",
+      "buttonHeight": 56,
+      "sectionHeight": 578.0078125
+    },
+    {
+      "viewport": [
+        1920,
+        1080
+      ],
+      "zoom": 2,
+      "js": true,
+      "slide": 3,
+      "mode": "native fallback; Swiper BLOCKED",
+      "width": 952,
+      "scroll": 952,
+      "dpr": 2,
+      "heading": "Một góc nhìn mới.",
+      "wordmark": "BEAUTYSHOP",
+      "link": "/products?sort=newest",
+      "buttonHeight": 56,
+      "sectionHeight": 540
+    },
+    {
+      "viewport": [
+        1920,
+        1080
+      ],
+      "zoom": 2,
+      "js": true,
+      "slide": "footer",
+      "mode": "native fallback",
+      "width": 952,
+      "scroll": 952,
+      "y": 1585,
+      "normal": true
+    },
+    {
+      "viewport": [
+        1920,
+        1080
+      ],
+      "zoom": 2,
+      "js": false,
+      "slide": 1,
+      "mode": "native fallback; Swiper BLOCKED",
+      "width": 952,
+      "scroll": 952,
+      "dpr": 2,
+      "heading": "Vẻ đẹp.Theo cách bạn.",
+      "wordmark": "BEAUTYSHOP",
+      "link": "/products",
+      "buttonHeight": 56,
+      "sectionHeight": 604.40625
+    },
+    {
+      "viewport": [
+        1920,
+        1080
+      ],
+      "zoom": 2,
+      "js": false,
+      "slide": 2,
+      "mode": "native fallback; Swiper BLOCKED",
+      "width": 952,
+      "scroll": 952,
+      "dpr": 2,
+      "heading": "Chọn mỹ phẩm.Chọn nhịp riêng.",
+      "wordmark": "BEAUTYSHOP",
+      "link": "/products#skin-type",
+      "buttonHeight": 56,
+      "sectionHeight": 578.0078125
+    },
+    {
+      "viewport": [
+        1920,
+        1080
+      ],
+      "zoom": 2,
+      "js": false,
+      "slide": 3,
+      "mode": "native fallback; Swiper BLOCKED",
+      "width": 952,
+      "scroll": 952,
+      "dpr": 2,
+      "heading": "Một góc nhìn mới.",
+      "wordmark": "BEAUTYSHOP",
+      "link": "/products?sort=newest",
+      "buttonHeight": 56,
+      "sectionHeight": 540
+    },
+    {
+      "viewport": [
+        1920,
+        1080
+      ],
+      "zoom": 2,
+      "js": false,
+      "slide": "footer",
+      "mode": "native fallback",
+      "width": 952,
+      "scroll": 952,
+      "y": 1585,
+      "normal": true
+    }
+  ],
+  "checks": [
+    {
+      "viewport": [
+        360,
+        800
+      ],
+      "zoom": 1,
+      "js": true,
+      "nativeFooterReturn": true
+    },
+    {
+      "viewport": [
+        360,
+        800
+      ],
+      "zoom": 1,
+      "js": false,
+      "nativeFooterReturn": true
+    },
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "zoom": 1,
+      "js": true,
+      "nativeFooterReturn": true
+    },
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "zoom": 1,
+      "js": false,
+      "nativeFooterReturn": true
+    },
+    {
+      "viewport": [
+        768,
+        1024
+      ],
+      "zoom": 1,
+      "js": true,
+      "nativeFooterReturn": true
+    },
+    {
+      "viewport": [
+        768,
+        1024
+      ],
+      "zoom": 1,
+      "js": false,
+      "nativeFooterReturn": true
+    },
+    {
+      "viewport": [
+        1366,
+        768
+      ],
+      "zoom": 1,
+      "js": true,
+      "nativeFooterReturn": true
+    },
+    {
+      "viewport": [
+        1366,
+        768
+      ],
+      "zoom": 1,
+      "js": false,
+      "nativeFooterReturn": true
+    },
+    {
+      "viewport": [
+        1920,
+        1080
+      ],
+      "zoom": 1,
+      "js": true,
+      "nativeFooterReturn": true
+    },
+    {
+      "viewport": [
+        1920,
+        1080
+      ],
+      "zoom": 1,
+      "js": false,
+      "nativeFooterReturn": true
+    },
+    {
+      "viewport": [
+        360,
+        800
+      ],
+      "zoom": 2,
+      "js": true,
+      "nativeFooterReturn": true
+    },
+    {
+      "viewport": [
+        360,
+        800
+      ],
+      "zoom": 2,
+      "js": false,
+      "nativeFooterReturn": true
+    },
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "zoom": 2,
+      "js": true,
+      "nativeFooterReturn": true
+    },
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "zoom": 2,
+      "js": false,
+      "nativeFooterReturn": true
+    },
+    {
+      "viewport": [
+        768,
+        1024
+      ],
+      "zoom": 2,
+      "js": true,
+      "nativeFooterReturn": true
+    },
+    {
+      "viewport": [
+        768,
+        1024
+      ],
+      "zoom": 2,
+      "js": false,
+      "nativeFooterReturn": true
+    },
+    {
+      "viewport": [
+        1366,
+        768
+      ],
+      "zoom": 2,
+      "js": true,
+      "nativeFooterReturn": true
+    },
+    {
+      "viewport": [
+        1366,
+        768
+      ],
+      "zoom": 2,
+      "js": false,
+      "nativeFooterReturn": true
+    },
+    {
+      "viewport": [
+        1920,
+        1080
+      ],
+      "zoom": 2,
+      "js": true,
+      "nativeFooterReturn": true
+    },
+    {
+      "viewport": [
+        1920,
+        1080
+      ],
+      "zoom": 2,
+      "js": false,
+      "nativeFooterReturn": true
+    },
+    {
+      "reducedMotionPoster": true
+    }
+  ],
+  "jsExceptions": 0,
+  "carouselRuntime": "BLOCKED: dependency missing"
+}

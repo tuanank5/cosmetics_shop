@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/head :: head(|${label} · Quản trị BeautyShop|)}"></head>
+<body>
+<div th:replace="~{fragments/header :: siteHeader}"></div>
+<main id="main" tabindex="-1" class="page-content catalog-admin">
+    <a class="text-link" th:href="@{/admin/catalog/{section}(section=${section})}">Quay lại danh sách</a>
+    <h1 th:text="|${heading} · ${label}|">Chỉnh sửa</h1>
+    <form class="catalog-form" th:action="@{${action}}" th:object="${form}" method="post">
+        <ul class="catalog-error" role="alert" th:if="${#fields.hasGlobalErrors()}">
+            <li th:each="error : ${#fields.globalErrors()}" th:text="${error}"></li>
+        </ul>
+        <label>Tên <input th:field="*{name}" required th:maxlength="${product ? 255 : 160}"></label>
+        <small class="catalog-error" th:errors="*{name}"></small>
+        <label>Đường dẫn <input th:field="*{slug}" required maxlength="190" placeholder="vi-du"></label>
+        <small class="catalog-error" th:errors="*{slug}"></small>
+        <fieldset th:if="${product}">
+            <legend>Thông tin sản phẩm</legend>
+            <label>Danh mục
+                <select th:field="*{categoryId}" required>
+                    <option value="">Chọn danh mục</option>
+                    <option th:each="item : ${categories}" th:value="${item.ma}"
+                            th:text="${item.ten + (item.dangHoatDong ? '' : ' (ngừng hoạt động)')}"></option>
+                </select>
+            </label>
+            <small class="catalog-error" th:errors="*{categoryId}"></small>
+            <label>Thương hiệu
+                <select th:field="*{brandId}" required>
+                    <option value="">Chọn thương hiệu</option>
+                    <option th:each="item : ${brands}" th:value="${item.ma}"
+                            th:text="${item.ten + (item.dangHoatDong ? '' : ' (ngừng hoạt động)')}"></option>
+                </select>
+            </label>
+            <small class="catalog-error" th:errors="*{brandId}"></small>
+            <label>Mô tả <textarea th:field="*{description}" maxlength="16000" rows="3"></textarea></label>
+            <small class="catalog-error" th:errors="*{description}"></small>
+            <label>Thành phần <textarea th:field="*{ingredients}" maxlength="16000" rows="3"></textarea></label>
+            <small class="catalog-error" th:errors="*{ingredients}"></small>
+            <label>Hướng dẫn sử dụng <textarea th:field="*{usageGuide}" maxlength="16000" rows="3"></textarea></label>
+            <small class="catalog-error" th:errors="*{usageGuide}"></small>
+            <label>Loại da phù hợp <textarea th:field="*{skinTypeTags}" maxlength="600" rows="3"></textarea></label>
+            <small class="catalog-error" th:errors="*{skinTypeTags}"></small>
+        </fieldset>
+        <label class="catalog-checkbox"><input type="checkbox" th:field="*{active}"> Đang hoạt động</label>
+        <div><button class="btn btn--primary" type="submit">Lưu</button></div>
+    </form>
+</main>
+<div th:replace="~{fragments/footer :: siteFooter}"></div>
+</body>
+</html>

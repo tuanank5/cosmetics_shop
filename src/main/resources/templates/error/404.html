@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/head :: head('Không tìm thấy trang · BeautyShop')}"></head>
+<body>
+<div th:replace="~{fragments/header :: siteHeader}"></div>
+<main id="main" tabindex="-1" class="page-content error-page">
+  <p class="eyebrow">BEAUTYSHOP · LUÔN CÓ MỘT LỐI ĐI TIẾP</p>
+  <p class="error-code" aria-label="Mã lỗi 404">404</p>
+  <h1>Không tìm thấy trang</h1>
+  <p class="muted">Trang hoặc sản phẩm bạn tìm có thể không còn khả dụng. Hãy tiếp tục khám phá cửa hàng.</p>
+  <div class="button-group">
+    <a class="btn btn--primary" th:href="@{/products}">Xem sản phẩm</a>
+    <a class="btn btn--secondary" th:href="@{/}">Về trang chủ</a>
+  </div>
+</main>
+<div th:replace="~{fragments/footer :: siteFooter}"></div>
+</body>
+</html>

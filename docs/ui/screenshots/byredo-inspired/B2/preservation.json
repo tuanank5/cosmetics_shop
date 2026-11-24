@@ -1,0 +1,67 @@
+﻿{
+    "BeforeFiles":  187,
+    "AfterFiles":  187,
+    "Differences":  [
+                        {
+                            "Path":  "E:\\Nam 4 HK 1\\WWW\\cosmetics_shop\\src\\main\\resources\\static\\css\\storefront.css",
+                            "Hash":  "955DE44FE56E75BE5A262E3391BF0E58D94AAC2C4F454383A6ED46A17B782A95",
+                            "SideIndicator":  "=\u003e"
+                        },
+                        {
+                            "Path":  "E:\\Nam 4 HK 1\\WWW\\cosmetics_shop\\src\\main\\resources\\static\\js\\app.js",
+                            "Hash":  "00A147EBB48E988FA00EAAB5D887030D773E68AC01E8F8E9892710EE05946DE2",
+                            "SideIndicator":  "=\u003e"
+                        },
+                        {
+                            "Path":  "E:\\Nam 4 HK 1\\WWW\\cosmetics_shop\\src\\main\\resources\\templates\\fragments\\product-card.html",
+                            "Hash":  "33786FFE6EFD550E06C4996920B49F6E406C85618421236648428BDFA1CB4F60",
+                            "SideIndicator":  "=\u003e"
+                        },
+                        {
+                            "Path":  "E:\\Nam 4 HK 1\\WWW\\cosmetics_shop\\src\\main\\resources\\templates\\product\\list.html",
+                            "Hash":  "CE585FEAB9ABE993F3A9BB91922A1B83A865B05775569D1425035AA997295562",
+                            "SideIndicator":  "=\u003e"
+                        },
+                        {
+                            "Path":  "E:\\Nam 4 HK 1\\WWW\\cosmetics_shop\\src\\test\\java\\com\\beautyshop\\controller\\GiaoDienPagesTest.java",
+                            "Hash":  "FDD5D565065393633E3CC7DC1FFB52B91DE288E8EA8B597A4CDB134F5C79FE29",
+                            "SideIndicator":  "=\u003e"
+                        },
+                        {
+                            "Path":  "E:\\Nam 4 HK 1\\WWW\\cosmetics_shop\\src\\main\\resources\\static\\css\\storefront.css",
+                            "Hash":  "B4D5B7484358FF1216001560773199CD7272A9D851A828524E1D9F4A9984D54B",
+                            "SideIndicator":  "\u003c="
+                        },
+                        {
+                            "Path":  "E:\\Nam 4 HK 1\\WWW\\cosmetics_shop\\src\\main\\resources\\static\\js\\app.js",
+                            "Hash":  "3EC5C6C8790D6082C1CBEE27A827E6B6A4D7A5D85387E029C73DEE6754C6E08F",
+                            "SideIndicator":  "\u003c="
+                        },
+                        {
+                            "Path":  "E:\\Nam 4 HK 1\\WWW\\cosmetics_shop\\src\\main\\resources\\templates\\fragments\\product-card.html",
+                            "Hash":  "12EFB345CF6B033CD0EBAB067C3A9885D9F5D56DC4AACAF98749DF09C2AC0B13",
+                            "SideIndicator":  "\u003c="
+                        },
+                        {
+                            "Path":  "E:\\Nam 4 HK 1\\WWW\\cosmetics_shop\\src\\main\\resources\\templates\\product\\list.html",
+                            "Hash":  "A82C7BD8A48C361F22B9E3259C1AD75FBD99D7ECD808425AF508CF1F30F96733",
+                            "SideIndicator":  "\u003c="
+                        },
+                        {
+                            "Path":  "E:\\Nam 4 HK 1\\WWW\\cosmetics_shop\\src\\test\\java\\com\\beautyshop\\controller\\GiaoDienPagesTest.java",
+                            "Hash":  "66AAE5A5B0F1E2A1345316A8437C31BC2E132DFEA29E98638E5711F574FB926E",
+                            "SideIndicator":  "\u003c="
+                        }
+                    ],
+    "ProtectedDifferences":  0,
+    "GSAP":  [
+                 {
+                     "Path":  "E:\\Nam 4 HK 1\\WWW\\cosmetics_shop\\src\\main\\resources\\static\\js\\vendor\\gsap-3.15.1.min.js",
+                     "Hash":  "3D1BEA374AB1B703CC5C4105358EEC63C4465EFDC573931DC116E34A0A190C1B"
+                 },
+                 {
+                     "Path":  "E:\\Nam 4 HK 1\\WWW\\cosmetics_shop\\src\\main\\resources\\static\\js\\home-motion.js",
+                     "Hash":  "E804B020D6FCDA54A2617D7552A68A7FBEFA859EFFDD7A214B2E377D34FFE88C"
+                 }
+             ]
+}

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/head :: head('Đánh giá · BeautyShop')}"></head>
+<body><div th:replace="~{fragments/header :: siteHeader}"></div>
+<main id="main" tabindex="-1" class="page-content">
+    <a class="text-link" th:href="@{/orders/{id}(id=${trang.muc.maDon})}">Quay lại đơn</a>
+    <h1>Đánh giá sản phẩm</h1>
+    <p th:text="|${trang.muc.tenSanPham} · ${trang.muc.tenBienThe}|"></p>
+    <p th:if="${trang.hienTai != null and !trang.hienTai.hienThi}">Đánh giá đang chờ duyệt hoặc đã ẩn.</p>
+    <form class="catalog-form" method="post" th:action="@{${action}}" th:object="${form}">
+        <label>Số sao
+            <select th:field="*{soSao}" required>
+                <option value="">Chọn số sao</option>
+                <option th:each="sao : ${#numbers.sequence(1,5)}" th:value="${sao}" th:text="|${sao} sao|"></option>
+            </select>
+        </label>
+        <small class="form-error" th:errors="*{soSao}"></small>
+        <label>Nội dung <textarea th:field="*{noiDung}" maxlength="2000" rows="5"></textarea></label>
+        <small class="form-error" th:errors="*{noiDung}"></small>
+        <button type="submit" class="btn btn--primary">Gửi duyệt</button>
+    </form>
+</main>
+<div th:replace="~{fragments/footer :: siteFooter}"></div></body></html>

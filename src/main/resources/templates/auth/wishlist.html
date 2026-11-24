@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/head :: head('Yêu thích · BeautyShop')}"></head>
+<body><div th:replace="~{fragments/header :: siteHeader}"></div>
+<main id="main" tabindex="-1" class="page-content">
+    <h1>Sản phẩm yêu thích</h1>
+    <p class="notice" th:if="${#lists.isEmpty(yeuThich)}">Chưa có sản phẩm yêu thích.</p>
+    <ul class="catalog-list">
+        <li th:each="muc : ${yeuThich}">
+            <a class="text-link" th:if="${muc.dangBan}" th:href="@{/products/{slug}(slug=${muc.slug})}" th:text="${muc.tenSanPham}"></a>
+            <span th:unless="${muc.dangBan}" th:text="|${muc.tenSanPham} · Tạm ngừng bán|"></span>
+            <form method="post" th:action="@{/account/wishlist/{id}/delete(id=${muc.maSanPham})}">
+                <button type="submit" class="btn btn--primary">Bỏ yêu thích</button>
+            </form>
+        </li>
+    </ul>
+    <a class="text-link" th:href="@{/products}">Xem sản phẩm</a>
+</main>
+<div th:replace="~{fragments/footer :: siteFooter}"></div></body></html>

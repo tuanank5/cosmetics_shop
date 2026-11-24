@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="~{fragments/head :: head('Giỏ hàng · BeautyShop')}"></head>
+<body>
+<div th:replace="~{fragments/header :: siteHeader}"></div>
+<main id="main" tabindex="-1" class="page-content cart-page">
+    <header class="cart-heading">
+        <h1>Giỏ hàng</h1>
+        <a th:unless="${#lists.isEmpty(mucGio)}" class="text-link" th:href="@{/products}">Tiếp tục mua sắm</a>
+    </header>
+    <th:block th:if="${message}"><div th:replace="~{fragments/ui :: flash('success', ${message})}"></div></th:block>
+    <th:block th:if="${error}"><div th:replace="~{fragments/ui :: flash('error', ${error})}"></div></th:block>
+    <p class="visually-hidden" aria-live="polite" data-cart-live></p>
+    <p class="notice" role="status" th:if="${daGioiHan}">Một số SKU đã được điều chỉnh theo tồn hiện tại.</p>
+
+    <section class="cart-empty" th:if="${#lists.isEmpty(mucGio)}">
+        <h2>Giỏ hàng đang trống.</h2>
+        <p>Khám phá sản phẩm và chọn biến thể bạn muốn thêm vào giỏ.</p>
+        <a class="btn btn--primary btn--lg" th:href="@{/products}">Khám phá sản phẩm</a>
+    </section>
+
+    <div class="cart-layout" th:unless="${#lists.isEmpty(mucGio)}">
+        <ul class="cart-lines" aria-label="Sản phẩm trong giỏ">
+            <li class="cart-line" th:each="muc : ${mucGio}" th:attr="data-cart-line=${muc.maBienThe}"
+                th:with="ma=${muc.maBienThe}, xacNhan=|Xóa ${muc.tenSanPham} · ${muc.tenBienThe} (SKU ${muc.sku}) khỏi giỏ hàng?|">
+                <div class="cart-item">
+                    <div class="cart-media" aria-hidden="true">
+                        <object th:if="${muc.urlHinhAnh != null}" th:data="@{${muc.urlHinhAnh}}"
+                                th:type="${#strings.endsWith(muc.urlHinhAnh, '.png') ? 'image/png' : (#strings.endsWith(muc.urlHinhAnh, '.webp') ? 'image/webp' : 'image/jpeg')}" tabindex="-1">
+                            <span class="cart-monogram">B</span>
+                        </object>
+                        <span th:if="${muc.urlHinhAnh == null}" class="cart-monogram">B</span>
+                    </div>
+                    <div class="cart-identity">
+                        <p class="eyebrow" th:unless="${#strings.isEmpty(muc.tenThuongHieu)}" th:text="${muc.tenThuongHieu}"></p>
+                        <h2>
+                            <a th:if="${!#strings.isEmpty(muc.duongDan)}"
+                               th:href="@{/products/{slug}(slug=${muc.duongDan},variant=${ma})}"
+                               th:attr="aria-label=|${muc.tenSanPham}, ${muc.tenBienThe} (SKU ${muc.sku})|"
+                               th:text="${muc.tenSanPham}"></a>
+                            <span th:if="${#strings.isEmpty(muc.duongDan)}" th:text="${muc.tenSanPham}"></span>
+                        </h2>
+                        <p th:text="${muc.tenBienThe}"></p>
+                        <p class="cart-sku" th:text="|SKU ${muc.sku}|"></p>
+                    </div>
+                </div>
+                <dl class="cart-prices">
+                    <div><dt>Đơn giá hiện tại</dt><dd><span th:replace="~{fragments/ui :: money(${muc.giaBan})}"></span></dd></div>
+                    <div><dt>Thành tiền</dt><dd><strong><span th:replace="~{fragments/ui :: money(${muc.giaBan * muc.soLuong})}"></span></strong></dd></div>
+                </dl>
+                <p class="cart-stock" th:id="|stock-${ma}|" th:classappend="${muc.soLuong > muc.khaDung} ? 'cart-stock-warning'">
+                    <span th:text="${muc.khaDung > 0} ? |Còn ${muc.khaDung} sản phẩm.| : 'Biến thể hiện không còn hàng.'"></span>
+                    <span th:if="${muc.soLuong > muc.khaDung}" th:text="${muc.khaDung > 0} ? 'Số lượng trong giỏ vượt tồn hiện tại. Hãy giảm số lượng.' : 'Hãy xóa biến thể này khỏi giỏ.'"></span>
+                </p>
+                <div class="cart-controls">
+                    <form class="cart-edit" method="post" th:action="@{/cart/items/{variant}/quantity(variant=${ma})}"
+                          th:attr="data-zero-confirm=${xacNhan}">
+                        <label th:for="|quantity-${ma}|">Số lượng <span class="visually-hidden" th:text="|cho SKU ${muc.sku}|"></span></label>
+                        <div class="cart-edit-row">
+                            <div class="cart-stepper">
+                                <button type="button" class="btn btn--secondary btn--icon" data-cart-step="-1" hidden
+                                        th:attr="aria-label=|Giảm số lượng SKU ${muc.sku}|">−</button>
+                                <input type="number" name="quantity" min="0" step="1" required inputmode="numeric"
+                                       th:id="|quantity-${ma}|" th:value="${muc.soLuong}" th:max="${muc.khaDung}"
+                                       th:attr="aria-describedby=|stock-${ma} hint-${ma} error-${ma}|">
+                                <button type="button" class="btn btn--secondary btn--icon" data-cart-step="1" hidden
+                                        th:attr="aria-label=|Tăng số lượng SKU ${muc.sku}|">+</button>
+                            </div>
+                            <button type="submit" class="btn btn--secondary" th:attr="aria-label=|Cập nhật số lượng SKU ${muc.sku}|">Cập nhật</button>
+                            <span class="cart-progress" aria-hidden="true">Đang cập nhật…</span>
+                        </div>
+                        <small class="muted" th:id="|hint-${ma}|">Nhập 0 để xóa khỏi giỏ.</small>
+                        <p class="field-error" aria-live="polite" th:id="|error-${ma}|"></p>
+                    </form>
+                    <form class="cart-remove" method="post" th:action="@{/cart/items/{variant}/quantity(variant=${ma})}">
+                        <button type="submit" class="btn btn--danger" name="quantity" value="0"
+                                th:attr="data-confirm=${xacNhan}, aria-label=|Xóa SKU ${muc.sku} khỏi giỏ|">Xóa</button>
+                    </form>
+                </div>
+            </li>
+        </ul>
+        <aside class="cart-summary" aria-labelledby="summary-title">
+            <h2 id="summary-title">Tóm tắt giỏ hàng</h2>
+            <dl><dt>Tạm tính hàng hóa</dt><dd><span th:replace="~{fragments/ui :: money(${#aggregates.sum(mucGio.![giaBan * soLuong])})}"></span></dd></dl>
+            <p>Phí vận chuyển và mã giảm giá sẽ được xác nhận ở bước thanh toán.</p>
+            <a class="btn btn--primary btn--lg" th:href="@{/checkout}" sec:authorize="isAnonymous()">Đăng nhập để thanh toán</a>
+            <a class="btn btn--primary btn--lg" th:href="@{/checkout}" sec:authorize="hasRole('CUSTOMER')">Tiến hành thanh toán</a>
+        </aside>
+    </div>
+</main>
+<div th:replace="~{fragments/footer :: siteFooter}"></div>
+<script defer th:src="@{/js/cart.js}"></script>
+</body>
+</html>

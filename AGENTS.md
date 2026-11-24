@@ -1,59 +1,41 @@
-> **BeautyShop v5:** tên bảng và cột MariaDB đã đổi sang tiếng Việt không dấu. Migration chuẩn là `db/migration/V1__khoi_tao_co_so_du_lieu.sql`. Bảng ánh xạ: `docs/data/bang_doi_chieu_ten.csv`. Nếu prompt cũ nhắc tên bảng tiếng Anh, phải áp dụng tên v5; không tạo trùng bảng tiếng Anh. Chỉ chạy migration mới trên database trống, không sửa V1 đã được áp dụng.
+# AGENTS.md — Quy ước làm việc của BeautyShop
 
-# AGENTS.md — Quy ước làm việc cho Codex và nhóm (v4 · 12/11/2026)
+## Nguồn yêu cầu
 
-Đọc `README.md`, `docs/requirements/01-srs.md`, `docs/requirements/02-business-rules.md`, `docs/design/02-erd.md` và `docs/DECISIONS.md` trước khi sửa. Đặc tả **đã duyệt** trong tài liệu ưu tiên hơn các gợi ý trước đây. Nếu có xung đột, báo rõ và cập nhật nhật ký quyết định; tuyệt đối không âm thầm đổi nghiệp vụ.
+Trước khi sửa, đọc [README](README.md), [SRS](docs/requirements/01-srs.md), [Business Rules](docs/requirements/02-business-rules.md), [ERD v5](docs/design/02-erd.md), [nhật ký quyết định](docs/DECISIONS.md) và prompt của task đang làm. Nếu có xung đột, nêu rõ và ghi quyết định đã duyệt trước khi đổi nghiệp vụ.
 
-## Dự án / phạm vi
+Ưu tiên COD trọn luồng cho P0. MoMo Sandbox và chatbot RAG theo phạm vi P1 trong SRS. Khi dùng mock, ghi rõ phạm vi mô phỏng và kết quả đã kiểm chứng.
 
-- Website mỹ phẩm đa thương hiệu, **single-store**, nhóm **4 người**, nộp **03/12/2026**; `BeautyShop` là tên tạm.
-- Java **21**, Spring Boot **3.5.16**, Spring MVC + Thymeleaf + Spring Data JPA + MariaDB; Maven. Không microservices, Next.js, React SPA, hoặc JWT cho web MVP.
-- **Bắt buộc P0**: phân quyền Guest/Customer/Admin; danh mục, thương hiệu, sản phẩm, SKU giá/tồn; tìm kiếm/lọc; giỏ guest/customer, đăng nhập trước checkout; COD hoàn chỉnh P0, MoMo Sandbox P1 có điều kiện (không block COD), order state, tồn kho, voucher một mã/đơn, quản lý Admin, dashboard cơ bản.
-- **P1**: chatbot Spring AI + RAG catalog/FAQ là mục tiêu demo có timebox và nguồn; đánh giá sau giao hàng, yêu thích, yêu cầu trả hàng (admin duyệt); MoMo Sandbox nếu merchant và HTTPS sẵn. Không nói đã có tích hợp thật khi chỉ mock.
-- **P2**: cá nhân hóa, phân tích review, dự báo bán hàng, quản lý nhiều batch/FEFO, nhiều cổng thanh toán, REST API public và Production payment. Có `demoBatchCode/demoExpiryDate` hiển thị tùy chọn trên SKU nhưng không hỗ trợ đa lô.
+## Mã nguồn và dữ liệu
 
-## Kiến trúc và package
+- Java 21, Spring Boot 3.5.16, Spring MVC, Thymeleaf, Spring Data JPA và MariaDB. Ứng dụng là một monolith dùng Maven.
+- Tổ chức theo tầng dưới `com.beautyshop`: `controller` (quản trị tại `controller.admin`), `service`, `repository`, `entity`, `dto`, `security`. Giữ các quy tắc domain độc lập trong package phù hợp. Tạo `api` hoặc `exception` khi có lớp thực tế.
+- Dùng constructor injection, DTO với `@Valid` và `BindingResult`, PRG sau POST thành công, giao diện tiếng Việt UTF-8. Template ở `src/main/resources/templates/`; assets tối thiểu lưu trong repo. Giữ giao diện responsive và phong cách Premium/Luxury.
+- Tên vật lý MariaDB dùng tiếng Việt không dấu theo [bảng đối chiếu](docs/data/bang_doi_chieu_ten.csv). Ánh xạ đúng bằng `@Table`, `@Column`, `@JoinColumn` hoặc override tương ứng. Với các lớp gắn với dữ liệu, dùng tên nghiệp vụ tiếng Việt không dấu và dấu `_` trước hậu tố kỹ thuật. Ví dụ `ThuongHieu_Repository` và `DanhMucSanPhamThuongHieu_Service`. Thuộc tính JPA theo camelCase từ tên cột, ví dụ `ThuongHieu.maThuongHieu` ánh xạ `ma_thuong_hieu`. Quan hệ JPA dùng tên đối tượng nghiệp vụ. Giữ từ tiếng Anh chuyên ngành và dùng dấu `_` trước hậu tố kỹ thuật, ví dụ `Bootstrap_Controller`, `AdminDanhMucSanPhamThuongHieu_Controller` và `ShippingFee_Policy`. Dùng tiếng Việt không dấu cho các thuộc tính và biến mô tả nghiệp vụ, ví dụ `thuongHieuRepository`, `maThuongHieu`, `tamTinhSauGiamGia`. Giữ các tên kỹ thuật như `path`, `label` và hợp đồng HTTP hiện hành.
+- Flyway bật ở dev/prod, JPA dùng `ddl-auto=validate`. V1 chuẩn nằm tại [migration hiện hành](src/main/resources/db/migration/V1__khoi_tao_co_so_du_lieu.sql). Giữ nguyên V1 đã áp dụng và tạo migration phiên bản mới cho thay đổi schema. Dùng database trống riêng để kiểm tra khởi tạo.
 
-`com.beautyshop/{config,common,security,user,catalog,inventory,cart,order,shipping,payment,promotion,review,ai,admin,web}`. Mỗi feature có thể chia `entity`, `repository`, `service`, `web`, `dto` **bên trong feature** nếu cần. Không tạo lớp rỗng chỉ để đủ thư mục. Thymeleaf template ở `resources/templates/...`.
+## Bảo mật và bất biến nghiệp vụ
 
-- `@Controller` cho Thymeleaf, `@Service` nghiệp vụ, repository JPA; constructor injection.
-- DTO + `@Valid` + `BindingResult` cho input; PRG (`redirect:`) sau POST; thông báo và nội dung UI tiếng Việt chuẩn UTF-8.
-- Tiền VNĐ dùng **BigDecimal/DECIMAL**, tuyệt đối không `double`, không tin giá gửi từ client.
-- Spring Security **formLogin + Session**, BCrypt. Guest không phải record trong bảng users; khách đã đăng nhập là `ROLE_CUSTOMER`; quản trị `ROLE_ADMIN`. CSRF giữ bật với form/endpoint ghi theo session. Cấp quyền tại backend & kiểm tra sở hữu từng đơn (chống IDOR).
-- Ảnh: thư mục upload riêng, validate MIME/extension/dung lượng, tên UUID, tránh path traversal; ảnh mẫu chỉ lấy từ nguồn có quyền phù hợp.
-- Flyway V1 có schema thật; **Flyway bật ở cả dev/prod**, `ddl-auto=validate` (trừ khi có lý do được duyệt). **Không** dùng `ddl-auto=update` hoặc tự ý sửa V1 khi đã migrate. MariaDB local 3306 mặc định; Compose tùy chọn dùng 3307.
+- Spring Security dùng Form Login, Session, BCrypt và kiểm tra vai trò tại backend. Web MVP dùng xác thực theo session. Guest là anonymous. Tài khoản Customer và Admin dùng `ROLE_CUSTOMER` và `ROLE_ADMIN`. Kiểm tra quyền sở hữu từng đơn. Giữ CSRF cho thao tác ghi theo session. Ngoại lệ duy nhất được phép là `POST /payment/momo/ipn` với HMAC theo spec.
+- Lấy secrets từ môi trường hoặc secret store. Credentials production không có mặc định. Giữ `.env` và dữ liệu runtime ngoài Git. Không tạo mật khẩu admin demo cố định. P04 phụ trách xác thực dựa trên repository.
+- Upload ảnh dùng thư mục riêng, giới hạn MIME, phần mở rộng và dung lượng, đặt tên UUID, chống path traversal. Chỉ công khai ảnh đã kiểm tra và dùng nguồn có quyền phù hợp.
+- Giữ đầy đủ [quy tắc nghiệp vụ](docs/requirements/02-business-rules.md) và [thiết kế giao dịch](docs/design/03-order-payment-inventory.md). Tiền dùng BigDecimal/DECIMAL, tính server-side. Tồn theo SKU. Giỏ Guest vào DB đúng một lần sau đăng nhập và kiểm tra lại giá/tồn. COD xuất kho trong transaction.
+- Khi triển khai MoMo, giữ tồn 15 phút và giữ lượt voucher nguyên tử; IPN đối chiếu chữ ký, định danh giao dịch, số tiền, currency và kết quả. Ghi nhận và giải phóng đúng một lần, đối soát khi trạng thái chưa rõ. Browser redirect dùng để thông báo.
+- Tách trạng thái đơn, thanh toán và đổi trả. Áp dụng điều kiện hủy trước PACKING và quy trình hoàn tiền. Review chỉ từ order item thuộc người mua trong đơn DELIVERED, tối đa một lần mỗi item. Chatbot chỉ tư vấn dựa trên nguồn catalog/FAQ kiểm chứng, đọc lại giá/tồn hiện hành, không ghi dữ liệu, tiết lộ thông tin cá nhân hoặc chẩn đoán da liễu.
 
-## Bắt buộc về giao dịch
+## Thực hiện và kiểm chứng
 
-1. Catalog có `Product` (thông tin chung) và `ProductVariant` (SKU, giá, on_hand, reserved). `available = on_hand - reserved`.
-2. Guest thêm giỏ trong HttpSession. Khi login, hợp nhất vào giỏ lưu DB với kiểm tra lại giá/tồn và idempotency (không gộp 2 lần).
-3. Checkout chỉ Customer, giá/discount/ship/stock tính **server-side**. COD cam kết xuất kho trong transaction. MoMo (P1) nếu được bật sẽ tạo đơn `PENDING_PAYMENT` và **giữ hàng 15 phút** nguyên tử trước khi chuyển hướng; COD không phụ thuộc MoMo.
-4. IPN MoMo phải xác minh HMAC-SHA256 **đúng spec API đã chọn**, đối chiếu order ID, attempt ID, số tiền, currency, result; callback lặp không được trừ kho/ghi PAID/hoàn voucher lần hai. Browser redirect chỉ để thông báo UX; trạng thái chưa rõ phải đối soát, không giải phóng giữ hàng mù quáng.
-5. Status order/payment/return tách rời; không nhảy qua trạng thái. Chỉ cho Customer tự hủy trước `PACKING` (điều kiện bổ sung theo tình trạng giao dịch); hủy sau khi đã trả tiền cần hoàn tiền hợp lệ.
-6. Một voucher trên đơn, hỗ trợ PERCENT/FIXED, min subtotal, max discount, thời gian và lượt giới hạn. Với thanh toán chờ, **giữ lượt voucher** và đảm bảo không vượt hạn mức khi nhiều checkout đồng thời; ghi nhận/release đúng một lần.
-7. Đánh giá phải có order item sở hữu bởi customer, đơn trạng thái `DELIVERED`; mỗi order item tối đa một review.
-8. Chatbot chỉ tư vấn, không ghi dữ liệu kinh doanh, không tiết lộ dữ liệu cá nhân; RAG cho dữ liệu tĩnh, giá/tồn đọc lại DB hiện hành; không khẳng định chẩn đoán/điều trị da liễu.
+- Làm một task/lần, xem trạng thái Git và giữ các thay đổi sẵn có. Báo cho owner liên quan khi thay đổi contract dùng chung và cập nhật test tương ứng. Theo yêu cầu hiện hành về commit/PR.
+- Khi đổi mã, chạy `mvn test`, `mvn -DskipTests package` và kiểm chứng dev với MariaDB nếu liên quan. Bổ sung test cho quy tắc nghiệp vụ bị tác động, gồm tính tiền, trạng thái đơn, khóa SKU, hết hạn, IPN trùng, voucher hoặc sở hữu đơn.
+- Báo file sửa, lệnh đã chạy, kết quả, điểm chưa xác minh và link PR nếu có. Cập nhật quyết định khi có thay đổi đã duyệt và roadmap khi tiến độ thay đổi.
 
-## Cấu hình & an toàn
+## Báo cáo và bằng chứng
 
-- Chỉ cho phép bypass CSRF của **POST /payment/momo/ipn**; route phải kiểm HMAC nghiêm ngặt; `/uploads/**` chỉ cho ảnh public được upload an toàn, không lộ file tùy ý.
-- Không hardcode token, secret, mật khẩu tài khoản. Chỉ đọc từ env/secret store; `.env` và file runtime không commit. `application-prod.properties` KHÔNG có giá trị mặc định cho DB credentials.
-- Không tạo tài khoản admin với mật khẩu demo cố định. Scaffold `BootstrapUserDetailsService` tạm từ chối login; P04 thay bằng repository-backed auth.
-- Giao diện **Luxury/Premium**, font thống nhất, nút cân đối, không lỗi tiếng Việt, responsive. Tránh phụ thuộc CDN cho giao diện tối thiểu; dùng CSS tự lưu trong repo.
-- Chạy **`mvn test`** và **`mvn -DskipTests package`** khi có Maven; không tuyên bố PASS nếu chưa chạy được. Đảm bảo mã nguồn chạy với DB thật ở các bước tích hợp.
-- Dự án không yêu cầu Docker để xuất JAR hoặc deploy; Compose chỉ dùng để tạo DB cục bộ.
+Mọi báo cáo, log, JSON QA, ảnh chụp và video kiểm thử lưu bên trong repository. Không lưu ở `AppData\Local\Temp`, thư mục scratchpad hay nơi nào ngoài project.
 
-## Công việc từng task
+- Báo cáo: `docs/reviews/<mã-task>-<tên-ngắn>.md`.
+- Log, JSON, script QA: `docs/qa/<mã-task>/`.
+- Ảnh chụp chọn lọc (tối đa khoảng 10 ảnh mỗi task, PNG/WebP đã nén): `docs/ui/screenshots/<mã-task>/`.
+- Video (nếu có, đã nén): `docs/ui/screenshots/<mã-task>/`.
 
-- Chỉ 1 task/lần, có commit/PR nhỏ; mọi thay đổi từ Codex phải có danh sách file sửa, kết quả thực thi, blocker chưa xác minh.
-- Thêm test tối thiểu cho các quy tắc: trạng thái đơn, tính tiền, khóa SKU, hết hạn, IPN trùng, voucher, sở hữu đơn.
-- Sau mỗi task cập nhật `docs/DECISIONS.md` nếu có quyết định mới, `docs/03-roadmap-and-team.md` nếu thay đổi tiến độ; cập nhật AGENTS.md khi cấu trúc đã thay đổi.
-- Không ghi 'đã triển khai' vào tài liệu chỉ vì có prompt hoặc class stub.
-
-## Definition of Done
-
-- [ ] Code compile; chạy với profile dev + MariaDB; build không lỗi.
-- [ ] Nghiệp vụ và quyền đúng; test có chứng cứ.
-- [ ] Không có dữ liệu nhạy cảm trong Git/log; giá luôn tính từ DB.
-- [ ] UI responsive, thông báo lỗi tiếng Việt, trạng thái trống hợp lý.
-- [ ] Có mô tả thay đổi, link PR, test, lỗi tồn đọng.
+Không lưu secret, mật khẩu, token hay dữ liệu cá nhân vào các file này. Tin nhắn kết thúc task liệt kê đường dẫn tương đối của báo cáo và bằng chứng.

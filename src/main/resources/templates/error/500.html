@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/head :: head('Chưa thể hoàn tất yêu cầu · BeautyShop')}"></head>
+<body>
+<div th:replace="~{fragments/header :: siteHeader}"></div>
+<main id="main" tabindex="-1" class="page-content error-page">
+  <p class="eyebrow">BEAUTYSHOP · LUÔN CÓ MỘT LỐI ĐI TIẾP</p>
+  <p class="error-code" aria-label="Mã lỗi 500">500</p>
+  <h1>Chưa thể hoàn tất yêu cầu</h1>
+  <p class="muted">Hệ thống đang gặp sự cố. Vui lòng thử lại sau ít phút.</p>
+  <div class="button-group">
+    <a class="btn btn--primary" th:href="@{/products}">Xem sản phẩm</a>
+    <a class="btn btn--secondary" th:href="@{/}">Về trang chủ</a>
+  </div>
+</main>
+<div th:replace="~{fragments/footer :: siteFooter}"></div>
+</body>
+</html>

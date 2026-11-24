@@ -1,0 +1,291 @@
+{
+  "base": "http://localhost:8081",
+  "startedAt": "2026-11-23T10:58:14.644Z",
+  "viewports": {
+    "360x800": {
+      "mode": "fallback (content-height)",
+      "overflowX": false,
+      "h1": 1,
+      "slides": 6,
+      "overflowingSlides": [],
+      "tallSlidesInFallback": [
+        "home-skin:1122",
+        "home-ingredients:874",
+        "home-featured:1109"
+      ],
+      "inertOk": true,
+      "overflowXAfter": false,
+      "pass": true
+    },
+    "390x844": {
+      "mode": "fallback (content-height)",
+      "overflowX": false,
+      "h1": 1,
+      "slides": 6,
+      "overflowingSlides": [],
+      "tallSlidesInFallback": [
+        "home-skin:1054",
+        "home-ingredients:855",
+        "home-featured:1102"
+      ],
+      "inertOk": true,
+      "overflowXAfter": false,
+      "pass": true
+    },
+    "768x1024": {
+      "mode": "carousel",
+      "overflowX": false,
+      "h1": 1,
+      "slides": 6,
+      "overflowingSlides": [],
+      "tallSlidesInFallback": [],
+      "inertOk": true,
+      "wheel": {
+        "start": 3,
+        "seq": "2@0 3@0 4@0 5@0 6@0 6@400 6@491 6@91 6@0 5@0 4@0 3@0 2@0 1@0 1@0 1@0",
+        "pass": true
+      },
+      "overflowXAfter": false,
+      "pass": true
+    },
+    "1366x768": {
+      "mode": "carousel",
+      "overflowX": false,
+      "h1": 1,
+      "slides": 6,
+      "overflowingSlides": [],
+      "tallSlidesInFallback": [],
+      "inertOk": true,
+      "wheel": {
+        "start": 1,
+        "seq": "2@0 3@0 4@0 5@0 6@0 6@294 6@294 6@0 5@0 4@0 3@0 2@0 1@0 1@0 1@0 1@0",
+        "pass": true
+      },
+      "overflowXAfter": false,
+      "pass": true
+    },
+    "1920x1080": {
+      "mode": "carousel",
+      "overflowX": false,
+      "h1": 1,
+      "slides": 6,
+      "overflowingSlides": [],
+      "tallSlidesInFallback": [],
+      "inertOk": true,
+      "wheel": {
+        "start": 1,
+        "seq": "2@0 3@0 4@0 5@0 6@0 6@294 6@294 6@0 5@0 4@0 3@0 2@0 1@0 1@0 1@0 1@0",
+        "pass": true
+      },
+      "overflowXAfter": false,
+      "pass": true
+    },
+    "1366x768-zoom200": {
+      "mode": "fallback (viewport-or-css)",
+      "overflowX": false,
+      "h1": 1,
+      "slides": 6,
+      "overflowingSlides": [],
+      "tallSlidesInFallback": [
+        "home-opening:539",
+        "home-skin:624",
+        "home-ritual:710",
+        "home-ingredients:667",
+        "home-featured:1416",
+        "home-advisor:674"
+      ],
+      "inertOk": true,
+      "overflowXAfter": false,
+      "pass": true
+    }
+  },
+  "flows": {
+    "keyboard": {
+      "down": [
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "up": [
+        5,
+        4,
+        3,
+        2,
+        1
+      ],
+      "pass": true
+    },
+    "pagination": {
+      "bullets": 6,
+      "at4": 4,
+      "at1": 1,
+      "labels": [
+        "Chương 1 / 6",
+        "Chương 2 / 6",
+        "Chương 3 / 6",
+        "Chương 4 / 6",
+        "Chương 5 / 6",
+        "Chương 6 / 6"
+      ],
+      "pass": true
+    },
+    "anchor": {
+      "slide": 2,
+      "pass": true
+    }
+  },
+  "links": {
+    "counts": {
+      "/products?skinType=Da%20kh%C3%B4": 9,
+      "/products?skinType=Da%20nh%E1%BA%A1y%20c%E1%BA%A3m": 7,
+      "/products?skinType=Da%20thi%E1%BA%BFu%20%E1%BA%A9m": 3,
+      "/products?skinType=Da%20th%C6%B0%E1%BB%9Dng": 2,
+      "/products?skinType=Da%20d%E1%BA%A7u": 1,
+      "/products?category=demo-lam-sach": 6,
+      "/products?category=demo-toner-xit-khoang": 3,
+      "/products?category=demo-tinh-chat": 5,
+      "/products?category=demo-duong-am": 10,
+      "/products?category=demo-chong-nang": 4,
+      "/products?q=hyaluronic": 5,
+      "/products?q=ceramide": 3,
+      "/products?q=salicylic": 1
+    },
+    "pdp": {
+      "/products/demo-r031": {
+        "status": 200,
+        "h1": "Resist Youth-Extending Daily Hydrating Fluid SPF 50"
+      },
+      "/products/demo-r030": {
+        "status": 200,
+        "h1": "Skin Perfecting 2% BHA Liquid Exfoliant"
+      },
+      "/products/demo-r029": {
+        "status": 200,
+        "h1": "Moisturizing Lotion"
+      },
+      "/products/demo-r028": {
+        "status": 200,
+        "h1": "Daily Facial Moisturizer"
+      }
+    },
+    "chat": 200,
+    "sizes": {
+      "skin": 5,
+      "ritual": 5,
+      "ingredients": 3,
+      "featured": 4
+    },
+    "pass": true
+  },
+  "a11y": {
+    "tab": {
+      "leaked": [],
+      "focusedInActive": 10,
+      "outlinesVisible": true,
+      "pass": true
+    }
+  },
+  "noJs": {
+    "slides": 6,
+    "visible": true,
+    "itemsVisible": true,
+    "items": 13,
+    "links": 26,
+    "overflowX": false,
+    "pass": true
+  },
+  "reducedMotion": {
+    "fallback": "reduced-motion",
+    "itemsVisible": true,
+    "slides": 6,
+    "pass": true
+  },
+  "reveal": {
+    "hiddenBefore": true,
+    "shownAfter": [
+      "1",
+      "1",
+      "1",
+      "1",
+      "1"
+    ],
+    "delays": [
+      "0s, 0s",
+      "0.09s",
+      "0.18s",
+      "0.27s",
+      "0.36s"
+    ],
+    "brand1": "136.6px",
+    "brand3": "24px",
+    "pass": true
+  },
+  "regression": {
+    "/products": {
+      "status": 200,
+      "items": 12,
+      "count": "31 sản phẩm"
+    },
+    "/products?sort=priceAsc": {
+      "status": 200,
+      "items": 12,
+      "count": "31 sản phẩm"
+    },
+    "/products?sort=priceDesc": {
+      "status": 200,
+      "items": 12,
+      "count": "31 sản phẩm"
+    },
+    "/products?page=1&size=12": {
+      "status": 200,
+      "items": 12,
+      "count": "31 sản phẩm"
+    },
+    "/products?q=cerave": {
+      "status": 200,
+      "items": 5,
+      "count": "5 sản phẩm"
+    },
+    "/products?q=DEMO-001": {
+      "status": 200,
+      "items": 1,
+      "count": "1 sản phẩm"
+    },
+    "/products?category=demo-duong-am": {
+      "status": 200,
+      "items": 10,
+      "count": "10 sản phẩm"
+    },
+    "/products?skinType=Da%20kh%C3%B4": {
+      "status": 200,
+      "items": 9,
+      "count": "9 sản phẩm"
+    },
+    "/products?q=hyaluronic": {
+      "status": 200,
+      "items": 5,
+      "count": "5 sản phẩm"
+    },
+    "/products?q=%25": {
+      "status": 200,
+      "items": 4,
+      "count": "4 sản phẩm"
+    },
+    "pass": true
+  },
+  "touch": {
+    "viewport": "768x1024",
+    "slideAfterSwipe": 2,
+    "verified": true,
+    "pass": true
+  },
+  "exceptions": [],
+  "finishedAt": "2026-11-23T11:00:16.592Z",
+  "summary": {
+    "pass": 16,
+    "fail": 0,
+    "jsExceptions": 0
+  }
+}

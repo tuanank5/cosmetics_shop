@@ -1,0 +1,1263 @@
+{
+  "browser": {
+    "protocolVersion": "1.3",
+    "product": "Chrome/158.0.8127.36",
+    "revision": "@14d6f648e8cd7ad750a4044200ce94d3321be260",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/158.0.0.0 Safari/537.36",
+    "jsVersion": "15.8.62.31"
+  },
+  "rows": [
+    {
+      "role": "Guest",
+      "path": "/cart",
+      "scripts": [
+        "http://127.0.0.1:56866/js/app.js"
+      ],
+      "background": "rgb(10, 10, 11)"
+    },
+    {
+      "role": "Guest",
+      "path": "/login",
+      "scripts": [
+        "http://127.0.0.1:56866/js/app.js"
+      ],
+      "background": "rgb(10, 10, 11)"
+    },
+    {
+      "role": "Customer",
+      "path": "/checkout",
+      "scripts": [
+        "http://127.0.0.1:56866/js/app.js",
+        "http://127.0.0.1:56866/js/checkout.js"
+      ],
+      "background": "rgb(10, 10, 11)"
+    },
+    {
+      "role": "Customer",
+      "path": "/account",
+      "scripts": [
+        "http://127.0.0.1:56866/js/app.js"
+      ],
+      "background": "rgb(10, 10, 11)"
+    },
+    {
+      "role": "Customer",
+      "path": "/cart",
+      "scripts": [
+        "http://127.0.0.1:56866/js/app.js"
+      ],
+      "background": "rgb(10, 10, 11)"
+    },
+    {
+      "role": "Admin",
+      "path": "/admin/catalog/categories",
+      "scripts": [
+        "http://127.0.0.1:56866/js/app.js"
+      ],
+      "background": "rgb(250, 247, 243)"
+    }
+  ],
+  "footer": [
+    {
+      "role": "Guest",
+      "path": "/cart",
+      "viewport": [
+        360,
+        800
+      ],
+      "zoom": 1,
+      "foreground": "rgb(245, 242, 237)",
+      "background": "rgb(10, 10, 11)",
+      "outline": "rgb(168, 138, 90)",
+      "outlineWidth": "3px",
+      "outlineStyle": "solid",
+      "focusVisible": true,
+      "accent": "#a88a5a",
+      "ring": "3px solid #a88a5a",
+      "active": "<a href=\"/products\">Cửa hàng</a>",
+      "width": 345,
+      "scroll": 345
+    },
+    {
+      "role": "Guest",
+      "path": "/cart",
+      "viewport": [
+        390,
+        844
+      ],
+      "zoom": 1,
+      "foreground": "rgb(245, 242, 237)",
+      "background": "rgb(10, 10, 11)",
+      "outline": "rgb(168, 138, 90)",
+      "outlineWidth": "3px",
+      "outlineStyle": "solid",
+      "focusVisible": true,
+      "accent": "#a88a5a",
+      "ring": "3px solid #a88a5a",
+      "active": "<a href=\"/products\">Cửa hàng</a>",
+      "width": 375,
+      "scroll": 375
+    },
+    {
+      "role": "Guest",
+      "path": "/cart",
+      "viewport": [
+        768,
+        1024
+      ],
+      "zoom": 1,
+      "foreground": "rgb(245, 242, 237)",
+      "background": "rgb(10, 10, 11)",
+      "outline": "rgb(168, 138, 90)",
+      "outlineWidth": "3px",
+      "outlineStyle": "solid",
+      "focusVisible": true,
+      "accent": "#a88a5a",
+      "ring": "3px solid #a88a5a",
+      "active": "<a href=\"/products\">Cửa hàng</a>",
+      "width": 753,
+      "scroll": 753
+    },
+    {
+      "role": "Guest",
+      "path": "/cart",
+      "viewport": [
+        1366,
+        768
+      ],
+      "zoom": 1,
+      "foreground": "rgb(245, 242, 237)",
+      "background": "rgb(10, 10, 11)",
+      "outline": "rgb(168, 138, 90)",
+      "outlineWidth": "3px",
+      "outlineStyle": "solid",
+      "focusVisible": true,
+      "accent": "#a88a5a",
+      "ring": "3px solid #a88a5a",
+      "active": "<a href=\"/products\">Cửa hàng</a>",
+      "width": 1351,
+      "scroll": 1351
+    },
+    {
+      "role": "Guest",
+      "path": "/cart",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "zoom": 1,
+      "foreground": "rgb(245, 242, 237)",
+      "background": "rgb(10, 10, 11)",
+      "outline": "rgb(168, 138, 90)",
+      "outlineWidth": "3px",
+      "outlineStyle": "solid",
+      "focusVisible": true,
+      "accent": "#a88a5a",
+      "ring": "3px solid #a88a5a",
+      "active": "<a href=\"/products\">Cửa hàng</a>",
+      "width": 1920,
+      "scroll": 1920
+    },
+    {
+      "role": "Guest",
+      "path": "/cart",
+      "viewport": [
+        360,
+        800
+      ],
+      "zoom": 2,
+      "foreground": "rgb(245, 242, 237)",
+      "background": "rgb(10, 10, 11)",
+      "outline": "rgb(168, 138, 90)",
+      "outlineWidth": "3px",
+      "outlineStyle": "solid",
+      "focusVisible": true,
+      "accent": "#a88a5a",
+      "ring": "3px solid #a88a5a",
+      "active": "<a href=\"/products\">Cửa hàng</a>",
+      "width": 172,
+      "scroll": 172
+    },
+    {
+      "role": "Guest",
+      "path": "/cart",
+      "viewport": [
+        390,
+        844
+      ],
+      "zoom": 2,
+      "foreground": "rgb(245, 242, 237)",
+      "background": "rgb(10, 10, 11)",
+      "outline": "rgb(168, 138, 90)",
+      "outlineWidth": "3px",
+      "outlineStyle": "solid",
+      "focusVisible": true,
+      "accent": "#a88a5a",
+      "ring": "3px solid #a88a5a",
+      "active": "<a href=\"/products\">Cửa hàng</a>",
+      "width": 187,
+      "scroll": 187
+    },
+    {
+      "role": "Guest",
+      "path": "/cart",
+      "viewport": [
+        768,
+        1024
+      ],
+      "zoom": 2,
+      "foreground": "rgb(245, 242, 237)",
+      "background": "rgb(10, 10, 11)",
+      "outline": "rgb(168, 138, 90)",
+      "outlineWidth": "3px",
+      "outlineStyle": "solid",
+      "focusVisible": true,
+      "accent": "#a88a5a",
+      "ring": "3px solid #a88a5a",
+      "active": "<a href=\"/products\">Cửa hàng</a>",
+      "width": 376,
+      "scroll": 376
+    },
+    {
+      "role": "Guest",
+      "path": "/cart",
+      "viewport": [
+        1366,
+        768
+      ],
+      "zoom": 2,
+      "foreground": "rgb(245, 242, 237)",
+      "background": "rgb(10, 10, 11)",
+      "outline": "rgb(168, 138, 90)",
+      "outlineWidth": "3px",
+      "outlineStyle": "solid",
+      "focusVisible": true,
+      "accent": "#a88a5a",
+      "ring": "3px solid #a88a5a",
+      "active": "<a href=\"/products\">Cửa hàng</a>",
+      "width": 675,
+      "scroll": 675
+    },
+    {
+      "role": "Guest",
+      "path": "/cart",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "zoom": 2,
+      "foreground": "rgb(245, 242, 237)",
+      "background": "rgb(10, 10, 11)",
+      "outline": "rgb(168, 138, 90)",
+      "outlineWidth": "3px",
+      "outlineStyle": "solid",
+      "focusVisible": true,
+      "accent": "#a88a5a",
+      "ring": "3px solid #a88a5a",
+      "active": "<a href=\"/products\">Cửa hàng</a>",
+      "width": 952,
+      "scroll": 952
+    },
+    {
+      "role": "Guest",
+      "path": "/login",
+      "viewport": [
+        360,
+        800
+      ],
+      "zoom": 1,
+      "foreground": "rgb(245, 242, 237)",
+      "background": "rgb(10, 10, 11)",
+      "outline": "rgb(168, 138, 90)",
+      "outlineWidth": "3px",
+      "outlineStyle": "solid",
+      "focusVisible": true,
+      "accent": "#a88a5a",
+      "ring": "3px solid #a88a5a",
+      "active": "<a href=\"/products\">Cửa hàng</a>",
+      "width": 345,
+      "scroll": 345
+    },
+    {
+      "role": "Guest",
+      "path": "/login",
+      "viewport": [
+        390,
+        844
+      ],
+      "zoom": 1,
+      "foreground": "rgb(245, 242, 237)",
+      "background": "rgb(10, 10, 11)",
+      "outline": "rgb(168, 138, 90)",
+      "outlineWidth": "3px",
+      "outlineStyle": "solid",
+      "focusVisible": true,
+      "accent": "#a88a5a",
+      "ring": "3px solid #a88a5a",
+      "active": "<a href=\"/products\">Cửa hàng</a>",
+      "width": 375,
+      "scroll": 375
+    },
+    {
+      "role": "Guest",
+      "path": "/login",
+      "viewport": [
+        768,
+        1024
+      ],
+      "zoom": 1,
+      "foreground": "rgb(245, 242, 237)",
+      "background": "rgb(10, 10, 11)",
+      "outline": "rgb(168, 138, 90)",
+      "outlineWidth": "3px",
+      "outlineStyle": "solid",
+      "focusVisible": true,
+      "accent": "#a88a5a",
+      "ring": "3px solid #a88a5a",
+      "active": "<a href=\"/products\">Cửa hàng</a>",
+      "width": 753,
+      "scroll": 753
+    },
+    {
+      "role": "Guest",
+      "path": "/login",
+      "viewport": [
+        1366,
+        768
+      ],
+      "zoom": 1,
+      "foreground": "rgb(245, 242, 237)",
+      "background": "rgb(10, 10, 11)",
+      "outline": "rgb(168, 138, 90)",
+      "outlineWidth": "3px",
+      "outlineStyle": "solid",
+      "focusVisible": true,
+      "accent": "#a88a5a",
+      "ring": "3px solid #a88a5a",
+      "active": "<a href=\"/products\">Cửa hàng</a>",
+      "width": 1351,
+      "scroll": 1351
+    },
+    {
+      "role": "Guest",
+      "path": "/login",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "zoom": 1,
+      "foreground": "rgb(245, 242, 237)",
+      "background": "rgb(10, 10, 11)",
+      "outline": "rgb(168, 138, 90)",
+      "outlineWidth": "3px",
+      "outlineStyle": "solid",
+      "focusVisible": true,
+      "accent": "#a88a5a",
+      "ring": "3px solid #a88a5a",
+      "active": "<a href=\"/products\">Cửa hàng</a>",
+      "width": 1905,
+      "scroll": 1905
+    },
+    {
+      "role": "Guest",
+      "path": "/login",
+      "viewport": [
+        360,
+        800
+      ],
+      "zoom": 2,
+      "foreground": "rgb(245, 242, 237)",
+      "background": "rgb(10, 10, 11)",
+      "outline": "rgb(168, 138, 90)",
+      "outlineWidth": "3px",
+      "outlineStyle": "solid",
+      "focusVisible": true,
+      "accent": "#a88a5a",
+      "ring": "3px solid #a88a5a",
+      "active": "<a href=\"/products\">Cửa hàng</a>",
+      "width": 172,
+      "scroll": 172
+    },
+    {
+      "role": "Guest",
+      "path": "/login",
+      "viewport": [
+        390,
+        844
+      ],
+      "zoom": 2,
+      "foreground": "rgb(245, 242, 237)",
+      "background": "rgb(10, 10, 11)",
+      "outline": "rgb(168, 138, 90)",
+      "outlineWidth": "3px",
+      "outlineStyle": "solid",
+      "focusVisible": true,
+      "accent": "#a88a5a",
+      "ring": "3px solid #a88a5a",
+      "active": "<a href=\"/products\">Cửa hàng</a>",
+      "width": 187,
+      "scroll": 187
+    },
+    {
+      "role": "Guest",
+      "path": "/login",
+      "viewport": [
+        768,
+        1024
+      ],
+      "zoom": 2,
+      "foreground": "rgb(245, 242, 237)",
+      "background": "rgb(10, 10, 11)",
+      "outline": "rgb(168, 138, 90)",
+      "outlineWidth": "3px",
+      "outlineStyle": "solid",
+      "focusVisible": true,
+      "accent": "#a88a5a",
+      "ring": "3px solid #a88a5a",
+      "active": "<a href=\"/products\">Cửa hàng</a>",
+      "width": 376,
+      "scroll": 376
+    },
+    {
+      "role": "Guest",
+      "path": "/login",
+      "viewport": [
+        1366,
+        768
+      ],
+      "zoom": 2,
+      "foreground": "rgb(245, 242, 237)",
+      "background": "rgb(10, 10, 11)",
+      "outline": "rgb(168, 138, 90)",
+      "outlineWidth": "3px",
+      "outlineStyle": "solid",
+      "focusVisible": true,
+      "accent": "#a88a5a",
+      "ring": "3px solid #a88a5a",
+      "active": "<a href=\"/products\">Cửa hàng</a>",
+      "width": 675,
+      "scroll": 675
+    },
+    {
+      "role": "Guest",
+      "path": "/login",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "zoom": 2,
+      "foreground": "rgb(245, 242, 237)",
+      "background": "rgb(10, 10, 11)",
+      "outline": "rgb(168, 138, 90)",
+      "outlineWidth": "3px",
+      "outlineStyle": "solid",
+      "focusVisible": true,
+      "accent": "#a88a5a",
+      "ring": "3px solid #a88a5a",
+      "active": "<a href=\"/products\">Cửa hàng</a>",
+      "width": 952,
+      "scroll": 952
+    },
+    {
+      "role": "Customer",
+      "path": "/checkout",
+      "viewport": [
+        360,
+        800
+      ],
+      "zoom": 1,
+      "foreground": "rgb(245, 242, 237)",
+      "background": "rgb(10, 10, 11)",
+      "outline": "rgb(168, 138, 90)",
+      "outlineWidth": "3px",
+      "outlineStyle": "solid",
+      "focusVisible": true,
+      "accent": "#a88a5a",
+      "ring": "3px solid #a88a5a",
+      "active": "<a href=\"/products\">Cửa hàng</a>",
+      "width": 345,
+      "scroll": 345
+    },
+    {
+      "role": "Customer",
+      "path": "/checkout",
+      "viewport": [
+        390,
+        844
+      ],
+      "zoom": 1,
+      "foreground": "rgb(245, 242, 237)",
+      "background": "rgb(10, 10, 11)",
+      "outline": "rgb(168, 138, 90)",
+      "outlineWidth": "3px",
+      "outlineStyle": "solid",
+      "focusVisible": true,
+      "accent": "#a88a5a",
+      "ring": "3px solid #a88a5a",
+      "active": "<a href=\"/products\">Cửa hàng</a>",
+      "width": 375,
+      "scroll": 375
+    },
+    {
+      "role": "Customer",
+      "path": "/checkout",
+      "viewport": [
+        768,
+        1024
+      ],
+      "zoom": 1,
+      "foreground": "rgb(245, 242, 237)",
+      "background": "rgb(10, 10, 11)",
+      "outline": "rgb(168, 138, 90)",
+      "outlineWidth": "3px",
+      "outlineStyle": "solid",
+      "focusVisible": true,
+      "accent": "#a88a5a",
+      "ring": "3px solid #a88a5a",
+      "active": "<a href=\"/products\">Cửa hàng</a>",
+      "width": 753,
+      "scroll": 753
+    },
+    {
+      "role": "Customer",
+      "path": "/checkout",
+      "viewport": [
+        1366,
+        768
+      ],
+      "zoom": 1,
+      "foreground": "rgb(245, 242, 237)",
+      "background": "rgb(10, 10, 11)",
+      "outline": "rgb(168, 138, 90)",
+      "outlineWidth": "3px",
+      "outlineStyle": "solid",
+      "focusVisible": true,
+      "accent": "#a88a5a",
+      "ring": "3px solid #a88a5a",
+      "active": "<a href=\"/products\">Cửa hàng</a>",
+      "width": 1351,
+      "scroll": 1351
+    },
+    {
+      "role": "Customer",
+      "path": "/checkout",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "zoom": 1,
+      "foreground": "rgb(245, 242, 237)",
+      "background": "rgb(10, 10, 11)",
+      "outline": "rgb(168, 138, 90)",
+      "outlineWidth": "3px",
+      "outlineStyle": "solid",
+      "focusVisible": true,
+      "accent": "#a88a5a",
+      "ring": "3px solid #a88a5a",
+      "active": "<a href=\"/products\">Cửa hàng</a>",
+      "width": 1905,
+      "scroll": 1905
+    },
+    {
+      "role": "Customer",
+      "path": "/checkout",
+      "viewport": [
+        360,
+        800
+      ],
+      "zoom": 2,
+      "foreground": "rgb(245, 242, 237)",
+      "background": "rgb(10, 10, 11)",
+      "outline": "rgb(168, 138, 90)",
+      "outlineWidth": "3px",
+      "outlineStyle": "solid",
+      "focusVisible": true,
+      "accent": "#a88a5a",
+      "ring": "3px solid #a88a5a",
+      "active": "<a href=\"/products\">Cửa hàng</a>",
+      "width": 172,
+      "scroll": 172
+    },
+    {
+      "role": "Customer",
+      "path": "/checkout",
+      "viewport": [
+        390,
+        844
+      ],
+      "zoom": 2,
+      "foreground": "rgb(245, 242, 237)",
+      "background": "rgb(10, 10, 11)",
+      "outline": "rgb(168, 138, 90)",
+      "outlineWidth": "3px",
+      "outlineStyle": "solid",
+      "focusVisible": true,
+      "accent": "#a88a5a",
+      "ring": "3px solid #a88a5a",
+      "active": "<a href=\"/products\">Cửa hàng</a>",
+      "width": 187,
+      "scroll": 187
+    },
+    {
+      "role": "Customer",
+      "path": "/checkout",
+      "viewport": [
+        768,
+        1024
+      ],
+      "zoom": 2,
+      "foreground": "rgb(245, 242, 237)",
+      "background": "rgb(10, 10, 11)",
+      "outline": "rgb(168, 138, 90)",
+      "outlineWidth": "3px",
+      "outlineStyle": "solid",
+      "focusVisible": true,
+      "accent": "#a88a5a",
+      "ring": "3px solid #a88a5a",
+      "active": "<a href=\"/products\">Cửa hàng</a>",
+      "width": 376,
+      "scroll": 376
+    },
+    {
+      "role": "Customer",
+      "path": "/checkout",
+      "viewport": [
+        1366,
+        768
+      ],
+      "zoom": 2,
+      "foreground": "rgb(245, 242, 237)",
+      "background": "rgb(10, 10, 11)",
+      "outline": "rgb(168, 138, 90)",
+      "outlineWidth": "3px",
+      "outlineStyle": "solid",
+      "focusVisible": true,
+      "accent": "#a88a5a",
+      "ring": "3px solid #a88a5a",
+      "active": "<a href=\"/products\">Cửa hàng</a>",
+      "width": 675,
+      "scroll": 675
+    },
+    {
+      "role": "Customer",
+      "path": "/checkout",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "zoom": 2,
+      "foreground": "rgb(245, 242, 237)",
+      "background": "rgb(10, 10, 11)",
+      "outline": "rgb(168, 138, 90)",
+      "outlineWidth": "3px",
+      "outlineStyle": "solid",
+      "focusVisible": true,
+      "accent": "#a88a5a",
+      "ring": "3px solid #a88a5a",
+      "active": "<a href=\"/products\">Cửa hàng</a>",
+      "width": 952,
+      "scroll": 952
+    },
+    {
+      "role": "Customer",
+      "path": "/account",
+      "viewport": [
+        360,
+        800
+      ],
+      "zoom": 1,
+      "foreground": "rgb(245, 242, 237)",
+      "background": "rgb(10, 10, 11)",
+      "outline": "rgb(168, 138, 90)",
+      "outlineWidth": "3px",
+      "outlineStyle": "solid",
+      "focusVisible": true,
+      "accent": "#a88a5a",
+      "ring": "3px solid #a88a5a",
+      "active": "<a href=\"/products\">Cửa hàng</a>",
+      "width": 345,
+      "scroll": 345
+    },
+    {
+      "role": "Customer",
+      "path": "/account",
+      "viewport": [
+        390,
+        844
+      ],
+      "zoom": 1,
+      "foreground": "rgb(245, 242, 237)",
+      "background": "rgb(10, 10, 11)",
+      "outline": "rgb(168, 138, 90)",
+      "outlineWidth": "3px",
+      "outlineStyle": "solid",
+      "focusVisible": true,
+      "accent": "#a88a5a",
+      "ring": "3px solid #a88a5a",
+      "active": "<a href=\"/products\">Cửa hàng</a>",
+      "width": 375,
+      "scroll": 375
+    },
+    {
+      "role": "Customer",
+      "path": "/account",
+      "viewport": [
+        768,
+        1024
+      ],
+      "zoom": 1,
+      "foreground": "rgb(245, 242, 237)",
+      "background": "rgb(10, 10, 11)",
+      "outline": "rgb(168, 138, 90)",
+      "outlineWidth": "3px",
+      "outlineStyle": "solid",
+      "focusVisible": true,
+      "accent": "#a88a5a",
+      "ring": "3px solid #a88a5a",
+      "active": "<a href=\"/products\">Cửa hàng</a>",
+      "width": 753,
+      "scroll": 753
+    },
+    {
+      "role": "Customer",
+      "path": "/account",
+      "viewport": [
+        1366,
+        768
+      ],
+      "zoom": 1,
+      "foreground": "rgb(245, 242, 237)",
+      "background": "rgb(10, 10, 11)",
+      "outline": "rgb(168, 138, 90)",
+      "outlineWidth": "3px",
+      "outlineStyle": "solid",
+      "focusVisible": true,
+      "accent": "#a88a5a",
+      "ring": "3px solid #a88a5a",
+      "active": "<a href=\"/products\">Cửa hàng</a>",
+      "width": 1351,
+      "scroll": 1351
+    },
+    {
+      "role": "Customer",
+      "path": "/account",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "zoom": 1,
+      "foreground": "rgb(245, 242, 237)",
+      "background": "rgb(10, 10, 11)",
+      "outline": "rgb(168, 138, 90)",
+      "outlineWidth": "3px",
+      "outlineStyle": "solid",
+      "focusVisible": true,
+      "accent": "#a88a5a",
+      "ring": "3px solid #a88a5a",
+      "active": "<a href=\"/products\">Cửa hàng</a>",
+      "width": 1905,
+      "scroll": 1905
+    },
+    {
+      "role": "Customer",
+      "path": "/account",
+      "viewport": [
+        360,
+        800
+      ],
+      "zoom": 2,
+      "foreground": "rgb(245, 242, 237)",
+      "background": "rgb(10, 10, 11)",
+      "outline": "rgb(168, 138, 90)",
+      "outlineWidth": "3px",
+      "outlineStyle": "solid",
+      "focusVisible": true,
+      "accent": "#a88a5a",
+      "ring": "3px solid #a88a5a",
+      "active": "<a href=\"/products\">Cửa hàng</a>",
+      "width": 172,
+      "scroll": 172
+    },
+    {
+      "role": "Customer",
+      "path": "/account",
+      "viewport": [
+        390,
+        844
+      ],
+      "zoom": 2,
+      "foreground": "rgb(245, 242, 237)",
+      "background": "rgb(10, 10, 11)",
+      "outline": "rgb(168, 138, 90)",
+      "outlineWidth": "3px",
+      "outlineStyle": "solid",
+      "focusVisible": true,
+      "accent": "#a88a5a",
+      "ring": "3px solid #a88a5a",
+      "active": "<a href=\"/products\">Cửa hàng</a>",
+      "width": 187,
+      "scroll": 187
+    },
+    {
+      "role": "Customer",
+      "path": "/account",
+      "viewport": [
+        768,
+        1024
+      ],
+      "zoom": 2,
+      "foreground": "rgb(245, 242, 237)",
+      "background": "rgb(10, 10, 11)",
+      "outline": "rgb(168, 138, 90)",
+      "outlineWidth": "3px",
+      "outlineStyle": "solid",
+      "focusVisible": true,
+      "accent": "#a88a5a",
+      "ring": "3px solid #a88a5a",
+      "active": "<a href=\"/products\">Cửa hàng</a>",
+      "width": 376,
+      "scroll": 376
+    },
+    {
+      "role": "Customer",
+      "path": "/account",
+      "viewport": [
+        1366,
+        768
+      ],
+      "zoom": 2,
+      "foreground": "rgb(245, 242, 237)",
+      "background": "rgb(10, 10, 11)",
+      "outline": "rgb(168, 138, 90)",
+      "outlineWidth": "3px",
+      "outlineStyle": "solid",
+      "focusVisible": true,
+      "accent": "#a88a5a",
+      "ring": "3px solid #a88a5a",
+      "active": "<a href=\"/products\">Cửa hàng</a>",
+      "width": 675,
+      "scroll": 675
+    },
+    {
+      "role": "Customer",
+      "path": "/account",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "zoom": 2,
+      "foreground": "rgb(245, 242, 237)",
+      "background": "rgb(10, 10, 11)",
+      "outline": "rgb(168, 138, 90)",
+      "outlineWidth": "3px",
+      "outlineStyle": "solid",
+      "focusVisible": true,
+      "accent": "#a88a5a",
+      "ring": "3px solid #a88a5a",
+      "active": "<a href=\"/products\">Cửa hàng</a>",
+      "width": 952,
+      "scroll": 952
+    },
+    {
+      "role": "Customer",
+      "path": "/cart",
+      "viewport": [
+        360,
+        800
+      ],
+      "zoom": 1,
+      "foreground": "rgb(245, 242, 237)",
+      "background": "rgb(10, 10, 11)",
+      "outline": "rgb(168, 138, 90)",
+      "outlineWidth": "3px",
+      "outlineStyle": "solid",
+      "focusVisible": true,
+      "accent": "#a88a5a",
+      "ring": "3px solid #a88a5a",
+      "active": "<a href=\"/products\">Cửa hàng</a>",
+      "width": 345,
+      "scroll": 345
+    },
+    {
+      "role": "Customer",
+      "path": "/cart",
+      "viewport": [
+        390,
+        844
+      ],
+      "zoom": 1,
+      "foreground": "rgb(245, 242, 237)",
+      "background": "rgb(10, 10, 11)",
+      "outline": "rgb(168, 138, 90)",
+      "outlineWidth": "3px",
+      "outlineStyle": "solid",
+      "focusVisible": true,
+      "accent": "#a88a5a",
+      "ring": "3px solid #a88a5a",
+      "active": "<a href=\"/products\">Cửa hàng</a>",
+      "width": 375,
+      "scroll": 375
+    },
+    {
+      "role": "Customer",
+      "path": "/cart",
+      "viewport": [
+        768,
+        1024
+      ],
+      "zoom": 1,
+      "foreground": "rgb(245, 242, 237)",
+      "background": "rgb(10, 10, 11)",
+      "outline": "rgb(168, 138, 90)",
+      "outlineWidth": "3px",
+      "outlineStyle": "solid",
+      "focusVisible": true,
+      "accent": "#a88a5a",
+      "ring": "3px solid #a88a5a",
+      "active": "<a href=\"/products\">Cửa hàng</a>",
+      "width": 753,
+      "scroll": 753
+    },
+    {
+      "role": "Customer",
+      "path": "/cart",
+      "viewport": [
+        1366,
+        768
+      ],
+      "zoom": 1,
+      "foreground": "rgb(245, 242, 237)",
+      "background": "rgb(10, 10, 11)",
+      "outline": "rgb(168, 138, 90)",
+      "outlineWidth": "3px",
+      "outlineStyle": "solid",
+      "focusVisible": true,
+      "accent": "#a88a5a",
+      "ring": "3px solid #a88a5a",
+      "active": "<a href=\"/products\">Cửa hàng</a>",
+      "width": 1351,
+      "scroll": 1351
+    },
+    {
+      "role": "Customer",
+      "path": "/cart",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "zoom": 1,
+      "foreground": "rgb(245, 242, 237)",
+      "background": "rgb(10, 10, 11)",
+      "outline": "rgb(168, 138, 90)",
+      "outlineWidth": "3px",
+      "outlineStyle": "solid",
+      "focusVisible": true,
+      "accent": "#a88a5a",
+      "ring": "3px solid #a88a5a",
+      "active": "<a href=\"/products\">Cửa hàng</a>",
+      "width": 1905,
+      "scroll": 1905
+    },
+    {
+      "role": "Customer",
+      "path": "/cart",
+      "viewport": [
+        360,
+        800
+      ],
+      "zoom": 2,
+      "foreground": "rgb(245, 242, 237)",
+      "background": "rgb(10, 10, 11)",
+      "outline": "rgb(168, 138, 90)",
+      "outlineWidth": "3px",
+      "outlineStyle": "solid",
+      "focusVisible": true,
+      "accent": "#a88a5a",
+      "ring": "3px solid #a88a5a",
+      "active": "<a href=\"/products\">Cửa hàng</a>",
+      "width": 172,
+      "scroll": 172
+    },
+    {
+      "role": "Customer",
+      "path": "/cart",
+      "viewport": [
+        390,
+        844
+      ],
+      "zoom": 2,
+      "foreground": "rgb(245, 242, 237)",
+      "background": "rgb(10, 10, 11)",
+      "outline": "rgb(168, 138, 90)",
+      "outlineWidth": "3px",
+      "outlineStyle": "solid",
+      "focusVisible": true,
+      "accent": "#a88a5a",
+      "ring": "3px solid #a88a5a",
+      "active": "<a href=\"/products\">Cửa hàng</a>",
+      "width": 187,
+      "scroll": 187
+    },
+    {
+      "role": "Customer",
+      "path": "/cart",
+      "viewport": [
+        768,
+        1024
+      ],
+      "zoom": 2,
+      "foreground": "rgb(245, 242, 237)",
+      "background": "rgb(10, 10, 11)",
+      "outline": "rgb(168, 138, 90)",
+      "outlineWidth": "3px",
+      "outlineStyle": "solid",
+      "focusVisible": true,
+      "accent": "#a88a5a",
+      "ring": "3px solid #a88a5a",
+      "active": "<a href=\"/products\">Cửa hàng</a>",
+      "width": 376,
+      "scroll": 376
+    },
+    {
+      "role": "Customer",
+      "path": "/cart",
+      "viewport": [
+        1366,
+        768
+      ],
+      "zoom": 2,
+      "foreground": "rgb(245, 242, 237)",
+      "background": "rgb(10, 10, 11)",
+      "outline": "rgb(168, 138, 90)",
+      "outlineWidth": "3px",
+      "outlineStyle": "solid",
+      "focusVisible": true,
+      "accent": "#a88a5a",
+      "ring": "3px solid #a88a5a",
+      "active": "<a href=\"/products\">Cửa hàng</a>",
+      "width": 675,
+      "scroll": 675
+    },
+    {
+      "role": "Customer",
+      "path": "/cart",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "zoom": 2,
+      "foreground": "rgb(245, 242, 237)",
+      "background": "rgb(10, 10, 11)",
+      "outline": "rgb(168, 138, 90)",
+      "outlineWidth": "3px",
+      "outlineStyle": "solid",
+      "focusVisible": true,
+      "accent": "#a88a5a",
+      "ring": "3px solid #a88a5a",
+      "active": "<a href=\"/products\">Cửa hàng</a>",
+      "width": 952,
+      "scroll": 952
+    },
+    {
+      "role": "Admin",
+      "path": "/admin/catalog/categories",
+      "viewport": [
+        360,
+        800
+      ],
+      "zoom": 1,
+      "foreground": "rgb(250, 247, 243)",
+      "background": "rgb(42, 31, 29)",
+      "outline": "rgb(250, 247, 243)",
+      "outlineWidth": "3px",
+      "outlineStyle": "solid",
+      "focusVisible": true,
+      "accent": "#b08d57",
+      "ring": "3px solid #5e2f3e",
+      "active": "<a href=\"/products\">Cửa hàng</a>",
+      "width": 345,
+      "scroll": 345
+    },
+    {
+      "role": "Admin",
+      "path": "/admin/catalog/categories",
+      "viewport": [
+        390,
+        844
+      ],
+      "zoom": 1,
+      "foreground": "rgb(250, 247, 243)",
+      "background": "rgb(42, 31, 29)",
+      "outline": "rgb(250, 247, 243)",
+      "outlineWidth": "3px",
+      "outlineStyle": "solid",
+      "focusVisible": true,
+      "accent": "#b08d57",
+      "ring": "3px solid #5e2f3e",
+      "active": "<a href=\"/products\">Cửa hàng</a>",
+      "width": 375,
+      "scroll": 375
+    },
+    {
+      "role": "Admin",
+      "path": "/admin/catalog/categories",
+      "viewport": [
+        768,
+        1024
+      ],
+      "zoom": 1,
+      "foreground": "rgb(250, 247, 243)",
+      "background": "rgb(42, 31, 29)",
+      "outline": "rgb(250, 247, 243)",
+      "outlineWidth": "3px",
+      "outlineStyle": "solid",
+      "focusVisible": true,
+      "accent": "#b08d57",
+      "ring": "3px solid #5e2f3e",
+      "active": "<a href=\"/products\">Cửa hàng</a>",
+      "width": 768,
+      "scroll": 768
+    },
+    {
+      "role": "Admin",
+      "path": "/admin/catalog/categories",
+      "viewport": [
+        1366,
+        768
+      ],
+      "zoom": 1,
+      "foreground": "rgb(250, 247, 243)",
+      "background": "rgb(42, 31, 29)",
+      "outline": "rgb(250, 247, 243)",
+      "outlineWidth": "3px",
+      "outlineStyle": "solid",
+      "focusVisible": true,
+      "accent": "#b08d57",
+      "ring": "3px solid #5e2f3e",
+      "active": "<a href=\"/products\">Cửa hàng</a>",
+      "width": 1351,
+      "scroll": 1351
+    },
+    {
+      "role": "Admin",
+      "path": "/admin/catalog/categories",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "zoom": 1,
+      "foreground": "rgb(250, 247, 243)",
+      "background": "rgb(42, 31, 29)",
+      "outline": "rgb(250, 247, 243)",
+      "outlineWidth": "3px",
+      "outlineStyle": "solid",
+      "focusVisible": true,
+      "accent": "#b08d57",
+      "ring": "3px solid #5e2f3e",
+      "active": "<a href=\"/products\">Cửa hàng</a>",
+      "width": 1920,
+      "scroll": 1920
+    },
+    {
+      "role": "Admin",
+      "path": "/admin/catalog/categories",
+      "viewport": [
+        360,
+        800
+      ],
+      "zoom": 2,
+      "foreground": "rgb(250, 247, 243)",
+      "background": "rgb(42, 31, 29)",
+      "outline": "rgb(250, 247, 243)",
+      "outlineWidth": "3px",
+      "outlineStyle": "solid",
+      "focusVisible": true,
+      "accent": "#b08d57",
+      "ring": "3px solid #5e2f3e",
+      "active": "<a href=\"/products\">Cửa hàng</a>",
+      "width": 172,
+      "scroll": 172
+    },
+    {
+      "role": "Admin",
+      "path": "/admin/catalog/categories",
+      "viewport": [
+        390,
+        844
+      ],
+      "zoom": 2,
+      "foreground": "rgb(250, 247, 243)",
+      "background": "rgb(42, 31, 29)",
+      "outline": "rgb(250, 247, 243)",
+      "outlineWidth": "3px",
+      "outlineStyle": "solid",
+      "focusVisible": true,
+      "accent": "#b08d57",
+      "ring": "3px solid #5e2f3e",
+      "active": "<a href=\"/products\">Cửa hàng</a>",
+      "width": 187,
+      "scroll": 187
+    },
+    {
+      "role": "Admin",
+      "path": "/admin/catalog/categories",
+      "viewport": [
+        768,
+        1024
+      ],
+      "zoom": 2,
+      "foreground": "rgb(250, 247, 243)",
+      "background": "rgb(42, 31, 29)",
+      "outline": "rgb(250, 247, 243)",
+      "outlineWidth": "3px",
+      "outlineStyle": "solid",
+      "focusVisible": true,
+      "accent": "#b08d57",
+      "ring": "3px solid #5e2f3e",
+      "active": "<a href=\"/products\">Cửa hàng</a>",
+      "width": 376,
+      "scroll": 376
+    },
+    {
+      "role": "Admin",
+      "path": "/admin/catalog/categories",
+      "viewport": [
+        1366,
+        768
+      ],
+      "zoom": 2,
+      "foreground": "rgb(250, 247, 243)",
+      "background": "rgb(42, 31, 29)",
+      "outline": "rgb(250, 247, 243)",
+      "outlineWidth": "3px",
+      "outlineStyle": "solid",
+      "focusVisible": true,
+      "accent": "#b08d57",
+      "ring": "3px solid #5e2f3e",
+      "active": "<a href=\"/products\">Cửa hàng</a>",
+      "width": 675,
+      "scroll": 675
+    },
+    {
+      "role": "Admin",
+      "path": "/admin/catalog/categories",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "zoom": 2,
+      "foreground": "rgb(250, 247, 243)",
+      "background": "rgb(42, 31, 29)",
+      "outline": "rgb(250, 247, 243)",
+      "outlineWidth": "3px",
+      "outlineStyle": "solid",
+      "focusVisible": true,
+      "accent": "#b08d57",
+      "ring": "3px solid #5e2f3e",
+      "active": "<a href=\"/products\">Cửa hàng</a>",
+      "width": 952,
+      "scroll": 952
+    }
+  ],
+  "jsExceptions": 0
+}

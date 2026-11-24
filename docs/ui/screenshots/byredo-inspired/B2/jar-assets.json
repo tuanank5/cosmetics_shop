@@ -1,0 +1,38 @@
+﻿[
+    {
+        "Entry":  "BOOT-INF/classes/static/js/vendor/gsap-3.15.1.min.js",
+        "Bytes":  73357,
+        "SHA256":  "3D1BEA374AB1B703CC5C4105358EEC63C4465EFDC573931DC116E34A0A190C1B",
+        "MatchesSource":  true
+    },
+    {
+        "Entry":  "BOOT-INF/classes/static/js/home-motion.js",
+        "Bytes":  1483,
+        "SHA256":  "E804B020D6FCDA54A2617D7552A68A7FBEFA859EFFDD7A214B2E377D34FFE88C",
+        "MatchesSource":  true
+    },
+    {
+        "Entry":  "BOOT-INF/classes/static/js/app.js",
+        "Bytes":  6956,
+        "SHA256":  "00A147EBB48E988FA00EAAB5D887030D773E68AC01E8F8E9892710EE05946DE2",
+        "MatchesSource":  true
+    },
+    {
+        "Entry":  "BOOT-INF/classes/static/css/storefront.css",
+        "Bytes":  25390,
+        "SHA256":  "955DE44FE56E75BE5A262E3391BF0E58D94AAC2C4F454383A6ED46A17B782A95",
+        "MatchesSource":  true
+    },
+    {
+        "Entry":  "BOOT-INF/classes/templates/product/list.html",
+        "Bytes":  8865,
+        "SHA256":  "CE585FEAB9ABE993F3A9BB91922A1B83A865B05775569D1425035AA997295562",
+        "MatchesSource":  true
+    },
+    {
+        "Entry":  "BOOT-INF/classes/templates/fragments/product-card.html",
+        "Bytes":  1278,
+        "SHA256":  "33786FFE6EFD550E06C4996920B49F6E406C85618421236648428BDFA1CB4F60",
+        "MatchesSource":  true
+    }
+]

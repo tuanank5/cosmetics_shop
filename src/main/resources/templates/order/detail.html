@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/head :: head('Chi tiết đơn hàng · BeautyShop')}"></head>
+<body><div th:replace="~{fragments/header :: siteHeader}"></div>
+<main id="main" tabindex="-1" class="page-content" th:with="don=${chiTiet.don}">
+    <a class="text-link" th:href="@{${base}}">Quay lại đơn hàng</a>
+    <h1>Chi tiết đơn hàng</h1>
+    <p th:text="${don.maHienThi}"></p>
+    <p class="notice" role="status" th:if="${message}" th:text="${message}"></p>
+    <p class="form-error" role="alert" th:if="${error}" th:text="${error}"></p>
+    <p class="notice" th:if="${chiTiet.mock}">MÔ PHỎNG - KHÔNG THU TIỀN</p>
+    <p><strong th:text="${don.trangThai.label}"></strong>
+        <span th:if="${chiTiet.thanhToan == 'PAID'}" th:text="${don.phuongThuc == 'COD' ? '· Đã thu tiền COD' : '· Đã xác minh thanh toán MoMo'}"></span>
+        <span th:if="${chiTiet.thanhToan == 'UNPAID' and don.trangThai.name() != 'CANCELLED'}">· Chưa thu tiền COD</span>
+    </p>
+    <p th:if="${chiTiet.canHoanTien > 0}" class="notice">Có giao dịch cần đối soát và hoàn tiền.</p>
+    <p th:if="${don.phuongThuc == 'MOMO' and chiTiet.thanhToan == 'FAILED' and chiTiet.coTheThuLai}">Lần thanh toán chưa thành công. Bạn có thể thử lại khi đơn còn giữ hàng.</p>
+    <section>
+        <h2>Giao hàng</h2>
+        <p th:text="|${don.tenNguoiNhan} · ${don.soDienThoai}|"></p>
+        <p th:text="${don.diaChi}"></p>
+    </section>
+    <section>
+        <h2>Sản phẩm</h2>
+        <ul class="catalog-list">
+            <li th:each="muc : ${chiTiet.muc}">
+                <div>
+                    <strong th:text="|${muc.tenSanPham} · ${muc.tenBienThe}|"></strong>
+                    <div th:text="|SKU ${muc.sku} · ${#numbers.formatInteger(muc.donGia, 1, 'POINT')} ₫ × ${muc.soLuong}|"></div>
+                </div>
+                <span th:text="|${#numbers.formatInteger(muc.thanhTien(), 1, 'POINT')} ₫|"></span>
+                <a th:if="${base == '/orders' and don.trangThai.name() == 'DELIVERED'}" class="text-link"
+                   th:href="@{/orders/items/{id}/review(id=${muc.maMuc})}">Đánh giá hoặc sửa đánh giá</a>
+            </li>
+        </ul>
+        <dl>
+            <dt>Tạm tính</dt><dd th:text="|${#numbers.formatInteger(don.tamTinh, 1, 'POINT')} ₫|"></dd>
+            <dt>Giảm giá</dt><dd th:text="|${#numbers.formatInteger(don.giam, 1, 'POINT')} ₫|"></dd>
+            <dt>Phí giao hàng</dt><dd th:text="|${#numbers.formatInteger(don.phiVanChuyen, 1, 'POINT')} ₫|"></dd>
+            <dt>Tổng cộng</dt><dd th:text="|${#numbers.formatInteger(don.tong, 1, 'POINT')} ₫|"></dd>
+        </dl>
+    </section>
+    <div class="catalog-actions">
+        <a th:if="${base == '/orders' and don.trangThai.name() == 'DELIVERED'}" class="text-link"
+           th:href="@{/orders/{id}/returns/new(id=${don.maDonHang})}">Yêu cầu đổi trả</a>
+        <form th:if="${base == '/orders' and chiTiet.coTheThuLai}" method="post"
+              th:action="@{/orders/{id}/momo/retry(id=${don.maDonHang})}">
+            <button type="submit" class="btn btn--primary">Mở lại thanh toán MoMo</button>
+        </form>
+        <form th:if="${base == '/admin/orders' and chiTiet.doiSoat}" method="post"
+              th:action="@{/admin/orders/{id}/momo/reconcile(id=${don.maDonHang})}">
+            <button type="submit" class="btn btn--primary">Đối soát MoMo</button>
+        </form>
+        <form th:if="${base == '/orders' and chiTiet.coTheHuy}" method="post"
+              th:action="@{/orders/{id}/cancel(id=${don.maDonHang})}">
+            <button type="submit" class="btn btn--secondary">Hủy đơn</button>
+        </form>
+        <form th:if="${base == '/admin/orders' and chiTiet.coTheHuy}" method="post"
+              th:action="@{/admin/orders/{id}/status(id=${don.maDonHang})}">
+            <button name="status" value="CANCELLED" type="submit" class="btn btn--secondary">Hủy đơn</button>
+        </form>
+        <form th:if="${base == '/admin/orders' and chiTiet.tiepTheo != null}" method="post"
+              th:action="@{/admin/orders/{id}/status(id=${don.maDonHang})}">
+            <button name="status" th:value="${chiTiet.tiepTheo.name()}" type="submit" class="btn btn--primary"
+                    th:text="${chiTiet.tiepTheo.name() == 'DELIVERED' and don.phuongThuc == 'COD' ? 'Xác nhận đã giao và thu tiền' : chiTiet.tiepTheo.label}"></button>
+        </form>
+    </div>
+</main>
+<div th:replace="~{fragments/footer :: siteFooter}"></div></body></html>

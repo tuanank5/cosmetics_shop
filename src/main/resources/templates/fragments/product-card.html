@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<body>
+<article th:fragment="productCard(the, uuTienAnh)" class="product-tile"
+         th:with="preview=${catalogPreviewMedia != null ? catalogPreviewMedia[the.duongDan] : null},
+                  thumbnail=${preview != null and preview['thumbnailUrl'] != null ? preview['thumbnailUrl'] :
+                    (preview != null and preview['videoPosterUrl'] != null ? preview['videoPosterUrl'] : the.urlHinhAnh)}">
+<a class="store-card" th:href="@{/products/{slug}(slug=${the.duongDan})}">
+    <div class="store-card-media" th:with="coAnh=${!#strings.isEmpty(#strings.trim(thumbnail))}">
+        <img th:if="${coAnh}" data-catalog-image th:src="@{${thumbnail}}" alt="" width="400" height="500"
+             th:loading="${uuTienAnh ? 'eager' : 'lazy'}" decoding="async">
+        <span class="store-card-fallback" data-catalog-placeholder th:hidden="${coAnh}">
+            <span class="store-card-monogram" aria-hidden="true"><img th:src="@{/img/brand/beautyshop-mark.svg}" alt="" width="120" height="160" loading="lazy" decoding="async"></span>
+            <span class="store-card-missing">Chưa có ảnh sản phẩm</span>
+        </span>
+        <video th:if="${preview != null and preview['previewVideoUrl'] != null}" data-product-preview
+               th:attr="data-video-src=${preview['previewVideoUrl']},data-video-poster=${preview['videoPosterUrl']}"
+               muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"></video>
+    </div>
+    <div class="store-card-body">
+        <p class="store-card-brand" th:text="${the.tenThuongHieu}"></p>
+        <h3 th:text="${the.tenSanPham}"></h3>
+        <p class="store-card-price">Từ <span th:replace="~{fragments/ui :: money(${the.giaTu})}"></span></p>
+        <span class="badge" th:classappend="${the.soLuongKhaDungLonNhat > 0 ? 'badge--success' : 'badge--error'}"
+              th:text="${the.soLuongKhaDungLonNhat > 0 ? 'Còn hàng' : 'Hết hàng'}"></span>
+    </div>
+</a>
+<a class="product-wishlist" th:href="@{/products/{slug}(slug=${the.duongDan})} + '#pdp-actions'"
+   sec:authorize="isAnonymous() or hasRole('CUSTOMER')"
+   th:attr="aria-label=|Xem ${the.tenSanPham} để lưu yêu thích|" title="Mở sản phẩm để lưu yêu thích">
+    <svg class="header-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 21 3.5 12.5a5.3 5.3 0 0 1 7.5-7.5L12 6l1-1a5.3 5.3 0 0 1 7.5 7.5L12 21Z"/></svg>
+</a>
+<button class="preview-toggle btn btn--secondary" type="button" data-preview-toggle hidden>Phát video xem trước</button>
+</article>
+</body>
+</html>

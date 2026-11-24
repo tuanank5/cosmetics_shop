@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/head :: head(|${label} · Quản trị BeautyShop|)}"></head>
+<body>
+<div th:replace="~{fragments/header :: siteHeader}"></div>
+<main id="main" tabindex="-1" class="page-content catalog-admin">
+    <nav class="catalog-actions" aria-label="Quản lý danh mục">
+        <a th:href="@{/admin/catalog/categories}">Danh mục</a>
+        <a th:href="@{/admin/catalog/brands}">Thương hiệu</a>
+        <a th:href="@{/admin/catalog/products}">Sản phẩm</a>
+    </nav>
+    <h1 th:text="${label}">Danh mục</h1>
+    <p class="notice" role="status" th:if="${message}" th:text="${message}"></p>
+    <p class="notice catalog-error" role="alert" th:if="${error}" th:text="${error}"></p>
+    <a class="btn btn--secondary" th:href="@{/admin/catalog/{section}/new(section=${section})}">Thêm mới</a>
+    <p th:if="${#lists.isEmpty(items)}">Chưa có dữ liệu.</p>
+    <ul class="catalog-list">
+        <li th:each="item : ${items}">
+            <div>
+                <strong th:text="${item.ten}"></strong>
+                <div th:text="${item.duongDan}"></div>
+                <small th:text="${item.dangHoatDong} ? 'Đang hoạt động' : 'Ngừng hoạt động'"></small>
+            </div>
+            <div class="catalog-actions">
+                <a class="btn btn--secondary" th:if="${product}" th:href="@{/admin/catalog/products/{id}/variants(id=${item.ma})}">SKU</a>
+                <a class="btn btn--secondary" th:href="@{/admin/catalog/{section}/{id}/edit(section=${section},id=${item.ma})}">Sửa</a>
+                <form th:if="${!product or item.dangHoatDong}"
+                      th:action="@{/admin/catalog/{section}/{id}/delete(section=${section},id=${item.ma})}" method="post">
+                    <button class="btn btn--secondary" type="submit" th:text="${product} ? 'Ngừng hoạt động' : 'Xóa'">Xóa</button>
+                </form>
+            </div>
+        </li>
+    </ul>
+</main>
+<div th:replace="~{fragments/footer :: siteFooter}"></div>
+</body>
+</html>

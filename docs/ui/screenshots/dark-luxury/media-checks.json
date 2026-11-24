@@ -1,0 +1,51 @@
+{
+  "checks": [
+    {
+      "recording": "home-scroll-motion",
+      "sourceFrames": 103
+    },
+    {
+      "reloadMiddle": 767,
+      "restored": 767
+    },
+    {
+      "homeKeyboard": true
+    },
+    {
+      "recording": "card-hover-QA-fixture",
+      "sourceFrames": 50
+    },
+    {
+      "catalogReducedMotionFocusRecovery": true
+    },
+    {
+      "tabHiddenObserved": true,
+      "paused": true
+    },
+    {
+      "videoKeyboardToggle": true
+    },
+    {
+      "offscreenPause": true
+    },
+    {
+      "video404PosterFallback": true
+    },
+    {
+      "singleHomeVideo": true
+    },
+    {
+      "homeReducedMotionFocusRecovery": true
+    },
+    {
+      "media": "technical fixture only",
+      "hoverPauseReset": true,
+      "reducedMotion": true,
+      "noLayoutChange": true
+    },
+    {
+      "blockedPluginStaticFallback": true
+    }
+  ],
+  "jsExceptions": 0
+}
