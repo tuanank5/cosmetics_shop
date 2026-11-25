@@ -1,5 +1,6 @@
 package com.beautyshop.repository;
 
+import com.beautyshop.entity.BienTheSanPham;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,11 +22,8 @@ class TuVanDaRepositoryTest {
 
     @BeforeEach
     void taoCatalog() {
-        jdbc.sql("""
-                INSERT INTO thuong_hieu
-                    (ma_thuong_hieu, ten_thuong_hieu, duong_dan, dang_hoat_dong)
-                VALUES (1, 'Brand', 'brand', TRUE)
-                """).update();
+        thuongHieu(1, "Brand", true);
+        thuongHieu(2, "Thương hiệu đã ngừng hoạt động", false);
         danhMuc(1, "Tinh chất");
         danhMuc(2, "Sữa rửa mặt");
         danhMuc(3, "Làm sạch");
@@ -38,6 +36,7 @@ class TuVanDaRepositoryTest {
         sanPham(5, 3, "Cleansing Oil", true);
         sanPham(6, 4, "Toner cấp ẩm", true);
         sanPham(7, 1, "Serum hết hàng", true);
+        sanPham(8, 1, "Serum thương hiệu ngừng hoạt động", true, 2);
 
         bienThe(1, 1, 5);
         bienThe(2, 2, 5);
@@ -46,6 +45,7 @@ class TuVanDaRepositoryTest {
         bienThe(5, 5, 5);
         bienThe(6, 6, 5);
         bienThe(7, 7, 0);
+        bienThe(8, 8, 5);
     }
 
     @Test
@@ -55,6 +55,14 @@ class TuVanDaRepositoryTest {
         assertThat(maBienThe("sữa rửa mặt")).containsExactly(3L);
         assertThat(maBienThe("face wash")).containsExactly(4L);
         assertThat(maBienThe("toner")).containsExactly(6L);
+    }
+
+    @Test
+    void khongGoiYSanPhamThuocThuongHieuDaNgungHoatDong() {
+        assertThat(maBienThe("serum")).doesNotContain(8L);
+        assertThat(repository.findAllDangBanConHang(PageRequest.of(0, 20)).stream()
+                .map(BienTheSanPham::getMaBienThe))
+                .doesNotContain(8L);
     }
 
     private java.util.List<Long> maBienThe(String tuKhoa) {
@@ -73,12 +81,24 @@ class TuVanDaRepositoryTest {
     }
 
     private void sanPham(long ma, long maDanhMuc, String ten, boolean dangHoatDong) {
+        sanPham(ma, maDanhMuc, ten, dangHoatDong, 1);
+    }
+
+    private void sanPham(long ma, long maDanhMuc, String ten, boolean dangHoatDong, long maThuongHieu) {
         jdbc.sql("""
                 INSERT INTO san_pham (
                     ma_san_pham, ma_thuong_hieu, ma_danh_muc, ten_san_pham, duong_dan,
                     dang_hoat_dong, ngay_tao)
-                VALUES (?, 1, ?, ?, ?, ?, TIMESTAMP '2026-01-01 00:00:00')
-                """).params(ma, maDanhMuc, ten, "sp-" + ma, dangHoatDong).update();
+                VALUES (?, ?, ?, ?, ?, ?, TIMESTAMP '2026-01-01 00:00:00')
+                """).params(ma, maThuongHieu, maDanhMuc, ten, "sp-" + ma, dangHoatDong).update();
+    }
+
+    private void thuongHieu(long ma, String ten, boolean dangHoatDong) {
+        jdbc.sql("""
+                    INSERT INTO thuong_hieu
+                        (ma_thuong_hieu, ten_thuong_hieu, duong_dan, dang_hoat_dong)
+                    VALUES (?, ?, ?, ?)
+                    """).params(ma, ten, "thuong-hieu-" + ma, dangHoatDong).update();
     }
 
     private void bienThe(long ma, long maSanPham, int ton) {

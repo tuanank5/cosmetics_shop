@@ -66,9 +66,8 @@ class GiaoDienPagesTest {
         mvc.perform(get("/"))
             .andExpect(status().isOk())
             .andDo(result -> assertThat(footer(result.getResponse().getContentAsString()))
-                .contains("href=\"/products\"", "href=\"/products#brands\"", "href=\"/chat\"")
-                .doesNotContain("href=\"/login\"", "href=\"/register\"", "href=\"/cart\"",
-                    "/account", "/orders", "/admin/"));
+                .contains("href=\"/login\"", "href=\"/register\"", "href=\"/cart\"", "href=\"/products#brands\"")
+                .doesNotContain("href=\"/account\"", "href=\"/orders\"", "href=\"/account/wishlist\"", "/admin/"));
     }
 
     @Test
@@ -76,7 +75,7 @@ class GiaoDienPagesTest {
         mvc.perform(get("/").with(user("fixture").roles("CUSTOMER")))
             .andExpect(status().isOk())
             .andDo(result -> assertThat(footer(result.getResponse().getContentAsString()))
-                .contains("href=\"/orders\"", "href=\"/account/wishlist\"", "href=\"/account/returns\"")
+                .contains("href=\"/account\"", "href=\"/orders\"", "href=\"/account/wishlist\"", "href=\"/account/returns\"")
                 .doesNotContain("href=\"/login\"", "href=\"/register\"", "/admin/"));
     }
 
@@ -85,8 +84,8 @@ class GiaoDienPagesTest {
         mvc.perform(get("/").with(user("fixture").roles("ADMIN")))
             .andExpect(status().isOk())
             .andDo(result -> assertThat(footer(result.getResponse().getContentAsString()))
-                .contains("href=\"/products\"", "href=\"/products#brands\"")
-                .doesNotContain("/account", "/orders", "href=\"/cart\""));
+                .contains("href=\"/admin/catalog/categories\"", "href=\"/admin/catalog/brands\"", "href=\"/admin/catalog/products\"")
+                .doesNotContain("href=\"/account", "href=\"/orders", "href=\"/cart\"", "href=\"/login\""));
     }
 
     private String footer(String html) {

@@ -6,12 +6,20 @@ import com.beautyshop.entity.BienTheSanPham;
 import com.beautyshop.entity.DanhMuc;
 import com.beautyshop.entity.SanPham;
 import com.beautyshop.repository.BienTheSanPham_Repository;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Map;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.ArgumentCaptor;
+import org.springframework.ai.chat.messages.AssistantMessage;
 import org.springframework.ai.chat.model.ChatModel;
+import org.springframework.ai.chat.model.ChatResponse;
+import org.springframework.ai.chat.model.Generation;
+import org.springframework.ai.chat.prompt.Prompt;
 import org.springframework.ai.embedding.EmbeddingModel;
+import org.springframework.ai.ollama.api.OllamaChatOptions;
 import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.data.domain.Pageable;
 
@@ -34,7 +42,7 @@ class TuVanDaServiceTest {
         chatModel = mock(ChatModel.class);
         when(provider.getIfAvailable()).thenReturn(
                 new RagProvider(mock(EmbeddingModel.class), chatModel));
-        service = new TuVanDaService(repository, provider);
+        service = new TuVanDaService(repository, provider, new ObjectMapper());
     }
 
     @Test
@@ -84,7 +92,7 @@ class TuVanDaServiceTest {
         BienTheSanPham bienThe = sanPhamMau(42L);
         when(repository.findDangBanConHangTheoLoai(anyString(), any(Pageable.class)))
                 .thenReturn(List.of(bienThe));
-        when(chatModel.call(anyString())).thenReturn("42");
+        when(chatModel.call(any(Prompt.class))).thenReturn(phanHoi("{\"ids\":[42]}"));
 
         String ketQua = service.tuVan(yeuCau("Serum cho da dầu."));
 
@@ -92,6 +100,16 @@ class TuVanDaServiceTest {
                 .contains("Serum chính xác từ database", "125.000 ₫", "Niacinamide",
                         "Dùng theo hướng dẫn DB", "Tồn khả dụng: 3")
                 .doesNotContain("42");
+
+        ArgumentCaptor<Prompt> prompt = ArgumentCaptor.forClass(Prompt.class);
+        verify(chatModel).call(prompt.capture());
+        assertThat(prompt.getValue().getContents()).contains("JSON", "ids");
+        assertThat(prompt.getValue().getOptions()).isInstanceOfSatisfying(
+                OllamaChatOptions.class,
+                options -> {
+                    assertThat(options.getFormat()).isInstanceOf(Map.class);
+                    assertThat(options.getFormat().toString()).contains("ids", "integer");
+                });
     }
 
     @Test
@@ -99,11 +117,51 @@ class TuVanDaServiceTest {
         BienTheSanPham bienThe = sanPhamMau(42L);
         when(repository.findDangBanConHangTheoLoai(anyString(), any(Pageable.class)))
                 .thenReturn(List.of(bienThe));
-        when(chatModel.call(anyString())).thenReturn("999999");
+        when(chatModel.call(any(Prompt.class))).thenReturn(phanHoi("{\"ids\":[999999]}"));
 
         assertThatThrownBy(() -> service.tuVan(yeuCau("Serum cho da dầu.")))
                 .isInstanceOf(IllegalStateException.class)
                 .hasMessageContaining("không có trong dữ liệu truy vấn");
+    }
+
+    @Test
+    void khongChapNhanPhanHoiJsonSaiSchema() {
+        BienTheSanPham bienThe = sanPhamMau(42L);
+        when(repository.findDangBanConHangTheoLoai(anyString(), any(Pageable.class)))
+                .thenReturn(List.of(bienThe));
+        when(chatModel.call(any(Prompt.class)))
+                .thenReturn(phanHoi("{\"ids\":[42],\"explanation\":\"untrusted\"}"));
+
+        assertThatThrownBy(() -> service.tuVan(yeuCau("Serum cho da dầu.")))
+                .isInstanceOf(IllegalStateException.class)
+                .hasMessageContaining("không đúng định dạng");
+    }
+
+    @Test
+    void danhSachRongTuModelKhongTuTaoGoiY() {
+        BienTheSanPham bienThe = sanPhamMau(42L);
+        when(repository.findDangBanConHangTheoLoai(anyString(), any(Pageable.class)))
+                .thenReturn(List.of(bienThe));
+        when(chatModel.call(any(Prompt.class))).thenReturn(phanHoi("{\"ids\":[]}"));
+
+        assertThat(service.tuVan(yeuCau("Serum cho da dầu.")))
+                .contains("chưa có sản phẩm", "đủ thông tin");
+    }
+
+    @Test
+    void khongChapNhanPhanHoiRongTuModel() {
+        BienTheSanPham bienThe = sanPhamMau(42L);
+        when(repository.findDangBanConHangTheoLoai(anyString(), any(Pageable.class)))
+                .thenReturn(List.of(bienThe));
+        when(chatModel.call(any(Prompt.class))).thenReturn(phanHoi("   "));
+
+        assertThatThrownBy(() -> service.tuVan(yeuCau("Serum cho da dầu.")))
+                .isInstanceOf(IllegalStateException.class)
+                .hasMessageContaining("không trả về danh sách sản phẩm hợp lệ");
+    }
+
+    private ChatResponse phanHoi(String noiDung) {
+        return new ChatResponse(List.of(new Generation(new AssistantMessage(noiDung))));
     }
 
     private TuVanDaRequest yeuCau(String vanDeDa) {

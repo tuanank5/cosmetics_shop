@@ -43,9 +43,11 @@ public interface BienTheSanPham_Repository extends JpaRepository<BienTheSanPham,
         select b
         from BienTheSanPham b
         join fetch b.sanPham sp
+        join fetch sp.thuongHieu th
         join fetch sp.danhMuc dm
         where b.dangHoatDong = true
           and sp.dangHoatDong = true
+          and th.dangHoatDong = true
           and dm.dangHoatDong = true
           and b.soLuongTrongKho > b.soLuongTamGiu
           and (
@@ -63,9 +65,11 @@ public interface BienTheSanPham_Repository extends JpaRepository<BienTheSanPham,
         select b
         from BienTheSanPham b
         join fetch b.sanPham sp
+        join fetch sp.thuongHieu th
         join fetch sp.danhMuc dm
         where b.dangHoatDong = true
           and sp.dangHoatDong = true
+          and th.dangHoatDong = true
           and dm.dangHoatDong = true
           and b.soLuongTrongKho > b.soLuongTamGiu
         order by b.giaBan asc

@@ -21,6 +21,29 @@
         <a th:href="@{/products}">Sản phẩm</a>
         <a th:href="@{/products#brands}">Thương hiệu</a>
         <a th:href="@{/chat}">Tư vấn làm đẹp</a>
+
+        <nav aria-label="Tài khoản" sec:authorize="isAnonymous()">
+          <h2>TÀI KHOẢN</h2>
+          <a th:href="@{/login}">Đăng nhập</a>
+          <a th:href="@{/register}">Đăng ký</a>
+          <a th:href="@{/cart}">Giỏ hàng</a>
+        </nav>
+
+        <nav aria-label="Tài khoản khách hàng" sec:authorize="hasRole('CUSTOMER')">
+          <h2>TÀI KHOẢN CỦA BẠN</h2>
+          <a th:href="@{/account}">Thông tin tài khoản</a>
+          <a th:href="@{/orders}">Theo dõi đơn hàng</a>
+          <a th:href="@{/account/wishlist}">Sản phẩm yêu thích</a>
+          <a th:href="@{/account/returns}">Chính sách đổi trả và hoàn tiền</a>
+          <a th:href="@{/cart}">Giỏ hàng</a>
+        </nav>
+
+        <nav aria-label="Quản trị" sec:authorize="hasRole('ADMIN')">
+          <h2>QUẢN TRỊ</h2>
+          <a th:href="@{/admin/catalog/categories}">Quản lý danh mục</a>
+          <a th:href="@{/admin/catalog/brands}">Quản lý thương hiệu</a>
+          <a th:href="@{/admin/catalog/products}">Quản lý sản phẩm</a>
+        </nav>
       </div>
 
       <!-- HƯỚNG DẪN MUA HÀNG -->
@@ -29,10 +52,6 @@
 
         <a th:href="@{/products}">Hướng dẫn mua hàng</a>
         <a th:href="@{/products}">Chính sách thanh toán</a>
-        <a th:href="@{/account/returns}"
-           sec:authorize="hasRole('CUSTOMER')">
-          Chính sách đổi trả và hoàn tiền
-        </a>
         <a th:href="@{/}">Chính sách bảo mật thông tin</a>
       </nav>
 
@@ -42,14 +61,6 @@
 
         <a th:href="@{/chat}">Tư vấn sản phẩm</a>
         <a th:href="@{/products}">Khám phá sản phẩm mới</a>
-        <a th:href="@{/account/wishlist}"
-           sec:authorize="hasRole('CUSTOMER')">
-          Sản phẩm yêu thích
-        </a>
-        <a th:href="@{/orders}"
-           sec:authorize="hasRole('CUSTOMER')">
-          Theo dõi đơn hàng
-        </a>
       </nav>
 
       <div class="footer-contact">
@@ -70,7 +81,7 @@
         <div class="footer-contact-item">
           <div>
             <strong>HOTLINE</strong>
-            <p>1900 xxxx xx</p>
+            <p>1900 0000 00</p>
           </div>
         </div>
 
