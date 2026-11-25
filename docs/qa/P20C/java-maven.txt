@@ -1,0 +1,2 @@
+﻿Apache Maven 3.9.15 (98b2cdbfdb5f1ac8781f537ea9acccaed7922349)
+Java version: 21.0.13.0.2, vendor: Microsoft

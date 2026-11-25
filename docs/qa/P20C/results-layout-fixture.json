@@ -1,0 +1,650 @@
+{
+  "mode": "layout-fixture",
+  "base": "http://127.0.0.1:8187",
+  "startedAt": "2026-11-25T05:06:21.028Z",
+  "checks": [
+    {
+      "name": "MockMvc Dashboard fixture loaded",
+      "pass": true
+    },
+    {
+      "name": "7-day range and 8 KPI cards",
+      "pass": true,
+      "detail": {
+        "days": 7,
+        "current": "7 ngày",
+        "rows": [
+          4,
+          4
+        ],
+        "basis": true
+      }
+    },
+    {
+      "name": "7-day charts or explicit empty states",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "7-day table-daily line matches table",
+      "pass": true,
+      "detail": {
+        "source": "table-daily",
+        "type": "line",
+        "rows": 7,
+        "match": true,
+        "ready": true,
+        "accessible": true,
+        "tableClosed": true
+      }
+    },
+    {
+      "name": "7-day table-daily bar matches table",
+      "pass": true,
+      "detail": {
+        "source": "table-daily",
+        "type": "bar",
+        "rows": 7,
+        "match": true,
+        "ready": true,
+        "accessible": true,
+        "tableClosed": true
+      }
+    },
+    {
+      "name": "7-day table-status hbar matches table",
+      "pass": true,
+      "detail": {
+        "source": "table-status",
+        "type": "hbar",
+        "rows": 8,
+        "match": true,
+        "ready": true,
+        "accessible": true,
+        "tableClosed": true
+      }
+    },
+    {
+      "name": "7-day table-top hbar matches table",
+      "pass": true,
+      "detail": {
+        "source": "table-top",
+        "type": "hbar",
+        "rows": 5,
+        "match": true,
+        "ready": true,
+        "accessible": true,
+        "tableClosed": true
+      }
+    },
+    {
+      "name": "7-day table-brand hbar matches table",
+      "pass": true,
+      "detail": {
+        "source": "table-brand",
+        "type": "hbar",
+        "rows": 3,
+        "match": true,
+        "ready": true,
+        "accessible": true,
+        "tableClosed": true
+      }
+    },
+    {
+      "name": "7-day table-category hbar matches table",
+      "pass": true,
+      "detail": {
+        "source": "table-category",
+        "type": "hbar",
+        "rows": 2,
+        "match": true,
+        "ready": true,
+        "accessible": true,
+        "tableClosed": true
+      }
+    },
+    {
+      "name": "7-day table-payment hbar matches table",
+      "pass": true,
+      "detail": {
+        "source": "table-payment",
+        "type": "hbar",
+        "rows": 2,
+        "match": true,
+        "ready": true,
+        "accessible": true,
+        "tableClosed": true
+      }
+    },
+    {
+      "name": "7-day table-payment-status stacked matches table",
+      "pass": true,
+      "detail": {
+        "source": "table-payment-status",
+        "type": "stacked",
+        "rows": 2,
+        "match": true,
+        "ready": true,
+        "accessible": true,
+        "tableClosed": true
+      }
+    },
+    {
+      "name": "7-day table-rating hbar matches table",
+      "pass": true,
+      "detail": {
+        "source": "table-rating",
+        "type": "hbar",
+        "rows": 5,
+        "match": true,
+        "ready": true,
+        "accessible": true,
+        "tableClosed": true
+      }
+    },
+    {
+      "name": "30-day range and 8 KPI cards",
+      "pass": true,
+      "detail": {
+        "days": 30,
+        "current": "30 ngày",
+        "rows": [
+          4,
+          4
+        ],
+        "basis": true
+      }
+    },
+    {
+      "name": "30-day charts or explicit empty states",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "30-day table-daily line matches table",
+      "pass": true,
+      "detail": {
+        "source": "table-daily",
+        "type": "line",
+        "rows": 30,
+        "match": true,
+        "ready": true,
+        "accessible": true,
+        "tableClosed": true
+      }
+    },
+    {
+      "name": "30-day table-daily bar matches table",
+      "pass": true,
+      "detail": {
+        "source": "table-daily",
+        "type": "bar",
+        "rows": 30,
+        "match": true,
+        "ready": true,
+        "accessible": true,
+        "tableClosed": true
+      }
+    },
+    {
+      "name": "30-day table-status hbar matches table",
+      "pass": true,
+      "detail": {
+        "source": "table-status",
+        "type": "hbar",
+        "rows": 8,
+        "match": true,
+        "ready": true,
+        "accessible": true,
+        "tableClosed": true
+      }
+    },
+    {
+      "name": "30-day table-top hbar matches table",
+      "pass": true,
+      "detail": {
+        "source": "table-top",
+        "type": "hbar",
+        "rows": 5,
+        "match": true,
+        "ready": true,
+        "accessible": true,
+        "tableClosed": true
+      }
+    },
+    {
+      "name": "30-day table-brand hbar matches table",
+      "pass": true,
+      "detail": {
+        "source": "table-brand",
+        "type": "hbar",
+        "rows": 3,
+        "match": true,
+        "ready": true,
+        "accessible": true,
+        "tableClosed": true
+      }
+    },
+    {
+      "name": "30-day table-category hbar matches table",
+      "pass": true,
+      "detail": {
+        "source": "table-category",
+        "type": "hbar",
+        "rows": 2,
+        "match": true,
+        "ready": true,
+        "accessible": true,
+        "tableClosed": true
+      }
+    },
+    {
+      "name": "30-day table-payment hbar matches table",
+      "pass": true,
+      "detail": {
+        "source": "table-payment",
+        "type": "hbar",
+        "rows": 2,
+        "match": true,
+        "ready": true,
+        "accessible": true,
+        "tableClosed": true
+      }
+    },
+    {
+      "name": "30-day table-payment-status stacked matches table",
+      "pass": true,
+      "detail": {
+        "source": "table-payment-status",
+        "type": "stacked",
+        "rows": 2,
+        "match": true,
+        "ready": true,
+        "accessible": true,
+        "tableClosed": true
+      }
+    },
+    {
+      "name": "30-day table-rating hbar matches table",
+      "pass": true,
+      "detail": {
+        "source": "table-rating",
+        "type": "hbar",
+        "rows": 5,
+        "match": true,
+        "ready": true,
+        "accessible": true,
+        "tableClosed": true
+      }
+    },
+    {
+      "name": "90-day range and 8 KPI cards",
+      "pass": true,
+      "detail": {
+        "days": 90,
+        "current": "90 ngày",
+        "rows": [
+          4,
+          4
+        ],
+        "basis": true
+      }
+    },
+    {
+      "name": "90-day charts or explicit empty states",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "90-day dataset exercises all charts",
+      "pass": true,
+      "detail": {
+        "count": 9
+      }
+    },
+    {
+      "name": "90-day table-daily line matches table",
+      "pass": true,
+      "detail": {
+        "source": "table-daily",
+        "type": "line",
+        "rows": 90,
+        "match": true,
+        "ready": true,
+        "accessible": true,
+        "tableClosed": true
+      }
+    },
+    {
+      "name": "90-day table-daily bar matches table",
+      "pass": true,
+      "detail": {
+        "source": "table-daily",
+        "type": "bar",
+        "rows": 90,
+        "match": true,
+        "ready": true,
+        "accessible": true,
+        "tableClosed": true
+      }
+    },
+    {
+      "name": "90-day table-status hbar matches table",
+      "pass": true,
+      "detail": {
+        "source": "table-status",
+        "type": "hbar",
+        "rows": 8,
+        "match": true,
+        "ready": true,
+        "accessible": true,
+        "tableClosed": true
+      }
+    },
+    {
+      "name": "90-day table-top hbar matches table",
+      "pass": true,
+      "detail": {
+        "source": "table-top",
+        "type": "hbar",
+        "rows": 5,
+        "match": true,
+        "ready": true,
+        "accessible": true,
+        "tableClosed": true
+      }
+    },
+    {
+      "name": "90-day table-brand hbar matches table",
+      "pass": true,
+      "detail": {
+        "source": "table-brand",
+        "type": "hbar",
+        "rows": 3,
+        "match": true,
+        "ready": true,
+        "accessible": true,
+        "tableClosed": true
+      }
+    },
+    {
+      "name": "90-day table-category hbar matches table",
+      "pass": true,
+      "detail": {
+        "source": "table-category",
+        "type": "hbar",
+        "rows": 2,
+        "match": true,
+        "ready": true,
+        "accessible": true,
+        "tableClosed": true
+      }
+    },
+    {
+      "name": "90-day table-payment hbar matches table",
+      "pass": true,
+      "detail": {
+        "source": "table-payment",
+        "type": "hbar",
+        "rows": 2,
+        "match": true,
+        "ready": true,
+        "accessible": true,
+        "tableClosed": true
+      }
+    },
+    {
+      "name": "90-day table-payment-status stacked matches table",
+      "pass": true,
+      "detail": {
+        "source": "table-payment-status",
+        "type": "stacked",
+        "rows": 2,
+        "match": true,
+        "ready": true,
+        "accessible": true,
+        "tableClosed": true
+      }
+    },
+    {
+      "name": "90-day table-rating hbar matches table",
+      "pass": true,
+      "detail": {
+        "source": "table-rating",
+        "type": "hbar",
+        "rows": 5,
+        "match": true,
+        "ready": true,
+        "accessible": true,
+        "tableClosed": true
+      }
+    },
+    {
+      "name": "Invalid date range gives a warning",
+      "pass": true
+    },
+    {
+      "name": "Dashboard header and no horizontal overflow at 1366px",
+      "pass": true,
+      "detail": {
+        "w": 1366,
+        "overflowX": false,
+        "kind": "button",
+        "href": null,
+        "form": {
+          "method": "post",
+          "action": "/logout",
+          "csrf": true
+        },
+        "label": "Đăng xuất",
+        "svgHidden": true,
+        "rect": {
+          "x": 41,
+          "y": 8,
+          "w": 44,
+          "h": 44,
+          "r": 85,
+          "b": 52
+        },
+        "leftOfMenu": true,
+        "leftOfBrand": true,
+        "overlaps": [],
+        "initialScrollY": 0,
+        "clickable": true,
+        "carousel": null
+      }
+    },
+    {
+      "name": "Admin navigation at 1366px",
+      "pass": true,
+      "detail": {
+        "links": 9,
+        "current": "/admin/dashboard",
+        "icons": 9,
+        "fixed": true
+      }
+    },
+    {
+      "name": "Panel return-pending-title renders rows or an empty state",
+      "pass": true,
+      "detail": {
+        "id": "return-pending-title",
+        "present": true,
+        "empty": false
+      }
+    },
+    {
+      "name": "Panel payment-alert-title renders rows or an empty state",
+      "pass": true,
+      "detail": {
+        "id": "payment-alert-title",
+        "present": true,
+        "empty": false
+      }
+    },
+    {
+      "name": "Panel voucher-expiring-title renders rows or an empty state",
+      "pass": true,
+      "detail": {
+        "id": "voucher-expiring-title",
+        "present": true,
+        "empty": false
+      }
+    },
+    {
+      "name": "Low-stock KPI scrolls to matching list",
+      "pass": true
+    },
+    {
+      "name": "Dashboard header and no horizontal overflow at 1920px",
+      "pass": true,
+      "detail": {
+        "w": 1920,
+        "overflowX": false,
+        "kind": "button",
+        "href": null,
+        "form": {
+          "method": "post",
+          "action": "/logout",
+          "csrf": true
+        },
+        "label": "Đăng xuất",
+        "svgHidden": true,
+        "rect": {
+          "x": 48,
+          "y": 8,
+          "w": 44,
+          "h": 44,
+          "r": 92,
+          "b": 52
+        },
+        "leftOfMenu": true,
+        "leftOfBrand": true,
+        "overlaps": [],
+        "initialScrollY": 0,
+        "clickable": true,
+        "carousel": null
+      }
+    },
+    {
+      "name": "Admin navigation at 1920px",
+      "pass": true,
+      "detail": {
+        "links": 9,
+        "current": "/admin/dashboard",
+        "icons": 9,
+        "fixed": true
+      }
+    },
+    {
+      "name": "Dashboard header and no horizontal overflow at 768px",
+      "pass": true,
+      "detail": {
+        "w": 768,
+        "overflowX": false,
+        "kind": "button",
+        "href": null,
+        "form": {
+          "method": "post",
+          "action": "/logout",
+          "csrf": true
+        },
+        "label": "Đăng xuất",
+        "svgHidden": true,
+        "rect": {
+          "x": 23,
+          "y": 8,
+          "w": 44,
+          "h": 44,
+          "r": 67,
+          "b": 52
+        },
+        "leftOfMenu": true,
+        "leftOfBrand": true,
+        "overlaps": [],
+        "initialScrollY": 0,
+        "clickable": true,
+        "carousel": null
+      }
+    },
+    {
+      "name": "Admin navigation at 768px",
+      "pass": true,
+      "detail": {
+        "links": 9,
+        "current": "/admin/dashboard",
+        "icons": 9,
+        "fixed": false
+      }
+    },
+    {
+      "name": "Dashboard header and no horizontal overflow at 390px",
+      "pass": true,
+      "detail": {
+        "w": 390,
+        "overflowX": false,
+        "kind": "button",
+        "href": null,
+        "form": {
+          "method": "post",
+          "action": "/logout",
+          "csrf": true
+        },
+        "label": "Đăng xuất",
+        "svgHidden": true,
+        "rect": {
+          "x": 16,
+          "y": 8,
+          "w": 44,
+          "h": 44,
+          "r": 60,
+          "b": 52
+        },
+        "leftOfMenu": true,
+        "leftOfBrand": true,
+        "overlaps": [],
+        "initialScrollY": 0,
+        "clickable": true,
+        "carousel": null
+      }
+    },
+    {
+      "name": "Admin navigation at 390px",
+      "pass": true,
+      "detail": {
+        "links": 9,
+        "current": "/admin/dashboard",
+        "icons": 9,
+        "fixed": false
+      }
+    },
+    {
+      "name": "JS off: all 8 tables visible and canvas placeholders hidden",
+      "pass": true,
+      "detail": {
+        "open": 8,
+        "overflow": false,
+        "blankCanvases": 0
+      }
+    },
+    {
+      "name": "JS off: keyboard opens mobile Admin navigation",
+      "pass": true,
+      "detail": {
+        "links": 9,
+        "current": "/admin/dashboard",
+        "icons": 9,
+        "fixed": false
+      }
+    },
+    {
+      "name": "No page script exceptions",
+      "pass": true,
+      "detail": {
+        "count": 0
+      }
+    }
+  ],
+  "failures": 0,
+  "finishedAt": "2026-11-25T05:06:36.541Z"
+}

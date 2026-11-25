@@ -29,14 +29,33 @@ class AdminSauMua_Controller {
 
     @PostMapping("/admin/reviews/{id}/visibility")
     String hienThi(@PathVariable String id, @RequestParam boolean visible,
-                   @RequestParam(required = false) String revision, RedirectAttributes flash) {
+                   @RequestParam(required = false) String revision, @RequestParam(required = false) String status,
+                   @RequestParam(required = false) String stars, @RequestParam(required = false) String product,
+                   @RequestParam(required = false) String page, RedirectAttributes flash) {
         try {
             sauMua.datHienThi(id, visible, revision);
             flash.addFlashAttribute("message", visible ? "Đã duyệt đánh giá." : "Đã ẩn đánh giá.");
         } catch (IllegalStateException exception) {
             flash.addFlashAttribute("error", exception.getMessage());
         }
+        var trangThai = DanhGia_Store.TrangThaiLoc.tu(status);
+        if (trangThai != DanhGia_Store.TrangThaiLoc.TAT_CA || "TAT_CA".equalsIgnoreCase(status)) {
+            flash.addAttribute("status", trangThai.name());
+        }
+        giuThamSoSo(flash, "stars", stars, 1, 5);
+        giuThamSoSo(flash, "product", product, 1, Long.MAX_VALUE);
+        giuThamSoSo(flash, "page", page, 0, 10_000);
         return "redirect:/admin/reviews";
+    }
+
+    private static void giuThamSoSo(RedirectAttributes redirect, String ten, String giaTri, long min, long max) {
+        if (giaTri == null || !giaTri.matches("[0-9]{1,19}")) return;
+        try {
+            long so = Long.parseLong(giaTri);
+            if (so >= min && so <= max) redirect.addAttribute(ten, so);
+        } catch (NumberFormatException ignored) {
+            // Bỏ tham số phân trang/lọc vượt miền biểu diễn.
+        }
     }
 
     @GetMapping("/admin/returns")

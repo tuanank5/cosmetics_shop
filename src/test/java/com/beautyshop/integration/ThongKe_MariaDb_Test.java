@@ -4,6 +4,7 @@ import com.beautyshop.dto.BoLocThongKe_Form;
 import com.beautyshop.repository.ThongKe_Repository;
 import com.beautyshop.service.ThongKe_Service;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 import org.junit.jupiter.api.AfterEach;
@@ -38,6 +39,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 class ThongKe_MariaDb_Test {
     @Autowired JdbcClient jdbc;
     @Autowired ThongKe_Service thongKeService;
+    @Autowired ThongKe_Repository thongKeRepository;
     @Autowired MockMvc mvc;
 
     @AfterEach
@@ -73,6 +75,31 @@ class ThongKe_MariaDb_Test {
         long don3 = don(suffix + "-3", khach, "DELIVERED", "COD", 125000, "2020-03-09 16:59:00");
         dong(don3, bienThe, "TK-" + suffix, 100000, 1);
         thanhToan(don3, "COD-TK3-" + suffix, 125000, "PAID", "2020-03-09 16:59:00");
+        // Đơn 3 đặt ở kỳ trước nhưng giao ở đúng đầu kỳ hiện tại. Đơn 1 giao sau kỳ hiện tại.
+        jdbc.sql("UPDATE don_hang SET ngay_giao_thanh_cong = '2020-03-09 17:00:00' WHERE ma_don_hang = ?").param(don3).update();
+        jdbc.sql("UPDATE don_hang SET ngay_giao_thanh_cong = '2020-03-16 17:00:00', tam_tinh = 210000, so_tien_giam = 10000 WHERE ma_don_hang = ?")
+            .param(don1).update();
+        jdbc.sql("UPDATE bien_the_san_pham SET so_luong_tam_giu = 5 WHERE ma_bien_the = ?").param(bienThe).update();
+
+        long don4 = don(suffix + "-4", khach, "PENDING_PAYMENT", "MOMO", 125000, "2020-03-12 03:10:00");
+        jdbc.sql("""
+            INSERT INTO lan_thanh_toan (ma_don_hang, ma_yeu_cau, cong_thanh_toan, so_tien, trang_thai, ngay_tao)
+            VALUES (?, ?, 'MOMO_MOCK', 125000, 'PENDING', '2020-03-12 03:10:00'),
+                   (?, ?, 'MOMO_MOCK', 125000, 'FAILED', '2020-03-12 03:11:00')
+            """).params(don4, "P20C-P-" + suffix, don4, "P20C-F-" + suffix).update();
+        jdbc.sql("""
+            INSERT INTO tam_giu_ton_kho (ma_don_hang, ma_bien_the, so_luong, het_han_luc, trang_thai)
+            VALUES (?, ?, 1, '2020-03-12 03:25:00', 'HELD')
+            """).params(don4, bienThe).update();
+        jdbc.sql("""
+            INSERT INTO yeu_cau_doi_tra (ma_don_hang, ma_nguoi_dung, trang_thai, ly_do, ngay_yeu_cau)
+            VALUES (?, ?, 'PENDING', 'Lý do QA', '2020-03-14 09:00:00')
+            """).params(don3, khach).update();
+        jdbc.sql("""
+            INSERT INTO phieu_giam_gia (ma_ap_dung, loai_giam_gia, gia_tri_giam, gioi_han_su_dung,
+                so_luot_da_dung, so_luot_tam_giu, bat_dau_luc, ket_thuc_luc)
+            VALUES (?, 'FIXED', 10000, 5, 1, 2, '2020-03-06 00:00:00', '2020-03-17 00:00:00')
+            """).param("P20C-" + suffix).update();
 
         var form = new BoLocThongKe_Form();
         form.setFrom(LocalDate.of(2020, 3, 10));
@@ -102,6 +129,32 @@ class ThongKe_MariaDb_Test {
         assertThat(tq.theoPhuongThuc().get(0).soLuong()).isEqualTo(1);
         assertThat(tq.theoPhuongThuc().get(1).soLuong()).isZero();
         assertThat(tq.donMoi()).isNotEmpty();
+        assertThat(tq.chiSo("da-giao").giaTri()).isEqualByComparingTo("1");
+        assertThat(tq.chiSo("da-giao").kyTruoc()).isEqualByComparingTo("0");
+        var tatCaSkuSapHet = thongKeRepository.skuSapHet(5, Integer.MAX_VALUE);
+        assertThat(tq.demSkuSapHet()).isEqualTo(tatCaSkuSapHet.size());
+        assertThat(tq.skuSapHet()).containsExactlyElementsOf(tatCaSkuSapHet.stream().limit(20).toList());
+        assertThat(tatCaSkuSapHet).anyMatch(sku -> sku.maBienThe() == bienThe && sku.khaDung() == 5);
+        assertThat(tq.tachDoanhThu().khop()).isTrue();
+        assertThat(tq.tachDoanhThu().tienHang()).isEqualByComparingTo("200000");
+        assertThat(tq.tachDoanhThu().phiVanChuyen()).isEqualByComparingTo("25000");
+        assertThat(tq.theoThuongHieu()).singleElement().satisfies(
+            n -> assertThat(n.soTien()).isEqualByComparingTo("200000"));
+        assertThat(tq.trangThaiThanhToan()).containsExactly(
+            new ThongKe_Repository.NhomThanhToan("COD", 1, 0, 0),
+            new ThongKe_Repository.NhomThanhToan("MOMO", 0, 0, 2));
+        assertThat(tq.canhBaoThanhToan()).filteredOn(p -> p.maDonHang() == don4)
+            .extracting(ThongKe_Repository.CanhBaoThanhToan::trangThai).containsExactly("FAILED", "PENDING");
+        assertThat(tq.doiTraChoChiTiet()).anyMatch(r -> ("TK-" + suffix + "-3").equals(r.maDon()));
+        assertThat(thongKeRepository.voucherSapHetHan(LocalDateTime.of(2020, 3, 13, 0, 0)))
+            .anyMatch(v -> ("P20C-" + suffix).equals(v.maApDung()) && v.luotConLai() == 2);
+
+        mvc.perform(get("/admin/orders/" + don1))
+            .andExpect(status().isOk())
+            .andExpect(content().string(containsString("<a href=\"/admin/orders\" aria-current=\"page\">")));
+        mvc.perform(get("/admin/catalog/brands"))
+            .andExpect(status().isOk())
+            .andExpect(content().string(containsString("<a href=\"/admin/catalog/categories\" aria-current=\"page\">")));
     }
 
     @Test

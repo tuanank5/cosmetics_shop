@@ -1,0 +1,7 @@
+﻿Initial mvn -o test could not resolve four existing dependencies from the local cache.
+The dependency:go-offline attempt failed to resolve Maven Central (DNS).
+Retried with the Google Maven Central mirror. Focused tests passed after warming the cache.
+[INFO] Tests run: 13, Failures: 0, Errors: 0, Skipped: 0
+[INFO] BUILD SUCCESS
+[INFO] Total time:  34.905 s
+[INFO] Finished at: 2026-11-25T11:33:15+07:00

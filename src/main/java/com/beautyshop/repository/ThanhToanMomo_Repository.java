@@ -9,6 +9,10 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class ThanhToanMomo_Repository {
+    static final String CO_GIU_HANG_QUA_HAN = """
+        EXISTS (SELECT 1 FROM tam_giu_ton_kho t WHERE t.ma_don_hang = d.ma_don_hang
+            AND t.trang_thai = 'HELD' AND t.het_han_luc <= %s)
+        """;
     private static final String SELECT = """
         SELECT tt.ma_don_hang, d.ma_don_hang_hien_thi, tt.ma_yeu_cau, tt.so_tien, tt.cong_thanh_toan,
                tt.trang_thai, tt.ma_giao_dich_cong
@@ -59,12 +63,12 @@ public class ThanhToanMomo_Repository {
         return jdbc.sql("""
             SELECT d.ma_don_hang FROM don_hang d
             WHERE d.ma_don_hang > ? AND d.phuong_thuc_thanh_toan = 'MOMO' AND d.trang_thai = 'PENDING_PAYMENT'
-              AND EXISTS (SELECT 1 FROM tam_giu_ton_kho t WHERE t.ma_don_hang = d.ma_don_hang
-                  AND t.trang_thai = 'HELD' AND t.het_han_luc <= UTC_TIMESTAMP(6))
+              AND %s
               AND EXISTS (SELECT 1 FROM lan_thanh_toan l WHERE l.ma_don_hang = d.ma_don_hang
                   AND l.cong_thanh_toan = ?)
             ORDER BY d.ma_don_hang LIMIT 3
-            """).params(sauMaDon, gateway).query(Long.class).list();
+            """.formatted(CO_GIU_HANG_QUA_HAN.formatted("UTC_TIMESTAMP(6)")))
+            .params(sauMaDon, gateway).query(Long.class).list();
     }
 
     public void capNhat(String requestId, String trangThai, Long transId) {

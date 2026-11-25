@@ -49,6 +49,10 @@
             </div>
             <form method="post" th:action="@{/admin/reviews/{id}/visibility(id=${dg.ma})}">
                 <input type="hidden" name="revision" th:value="${dg.phienBan}">
+                <input type="hidden" name="status" th:value="${locTrangThai}">
+                <input type="hidden" name="stars" th:if="${locSao != null}" th:value="${locSao}">
+                <input type="hidden" name="product" th:if="${locSanPham != null}" th:value="${locSanPham}">
+                <input type="hidden" name="page" th:value="${trang.danhSach.number}">
                 <button type="submit" name="visible" th:value="${!dg.hienThi}" class="btn"
                         th:classappend="${dg.hienThi ? 'btn--secondary' : 'btn--primary'}"
                         th:text="${dg.hienThi ? 'Ẩn đánh giá' : 'Duyệt đánh giá'}"></button>

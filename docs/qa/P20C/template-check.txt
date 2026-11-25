@@ -1,0 +1,4 @@
+﻿PASS: Template scan (inline scripts, styles, handlers, th:utext and remote src/href).
+PASS: Node syntax checks for dashboard.js and the QA harness.
+PASS: git diff --check.
+Chart.js 4.6.1 SHA-256 after normalizing checkout line endings: 87364cc2b2a76a6684929e7d6b80b18a897794db38400caff1fcf1791c6925d2

@@ -78,11 +78,29 @@ class AdminDanhGiaPagesTest {
             .andExpect(content().string(containsString("4/5 · Thịnh P. · 21/11/2026")))
             .andExpect(content().string(containsString("action=\"/admin/reviews/65f000000000000000000001/visibility\"")))
             .andExpect(content().string(containsString("name=\"revision\" value=\"3\"")))
+            .andExpect(content().string(containsString("name=\"page\" value=\"1\"")))
+            .andExpect(content().string(containsString("<a href=\"/admin/reviews\" aria-current=\"page\">")))
             .andExpect(content().string(containsString(">Chờ duyệt</span>")))
             .andExpect(content().string(containsString(">Đã ẩn</span>")))
             .andExpect(content().string(containsString("Trang 2 / 3")))
             .andExpect(content().string(containsString("/admin/reviews?status=CHO_DUYET&amp;stars=4&amp;product=30&amp;page=2")));
         verify(sauMua).danhSachDanhGiaAdmin(new BoLocDanhGia(TrangThaiLoc.CHO_DUYET, 4, 30L), 1);
+    }
+
+    @Test
+    void giuBoLocVaTrangSauKhiDuyetHoacAn() throws Exception {
+        for (String visible : List.of("true", "false")) {
+            mvc.perform(post("/admin/reviews/123/visibility").with(user("admin").roles("ADMIN")).with(csrf())
+                    .param("visible", visible).param("revision", "0").param("status", "CHO_DUYET")
+                    .param("stars", "4").param("product", "30").param("page", "2").param("next", "/"))
+                .andExpect(redirectedUrl("/admin/reviews?status=CHO_DUYET&stars=4&product=30&page=2"));
+        }
+        mvc.perform(post("/admin/reviews/123/visibility").with(user("admin").roles("ADMIN")).with(csrf())
+                .param("visible", "true").param("status", "invalid").param("stars", "abc")
+                .param("product", "9999999999999999999").param("page", "10001"))
+            .andExpect(redirectedUrl("/admin/reviews"));
+        verify(sauMua).datHienThi("123", true, "0");
+        verify(sauMua).datHienThi("123", false, "0");
     }
 
     @Test

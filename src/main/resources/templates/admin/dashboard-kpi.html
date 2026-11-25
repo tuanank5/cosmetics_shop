@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<body>
+<li th:fragment="kpi(k, tq)" class="kpi-card" th:classappend="${k.ma == 'ti-le-huy'} ? 'kpi-card--inverse'" th:attr="data-kpi=${k.ma}">
+  <h3 th:text="${k.diemPhanTram() ? 'Đơn bị hủy' : k.ten}">KPI</h3>
+  <p class="kpi-value">
+    <th:block th:if="${k.loai == 'TIEN'}"><span th:replace="~{fragments/ui :: money(${k.giaTri})}"></span></th:block>
+    <span th:if="${k.loai == 'SO'}" th:text="${#numbers.formatInteger(k.giaTri, 1, 'POINT')}"></span>
+    <span th:if="${k.diemPhanTram()}" th:text="${#numbers.formatInteger(tq.donBiHuy, 1, 'POINT')}"></span>
+  </p>
+  <p class="kpi-breakdown" th:if="${k.diemPhanTram()}">
+    <span>Tỉ lệ hủy đơn</span>
+    <strong th:text="${k.giaTri == null ? '—' : #numbers.formatDecimal(k.giaTri, 1, 'POINT', 1, 'COMMA') + '%'}"></strong>
+  </p>
+  <p class="kpi-breakdown" th:if="${k.ma == 'doanh-thu' and tq.tachDoanhThu != null and tq.tachDoanhThu.khop}">
+    Tiền hàng sau giảm giá <span th:replace="~{fragments/ui :: money(${tq.tachDoanhThu.tienHang})}"></span>
+    · Phí vận chuyển <span th:replace="~{fragments/ui :: money(${tq.tachDoanhThu.phiVanChuyen})}"></span>
+  </p>
+  <p class="kpi-change" th:with="h=${k.huong.name()}" th:classappend="|kpi-change--${#strings.toLowerCase(h)}|">
+    <span class="kpi-arrow" aria-hidden="true" th:text="${h == 'TANG' ? '▲' : (h == 'GIAM' ? '▼' : (h == 'KHONG_DOI' ? '■' : '–'))}"></span>
+    <span th:if="${h == 'KHONG_SO_SANH'}">Kỳ trước chưa có dữ liệu để so sánh</span>
+    <span th:unless="${h == 'KHONG_SO_SANH'}"
+          th:text="|${h == 'TANG' ? 'Tăng' : (h == 'GIAM' ? 'Giảm' : 'Không đổi')} ${#numbers.formatDecimal(k.thayDoi, 1, 'POINT', 1, 'COMMA')}${k.diemPhanTram() ? ' điểm %' : '%'} so với kỳ trước|"></span>
+  </p>
+  <p class="kpi-note" th:text="${k.chuThich}"></p>
+</li>
+</body>
+</html>

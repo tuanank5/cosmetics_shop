@@ -1,0 +1,5 @@
+﻿[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.847 s -- in com.beautyshop.controller.admin.P20CLayoutFixtureTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
+[INFO] BUILD SUCCESS
+[INFO] Total time:  6.553 s
+[INFO] Finished at: 2026-11-25T12:03:04+07:00
