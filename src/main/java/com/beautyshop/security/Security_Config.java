@@ -34,7 +34,7 @@ public class Security_Config {
         return http
                 .addFilterBefore(new TrangThaiTaiKhoan_Filter(nguoiDungRepository), AuthorizationFilter.class)
                 .authorizeHttpRequests(auth -> auth
-                    .requestMatchers("/", "/products", "/products/**", "/login", "/register","/oauth2/**",
+                    .requestMatchers("/", "/products", "/products/**", "/login", "/register","/register/**","/oauth2/**",
                             "/login/oauth2/**","/css/**", "/js/**", "/img/**", "/error", "/favicon.ico").permitAll()
                     .requestMatchers(HttpMethod.GET, "/cart", "/cart/**", "/uploads/sku/*").permitAll()
                     .requestMatchers(HttpMethod.HEAD, "/uploads/sku/*").permitAll()

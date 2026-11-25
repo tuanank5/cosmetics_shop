@@ -1,5 +1,20 @@
 # TÙY CHỌN chỉ cho dev local. Nếu đã có MariaDB, không cần Docker.
 services:
+  # Redis phục vụ xác thực email OTP
+  redis:
+    image: redis:7-alpine
+    container_name: beautyshop-redis
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:6379:6379"
+    volumes:
+      - beautyshop_redis:/data
+    command: redis-server --appendonly yes
+    healthcheck:
+      test: [ "CMD", "redis-cli", "ping" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
   mariadb:
     image: mariadb:11.4
     environment:
@@ -16,5 +31,24 @@ services:
       interval: 10s
       timeout: 5s
       retries: 10
+#  mariadb:
+#    image: mariadb:11.4
+#    profiles:
+#      - local-db
+#    environment:
+#      MARIADB_RANDOM_ROOT_PASSWORD: "1"
+#      MARIADB_DATABASE: beautyshop
+#      MARIADB_USER: beautyshop
+#      MARIADB_PASSWORD: ${DB_PASSWORD:-beautyshop_local_only}
+#    ports:
+#      - "127.0.0.1:3307:3306"
+#    volumes:
+#      - beautyshop_db:/var/lib/mysql
+#    healthcheck:
+#      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+#      interval: 10s
+#      timeout: 5s
+#      retries: 10
 volumes:
   beautyshop_db:
+  beautyshop_redis:

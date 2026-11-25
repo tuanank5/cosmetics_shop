@@ -35,6 +35,31 @@ public class NguoiDung_Service {
         return email.strip().toLowerCase(Locale.ROOT);
     }
 
+
+    // Kiểm tra email đã tồn tại trong hệ thống chưa
+    @Transactional(readOnly = true)
+    public boolean emailDaTonTai(String email) {
+        return repository.findByEmail(chuanHoaEmail(email)).isPresent();
+    }
+
+    // Mã hóa mật khẩu trước khi lưu tạm trong Session
+    public String bamMatKhau(String matKhau) {
+        return passwordEncoder.encode(matKhau);
+    }
+
+    // Tạo tài khoản sau khi email đã xác thực OTP thành công
+    @Transactional
+    public void dangKyDaXacThuc(String email,String hoTen, String matKhauBam) {
+        String emailChuanHoa = chuanHoaEmail(email);
+        if (repository.findByEmail(emailChuanHoa).isPresent()) {
+            throw new org.springframework.dao.DataIntegrityViolationException(
+                    "Email đã được sử dụng."
+            );
+        }
+        repository.saveAndFlush(new NguoiDung(emailChuanHoa, matKhauBam, hoTen.strip())
+        );
+    }
+
     @Transactional(readOnly = true)
     public HoSo_Form hoSo(long maNguoiDung) {
         var nguoiDung = repository.findById(maNguoiDung).orElseThrow(NguoiDung_Service::khongTimThay);
