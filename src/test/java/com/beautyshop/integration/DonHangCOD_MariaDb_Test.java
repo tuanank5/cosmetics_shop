@@ -101,9 +101,9 @@ class DonHangCOD_MariaDb_Test {
         assertThat(trangThai(maDon)).isEqualTo("CANCELLED");
 
         gioHangService.themGioCustomer(chu.id(), variant);
-        var tongQuanTruoc = donHangService.tongQuanAdmin();
+        var tongQuanTruoc = tongQuanAdmin();
         long maDonGiao = datDon(session, chu.maDiaChi(), "");
-        var tongQuanChuaThu = donHangService.tongQuanAdmin();
+        var tongQuanChuaThu = tongQuanAdmin();
         assertThat(tongQuanChuaThu.tongSoDon()).isEqualTo(tongQuanTruoc.tongSoDon() + 1);
         assertThat(tongQuanChuaThu.soDonDaThu()).isEqualTo(tongQuanTruoc.soDonDaThu());
         assertThat(tongQuanChuaThu.doanhThuDaThu()).isEqualByComparingTo(tongQuanTruoc.doanhThuDaThu());
@@ -130,7 +130,7 @@ class DonHangCOD_MariaDb_Test {
         assertThat(jdbc.sql("SELECT trang_thai FROM van_chuyen WHERE ma_don_hang = ?").param(maDonGiao)
             .query(String.class).single()).isEqualTo("DELIVERED");
         assertThat(ton(variant)).isEqualTo(2);
-        var tongQuanDaThu = donHangService.tongQuanAdmin();
+        var tongQuanDaThu = tongQuanAdmin();
         assertThat(tongQuanDaThu.soDonDaThu()).isEqualTo(tongQuanChuaThu.soDonDaThu() + 1);
         assertThat(tongQuanDaThu.doanhThuDaThu())
             .isEqualByComparingTo(tongQuanChuaThu.doanhThuDaThu().add(new BigDecimal("600000")));
@@ -333,4 +333,17 @@ class DonHangCOD_MariaDb_Test {
     }
 
     private record TaiKhoan(String email, long id, long maDiaChi) {}
+
+    /** P20: tongQuanAdmin() có @PreAuthorize ADMIN; test gọi trực tiếp service nên đặt ngữ cảnh Admin tạm thời. */
+    private com.beautyshop.repository.DonHang_Repository.TongQuan tongQuanAdmin() {
+        var context = org.springframework.security.core.context.SecurityContextHolder.createEmptyContext();
+        context.setAuthentication(org.springframework.security.authentication.UsernamePasswordAuthenticationToken.authenticated(
+            "admin-test", null, java.util.List.of(new org.springframework.security.core.authority.SimpleGrantedAuthority("ROLE_ADMIN"))));
+        org.springframework.security.core.context.SecurityContextHolder.setContext(context);
+        try {
+            return donHangService.tongQuanAdmin();
+        } finally {
+            org.springframework.security.core.context.SecurityContextHolder.clearContext();
+        }
+    }
 }

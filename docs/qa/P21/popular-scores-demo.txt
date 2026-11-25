@@ -1,0 +1,9 @@
+﻿P21-DEMO-REPORT ung vien=30, coDuLieu=true, m=3.5625
+P21-DEMO-REPORT | # | ma | duong_dan | da_ban | chuan_hoa_ban | so_dg | tong_sao | bayes | dg_0_1 | yeu_thich | chuan_hoa_yt | diem |
+P21-DEMO-REPORT | 1 | 26 | demo-r026 | 16 | 1.0000 | 5 | 18 | 3.5813 | 0.6453 | 0 | 0.0000 | 0.6936 |
+P21-DEMO-REPORT | 2 | 8 | demo-r008 | 10 | 0.6250 | 2 | 10 | 3.9732 | 0.7433 | 0 | 0.0000 | 0.5355 |
+P21-DEMO-REPORT | 3 | 21 | demo-r021 | 10 | 0.6250 | 3 | 13 | 3.8516 | 0.7129 | 0 | 0.0000 | 0.5264 |
+P21-DEMO-REPORT | 4 | 27 | demo-r027 | 10 | 0.6250 | 1 | 4 | 3.6354 | 0.6589 | 0 | 0.0000 | 0.5102 |
+P21-DEMO-REPORT | 5 | 29 | demo-r029 | 9 | 0.5625 | 3 | 14 | 3.9766 | 0.7441 | 0 | 0.0000 | 0.5045 |
+P21-DEMO-REPORT trang chu: [demo-r026, demo-r008, demo-r021, demo-r027, demo-r029]
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0

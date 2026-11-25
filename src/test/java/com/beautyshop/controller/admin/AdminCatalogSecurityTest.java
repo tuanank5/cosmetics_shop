@@ -43,7 +43,10 @@ class AdminCatalogSecurityTest {
     void adminCanRenderFormButNeedsCsrfToSubmit() throws Exception {
         mvc.perform(get("/admin/catalog/products/new"))
             .andExpect(status().isOk())
-            .andExpect(view().name("admin/catalog/form"));
+            .andExpect(view().name("admin/catalog/form"))
+            // P19: the light Admin header uses the light lockup inside a home link.
+            .andExpect(content().string(org.hamcrest.Matchers.containsString("src=\"/img/brand/beautyshop-lockup-light.svg\"")))
+            .andExpect(content().string(org.hamcrest.Matchers.containsString("aria-label=\"BeautyShop – Trang chủ\"")));
         mvc.perform(post("/admin/catalog/products/new")).andExpect(status().isForbidden());
         mvc.perform(post("/admin/catalog/products/new").with(csrf()).param("slug", "Invalid Slug"))
             .andExpect(model().attributeHasFieldErrors("form", "name", "slug"));

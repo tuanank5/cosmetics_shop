@@ -2,6 +2,7 @@ package com.beautyshop.repository;
 
 import com.beautyshop.entity.SanPham;
 import java.math.BigDecimal;
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.data.domain.Page;
@@ -28,7 +29,7 @@ public interface CuaHang_Repository extends Repository<SanPham, Long> {
         """;
 
     @Query(value = """
-        select s.duongDan as duongDan, s.tenSanPham as tenSanPham, t.tenThuongHieu as tenThuongHieu,
+        select s.maSanPham as maSanPham, s.duongDan as duongDan, s.tenSanPham as tenSanPham, t.tenThuongHieu as tenThuongHieu,
                min(b.giaBan) as giaTu, min(b.urlHinhAnh) as urlHinhAnh,
                max(b.soLuongTrongKho - b.soLuongTamGiu) as soLuongKhaDungLonNhat
         """ + LOC + """
@@ -43,7 +44,7 @@ public interface CuaHang_Repository extends Repository<SanPham, Long> {
 
     /** Trang chủ: sản phẩm active mới nhất có ít nhất một SKU active còn hàng khả dụng; không có cờ "nổi bật" trong schema. */
     @Query("""
-        select s.duongDan as duongDan, s.tenSanPham as tenSanPham, t.tenThuongHieu as tenThuongHieu,
+        select s.maSanPham as maSanPham, s.duongDan as duongDan, s.tenSanPham as tenSanPham, t.tenThuongHieu as tenThuongHieu,
                min(b.giaBan) as giaTu, min(b.urlHinhAnh) as urlHinhAnh,
                max(b.soLuongTrongKho - b.soLuongTamGiu) as soLuongKhaDungLonNhat
         from BienTheSanPham b
@@ -57,6 +58,22 @@ public interface CuaHang_Repository extends Repository<SanPham, Long> {
         order by s.ngayTao desc, s.maSanPham desc
         """)
     List<TheSanPham> timNoiBat(Pageable pageable);
+
+    /** P21: thẻ sản phẩm theo danh sách mã (gợi ý); cùng điều kiện hiển thị và còn hàng như dải nổi bật. Caller tự giữ thứ tự. */
+    @Query("""
+        select s.maSanPham as maSanPham, s.duongDan as duongDan, s.tenSanPham as tenSanPham, t.tenThuongHieu as tenThuongHieu,
+               min(b.giaBan) as giaTu, min(b.urlHinhAnh) as urlHinhAnh,
+               max(b.soLuongTrongKho - b.soLuongTamGiu) as soLuongKhaDungLonNhat
+        from BienTheSanPham b
+        join b.sanPham s
+        join s.thuongHieu t
+        join s.danhMuc d
+        where s.maSanPham in :ma and s.dangHoatDong = true and b.dangHoatDong = true
+          and t.dangHoatDong = true and d.dangHoatDong = true
+        group by s.maSanPham, s.duongDan, s.tenSanPham, t.tenThuongHieu
+        having max(b.soLuongTrongKho - b.soLuongTamGiu) > 0
+        """)
+    List<TheSanPhamCoMa> timTheTheoMa(@Param("ma") Collection<Long> ma);
 
     /** Trang chủ chương 2: chuỗi loại da thô của các sản phẩm đang bán (cùng điều kiện hiển thị với /products). */
     @Query("""
@@ -91,7 +108,12 @@ public interface CuaHang_Repository extends Repository<SanPham, Long> {
         long getSoSanPham();
     }
 
+    /** Giữ tên cũ của P21; mọi thẻ đều có mã sản phẩm từ P23 (tóm tắt đánh giá theo lô). */
+    interface TheSanPhamCoMa extends TheSanPham {
+    }
+
     interface TheSanPham {
+        Long getMaSanPham();
         String getDuongDan();
         String getTenSanPham();
         String getTenThuongHieu();

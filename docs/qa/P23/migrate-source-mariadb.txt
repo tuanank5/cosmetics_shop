@@ -1,0 +1,8 @@
+tong	dang_hien	an_hoac_cho	sao_loi	dai_hon_1000	so_san_pham	tb_sao
+71	64	7	0	0	26	3.592
+so_sao	n	hien
+5	21	19
+4	25	21
+3	8	8
+2	9	9
+1	8	7

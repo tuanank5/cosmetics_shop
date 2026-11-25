@@ -1,5 +1,6 @@
 package com.beautyshop.service;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import com.beautyshop.order.OrderState_Policy;
 import com.beautyshop.order.OrderStatus;
 import com.beautyshop.payment.Momo_Settings;
@@ -113,7 +114,9 @@ public class DonHang_Service {
     }
 
     public List<TomTat> danhSachCustomer(long maNguoiDung) { return donHangRepository.danhSach(maNguoiDung); }
+    @PreAuthorize("hasRole('ADMIN')")
     public List<TomTat> danhSachAdmin() { return donHangRepository.danhSach(null); }
+    @PreAuthorize("hasRole('ADMIN')")
     public DonHang_Repository.TongQuan tongQuanAdmin() { return donHangRepository.tongQuan(); }
 
     public ChiTietDon chiTietCustomer(long maDon) {
@@ -121,6 +124,7 @@ public class DonHang_Service {
         return chiTietAdmin(maDon);
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     public ChiTietDon chiTietAdmin(long maDon) {
         Don don = timDon(maDon, false);
         boolean online = "MOMO".equals(don.phuongThuc());
@@ -140,6 +144,7 @@ public class DonHang_Service {
     }
 
     @Transactional(isolation = Isolation.READ_COMMITTED)
+    @PreAuthorize("hasRole('ADMIN')")
     public void chuyenAdmin(long maDon, OrderStatus trangThaiMoi) {
         Don don = timDon(maDon, true);
         if (trangThaiMoi == OrderStatus.CANCELLED) {

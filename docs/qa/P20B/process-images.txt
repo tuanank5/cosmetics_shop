@@ -1,0 +1,12 @@
+﻿{"so_file_goc": 11, "so_sku": 32, "sku_da_nap": 0}
+BO QUA r0010-1.jpg - KHONG_GHEP_DUOC: tên không bắt đầu bằng r + đúng 3 chữ số (vd r010.jpg, r010-2.jpg)
+BO QUA r0010.jpg - KHONG_GHEP_DUOC: tên không bắt đầu bằng r + đúng 3 chữ số (vd r010.jpg, r010-2.jpg)
+BO QUA r001.jpg - QUA_NHO: sau cắt 4:5 còn 150x187 < 600x750
+BO QUA r002.jpg - QUA_NHO: sau cắt 4:5 còn 150x187 < 600x750
+BO QUA r003.jpg - QUA_NHO: sau cắt 4:5 còn 150x187 < 600x750
+BO QUA r004.jpg - QUA_NHO: sau cắt 4:5 còn 150x187 < 600x750
+BO QUA r005.jpg - QUA_NHO: sau cắt 4:5 còn 150x187 < 600x750
+BO QUA r006.jpg - QUA_NHO: sau cắt 4:5 còn 101x126 < 600x750
+BO QUA r007.jpg - QUA_NHO: sau cắt 4:5 còn 90x112 < 600x750
+BO QUA r008.jpg - QUA_NHO: sau cắt 4:5 còn 150x187 < 600x750
+BO QUA r009.jpg - QUA_NHO: sau cắt 4:5 còn 150x187 < 600x750

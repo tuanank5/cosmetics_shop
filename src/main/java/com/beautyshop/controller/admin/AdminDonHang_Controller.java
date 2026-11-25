@@ -2,6 +2,7 @@ package com.beautyshop.controller.admin;
 
 import com.beautyshop.order.OrderStatus;
 import com.beautyshop.service.DonHang_Service;
+import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -15,8 +16,14 @@ class AdminDonHang_Controller {
     AdminDonHang_Controller(DonHang_Service donHangService) { this.donHangService = donHangService; }
 
     @GetMapping
-    String danhSach(Model model) {
-        model.addAttribute("donHang", donHangService.danhSachAdmin());
+    String danhSach(@RequestParam(name = "status", required = false) List<OrderStatus> loc, Model model) {
+        // P20: Dashboard links here with ?status=... to show only orders waiting for Admin action.
+        var donHang = donHangService.danhSachAdmin();
+        if (loc != null && !loc.isEmpty()) {
+            donHang = donHang.stream().filter(don -> loc.contains(don.trangThai())).toList();
+            model.addAttribute("locTrangThai", loc);
+        }
+        model.addAttribute("donHang", donHang);
         model.addAttribute("tongQuan", donHangService.tongQuanAdmin());
         model.addAttribute("base", "/admin/orders");
         return "order/list";

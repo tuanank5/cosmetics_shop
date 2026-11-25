@@ -2,22 +2,32 @@
 <html lang="vi" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="~{fragments/head :: head('Đánh giá · BeautyShop')}"></head>
 <body><div th:replace="~{fragments/header :: siteHeader}"></div>
-<main id="main" tabindex="-1" class="page-content">
-    <a class="text-link" th:href="@{/orders/{id}(id=${trang.muc.maDon})}">Quay lại đơn</a>
+<main id="main" tabindex="-1" class="page-content storefront review-page">
+    <a class="text-link" th:href="@{/orders/{id}(id=${trang.muc.maDon})}"><span aria-hidden="true">←</span> Quay lại đơn</a>
     <h1>Đánh giá sản phẩm</h1>
-    <p th:text="|${trang.muc.tenSanPham} · ${trang.muc.tenBienThe}|"></p>
-    <p th:if="${trang.hienTai != null and !trang.hienTai.hienThi}">Đánh giá đang chờ duyệt hoặc đã ẩn.</p>
-    <form class="catalog-form" method="post" th:action="@{${action}}" th:object="${form}">
-        <label>Số sao
-            <select th:field="*{soSao}" required>
-                <option value="">Chọn số sao</option>
-                <option th:each="sao : ${#numbers.sequence(1,5)}" th:value="${sao}" th:text="|${sao} sao|"></option>
-            </select>
-        </label>
-        <small class="form-error" th:errors="*{soSao}"></small>
-        <label>Nội dung <textarea th:field="*{noiDung}" maxlength="2000" rows="5"></textarea></label>
-        <small class="form-error" th:errors="*{noiDung}"></small>
-        <button type="submit" class="btn btn--primary">Gửi duyệt</button>
+    <p class="review-product" th:text="|${trang.muc.tenSanPham} · ${trang.muc.tenBienThe}|"></p>
+    <p class="notice" role="status" th:if="${trang.khongTaiDuoc}">Tạm thời chưa tải được đánh giá trước đó. Bạn vẫn có thể gửi lại sau ít phút.</p>
+    <p class="notice" role="status" th:if="${trang.hienTai != null and !trang.hienTai.hienThi}">Đánh giá đang chờ duyệt hoặc đã ẩn. Sửa đánh giá sẽ gửi lại để duyệt.</p>
+    <p class="form-error" role="alert" th:if="${loiLuu}" th:text="${loiLuu}"></p>
+    <form class="catalog-form review-form" method="post" th:action="@{${action}}" th:object="${form}" novalidate>
+        <fieldset class="star-picker" th:attr="aria-describedby=${#fields.hasErrors('soSao')} ? 'soSao-error' : null">
+            <legend>Số sao <span class="muted">(bắt buộc)</span></legend>
+            <span class="star-option" th:each="sao : ${#numbers.sequence(1, 5)}">
+                <input type="radio" th:field="*{soSao}" th:value="${sao}" required>
+                <label th:for="${#ids.prev('soSao')}"><span aria-hidden="true">★</span><span class="visually-hidden" th:text="|${sao} sao|"></span></label>
+            </span>
+        </fieldset>
+        <p id="soSao-error" class="form-error" th:if="${#fields.hasErrors('soSao')}" th:errors="*{soSao}"></p>
+        <label for="noiDung">Nhận xét <span class="muted">(không bắt buộc)</span></label>
+        <textarea id="noiDung" th:field="*{noiDung}" th:maxlength="${noiDungToiDa}" rows="6" data-char-source
+                  aria-describedby="noiDung-count"></textarea>
+        <p id="noiDung-count" class="hint" data-char-count aria-live="polite">
+            <span data-char-current th:text="${form.noiDung == null ? 0 : #strings.length(form.noiDung)}">0</span>/<span th:text="${noiDungToiDa}">1000</span> ký tự
+        </p>
+        <p class="form-error" th:if="${#fields.hasErrors('noiDung')}" th:errors="*{noiDung}"></p>
+        <button type="submit" class="btn btn--primary" th:text="${trang.hienTai == null ? 'Gửi đánh giá' : 'Lưu và gửi duyệt lại'}">Gửi đánh giá</button>
     </form>
 </main>
-<div th:replace="~{fragments/footer :: siteFooter}"></div></body></html>
+<div th:replace="~{fragments/footer :: siteFooter}"></div>
+<script th:src="@{/js/review-form.js}" defer></script>
+</body></html>

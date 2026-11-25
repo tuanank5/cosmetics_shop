@@ -75,15 +75,41 @@
                 <summary>Loại da phù hợp</summary>
                 <p class="pdp-copy" th:text="${sanPham.loaiDaPhuHop}"></p>
             </details>
-            <section>
-                <h2>Đánh giá sản phẩm</h2>
-                <p class="muted" th:if="${#lists.isEmpty(danhGia)}">Chưa có đánh giá được duyệt.</p>
-                <ul class="pdp-reviews" th:unless="${#lists.isEmpty(danhGia)}">
-                    <li th:each="dg : ${danhGia}">
-                        <strong th:text="|${dg.soSao}/5 sao · Người mua đã xác minh|"></strong>
-                        <p class="pdp-copy" th:if="${dg.noiDung}" th:text="${dg.noiDung}"></p>
-                    </li>
-                </ul>
+            <section id="danh-gia" class="pdp-review-section" aria-labelledby="reviews-title" tabindex="-1">
+                <h2 id="reviews-title">Đánh giá sản phẩm</h2>
+                <p class="notice" role="status" th:if="${danhGia.khongTaiDuoc}">Tạm thời chưa tải được đánh giá. Vui lòng thử lại sau.</p>
+                <th:block th:unless="${danhGia.khongTaiDuoc}" th:with="tt=${danhGia.tomTat}">
+                    <p class="muted" th:if="${tt.soLuong == 0}">Chưa có đánh giá được duyệt.</p>
+                    <div class="review-summary" th:if="${tt.soLuong > 0}">
+                        <div class="review-score">
+                            <strong th:text="${tt.trungBinhHienThi}"></strong>
+                            <span th:replace="~{fragments/rating :: stars(${tt.nuaSao}, |${tt.trungBinhHienThi} trên 5 sao|)}"></span>
+                            <span class="muted" th:text="|${tt.soLuong} đánh giá|"></span>
+                        </div>
+                        <ul class="review-bars" aria-label="Phân bố số sao">
+                            <li th:each="sao : ${#numbers.sequence(5, 1, -1)}">
+                                <span th:id="|review-bar-${sao}|" th:text="|${sao} sao|"></span>
+                                <progress max="100" th:value="${tt.phanTram(sao)}" th:attr="aria-labelledby=|review-bar-${sao}|"
+                                          th:text="|${tt.phanTram(sao)}%|"></progress>
+                                <span class="review-bar-count" th:text="${tt.soSao(sao)}"></span>
+                            </li>
+                        </ul>
+                    </div>
+                    <ul class="pdp-reviews" th:unless="${danhGia.danhSach.empty}">
+                        <li th:each="dg : ${danhGia.danhSach.content}">
+                            <div class="review-meta">
+                                <strong th:text="${dg.tenHienThi}"></strong>
+                                <span class="review-badge">Đã mua hàng</span>
+                                <time th:datetime="${dg.ngayIso}" th:text="${dg.ngayHienThi}"></time>
+                            </div>
+                            <span th:replace="~{fragments/rating :: stars(${dg.soSao * 2}, |${dg.soSao} trên 5 sao|)}"></span>
+                            <p class="pdp-copy" th:unless="${#strings.isEmpty(dg.noiDung)}" th:text="${dg.noiDung}"></p>
+                        </li>
+                    </ul>
+                    <div th:replace="~{fragments/ui :: pagination(${danhGia.danhSach},
+                        @{/products/{slug}(slug=${sanPham.duongDan}, variant=${sku.maBienThe}, reviewPage=${danhGia.danhSach.number - 1})} + '#danh-gia',
+                        @{/products/{slug}(slug=${sanPham.duongDan}, variant=${sku.maBienThe}, reviewPage=${danhGia.danhSach.number + 1})} + '#danh-gia')}"></div>
+                </th:block>
             </section>
         </div>
     </article>

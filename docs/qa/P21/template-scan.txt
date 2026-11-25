@@ -1,0 +1,7 @@
+# P21 template/asset scan 2026-11-23T15:28:22Z
+== src/main/resources/templates/home/index.html
+(none)
+== src/main/resources/static/js/home-carousel.js
+(none)
+== src/main/resources/static/css/storefront.css
+(none)

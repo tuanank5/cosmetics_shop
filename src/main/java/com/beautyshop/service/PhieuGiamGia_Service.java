@@ -1,5 +1,6 @@
 package com.beautyshop.service;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import com.beautyshop.dto.PhieuGiamGia_Form;
 import com.beautyshop.dto.PhieuGiamGia_Form.LoaiGiamGia;
 import com.beautyshop.repository.PhieuGiamGia_Repository;
@@ -27,11 +28,13 @@ public class PhieuGiamGia_Service {
     PhieuGiamGia_Service(PhieuGiamGia_Repository repository) { this.repository = repository; }
 
     @Transactional(readOnly = true)
+    @PreAuthorize("hasRole('ADMIN')")
     public List<ThongTin> danhSachAdmin() {
         return repository.danhSach();
     }
 
     @Transactional(readOnly = true)
+    @PreAuthorize("hasRole('ADMIN')")
     public PhieuGiamGia_Form docFormAdmin(long ma) {
         var cauHinh = timTheoMa(ma, false).cauHinh();
         var form = new PhieuGiamGia_Form();
@@ -48,6 +51,7 @@ public class PhieuGiamGia_Service {
     }
 
     @Transactional(isolation = Isolation.READ_COMMITTED)
+    @PreAuthorize("hasRole('ADMIN')")
     public void luuAdmin(Long ma, PhieuGiamGia_Form form, BindingResult errors) {
         String maApDung = chuanHoa(form.getMaApDung());
         if (maApDung.length() > 80) {
@@ -83,6 +87,7 @@ public class PhieuGiamGia_Service {
     }
 
     @Transactional(isolation = Isolation.READ_COMMITTED)
+    @PreAuthorize("hasRole('ADMIN')")
     public void xoaAdmin(long ma) {
         timTheoMa(ma, true);
         if (!repository.xoaChuaSuDung(ma)) {

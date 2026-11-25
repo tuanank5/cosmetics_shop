@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/head :: head('Tổng quan · Quản trị BeautyShop')}"></head>
+<body>
+<div th:replace="~{fragments/header :: siteHeader}"></div>
+<main id="main" tabindex="-1" class="page-content dashboard" th:with="tq=${tongQuan}">
+  <header class="dashboard-head">
+    <div class="dashboard-title">
+      <p class="dashboard-eyebrow">Quản trị · Tổng quan</p>
+      <h1>Tổng quan cửa hàng</h1>
+      <p class="dashboard-period" th:text="|Kỳ ${#temporals.format(ky.tu, 'dd/MM/yyyy')} – ${#temporals.format(ky.den, 'dd/MM/yyyy')} (${ky.soNgay()} ngày, giờ Việt Nam) · so với ${#temporals.format(tq.kyTruoc.tu, 'dd/MM/yyyy')} – ${#temporals.format(tq.kyTruoc.den, 'dd/MM/yyyy')}|">Kỳ</p>
+    </div>
+    <form class="dashboard-filter" method="get" th:action="@{/admin/dashboard}" th:object="${boLoc}" aria-labelledby="filter-title">
+      <h2 id="filter-title" class="visually-hidden">Chọn kỳ thống kê</h2>
+      <nav class="dashboard-range" aria-label="Kỳ nhanh">
+        <a th:href="@{/admin/dashboard(range='7d')}" th:attr="aria-current=${ky.range == '7d' ? 'page' : null}">7 ngày</a>
+        <a th:href="@{/admin/dashboard(range='30d')}" th:attr="aria-current=${ky.range == '30d' ? 'page' : null}">30 ngày</a>
+        <a th:href="@{/admin/dashboard(range='90d')}" th:attr="aria-current=${ky.range == '90d' ? 'page' : null}">90 ngày</a>
+      </nav>
+      <div class="dashboard-dates">
+        <label>Từ ngày <input type="date" name="from" th:value="${ky.tu}" th:max="${homNay}" required></label>
+        <label>Đến ngày <input type="date" name="to" th:value="${ky.den}" th:max="${homNay}" required></label>
+        <button class="btn btn--secondary" type="submit">Xem kỳ này</button>
+      </div>
+      <div class="dashboard-errors" th:if="${#fields.hasGlobalErrors()}" role="alert">
+        <p class="notice catalog-error" th:each="loi : ${#fields.globalErrors()}" th:text="${loi}"></p>
+      </div>
+    </form>
+  </header>
+
+  <section class="dashboard-section" aria-labelledby="kpi-title">
+    <h2 id="kpi-title" class="visually-hidden">Chỉ số chính</h2>
+    <ul class="kpi-grid">
+      <li th:each="k : ${tq.kpi}" class="kpi-card" th:classappend="${k.ma == 'ti-le-huy'} ? 'kpi-card--inverse'" th:attr="data-kpi=${k.ma}">
+        <h3 th:text="${k.ten}">KPI</h3>
+        <p class="kpi-value">
+          <th:block th:if="${k.loai == 'TIEN'}"><span th:replace="~{fragments/ui :: money(${k.giaTri})}"></span></th:block>
+          <span th:if="${k.loai == 'SO'}" th:text="${#numbers.formatInteger(k.giaTri, 1, 'POINT')}"></span>
+          <span th:if="${k.loai == 'TI_LE'}" th:text="${k.giaTri == null ? '—' : #numbers.formatDecimal(k.giaTri, 1, 'POINT', 1, 'COMMA') + '%'}"></span>
+        </p>
+        <p class="kpi-change" th:with="h=${k.huong.name()}" th:classappend="|kpi-change--${#strings.toLowerCase(h)}|">
+          <span class="kpi-arrow" aria-hidden="true" th:text="${h == 'TANG' ? '▲' : (h == 'GIAM' ? '▼' : (h == 'KHONG_DOI' ? '■' : '–'))}"></span>
+          <span th:if="${h == 'KHONG_SO_SANH'}">Kỳ trước chưa có dữ liệu để so sánh</span>
+          <span th:unless="${h == 'KHONG_SO_SANH'}"
+                th:text="|${h == 'TANG' ? 'Tăng' : (h == 'GIAM' ? 'Giảm' : 'Không đổi')} ${#numbers.formatDecimal(k.thayDoi, 1, 'POINT', 1, 'COMMA')}${k.diemPhanTram() ? ' điểm %' : '%'} so với kỳ trước|"></span>
+        </p>
+        <p class="kpi-note" th:text="${k.chuThich}"></p>
+      </li>
+      <li class="kpi-card kpi-card--now" data-kpi="cho-xu-ly">
+        <h3>Đơn đang chờ xử lý</h3>
+        <p class="kpi-value" th:text="${#numbers.formatInteger(tq.donChoXuLy, 1, 'POINT')}">0</p>
+        <p class="kpi-change">Số hiện tại, không theo kỳ</p>
+        <p class="kpi-note">Đơn chờ xác nhận, đã xác nhận hoặc đang đóng gói (cần Admin thao tác).</p>
+        <a class="text-link" th:href="@{/admin/orders(status=${trangThaiChoXuLy})}">Xem đơn chờ xử lý</a>
+      </li>
+    </ul>
+  </section>
+
+  <div class="chart-grid">
+    <section class="chart-card chart-card--wide" aria-labelledby="chart-daily-title">
+      <h2 id="chart-daily-title">Doanh thu và số đơn theo ngày</h2>
+      <p id="chart-daily-desc" class="chart-desc">Đường: doanh thu thực thu theo ngày thu tiền. Cột: số đơn đặt theo ngày tạo. Hai biểu đồ dùng chung trục ngày, mỗi biểu đồ một thang đo.</p>
+      <div class="chart-pair" th:if="${tq.coDoanhThu() or tq.coDon()}">
+        <div class="chart-canvas">
+          <canvas data-chart="line" data-source="table-daily" data-column="1" data-format="money" data-color="1"
+                  role="img" aria-label="Biểu đồ đường doanh thu thực thu theo ngày" aria-describedby="chart-daily-desc"></canvas>
+        </div>
+        <div class="chart-canvas chart-canvas--short">
+          <canvas data-chart="bar" data-source="table-daily" data-column="2" data-format="count" data-color="2"
+                  role="img" aria-label="Biểu đồ cột số đơn đặt theo ngày" aria-describedby="chart-daily-desc"></canvas>
+        </div>
+      </div>
+      <p class="chart-empty" th:unless="${tq.coDoanhThu() or tq.coDon()}">Kỳ này chưa có đơn hàng hay doanh thu.</p>
+      <details class="chart-table" open data-chart-table>
+        <summary>Xem dạng bảng</summary>
+        <div class="table-scroll">
+          <table id="table-daily">
+            <caption class="visually-hidden">Doanh thu và số đơn theo ngày</caption>
+            <thead><tr><th scope="col">Ngày</th><th scope="col">Doanh thu thực thu</th><th scope="col">Số đơn</th></tr></thead>
+            <tbody>
+              <tr th:each="n : ${tq.theoNgay}">
+                <th scope="row" th:text="${#temporals.format(n.ngay, 'dd/MM')}" th:attr="data-label=${#temporals.format(n.ngay, 'dd/MM/yyyy')}"></th>
+                <td th:attr="data-value=${n.doanhThu}"><span th:replace="~{fragments/ui :: money(${n.doanhThu})}"></span></td>
+                <td th:attr="data-value=${n.soDon}" th:text="${n.soDon}"></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </details>
+    </section>
+
+    <section class="chart-card" aria-labelledby="chart-status-title">
+      <h2 id="chart-status-title">Đơn hàng theo trạng thái</h2>
+      <p id="chart-status-desc" class="chart-desc">Mọi đơn tạo trong kỳ, kể cả chờ thanh toán và hết hạn.</p>
+      <div class="chart-canvas" th:if="${tq.coTrangThai()}">
+        <canvas data-chart="hbar" data-source="table-status" data-column="1" data-format="count" data-color="2"
+                role="img" aria-label="Biểu đồ cột ngang số đơn theo trạng thái" aria-describedby="chart-status-desc"></canvas>
+      </div>
+      <p class="chart-empty" th:unless="${tq.coTrangThai()}">Kỳ này chưa có đơn hàng.</p>
+      <details class="chart-table" open data-chart-table>
+        <summary>Xem dạng bảng</summary>
+        <div class="table-scroll">
+          <table id="table-status">
+            <caption class="visually-hidden">Đơn hàng theo trạng thái</caption>
+            <thead><tr><th scope="col">Trạng thái</th><th scope="col">Số đơn</th><th scope="col">Tổng giá trị</th></tr></thead>
+            <tbody>
+              <tr th:each="n : ${tq.theoTrangThai}">
+                <th scope="row" th:text="${n.nhan}"></th>
+                <td th:attr="data-value=${n.soLuong}" th:text="${n.soLuong}"></td>
+                <td th:attr="data-value=${n.soTien}"><span th:replace="~{fragments/ui :: money(${n.soTien})}"></span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </details>
+    </section>
+
+    <section class="chart-card" aria-labelledby="chart-top-title">
+      <h2 id="chart-top-title">Top 5 sản phẩm bán chạy</h2>
+      <p id="chart-top-desc" class="chart-desc">Theo số lượng trong các đơn đã thu tiền trong kỳ. Doanh thu dòng = đơn giá × số lượng, trước voucher và phí giao hàng.</p>
+      <div class="chart-canvas" th:unless="${#lists.isEmpty(tq.topSanPham)}">
+        <canvas data-chart="hbar" data-source="table-top" data-column="1" data-format="count" data-color="1"
+                role="img" aria-label="Biểu đồ cột ngang số lượng bán của 5 sản phẩm bán chạy" aria-describedby="chart-top-desc"></canvas>
+      </div>
+      <p class="chart-empty" th:if="${#lists.isEmpty(tq.topSanPham)}">Kỳ này chưa có đơn đã thu tiền.</p>
+      <details class="chart-table" open data-chart-table>
+        <summary>Xem dạng bảng</summary>
+        <div class="table-scroll">
+          <table id="table-top">
+            <caption class="visually-hidden">Top 5 sản phẩm bán chạy</caption>
+            <thead><tr><th scope="col">Sản phẩm</th><th scope="col">Số lượng</th><th scope="col">Doanh thu dòng</th></tr></thead>
+            <tbody>
+              <tr th:each="n : ${tq.topSanPham}">
+                <th scope="row" th:text="${n.nhan}"></th>
+                <td th:attr="data-value=${n.soLuong}" th:text="${n.soLuong}"></td>
+                <td th:attr="data-value=${n.soTien}"><span th:replace="~{fragments/ui :: money(${n.soTien})}"></span></td>
+              </tr>
+              <tr th:if="${#lists.isEmpty(tq.topSanPham)}"><td colspan="3">Chưa có dữ liệu.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </details>
+    </section>
+
+    <section class="chart-card" aria-labelledby="chart-category-title">
+      <h2 id="chart-category-title">Doanh thu theo danh mục</h2>
+      <p id="chart-category-desc" class="chart-desc">Tổng doanh thu dòng (trước voucher và phí giao hàng) của các đơn đã thu tiền trong kỳ.</p>
+      <div class="chart-canvas" th:unless="${#lists.isEmpty(tq.theoDanhMuc)}">
+        <canvas data-chart="hbar" data-source="table-category" data-column="2" data-format="money" data-color="1"
+                role="img" aria-label="Biểu đồ cột ngang doanh thu theo danh mục" aria-describedby="chart-category-desc"></canvas>
+      </div>
+      <p class="chart-empty" th:if="${#lists.isEmpty(tq.theoDanhMuc)}">Kỳ này chưa có đơn đã thu tiền.</p>
+      <details class="chart-table" open data-chart-table>
+        <summary>Xem dạng bảng</summary>
+        <div class="table-scroll">
+          <table id="table-category">
+            <caption class="visually-hidden">Doanh thu theo danh mục</caption>
+            <thead><tr><th scope="col">Danh mục</th><th scope="col">Số lượng</th><th scope="col">Doanh thu dòng</th></tr></thead>
+            <tbody>
+              <tr th:each="n : ${tq.theoDanhMuc}">
+                <th scope="row" th:text="${n.nhan}"></th>
+                <td th:attr="data-value=${n.soLuong}" th:text="${n.soLuong}"></td>
+                <td th:attr="data-value=${n.soTien}"><span th:replace="~{fragments/ui :: money(${n.soTien})}"></span></td>
+              </tr>
+              <tr th:if="${#lists.isEmpty(tq.theoDanhMuc)}"><td colspan="3">Chưa có dữ liệu.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </details>
+    </section>
+
+    <section class="chart-card" aria-labelledby="chart-payment-title">
+      <h2 id="chart-payment-title">Phương thức thanh toán</h2>
+      <p id="chart-payment-desc" class="chart-desc">Số đơn đã thu tiền trong kỳ theo phương thức (COD hoặc MoMo).</p>
+      <div class="chart-canvas chart-canvas--short" th:if="${tq.coThanhToan()}">
+        <canvas data-chart="hbar" data-source="table-payment" data-column="1" data-format="count" data-color="2"
+                role="img" aria-label="Biểu đồ cột ngang số đơn đã thu theo phương thức thanh toán" aria-describedby="chart-payment-desc"></canvas>
+      </div>
+      <p class="chart-empty" th:unless="${tq.coThanhToan()}">Kỳ này chưa có đơn đã thu tiền.</p>
+      <details class="chart-table" open data-chart-table>
+        <summary>Xem dạng bảng</summary>
+        <div class="table-scroll">
+          <table id="table-payment">
+            <caption class="visually-hidden">Phương thức thanh toán</caption>
+            <thead><tr><th scope="col">Phương thức</th><th scope="col">Số đơn đã thu</th><th scope="col">Doanh thu thực thu</th></tr></thead>
+            <tbody>
+              <tr th:each="n : ${tq.theoPhuongThuc}">
+                <th scope="row" th:text="${n.nhan}"></th>
+                <td th:attr="data-value=${n.soLuong}" th:text="${n.soLuong}"></td>
+                <td th:attr="data-value=${n.soTien}"><span th:replace="~{fragments/ui :: money(${n.soTien})}"></span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </details>
+    </section>
+
+    <section class="chart-card" aria-labelledby="chart-rating-title">
+      <h2 id="chart-rating-title">Phân bố số sao đánh giá</h2>
+      <p id="chart-rating-desc" class="chart-desc">Đánh giá gửi trong kỳ, gồm cả đã hiển thị và đang chờ duyệt.</p>
+      <div class="chart-canvas chart-canvas--short" th:if="${tq.coDanhGia()}">
+        <canvas data-chart="hbar" data-source="table-rating" data-column="1" data-format="count" data-color="1"
+                role="img" aria-label="Biểu đồ cột ngang số đánh giá theo số sao" aria-describedby="chart-rating-desc"></canvas>
+      </div>
+      <p class="chart-empty" th:unless="${tq.coDanhGia()}">Kỳ này chưa có đánh giá.</p>
+      <details class="chart-table" open data-chart-table>
+        <summary>Xem dạng bảng</summary>
+        <div class="table-scroll">
+          <table id="table-rating">
+            <caption class="visually-hidden">Phân bố số sao đánh giá</caption>
+            <thead><tr><th scope="col">Số sao</th><th scope="col">Số đánh giá</th></tr></thead>
+            <tbody>
+              <tr th:each="n : ${tq.theoSao}">
+                <th scope="row" th:text="${n.nhan}"></th>
+                <td th:attr="data-value=${n.soLuong}" th:text="${n.soLuong}"></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </details>
+    </section>
+  </div>
+
+  <div class="dashboard-lists">
+    <section class="chart-card chart-card--wide" aria-labelledby="latest-title">
+      <h2 id="latest-title">8 đơn mới nhất</h2>
+      <p class="chart-empty" th:if="${#lists.isEmpty(tq.donMoi)}">Chưa có đơn hàng.</p>
+      <div class="table-scroll" th:unless="${#lists.isEmpty(tq.donMoi)}">
+        <table class="dashboard-table">
+          <caption class="visually-hidden">8 đơn mới nhất</caption>
+          <thead><tr><th scope="col">Mã đơn</th><th scope="col">Khách</th><th scope="col">Tổng</th><th scope="col">Trạng thái</th><th scope="col">Thời gian</th></tr></thead>
+          <tbody>
+            <tr th:each="don : ${tq.donMoi}">
+              <th scope="row"><a class="text-link" th:href="@{/admin/orders/{id}(id=${don.maDonHang})}" th:text="${don.maHienThi}"></a></th>
+              <td th:text="${don.khachHang}"></td>
+              <td><span th:replace="~{fragments/ui :: money(${don.tong})}"></span></td>
+              <td th:text="${don.trangThai.label}"></td>
+              <td><time th:attr="datetime=${don.ngayTao}" th:text="${#temporals.format(don.ngayTao, 'dd/MM/yyyy HH:mm')}"></time></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="chart-card" aria-labelledby="stock-title">
+      <h2 id="stock-title" th:text="|SKU sắp hết hàng (khả dụng ≤ ${tq.nguongTon})|">SKU sắp hết hàng</h2>
+      <form class="dashboard-threshold" method="get" th:action="@{/admin/dashboard}">
+        <input type="hidden" name="range" th:if="${ky.range != null}" th:value="${ky.range}">
+        <input type="hidden" name="from" th:if="${ky.range == null}" th:value="${ky.tu}">
+        <input type="hidden" name="to" th:if="${ky.range == null}" th:value="${ky.den}">
+        <label>Ngưỡng tồn <input type="number" name="nguong" min="0" max="1000" th:value="${tq.nguongTon}"></label>
+        <button class="btn btn--secondary" type="submit">Áp dụng</button>
+      </form>
+      <p class="chart-empty" th:if="${#lists.isEmpty(tq.skuSapHet)}">Không có SKU nào dưới ngưỡng.</p>
+      <ul class="stock-list" th:unless="${#lists.isEmpty(tq.skuSapHet)}">
+        <li th:each="sku : ${tq.skuSapHet}">
+          <span class="stock-count" th:text="${sku.khaDung}">0</span>
+          <span class="stock-name"><strong th:text="${sku.sku}"></strong> <span th:text="|${sku.tenSanPham} · ${sku.tenBienThe}|"></span></span>
+          <a class="text-link" th:href="@{/admin/catalog/products/{p}/variants/{v}/edit(p=${sku.maSanPham},v=${sku.maBienThe})}"
+             th:attr="aria-label=|Sửa SKU ${sku.sku}|">Sửa SKU</a>
+        </li>
+      </ul>
+    </section>
+
+    <section class="chart-card" aria-labelledby="todo-title">
+      <h2 id="todo-title">Việc cần xem</h2>
+      <ul class="todo-list">
+        <li><span class="todo-count" th:text="${tq.danhGiaChoDuyet}">0</span>
+          <span>Đánh giá chờ duyệt hiển thị</span> <a class="text-link" th:href="@{/admin/reviews}">Duyệt đánh giá</a></li>
+        <li><span class="todo-count" th:text="${tq.doiTraCho}">0</span>
+          <span>Yêu cầu đổi trả chờ xử lý</span> <a class="text-link" th:href="@{/admin/returns}">Xem đổi trả</a></li>
+        <li><span class="todo-count" th:text="${tq.voucherSapHetHan}">0</span>
+          <span>Voucher đang bật hết hạn trong 7 ngày</span> <a class="text-link" th:href="@{/admin/vouchers}">Xem voucher</a></li>
+      </ul>
+    </section>
+  </div>
+</main>
+<div th:replace="~{fragments/footer :: siteFooter}"></div>
+<script defer th:src="@{/js/vendor/chart-4.6.1.umd.min.js}"></script>
+<script defer th:src="@{/js/dashboard.js}"></script>
+</body>
+</html>

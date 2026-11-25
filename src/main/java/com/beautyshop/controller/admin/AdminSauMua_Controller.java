@@ -1,6 +1,7 @@
 package com.beautyshop.controller.admin;
 
 import com.beautyshop.order.ReturnStatus;
+import com.beautyshop.repository.DanhGia_Store;
 import com.beautyshop.service.SauMua_Service;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,13 +15,20 @@ class AdminSauMua_Controller {
     AdminSauMua_Controller(SauMua_Service sauMua) { this.sauMua = sauMua; }
 
     @GetMapping("/admin/reviews")
-    String danhGia(Model model) {
-        model.addAttribute("danhGia", sauMua.danhSachDanhGiaAdmin());
+    String danhGia(@RequestParam(required = false) String status, @RequestParam(required = false) Integer stars,
+                   @RequestParam(required = false) Long product, @RequestParam(defaultValue = "0") int page, Model model) {
+        var trangThai = DanhGia_Store.TrangThaiLoc.tu(status);
+        Integer soSao = stars != null && stars >= 1 && stars <= 5 ? stars : null;
+        Long sanPham = product != null && product > 0 ? product : null;
+        model.addAttribute("trang", sauMua.danhSachDanhGiaAdmin(new DanhGia_Store.BoLocDanhGia(trangThai, soSao, sanPham), page));
+        model.addAttribute("locTrangThai", trangThai.name());
+        model.addAttribute("locSao", soSao);
+        model.addAttribute("locSanPham", sanPham);
         return "admin/user/reviews";
     }
 
     @PostMapping("/admin/reviews/{id}/visibility")
-    String hienThi(@PathVariable long id, @RequestParam boolean visible,
+    String hienThi(@PathVariable String id, @RequestParam boolean visible,
                    @RequestParam(required = false) String revision, RedirectAttributes flash) {
         try {
             sauMua.datHienThi(id, visible, revision);

@@ -11,13 +11,18 @@ import com.beautyshop.repository.CuaHang_Repository.TheSanPham;
 import com.beautyshop.entity.BienTheSanPham;
 import com.beautyshop.entity.SanPham;
 import com.beautyshop.entity.ThuongHieu;
-import com.beautyshop.repository.DanhGia_Repository.DanhGia;
+import com.beautyshop.repository.DanhGia_Store;
+import com.beautyshop.repository.DanhGia_Store.DanhGiaCongKhai;
+import com.beautyshop.repository.DanhGia_Store.TomTatDanhGia;
 import java.math.BigDecimal;
 import java.util.List;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import jakarta.servlet.RequestDispatcher;
+import java.time.Instant;
+import java.util.Map;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -60,6 +65,13 @@ class GiaoDienPagesTest {
     @MockitoBean NguoiDung_Service nguoiDungService;
     @MockitoBean CuaHang_Service cuaHangService;
     @MockitoBean SauMua_Service sauMuaService;
+
+    @BeforeEach
+    void danhGiaMacDinh() {
+        // P23: mặc định trang chi tiết chưa có đánh giá được duyệt (kho đánh giá phản hồi bình thường).
+        when(sauMuaService.danhGiaSanPham(anyLong(), anyInt())).thenReturn(new SauMua_Service.TrangDanhGiaSanPham(
+            TomTatDanhGia.RONG, Page.empty(PageRequest.of(0, 10)), false));
+    }
 
     @Test
     void footerGuestChiCoDichCongKhai() throws Exception {
@@ -396,7 +408,10 @@ class GiaoDienPagesTest {
     @Test
     void soldOutSelectionHasItsOwnImageAndPublicReviewsButNoPurchaseForm() throws Exception {
         sanPhamHaiBienThe();
-        when(sauMuaService.danhGiaCongKhai(3L)).thenReturn(List.of(new DanhGia(1, 4, "Ghi chú <b>", true)));
+        when(sauMuaService.danhGiaSanPham(3L, 0)).thenReturn(new SauMua_Service.TrangDanhGiaSanPham(
+            new TomTatDanhGia(1, 4, new long[] {0, 0, 0, 1, 0}),
+            new PageImpl<>(List.of(new DanhGiaCongKhai("Thịnh P.", 4, "Ghi chú <b>", Instant.parse("2026-11-20T18:30:00Z"))),
+                PageRequest.of(0, 10), 1), false));
         mvc.perform(get("/products/kiem-thu").param("variant", "22"))
             .andExpect(status().isOk())
             .andExpect(content().string(containsString("name=\"variant\" value=\"22\" aria-current=\"true\"")))
@@ -406,7 +421,64 @@ class GiaoDienPagesTest {
             .andExpect(content().string(containsString("QA-LOT")))
             .andExpect(content().string(containsString("Biến thể đã hết hàng")))
             .andExpect(content().string(not(containsString("action=\"/cart/items\""))))
-            .andExpect(content().string(containsString("Ghi chú &lt;b&gt;")));
+            .andExpect(content().string(containsString("Ghi chú &lt;b&gt;")))
+            .andExpect(content().string(containsString("Thịnh P.")))
+            .andExpect(content().string(containsString("Đã mua hàng")))
+            // 18:30 UTC ngày 20 là 01:30 ngày 21 giờ Việt Nam.
+            .andExpect(content().string(containsString("21/11/2026")))
+            .andExpect(content().string(containsString("aria-label=\"4,0 trên 5 sao\"")))
+            .andExpect(content().string(containsString("1 đánh giá")))
+            .andExpect(content().string(not(containsString("Tạm thời chưa tải được đánh giá"))));
+    }
+
+    @Test
+    void khoDanhGiaLoiThiTrangChiTietVanHienVaBaoTamThoi() throws Exception {
+        sanPhamHaiBienThe();
+        when(sauMuaService.danhGiaSanPham(anyLong(), anyInt())).thenReturn(new SauMua_Service.TrangDanhGiaSanPham(
+            TomTatDanhGia.RONG, Page.empty(PageRequest.of(0, 10)), true));
+        mvc.perform(get("/products/kiem-thu"))
+            .andExpect(status().isOk())
+            .andExpect(content().string(containsString("Tạm thời chưa tải được đánh giá")))
+            .andExpect(content().string(containsString("action=\"/cart/items\"")))
+            .andExpect(content().string(not(containsString("Chưa có đánh giá được duyệt."))));
+    }
+
+    @Test
+    void danhGiaPhanTrangGiuBienTheVaNeoVeKhuDanhGia() throws Exception {
+        sanPhamHaiBienThe();
+        var mot = new DanhGiaCongKhai("An N.", 5, "", Instant.parse("2026-11-01T00:00:00Z"));
+        when(sauMuaService.danhGiaSanPham(3L, 1)).thenReturn(new SauMua_Service.TrangDanhGiaSanPham(
+            new TomTatDanhGia(25, 100, new long[] {1, 2, 3, 4, 15}), new PageImpl<>(List.of(mot), PageRequest.of(1, 10), 25), false));
+        mvc.perform(get("/products/kiem-thu").param("variant", "22").param("reviewPage", "1"))
+            .andExpect(status().isOk())
+            .andExpect(content().string(containsString("Trang 2 / 3")))
+            .andExpect(content().string(containsString("/products/kiem-thu?variant=22&amp;reviewPage=0#danh-gia")))
+            .andExpect(content().string(containsString("/products/kiem-thu?variant=22&amp;reviewPage=2#danh-gia")))
+            .andExpect(content().string(containsString("4,0 trên 5 sao")))
+            .andExpect(content().string(containsString("value=\"60\"")));
+    }
+
+    @Test
+    void theSanPhamHienSaoTrungBinhTuMotTruyVanTomTat() throws Exception {
+        var card = mock(TheSanPham.class);
+        when(card.getMaSanPham()).thenReturn(7L);
+        when(card.getDuongDan()).thenReturn("serum-sao");
+        when(card.getTenSanPham()).thenReturn("Serum sao");
+        when(card.getTenThuongHieu()).thenReturn("BeautyShop");
+        when(card.getGiaTu()).thenReturn(new BigDecimal("150000"));
+        var khongDanhGia = mock(TheSanPham.class);
+        when(khongDanhGia.getMaSanPham()).thenReturn(8L);
+        when(khongDanhGia.getDuongDan()).thenReturn("serum-moi");
+        when(khongDanhGia.getTenSanPham()).thenReturn("Serum mới");
+        when(khongDanhGia.getGiaTu()).thenReturn(new BigDecimal("90000"));
+        when(cuaHangService.timSanPham(anyString(), anyString(), anyString(), anyString(), anyString(), any()))
+            .thenReturn(new PageImpl<>(List.of(card, khongDanhGia), PageRequest.of(0, 12), 2));
+        when(sauMuaService.tomTatDanhGia(List.of(7L, 8L))).thenReturn(Map.of(7L, new TomTatDanhGia(2, 9, new long[] {0, 0, 0, 1, 1})));
+        mvc.perform(get("/products"))
+            .andExpect(status().isOk())
+            .andExpect(content().string(containsString("aria-label=\"4,5 trên 5 sao\"")))
+            .andExpect(content().string(containsString("4,5 · 2 đánh giá")));
+        verify(sauMuaService, times(1)).tomTatDanhGia(any());
     }
 
     @ParameterizedTest

@@ -1,0 +1,412 @@
+{
+  "base": "http://localhost:8081",
+  "startedAt": "2026-11-23T15:28:44.966Z",
+  "checks": [
+    {
+      "name": "layout 360x800 fallback (content-height)",
+      "pass": true,
+      "detail": {
+        "w": 360,
+        "overflowX": false,
+        "mode": "fallback (content-height)",
+        "popularCards": 5,
+        "allCards": 12,
+        "popularCols": 1,
+        "allCols": 1,
+        "order": [
+          5505,
+          5505,
+          5561,
+          8765,
+          16322
+        ],
+        "advisorBeforeProducts": true,
+        "nextHref": "#home-products",
+        "popularLinks": [
+          "/products/demo-r026",
+          "/products/demo-r008",
+          "/products/demo-r021",
+          "/products/demo-r027",
+          "/products/demo-r029"
+        ]
+      }
+    },
+    {
+      "name": "layout 390x844 fallback (content-height)",
+      "pass": true,
+      "detail": {
+        "w": 390,
+        "overflowX": false,
+        "mode": "fallback (content-height)",
+        "popularCards": 5,
+        "allCards": 12,
+        "popularCols": 2,
+        "allCols": 2,
+        "order": [
+          5542,
+          5542,
+          5598,
+          7125,
+          10119
+        ],
+        "advisorBeforeProducts": true,
+        "nextHref": "#home-products",
+        "popularLinks": [
+          "/products/demo-r026",
+          "/products/demo-r008",
+          "/products/demo-r021",
+          "/products/demo-r027",
+          "/products/demo-r029"
+        ]
+      }
+    },
+    {
+      "name": "layout 768x1024 carousel",
+      "pass": true,
+      "detail": {
+        "w": 768,
+        "overflowX": false,
+        "mode": "carousel",
+        "popularCards": 5,
+        "allCards": 12,
+        "popularCols": 2,
+        "allCols": 2,
+        "order": [
+          1024,
+          1024,
+          1096,
+          3226,
+          7365
+        ],
+        "advisorBeforeProducts": true,
+        "nextHref": "#home-products",
+        "popularLinks": [
+          "/products/demo-r026",
+          "/products/demo-r008",
+          "/products/demo-r021",
+          "/products/demo-r027",
+          "/products/demo-r029"
+        ]
+      }
+    },
+    {
+      "name": "wheel 768x1024 1→6→products→footer→6→1",
+      "pass": true,
+      "detail": {
+        "down": "2,3,4,5,6",
+        "reachedProducts": true,
+        "reachedFooter": true,
+        "backTo6": true,
+        "ups": "5,4,3,2,1",
+        "pass": true
+      }
+    },
+    {
+      "name": "layout 1366x768 carousel",
+      "pass": true,
+      "detail": {
+        "w": 1366,
+        "overflowX": false,
+        "mode": "carousel",
+        "popularCards": 5,
+        "allCards": 12,
+        "popularCols": 5,
+        "allCols": 4,
+        "order": [
+          768,
+          768,
+          864,
+          1633,
+          3724
+        ],
+        "advisorBeforeProducts": true,
+        "nextHref": "#home-products",
+        "popularLinks": [
+          "/products/demo-r026",
+          "/products/demo-r008",
+          "/products/demo-r021",
+          "/products/demo-r027",
+          "/products/demo-r029"
+        ]
+      }
+    },
+    {
+      "name": "wheel 1366x768 1→6→products→footer→6→1",
+      "pass": true,
+      "detail": {
+        "down": "2,3,4,5,6",
+        "reachedProducts": true,
+        "reachedFooter": true,
+        "backTo6": true,
+        "ups": "5,4,3,2,1",
+        "pass": true
+      }
+    },
+    {
+      "name": "layout 1920x1080 carousel",
+      "pass": true,
+      "detail": {
+        "w": 1920,
+        "overflowX": false,
+        "mode": "carousel",
+        "popularCards": 5,
+        "allCards": 12,
+        "popularCols": 5,
+        "allCols": 4,
+        "order": [
+          1080,
+          1080,
+          1176,
+          1939,
+          4008
+        ],
+        "advisorBeforeProducts": true,
+        "nextHref": "#home-products",
+        "popularLinks": [
+          "/products/demo-r026",
+          "/products/demo-r008",
+          "/products/demo-r021",
+          "/products/demo-r027",
+          "/products/demo-r029"
+        ]
+      }
+    },
+    {
+      "name": "wheel 1920x1080 1→6→products→footer→6→1",
+      "pass": true,
+      "detail": {
+        "down": "2,3,4,5,6",
+        "reachedProducts": true,
+        "reachedFooter": true,
+        "backTo6": true,
+        "ups": "5,4,3,2,1",
+        "pass": true
+      }
+    },
+    {
+      "name": "layout 1366x768-zoom200 fallback (viewport-or-css)",
+      "pass": true,
+      "detail": {
+        "w": 683,
+        "overflowX": false,
+        "mode": "fallback (viewport-or-css)",
+        "popularCards": 5,
+        "allCards": 12,
+        "popularCols": 2,
+        "allCols": 2,
+        "order": [
+          4738,
+          4738,
+          4810,
+          6797,
+          10704
+        ],
+        "advisorBeforeProducts": true,
+        "nextHref": "#home-products",
+        "popularLinks": [
+          "/products/demo-r026",
+          "/products/demo-r008",
+          "/products/demo-r021",
+          "/products/demo-r027",
+          "/products/demo-r029"
+        ]
+      }
+    },
+    {
+      "name": "chapter 6 \"Thông tin cửa hàng ↓\" goes to product area",
+      "pass": true,
+      "detail": {
+        "hash": "#home-products",
+        "top": 0
+      }
+    },
+    {
+      "name": "sort priceAsc keeps reader at section, carousel waits on chapter 6",
+      "pass": true,
+      "detail": {
+        "url": "/?sort=priceAsc#home-all-products",
+        "current": "Giá tăng",
+        "slide": "6",
+        "sectionTop": 24,
+        "prices": [
+          195000,
+          235000,
+          245000,
+          245000,
+          260000,
+          270000,
+          275000,
+          310000,
+          325000,
+          345000,
+          345000,
+          355000
+        ],
+        "more": "/products?sort=priceAsc"
+      }
+    },
+    {
+      "name": "scroll up from sorted list returns to chapter 6",
+      "pass": true,
+      "detail": {
+        "slide": 6,
+        "y": 0,
+        "productsInView": false,
+        "footerInView": false,
+        "atBottom": false
+      }
+    },
+    {
+      "name": "sort priceDesc keeps reader at section, carousel waits on chapter 6",
+      "pass": true,
+      "detail": {
+        "url": "/?sort=priceDesc#home-all-products",
+        "current": "Giá giảm",
+        "slide": "6",
+        "sectionTop": 24,
+        "prices": [
+          1050000,
+          990000,
+          695000,
+          690000,
+          595000,
+          565000,
+          520000,
+          495000,
+          449000,
+          448000,
+          430000,
+          425000
+        ],
+        "more": "/products?sort=priceDesc"
+      }
+    },
+    {
+      "name": "sort newest keeps reader at section, carousel waits on chapter 6",
+      "pass": true,
+      "detail": {
+        "url": "/?sort=newest#home-all-products",
+        "current": "Mới nhất",
+        "slide": "6",
+        "sectionTop": 24,
+        "prices": [
+          695000,
+          690000,
+          405000,
+          345000,
+          389000,
+          245000,
+          520000,
+          565000,
+          235000,
+          365000,
+          495000,
+          449000
+        ],
+        "more": "/products"
+      }
+    },
+    {
+      "name": "Tab from chapter 6 reaches product area without entering hidden chapters",
+      "pass": true,
+      "detail": {
+        "reached": {
+          "step": 2,
+          "tag": "A",
+          "text": "Chưa có ảnh sản phẩm\n        \n        \n ",
+          "hiddenSlide": false,
+          "inProducts": true,
+          "href": "/products/demo-r026"
+        },
+        "leaked": []
+      }
+    },
+    {
+      "name": "Shift+Tab out of product area lands in chapter 6",
+      "pass": true,
+      "detail": {
+        "id": "home-advisor",
+        "hidden": false,
+        "inProducts": false
+      }
+    },
+    {
+      "name": "reduced-motion: fallback, products after chapter 6 in normal flow",
+      "pass": true,
+      "detail": {
+        "w": 1366,
+        "overflowX": false,
+        "mode": "fallback (reduced-motion)",
+        "popularCards": 5,
+        "allCards": 12,
+        "popularCols": 5,
+        "allCols": 4,
+        "order": [
+          4607,
+          4607,
+          4703,
+          5472,
+          7564
+        ],
+        "advisorBeforeProducts": true,
+        "nextHref": "#home-products",
+        "popularLinks": [
+          "/products/demo-r026",
+          "/products/demo-r008",
+          "/products/demo-r021",
+          "/products/demo-r027",
+          "/products/demo-r029"
+        ]
+      }
+    },
+    {
+      "name": "JS off: products after the six chapters, before footer",
+      "pass": true,
+      "detail": {
+        "w": 1366,
+        "overflowX": false,
+        "mode": "fallback (no-js)",
+        "popularCards": 5,
+        "allCards": 12,
+        "popularCols": 5,
+        "allCols": 4,
+        "order": [
+          4555,
+          4555,
+          4651,
+          5420,
+          7512
+        ],
+        "advisorBeforeProducts": true,
+        "nextHref": "#home-products",
+        "popularLinks": [
+          "/products/demo-r026",
+          "/products/demo-r008",
+          "/products/demo-r021",
+          "/products/demo-r027",
+          "/products/demo-r029"
+        ]
+      }
+    },
+    {
+      "name": "regression /products",
+      "pass": true,
+      "detail": {
+        "cards": 12,
+        "sort": "priceAsc",
+        "overflowX": false
+      }
+    },
+    {
+      "name": "popular card opens its product page",
+      "pass": true,
+      "detail": {
+        "path": "/products/demo-r026",
+        "h1": "Moisturizing Cream"
+      }
+    }
+  ],
+  "exceptions": [],
+  "failures": 0,
+  "finishedAt": "2026-11-23T15:31:15.525Z"
+}
