@@ -10,6 +10,8 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.oauth2.client.registration.ClientRegistrationRepository;
+import org.springframework.security.oauth2.client.web.HttpSessionOAuth2AuthorizedClientRepository;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.access.expression.WebExpressionAuthorizationManager;
 import org.springframework.security.web.access.intercept.AuthorizationFilter;
@@ -23,17 +25,31 @@ public class Security_Config {
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http, LoginSuccess_Handler loginSuccess,
                                             NguoiDung_Repository nguoiDungRepository,
+                                            ObjectProvider<ClientRegistrationRepository> clientRegistrations,
+                                            ObjectProvider<OAuth2NguoiDung_Service> oauth2UserServices,
                                             ObjectProvider<Momo_Settings> momoSettings) throws Exception {
         var momo = momoSettings.getIfAvailable();
         if (momo != null && momo.enabled()) {
             http.csrf(csrf -> csrf.ignoringRequestMatchers(PathPatternRequestMatcher.withDefaults()
                 .matcher(HttpMethod.POST, "/payment/momo/ipn")));
         }
+        var registrations = clientRegistrations.getIfAvailable();
+        if (registrations != null) {
+            var users = oauth2UserServices.getObject();
+            http.oauth2Login(oauth2 -> oauth2.loginPage("/login")
+                .clientRegistrationRepository(registrations)
+                .authorizedClientRepository(new HttpSessionOAuth2AuthorizedClientRepository())
+                .userInfoEndpoint(info -> info.oidcUserService(users::dangNhapGoogle)
+                    .userService(users::dangNhapGitHub))
+                .successHandler(loginSuccess)
+                .failureUrl("/login?oauth2Error"));
+        }
         return http
             .addFilterBefore(new TrangThaiTaiKhoan_Filter(nguoiDungRepository), AuthorizationFilter.class)
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers("/", "/products", "/products/**", "/login", "/register",
                         "/css/**", "/js/**", "/img/**", "/error", "/favicon.ico").permitAll()
+                .requestMatchers(HttpMethod.POST, "/register/verify-otp", "/register/resend-otp", "/register/cancel").permitAll()
                 .requestMatchers(HttpMethod.GET, "/cart", "/cart/**", "/uploads/sku/*").permitAll()
                 .requestMatchers(HttpMethod.HEAD, "/uploads/sku/*").permitAll()
                 .requestMatchers(HttpMethod.GET, "/chat").permitAll()

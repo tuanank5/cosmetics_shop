@@ -12,6 +12,7 @@ import org.springframework.data.repository.query.Param;
 
 public interface NguoiDung_Repository extends JpaRepository<NguoiDung, Long> {
     Optional<NguoiDung> findByEmail(String email);
+    Optional<NguoiDung> findByNhaCungCapOauthAndMaDanhTinhOauth(String nhaCungCapOauth, String maDanhTinhOauth);
 
     @Lock(LockModeType.PESSIMISTIC_WRITE)
     @Query("select n from NguoiDung n where n.maNguoiDung = :id")

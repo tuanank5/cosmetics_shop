@@ -16,13 +16,17 @@ mvn -DskipTests package
 
 Mở `http://localhost:8080/`, `/products` hoặc `/login`. Để chạy test tích hợp với MariaDB, dùng một database trống dành riêng cho test và đặt `P01_MARIADB_TEST=true` trước khi chạy `mvn test`.
 
+Đăng ký bằng mật khẩu cần Redis và SMTP. Với cấu hình `dev` mặc định, sau khi đặt `DB_PASSWORD` hãy chạy `docker compose up -d redis mailpit` và đọc mã trong hộp thư local tại `http://127.0.0.1:8025`. Mailpit mô phỏng hộp thư, không chuyển tiếp email ra ngoài. Profile `prod` dùng Redis và SMTP từ các biến OTP trong [.env.example](.env.example).
+
+Đăng nhập Google và GitHub bật độc lập. Đặt `GOOGLE_CLIENT_ID` và `GOOGLE_CLIENT_SECRET` hoặc `GITHUB_CLIENT_ID` và `GITHUB_CLIENT_SECRET` trong môi trường. Thêm `oauth2-google`, `oauth2-github` tương ứng vào `SPRING_PROFILES_ACTIVE` cùng profile `dev` hoặc `prod`. URL callback local là `http://localhost:8080/login/oauth2/code/google` hoặc `http://localhost:8080/login/oauth2/code/github`. Khi triển khai, dùng URL callback HTTPS của website với cùng đường dẫn.
+
 ## Trạng thái
 
 - **P00:** ba trang giao diện nền trả HTTP 200 trong lần chạy thử. Xác nhận hiển thị ở 375, 768 và 1440 px còn mở.
 - **P01:** CRUD danh mục, thương hiệu, sản phẩm tại `/admin/catalog` đã được kiểm thử trên MariaDB.
 - **P02:** quản trị SKU, giá, tồn, ảnh và một lô minh họa tại `/admin/catalog/products/{productId}/variants`. Flyway V2 bổ sung ghi nhận trừ kho COD. Xem [contract tồn kho](docs/design/03-order-payment-inventory.md#contract-p02-cho-p06p07).
 - **P03:** danh sách và lọc tại `/products`, chi tiết và chọn SKU tại `/products/{slug}`. Cần sản phẩm và SKU đang hoạt động trong database để xem kết quả.
-- **P04:** đăng ký tại `/register`, đăng nhập bằng email tại `/login` và hợp nhất giỏ Guest khi Customer đăng nhập. Xem [quy trình cấp quyền Admin](docs/deployment/03-cap-quyen-admin.md).
+- **P04:** đăng ký bằng mật khẩu tại `/register` và xác thực OTP email trước khi tạo tài khoản CUSTOMER. Trang `/login` hỗ trợ mật khẩu và Google/GitHub khi cấu hình. Giỏ Guest được hợp nhất khi Customer đăng nhập. Xem [quy trình cấp quyền Admin](docs/deployment/03-cap-quyen-admin.md).
 - **P05:** Customer chỉnh hồ sơ tại `/account` và quản lý địa chỉ tại `/account/addresses`. Admin tìm kiếm, phân trang, khóa và mở tài khoản tại `/admin/users`.
 - **P06:** chỉnh giỏ tại `/cart`, chọn địa chỉ và đặt COD tại `/checkout`, theo dõi hoặc hủy đơn hợp lệ tại `/orders`. Admin xác nhận giao và thu tiền tại `/admin/orders`.
 - **P07:** tích hợp có adapter mô phỏng cho dev/test. Sandbox thật vẫn `BLOCKED_EXTERNAL` vì thiếu merchant và HTTPS công khai. [Cách chạy MoMo](docs/deployment/04-momo-sandbox.md).

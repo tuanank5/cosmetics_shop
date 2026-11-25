@@ -23,7 +23,8 @@ Website thương mại điện tử **single-store B2C** hỗ trợ khách tìm 
 | FR-02 | CRUD category/brand/product, ảnh và thông tin thành phần/loại da | P0 | Validate dữ liệu và quyền Admin |
 | FR-03 | ProductVariant SKU, hình/giá/tồn riêng | P0 | Chọn biến thể làm thay đổi giá/tồn hiển thị |
 | FR-04 | Search/filter/sort/pagination | P0 | Kết quả tìm nhất quán |
-| FR-05 | Đăng ký/đăng nhập/đăng xuất, CUSTOMER/ADMIN | P0 | Password BCrypt, backend authorizes |
+| FR-05 | Đăng ký/đăng nhập/đăng xuất, CUSTOMER/ADMIN | P0 | OTP email cho tạo CUSTOMER bằng mật khẩu, BCrypt, backend phân quyền |
+| FR-05a | Đăng nhập Google hoặc GitHub cho CUSTOMER khi bật nhà cung cấp | P1 | Email đã xác minh, nhận diện bằng mã định danh ổn định của nhà cung cấp, phiên BeautyShop |
 | FR-06 | Giỏ Guest Session + giỏ Customer DB, merge khi login | P0 | Không gộp 2 lần, không lấy giá client |
 | FR-07 | Checkout chỉ Customer, snapshot và voucher một mã/đơn | P0 | Tính lại toàn bộ tiền trên server |
 | FR-08 | COD, tạo Order, bảo toàn tồn kho | P0 | Rollback nếu thiếu tồn / lỗi giao dịch |

@@ -8,6 +8,7 @@ import com.beautyshop.repository.DiaChiNguoiDung_Repository;
 import com.beautyshop.service.DiaChiNguoiDung_Service;
 import com.beautyshop.service.GioHang_Service;
 import com.beautyshop.service.QuyenDonHang_Service;
+import com.beautyshop.service.XacThucEmail_Service;
 import java.util.UUID;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
@@ -23,6 +24,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.context.HttpSessionSecurityContextRepository;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.web.server.ResponseStatusException;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -46,6 +48,7 @@ class XacThuc_MariaDb_Test {
     @Autowired QuyenDonHang_Service quyenDonHang;
     @Autowired DiaChiNguoiDung_Service diaChiService;
     @Autowired DiaChiNguoiDung_Repository diaChiRepository;
+    @MockitoBean XacThucEmail_Service otp;
 
     private final String matKhau = UUID.randomUUID().toString();
 
@@ -330,9 +333,7 @@ class XacThuc_MariaDb_Test {
     }
 
     private void dangKy(String email) throws Exception {
-        mvc.perform(post("/register").with(csrf()).param("email", email).param("hoTen", "Khách thử")
-                .param("matKhau", matKhau).param("vaiTro", "ADMIN"))
-            .andExpect(redirectedUrl("/login?registered")).andExpect(unauthenticated());
+        DangKyOtp_TestSupport.dangKy(mvc, otp, email, matKhau);
     }
 
     private String email() {

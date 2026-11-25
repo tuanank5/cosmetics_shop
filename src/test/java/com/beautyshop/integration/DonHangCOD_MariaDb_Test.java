@@ -1,5 +1,8 @@
 package com.beautyshop.integration;
 
+import com.beautyshop.service.XacThucEmail_Service;
+import org.springframework.test.context.bean.override.mockito.MockitoBean;
+
 import com.beautyshop.repository.GioHang_Repository;
 import com.beautyshop.repository.NguoiDung_Repository;
 import com.beautyshop.service.DonHang_Service;
@@ -41,6 +44,7 @@ class DonHangCOD_MariaDb_Test {
     @Autowired GioHang_Service gioHangService;
     @Autowired GioHang_Repository gioHangRepository;
     @Autowired PlatformTransactionManager transactionManager;
+    @MockitoBean XacThucEmail_Service otp;
 
     private final String matKhau = UUID.randomUUID().toString();
 
@@ -272,8 +276,7 @@ class DonHangCOD_MariaDb_Test {
 
     private TaiKhoan taiKhoan(boolean admin) throws Exception {
         String email = UUID.randomUUID() + "@example.invalid";
-        mvc.perform(post("/register").with(csrf()).param("email", email).param("hoTen", "Khách COD").param("matKhau", matKhau))
-            .andExpect(redirectedUrl("/login?registered"));
+        DangKyOtp_TestSupport.dangKy(mvc, otp, email, matKhau);
         long id = nguoiDungRepository.findByEmail(email).orElseThrow().getMaNguoiDung();
         if (admin) {
             jdbc.sql("UPDATE nguoi_dung SET vai_tro = 'ADMIN' WHERE ma_nguoi_dung = ?").param(id).update();

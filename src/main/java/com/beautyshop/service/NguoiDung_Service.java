@@ -25,10 +25,21 @@ public class NguoiDung_Service {
         this.passwordEncoder = passwordEncoder;
     }
 
+    public record DangKyChoXacThuc(String email, String hoTen, String matKhauBam) {}
+
+    public DangKyChoXacThuc chuanBiDangKy(DangKy_Form form) {
+        return new DangKyChoXacThuc(chuanHoaEmail(form.getEmail()), form.getHoTen().strip(),
+            passwordEncoder.encode(form.getMatKhau()));
+    }
+
+    @Transactional(readOnly = true)
+    public boolean emailDaTonTai(String email) {
+        return repository.findByEmail(email).isPresent();
+    }
+
     @Transactional
-    public void dangKy(DangKy_Form form) {
-        repository.saveAndFlush(new NguoiDung(chuanHoaEmail(form.getEmail()),
-            passwordEncoder.encode(form.getMatKhau()), form.getHoTen().strip()));
+    public void dangKy(DangKyChoXacThuc dangKy) {
+        repository.saveAndFlush(new NguoiDung(dangKy.email(), dangKy.matKhauBam(), dangKy.hoTen()));
     }
 
     public static String chuanHoaEmail(String email) {

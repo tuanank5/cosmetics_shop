@@ -16,6 +16,7 @@ import com.beautyshop.service.SauMua_Service;
 import com.beautyshop.repository.DanhGia_Store;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.oauth2.client.registration.ClientRegistrationRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.ui.Model;
@@ -38,14 +39,17 @@ public class Bootstrap_Controller {
     private final ObjectProvider<TrangChu_Service> trangChuService;
     private final ObjectProvider<GoiYSanPham_Service> goiYService;
     private final ObjectProvider<SauMua_Service> sauMuaService;
+    private final ObjectProvider<ClientRegistrationRepository> clientRegistrations;
 
     public Bootstrap_Controller(ObjectProvider<CuaHang_Service> cuaHangService,
             ObjectProvider<TrangChu_Service> trangChuService, ObjectProvider<GoiYSanPham_Service> goiYService,
-            ObjectProvider<SauMua_Service> sauMuaService) {
+            ObjectProvider<SauMua_Service> sauMuaService,
+            ObjectProvider<ClientRegistrationRepository> clientRegistrations) {
         this.cuaHangService = cuaHangService;
         this.trangChuService = trangChuService;
         this.goiYService = goiYService;
         this.sauMuaService = sauMuaService;
+        this.clientRegistrations = clientRegistrations;
     }
 
     @GetMapping("/")
@@ -82,7 +86,14 @@ public class Bootstrap_Controller {
     }
 
     @GetMapping("/login")
-    public String login() { return "auth/login"; }
+    public String login(Model model) {
+        var registrations = clientRegistrations.getIfAvailable();
+        if (registrations != null) {
+            model.addAttribute("dangNhapGoogle", registrations.findByRegistrationId("google") != null);
+            model.addAttribute("dangNhapGitHub", registrations.findByRegistrationId("github") != null);
+        }
+        return "auth/login";
+    }
 
     private static <S, T> T doc(ObjectProvider<S> provider, String chuong, Function<S, T> truyVan, T macDinh) {
         S service = provider.getIfAvailable();

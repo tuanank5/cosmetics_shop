@@ -22,6 +22,8 @@
 | BR18 | Bất kỳ khách hàng nào chỉ được xem/sửa bản ghi thuộc sở hữu chính mình; Backend kiểm tra IDOR |
 | BR19 | Chatbot RAG không truy cập dữ liệu cá nhân, không ghi dữ liệu giao dịch; giá/tồn đọc từ DB, ngoài nguồn nói chưa có thông tin |
 | BR20 | Giữ lịch sử audit cho nghiệp vụ quan trọng; xóa mềm product khi đã từng bán |
+| BR21 | Chỉ tạo CUSTOMER bằng mật khẩu sau khi xác thực OTP email. Mã gắn với từng lần đăng ký, dùng một lần, hết hạn sau 5 phút hoặc sau 5 lần nhập sai. Gửi mã cách nhau ít nhất 60 giây cho cùng email. |
+| BR22 | Google/GitHub chỉ cấp phiên CUSTOMER. Tài khoản xã hội mới cần email đã xác minh và còn trống. Các lần đăng nhập sau nhận diện theo nhà cung cấp và mã danh tính. |
 
 ## Thứ tự tính tiền
 

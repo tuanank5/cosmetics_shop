@@ -5,6 +5,8 @@ import com.beautyshop.repository.NguoiDung_Repository;
 import com.beautyshop.security.LoginSuccess_Handler;
 import com.beautyshop.security.Security_Config;
 import com.beautyshop.service.NguoiDung_Service;
+import com.beautyshop.service.NguoiDung_Service.DangKyChoXacThuc;
+import com.beautyshop.service.XacThucEmail_Service;
 import com.beautyshop.service.CuaHang_Service;
 import com.beautyshop.service.SauMua_Service;
 import com.beautyshop.repository.CuaHang_Repository.TheSanPham;
@@ -35,6 +37,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Import;
 import org.springframework.http.MediaType;
+import org.springframework.dao.DataAccessResourceFailureException;
 import org.springframework.mock.web.MockHttpSession;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
@@ -63,6 +66,7 @@ class GiaoDienPagesTest {
     @MockitoBean LoginSuccess_Handler loginSuccess;
     @MockitoBean NguoiDung_Repository nguoiDungRepository;
     @MockitoBean NguoiDung_Service nguoiDungService;
+    @MockitoBean XacThucEmail_Service xacThucEmailService;
     @MockitoBean CuaHang_Service cuaHangService;
     @MockitoBean SauMua_Service sauMuaService;
 
@@ -505,6 +509,77 @@ class GiaoDienPagesTest {
             .andExpect(content().string(containsString("aria-invalid=\"true\"")))
             .andExpect(content().string(containsString("name=\"_csrf\"")))
             .andExpect(content().string(not(containsString("value=\"short\""))));
+    }
+
+    @Test
+    void otpRegisterRequiresCsrfAndIsBoundToTheSession() throws Exception {
+        var thongTin = new DangKyChoXacThuc("khach@example.invalid", "Khách thử", "hash-thu");
+        var session = batDauDangKyOtp(thongTin);
+        mvc.perform(get("/register").session(session))
+            .andExpect(content().string(containsString("khach@example.invalid")))
+            .andExpect(content().string(containsString("autocomplete=\"one-time-code\"")))
+            .andExpect(content().string(containsString("name=\"_csrf\"")));
+        for (String path : List.of("/register/verify-otp", "/register/resend-otp", "/register/cancel")) {
+            mvc.perform(post(path).session(session)).andExpect(status().isForbidden());
+        }
+        mvc.perform(post("/register/verify-otp").with(csrf()).param("otp", "123456"))
+            .andExpect(redirectedUrl("/register")).andExpect(flash().attributeExists("loiDangKy"));
+        verify(xacThucEmailService, never()).xacThuc(any(), anyString());
+        verify(nguoiDungService, never()).dangKy(any());
+
+        mvc.perform(post("/register/verify-otp").with(csrf()).session(session).param("otp", "123456"))
+            .andExpect(redirectedUrl("/register")).andExpect(flash().attributeExists("loiDangKy"));
+        when(xacThucEmailService.xacThuc(any(), eq("654321"))).thenReturn(true);
+        mvc.perform(post("/register/verify-otp").with(csrf()).session(session).param("otp", "654321"))
+            .andExpect(redirectedUrl("/login?registered"));
+        mvc.perform(post("/register/verify-otp").with(csrf()).session(session).param("otp", "654321"))
+            .andExpect(redirectedUrl("/register")).andExpect(flash().attributeExists("loiDangKy"));
+        verify(nguoiDungService).dangKy(thongTin);
+    }
+
+    @Test
+    void otpRegisterCanRetryDatabaseWriteAfterCodeIsConsumed() throws Exception {
+        var thongTin = new DangKyChoXacThuc("khach@example.invalid", "Khách thử", "hash-thu");
+        var session = batDauDangKyOtp(thongTin);
+        when(xacThucEmailService.xacThuc(any(), eq("123456"))).thenReturn(true);
+        doThrow(new DataAccessResourceFailureException("test")).doNothing().when(nguoiDungService).dangKy(thongTin);
+
+        mvc.perform(post("/register/verify-otp").with(csrf()).session(session).param("otp", "123456"))
+            .andExpect(redirectedUrl("/register")).andExpect(flash().attributeExists("loiDangKy"));
+        mvc.perform(get("/register").session(session))
+            .andExpect(content().string(containsString("Hoàn tất đăng ký")))
+            .andExpect(content().string(not(containsString("name=\"otp\""))));
+        mvc.perform(post("/register/verify-otp").with(csrf()).session(session))
+            .andExpect(redirectedUrl("/login?registered"));
+        verify(xacThucEmailService).xacThuc(any(), eq("123456"));
+        verify(nguoiDungService, times(2)).dangKy(thongTin);
+    }
+
+    @Test
+    void otpRegisterShowsResendCooldownAndCanCancel() throws Exception {
+        var session = batDauDangKyOtp(new DangKyChoXacThuc("khach@example.invalid", "Khách thử", "hash-thu"));
+        when(xacThucEmailService.guiMa(any(), eq("khach@example.invalid"))).thenReturn(false, true);
+        mvc.perform(post("/register/resend-otp").with(csrf()).session(session))
+            .andExpect(redirectedUrl("/register")).andExpect(flash().attributeExists("loiDangKy"));
+        mvc.perform(post("/register/resend-otp").with(csrf()).session(session))
+            .andExpect(redirectedUrl("/register")).andExpect(flash().attributeExists("tinDangKy"));
+        mvc.perform(post("/register/cancel").with(csrf()).session(session)).andExpect(redirectedUrl("/register"));
+        mvc.perform(get("/register").session(session))
+            .andExpect(content().string(not(containsString("name=\"otp\""))));
+        mvc.perform(post("/register/verify-otp").with(csrf()).session(session).param("otp", "123456"))
+            .andExpect(redirectedUrl("/register")).andExpect(flash().attributeExists("loiDangKy"));
+        verify(nguoiDungService, never()).dangKy(any());
+    }
+
+    private MockHttpSession batDauDangKyOtp(DangKyChoXacThuc thongTin) throws Exception {
+        var session = new MockHttpSession();
+        when(nguoiDungService.chuanBiDangKy(any())).thenReturn(thongTin);
+        when(xacThucEmailService.guiMa(any(), eq(thongTin.email()))).thenReturn(true);
+        mvc.perform(post("/register").with(csrf()).session(session).param("email", thongTin.email())
+                .param("hoTen", thongTin.hoTen()).param("matKhau", "mat-khau-thu-dai"))
+            .andExpect(redirectedUrl("/register")).andExpect(flash().attributeExists("tinDangKy"));
+        verify(nguoiDungService, never()).dangKy(any());
+        return session;
     }
 
     @Test

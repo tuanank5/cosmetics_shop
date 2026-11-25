@@ -32,6 +32,12 @@ public class NguoiDung {
     @Column(name = "phien_ban_xac_thuc", nullable = false)
     private long phienBanXacThuc;
 
+    @Column(name = "nha_cung_cap_oauth", length = 20)
+    private String nhaCungCapOauth;
+
+    @Column(name = "ma_danh_tinh_oauth", length = 255)
+    private String maDanhTinhOauth;
+
     protected NguoiDung() {}
 
     public NguoiDung(String email, String matKhauBam, String hoTen) {
@@ -40,6 +46,12 @@ public class NguoiDung {
         this.hoTen = hoTen;
         this.vaiTro = VaiTro.CUSTOMER;
         this.kichHoat = true;
+    }
+
+    public NguoiDung(String email, String matKhauBam, String hoTen, String nhaCungCapOauth, String maDanhTinhOauth) {
+        this(email, matKhauBam, hoTen);
+        this.nhaCungCapOauth = nhaCungCapOauth;
+        this.maDanhTinhOauth = maDanhTinhOauth;
     }
 
     public Long getMaNguoiDung() { return maNguoiDung; }

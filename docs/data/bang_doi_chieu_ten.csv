@@ -7,6 +7,8 @@ users,nguoi_dung,phone,so_dien_thoai
 users,nguoi_dung,role,vai_tro
 users,nguoi_dung,enabled,kich_hoat
 users,nguoi_dung,created_at,ngay_tao
+users,nguoi_dung,oauth_provider,nha_cung_cap_oauth
+users,nguoi_dung,oauth_subject,ma_danh_tinh_oauth
 addresses,dia_chi_nguoi_dung,id,ma_dia_chi
 addresses,dia_chi_nguoi_dung,user_id,ma_nguoi_dung
 addresses,dia_chi_nguoi_dung,receiver_name,ten_nguoi_nhan

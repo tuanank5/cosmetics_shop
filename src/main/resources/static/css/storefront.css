@@ -109,6 +109,7 @@
 .login-wrap { max-width: 624px; }
 .login-card { display: grid; gap: var(--space-5); }
 .login-card .error-summary, .login-card .alert { margin: 0; }
+.login-social { display: grid; gap: var(--space-3); margin-top: var(--space-5); }
 .auth-switch { margin: var(--space-5) 0 0; }
 .error-page { max-width: 800px; text-align: center; padding-block: var(--space-7); }
 .error-code { color: var(--color-primary); font: 400 clamp(56px, 10vw, 96px)/1.2 var(--font-heading); margin-bottom: var(--space-4); }

@@ -39,6 +39,13 @@
       </div>
       <button type="submit" class="btn btn--primary btn--lg">Đăng nhập</button>
     </form>
+    <p class="alert alert--error" role="alert" th:if="${param.oauth2Error}">
+      Chưa thể đăng nhập qua Google hoặc GitHub. Nếu đã có tài khoản, hãy dùng phương thức đăng nhập trước đây.
+    </p>
+    <div class="login-social" th:if="${dangNhapGoogle == true or dangNhapGitHub == true}">
+      <a class="btn btn--ghost" th:if="${dangNhapGoogle}" th:href="@{/oauth2/authorization/google}">Đăng nhập bằng Google</a>
+      <a class="btn btn--ghost" th:if="${dangNhapGitHub}" th:href="@{/oauth2/authorization/github}">Đăng nhập bằng GitHub</a>
+    </div>
     <p class="auth-switch">Chưa có tài khoản? <a class="text-link" th:href="@{/register}">Tạo tài khoản</a></p>
   </section>
 </main>

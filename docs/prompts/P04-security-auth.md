@@ -7,6 +7,8 @@
 
 - Thay `BootstrapUserDetailsService` bằng UserRepository-backed UserDetailsService; bcrypt, login/logout bằng Form Login + Session; CSRF bật.
 - Register customer bằng DTO validation, email UNIQUE, không cho client chọn ADMIN; admin bootstrap qua thao tác an toàn cấu hình ngoài code hoặc migration có quy trình (không password demo cố định).
+- Đăng ký Customer qua OTP email theo D33. Mã gắn với lần đăng ký của phiên Guest, có giới hạn gửi theo email. Giữ CSRF cho gửi mã, xác thực, gửi lại và hủy.
+- Khi bật Google/GitHub theo D34, chỉ cấp phiên CUSTOMER từ định danh nhà cung cấp. Tài khoản có email trùng giữ phương thức đăng nhập hiện hữu. Dùng lại kiểm tra trạng thái phiên và hợp nhất giỏ Guest sau đăng nhập.
 - Guest được `GET /cart`/`POST /cart/**` trong Session; `/checkout/**`, `/orders/**`, `/account/**` chỉ CUSTOMER; `/admin/**` chỉ ADMIN; đường đọc catalog public.
 - Khi login, merge giỏ Session -> DB **đúng một lần**, bảo đảm không vượt tồn, tách logic CartService với P06; thống nhất contract trước sửa.
 - Chống IDOR: service kiểm sở hữu order; CSRF test và logout; không JWT/web token tự tạo.
