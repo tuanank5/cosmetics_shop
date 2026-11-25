@@ -44,7 +44,7 @@
         <a th:href="@{/admin/dashboard}" sec:authorize="hasRole('ADMIN')" th:attr="aria-current=${path == '/admin/dashboard' ? 'page' : null}">Tổng quan</a>
         <a th:href="@{/}" th:attr="aria-current=${path == '/' ? 'page' : null}">Trang chủ</a>
         <a th:href="@{/products}" th:attr="aria-current=${path == '/products' ? 'page' : null}, data-active-group=${#strings.startsWith(path, '/products/') ? 'products' : null}">Sản phẩm</a>
-        <a th:href="@{/chat}" th:attr="aria-current=${path == '/chat' ? 'page' : null}">Tư vấn</a>
+        <a th:href="@{/tu-van-da}" th:attr="aria-current=${path == '/tu-van-da' ? 'page' : null}">Tư vấn</a>
         <details class="nav-discovery" sec:authorize="isAnonymous() or hasRole('CUSTOMER')">
           <summary>Khám phá</summary>
           <div class="nav-discovery-panel">

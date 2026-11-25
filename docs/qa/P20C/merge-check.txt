@@ -1,0 +1,11 @@
+﻿P20C integration with origin/main 0f10085 on JDK 21.0.13.0.2
+mvn -o test
+[INFO] Tests run: 270, Failures: 0, Errors: 0, Skipped: 48
+[INFO] BUILD SUCCESS
+[INFO] Total time:  44.526 s
+[INFO] Finished at: 2026-11-25T12:32:54+07:00
+
+mvn -o -DskipTests package
+[INFO] BUILD SUCCESS
+[INFO] Total time:  3.901 s
+[INFO] Finished at: 2026-11-25T12:32:59+07:00
