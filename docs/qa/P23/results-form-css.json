@@ -1,0 +1,57 @@
+{
+  "mode": "form-css",
+  "base": "http://127.0.0.1:8081",
+  "startedAt": "2026-11-24T01:09:06.313Z",
+  "checks": [
+    {
+      "name": "review form CSS 1366px: 5 stars on one row, 44px targets, 4 selected via keyboard, counter, no overflow",
+      "pass": true,
+      "detail": {
+        "display": "flex",
+        "border": "0px",
+        "tops": [
+          356
+        ],
+        "minW": 44,
+        "minH": 44,
+        "checked": "4",
+        "gold": [
+          "rgb(168, 138, 90)",
+          "rgb(168, 138, 90)",
+          "rgb(168, 138, 90)",
+          "rgb(168, 138, 90)",
+          "color(srgb 0.72549 0.713726 0.690196 / 0.55)"
+        ],
+        "counter": "24",
+        "overflowX": false
+      }
+    },
+    {
+      "name": "review form CSS 390px: 5 stars on one row, 44px targets, 4 selected via keyboard, counter, no overflow",
+      "pass": true,
+      "detail": {
+        "display": "flex",
+        "border": "0px",
+        "tops": [
+          313
+        ],
+        "minW": 44,
+        "minH": 44,
+        "checked": "4",
+        "gold": [
+          "rgb(168, 138, 90)",
+          "rgb(168, 138, 90)",
+          "rgb(168, 138, 90)",
+          "rgb(168, 138, 90)",
+          "color(srgb 0.72549 0.713726 0.690196 / 0.55)"
+        ],
+        "counter": "24",
+        "overflowX": false
+      }
+    }
+  ],
+  "notes": [],
+  "exceptions": [],
+  "failures": 0,
+  "finishedAt": "2026-11-24T01:09:11.219Z"
+}

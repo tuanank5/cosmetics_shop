@@ -1,0 +1,60 @@
+P23 sau 2 lan migrate (beautyshop_demo.danh_gia):
+{
+ "tongQuan": {
+  "tong": 71,
+  "dangHien": 64,
+  "daDuyet": 64,
+  "maxPhienBan": 0,
+  "soSanPham": 26,
+  "tb": 3.592
+ },
+ "theoSao": [
+  {
+   "_id": 5,
+   "n": 21,
+   "hien": 19
+  },
+  {
+   "_id": 4,
+   "n": 25,
+   "hien": 21
+  },
+  {
+   "_id": 3,
+   "n": 8,
+   "hien": 8
+  },
+  {
+   "_id": 2,
+   "n": 9,
+   "hien": 9
+  },
+  {
+   "_id": 1,
+   "n": 8,
+   "hien": 7
+  }
+ ],
+ "trungMaChiTiet": 0,
+ "indexes": [
+  "_id_",
+  "idx_san_pham_hien_thi_ngay",
+  "idx_hien_thi_ngay",
+  "uq_ma_chi_tiet_don_hang (unique)",
+  "idx_nguoi_dung"
+ ],
+ "mau": {
+  "maChiTietDonHang": 2,
+  "hienThi": true,
+  "maSanPham": 25,
+  "ngayDuyet": {
+   "$date": "2026-11-11T16:28:00.528Z"
+  },
+  "ngayTao": {
+   "$date": "2026-11-11T16:28:00.528Z"
+  },
+  "phienBan": 0,
+  "soSao": 4,
+  "tenHienThi": "demo K."
+ }
+}

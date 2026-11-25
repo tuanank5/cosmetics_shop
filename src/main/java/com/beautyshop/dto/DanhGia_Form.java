@@ -11,7 +11,7 @@ public class DanhGia_Form {
     @Max(value = 5, message = "Số sao phải từ 1 đến 5.")
     private Integer soSao;
 
-    @Size(max = 2000, message = "Nội dung tối đa 2.000 ký tự.")
+    @Size(max = 1000, message = "Nội dung tối đa 1.000 ký tự.")
     private String noiDung;
 
     public Integer getSoSao() { return soSao; }

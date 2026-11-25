@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="vi" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <body>
-<header th:fragment="siteHeader" class="site-header" th:with="path=${uiPath ?: ''}"
-        th:attr="data-storefront=${!#strings.startsWith(path, '/admin') ? 'true' : null}">
+<header th:fragment="siteHeader" class="site-header"
+        th:with="path=${uiPath ?: ''}, admin=${path == '/admin' or #strings.startsWith(path, '/admin/')}"
+        th:classappend="${admin ? 'site-header--admin' : null}"
+        th:attr="data-storefront=${admin ? null : 'true'}">
   <a class="skip-link" href="#main">Đến nội dung chính</a>
 
   <div class="nav-shell">
@@ -24,24 +26,25 @@
       </form>
     <a class="brand" th:href="@{/}" aria-label="BeautyShop – Trang chủ">
       <picture>
-        <source media="(max-width: 359px)" th:srcset="@{/img/brand/beautyshop-mark.svg}" width="120" height="160">
-        <img class="brand-logo" th:src="@{${#strings.startsWith(path, '/admin') ? '/img/brand/beautyshop-lockup-light.svg' : '/img/brand/beautyshop-lockup.svg'}}"
+        <source th:unless="${admin}" media="(max-width: 359px)" th:srcset="@{/img/brand/beautyshop-mark.svg}" width="120" height="160">
+        <img class="brand-logo" th:src="@{${admin ? '/img/brand/beautyshop-lockup-light.svg' : '/img/brand/beautyshop-lockup.svg'}}"
              alt="BeautyShop" width="402" height="54">
       </picture>
     </a>
     </div>
-    <form class="header-search" method="get" th:action="@{/products}" role="search" aria-label="Tìm sản phẩm">
+    <a th:if="${admin}" class="admin-store-link" th:href="@{/}">Về cửa hàng</a>
+    <form th:unless="${admin}" class="header-search" method="get" th:action="@{/products}" role="search" aria-label="Tìm sản phẩm">
       <label class="visually-hidden" for="header-search">Tên sản phẩm hoặc SKU</label>
       <input id="header-search" name="q" type="search" maxlength="160" placeholder="Tìm sản phẩm, SKU…">
       <button class="btn btn--secondary" type="submit">Tìm kiếm</button>
     </form>
-    <details class="header-menu">
+    <details th:unless="${admin}" class="header-menu">
       <summary><span class="menu-closed">Menu cửa hàng</span><span class="menu-open">Đóng menu</span></summary>
       <nav class="nav-links" aria-label="Điều hướng chính">
         <a th:href="@{/admin/dashboard}" sec:authorize="hasRole('ADMIN')" th:attr="aria-current=${path == '/admin/dashboard' ? 'page' : null}">Tổng quan</a>
         <a th:href="@{/}" th:attr="aria-current=${path == '/' ? 'page' : null}">Trang chủ</a>
         <a th:href="@{/products}" th:attr="aria-current=${path == '/products' ? 'page' : null}, data-active-group=${#strings.startsWith(path, '/products/') ? 'products' : null}">Sản phẩm</a>
-        <a th:href="@{/chat}" th:attr="aria-current=${path == '/chat' ? 'page' : null}">Tư vấn</a>
+        <a th:href="@{/tu-van-da}" th:attr="aria-current=${path == '/tu-van-da' ? 'page' : null}">Tư vấn</a>
         <details class="nav-discovery" sec:authorize="isAnonymous() or hasRole('CUSTOMER')">
           <summary>Khám phá</summary>
           <div class="nav-discovery-panel">
@@ -90,6 +93,15 @@
       </nav>
     </details>
   </div>
+  <th:block th:if="${admin}" sec:authorize="hasRole('ADMIN')">
+    <aside class="admin-sidebar">
+      <nav th:replace="~{fragments/admin-nav :: adminNav(${path})}"></nav>
+    </aside>
+    <details class="admin-menu">
+      <summary>Menu quản trị</summary>
+      <nav th:replace="~{fragments/admin-nav :: adminNav(${path})}"></nav>
+    </details>
+  </th:block>
 </header>
 </body>
 </html>

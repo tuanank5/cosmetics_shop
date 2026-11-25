@@ -111,4 +111,7 @@ public class BienTheSanPham {
     public String getMaLoMinhHoa() { return maLoMinhHoa; }
     public LocalDate getHanSuDungMinhHoa() { return hanSuDungMinhHoa; }
     public boolean isDangHoatDong() { return dangHoatDong; }
+    public SanPham getSanPham() {
+        return sanPham;
+    }
 }

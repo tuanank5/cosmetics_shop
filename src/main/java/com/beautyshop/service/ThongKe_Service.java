@@ -2,8 +2,17 @@ package com.beautyshop.service;
 
 import com.beautyshop.dto.BoLocThongKe_Form;
 import com.beautyshop.order.OrderStatus;
+import com.beautyshop.payment.MomoGateway;
+import com.beautyshop.payment.Momo_Settings;
+import com.beautyshop.repository.DanhGia_Store;
 import com.beautyshop.repository.ThongKe_Repository;
 import com.beautyshop.repository.ThongKe_Repository.DonMoi;
+import com.beautyshop.repository.ThongKe_Repository.CanhBaoThanhToan;
+import com.beautyshop.repository.ThongKe_Repository.DoiTraCho;
+import com.beautyshop.repository.ThongKe_Repository.NhomThanhToan;
+import com.beautyshop.repository.ThongKe_Repository.SanPhamBanChay;
+import com.beautyshop.repository.ThongKe_Repository.TachDoanhThu;
+import com.beautyshop.repository.ThongKe_Repository.VoucherSapHetHan;
 import com.beautyshop.repository.ThongKe_Repository.Ngay;
 import com.beautyshop.repository.ThongKe_Repository.Nhom;
 import com.beautyshop.repository.ThongKe_Repository.SkuSapHet;
@@ -20,9 +29,13 @@ import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.function.Function;
 import java.util.stream.Collectors;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -36,22 +49,45 @@ import org.springframework.validation.Errors;
 @PreAuthorize("hasRole('ADMIN')")
 @Transactional(readOnly = true)
 public class ThongKe_Service {
+    private static final Logger log = LoggerFactory.getLogger(ThongKe_Service.class);
     public static final ZoneId MUI_GIO = ZoneId.of("Asia/Ho_Chi_Minh");
     public static final int NGUONG_TON_MAC_DINH = 5;
     static final int SO_NGAY_TOI_DA = 366;
     private static final Map<String, Integer> KY_NHANH = Map.of("7d", 7, "30d", 30, "90d", 90);
 
     private final ThongKe_Repository repository;
+    private final DanhGia_Store danhGia;
     private final Clock clock;
+    private final String momoGateway;
 
     @Autowired
-    public ThongKe_Service(ThongKe_Repository repository) {
-        this(repository, Clock.systemUTC());
+    public ThongKe_Service(ThongKe_Repository repository, DanhGia_Store danhGia, Optional<Momo_Settings> momo) {
+        this(repository, danhGia, Clock.systemUTC(), momo.flatMap(Momo_Settings::gateway).map(MomoGateway::maGateway).orElse(null));
     }
 
-    ThongKe_Service(ThongKe_Repository repository, Clock clock) {
+    public ThongKe_Service(ThongKe_Repository repository, DanhGia_Store danhGia) {
+        this(repository, danhGia, Clock.systemUTC());
+    }
+
+    ThongKe_Service(ThongKe_Repository repository, DanhGia_Store danhGia, Clock clock) {
+        this(repository, danhGia, clock, null);
+    }
+
+    ThongKe_Service(ThongKe_Repository repository, DanhGia_Store danhGia, Clock clock, String momoGateway) {
         this.repository = repository;
+        this.danhGia = danhGia;
         this.clock = clock;
+        this.momoGateway = momoGateway;
+    }
+
+    /** P23: đánh giá đọc từ DanhGia_Store (MongoDB); lỗi thì phần đánh giá rỗng, Dashboard vẫn hiển thị. */
+    private DanhGia_Store.ThongKeDanhGia thongKeDanhGia(LocalDateTime a, LocalDateTime b) {
+        try {
+            return danhGia.thongKe(a.toInstant(ZoneOffset.UTC), b.toInstant(ZoneOffset.UTC));
+        } catch (DataAccessException exception) {
+            log.warn("Dashboard: khong doc duoc thong ke danh gia: {}", exception.getMessage());
+            return DanhGia_Store.ThongKeDanhGia.RONG;
+        }
     }
 
     public LocalDate homNay() { return LocalDate.now(clock.withZone(MUI_GIO)); }
@@ -100,7 +136,9 @@ public class ThongKe_Service {
         var doanhThu = repository.doanhThu(pa, a, b);
         var demDon = repository.demDon(pa, a, b);
         long[] khachMoi = repository.khachMoi(truoc.tu().atStartOfDay(), ky.tu().atStartOfDay(), ky.den().plusDays(1).atStartOfDay());
-        var hienTai = repository.hienTai(LocalDateTime.now(clock.withZone(ZoneOffset.UTC)));
+        LocalDateTime now = LocalDateTime.now(clock.withZone(ZoneOffset.UTC));
+        var hienTai = repository.hienTai(now);
+        var daGiao = repository.demDonDaGiao(pa, a, b);
 
         BigDecimal aov = trungBinh(doanhThu.hienTai(), doanhThu.soDonThu());
         BigDecimal aovTruoc = trungBinh(doanhThu.kyTruoc(), doanhThu.soDonThuKyTruoc());
@@ -108,7 +146,7 @@ public class ThongKe_Service {
         BigDecimal tiLeHuyTruoc = tiLe(demDon.soHuyKyTruoc(), demDon.soDonKyTruoc());
         List<Kpi> kpi = List.of(
             Kpi.tien("doanh-thu", "Doanh thu thực thu", doanhThu.hienTai(), doanhThu.kyTruoc(),
-                "Tổng tiền các đơn đã thu tiền (thanh toán PAID khớp tổng đơn) theo ngày thu; loại đơn hủy/hết hạn và thanh toán đang hoàn."),
+                "Thanh toán PAID khớp tổng đơn. Loại đơn hủy, hết hạn và thanh toán đang hoàn."),
             Kpi.so("so-don", "Số đơn", demDon.soDon(), demDon.soDonKyTruoc(),
                 "Đơn đặt trong kỳ theo ngày tạo, trừ đơn online chưa thanh toán hoặc hết hạn."),
             Kpi.tien("aov", "Giá trị đơn trung bình", aov, aovTruoc,
@@ -116,7 +154,9 @@ public class ThongKe_Service {
             Kpi.so("khach-moi", "Khách hàng mới", khachMoi[0], khachMoi[1],
                 "Tài khoản Customer đăng ký trong kỳ."),
             Kpi.tiLe("ti-le-huy", "Tỉ lệ hủy đơn", tiLeHuy, tiLeHuyTruoc,
-                "Đơn đã hủy chia số đơn đặt trong kỳ (cùng định nghĩa \"Số đơn\"). So sánh theo điểm phần trăm."));
+                "Đơn đã hủy chia số đơn đặt trong kỳ (cùng định nghĩa \"Số đơn\"). So sánh theo điểm phần trăm."),
+            Kpi.so("da-giao", "Đơn đã giao", daGiao.hienTai(), daGiao.kyTruoc(),
+                "Tính theo ngày giao thành công."));
 
         List<NgayThongKe> theoNgay = theoNgay(ky, repository.doanhThuTheoNgay(a, b), repository.donTheoNgay(a, b));
         Map<String, Nhom> trangThai = theoMa(repository.donTheoTrangThai(a, b));
@@ -128,16 +168,24 @@ public class ThongKe_Service {
         List<Nhom> theoPhuongThuc = List.of(
             doiNhan(phuongThuc.get("COD"), "COD (thu khi giao)"),
             doiNhan(phuongThuc.get("MOMO"), "MoMo"));
-        Map<String, Nhom> sao = theoMa(repository.danhGiaTheoSao(a, b));
+        var thongKeDanhGia = thongKeDanhGia(a, b);
         List<Nhom> theoSao = new ArrayList<>();
         for (int s = 5; s >= 1; s--) {
-            theoSao.add(doiNhan(sao.get(String.valueOf(s)), s + " sao"));
+            theoSao.add(new Nhom(s + " sao", thongKeDanhGia.phanBoTrongKy()[s - 1], BigDecimal.ZERO));
         }
         List<DonGanDay> donMoi = repository.donMoiNhat(8).stream().map(this::donGanDay).toList();
         List<SkuSapHet> sapHet = repository.skuSapHet(nguongTon, 20);
+        var sanPhamBanChay = repository.topSanPhamChiTiet(a, b, 5);
+        var trangThaiThanhToan = repository.trangThaiThanhToan(a, b, now).stream()
+            .collect(Collectors.toMap(NhomThanhToan::phuongThuc, Function.identity()));
         return new TongQuan(ky, truoc, kpi, hienTai.choXuLy(), theoNgay, theoTrangThai,
-            repository.topSanPham(a, b, 5), repository.doanhThuTheoDanhMuc(a, b), theoPhuongThuc, theoSao,
-            donMoi, sapHet, nguongTon, hienTai.danhGiaChoDuyet(), hienTai.doiTraCho(), hienTai.voucherSapHetHan());
+            sanPhamBanChay, repository.doanhThuTheoDanhMuc(a, b), theoPhuongThuc, theoSao,
+            donMoi, sapHet, nguongTon, thongKeDanhGia.choDuyet(), hienTai.doiTraCho(), hienTai.voucherSapHetHan(),
+            demDon.soHuy(), repository.demSkuSapHet(nguongTon), repository.tachDoanhThu(a, b),
+            repository.doanhThuTheoThuongHieu(a, b),
+            List.of(trangThaiThanhToan.getOrDefault("COD", new NhomThanhToan("COD", 0, 0, 0)),
+                trangThaiThanhToan.getOrDefault("MOMO", new NhomThanhToan("MOMO", 0, 0, 0))),
+            repository.doiTraCho(), repository.canhBaoThanhToan(a, b, now, momoGateway), repository.voucherSapHetHan(now));
     }
 
     static LocalDateTime utc(LocalDate ngay) {
@@ -146,8 +194,7 @@ public class ThongKe_Service {
 
     private DonGanDay donGanDay(DonMoi don) {
         OrderStatus trangThai = OrderStatus.valueOf(don.trangThai());
-        LocalDateTime gioVn = don.ngayTaoUtc().atOffset(ZoneOffset.UTC).atZoneSameInstant(MUI_GIO).toLocalDateTime();
-        return new DonGanDay(don.maDonHang(), don.maHienThi(), don.khachHang(), don.tong(), trangThai, gioVn);
+        return new DonGanDay(don.maDonHang(), don.maHienThi(), don.khachHang(), don.tong(), trangThai, gioVietNam(don.ngayTaoUtc()));
     }
 
     private static List<NgayThongKe> theoNgay(Ky ky, List<Ngay> doanhThu, List<Ngay> don) {
@@ -222,14 +269,31 @@ public class ThongKe_Service {
     public record DonGanDay(long maDonHang, String maHienThi, String khachHang, BigDecimal tong, OrderStatus trangThai,
                             LocalDateTime ngayTao) {}
     public record TongQuan(Ky ky, Ky kyTruoc, List<Kpi> kpi, long donChoXuLy, List<NgayThongKe> theoNgay,
-                           List<Nhom> theoTrangThai, List<Nhom> topSanPham, List<Nhom> theoDanhMuc,
+                           List<Nhom> theoTrangThai, List<SanPhamBanChay> sanPhamBanChay, List<Nhom> theoDanhMuc,
                            List<Nhom> theoPhuongThuc, List<Nhom> theoSao, List<DonGanDay> donMoi,
                            List<SkuSapHet> skuSapHet, int nguongTon, long danhGiaChoDuyet, long doiTraCho,
-                           long voucherSapHetHan) {
+                           long voucherSapHetHan, long donBiHuy, long demSkuSapHet, TachDoanhThu tachDoanhThu,
+                           List<Nhom> theoThuongHieu, List<NhomThanhToan> trangThaiThanhToan,
+                           List<DoiTraCho> doiTraChoChiTiet, List<CanhBaoThanhToan> canhBaoThanhToan,
+                           List<VoucherSapHetHan> voucherSapHetHanChiTiet) {
+        public List<Nhom> topSanPham() {
+            return sanPhamBanChay.stream().map(sp -> new Nhom(sp.nhan(), sp.soLuong(), sp.soTien())).toList();
+        }
+        public Kpi chiSo(String ma) {
+            return kpi.stream().filter(k -> k.ma().equals(ma)).findFirst().orElseThrow();
+        }
+        public boolean coTrangThaiThanhToan() {
+            return trangThaiThanhToan.stream().anyMatch(n -> n.daThu() + n.dangCho() + n.ketThuc() > 0);
+        }
+        public LocalDateTime gioVietNam(LocalDateTime utc) { return ThongKe_Service.gioVietNam(utc); }
         public boolean coDoanhThu() { return theoNgay.stream().anyMatch(n -> n.doanhThu().signum() > 0); }
         public boolean coDon() { return theoNgay.stream().anyMatch(n -> n.soDon() > 0); }
         public boolean coTrangThai() { return theoTrangThai.stream().anyMatch(n -> n.soLuong() > 0); }
         public boolean coThanhToan() { return theoPhuongThuc.stream().anyMatch(n -> n.soLuong() > 0); }
         public boolean coDanhGia() { return theoSao.stream().anyMatch(n -> n.soLuong() > 0); }
+    }
+
+    private static LocalDateTime gioVietNam(LocalDateTime utc) {
+        return utc.atOffset(ZoneOffset.UTC).atZoneSameInstant(MUI_GIO).toLocalDateTime();
     }
 }

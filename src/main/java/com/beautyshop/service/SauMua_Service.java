@@ -4,19 +4,34 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import com.beautyshop.dto.DanhGia_Form;
 import com.beautyshop.dto.DoiTra_Form;
 import com.beautyshop.order.ReturnStatus;
+import com.beautyshop.entity.DanhGia_Document;
 import com.beautyshop.repository.DanhGia_Repository;
-import com.beautyshop.repository.DanhGia_Repository.DanhGia;
 import com.beautyshop.repository.DanhGia_Repository.MucMua;
+import com.beautyshop.repository.DanhGia_Repository.SanPhamLoc;
+import com.beautyshop.repository.DanhGia_Store;
+import com.beautyshop.repository.DanhGia_Store.BoLocDanhGia;
+import com.beautyshop.repository.DanhGia_Store.DanhGiaAdmin;
+import com.beautyshop.repository.DanhGia_Store.DanhGiaCongKhai;
+import com.beautyshop.repository.DanhGia_Store.DanhGiaCuaKhach;
+import com.beautyshop.repository.DanhGia_Store.DanhGiaMoi;
+import com.beautyshop.repository.DanhGia_Store.TomTatDanhGia;
 import com.beautyshop.repository.DoiTra_Repository;
 import com.beautyshop.repository.DoiTra_Repository.ChiTiet;
 import com.beautyshop.repository.DoiTra_Repository.Don;
 import com.beautyshop.repository.DoiTra_Repository.Muc;
 import com.beautyshop.repository.DoiTra_Repository.MucTra;
 import com.beautyshop.repository.YeuThich_Repository;
+import java.util.Collection;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.dao.DataAccessException;
 import org.springframework.dao.DuplicateKeyException;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
@@ -25,37 +40,101 @@ import org.springframework.web.server.ResponseStatusException;
 
 @Service
 public class SauMua_Service {
+    private static final Logger log = LoggerFactory.getLogger(SauMua_Service.class);
+    public static final int DANH_GIA_MOI_TRANG = 10;
+    public static final int DANH_GIA_ADMIN_MOI_TRANG = 20;
+    public static final String LOI_KHO_DANH_GIA = "Tạm thời chưa lưu được đánh giá. Vui lòng thử lại sau ít phút.";
+
+    /** Điều kiện BR16 luôn đọc từ MariaDB; nội dung đánh giá đọc/ghi qua {@link DanhGia_Store} (P23). */
     private final DanhGia_Repository danhGia;
+    private final DanhGia_Store kho;
     private final DoiTra_Repository doiTra;
     private final YeuThich_Repository yeuThich;
 
-    SauMua_Service(DanhGia_Repository danhGia, DoiTra_Repository doiTra, YeuThich_Repository yeuThich) {
+    SauMua_Service(DanhGia_Repository danhGia, DanhGia_Store kho, DoiTra_Repository doiTra, YeuThich_Repository yeuThich) {
         this.danhGia = danhGia;
+        this.kho = kho;
         this.doiTra = doiTra;
         this.yeuThich = yeuThich;
     }
 
-    public List<DanhGia> danhGiaCongKhai(long maSanPham) { return danhGia.congKhai(maSanPham); }
+    /** Trang chi tiết sản phẩm: tóm tắt + danh sách công khai; kho đánh giá lỗi thì trả cờ để trang hiện thông báo. */
+    public TrangDanhGiaSanPham danhGiaSanPham(long maSanPham, int trang) {
+        var pageable = PageRequest.of(Math.clamp(trang, 0, 10_000), DANH_GIA_MOI_TRANG);
+        try {
+            return new TrangDanhGiaSanPham(kho.tomTat(maSanPham), kho.congKhai(maSanPham, pageable), false);
+        } catch (DataAccessException exception) {
+            log.warn("Khong tai duoc danh gia san pham {}: {}", maSanPham, exception.getMessage());
+            return new TrangDanhGiaSanPham(TomTatDanhGia.RONG, Page.empty(pageable), true);
+        }
+    }
+
+    /** Sao trung bình + số đánh giá cho thẻ sản phẩm, một truy vấn cho cả trang; lỗi thì thẻ không hiện sao. */
+    public Map<Long, TomTatDanhGia> tomTatDanhGia(Collection<Long> maSanPham) {
+        List<Long> ma = maSanPham.stream().filter(Objects::nonNull).distinct().toList();
+        if (ma.isEmpty()) {
+            return Map.of();
+        }
+        try {
+            return kho.tomTatNhieu(ma, null);
+        } catch (DataAccessException exception) {
+            log.warn("Khong tai duoc tom tat danh gia cho the san pham: {}", exception.getMessage());
+            return Map.of();
+        }
+    }
+
     @PreAuthorize("hasRole('ADMIN')")
-    public List<DanhGia_Repository.DanhGiaAdmin> danhSachDanhGiaAdmin() { return danhGia.danhSachAdmin(); }
+    public TrangDanhGiaAdmin danhSachDanhGiaAdmin(BoLocDanhGia boLoc, int trang) {
+        var pageable = PageRequest.of(Math.clamp(trang, 0, 10_000), DANH_GIA_ADMIN_MOI_TRANG);
+        List<SanPhamLoc> sanPham = danhGia.sanPhamLoc();
+        try {
+            Page<DanhGiaAdmin> ketQua = kho.danhSachAdmin(boLoc, pageable);
+            Map<Long, String> ten = danhGia.tenSanPham(ketQua.getContent().stream().map(DanhGiaAdmin::maSanPham).distinct().toList());
+            return new TrangDanhGiaAdmin(ketQua.map(d -> d.voiTenSanPham(ten.getOrDefault(d.maSanPham(), "Sản phẩm #" + d.maSanPham()))),
+                sanPham, false);
+        } catch (DataAccessException exception) {
+            log.warn("Admin: khong tai duoc danh sach danh gia: {}", exception.getMessage());
+            return new TrangDanhGiaAdmin(Page.empty(pageable), sanPham, true);
+        }
+    }
     public List<DoiTra_Repository.YeuCau> danhSachDoiTra(Long maNguoiDung) { return doiTra.danhSach(maNguoiDung); }
     public List<YeuThich_Repository.Muc> danhSachYeuThich(long maNguoiDung) { return yeuThich.danhSach(maNguoiDung); }
     public void themYeuThich(long maNguoiDung, long maSanPham) { yeuThich.them(maNguoiDung, maSanPham); }
     public void xoaYeuThich(long maNguoiDung, long maSanPham) { yeuThich.xoa(maNguoiDung, maSanPham); }
 
+    /** BR16 kiểm ở MariaDB trước; kho đánh giá lỗi thì vẫn hiện form nhưng báo không lưu được. */
     public TrangDanhGia xemDanhGia(long maNguoiDung, long maMuc) {
-        return new TrangDanhGia(mucDaGiao(maNguoiDung, maMuc), danhGia.cuaChuMuc(maMuc, maNguoiDung).orElse(null));
+        var muc = mucDaGiao(maNguoiDung, maMuc);
+        try {
+            return new TrangDanhGia(muc, kho.cuaChuMuc(maMuc, maNguoiDung).orElse(null), false);
+        } catch (DataAccessException exception) {
+            log.warn("Khong tai duoc danh gia cua dong don {}: {}", maMuc, exception.getMessage());
+            return new TrangDanhGia(muc, null, true);
+        }
     }
 
-    @Transactional
+    /**
+     * Thứ tự: kiểm điều kiện ở MariaDB (chủ đơn, DELIVERED) -> ghi kho đánh giá (upsert theo dòng đơn).
+     * Kho lỗi kết nối -> {@link DataAccessException} cho controller báo lỗi thân thiện; chỉ một lệnh ghi nên không có ghi nửa vời.
+     */
     public long luuDanhGia(long maNguoiDung, long maMuc, DanhGia_Form form, boolean sua) {
         var muc = mucDaGiao(maNguoiDung, maMuc);
+        int soSao = form.getSoSao() == null ? 0 : form.getSoSao();
+        if (soSao < 1 || soSao > 5) {
+            throw new IllegalArgumentException("Số sao phải từ 1 đến 5.");
+        }
+        String noiDung = form.getNoiDung() == null ? "" : form.getNoiDung().strip();
+        if (noiDung.length() > DanhGia_Document.NOI_DUNG_TOI_DA) {
+            throw new IllegalArgumentException("Nội dung tối đa 1.000 ký tự.");
+        }
         if (sua) {
-            var hienTai = danhGia.cuaChuMuc(maMuc, maNguoiDung).orElseThrow(SauMua_Service::khongTimThay);
-            danhGia.sua(hienTai.ma(), maNguoiDung, form.getSoSao(), form.getNoiDung());
+            if (!kho.sua(maMuc, maNguoiDung, soSao, noiDung)) {
+                throw khongTimThay();
+            }
         } else {
             try {
-                danhGia.tao(maMuc, maNguoiDung, muc.maSanPham(), form.getSoSao(), form.getNoiDung());
+                kho.tao(new DanhGiaMoi(maMuc, muc.maDon(), maNguoiDung, muc.maSanPham(), muc.maBienThe(), muc.tenHienThi(),
+                    soSao, noiDung));
             } catch (DuplicateKeyException exception) {
                 throw new ResponseStatusException(HttpStatus.CONFLICT, "Mục đã được đánh giá.");
             }
@@ -63,12 +142,20 @@ public class SauMua_Service {
         return muc.maDon();
     }
 
+    /** Duyệt cần đúng phiên bản Admin đã xem; ẩn thì không. */
     @PreAuthorize("hasRole('ADMIN')")
-    public void datHienThi(long maDanhGia, boolean hienThi, String phienBan) {
-        if (hienThi && (phienBan == null || !phienBan.matches("[a-fA-F0-9]{64}"))) {
+    public void datHienThi(String maDanhGia, boolean hienThi, String phienBan) {
+        if (hienThi && (phienBan == null || !phienBan.matches("[A-Za-z0-9]{1,64}"))) {
             throw new IllegalStateException("Vui lòng tải lại đánh giá để duyệt.");
         }
-        if (!danhGia.datHienThi(maDanhGia, hienThi, phienBan)) {
+        boolean thanhCong;
+        try {
+            thanhCong = kho.datHienThi(maDanhGia, hienThi, phienBan);
+        } catch (DataAccessException exception) {
+            log.warn("Admin: khong cap nhat duoc hien thi danh gia {}: {}", maDanhGia, exception.getMessage());
+            throw new IllegalStateException("Tạm thời không kết nối được kho đánh giá. Vui lòng thử lại sau.");
+        }
+        if (!thanhCong) {
             if (hienThi) {
                 throw new IllegalStateException("Đánh giá đã thay đổi. Vui lòng kiểm tra lại.");
             }
@@ -134,7 +221,9 @@ public class SauMua_Service {
         return new ResponseStatusException(HttpStatus.NOT_FOUND);
     }
 
-    public record TrangDanhGia(MucMua muc, DanhGia hienTai) {}
+    public record TrangDanhGia(MucMua muc, DanhGiaCuaKhach hienTai, boolean khongTaiDuoc) {}
+    public record TrangDanhGiaSanPham(TomTatDanhGia tomTat, Page<DanhGiaCongKhai> danhSach, boolean khongTaiDuoc) {}
+    public record TrangDanhGiaAdmin(Page<DanhGiaAdmin> danhSach, List<SanPhamLoc> sanPham, boolean khongTaiDuoc) {}
     public record TrangDoiTra(Don don, List<Muc> muc) {}
     public record ChiTietDoiTra(ChiTiet chiTiet, List<MucTra> muc) {}
 }

@@ -1,0 +1,12 @@
+NOTE server timing (Mongo stopped) [{"path":"/","status":200,"ms":2375,"tamThoi":false},{"path":"/products","status":200,"ms":287,"tamThoi":false},{"path":"/products/demo-r001","status":200,"ms":277,"tamThoi":true},{"path":"/cart","status":200,"ms":41,"tamThoi":false},{"path":"/products/demo-r001","status":200,"ms":63,"tamThoi":true},{"path":"/","status":200,"ms":402,"tamThoi":false}]
+PASS all main pages 200 while MongoDB is stopped ["/:200","/products:200","/products/demo-r001:200","/cart:200","/products/demo-r001:200","/:200"]
+PASS product page shows temporary review notice
+PASS / 1366px 200, no horizontal scroll (Mongo stopped) {"status":200,"overflowX":false}
+PASS /products 1366px 200, no horizontal scroll (Mongo stopped) {"status":200,"overflowX":false}
+PASS /cart 1366px 200, no horizontal scroll (Mongo stopped) {"status":200,"overflowX":false}
+PASS pdp 1366px: 200, notice, cart form, no overflow (Mongo stopped) {"status":200,"h1":"Moisturizing Cream","tamThoi":true,"chuaCo":false,"diem":null,"soDanhGia":0,"starsLabel":null,"bars":[],"items":0,"mine":null,"cartForm":true,"overflowX":false}
+PASS / 390px 200, no horizontal scroll (Mongo stopped) {"status":200,"overflowX":false}
+PASS /products 390px 200, no horizontal scroll (Mongo stopped) {"status":200,"overflowX":false}
+PASS /cart 390px 200, no horizontal scroll (Mongo stopped) {"status":200,"overflowX":false}
+PASS pdp 390px: 200, notice, cart form, no overflow (Mongo stopped) {"status":200,"h1":"Moisturizing Cream","tamThoi":true,"chuaCo":false,"diem":null,"soDanhGia":0,"starsLabel":null,"bars":[],"items":0,"mine":null,"cartForm":true,"overflowX":false}
+ALL PASS; page exceptions: 0

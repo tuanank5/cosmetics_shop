@@ -72,3 +72,7 @@ chapter, Catalog editorial4/2/1 cột, optional hover-video hook; giữ Backend/
 JDK21:120 PASS/0 FAIL/0 ERROR/34 SKIPPED, JAR đóng gói. Nội dung video thương phẩm,
 F01/MariaDB và nghiệm thu thị giác của owner còn mở. Không mở rộng scope/commit/push.
 [Báo cáo và bằng chứng](reviews/P15-V-dark-luxury-redesign.md).
+
+## P20C · Dashboard quản trị v2 · 25/11/2026
+
+Đã bổ sung KPI, biểu đồ, bảng cảnh báo và sidebar quản trị. Test offline và tích hợp MariaDB trên database trống đã đạt. Chrome đã kiểm bố cục và biểu đồ bằng fixture MockMvc. Phiên QA Chrome với tài khoản Admin của owner và dữ liệu demo đang chờ cấu hình kết nối. [Báo cáo và bằng chứng](reviews/P20C-dashboard-v2.md)

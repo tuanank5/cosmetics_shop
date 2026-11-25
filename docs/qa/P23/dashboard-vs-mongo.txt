@@ -1,0 +1,39 @@
+P23 doi chieu Dashboard 30d voi MongoDB (beautyshop_demo.danh_gia)
+{
+ "ky": [
+  "2026-10-25T17:00:00.000Z",
+  "2026-11-24T17:00:00.000Z"
+ ],
+ "theoSao": [
+  {
+   "_id": 5,
+   "n": 11
+  },
+  {
+   "_id": 4,
+   "n": 9
+  },
+  {
+   "_id": 3,
+   "n": 6
+  },
+  {
+   "_id": 2,
+   "n": 3
+  }
+ ],
+ "choDuyet": 7,
+ "tong": 72,
+ "dangHien": 65,
+ "banQa": {
+  "maChiTietDonHang": 207,
+  "hienThi": true,
+  "maSanPham": 31,
+  "noiDung": "QA-P23-6f391b sửa lần 2: vẫn dùng tiếp, thấm nhanh.",
+  "phienBan": 4,
+  "soSao": 3,
+  "tenHienThi": "P23 K.",
+  "ngayDuyet": "2026-11-24T01:06:16.825Z"
+ }
+}
+MariaDB danh_gia sau QA: 71 dong; dong cho ma_chi_tiet 207: 0

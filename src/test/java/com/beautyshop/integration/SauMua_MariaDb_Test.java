@@ -1,7 +1,9 @@
 package com.beautyshop.integration;
 
 import com.beautyshop.dto.DoiTra_Form;
-import com.beautyshop.repository.DanhGia_Repository;
+import com.beautyshop.repository.DanhGia_Store;
+import com.beautyshop.repository.DanhGia_Store.BoLocDanhGia;
+import com.beautyshop.repository.DanhGia_Store.TrangThaiLoc;
 import com.beautyshop.service.SauMua_Service;
 import java.util.Map;
 import java.util.UUID;
@@ -12,6 +14,8 @@ import org.junit.jupiter.api.condition.EnabledIfEnvironmentVariable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.test.context.TestPropertySource;
 import org.springframework.jdbc.core.simple.JdbcClient;
 import org.springframework.mock.web.MockHttpSession;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -26,14 +30,19 @@ import static org.springframework.security.test.web.servlet.response.SecurityMoc
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
+/**
+ * Luồng sau mua trên MariaDB thật. Từ P23 kịch bản đánh giá đi qua {@link DanhGia_Store}: lớp này chạy store dự phòng
+ * {@code mariadb}; {@link SauMua_MongoDanhGia_Test} chạy lại đúng kịch bản với store {@code mongo}.
+ */
 @SpringBootTest
 @AutoConfigureMockMvc
+@TestPropertySource(properties = "app.reviews.store=mariadb")
 @EnabledIfEnvironmentVariable(named = "P01_MARIADB_TEST", matches = "true")
 class SauMua_MariaDb_Test {
     @Autowired JdbcClient jdbc;
     @Autowired MockMvc mvc;
     @Autowired PasswordEncoder encoder;
-    @Autowired DanhGia_Repository danhGia;
+    @Autowired DanhGia_Store kho;
     @Autowired SauMua_Service sauMua;
     private final String password = UUID.randomUUID().toString();
 
@@ -60,18 +69,23 @@ class SauMua_MariaDb_Test {
             .andExpect(status().isConflict());
         mvc.perform(get("/products/" + sku.slug()))
             .andExpect(content().string(not(containsString("Đánh giá ban đầu"))));
-        long ma = danhGia.cuaChuMuc(muc, chu.id()).orElseThrow().ma();
+        String ma = kho.cuaChuMuc(muc, chu.id()).orElseThrow().ma();
         String duyet = "/admin/reviews/" + ma + "/visibility";
-        String phienBanCu = phienBan(ma);
-        mvc.perform(get("/admin/reviews").session(admin.session())).andExpect(status().isOk())
-            .andExpect(content().string(containsString(phienBanCu)));
+        String phienBanCu = phienBan(ma, sku.sanPham());
+        mvc.perform(get("/admin/reviews").session(admin.session()).param("status", "CHO_DUYET")
+                .param("product", String.valueOf(sku.sanPham())))
+            .andExpect(status().isOk())
+            .andExpect(content().string(containsString(duyet)))
+            .andExpect(content().string(containsString("value=\"" + phienBanCu + "\"")));
         mvc.perform(post(duyet).session(khac.session()).with(csrf()).param("visible", "true").param("revision", phienBanCu))
             .andExpect(status().isForbidden());
         mvc.perform(post(duyet).session(admin.session()).with(csrf()).param("visible", "true").param("revision", phienBanCu))
             .andExpect(redirectedUrl("/admin/reviews")).andExpect(flash().attributeExists("message"));
         mvc.perform(get("/products/" + sku.slug())).andExpect(status().isOk())
-            .andExpect(content().string(containsString("Người mua đã xác minh")))
+            .andExpect(content().string(containsString("Đã mua hàng")))
+            .andExpect(content().string(containsString("5,0 trên 5 sao")))
             .andExpect(content().string(containsString("Đánh giá ban đầu")));
+        assertThat(kho.tomTat(sku.sanPham()).soLuong()).isEqualTo(1);
         mvc.perform(post(url + "/edit").session(chu.session()).with(csrf()).param("soSao", "3")
                 .param("noiDung", "Đánh giá đã sửa"))
             .andExpect(redirectedUrl("/orders/" + don));
@@ -79,11 +93,14 @@ class SauMua_MariaDb_Test {
             .andExpect(flash().attributeExists("error"));
         mvc.perform(get("/products/" + sku.slug()))
             .andExpect(content().string(not(containsString("Đánh giá đã sửa"))));
-        mvc.perform(post(duyet).session(admin.session()).with(csrf()).param("visible", "true").param("revision", phienBan(ma)))
+        assertThat(kho.tomTat(sku.sanPham()).soLuong()).isZero();
+        mvc.perform(post(duyet).session(admin.session()).with(csrf()).param("visible", "true")
+                .param("revision", phienBan(ma, sku.sanPham())))
             .andExpect(flash().attributeExists("message"));
+        assertThat(kho.tomTat(sku.sanPham()).soSao(3)).isEqualTo(1);
         mvc.perform(post(duyet).session(admin.session()).with(csrf()).param("visible", "false"))
             .andExpect(flash().attributeExists("message"));
-        assertThat(danhGia.congKhai(sku.sanPham())).isEmpty();
+        assertThat(kho.congKhai(sku.sanPham(), PageRequest.of(0, 10))).isEmpty();
     }
 
     @Test
@@ -196,9 +213,9 @@ class SauMua_MariaDb_Test {
         return post(url).session(user.session()).with(csrf()).param("lyDo", "Lý do kiểm thử");
     }
 
-    private String phienBan(long ma) {
-        return danhGia.danhSachAdmin().stream().filter(muc -> muc.danhGia().ma() == ma)
-            .findFirst().orElseThrow().phienBan();
+    private String phienBan(String ma, long maSanPham) {
+        return kho.danhSachAdmin(new BoLocDanhGia(TrangThaiLoc.TAT_CA, null, maSanPham), PageRequest.of(0, 50)).stream()
+            .filter(dg -> dg.ma().equals(ma)).findFirst().orElseThrow().phienBan();
     }
 
     private TaiKhoan taiKhoan(String vaiTro) throws Exception {

@@ -21,6 +21,12 @@
         <p class="store-card-brand" th:text="${the.tenThuongHieu}"></p>
         <h3 th:text="${the.tenSanPham}"></h3>
         <p class="store-card-price">Từ <span th:replace="~{fragments/ui :: money(${the.giaTu})}"></span></p>
+        <th:block th:with="tt=${tomTatDanhGia != null and the.maSanPham != null ? tomTatDanhGia[the.maSanPham] : null}">
+            <p class="store-card-rating" th:if="${tt != null and tt.soLuong > 0}">
+                <span th:replace="~{fragments/rating :: stars(${tt.nuaSao}, |${tt.trungBinhHienThi} trên 5 sao|)}"></span>
+                <span th:text="|${tt.trungBinhHienThi} · ${tt.soLuong} đánh giá|"></span>
+            </p>
+        </th:block>
         <span class="badge" th:classappend="${the.soLuongKhaDungLonNhat > 0 ? 'badge--success' : 'badge--error'}"
               th:text="${the.soLuongKhaDungLonNhat > 0 ? 'Còn hàng' : 'Hết hàng'}"></span>
     </div>

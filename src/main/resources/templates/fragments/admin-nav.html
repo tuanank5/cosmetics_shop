@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<body>
+<nav th:fragment="adminNav(path)" class="admin-nav" aria-label="Quản trị">
+  <a th:href="@{/admin/dashboard}" th:attr="aria-current=${(path == '/admin/dashboard' or #strings.startsWith(path, '/admin/dashboard/')) ? 'page' : null}">
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 3h7v7H3z M14 3h7v7h-7z M3 14h7v7H3z M14 14h7v7h-7z"/></svg>
+    <span>Tổng quan</span>
+  </a>
+  <a th:href="@{/admin/catalog/products}" th:attr="aria-current=${(path == '/admin/catalog/products' or #strings.startsWith(path, '/admin/catalog/products/')) ? 'page' : null}">
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 7l9-4 9 4v10l-9 4-9-4z M3 7l9 4 9-4 M12 11v10"/></svg>
+    <span>Sản phẩm &amp; biến thể</span>
+  </a>
+  <a th:href="@{/admin/catalog/categories}" th:attr="aria-current=${(path == '/admin/catalog/categories' or #strings.startsWith(path, '/admin/catalog/categories/') or path == '/admin/catalog' or path == '/admin/catalog/brands' or #strings.startsWith(path, '/admin/catalog/brands/')) ? 'page' : null}">
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 6h18 M3 12h18 M3 18h18"/></svg>
+    <span>Danh mục &amp; thương hiệu</span>
+  </a>
+  <a th:href="@{/admin/orders}" th:attr="aria-current=${(path == '/admin/orders' or #strings.startsWith(path, '/admin/orders/')) ? 'page' : null}">
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 4h12v17l-3-2-3 2-3-2-3 2z M9 8h6 M9 12h6"/></svg>
+    <span>Đơn hàng</span>
+  </a>
+  <a th:href="@{/admin/users}" th:attr="aria-current=${(path == '/admin/users' or #strings.startsWith(path, '/admin/users/')) ? 'page' : null}">
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M16 21v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2 M21 21v-2a4 4 0 0 0-3-4 M13.5 8a4 4 0 1 1-8 0 4 4 0 0 1 8 0z M17 4a4 4 0 0 1 0 8"/></svg>
+    <span>Khách hàng</span>
+  </a>
+  <a th:href="@{/admin/vouchers}" th:attr="aria-current=${(path == '/admin/vouchers' or #strings.startsWith(path, '/admin/vouchers/')) ? 'page' : null}">
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 7h18v3a2 2 0 0 0 0 4v3H3v-3a2 2 0 0 0 0-4z M12 9v6"/></svg>
+    <span>Khuyến mãi</span>
+  </a>
+  <a th:href="@{/admin/reviews}" th:attr="aria-current=${(path == '/admin/reviews' or #strings.startsWith(path, '/admin/reviews/')) ? 'page' : null}">
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 3l2.8 5.7 6.2.9-4.5 4.4 1.1 6.2-5.6-3-5.6 3 1.1-6.2L3 9.6l6.2-.9z"/></svg>
+    <span>Đánh giá</span>
+  </a>
+  <a th:href="@{/admin/returns}" th:attr="aria-current=${(path == '/admin/returns' or #strings.startsWith(path, '/admin/returns/')) ? 'page' : null}">
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 10l-4 4 4 4 M5 14h10a4 4 0 1 0 0-8h-3"/></svg>
+    <span>Trả hàng</span>
+  </a>
+  <a th:href="@{/admin/ai}" th:attr="aria-current=${(path == '/admin/ai' or #strings.startsWith(path, '/admin/ai/')) ? 'page' : null}">
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 5v15 M3 4h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5v13h-5a4 4 0 0 0-4 3 4 4 0 0 0-4-3H3z"/></svg>
+    <span>Tri thức tư vấn</span>
+  </a>
+</nav>
+</body>
+</html>

@@ -3,6 +3,7 @@ package com.beautyshop.integration;
 import com.beautyshop.recommendation.DiemPhoBien_Policy.UngVien;
 import com.beautyshop.repository.CuaHang_Repository;
 import com.beautyshop.repository.GoiYSanPham_Repository;
+import com.beautyshop.repository.MariaDbDanhGia_Store;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
@@ -59,10 +60,16 @@ class GoiYSanPham_MariaDb_Test {
         assertThat(ungVien).containsKey(spA).doesNotContainKeys(spHet, spTat);
         UngVien a = ungVien.get(spA);
         assertThat(a.soLuongDaBan()).isEqualTo(4);   // 3 + 1, bỏ hủy/hết hạn/chờ thanh toán/ngoài kỳ
-        assertThat(a.soDanhGia()).isEqualTo(1);
-        assertThat(a.tongSao()).isEqualTo(4);
+        // P23: repository không còn đọc danh_gia; số đánh giá đến từ DanhGia_Store và được service ghép vào.
+        assertThat(a.soDanhGia()).isZero();
+        assertThat(a.tongSao()).isZero();
         assertThat(a.soLuotYeuThich()).isEqualTo(1);
-        assertThat(goiYRepository.danhGiaCuaHang(tu)[0]).isPositive();
+        // Bản store MariaDB (dự phòng) giữ đúng bộ lọc cũ: chỉ đánh giá đang hiển thị, trong 90 ngày.
+        var store = new MariaDbDanhGia_Store(jdbc);
+        var tomTat = store.tomTatNhieu(List.of(spA), tu.toInstant(java.time.ZoneOffset.UTC)).get(spA);
+        assertThat(tomTat.soLuong()).isEqualTo(1);
+        assertThat(tomTat.tongSao()).isEqualTo(4);
+        assertThat(store.tomTatCuaHang(tu.toInstant(java.time.ZoneOffset.UTC)).soLuong()).isPositive();
         assertThat(cuaHangRepository.timTheTheoMa(List.of(spA, spHet, spTat)))
             .extracting(CuaHang_Repository.TheSanPhamCoMa::getMaSanPham).containsExactly(spA);
     }

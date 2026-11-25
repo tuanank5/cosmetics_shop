@@ -32,25 +32,37 @@ class ThongKeServiceTest {
 
     @BeforeEach
     void setUp() {
-        service = new ThongKe_Service(new ThongKe_Repository(jdbc), CLOCK);
+        // P23: đánh giá qua DanhGia_Store; bản MariaDB đọc đúng bảng danh_gia H2 dựng bên dưới.
+        service = new ThongKe_Service(new ThongKe_Repository(jdbc), new com.beautyshop.repository.MariaDbDanhGia_Store(jdbc), CLOCK);
         jdbc.sql("ALTER TABLE nguoi_dung ADD COLUMN IF NOT EXISTS ngay_tao TIMESTAMP(6) DEFAULT CURRENT_TIMESTAMP").update();
         jdbc.sql("""
             CREATE TABLE IF NOT EXISTS don_hang (ma_don_hang BIGINT PRIMARY KEY, ma_don_hang_hien_thi VARCHAR(80) NOT NULL,
                 ma_nguoi_dung BIGINT NOT NULL, tong_thanh_toan DECIMAL(15,0) NOT NULL, trang_thai VARCHAR(30) NOT NULL,
-                phuong_thuc_thanh_toan VARCHAR(20) NOT NULL, ngay_tao TIMESTAMP(6) NOT NULL)""").update();
+                phuong_thuc_thanh_toan VARCHAR(20) NOT NULL, ngay_tao TIMESTAMP(6) NOT NULL,
+                ngay_giao_thanh_cong TIMESTAMP(6), tam_tinh DECIMAL(15,0) NOT NULL,
+                so_tien_giam DECIMAL(15,0) DEFAULT 0 NOT NULL, phi_van_chuyen DECIMAL(15,0) DEFAULT 0 NOT NULL)""").update();
         jdbc.sql("""
             CREATE TABLE IF NOT EXISTS lan_thanh_toan (ma_lan_thanh_toan BIGINT AUTO_INCREMENT PRIMARY KEY, ma_don_hang BIGINT NOT NULL,
-                so_tien DECIMAL(15,0) NOT NULL, trang_thai VARCHAR(30) NOT NULL, ngay_thanh_toan TIMESTAMP(6))""").update();
+                so_tien DECIMAL(15,0) NOT NULL, trang_thai VARCHAR(30) NOT NULL, ngay_thanh_toan TIMESTAMP(6),
+                cong_thanh_toan VARCHAR(20) DEFAULT 'MOMO_MOCK' NOT NULL,
+                ngay_tao TIMESTAMP(6) DEFAULT TIMESTAMP '2026-11-01 00:00:00' NOT NULL)""").update();
+        jdbc.sql("""
+            CREATE TABLE IF NOT EXISTS tam_giu_ton_kho (ma_don_hang BIGINT NOT NULL,
+                trang_thai VARCHAR(30) NOT NULL, het_han_luc TIMESTAMP(6) NOT NULL)""").update();
         jdbc.sql("""
             CREATE TABLE IF NOT EXISTS chi_tiet_don_hang (ma_chi_tiet_don_hang BIGINT AUTO_INCREMENT PRIMARY KEY,
                 ma_don_hang BIGINT NOT NULL, ma_bien_the BIGINT NOT NULL, don_gia DECIMAL(15,0) NOT NULL, so_luong INT NOT NULL)""").update();
         jdbc.sql("""
             CREATE TABLE IF NOT EXISTS danh_gia (ma_danh_gia BIGINT AUTO_INCREMENT PRIMARY KEY, so_sao INT NOT NULL,
                 hien_thi BOOLEAN NOT NULL, ngay_tao TIMESTAMP(6) NOT NULL)""").update();
-        jdbc.sql("CREATE TABLE IF NOT EXISTS yeu_cau_doi_tra (ma_yeu_cau_doi_tra BIGINT AUTO_INCREMENT PRIMARY KEY, trang_thai VARCHAR(30) NOT NULL)").update();
+        jdbc.sql("""
+            CREATE TABLE IF NOT EXISTS yeu_cau_doi_tra (ma_yeu_cau_doi_tra BIGINT AUTO_INCREMENT PRIMARY KEY,
+                trang_thai VARCHAR(30) NOT NULL, ma_don_hang BIGINT DEFAULT 1 NOT NULL,
+                ly_do VARCHAR(400) DEFAULT 'Lý do kiểm thử' NOT NULL, ngay_yeu_cau TIMESTAMP(6) DEFAULT CURRENT_TIMESTAMP NOT NULL)""").update();
         jdbc.sql("""
             CREATE TABLE IF NOT EXISTS phieu_giam_gia (ma_phieu_giam_gia BIGINT AUTO_INCREMENT PRIMARY KEY,
-                dang_hoat_dong BOOLEAN NOT NULL, ket_thuc_luc TIMESTAMP(6) NOT NULL)""").update();
+                dang_hoat_dong BOOLEAN NOT NULL, ket_thuc_luc TIMESTAMP(6) NOT NULL, ma_ap_dung VARCHAR(80) DEFAULT 'TEST',
+                gioi_han_su_dung INT DEFAULT 10, so_luot_da_dung INT DEFAULT 2, so_luot_tam_giu INT DEFAULT 3)""").update();
     }
 
     @Test
@@ -145,6 +157,75 @@ class ThongKeServiceTest {
     }
 
     @Test
+    void chiSoVaCanhBaoMoiDungGioGiaoNguongTonVaTrangThaiLanThanhToan() {
+        catalog();
+        nguoiDung(1, "CUSTOMER", "2026-11-12 09:00:00");
+        // Hai đơn được đặt trước kỳ hiện tại. Một đơn giao sau nửa đêm VN, một đơn giao trước đó.
+        don(1, "DELIVERED", "COD", 120000, "2026-11-15 02:00:00");
+        don(2, "DELIVERED", "COD", 50000, "2026-11-15 02:00:00");
+        jdbc.sql("""
+            UPDATE don_hang SET ngay_giao_thanh_cong = TIMESTAMP '2026-11-16 17:00:00',
+                tam_tinh = 110000, so_tien_giam = 15000, phi_van_chuyen = 25000 WHERE ma_don_hang = 1
+            """).update();
+        jdbc.sql("UPDATE don_hang SET ngay_giao_thanh_cong = TIMESTAMP '2026-11-16 16:59:59' WHERE ma_don_hang = 2").update();
+        thanhToan(1, 120000, "PAID", "2026-11-16 17:00:00");
+        dong(1, 1, 110000, 1);
+
+        don(3, "CANCELLED", "COD", 100000, "2026-11-18 02:00:00");
+        thanhToan(3, 100000, "PAID", "2026-11-18 03:00:00");
+        dong(3, 2, 100000, 1);
+        don(4, "PACKING", "COD", 100000, "2026-11-18 02:01:00");
+        don(5, "PENDING_CONFIRMATION", "MOMO", 100000, "2026-11-18 02:02:00");
+        lanMomo(5, "FAILED", "2026-11-18 02:02:00", "MOMO_MOCK");
+        thanhToan(5, 100000, "PAID", "2026-11-18 02:05:00");
+        dong(5, 1, 100000, 1);
+
+        don(6, "PENDING_PAYMENT", "MOMO", 100000, "2026-11-22 02:00:00");
+        lanMomo(6, "PENDING", "2026-11-22 02:00:00", "MOMO_MOCK");
+        lanMomo(6, "FAILED", "2026-11-22 02:01:00", "MOMO_MOCK");
+        don(7, "PENDING_PAYMENT", "MOMO", 100000, "2026-11-23 04:55:00");
+        lanMomo(7, "FAILED", "2026-11-23 04:55:00", "MOMO_MOCK");
+        lanMomo(7, "PENDING", "2026-11-23 04:56:00", "MOMO_MOCK");
+        don(8, "PENDING_PAYMENT", "MOMO", 100000, "2026-11-12 02:00:00");
+        lanMomo(8, "FAILED", "2026-11-12 02:00:00", "MOMO_MOCK");
+        lanMomo(8, "FAILED", "2026-11-12 02:01:00", "MOMO");
+        don(9, "PENDING_PAYMENT", "MOMO", 100000, "2026-11-10 02:00:00");
+        lanMomo(9, "PENDING", "2026-11-10 02:00:00", "MOMO");
+        don(10, "EXPIRED", "MOMO", 100000, "2026-11-22 08:00:00");
+        lanMomo(10, "FAILED", "2026-11-22 08:00:00", "COD");
+        jdbc.sql("""
+            INSERT INTO tam_giu_ton_kho VALUES
+                (6, 'HELD', TIMESTAMP '2026-11-23 05:00:00'),
+                (6, 'HELD', TIMESTAMP '2026-11-23 05:30:00'),
+                (7, 'HELD', TIMESTAMP '2026-11-23 05:10:00'),
+                (8, 'HELD', TIMESTAMP '2026-11-12 02:15:00'),
+                (9, 'HELD', TIMESTAMP '2026-11-10 02:15:00'),
+                (10, 'RELEASED', TIMESTAMP '2026-11-22 08:15:00')
+            """).update();
+        var ky = new ThongKe_Service.Ky(LocalDate.of(2026, 11, 17), LocalDate.of(2026, 11, 23), "7d");
+        var repository = new ThongKe_Repository(jdbc);
+        var dashboard = new ThongKe_Service(repository, new com.beautyshop.repository.MariaDbDanhGia_Store(jdbc), CLOCK, "MOMO_MOCK");
+        var tq = dashboard.tongQuan(ky, 4);
+        assertThat(tq.chiSo("da-giao").giaTri()).isEqualByComparingTo("1");
+        assertThat(tq.chiSo("da-giao").kyTruoc()).isEqualByComparingTo("1");
+        assertThat(tq.donBiHuy()).isEqualTo(1);
+        assertThat(tq.demSkuSapHet()).isEqualTo(tq.skuSapHet().size()).isEqualTo(1);
+        assertThat(repository.demSkuSapHet(3)).isZero();
+        assertThat(tq.theoThuongHieu()).singleElement()
+            .satisfies(n -> assertThat(n.soTien()).isEqualByComparingTo("210000"));
+        assertThat(tq.trangThaiThanhToan()).containsExactly(
+            new ThongKe_Repository.NhomThanhToan("COD", 0, 1, 1),
+            new ThongKe_Repository.NhomThanhToan("MOMO", 1, 1, 2));
+        assertThat(tq.canhBaoThanhToan()).extracting(ThongKe_Repository.CanhBaoThanhToan::maDonHang)
+            .containsExactly(7L, 6L, 6L, 5L, 8L, 9L);
+        assertThat(tq.tachDoanhThu().khop()).isTrue();
+        assertThat(tq.tachDoanhThu().tienHang()).isEqualByComparingTo("195000");
+        assertThat(tq.tachDoanhThu().phiVanChuyen()).isEqualByComparingTo("25000");
+        jdbc.sql("UPDATE don_hang SET phi_van_chuyen = 0 WHERE ma_don_hang = 1").update();
+        assertThat(dashboard.tongQuan(ky, 4).tachDoanhThu().khop()).isFalse();
+    }
+
+    @Test
     void boLocSaiTraVeKyMacDinhKemLoi() {
         assertThat(loi(null, LocalDate.of(2026, 11, 10), LocalDate.of(2026, 11, 1))).isEqualTo("ky.thuTu");
         assertThat(loi(null, LocalDate.of(2026, 11, 1), LocalDate.of(2026, 11, 24))).isEqualTo("ky.tuongLai");
@@ -193,13 +274,22 @@ class ThongKeServiceTest {
     }
 
     private void don(long ma, String trangThai, String phuongThuc, int tong, String ngayTaoUtc) {
-        jdbc.sql("INSERT INTO don_hang VALUES (?, ?, 1, ?, ?, ?, CAST(? AS TIMESTAMP))")
-            .params(ma, "BS-" + ma, tong, trangThai, phuongThuc, ngayTaoUtc).update();
+        jdbc.sql("""
+            INSERT INTO don_hang (ma_don_hang, ma_don_hang_hien_thi, ma_nguoi_dung, tong_thanh_toan, trang_thai,
+                phuong_thuc_thanh_toan, ngay_tao, tam_tinh)
+            VALUES (?, ?, 1, ?, ?, ?, CAST(? AS TIMESTAMP), ?)""")
+            .params(ma, "BS-" + ma, tong, trangThai, phuongThuc, ngayTaoUtc, tong).update();
     }
 
     private void thanhToan(long don, int soTien, String trangThai, String ngayThanhToanUtc) {
         jdbc.sql("INSERT INTO lan_thanh_toan (ma_don_hang, so_tien, trang_thai, ngay_thanh_toan) VALUES (?, ?, ?, CAST(? AS TIMESTAMP))")
             .params(don, soTien, trangThai, ngayThanhToanUtc).update();
+    }
+
+    private void lanMomo(long don, String trangThai, String ngayTao, String gateway) {
+        jdbc.sql("""
+            INSERT INTO lan_thanh_toan (ma_don_hang, so_tien, trang_thai, ngay_tao, cong_thanh_toan)
+            VALUES (?, 100000, ?, CAST(? AS TIMESTAMP), ?)""").params(don, trangThai, ngayTao, gateway).update();
     }
 
     private void dong(long don, long bienThe, int donGia, int soLuong) {
