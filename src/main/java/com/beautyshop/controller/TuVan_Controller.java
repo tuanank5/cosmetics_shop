@@ -25,7 +25,7 @@ class TuVan_Controller {
     @GetMapping
     String chat(Model model) {
         model.addAttribute("form", new TuVan_Form());
-        return "chat/index";
+        return "TuVanDa";
     }
 
     @PostMapping
@@ -40,7 +40,7 @@ class TuVan_Controller {
                 errors.reject("chat.rate", "Bạn vừa gửi nhiều câu hỏi. Vui lòng thử lại sau một phút.");
             }
         }
-        return "chat/index";
+        return "TuVanDa";
     }
 
     private boolean choPhep(HttpSession session) {

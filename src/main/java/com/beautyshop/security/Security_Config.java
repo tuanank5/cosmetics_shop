@@ -45,6 +45,8 @@ public class Security_Config {
                 .requestMatchers("/payment/momo/mock/**").hasRole("CUSTOMER")
                 .requestMatchers("/admin/**").hasRole("ADMIN")
                 .requestMatchers("/checkout/**", "/orders/**", "/account/**").hasRole("CUSTOMER")
+                    .requestMatchers(HttpMethod.GET, "/tu-van-da").permitAll()
+                    .requestMatchers(HttpMethod.POST, "/tu-van-da").permitAll()
                 .anyRequest().authenticated())
             .formLogin(form -> form.loginPage("/login").successHandler(loginSuccess).permitAll())
             .logout(logout -> logout.logoutUrl("/logout").logoutSuccessUrl("/?logout").invalidateHttpSession(true))

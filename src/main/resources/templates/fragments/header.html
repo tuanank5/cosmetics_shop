@@ -1,92 +1,113 @@
+
 <!DOCTYPE html>
 <html lang="vi" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <body>
 <header th:fragment="siteHeader" class="site-header" th:with="path=${uiPath ?: ''}"
         th:attr="data-storefront=${!#strings.startsWith(path, '/admin') ? 'true' : null}">
+
   <a class="skip-link" href="#main">Đến nội dung chính</a>
 
   <div class="nav-shell">
-    <div class="header-start">
-      <a class="header-account" th:href="@{/login}" sec:authorize="isAnonymous()"
-         th:attr="aria-current=${path == '/login' ? 'page' : null}">
-        <svg class="header-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-          <circle cx="12" cy="8" r="4"/><path d="M4.5 21a7.5 7.5 0 0 1 15 0"/>
-        </svg>
-        <span class="header-account-label">Đăng nhập</span>
-      </a>
-      <form class="header-account-form" method="post" th:action="@{/logout}" sec:authorize="isAuthenticated()">
-        <button class="header-account" type="submit">
-          <svg class="header-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-            <path d="M14 4h4a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-4"/><path d="M10 16l-4-4 4-4"/><path d="M6 12h10"/>
-          </svg>
-          <span class="header-account-label">Đăng xuất</span>
-        </button>
-      </form>
-    <a class="brand" th:href="@{/}" aria-label="BeautyShop – Trang chủ">
-      <picture>
-        <source media="(max-width: 359px)" th:srcset="@{/img/brand/beautyshop-mark.svg}" width="120" height="160">
-        <img class="brand-logo" th:src="@{${#strings.startsWith(path, '/admin') ? '/img/brand/beautyshop-lockup-light.svg' : '/img/brand/beautyshop-lockup.svg'}}"
-             alt="BeautyShop" width="402" height="54">
-      </picture>
-    </a>
-    </div>
+    <a class="brand" th:href="@{/}" aria-label="BeautyShop · Trang chủ">BEAUTY<span>SHOP</span></a>
+
     <form class="header-search" method="get" th:action="@{/products}" role="search" aria-label="Tìm sản phẩm">
       <label class="visually-hidden" for="header-search">Tên sản phẩm hoặc SKU</label>
       <input id="header-search" name="q" type="search" maxlength="160" placeholder="Tìm sản phẩm, SKU…">
       <button class="btn btn--secondary" type="submit">Tìm kiếm</button>
     </form>
+
     <details class="header-menu">
       <summary><span class="menu-closed">Menu cửa hàng</span><span class="menu-open">Đóng menu</span></summary>
+
       <nav class="nav-links" aria-label="Điều hướng chính">
-        <a th:href="@{/admin/dashboard}" sec:authorize="hasRole('ADMIN')" th:attr="aria-current=${path == '/admin/dashboard' ? 'page' : null}">Tổng quan</a>
+
         <a th:href="@{/}" th:attr="aria-current=${path == '/' ? 'page' : null}">Trang chủ</a>
-        <a th:href="@{/products}" th:attr="aria-current=${path == '/products' ? 'page' : null}, data-active-group=${#strings.startsWith(path, '/products/') ? 'products' : null}">Sản phẩm</a>
-        <a th:href="@{/chat}" th:attr="aria-current=${path == '/chat' ? 'page' : null}">Tư vấn</a>
+
+        <a th:href="@{/products}"
+           th:attr="aria-current=${path == '/products' ? 'page' : null}, data-active-group=${#strings.startsWith(path, '/products/') ? 'products' : null}">Sản phẩm</a>
+
+        <!-- ĐÃ ĐỔI: Tư vấn chuyển sang AI tư vấn da -->
+        <a th:href="@{/tu-van-da}"
+           th:attr="aria-current=${path == '/tu-van-da' ? 'page' : null}">Tư vấn</a>
+
         <details class="nav-discovery" sec:authorize="isAnonymous() or hasRole('CUSTOMER')">
           <summary>Khám phá</summary>
+
           <div class="nav-discovery-panel">
+
             <details class="nav-group">
               <summary>Danh mục</summary>
               <a th:href="@{/products#categories}">Chọn danh mục mỹ phẩm</a>
             </details>
+
             <details class="nav-group">
               <summary>Thương hiệu</summary>
               <a th:href="@{/products#brands}">Chọn thương hiệu</a>
             </details>
+
             <details class="nav-group">
               <summary>Loại da</summary>
               <a th:href="@{/products#skin-type}">Tìm theo loại da</a>
             </details>
+
             <details class="nav-group">
               <summary>Đồng hành</summary>
               <a th:href="@{/}">Khám phá BeautyShop</a>
               <a th:href="@{/chat}">Tư vấn sản phẩm</a>
             </details>
+
           </div>
         </details>
-        <a class="header-action" th:href="@{/cart}" sec:authorize="isAnonymous() or hasRole('CUSTOMER')"
+
+        <a class="header-action" th:href="@{/cart}"
+           sec:authorize="isAnonymous() or hasRole('CUSTOMER')"
            th:attr="aria-current=${path == '/cart' ? 'page' : null}, aria-label=${uiCartCount != null ? 'Giỏ hàng · ' + uiCartCount + ' sản phẩm' : 'Giỏ hàng'}">
+
           <svg class="header-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
             <path d="M5 7h14l1 14H4L5 7Z M8 8V6a4 4 0 0 1 8 0v2"/>
           </svg>
-          <span class="cart-count" th:if="${uiCartCount != null}" th:text="${uiCartCount}" th:attr="aria-label=|${uiCartCount} sản phẩm trong giỏ|">0</span>
+
+          <span class="cart-count" th:if="${uiCartCount != null}"
+                th:text="${uiCartCount}"
+                th:attr="aria-label=|${uiCartCount} sản phẩm trong giỏ|">0</span>
         </a>
-        <a class="header-action" th:href="@{/account/wishlist}" sec:authorize="hasRole('CUSTOMER')"
-           aria-label="Sản phẩm yêu thích" th:attr="aria-current=${path == '/account/wishlist' ? 'page' : null}">
+
+        <a class="header-action" th:href="@{/account/wishlist}"
+           sec:authorize="hasRole('CUSTOMER')"
+           aria-label="Sản phẩm yêu thích"
+           th:attr="aria-current=${path == '/account/wishlist' ? 'page' : null}">
+
           <svg class="header-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
             <path d="M12 21 3.5 12.5a5.3 5.3 0 0 1 7.5-7.5L12 6l1-1a5.3 5.3 0 0 1 7.5 7.5L12 21Z"/>
           </svg>
         </a>
-        <a th:href="@{/login}" sec:authorize="isAnonymous()" th:attr="aria-current=${path == '/login' ? 'page' : null}">Tài khoản</a>
-        <a th:href="@{/account}" sec:authorize="hasRole('CUSTOMER')" th:attr="aria-current=${path == '/account' ? 'page' : null}, data-active-group=${#strings.startsWith(path, '/account/') ? 'account' : null}">Tài khoản</a>
-        <a th:href="@{/orders}" sec:authorize="hasRole('CUSTOMER')" th:attr="aria-current=${path == '/orders' ? 'page' : null}, data-active-group=${#strings.startsWith(path, '/orders/') ? 'orders' : null}">Đơn hàng</a>
-        <a th:href="@{/admin/catalog}" sec:authorize="hasRole('ADMIN')" th:attr="aria-current=${path == '/admin/catalog' or path == '/admin/catalog/categories' ? 'page' : null}, data-active-group=${#strings.startsWith(path, '/admin/catalog/') ? 'catalog' : null}">Quản trị</a>
-        <a th:href="@{/admin/users}" sec:authorize="hasRole('ADMIN')" th:attr="aria-current=${path == '/admin/users' ? 'page' : null}">Người dùng</a>
-        <a th:href="@{/admin/orders}" sec:authorize="hasRole('ADMIN')" th:attr="aria-current=${path == '/admin/orders' ? 'page' : null}, data-active-group=${#strings.startsWith(path, '/admin/orders/') ? 'orders' : null}">Đơn hàng</a>
-        <a th:href="@{/admin/vouchers}" sec:authorize="hasRole('ADMIN')" th:attr="aria-current=${path == '/admin/vouchers' ? 'page' : null}, data-active-group=${#strings.startsWith(path, '/admin/vouchers/') ? 'vouchers' : null}">Voucher</a>
-        <form class="nav-logout" method="post" th:action="@{/logout}" sec:authorize="isAuthenticated()">
+
+        <a th:href="@{/login}" sec:authorize="isAnonymous()"
+           th:attr="aria-current=${path == '/login' ? 'page' : null}">Tài khoản</a>
+
+        <a th:href="@{/account}" sec:authorize="hasRole('CUSTOMER')"
+           th:attr="aria-current=${path == '/account' ? 'page' : null}, data-active-group=${#strings.startsWith(path, '/account/') ? 'account' : null}">Tài khoản</a>
+
+        <a th:href="@{/orders}" sec:authorize="hasRole('CUSTOMER')"
+           th:attr="aria-current=${path == '/orders' ? 'page' : null}, data-active-group=${#strings.startsWith(path, '/orders/') ? 'orders' : null}">Đơn hàng</a>
+
+        <a th:href="@{/admin/catalog}" sec:authorize="hasRole('ADMIN')"
+           th:attr="aria-current=${path == '/admin/catalog' or path == '/admin/catalog/categories' ? 'page' : null}, data-active-group=${#strings.startsWith(path, '/admin/catalog/') ? 'catalog' : null}">Quản trị</a>
+
+        <a th:href="@{/admin/users}" sec:authorize="hasRole('ADMIN')"
+           th:attr="aria-current=${path == '/admin/users' ? 'page' : null}">Người dùng</a>
+
+        <a th:href="@{/admin/orders}" sec:authorize="hasRole('ADMIN')"
+           th:attr="aria-current=${path == '/admin/orders' ? 'page' : null}, data-active-group=${#strings.startsWith(path, '/admin/orders/') ? 'orders' : null}">Đơn hàng</a>
+
+        <a th:href="@{/admin/vouchers}" sec:authorize="hasRole('ADMIN')"
+           th:attr="aria-current=${path == '/admin/vouchers' ? 'page' : null}, data-active-group=${#strings.startsWith(path, '/admin/vouchers/') ? 'vouchers' : null}">Voucher</a>
+
+        <form class="nav-logout" method="post" th:action="@{/logout}"
+              sec:authorize="isAuthenticated()">
           <button class="btn btn--ghost" type="submit">Đăng xuất</button>
         </form>
+
       </nav>
     </details>
   </div>
