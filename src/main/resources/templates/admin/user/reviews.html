@@ -4,8 +4,7 @@
 <body><div th:replace="~{fragments/header :: siteHeader}"></div>
 <main id="main" tabindex="-1" class="page-content admin-reviews">
     <h1>Duyệt đánh giá</h1>
-    <p class="notice" role="status" th:if="${message}" th:text="${message}"></p>
-    <p class="form-error" role="alert" th:if="${error}" th:text="${error}"></p>
+    <div th:replace="~{fragments/ui :: notices(${message}, ${error})}"></div>
     <form class="review-filter" method="get" th:action="@{/admin/reviews}" aria-label="Lọc đánh giá">
         <label>Trạng thái
             <select name="status">
@@ -59,8 +58,6 @@
             </form>
         </li>
     </ul>
-    <div th:replace="~{fragments/ui :: pagination(${trang.danhSach},
-        @{/admin/reviews(status=${locTrangThai}, stars=${locSao}, product=${locSanPham}, page=${trang.danhSach.number - 1})},
-        @{/admin/reviews(status=${locTrangThai}, stars=${locSao}, product=${locSanPham}, page=${trang.danhSach.number + 1})})}"></div>
+    <div th:replace="~{fragments/ui :: pagination(${pager}, 'Phân trang duyệt đánh giá')}"></div>
 </main>
 <div th:replace="~{fragments/footer :: siteFooter}"></div></body></html>

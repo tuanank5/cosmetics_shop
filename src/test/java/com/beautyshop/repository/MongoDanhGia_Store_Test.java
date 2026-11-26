@@ -1,11 +1,9 @@
 package com.beautyshop.repository;
 
-import com.beautyshop.entity.DanhGia_Document;
-import com.beautyshop.repository.DanhGia_Repository.DanhGiaCu;
+import com.beautyshop.model.DanhGia_Document;
 import com.beautyshop.repository.DanhGia_Store.BoLocDanhGia;
 import com.beautyshop.repository.DanhGia_Store.DanhGiaMoi;
 import com.beautyshop.repository.DanhGia_Store.TrangThaiLoc;
-import com.beautyshop.review.ChuyenDanhGiaSangMongo_Runner;
 import com.beautyshop.review.MongoDanhGia_Config;
 import java.time.Clock;
 import java.time.Instant;
@@ -15,6 +13,7 @@ import org.bson.Document;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.condition.EnabledIfEnvironmentVariable;
+import org.junit.jupiter.api.condition.EnabledIfSystemProperty;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.data.mongo.DataMongoTest;
 import org.springframework.context.annotation.Import;
@@ -63,6 +62,100 @@ class MongoDanhGia_Store_Test {
 
     private void duyet(long muc) {
         assertThat(store.datHienThi(ma(muc), true, "0")).isTrue();
+    }
+
+    @Test
+    @EnabledIfSystemProperty(named = "data01.backup", matches = "true")
+    void taoMauSaoLuu() {
+        store.tao(moi(1, 10, 5));
+        duyet(1);
+        assertThat(mongo.count(new Query(), DanhGia_Document.class)).isEqualTo(1);
+    }
+
+    @Test
+    void haiNguoiGhiCungMucChiMotLanThanhCong() throws Exception {
+        var batDau = new java.util.concurrent.CountDownLatch(1);
+        try (var executor = java.util.concurrent.Executors.newVirtualThreadPerTaskExecutor()) {
+            java.util.concurrent.Callable<Boolean> tao = () -> {
+                batDau.await();
+                try {
+                    store.tao(moi(1, 10, 5));
+                    return true;
+                } catch (DuplicateKeyException exception) {
+                    return false;
+                }
+            };
+            var a = executor.submit(tao);
+            var b = executor.submit(tao);
+            batDau.countDown();
+            assertThat(List.of(a.get(10, java.util.concurrent.TimeUnit.SECONDS),
+                b.get(10, java.util.concurrent.TimeUnit.SECONDS))).containsExactlyInAnyOrder(true, false);
+        }
+        assertThat(mongo.count(new Query(), DanhGia_Document.class)).isEqualTo(1);
+    }
+
+    @Test
+    void indexSaiChanGhiVaKhongSuaDuLieu() {
+        store.tao(moi(1, 10, 5));
+        var indexes = mongo.indexOps(DanhGia_Document.class);
+        indexes.dropIndex("uq_ma_chi_tiet_don_hang");
+        indexes.createIndex(new org.springframework.data.mongodb.core.index.Index()
+            .on("maChiTietDonHang", org.springframework.data.domain.Sort.Direction.ASC)
+            .named("uq_ma_chi_tiet_don_hang"));
+        assertThatThrownBy(() -> store.tao(moi(2, 10, 1)))
+            .isInstanceOf(org.springframework.dao.DataAccessResourceFailureException.class);
+        assertThat(mongo.count(new Query(), DanhGia_Document.class)).isEqualTo(1);
+        assertThat(indexes.getIndexInfo()).anyMatch(index ->
+            index.getName().equals("uq_ma_chi_tiet_don_hang") && !index.isUnique());
+    }
+
+    @Test
+    @EnabledIfEnvironmentVariable(named = "DATA_01_MONGOD", matches = ".+")
+    void khoiDongKhiMongoTatRoiTaoIndexTruocGhiSauPhucHoi() throws Exception {
+        int port;
+        try (var socket = new java.net.ServerSocket(0, 1, java.net.InetAddress.getLoopbackAddress())) {
+            port = socket.getLocalPort();
+        }
+        var data = java.nio.file.Files.createTempDirectory(java.nio.file.Path.of("target"), "data-01-recovery-");
+        var now = new java.util.concurrent.atomic.AtomicReference<>(T0);
+        var clock = new Clock() {
+            @Override public java.time.ZoneId getZone() { return ZoneOffset.UTC; }
+            @Override public Clock withZone(java.time.ZoneId zone) { return Clock.fixed(instant(), zone); }
+            @Override public Instant instant() { return now.get(); }
+        };
+        String uri = "mongodb://127.0.0.1:" + port + "/data_01_recovery?serverSelectionTimeoutMS=1000";
+        try (var client = com.mongodb.client.MongoClients.create(uri)) {
+            var template = new MongoTemplate(client, "data_01_recovery");
+            var recovering = new MongoDanhGia_Store(template, repository, clock);
+            recovering.taoIndex();
+            assertThatThrownBy(() -> recovering.tao(moi(1, 10, 5)))
+                .isInstanceOf(org.springframework.dao.DataAccessResourceFailureException.class);
+            var process = new ProcessBuilder(System.getenv("DATA_01_MONGOD"), "--dbpath", data.toString(),
+                "--bind_ip", "127.0.0.1", "--port", Integer.toString(port), "--wiredTigerCacheSizeGB", "0.25")
+                .redirectErrorStream(true).redirectOutput(data.resolve("mongod.log").toFile()).start();
+            try {
+                boolean ready = false;
+                for (int i = 0; i < 10 && process.isAlive(); i++) {
+                    try {
+                        template.getDb().runCommand(new Document("ping", 1));
+                        ready = true;
+                        break;
+                    } catch (com.mongodb.MongoTimeoutException exception) {
+                        // Wait for this isolated process to listen.
+                    }
+                }
+                assertThat(ready).isTrue();
+                assertThatThrownBy(() -> recovering.tao(moi(1, 10, 5)))
+                    .isInstanceOf(org.springframework.dao.DataAccessResourceFailureException.class);
+                now.set(T0.plusMillis(MongoDanhGia_Store.NGHI_SAU_LOI_MS));
+                recovering.tao(moi(1, 10, 5));
+                assertThatThrownBy(() -> recovering.tao(moi(1, 10, 1))).isInstanceOf(DuplicateKeyException.class);
+                assertThat(template.count(new Query(), DanhGia_Document.class)).isEqualTo(1);
+            } finally {
+                process.destroy();
+                if (!process.waitFor(5, java.util.concurrent.TimeUnit.SECONDS)) process.destroyForcibly();
+            }
+        }
     }
 
     @Test
@@ -180,27 +273,29 @@ class MongoDanhGia_Store_Test {
     }
 
     @Test
-    void migrateHaiLanKhongNhanDoiVaKhongDeBanDaSua() {
-        var runner = new ChuyenDanhGiaSangMongo_Runner(null, mongo, null);
-        var cu = List.of(
-            new DanhGiaCu(1, 501, 50, 70, 10, 300, "An N.", 5, "  Rất thích  ", true, T0),
-            new DanhGiaCu(2, 502, 50, 70, 11, 301, "An N.", 3, null, false, T0.plusSeconds(60)),
-            new DanhGiaCu(3, 503, 51, 71, 10, 300, "Bình T.", 0, "sao lỗi", true, T0));
-
-        var lan1 = runner.ghi(cu);
-        assertThat(lan1).isEqualTo(new ChuyenDanhGiaSangMongo_Runner.KetQua(3, 2, 0, 1));
-        // Sau lần chuyển đầu, khách sửa bản 502 -> lần chuyển lại không được đè.
-        assertThat(store.sua(502, 70, 4, "Sửa sau khi chuyển")).isTrue();
-
-        var lan2 = runner.ghi(cu);
-        assertThat(lan2).isEqualTo(new ChuyenDanhGiaSangMongo_Runner.KetQua(3, 0, 2, 1));
-        assertThat(mongo.count(new Query(), DanhGia_Document.class)).isEqualTo(2);
-        var hien = store.cuaChuMuc(501, 70).orElseThrow();
-        assertThat(hien.noiDung()).isEqualTo("Rất thích");
-        assertThat(hien.hienThi()).isTrue();
-        assertThat(store.danhSachAdmin(new BoLocDanhGia(TrangThaiLoc.DANG_HIEN, null, null), PageRequest.of(0, 10)))
-            .singleElement().satisfies(d -> assertThat(d.daDuyet()).isTrue());
-        assertThat(store.cuaChuMuc(502, 70).orElseThrow().noiDung()).isEqualTo("Sửa sau khi chuyển");
-        assertThat(store.tomTat(10).soLuong()).isEqualTo(1);
+    void khiTrungThoiDiemThiSapTheoIdVaDemDungBoLocQuaCacTrang() {
+        for (int i = 1; i <= 22; i++) {
+            store.tao(moi(i, 10, i <= 21 ? 4 : 5));
+            duyet(i);
+        }
+        store.tao(moi(23, 10, 4)); // Cùng sản phẩm nhưng chưa duyệt.
+        store.tao(moi(24, 11, 4));
+        duyet(24);
+        var congKhai = java.util.stream.IntStream.range(0, 3)
+            .mapToObj(i -> store.congKhai(10, PageRequest.of(i, 10))).toList();
+        assertThat(congKhai).allSatisfy(p -> assertThat(p.getTotalElements()).isEqualTo(22));
+        assertThat(congKhai.stream().flatMap(trang -> trang.getContent().stream()))
+            .extracting(DanhGia_Store.DanhGiaCongKhai::noiDung)
+            .containsExactlyElementsOf(java.util.stream.IntStream.iterate(22, i -> i - 1).limit(22)
+                .mapToObj(i -> "Nhận xét " + i).toList());
+        var loc = new BoLocDanhGia(TrangThaiLoc.DANG_HIEN, 4, 10L);
+        var dau = store.danhSachAdmin(loc, PageRequest.of(0, 20));
+        var cuoi = store.danhSachAdmin(loc, PageRequest.of(1, 20));
+        assertThat(dau.getTotalElements()).isEqualTo(21);
+        assertThat(cuoi.getTotalElements()).isEqualTo(21);
+        assertThat(dau.getContent()).extracting(DanhGia_Store.DanhGiaAdmin::ma)
+            .isSortedAccordingTo(java.util.Comparator.reverseOrder());
+        assertThat(cuoi.getContent()).extracting(DanhGia_Store.DanhGiaAdmin::ma).containsExactly(ma(1));
     }
+
 }

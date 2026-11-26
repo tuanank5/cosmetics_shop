@@ -4,8 +4,7 @@
 <body><div th:replace="~{fragments/header :: siteHeader}"></div>
 <main id="main" tabindex="-1" class="page-content catalog-admin">
     <h1>Quản lý tài khoản</h1>
-    <p class="notice" role="status" th:if="${message}" th:text="${message}"></p>
-    <p class="form-error" role="alert" th:if="${error}" th:text="${error}"></p>
+    <div th:replace="~{fragments/ui :: notices(${message}, ${error})}"></div>
     <form class="catalog-form" th:action="@{/admin/users}" method="get" role="search">
         <label>Tìm theo họ tên hoặc email <input type="search" name="q" th:value="${q}" maxlength="190"></label>
         <button type="submit" class="btn btn--primary">Tìm kiếm</button>
@@ -31,10 +30,6 @@
             </div>
         </li>
     </ul>
-    <nav class="catalog-actions" th:if="${ketQua.totalPages > 1}" aria-label="Phân trang tài khoản">
-        <a class="text-link" th:if="${ketQua.hasPrevious()}" th:href="@{/admin/users(q=${q},page=${ketQua.number - 1})}">Trang trước</a>
-        <span th:text="|Trang ${ketQua.number + 1} / ${ketQua.totalPages}|"></span>
-        <a class="text-link" th:if="${ketQua.hasNext()}" th:href="@{/admin/users(q=${q},page=${ketQua.number + 1})}">Trang sau</a>
-    </nav>
+    <div th:replace="~{fragments/ui :: pagination(${pager}, 'Phân trang tài khoản')}"></div>
 </main>
 <div th:replace="~{fragments/footer :: siteFooter}"></div></body></html>

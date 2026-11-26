@@ -1,0 +1,1 @@
+SQL source and restored review rows: 3, checksum identical. Mongo archive restore exit 0 with index metadata. Synthetic fixtures only.

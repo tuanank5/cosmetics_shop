@@ -19,6 +19,39 @@
   const searchSlot = { parent: search.parentNode, next: search.nextSibling };
   const cartSlot = cart && { parent: cart.parentNode, next: cart.nextSibling };
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
+  const traversal = performance.getEntriesByType('navigation')[0]?.type === 'back_forward';
+  const opening = new URLSearchParams(location.search).get('home') === 'opening';
+  const productAnchor = /^(home-featured|home-popular|home-all-products)-product-\d+$/;
+  const sourceId = () => {
+    const hash = location.hash.slice(1);
+    if (productAnchor.test(hash)) return hash;
+    const stored = history.state?.beautyshopHomeProduct;
+    return traversal && productAnchor.test(stored ?? '') ? stored : null;
+  };
+  const sourceTarget = () => {
+    const id = sourceId();
+    if (!id) return null;
+    const region = document.getElementById(id.split('-product-')[0]);
+    return document.getElementById(id) || region?.querySelector('h2') || document.getElementById('home-title');
+  };
+  const restoreSource = () => {
+    const target = sourceTarget();
+    if (!target) return;
+    const rect = target.getBoundingClientRect();
+    if (rect.top < 0 || rect.top >= innerHeight || rect.bottom <= 0) {
+      target.scrollIntoView({ block: 'start', behavior: 'instant' });
+    }
+    if (!target.matches('a[href], button, [tabindex]')) target.tabIndex = -1;
+    if (document.activeElement !== target) target.focus({ preventScroll: true });
+  };
+  document.addEventListener('click', (event) => {
+    if (event.button !== 0 || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+    const link = event.target.closest('a.store-card[id]');
+    if (!link || !productAnchor.test(link.id) || link.target === '_blank') return;
+    try {
+      history.replaceState({ ...history.state, beautyshopHomeProduct: link.id }, '', location.href);
+    } catch { /* The server Back link still has a stable anchor. */ }
+  });
   let swiper, frame, initial = true;
   const notify = (enabled, activeIndex) => root.dispatchEvent(new CustomEvent('beautyshop:home-carousel', { detail: { enabled, activeIndex } }));
   const remember = (index) => {
@@ -88,18 +121,23 @@
     }
     let index = slides.reduce((best, slide, i) => Math.abs(slide.getBoundingClientRect().top) < Math.abs(slides[best].getBoundingClientRect().top) ? i : best, 0);
     const remembered = history.state?.beautyshopHomeSlide;
-    if (initial && Number.isInteger(remembered) && remembered >= 0 && remembered < slides.length) index = remembered;
+    const source = initial ? sourceTarget() : null;
+    if (initial && opening && !traversal) index = 0;
+    else if (source) {
+      const slide = slides.findIndex((el) => el.contains(source));
+      index = slide >= 0 ? slide : slides.length - 1;
+    } else if (initial && traversal && Number.isInteger(remembered) && remembered >= 0 && remembered < slides.length) index = remembered;
     else if (initial && location.hash) { const target = slides.findIndex((slide) => '#' + slide.id === location.hash); if (target >= 0) index = target; }
     // P21: a hash below the carousel (#home-products, #home-all-products, #home-footer) keeps the reader there;
     // the carousel waits on the last chapter so scrolling back up returns to chapter 6.
     let below = null;
-    if (initial && location.hash && !slides.some((slide) => '#' + slide.id === location.hash)) {
+    if (!source && initial && location.hash && !slides.some((slide) => '#' + slide.id === location.hash)) {
       try { below = document.querySelector(location.hash); } catch { below = null; }
       if (below && (stage.contains(below) || !(stage.compareDocumentPosition(below) & Node.DOCUMENT_POSITION_FOLLOWING))) below = null;
       if (below) index = slides.length - 1;
     }
     const beforeY = scrollY;
-    const preserveFooter = initial && Number.isInteger(remembered) && beforeY > 2 && !location.hash;
+    const preserveFooter = initial && traversal && beforeY > 2 && !location.hash;
     initial = false;
     root.classList.add('swiper', 'is-ready'); stage.classList.add('is-ready');
     track.classList.add('swiper-wrapper'); slides.forEach((slide) => slide.classList.add('swiper-slide'));
@@ -123,7 +161,8 @@
       swiper.init();
       if (slides.some((slide) => slide.scrollHeight > root.clientHeight + 2)) { disable('content-height'); return; }
       delete root.dataset.carouselFallback;
-      if (below) below.scrollIntoView({ block: 'start' });
+      if (source) { /* pageshow restores the source after native layout restoration. */ }
+      else if (below) below.scrollIntoView({ block: 'start' });
       else scrollTo(0, preserveFooter ? beforeY : stage.offsetTop);
       sync(); controls();
     } catch { disable('initialization-error'); }
@@ -144,7 +183,13 @@
   reduced.addEventListener('change', schedule);
   document.addEventListener('visibilitychange', controls);
   window.addEventListener('pagehide', () => { swiper?.mousewheel.disable(); swiper?.keyboard.disable(); });
-  window.addEventListener('pageshow', (event) => { if (event.persisted) { if (swiper) swiper.update(); schedule(); } });
+  window.addEventListener('pageshow', (event) => {
+    if (event.persisted) {
+      controls();
+      return; // Browser restored the live document and its scroll position.
+    }
+    requestAnimationFrame(() => requestAnimationFrame(restoreSource));
+  });
   css?.addEventListener('load', schedule);
   css?.addEventListener('error', () => disable('stylesheet-unavailable'));
   enable();

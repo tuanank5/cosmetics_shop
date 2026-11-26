@@ -8,9 +8,9 @@ import com.beautyshop.service.NguoiDung_Service;
 import com.beautyshop.service.CuaHang_Service;
 import com.beautyshop.service.SauMua_Service;
 import com.beautyshop.repository.CuaHang_Repository.TheSanPham;
-import com.beautyshop.entity.BienTheSanPham;
-import com.beautyshop.entity.SanPham;
-import com.beautyshop.entity.ThuongHieu;
+import com.beautyshop.model.BienTheSanPham;
+import com.beautyshop.model.SanPham;
+import com.beautyshop.model.ThuongHieu;
 import com.beautyshop.repository.DanhGia_Store;
 import com.beautyshop.repository.DanhGia_Store.DanhGiaCongKhai;
 import com.beautyshop.repository.DanhGia_Store.TomTatDanhGia;
@@ -79,7 +79,7 @@ class GiaoDienPagesTest {
         mvc.perform(get("/"))
             .andExpect(status().isOk())
             .andDo(result -> assertThat(footer(result.getResponse().getContentAsString()))
-                .contains("href=\"/login\"", "href=\"/register\"", "href=\"/cart\"", "href=\"/products#brands\"")
+                .contains("href=\"/login\"", "href=\"/register\"", "href=\"/cart\"", "href=\"/products?filterPanel=open#brands\"")
                 .doesNotContain("href=\"/account\"", "href=\"/orders\"", "href=\"/account/wishlist\"", "/admin/"));
     }
 
@@ -160,9 +160,9 @@ class GiaoDienPagesTest {
         mvc.perform(get("/login"))
             .andExpect(status().isOk())
             .andExpect(content().string(containsString("class=\"nav-discovery\"")))
-            .andExpect(content().string(containsString("href=\"/products#categories\"")))
-            .andExpect(content().string(containsString("href=\"/products#brands\"")))
-            .andExpect(content().string(containsString("href=\"/products#skin-type\"")))
+            .andExpect(content().string(containsString("href=\"/products?filterPanel=open#categories\"")))
+            .andExpect(content().string(containsString("href=\"/products?filterPanel=open#brands\"")))
+            .andExpect(content().string(containsString("href=\"/products?filterPanel=open#skin-type\"")))
             .andExpect(content().string(containsString("<summary>Loại da</summary>")))
             .andExpect(content().string(containsString("method=\"get\" action=\"/products\"")))
             .andExpect(content().string(containsString("name=\"q\"")));
@@ -200,8 +200,8 @@ class GiaoDienPagesTest {
             .andExpect(content().string(containsString("Thương hiệu: Thương hiệu kiểm thử")))
             .andExpect(content().string(containsString("Danh mục: Dưỡng da")))
             .andExpect(content().string(containsString("/products?q=serum&amp;category=duong-da&amp;skinType=dau&amp;sort=priceAsc&amp;size=12")))
-            .andExpect(content().string(containsString("/products?q=serum&amp;brand=demo&amp;category=duong-da&amp;skinType=dau&amp;sort=priceAsc&amp;page=0&amp;size=12")))
-            .andExpect(content().string(containsString("/products?q=serum&amp;brand=demo&amp;category=duong-da&amp;skinType=dau&amp;sort=priceAsc&amp;page=2&amp;size=12")))
+            .andExpect(content().string(containsString("/products?q=serum&amp;brand=demo&amp;category=duong-da&amp;skinType=dau&amp;sort=priceAsc&amp;size=12&amp;page=0")))
+            .andExpect(content().string(containsString("/products?q=serum&amp;brand=demo&amp;category=duong-da&amp;skinType=dau&amp;sort=priceAsc&amp;size=12&amp;page=2")))
             .andExpect(content().string(containsString("Trang sau")));
     }
 
@@ -245,7 +245,7 @@ class GiaoDienPagesTest {
         // P18: the featured strip is chapter 5 of the carousel, inside <main>, before the footer.
         assertThat(html).containsSubsequence("data-home-carousel", "id=\"home-featured\"",
                 "Sản phẩm nổi bật", "</main>", "id=\"home-footer\"", "class=\"site-footer\"")
-            .contains("href=\"/products/serum-noi-bat\"", "href=\"/products/kem-chua-anh\"",
+            .contains("href=\"/products/serum-noi-bat?from=home-featured", "href=\"/products/kem-chua-anh?from=home-featured",
                 "Serum &lt;b&gt;nổi bật&lt;/b&gt;", "450.000 ₫", "Còn hàng",
                 "src=\"/uploads/sku/fixture.png\"", "data-catalog-placeholder", "loading=\"lazy\"")
             .doesNotContain("loading=\"eager\"", "src=\"\"", "th:utext", "style=")
@@ -309,7 +309,7 @@ class GiaoDienPagesTest {
                 "preview-fixture", java.util.Map.of("thumbnailUrl", "/img/test-poster.png",
                     "previewVideoUrl", "/img/test-video.webm", "videoPosterUrl", "/img/test-poster.png"))))
             .andExpect(status().isOk()).andReturn().getResponse().getContentAsString();
-        assertThat(media).contains("href=\"/products/preview-fixture\"", "/products/preview-fixture#pdp-actions",
+        assertThat(media).contains("href=\"/products/preview-fixture?from=catalog", "/products/preview-fixture#pdp-actions",
                 "src=\"/img/test-poster.png\"", "data-video-src=\"/img/test-video.webm\"", "preload=\"none\"")
             .doesNotContain("<video src=", "action=\"/account/wishlist");
     }
@@ -336,6 +336,18 @@ class GiaoDienPagesTest {
     }
 
     @ParameterizedTest
+    @CsvSource({"'', '', false", "open, '', true", "closed, fixture, false", "unknown, fixture, true"})
+    void catalogChiChapNhanHaiTrangThaiHienThiBoLoc(String panel, String brand, boolean open) throws Exception {
+        when(cuaHangService.timSanPham(anyString(), anyString(), anyString(), anyString(), anyString(), any()))
+            .thenReturn(Page.empty(PageRequest.of(0, 7)));
+        String html = mvc.perform(get("/products").param("filterPanel", panel).param("brand", brand).param("size", "7"))
+            .andExpect(status().isOk()).andReturn().getResponse().getContentAsString();
+        assertThat(html).contains("name=\"filterPanel\" value=\"open\"", "name=\"size\" value=\"7\"");
+        String details = html.substring(html.indexOf("<details id=\"catalog-filters\""));
+        assertThat(details.substring(0, details.indexOf('>')).contains(" open=")).isEqualTo(open);
+    }
+
+    @ParameterizedTest
     @CsvSource({"0,0,0", "1,0,1", "12,0,12", "27,0,12", "27,1,12", "27,2,3", "27,99,3"})
     void catalogTienDoLayDungPageVaTuDocLaiTrangCuoi(int total, int requested, int expectedElements) throws Exception {
         var card = mock(TheSanPham.class);
@@ -355,6 +367,13 @@ class GiaoDienPagesTest {
         else assertThat(html).contains("Đang hiển thị " + (page * 12 + 1) + "–" + (page * 12 + expectedElements)
             + " trong tổng " + total + " sản phẩm");
         if (requested == 99) verify(cuaHangService).timSanPham("", "", "", "", "newest", PageRequest.of(2, 12));
+        if (total <= 12) {
+            assertThat(html).doesNotContain("Phân trang sản phẩm");
+        } else {
+            assertThat(html).contains("Phân trang sản phẩm", "class=\"pagination-current\" aria-current=\"page\"");
+            if (page == 0) assertThat(html).doesNotContain("Trang đầu", "Trang trước").contains("Trang sau", "Trang cuối");
+            if (page == (total - 1) / 12) assertThat(html).contains("Trang đầu", "Trang trước").doesNotContain("Trang sau", "Trang cuối");
+        }
     }
 
     @Test
@@ -385,6 +404,27 @@ class GiaoDienPagesTest {
         var cacBienThe = List.of(conHang, hetHang);
         when(cuaHangService.chiTiet("kiem-thu", null)).thenReturn(new CuaHang_Service.ChiTiet(sanPham, cacBienThe, conHang));
         when(cuaHangService.chiTiet("kiem-thu", 22L)).thenReturn(new CuaHang_Service.ChiTiet(sanPham, cacBienThe, hetHang));
+    }
+
+    @Test
+    void productReturnKeepsOnlyTypedSourceAndRespectsContextPath() throws Exception {
+        sanPhamHaiBienThe();
+        mvc.perform(get("/shop/products/kiem-thu").contextPath("/shop").param("from", "home-popular")
+                .param("token", "fixture").param("state", "fixture"))
+            .andExpect(status().isOk())
+            .andExpect(content().string(containsString("href=\"/shop/#home-popular-product-3\"")))
+            .andExpect(content().string(not(containsString("name=\"token\""))))
+            .andExpect(content().string(not(containsString("name=\"state\""))));
+        mvc.perform(get("/products/kiem-thu").param("from", "catalog").param("q", "kem + serum")
+                .param("sort", "priceAsc").param("page", "2").param("size", "7"))
+            .andExpect(status().isOk())
+            .andExpect(content().string(containsString("href=\"/products?q=kem%20%2B%20serum&amp;sort=priceAsc&amp;page=2&amp;size=7\"")));
+        mvc.perform(get("/products/kiem-thu").param("from", "//other.invalid"))
+            .andExpect(content().string(containsString("class=\"pdp-back text-link\" href=\"/products\"")));
+        mvc.perform(get("/products/kiem-thu").param("from", "wishlist"))
+            .andExpect(content().string(containsString("class=\"pdp-back text-link\" href=\"/products\"")));
+        mvc.perform(get("/products/kiem-thu").param("from", "wishlist").with(user("fixture").roles("CUSTOMER")))
+            .andExpect(content().string(containsString("class=\"pdp-back text-link\" href=\"/account/wishlist\"")));
     }
 
     @Test
@@ -474,7 +514,8 @@ class GiaoDienPagesTest {
         when(khongDanhGia.getGiaTu()).thenReturn(new BigDecimal("90000"));
         when(cuaHangService.timSanPham(anyString(), anyString(), anyString(), anyString(), anyString(), any()))
             .thenReturn(new PageImpl<>(List.of(card, khongDanhGia), PageRequest.of(0, 12), 2));
-        when(sauMuaService.tomTatDanhGia(List.of(7L, 8L))).thenReturn(Map.of(7L, new TomTatDanhGia(2, 9, new long[] {0, 0, 0, 1, 1})));
+        when(sauMuaService.tomTatDanhGia(List.of(7L, 8L))).thenReturn(new SauMua_Service.TomTatTheSanPham(
+            Map.of(7L, new TomTatDanhGia(2, 9, new long[] {0, 0, 0, 1, 1})), false));
         mvc.perform(get("/products"))
             .andExpect(status().isOk())
             .andExpect(content().string(containsString("aria-label=\"4,5 trên 5 sao\"")))
@@ -530,7 +571,7 @@ class GiaoDienPagesTest {
 
     @ParameterizedTest
     @CsvSource({"400,Yêu cầu chưa hợp lệ", "403,Bạn chưa có quyền truy cập", "404,Không tìm thấy trang",
-        "409,Thông tin vừa thay đổi", "413,Tệp tải lên quá lớn", "500,Chưa thể hoàn tất yêu cầu", "503,Chưa thể mở nội dung"})
+        "409,Thông tin vừa thay đổi", "413,Tệp tải lên quá lớn", "429,Bạn thao tác quá nhanh", "500,Chưa thể hoàn tất yêu cầu", "503,Chưa thể mở nội dung"})
     void bootErrorsUseVietnameseViewsAndDoNotExposeDetails(int code, String heading) throws Exception {
         mvc.perform(get("/error").accept(MediaType.TEXT_HTML)
                 .requestAttr(RequestDispatcher.ERROR_STATUS_CODE, code)
@@ -541,5 +582,17 @@ class GiaoDienPagesTest {
             .andExpect(content().string(containsString("Xem sản phẩm")))
             .andExpect(content().string(not(containsString("sensitive-internal-detail"))))
             .andExpect(content().string(not(containsString("Apache Tomcat"))));
+    }
+
+    @Test
+    void errorPageOffersAdminDashboardOnlyToAdmin() throws Exception {
+        mvc.perform(get("/error").with(user("fixture").roles("ADMIN")).accept(MediaType.TEXT_HTML)
+                .requestAttr(RequestDispatcher.ERROR_STATUS_CODE, 404))
+            .andExpect(status().isNotFound())
+            .andExpect(content().string(containsString("Về tổng quan quản trị")));
+        mvc.perform(get("/error").accept(MediaType.TEXT_HTML)
+                .requestAttr(RequestDispatcher.ERROR_STATUS_CODE, 404))
+            .andExpect(status().isNotFound())
+            .andExpect(content().string(not(containsString("Về tổng quan quản trị"))));
     }
 }

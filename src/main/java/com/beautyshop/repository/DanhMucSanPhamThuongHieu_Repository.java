@@ -1,6 +1,6 @@
 package com.beautyshop.repository;
 
-import com.beautyshop.entity.MucDanhMucSanPhamThuongHieu;
+import com.beautyshop.model.MucDanhMucSanPhamThuongHieu;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.NoRepositoryBean;

@@ -1,6 +1,6 @@
 package com.beautyshop.controller.admin;
 
-import com.beautyshop.entity.NguoiDung;
+import com.beautyshop.model.NguoiDung;
 import com.beautyshop.repository.DanhGia_Repository.MucMua;
 import com.beautyshop.repository.DanhGia_Repository.SanPhamLoc;
 import com.beautyshop.repository.DanhGia_Store.BoLocDanhGia;
@@ -110,6 +110,7 @@ class AdminDanhGiaPagesTest {
         mvc.perform(get("/admin/reviews").with(user("admin").roles("ADMIN")).param("status", "'; db.drop()").param("stars", "9"))
             .andExpect(status().isOk())
             .andExpect(content().string(containsString("Tạm thời chưa tải được đánh giá")))
+            .andExpect(content().string(not(containsString("Phân trang duyệt đánh giá"))))
             .andExpect(content().string(not(containsString("Không có đánh giá phù hợp."))));
         verify(sauMua).danhSachDanhGiaAdmin(BoLocDanhGia.TAT_CA, 0);
     }

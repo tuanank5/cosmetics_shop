@@ -1,7 +1,7 @@
 
 package com.beautyshop.repository;
 
-import com.beautyshop.entity.SanPham;
+import com.beautyshop.model.SanPham;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 

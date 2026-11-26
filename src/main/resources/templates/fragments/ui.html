@@ -4,14 +4,54 @@
 <div th:fragment="flash(type, message)" class="alert" th:classappend="${type == 'error' ? 'alert--error' : 'alert--success'}" th:attr="role=${type == 'error' ? 'alert' : 'status'}">
   <strong th:text="${type == 'error' ? 'Lỗi: ' : 'Thông báo: '}"></strong><span th:text="${message}"></span>
 </div>
+<div th:fragment="notices(message, error)" data-page-notices>
+  <th:block th:if="${error}"><div th:replace="~{fragments/ui :: flash('error', ${error})}"></div></th:block>
+  <th:block th:if="${message}"><div th:replace="~{fragments/ui :: flash('success', ${message})}"></div></th:block>
+</div>
+<div th:fragment="password(input, id, label)" class="password-control">
+  <input th:replace="${input}">
+  <button class="btn btn--secondary btn--icon password-toggle" type="button" hidden aria-pressed="false"
+          th:attr="data-password-toggle=${id},aria-controls=${id},aria-label=${label}">
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6-10-6-10-6Z"/>
+      <circle cx="12" cy="12" r="2.5"/>
+      <path class="password-toggle-slash" d="M3 3l18 18"/>
+    </svg>
+  </button>
+</div>
+<details th:fragment="productDisclosure(id, label, copy)" class="disclosure" th:id="${id}" data-entry-disclosure>
+  <summary th:text="${label}"></summary>
+  <p class="pdp-copy" th:text="${copy}"></p>
+</details>
 <p th:fragment="fieldError(field, id)" th:id="${id}" class="field-error">
   <span th:if="${#fields.hasErrors(field)}">Lỗi: <span th:errors="*{__${field}__}"></span></span>
 </p>
 <span th:fragment="money(amount)" class="money" th:text="|${#numbers.formatInteger(amount, 1, 'POINT')} ₫|"></span>
-<nav th:fragment="pagination(page, previous, next)" class="pagination" aria-label="Phân trang" th:if="${page.totalPages > 1}">
-  <a class="btn btn--secondary" th:if="${page.hasPrevious()}" th:href="${previous}">Trang trước</a>
-  <span aria-current="page" th:text="|Trang ${page.number + 1} / ${page.totalPages}|"></span>
-  <a class="btn btn--secondary" th:if="${page.hasNext()}" th:href="${next}">Trang sau</a>
+<nav th:fragment="pagination(pager, label)" class="pagination" th:aria-label="${label}"
+     th:if="${pager != null and pager.tongTrang > 1}">
+  <p class="pagination-status" th:if="${pager.trang < pager.tongTrang}" th:text="|Trang ${pager.trang + 1} / ${pager.tongTrang}|"></p>
+  <div class="pagination-links">
+    <div class="pagination-group" th:if="${pager.dau != null}">
+      <a class="btn btn--secondary" th:href="@{${pager.dau}}">Trang đầu</a>
+      <a class="btn btn--secondary" th:href="@{${pager.truoc}}">Trang trước</a>
+    </div>
+    <div class="pagination-group">
+      <span th:if="${pager.cachDauMobile}" th:classappend="${!pager.cachDau} ? 'pagination-mobile'" aria-hidden="true">…</span>
+      <th:block th:each="muc : ${pager.cuaSo}">
+        <span class="pagination-current" aria-current="page" th:if="${muc.hienTai}">
+          <span><span class="visually-hidden">Trang </span><span th:text="${muc.soHienThi}"></span></span>
+        </span>
+        <a th:unless="${muc.hienTai}" class="btn btn--secondary pagination-number"
+           th:classappend="${muc.chiDesktop} ? 'pagination-desktop'" th:href="@{${muc.href}}"
+           th:attr="aria-label=|Trang ${muc.soHienThi}|" th:text="${muc.soHienThi}"></a>
+      </th:block>
+      <span th:if="${pager.cachCuoiMobile}" th:classappend="${!pager.cachCuoi} ? 'pagination-mobile'" aria-hidden="true">…</span>
+    </div>
+    <div class="pagination-group" th:if="${pager.sau != null}">
+      <a class="btn btn--secondary" th:href="@{${pager.sau}}">Trang sau</a>
+      <a class="btn btn--secondary" th:href="@{${pager.cuoi}}">Trang cuối</a>
+    </div>
+  </div>
 </nav>
 <dialog th:fragment="confirmDialog" data-confirm-dialog aria-labelledby="confirm-title" aria-describedby="confirm-message">
   <h2 id="confirm-title">Xác nhận thao tác</h2>

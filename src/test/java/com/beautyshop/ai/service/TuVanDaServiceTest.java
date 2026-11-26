@@ -2,9 +2,9 @@ package com.beautyshop.ai.service;
 
 import com.beautyshop.ai.RagProvider;
 import com.beautyshop.ai.dto.TuVanDaRequest;
-import com.beautyshop.entity.BienTheSanPham;
-import com.beautyshop.entity.DanhMuc;
-import com.beautyshop.entity.SanPham;
+import com.beautyshop.model.BienTheSanPham;
+import com.beautyshop.model.DanhMuc;
+import com.beautyshop.model.SanPham;
 import com.beautyshop.repository.BienTheSanPham_Repository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.math.BigDecimal;

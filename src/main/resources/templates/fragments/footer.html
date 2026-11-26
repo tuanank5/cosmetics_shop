@@ -19,7 +19,7 @@
 
         <a th:href="@{/}">Giới thiệu cửa hàng</a>
         <a th:href="@{/products}">Sản phẩm</a>
-        <a th:href="@{/products#brands}">Thương hiệu</a>
+        <a th:href="@{/products#brands(filterPanel='open')}">Thương hiệu</a>
         <a th:href="@{/chat}">Tư vấn làm đẹp</a>
 
         <nav aria-label="Tài khoản" sec:authorize="isAnonymous()">

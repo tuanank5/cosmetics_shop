@@ -1,6 +1,6 @@
 package com.beautyshop.repository;
 
-import com.beautyshop.entity.DanhTinhOAuth;
+import com.beautyshop.model.DanhTinhOAuth;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.data.jpa.repository.EntityGraph;

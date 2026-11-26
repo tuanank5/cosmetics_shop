@@ -1,8 +1,8 @@
 package com.beautyshop.service;
 
 import com.beautyshop.dto.DiaChiNguoiDung_Form;
-import com.beautyshop.entity.DiaChiNguoiDung;
-import com.beautyshop.entity.NguoiDung;
+import com.beautyshop.model.DiaChiNguoiDung;
+import com.beautyshop.model.NguoiDung;
 import com.beautyshop.repository.DiaChiNguoiDung_Repository;
 import com.beautyshop.repository.NguoiDung_Repository;
 import java.util.List;

@@ -1,11 +1,24 @@
 // P20 Dashboard: draws Chart.js charts from the data tables rendered by the server.
 // The tables are the single source of truth (cells carry data-value); without JS or Chart.js they stay open.
 (() => {
+  const root = document.querySelector('.dashboard');
+  if (!root) return;
+  root.querySelectorAll('details[data-chart-table]').forEach((details) => {
+    const key = 'beautyshop.dashboard.' + details.querySelector('table').id;
+    try {
+      if (sessionStorage.getItem(key) === 'closed') details.open = false;
+      details.addEventListener('toggle', () => {
+        if (details.open) sessionStorage.removeItem(key);
+        else sessionStorage.setItem(key, 'closed');
+      });
+    } catch {
+      // Keep the native table open when storage is unavailable.
+    }
+  });
   const Chart = window.Chart;
-  const canvases = document.querySelectorAll('.dashboard canvas[data-chart]');
+  const canvases = root.querySelectorAll('canvas[data-chart]');
   if (!Chart || canvases.length === 0) return;
 
-  const root = document.querySelector('.dashboard');
   root.dataset.charts = 'true';
   const css = getComputedStyle(root);
   const token = (name, fallback) => css.getPropertyValue(name).trim() || fallback;
@@ -137,13 +150,6 @@
     } catch (error) {
       canvas.closest('.chart-canvas')?.setAttribute('hidden', '');
       return;
-    }
-  });
-  // The daily card shares one table between two canvases.
-  root.querySelectorAll('.chart-card').forEach((card) => {
-    const charts = [...card.querySelectorAll('canvas[data-chart]')];
-    if (charts.length && charts.every((canvas) => canvas.dataset.chartReady)) {
-      card.querySelector('details[data-chart-table]')?.removeAttribute('open');
     }
   });
 })();

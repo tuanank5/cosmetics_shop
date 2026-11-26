@@ -4,7 +4,7 @@
 <body>
 <div th:replace="~{fragments/header :: siteHeader}"></div>
 <main id="main" tabindex="-1" class="page-content storefront product-page">
-    <a class="pdp-back text-link" th:href="@{/products}"><span aria-hidden="true">←</span> Tất cả sản phẩm</a>
+    <a class="pdp-back text-link" th:href="@{${navSource.duongVe}}"><span aria-hidden="true">←</span> <span th:text="${navSource.nhan}">Tất cả sản phẩm</span></a>
     <article th:with="sanPham=${chiTiet.sanPham}, sku=${chiTiet.dangChon}">
         <div class="pdp-layout">
             <div class="pdp-media" th:with="coAnh=${!#strings.isEmpty(#strings.trim(sku.urlHinhAnh))}">
@@ -25,6 +25,7 @@
                           th:text="${sku.soLuongKhaDung > 0} ? |Còn ${sku.soLuongKhaDung} sản phẩm| : 'Hết hàng'"></span>
                 </div>
                 <form method="get" th:action="@{/products/{slug}(slug=${sanPham.duongDan})}">
+                    <input th:each="p : ${navSource.thamSo}" type="hidden" th:name="${p.key}" th:value="${p.value}">
                     <fieldset class="pdp-variants">
                         <legend>Chọn biến thể</legend>
                         <div class="pdp-options">
@@ -63,18 +64,15 @@
                 <h2>Mô tả sản phẩm</h2>
                 <p class="pdp-copy" th:text="${sanPham.moTa}"></p>
             </section>
-            <details th:if="${!#strings.isEmpty(#strings.trim(sanPham.huongDanSuDung))}">
-                <summary>Hướng dẫn sử dụng</summary>
-                <p class="pdp-copy" th:text="${sanPham.huongDanSuDung}"></p>
-            </details>
-            <details th:if="${!#strings.isEmpty(#strings.trim(sanPham.thanhPhan))}">
-                <summary>Thành phần</summary>
-                <p class="pdp-copy" th:text="${sanPham.thanhPhan}"></p>
-            </details>
-            <details th:if="${!#strings.isEmpty(#strings.trim(sanPham.loaiDaPhuHop))}">
-                <summary>Loại da phù hợp</summary>
-                <p class="pdp-copy" th:text="${sanPham.loaiDaPhuHop}"></p>
-            </details>
+            <th:block th:if="${!#strings.isEmpty(#strings.trim(sanPham.huongDanSuDung))}">
+                <details th:replace="~{fragments/ui :: productDisclosure(|${sanPham.duongDan}-huong-dan|, 'Hướng dẫn sử dụng', ${sanPham.huongDanSuDung})}"></details>
+            </th:block>
+            <th:block th:if="${!#strings.isEmpty(#strings.trim(sanPham.thanhPhan))}">
+                <details th:replace="~{fragments/ui :: productDisclosure(|${sanPham.duongDan}-thanh-phan|, 'Thành phần', ${sanPham.thanhPhan})}"></details>
+            </th:block>
+            <th:block th:if="${!#strings.isEmpty(#strings.trim(sanPham.loaiDaPhuHop))}">
+                <details th:replace="~{fragments/ui :: productDisclosure(|${sanPham.duongDan}-loai-da|, 'Loại da phù hợp', ${sanPham.loaiDaPhuHop})}"></details>
+            </th:block>
             <section id="danh-gia" class="pdp-review-section" aria-labelledby="reviews-title" tabindex="-1">
                 <h2 id="reviews-title">Đánh giá sản phẩm</h2>
                 <p class="notice" role="status" th:if="${danhGia.khongTaiDuoc}">Tạm thời chưa tải được đánh giá. Vui lòng thử lại sau.</p>
@@ -106,9 +104,7 @@
                             <p class="pdp-copy" th:unless="${#strings.isEmpty(dg.noiDung)}" th:text="${dg.noiDung}"></p>
                         </li>
                     </ul>
-                    <div th:replace="~{fragments/ui :: pagination(${danhGia.danhSach},
-                        @{/products/{slug}(slug=${sanPham.duongDan}, variant=${sku.maBienThe}, reviewPage=${danhGia.danhSach.number - 1})} + '#danh-gia',
-                        @{/products/{slug}(slug=${sanPham.duongDan}, variant=${sku.maBienThe}, reviewPage=${danhGia.danhSach.number + 1})} + '#danh-gia')}"></div>
+                    <div th:replace="~{fragments/ui :: pagination(${pager}, 'Phân trang đánh giá')}"></div>
                 </th:block>
             </section>
         </div>

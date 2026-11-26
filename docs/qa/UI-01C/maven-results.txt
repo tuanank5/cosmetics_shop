@@ -1,0 +1,5 @@
+﻿[mvn -o test]
+[INFO] Tests run: 293, Failures: 0, Errors: 0, Skipped: 59
+[INFO] BUILD SUCCESS
+[mvn -o -DskipTests package]
+[INFO] BUILD SUCCESS

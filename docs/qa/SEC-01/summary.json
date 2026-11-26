@@ -1,0 +1,65 @@
+{
+    "task":  "SEC-01",
+    "date":  "2026-11-26",
+    "head":  "6368b6723d425c23d8901a5ebc69bbaea3ac09b4",
+    "checkpoint":  "HEAD + working diff, no commit",
+    "java":  "Temurin 21.0.13.1",
+    "maven":  "3.9.15",
+    "profile":  "dev",
+    "baseline":  {
+                     "passed":  226,
+                     "compileExit":  0,
+                     "packageExit":  0,
+                     "errors":  0,
+                     "total":  284,
+                     "failures":  0,
+                     "skipped":  58
+                 },
+    "final":  {
+                  "passed":  229,
+                  "packageExit":  0,
+                  "errors":  0,
+                  "total":  288,
+                  "failures":  0,
+                  "skipped":  59
+              },
+    "mariadb":  {
+                    "total":  21,
+                    "isolated":  true,
+                    "failures":  0,
+                    "passed":  21,
+                    "skipped":  0,
+                    "port":  33374,
+                    "suites":  {
+                                   "HttpLoi":  1,
+                                   "Momo":  3,
+                                   "XacThuc":  8,
+                                   "DonHangCOD":  4,
+                                   "XacThucDaPhuongThuc":  5
+                               },
+                    "errors":  0,
+                    "database":  "sec_01_test"
+                },
+    "mocks":  [
+                  "MoMo mock, no real payment",
+                  "Mongo intentionally unavailable on loopback port 1",
+                  "OTP mocked in COD/auth suites; Redis and SMTP mocked in multi-method auth suite"
+              ],
+    "browser":  {
+                    "keyboard":  "skip link -\u003e main -\u003e product link with visible focus",
+                    "screenshots":  "docs/ui/screenshots/SEC-01",
+                    "engine":  "Chrome native UI",
+                    "widths":  [
+                                   390,
+                                   768,
+                                   937
+                               ],
+                    "javascript":  "disabled in DevTools, reloaded, product link reached /products"
+                },
+    "limitations":  [
+                        "Owner DH-05 session 403 not reproduced",
+                        "No merchant/provider/SMTP/Redis production verification",
+                        "1366px attempt clamped to 937px by DevTools; not counted as 1366px",
+                        "No zoom-specific acceptance claim"
+                    ]
+}

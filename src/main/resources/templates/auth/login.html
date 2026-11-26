@@ -30,10 +30,9 @@
       </div>
       <div class="field">
         <label for="password">Mật khẩu <span class="muted">(bắt buộc)</span></label>
-        <div class="password-control">
+        <div th:replace="~{fragments/ui :: password(~{:: #password}, 'password', 'Hiện mật khẩu')}">
           <input id="password" name="password" type="password" autocomplete="current-password" required
                  th:attr="aria-invalid=${loiDangNhap ? 'true' : null},aria-describedby=${loiDangNhap ? 'login-error' : null}">
-          <button class="btn btn--ghost" type="button" data-password-toggle="password" aria-controls="password" aria-pressed="false" hidden>Hiện mật khẩu</button>
         </div>
         <p id="login-error" class="field-error" th:if="${param.error}">Lỗi: Vui lòng kiểm tra thông tin đăng nhập.</p>
       </div>

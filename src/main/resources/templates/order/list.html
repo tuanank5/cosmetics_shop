@@ -21,7 +21,7 @@
     <p class="notice" th:if="${#lists.isEmpty(donHang)}">Chưa có đơn hàng.</p>
     <ul class="catalog-list">
         <li th:each="muc : ${donHang}">
-            <a class="text-link" th:href="@{${base + '/' + muc.maDonHang}}" th:text="${muc.maHienThi}"></a>
+            <a class="text-link" th:href="${locTrangThai == null} ? @{${base + '/' + muc.maDonHang}} : @{${base + '/' + muc.maDonHang}(listStatus=${locTrangThai})}" th:text="${muc.maHienThi}"></a>
             <span th:text="${muc.trangThai.label}"></span>
             <span th:text="|${#numbers.formatInteger(muc.tong, 1, 'POINT')} ₫|"></span>
         </li>

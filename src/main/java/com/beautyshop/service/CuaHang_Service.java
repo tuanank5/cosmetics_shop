@@ -1,7 +1,7 @@
 package com.beautyshop.service;
 
-import com.beautyshop.entity.BienTheSanPham;
-import com.beautyshop.entity.SanPham;
+import com.beautyshop.model.BienTheSanPham;
+import com.beautyshop.model.SanPham;
 import com.beautyshop.repository.BienTheSanPham_Repository;
 import com.beautyshop.repository.CuaHang_Repository;
 import com.beautyshop.repository.DanhMuc_Repository;

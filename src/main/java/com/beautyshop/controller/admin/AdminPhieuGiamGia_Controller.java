@@ -1,5 +1,7 @@
 package com.beautyshop.controller.admin;
 
+import com.beautyshop.controller.NguonDieuHuong;
+import java.util.Map;
 import com.beautyshop.dto.PhieuGiamGia_Form;
 import com.beautyshop.service.PhieuGiamGia_Service;
 import jakarta.validation.Valid;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
@@ -31,14 +34,15 @@ class AdminPhieuGiamGia_Controller {
     }
 
     @GetMapping({"/new", "/{id}/edit"})
-    String hienForm(@PathVariable(required = false) Long id, Model model) {
+    String hienForm(@PathVariable(required = false) Long id, @RequestParam Map<String, String> thamSo, Model model) {
         model.addAttribute("form", id == null ? new PhieuGiamGia_Form() : phieuGiamGiaService.docFormAdmin(id));
-        return formView(id, model);
+        return formView(id, NguonDieuHuong.kyDashboard(thamSo), model);
     }
 
     @PostMapping({"/new", "/{id}/edit"})
     String luu(@PathVariable(required = false) Long id, @Valid @ModelAttribute("form") PhieuGiamGia_Form form,
-               BindingResult errors, Model model, RedirectAttributes flash) {
+               BindingResult errors, @RequestParam Map<String, String> thamSo, Model model, RedirectAttributes flash) {
+        var ky = NguonDieuHuong.kyDashboard(thamSo);
         if (!errors.hasErrors()) {
             try {
                 phieuGiamGiaService.luuAdmin(id, form, errors);
@@ -49,10 +53,10 @@ class AdminPhieuGiamGia_Controller {
             }
         }
         if (errors.hasErrors()) {
-            return formView(id, model);
+            return formView(id, ky, model);
         }
         flash.addFlashAttribute("message", "Đã lưu voucher.");
-        return "redirect:/admin/vouchers";
+        return "redirect:" + (ky.isEmpty() ? "/admin/vouchers" : NguonDieuHuong.veDashboard(ky));
     }
 
     @PostMapping("/{id}/delete")
@@ -68,8 +72,10 @@ class AdminPhieuGiamGia_Controller {
         return "redirect:/admin/vouchers";
     }
 
-    private String formView(Long id, Model model) {
+    private String formView(Long id, Map<String, String> ky, Model model) {
         model.addAttribute("id", id);
+        model.addAttribute("navDashboard", ky);
+        model.addAttribute("voucherBack", ky.isEmpty() ? null : NguonDieuHuong.veDashboard(ky));
         return "admin/voucher/form";
     }
 }

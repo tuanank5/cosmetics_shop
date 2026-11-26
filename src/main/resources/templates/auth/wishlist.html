@@ -7,7 +7,7 @@
     <p class="notice" th:if="${#lists.isEmpty(yeuThich)}">Chưa có sản phẩm yêu thích.</p>
     <ul class="catalog-list">
         <li th:each="muc : ${yeuThich}">
-            <a class="text-link" th:if="${muc.dangBan}" th:href="@{/products/{slug}(slug=${muc.slug})}" th:text="${muc.tenSanPham}"></a>
+            <a class="text-link" th:if="${muc.dangBan}" th:href="@{/products/{slug}(slug=${muc.slug},from='wishlist')}" th:text="${muc.tenSanPham}"></a>
             <span th:unless="${muc.dangBan}" th:text="|${muc.tenSanPham} · Tạm ngừng bán|"></span>
             <form method="post" th:action="@{/account/wishlist/{id}/delete(id=${muc.maSanPham})}">
                 <button type="submit" class="btn btn--primary">Bỏ yêu thích</button>

@@ -12,6 +12,8 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.containsString;
+import static org.hamcrest.Matchers.not;
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.user;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -22,7 +24,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  */
 @SpringBootTest
 @AutoConfigureMockMvc
-@TestPropertySource(properties = {"spring.data.mongodb.uri=mongodb://127.0.0.1:27999/beautyshop_mongo_tat", "app.reviews.store=mongo"})
+@TestPropertySource(properties = {"spring.data.mongodb.uri=mongodb://127.0.0.1:27999/beautyshop_mongo_tat"})
 @EnabledIfEnvironmentVariable(named = "P01_MARIADB_TEST", matches = "true")
 class MongoTat_MariaDb_Test {
     @Autowired MockMvc mvc;
@@ -38,13 +40,20 @@ class MongoTat_MariaDb_Test {
         // Sau lần lỗi đầu, store nghỉ 15 s: các trang tiếp theo không chờ timeout chọn server (2 s) nữa.
         long sauLoiDau = System.nanoTime();
         mvc.perform(get("/")).andExpect(status().isOk());
-        mvc.perform(get("/products")).andExpect(status().isOk()).andExpect(content().string(containsString("Sản phẩm Mongo tắt")));
+        mvc.perform(get("/products")).andExpect(status().isOk())
+            .andExpect(content().string(containsString("Sản phẩm Mongo tắt")))
+            .andExpect(content().string(containsString("Đánh giá tạm thời không khả dụng.")));
         mvc.perform(get("/products/" + slug)).andExpect(status().isOk())
             .andExpect(content().string(containsString("Tạm thời chưa tải được đánh giá")));
         mvc.perform(get("/cart")).andExpect(status().isOk());
         long ketThuc = System.nanoTime();
         assertThat((sauLoiDau - batDau) / 1_000_000).as("lần đầu: chờ tối đa timeout chọn server").isLessThan(6_000);
         assertThat((ketThuc - sauLoiDau) / 1_000_000).as("các trang sau: fail-fast").isLessThan(1_500);
+        mvc.perform(get("/admin/dashboard").with(user("fixture").roles("ADMIN")))
+            .andExpect(status().isOk())
+            .andExpect(content().string(containsString("Thống kê đánh giá tạm thời không khả dụng.")))
+            .andExpect(content().string(not(containsString("id=\"table-rating\""))))
+            .andExpect(content().string(containsString("Doanh thu thực thu")));
     }
 
     private String taoSanPham() {

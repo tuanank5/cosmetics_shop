@@ -78,7 +78,7 @@ class TrangChuPagesTest {
                 "id=\"skin-title\"", "id=\"ritual-title\"", "id=\"ingredients-title\"", "id=\"featured-title\"", "id=\"advisor-title\"")
             .contains("href=\"/products?skinType=Da%20kh%C3%B4\"", "9 sản phẩm", "Thường cảm thấy căng",
                 "href=\"/products?category=lam-sach\"", "href=\"/products?q=hyaluronic\"", "Xem 5 sản phẩm",
-                "href=\"/products/demo-r001\"", "Xem tất cả sản phẩm", "href=\"/chat\"", "Hỏi BeautyShop",
+                "href=\"/products/demo-r001?from=home-featured", "Xem tất cả sản phẩm", "href=\"/chat\"", "Hỏi BeautyShop",
                 "không thay thế tư vấn của bác sĩ da liễu", "href=\"#home-products\"")
             .doesNotContain("th:utext", "style=", "onclick=", "home-slide-1", "href=\"#ritual\"")
             .containsOnlyOnce("<h1");
@@ -101,7 +101,7 @@ class TrangChuPagesTest {
 
         String html = trangChu();
 
-        assertThat(html).contains("Vẻ đẹp.", "id=\"home-skin\"", "href=\"/products#skin-type\"",
+        assertThat(html).contains("Vẻ đẹp.", "id=\"home-skin\"", "href=\"/products?filterPanel=open#skin-type\"",
                 "id=\"home-ritual\"", "Làm sạch", "Cân bằng", "Tinh chất", "Dưỡng ẩm", "Chống nắng",
                 "id=\"home-ingredients\"", "id=\"home-featured\"", "Khám phá tất cả sản phẩm", "id=\"home-advisor\"",
                 "class=\"site-footer\"")
@@ -144,7 +144,7 @@ class TrangChuPagesTest {
 
         String html = trangChu();
 
-        assertThat(html).contains("href=\"/products#skin-type\"", "Chống nắng", "Khám phá tất cả sản phẩm")
+        assertThat(html).contains("href=\"/products?filterPanel=open#skin-type\"", "Chống nắng", "Khám phá tất cả sản phẩm")
             .doesNotContain("home-skin-list", "home-ingredient-list", "home-featured-grid");
     }
 
@@ -175,10 +175,10 @@ class TrangChuPagesTest {
 
         assertThat(html).containsSubsequence("id=\"home-advisor\"", "href=\"#home-products\"", "</main>",
                 "id=\"home-products\"", "id=\"home-popular\"", "Được yêu thích nhất",
-                "href=\"/products/pho-bien-1\"", "href=\"/products/pho-bien-5\"",
+                "href=\"/products/pho-bien-1?from=home-popular", "href=\"/products/pho-bien-5?from=home-popular",
                 "id=\"home-all-products\"", "Tất cả sản phẩm", "href=\"/?sort=newest#home-all-products\" aria-current=\"true\"",
                 "href=\"/?sort=priceAsc#home-all-products\"", "href=\"/?sort=priceDesc#home-all-products\"",
-                "href=\"/products/tat-ca-1\"", "href=\"/products/tat-ca-12\"", "href=\"/products\"", "Xem tất cả sản phẩm",
+                "href=\"/products/tat-ca-1?from=home-all-products", "href=\"/products/tat-ca-12?from=home-all-products", "href=\"/products\"", "Xem tất cả sản phẩm",
                 "id=\"home-footer\"", "class=\"site-footer\"")
             .doesNotContain("style=", "th:utext", "onclick=");
         assertThat(dem(html, "id=\"home-popular\"", "id=\"home-all-products\"")).isEqualTo(5);
@@ -196,13 +196,13 @@ class TrangChuPagesTest {
         when(cuaHangService.timSanPham(eq(""), eq(""), eq(""), eq(""), eq("priceDesc"), any(Pageable.class)))
             .thenReturn(new PageImpl<>(List.of(datNhat)));
         String html = mvc.perform(get("/").param("sort", "priceDesc")).andExpect(status().isOk()).andReturn().getResponse().getContentAsString();
-        assertThat(html).contains("href=\"/?sort=priceDesc#home-all-products\" aria-current=\"true\"", "href=\"/products/dat-nhat\"",
+        assertThat(html).contains("href=\"/?sort=priceDesc#home-all-products\" aria-current=\"true\"", "href=\"/products/dat-nhat?from=home-all-products",
             "href=\"/products?sort=priceDesc\"");
 
         when(cuaHangService.timSanPham(eq(""), eq(""), eq(""), eq(""), eq("newest"), any(Pageable.class)))
             .thenReturn(new PageImpl<>(List.of(moiNhat)));
         String la = mvc.perform(get("/").param("sort", "<script>")).andExpect(status().isOk()).andReturn().getResponse().getContentAsString();
-        assertThat(la).contains("href=\"/products/moi-nhat\"", "href=\"/?sort=newest#home-all-products\" aria-current=\"true\"")
+        assertThat(la).contains("href=\"/products/moi-nhat?from=home-all-products", "href=\"/?sort=newest#home-all-products\" aria-current=\"true\"")
             .doesNotContain("<script>\"");
     }
 

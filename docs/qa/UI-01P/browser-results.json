@@ -1,0 +1,10 @@
+{
+  "browser": "Chrome/158.0.8127.88",
+  "checks": [
+    "catalog-mobile-no-js-keyboard-and-back",
+    "catalog-desktop-window-first-last-clamp-empty-single",
+    "public-reviews-preserve-selected-variant-source-anchor",
+    "admin-users-single-and-review-filtered-last",
+    "catalog-g5-filter-panel-updates-all-pager-links"
+  ]
+}

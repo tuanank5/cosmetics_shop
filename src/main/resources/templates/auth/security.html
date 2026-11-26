@@ -5,8 +5,7 @@
 <div th:replace="~{fragments/header :: siteHeader}"></div>
 <main id="main" tabindex="-1" class="page-content login-wrap">
     <h1>Bảo mật và phương thức đăng nhập</h1>
-    <p class="notice" role="status" th:if="${message}" th:text="${message}"></p>
-    <p class="form-error" role="alert" th:if="${error}" th:text="${error}"></p>
+    <div th:replace="~{fragments/ui :: notices(${message}, ${error})}"></div>
     <p class="form-error" role="alert" th:if="${param.oauthError}">Phiên xác thực OAuth không hợp lệ hoặc đã hết hạn.</p>
     <p th:text="${email}"></p>
     <p th:text="${daXacMinhEmail ? 'Email BeautyShop đã xác minh' : 'Email BeautyShop chưa xác minh'}"></p>
@@ -16,7 +15,9 @@
         <p th:text="${coMatKhau ? 'Đã có mật khẩu BeautyShop' : 'Chưa thiết lập mật khẩu BeautyShop'}"></p>
         <form th:if="${coMatKhau}" class="login-card" method="post" th:action="@{/account/security/reauth/password}">
             <label for="reauthPassword">Mật khẩu hiện tại</label>
-            <input id="reauthPassword" name="matKhau" type="password" autocomplete="current-password" maxlength="72" required>
+            <div th:replace="~{fragments/ui :: password(~{:: #reauthPassword}, 'reauthPassword', 'Hiện mật khẩu xác thực')}">
+                <input id="reauthPassword" name="matKhau" type="password" autocomplete="current-password" maxlength="72" required>
+            </div>
             <button class="btn btn--primary" type="submit">Xác thực lại bằng mật khẩu</button>
         </form>
         <div th:each="provider : ${ {'google', 'github'} }">
@@ -54,13 +55,20 @@
         <h2 th:text="${coMatKhau ? 'Đổi mật khẩu' : 'Thiết lập mật khẩu'}"></h2>
         <p th:if="${!coMatKhau and !grant}">Hãy xác thực lại bằng Google hoặc GitHub đã liên kết, rồi xác minh email BeautyShop.</p>
         <form th:if="${coMatKhau or grant}" class="login-card" method="post" th:action="@{/account/security/password}">
-            <label th:if="${coMatKhau}" for="matKhauHienTai">Mật khẩu hiện tại</label>
-            <input th:if="${coMatKhau}" id="matKhauHienTai" name="matKhauHienTai"
-                   type="password" autocomplete="current-password" maxlength="72" required>
-        <label for="matKhauMoi">Mật khẩu mới</label>
-        <input id="matKhauMoi" name="matKhauMoi" type="password" autocomplete="new-password" minlength="12" maxlength="72" required>
-        <label for="xacNhan">Nhập lại mật khẩu mới</label>
-        <input id="xacNhan" name="xacNhan" type="password" autocomplete="new-password" minlength="12" maxlength="72" required>
+            <th:block th:if="${coMatKhau}">
+                <label for="matKhauHienTai">Mật khẩu hiện tại</label>
+                <div th:replace="~{fragments/ui :: password(~{:: #matKhauHienTai}, 'matKhauHienTai', 'Hiện mật khẩu hiện tại')}">
+                    <input id="matKhauHienTai" name="matKhauHienTai" type="password" autocomplete="current-password" maxlength="72" required>
+                </div>
+            </th:block>
+            <label for="matKhauMoi">Mật khẩu mới</label>
+            <div th:replace="~{fragments/ui :: password(~{:: #matKhauMoi}, 'matKhauMoi', 'Hiện mật khẩu mới')}">
+                <input id="matKhauMoi" name="matKhauMoi" type="password" autocomplete="new-password" minlength="12" maxlength="72" required>
+            </div>
+            <label for="xacNhan">Nhập lại mật khẩu mới</label>
+            <div th:replace="~{fragments/ui :: password(~{:: #xacNhan}, 'xacNhan', 'Hiện mật khẩu nhập lại')}">
+                <input id="xacNhan" name="xacNhan" type="password" autocomplete="new-password" minlength="12" maxlength="72" required>
+            </div>
             <button class="btn btn--primary" type="submit">Lưu mật khẩu</button>
         </form>
     </section>

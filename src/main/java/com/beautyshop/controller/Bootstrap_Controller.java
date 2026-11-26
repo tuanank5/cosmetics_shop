@@ -13,7 +13,6 @@ import org.springframework.dao.DataAccessException;
 import com.beautyshop.security.PhienNguoiDung;
 import com.beautyshop.service.GoiYSanPham_Service;
 import com.beautyshop.service.SauMua_Service;
-import com.beautyshop.repository.DanhGia_Store;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.oauth2.client.registration.ClientRegistrationRepository;
@@ -81,7 +80,7 @@ public class Bootstrap_Controller {
             }
         }
         model.addAttribute("tomTatDanhGia", doc(sauMuaService, "tom tat danh gia", service -> service.tomTatDanhGia(maThe),
-            java.util.Map.<Long, DanhGia_Store.TomTatDanhGia>of()));
+            new SauMua_Service.TomTatTheSanPham(java.util.Map.of(), true)));
         return "home/index";
     }
 

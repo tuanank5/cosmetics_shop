@@ -1,0 +1,11 @@
+[fixture-before]
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
+[INFO] BUILD SUCCESS
+[fixture-after]
+[INFO] Tests run: 30, Failures: 0, Errors: 0, Skipped: 0
+[INFO] BUILD SUCCESS
+[test]
+[INFO] Tests run: 289, Failures: 0, Errors: 0, Skipped: 59
+[INFO] BUILD SUCCESS
+[package]
+[INFO] BUILD SUCCESS

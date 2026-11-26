@@ -246,7 +246,7 @@ class BaoMatTaiKhoan_Controller {
 
     private Set<String> linked(PhienNguoiDung principal) {
         return identityRepository.findByNguoiDung_MaNguoiDung(principal.getMaNguoiDung()).stream()
-            .map(com.beautyshop.entity.DanhTinhOAuth::getNhaCungCap).collect(Collectors.toSet());
+            .map(com.beautyshop.model.DanhTinhOAuth::getNhaCungCap).collect(Collectors.toSet());
     }
 
     private Set<String> providers() {

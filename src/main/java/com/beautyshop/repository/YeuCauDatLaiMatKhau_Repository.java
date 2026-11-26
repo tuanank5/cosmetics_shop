@@ -1,6 +1,6 @@
 package com.beautyshop.repository;
 
-import com.beautyshop.entity.YeuCauDatLaiMatKhau;
+import com.beautyshop.model.YeuCauDatLaiMatKhau;
 import jakarta.persistence.LockModeType;
 import java.time.LocalDateTime;
 import java.util.Optional;
@@ -18,7 +18,7 @@ public interface YeuCauDatLaiMatKhau_Repository extends JpaRepository<YeuCauDatL
           and n.vaiTro = :role and n.matKhauBam is not null and n.ngayXacMinhEmail is not null
         """)
     long demLinkHopLe(@Param("hash") byte[] hash, @Param("now") LocalDateTime now,
-                      @Param("role") com.beautyshop.entity.NguoiDung.VaiTro role);
+                      @Param("role") com.beautyshop.model.NguoiDung.VaiTro role);
 
     @Lock(LockModeType.PESSIMISTIC_WRITE)
     Optional<YeuCauDatLaiMatKhau> findByTokenBam(byte[] tokenBam);

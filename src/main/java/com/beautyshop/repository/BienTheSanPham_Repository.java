@@ -1,7 +1,7 @@
 
 package com.beautyshop.repository;
 
-import com.beautyshop.entity.BienTheSanPham;
+import com.beautyshop.model.BienTheSanPham;
 import jakarta.persistence.LockModeType;
 import java.util.List;
 import java.util.Optional;

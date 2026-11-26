@@ -1,0 +1,1 @@
+SQL source and restored review rows: 1, checksum identical. Mongo BSON SHA-256 matches and unique index is restored. Image UUID and SHA-256 match. Synthetic fixtures only.

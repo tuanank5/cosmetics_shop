@@ -1,6 +1,6 @@
 package com.beautyshop.service;
 
-import com.beautyshop.entity.DiaChiNguoiDung;
+import com.beautyshop.model.DiaChiNguoiDung;
 import com.beautyshop.payment.MomoGateway;
 import com.beautyshop.payment.Momo_Settings;
 import com.beautyshop.repository.*;

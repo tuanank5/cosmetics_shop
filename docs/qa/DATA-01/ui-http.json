@@ -1,0 +1,7 @@
+﻿{
+    "productCards":  true,
+    "status":  200,
+    "productLinks":  true,
+    "mongo":  "off",
+    "unavailableMarkup":  true
+}

@@ -2,7 +2,7 @@ package com.beautyshop.ai.service;
 
 import com.beautyshop.ai.RagProvider;
 import com.beautyshop.ai.dto.TuVanDaRequest;
-import com.beautyshop.entity.BienTheSanPham;
+import com.beautyshop.model.BienTheSanPham;
 import com.beautyshop.repository.BienTheSanPham_Repository;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;

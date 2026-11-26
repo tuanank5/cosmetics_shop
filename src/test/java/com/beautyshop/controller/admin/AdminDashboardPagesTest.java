@@ -140,9 +140,9 @@ class AdminDashboardPagesTest {
             .andExpect(content().string(containsString("id=\"table-payment-alerts\"")))
             .andExpect(content().string(containsString("id=\"table-expiring-vouchers\"")))
             .andExpect(content().string(containsString("href=\"/products/serum-qa\"")))
-            .andExpect(content().string(containsString("href=\"/admin/returns/7\"")))
-            .andExpect(content().string(containsString("href=\"/admin/orders/9\"")))
-            .andExpect(content().string(containsString("href=\"/admin/vouchers/8/edit\"")))
+            .andExpect(content().string(containsString("href=\"/admin/returns/7?nav=dashboard&amp;range=30d")))
+            .andExpect(content().string(containsString("href=\"/admin/orders/9?nav=dashboard&amp;range=30d")))
+            .andExpect(content().string(containsString("href=\"/admin/vouchers/8/edit?nav=dashboard&amp;range=30d")))
             .andExpect(content().string(containsString("21/11/2026 01:10")))
             .andExpect(content().string(not(containsString("A".repeat(120)))))
             .andReturn().getResponse().getContentAsString(java.nio.charset.StandardCharsets.UTF_8);

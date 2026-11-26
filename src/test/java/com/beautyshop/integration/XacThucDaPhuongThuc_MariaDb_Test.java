@@ -1,6 +1,6 @@
 package com.beautyshop.integration;
 
-import com.beautyshop.entity.NguoiDung;
+import com.beautyshop.model.NguoiDung;
 import com.beautyshop.repository.NguoiDung_Repository;
 import com.beautyshop.service.DanhTinhOAuth_Service;
 import com.beautyshop.service.DanhTinhOAuth_Service.BangChung;
@@ -111,8 +111,9 @@ class XacThucDaPhuongThuc_MariaDb_Test {
             .andExpect(status().isForbidden());
         mvc.perform(post(route).session(adminSession).param("reason", "KHACH_YEU_CAU"))
             .andExpect(status().isForbidden());
-        mvc.perform(get("/admin/users/" + customerId).session(adminSession))
-            .andExpect(status().isOk()).andExpect(content().string(containsString("Lý do hỗ trợ")));
+        mvc.perform(get("/admin/users/" + customerId).session(adminSession).param("q", "Fixture").param("page", "2"))
+            .andExpect(status().isOk()).andExpect(content().string(containsString("Lý do hỗ trợ")))
+            .andExpect(content().string(containsString("href=\"/admin/users?q=Fixture&amp;page=2\"")));
         mvc.perform(post(route).session(adminSession).with(csrf()).param("reason", "KHACH_YEU_CAU"))
             .andExpect(status().is3xxRedirection());
         assertThat(audit("ADMIN_PASSWORD_RESET_REQUESTED", customerId)).isEqualTo(1);

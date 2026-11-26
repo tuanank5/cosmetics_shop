@@ -1,7 +1,7 @@
 package com.beautyshop.controller;
 
-import com.beautyshop.entity.DiaChiNguoiDung;
-import com.beautyshop.entity.NguoiDung;
+import com.beautyshop.model.DiaChiNguoiDung;
+import com.beautyshop.model.NguoiDung;
 import com.beautyshop.repository.GioHang_Repository.MucGio;
 import com.beautyshop.repository.NguoiDung_Repository;
 import com.beautyshop.security.*;

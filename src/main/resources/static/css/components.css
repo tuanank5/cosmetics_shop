@@ -42,13 +42,27 @@ input:disabled, select:disabled, textarea:disabled { background: var(--color-sur
 .badge--error { color: var(--color-error); }
 .badge--warning { color: var(--color-warning); }
 .card { padding: var(--space-5); border: 1px solid var(--color-border); border-radius: var(--radius-md); background: var(--color-surface); }
-.pagination { display: flex; flex-wrap: wrap; gap: var(--space-3); align-items: center; justify-content: center; }
+.pagination { margin-block: var(--space-5); text-align: center; }
+.pagination-status { margin-bottom: var(--space-2); }
+.pagination-links, .pagination-group { display: flex; flex-wrap: wrap; gap: var(--space-2); align-items: center; justify-content: center; }
+.pagination-links .btn { min-height: 44px; padding-inline: var(--space-3); }
+.pagination-number, .pagination-current { min-width: 44px; }
+.pagination-current { display: grid; min-height: 44px; place-items: center; font-weight: 700; text-decoration: underline; }
+.pagination-mobile { display: none; }
+@media (max-width: 640px) {
+  .pagination-links { flex-direction: column; }
+  .pagination-links .pagination-desktop { display: none; }
+  .pagination-mobile { display: inline; }
+}
 dialog { width: min(560px, calc(100% - 32px)); max-height: calc(100% - 48px); padding: var(--space-6); border: 1px solid var(--color-control-border); border-radius: var(--radius-md); background: var(--color-surface); color: var(--color-ink); overflow-wrap: anywhere; }
 dialog::backdrop { background: rgba(42,31,29,.55); }
 dialog h2 { margin-top: 0; }
-.password-control { display: flex; flex-wrap: wrap; gap: var(--space-3); align-items: center; }
-.password-control input { flex: 1 1 180px; }
-.password-control .btn { flex-shrink: 0; }
+.disclosure > summary { min-height: 44px; align-content: center; cursor: pointer; overflow-wrap: anywhere; }
+.password-control { display: grid; grid-template-columns: minmax(0, 1fr) 48px; gap: var(--space-2); align-items: stretch; }
+.password-control .password-toggle { display: grid; place-items: center; min-width: 0; padding: 0; }
+.password-control .password-toggle[hidden] { visibility: hidden; }
+.password-toggle svg { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; }
+.password-toggle[aria-pressed="false"] .password-toggle-slash { visibility: hidden; }
 @media (max-width: 640px) {
   .button-group { align-items: stretch; flex-direction: column; }
   .button-group > *, form .btn--primary, .login-card > .btn { width: 100%; }

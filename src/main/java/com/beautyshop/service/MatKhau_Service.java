@@ -1,7 +1,7 @@
 package com.beautyshop.service;
 
-import com.beautyshop.entity.NguoiDung;
-import com.beautyshop.entity.YeuCauDatLaiMatKhau;
+import com.beautyshop.model.NguoiDung;
+import com.beautyshop.model.YeuCauDatLaiMatKhau;
 import com.beautyshop.repository.NguoiDung_Repository;
 import com.beautyshop.repository.YeuCauDatLaiMatKhau_Repository;
 import java.net.URI;

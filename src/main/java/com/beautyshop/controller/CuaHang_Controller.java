@@ -1,8 +1,12 @@
 package com.beautyshop.controller;
 
+import com.beautyshop.dto.PhanTrang;
 import com.beautyshop.repository.CuaHang_Repository.TheSanPham;
 import com.beautyshop.service.CuaHang_Service;
 import com.beautyshop.service.SauMua_Service;
+import jakarta.servlet.http.HttpServletRequest;
+import java.util.LinkedHashMap;
+import java.util.Map;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,40 +30,61 @@ class CuaHang_Controller {
     String danhSach(@RequestParam(defaultValue = "") String q, @RequestParam(defaultValue = "") String brand,
             @RequestParam(defaultValue = "") String category, @RequestParam(defaultValue = "") String skinType,
             @RequestParam(defaultValue = "newest") String sort, @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "12") int size, Model model) {
-        q = gioiHan(q, 160);
-        brand = gioiHan(brand, 190);
-        category = gioiHan(category, 190);
-        skinType = gioiHan(skinType, 100);
+            @RequestParam(defaultValue = "12") int size, @RequestParam(defaultValue = "") String filterPanel,
+            Model model) {
+        String tuKhoa = gioiHan(q, 160);
+        String thuongHieu = gioiHan(brand, 190);
+        String danhMuc = gioiHan(category, 190);
+        String loaiDa = gioiHan(skinType, 100);
         String thuTu = switch (sort) {
             case "priceAsc", "priceDesc" -> sort;
             default -> "newest";
         };
         int kichThuoc = Math.clamp(size, 1, 48);
         var pageable = PageRequest.of(Math.clamp(page, 0, (Integer.MAX_VALUE - 48) / kichThuoc), kichThuoc);
-        var ketQua = cuaHangService.timSanPham(q, brand, category, skinType, thuTu, pageable);
-        if (pageable.getPageNumber() > 0 && pageable.getPageNumber() >= ketQua.getTotalPages()) {
-            ketQua = cuaHangService.timSanPham(q, brand, category, skinType, thuTu,
-                pageable.withPage(Math.max(0, ketQua.getTotalPages() - 1)));
-        }
+        var boLoc = new LinkedHashMap<String, String>();
+        boLoc.put("q", tuKhoa);
+        boLoc.put("brand", thuongHieu);
+        boLoc.put("category", danhMuc);
+        boLoc.put("skinType", loaiDa);
+        boLoc.put("sort", thuTu);
+        boLoc.put("size", Integer.toString(kichThuoc));
+        var ketQua = PhanTrang.doc(pageable,
+            trang -> cuaHangService.timSanPham(tuKhoa, thuongHieu, danhMuc, loaiDa, thuTu, trang));
         model.addAttribute("ketQua", ketQua);
         model.addAttribute("tomTatDanhGia", sauMua.tomTatDanhGia(ketQua.getContent().stream().map(TheSanPham::getMaSanPham).toList()));
         model.addAttribute("thuongHieu", cuaHangService.thuongHieu());
         model.addAttribute("danhMuc", cuaHangService.danhMuc());
-        model.addAttribute("q", q);
-        model.addAttribute("brand", brand);
-        model.addAttribute("category", category);
-        model.addAttribute("skinType", skinType);
+        model.addAttribute("q", tuKhoa);
+        model.addAttribute("brand", thuongHieu);
+        model.addAttribute("category", danhMuc);
+        model.addAttribute("skinType", loaiDa);
         model.addAttribute("sort", thuTu);
+        String hienBoLoc = switch (filterPanel) {
+            case "open", "closed" -> filterPanel;
+            default -> null;
+        };
+        if (hienBoLoc != null) boLoc.put("filterPanel", hienBoLoc);
+        model.addAttribute("filterPanel", hienBoLoc);
+        model.addAttribute("pager", PhanTrang.tu(ketQua, so -> NguonDieuHuong.trangDanhSach("/products", boLoc, so)));
+        model.addAttribute("navOrigin", "catalog");
         return "product/list";
     }
 
     @GetMapping("/{slug}")
     String chiTiet(@PathVariable String slug, @RequestParam(required = false) Long variant,
-                   @RequestParam(name = "reviewPage", defaultValue = "0") int reviewPage, Model model) {
+                   @RequestParam(name = "reviewPage", defaultValue = "0") int reviewPage,
+                   @RequestParam Map<String, String> thamSo, HttpServletRequest request, Model model) {
         var chiTiet = cuaHangService.chiTiet(slug, variant);
         model.addAttribute("chiTiet", chiTiet);
-        model.addAttribute("danhGia", sauMua.danhGiaSanPham(chiTiet.sanPham().getMa(), reviewPage));
+        var danhGia = sauMua.danhGiaSanPham(chiTiet.sanPham().getMa(), reviewPage);
+        var nguon = NguonDieuHuong.sanPham(thamSo, chiTiet.sanPham().getMa(), request.isUserInRole("CUSTOMER"));
+        model.addAttribute("danhGia", danhGia);
+        model.addAttribute("navSource", nguon);
+        if (!danhGia.khongTaiDuoc()) {
+            model.addAttribute("pager", PhanTrang.tu(danhGia.danhSach(),
+                so -> nguon.trangDanhGia(chiTiet.sanPham().getDuongDan(), chiTiet.dangChon().getMaBienThe(), so)));
+        }
         return "product/detail";
     }
 

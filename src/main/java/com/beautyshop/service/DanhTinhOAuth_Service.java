@@ -1,7 +1,7 @@
 package com.beautyshop.service;
 
-import com.beautyshop.entity.DanhTinhOAuth;
-import com.beautyshop.entity.NguoiDung;
+import com.beautyshop.model.DanhTinhOAuth;
+import com.beautyshop.model.NguoiDung;
 import com.beautyshop.repository.DanhTinhOAuth_Repository;
 import com.beautyshop.repository.NguoiDung_Repository;
 import java.time.LocalDateTime;

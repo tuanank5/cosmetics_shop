@@ -1,7 +1,7 @@
 package com.beautyshop.controller;
 
 import com.beautyshop.dto.DanhGia_Form;
-import com.beautyshop.entity.DanhGia_Document;
+import com.beautyshop.model.DanhGia_Document;
 import com.beautyshop.dto.DoiTra_Form;
 import com.beautyshop.security.PhienNguoiDung;
 import com.beautyshop.service.SauMua_Service;

@@ -1,0 +1,181 @@
+{
+  "opening": {
+    "path": "/",
+    "hash": "",
+    "y": 0,
+    "slide": "1",
+    "fallback": null,
+    "focus": "",
+    "historySlide": 0,
+    "pageshow": [
+      {
+        "persisted": false,
+        "y": 0
+      }
+    ],
+    "type": "navigate"
+  },
+  "beforeLogo": {
+    "path": "/",
+    "hash": "",
+    "y": 0,
+    "slide": "4",
+    "fallback": null,
+    "focus": "",
+    "historySlide": 3,
+    "pageshow": [
+      {
+        "persisted": false,
+        "y": 0
+      }
+    ],
+    "type": "navigate"
+  },
+  "logoAtHome": {
+    "path": "/",
+    "hash": "",
+    "y": 0,
+    "slide": "1",
+    "fallback": null,
+    "focus": "",
+    "historySlide": 0,
+    "pageshow": [
+      {
+        "persisted": false,
+        "y": 0
+      }
+    ],
+    "type": "navigate"
+  },
+  "entry": {
+    "path": "/",
+    "hash": "#home-popular",
+    "y": 1072,
+    "slide": "6",
+    "fallback": null,
+    "focus": "",
+    "historySlide": 5,
+    "pageshow": [
+      {
+        "persisted": false,
+        "y": 1072
+      }
+    ],
+    "type": "navigate"
+  },
+  "pdpBackPath": "/#home-popular-product-7",
+  "browserBack": {
+    "path": "/",
+    "hash": "#home-popular",
+    "y": 1072,
+    "slide": "6",
+    "fallback": null,
+    "focus": "home-popular-product-7",
+    "historySlide": 5,
+    "pageshow": [
+      {
+        "persisted": false,
+        "y": 1124
+      }
+    ],
+    "type": "back_forward"
+  },
+  "browserForward": {
+    "path": "/products/{slug}",
+    "hash": "",
+    "y": 0,
+    "slide": null,
+    "fallback": null,
+    "focus": "",
+    "historySlide": null,
+    "pageshow": [
+      {
+        "persisted": false,
+        "y": 0
+      },
+      {
+        "persisted": true,
+        "y": 0
+      }
+    ],
+    "type": "navigate"
+  },
+  "returnLink": {
+    "path": "/",
+    "hash": "#home-popular-product-7",
+    "y": 1241,
+    "slide": "6",
+    "fallback": null,
+    "focus": "home-popular-product-7",
+    "historySlide": 5,
+    "pageshow": [
+      {
+        "persisted": false,
+        "y": 1241
+      }
+    ],
+    "type": "navigate"
+  },
+  "logoFromPdp": {
+    "path": "/",
+    "hash": "",
+    "y": 0,
+    "slide": "1",
+    "fallback": null,
+    "focus": "",
+    "historySlide": 0,
+    "pageshow": [
+      {
+        "persisted": false,
+        "y": 0
+      }
+    ],
+    "type": "navigate"
+  },
+  "missing": {
+    "path": "/",
+    "hash": "#home-popular-product-99999999",
+    "y": 1124,
+    "slide": "6",
+    "fallback": null,
+    "focus": "popular-title",
+    "historySlide": 5,
+    "pageshow": [
+      {
+        "persisted": false,
+        "y": 0
+      }
+    ],
+    "type": "navigate"
+  },
+  "directPdpBack": "/products",
+  "freshTab": true,
+  "reduced": {
+    "path": "/",
+    "hash": "#home-popular-product-7",
+    "y": 6240,
+    "slide": null,
+    "fallback": "reduced-motion",
+    "focus": "home-popular-product-7",
+    "historySlide": null,
+    "pageshow": [
+      {
+        "persisted": false,
+        "y": 6240
+      }
+    ],
+    "type": "navigate"
+  },
+  "noJs": {
+    "path": "/",
+    "hash": "#home-popular-product-7",
+    "y": 5648,
+    "slide": null,
+    "fallback": null,
+    "focus": "home-popular-product-7",
+    "historySlide": null,
+    "pageshow": [],
+    "type": "navigate"
+  },
+  "keyboardBack": true
+}

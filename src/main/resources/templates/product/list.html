@@ -13,9 +13,12 @@
     </header>
 
     <div class="catalog-layout">
-        <details class="catalog-filter-panel card" data-catalog-filters>
+        <details id="catalog-filters" class="catalog-filter-panel card disclosure" data-catalog-filters
+                 th:open="${filterPanel == 'open' or (filterPanel == null and (coBoLoc or sort != 'newest'))}">
             <summary>Bộ lọc (<span id="catalog-filter-count" th:text="${soBoLoc}">0</span>)<span class="visually-hidden"> đang áp dụng</span> và sắp xếp</summary>
             <form class="store-filters" method="get" th:action="@{/products}" role="search" aria-label="Lọc sản phẩm">
+                <input type="hidden" name="filterPanel" value="open">
+                <input th:if="${ketQua.size != 12}" type="hidden" name="size" th:value="${ketQua.size}">
                 <div class="field">
                     <label for="catalog-q">Tìm kiếm</label>
                     <input id="catalog-q" type="search" name="q" th:value="${q}" maxlength="160" placeholder="Tên sản phẩm hoặc SKU">
@@ -110,9 +113,9 @@
                     <div th:replace="~{fragments/product-card :: productCard(${the}, ${theStat.first})}"></div>
                 </li>
             </ul>
-            <div th:replace="~{fragments/ui :: pagination(${ketQua},
-                @{/products(q=${q},brand=${brand},category=${category},skinType=${skinType},sort=${sort},page=${ketQua.number - 1},size=${ketQua.size})},
-                @{/products(q=${q},brand=${brand},category=${category},skinType=${skinType},sort=${sort},page=${ketQua.number + 1},size=${ketQua.size})})}"></div>
+            <div data-catalog-filter-pages th:if="${ketQua.totalPages > 1}">
+                <div th:replace="~{fragments/ui :: pagination(${pager}, 'Phân trang sản phẩm')}"></div>
+            </div>
         </section>
     </div>
 </main>

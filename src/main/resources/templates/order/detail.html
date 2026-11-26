@@ -3,13 +3,14 @@
 <head th:replace="~{fragments/head :: head('Chi tiết đơn hàng · BeautyShop')}"></head>
 <body><div th:replace="~{fragments/header :: siteHeader}"></div>
 <main id="main" tabindex="-1" class="page-content" th:with="don=${chiTiet.don}">
-    <a class="text-link" th:href="@{${base}}">Quay lại đơn hàng</a>
+    <a class="text-link" th:if="${orderBack != null}" th:href="@{${orderBack}}">Quay lại tổng quan</a>
+    <a class="text-link" th:unless="${orderBack != null}"
+       th:href="${listStatus == null} ? @{${base}} : @{${base}(status=${listStatus})}">Quay lại đơn hàng</a>
     <h1>Chi tiết đơn hàng</h1>
     <p th:text="${don.maHienThi}"></p>
-    <p class="notice" role="status" th:if="${message}" th:text="${message}"></p>
-    <p class="form-error" role="alert" th:if="${error}" th:text="${error}"></p>
+    <div th:replace="~{fragments/ui :: notices(${message}, ${error})}"></div>
     <p class="notice" th:if="${chiTiet.mock}">MÔ PHỎNG - KHÔNG THU TIỀN</p>
-    <p><strong th:text="${don.trangThai.label}"></strong>
+    <p><strong class="badge" th:text="${don.trangThai.label}"></strong>
         <span th:if="${chiTiet.thanhToan == 'PAID'}" th:text="${don.phuongThuc == 'COD' ? '· Đã thu tiền COD' : '· Đã xác minh thanh toán MoMo'}"></span>
         <span th:if="${chiTiet.thanhToan == 'UNPAID' and don.trangThai.name() != 'CANCELLED'}">· Chưa thu tiền COD</span>
     </p>
@@ -49,6 +50,7 @@
         </form>
         <form th:if="${base == '/admin/orders' and chiTiet.doiSoat}" method="post"
               th:action="@{/admin/orders/{id}/momo/reconcile(id=${don.maDonHang})}">
+            <th:block th:replace="~{fragments/nav-fields :: adminSource}"></th:block>
             <button type="submit" class="btn btn--primary">Đối soát MoMo</button>
         </form>
         <form th:if="${base == '/orders' and chiTiet.coTheHuy}" method="post"
@@ -57,10 +59,12 @@
         </form>
         <form th:if="${base == '/admin/orders' and chiTiet.coTheHuy}" method="post"
               th:action="@{/admin/orders/{id}/status(id=${don.maDonHang})}">
+            <th:block th:replace="~{fragments/nav-fields :: adminSource}"></th:block>
             <button name="status" value="CANCELLED" type="submit" class="btn btn--secondary">Hủy đơn</button>
         </form>
         <form th:if="${base == '/admin/orders' and chiTiet.tiepTheo != null}" method="post"
               th:action="@{/admin/orders/{id}/status(id=${don.maDonHang})}">
+            <th:block th:replace="~{fragments/nav-fields :: adminSource}"></th:block>
             <button name="status" th:value="${chiTiet.tiepTheo.name()}" type="submit" class="btn btn--primary"
                     th:text="${chiTiet.tiepTheo.name() == 'DELIVERED' and don.phuongThuc == 'COD' ? 'Xác nhận đã giao và thu tiền' : chiTiet.tiepTheo.label}"></button>
         </form>

@@ -102,10 +102,15 @@ class Momo_Controller {
     }
 
     @PostMapping("/admin/orders/{id}/momo/reconcile")
-    String doiSoat(@PathVariable long id, RedirectAttributes flash) {
+    String doiSoat(@PathVariable long id, @RequestParam java.util.Map<String, String> thamSo,
+                   @RequestParam(name = "listStatus", required = false) java.util.List<com.beautyshop.order.OrderStatus> loc,
+                   RedirectAttributes flash) {
         boolean coKetQua = momo.doiSoat(id);
         flash.addFlashAttribute("message", coKetQua ? "Đã xử lý kết quả đối soát. Xem trạng thái đơn bên dưới."
             : "Chưa có kết quả đối soát xác minh được.");
+        NguonDieuHuong.kyDashboard(thamSo).forEach(flash::addAttribute);
+        if (loc != null && !loc.isEmpty()) flash.addAttribute("listStatus", loc.stream().map(Enum::name)
+            .distinct().collect(java.util.stream.Collectors.joining(",")));
         return "redirect:/admin/orders/" + id;
     }
 }

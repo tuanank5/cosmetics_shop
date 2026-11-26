@@ -1,6 +1,6 @@
 package com.beautyshop.repository;
 
-import com.beautyshop.entity.DiaChiNguoiDung;
+import com.beautyshop.model.DiaChiNguoiDung;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;

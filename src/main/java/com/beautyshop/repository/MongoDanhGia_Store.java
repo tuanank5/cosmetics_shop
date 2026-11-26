@@ -6,7 +6,7 @@ import static org.springframework.data.mongodb.core.aggregation.Aggregation.newA
 import static org.springframework.data.mongodb.core.aggregation.Aggregation.project;
 import static org.springframework.data.mongodb.core.query.Criteria.where;
 
-import com.beautyshop.entity.DanhGia_Document;
+import com.beautyshop.model.DanhGia_Document;
 import java.time.Clock;
 import java.time.Instant;
 import java.util.Collection;
@@ -20,10 +20,10 @@ import org.bson.types.ObjectId;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.dao.DataAccessResourceFailureException;
+import org.springframework.dao.DataAccessException;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -47,7 +47,6 @@ import org.springframework.stereotype.Repository;
  * chờ timeout ở mỗi lần gọi; trong lúc nghỉ, mọi lời gọi ném {@link DataAccessResourceFailureException} ngay.
  */
 @Repository
-@ConditionalOnProperty(name = "app.reviews.store", havingValue = "mongo", matchIfMissing = true)
 public class MongoDanhGia_Store implements DanhGia_Store {
     private static final Logger log = LoggerFactory.getLogger(MongoDanhGia_Store.class);
     static final long NGHI_SAU_LOI_MS = 15_000;
@@ -56,6 +55,7 @@ public class MongoDanhGia_Store implements DanhGia_Store {
     private final DanhGiaMongo_Repository repository;
     private final Clock clock;
     private volatile long nghiDen;
+    private volatile boolean canKiemTraIndex;
 
     @Autowired
     public MongoDanhGia_Store(MongoTemplate mongo, DanhGiaMongo_Repository repository) {
@@ -70,17 +70,43 @@ public class MongoDanhGia_Store implements DanhGia_Store {
 
     /** Tạo index từ @Indexed/@CompoundIndex bằng IndexOperations; MongoDB tắt thì chỉ log, app vẫn chạy. */
     @EventListener(ApplicationReadyEvent.class)
-    public void taoIndex() {
+    public synchronized void taoIndex() {
+        canKiemTraIndex = true;
+        try {
+            kiemTraIndex();
+        } catch (DataAccessResourceFailureException exception) {
+            // Startup vẫn phục vụ các chức năng SQL.
+        }
+    }
+
+    private synchronized void kiemTraIndex() {
+        kiemTraKhoangNghi();
+        if (!canKiemTraIndex) return;
         try {
             IndexOperations ops = mongo.indexOps(DanhGia_Document.class);
             var resolver = new MongoPersistentEntityIndexResolver(mongo.getConverter().getMappingContext());
             for (var index : resolver.resolveIndexFor(DanhGia_Document.class)) {
                 ops.createIndex(index);
             }
-            log.info("MongoDB danh_gia: index san sang {}", ops.getIndexInfo().stream().map(i -> i.getName()).toList());
-        } catch (RuntimeException exception) {
-            log.warn("MongoDB danh_gia: khong tao duoc index (MongoDB co the dang tat): {}", exception.getMessage());
+            if (!indexHopLe()) throw new DataAccessResourceFailureException("Thieu index unique danh gia");
+            canKiemTraIndex = false;
+        } catch (DataAccessException exception) {
+            tamNgung();
+            throw new DataAccessResourceFailureException("MongoDB danh gia chua san sang", exception);
         }
+    }
+
+    private boolean indexHopLe() {
+        return Boolean.TRUE.equals(mongo.execute(DanhGia_Document.COLLECTION, collection -> {
+            for (Document index : collection.listIndexes()) {
+                if ("uq_ma_chi_tiet_don_hang".equals(index.getString("name"))
+                        && new Document("maChiTietDonHang", 1).equals(index.get("key"))
+                        && Boolean.TRUE.equals(index.get("unique"))
+                        && !Boolean.TRUE.equals(index.get("sparse"))
+                        && !index.containsKey("partialFilterExpression")) return true;
+            }
+            return false;
+        }));
     }
 
     @Override
@@ -92,6 +118,7 @@ public class MongoDanhGia_Store implements DanhGia_Store {
     /** Upsert theo khóa duy nhất maChiTietDonHang, chỉ ghi khi chưa có ($setOnInsert): đã có -> trùng, không đè. */
     @Override
     public void tao(DanhGiaMoi moi) {
+        damBaoIndexTruocGhi();
         Instant now = clock.instant();
         var update = new Update()
             .setOnInsert("maDonHang", moi.maDonHang()).setOnInsert("maNguoiDung", moi.maNguoiDung())
@@ -109,6 +136,7 @@ public class MongoDanhGia_Store implements DanhGia_Store {
     /** Sửa có điều kiện chủ sở hữu; nội dung đổi -> tăng phiên bản, ẩn chờ duyệt lại. */
     @Override
     public boolean sua(long maChiTietDonHang, long maNguoiDung, int soSao, String noiDung) {
+        damBaoIndexTruocGhi();
         var query = Query.query(where("maChiTietDonHang").is(maChiTietDonHang).and("maNguoiDung").is(maNguoiDung));
         var update = new Update().set("soSao", soSao).set("noiDung", noiDung == null ? "" : noiDung)
             .set("hienThi", false).unset("ngayDuyet").set("ngayCapNhat", clock.instant()).inc("phienBan", 1);
@@ -118,7 +146,7 @@ public class MongoDanhGia_Store implements DanhGia_Store {
 
     @Override
     public Page<DanhGiaCongKhai> congKhai(long maSanPham, Pageable pageable) {
-        return goi(() -> repository.findByMaSanPhamAndHienThiTrueOrderByNgayTaoDesc(maSanPham, pageable)
+        return goi(() -> repository.findByMaSanPhamAndHienThiTrueOrderByNgayTaoDescIdDesc(maSanPham, pageable)
             .map(d -> new DanhGiaCongKhai(d.getTenHienThi(), d.getSoSao(), d.getNoiDung(), d.getNgayTao())));
     }
 
@@ -167,6 +195,7 @@ public class MongoDanhGia_Store implements DanhGia_Store {
             update.set("ngayDuyet", clock.instant());
         }
         Query query = Query.query(criteria);
+        damBaoIndexTruocGhi();
         return goi(() -> mongo.findAndModify(query, update, DanhGia_Document.class)) != null;
     }
 
@@ -246,15 +275,38 @@ public class MongoDanhGia_Store implements DanhGia_Store {
     }
 
     private <T> T goi(Supplier<T> truyVan) {
-        if (clock.millis() < nghiDen) {
-            throw new DataAccessResourceFailureException("MongoDB tam ngung sau loi ket noi");
-        }
+        kiemTraKhoangNghi();
+        if (canKiemTraIndex) kiemTraIndex();
         try {
             return truyVan.get();
         } catch (DataAccessResourceFailureException exception) {
-            nghiDen = clock.millis() + NGHI_SAU_LOI_MS;
-            log.warn("MongoDB danh_gia khong phan hoi; tam ngung {} ms: {}", NGHI_SAU_LOI_MS, exception.getMessage());
+            tamNgung();
             throw exception;
         }
+    }
+
+    private synchronized void damBaoIndexTruocGhi() {
+        kiemTraKhoangNghi();
+        if (!canKiemTraIndex) {
+            try {
+                canKiemTraIndex = !indexHopLe();
+            } catch (DataAccessException exception) {
+                tamNgung();
+                throw new DataAccessResourceFailureException("MongoDB danh gia chua san sang", exception);
+            }
+        }
+        if (canKiemTraIndex) kiemTraIndex();
+    }
+
+    private void kiemTraKhoangNghi() {
+        if (clock.millis() < nghiDen) {
+            throw new DataAccessResourceFailureException("MongoDB tam ngung sau loi ket noi");
+        }
+    }
+
+    private synchronized void tamNgung() {
+        nghiDen = clock.millis() + NGHI_SAU_LOI_MS;
+        canKiemTraIndex = true;
+        log.warn("MongoDB danh_gia chua san sang; tam ngung {} ms", NGHI_SAU_LOI_MS);
     }
 }

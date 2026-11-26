@@ -8,12 +8,13 @@
         <ol><li><a th:href="@{/cart}">Giỏ hàng</a></li><li aria-current="step">Giao hàng và thanh toán</li><li>Hoàn tất</li></ol>
     </nav>
     <h1>Giao hàng và thanh toán</h1>
+    <div th:replace="~{fragments/ui :: notices(${message}, ${error})}"></div>
     <p class="muted">Kiểm tra địa chỉ và báo giá trước khi đặt hàng.</p>
     <div class="card checkout-empty" th:if="${#lists.isEmpty(muc)}">
         <h2>Giỏ hàng đang trống.</h2><a class="btn btn--secondary" th:href="@{/cart}">Quay lại giỏ hàng</a>
     </div>
     <div class="card checkout-empty" th:if="${#lists.isEmpty(diaChi)}">
-        <h2>Cần thêm địa chỉ giao hàng</h2><a class="btn btn--secondary" th:href="@{/account/addresses/new}">Thêm địa chỉ giao hàng</a>
+        <h2>Cần thêm địa chỉ giao hàng</h2><a class="btn btn--secondary" th:href="@{/account/addresses/new(from='checkout')}">Thêm địa chỉ giao hàng</a>
     </div>
     <form method="post" th:action="@{/checkout}" th:object="${form}" data-checkout-form
           th:attr="data-quote-valid=${baoGiaHopLe}">
@@ -39,7 +40,7 @@
                         </select>
                         <p class="field-error" id="addressId-error"><span th:if="${#fields.hasErrors('addressId')}">Chọn địa chỉ giao hàng hợp lệ của bạn.</span></p>
                     </div>
-                    <a class="text-link" th:href="@{/account/addresses}">Quản lý địa chỉ</a>
+                    <a class="text-link" th:href="@{/account/addresses(from='checkout')}">Quản lý địa chỉ</a>
                 </section>
                 <section class="card" aria-labelledby="checkout-voucher-title">
                     <h2 id="checkout-voucher-title">Voucher và báo giá</h2>

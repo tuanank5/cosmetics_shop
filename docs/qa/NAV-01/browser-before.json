@@ -1,0 +1,99 @@
+{
+  "opening": {
+    "path": "/",
+    "hash": "",
+    "y": 0,
+    "slide": "1",
+    "fallback": null,
+    "focus": "",
+    "historySlide": 0,
+    "pageshow": [
+      {
+        "persisted": false,
+        "y": 0
+      }
+    ],
+    "type": "navigate"
+  },
+  "beforeLogo": {
+    "path": "/",
+    "hash": "",
+    "y": 0,
+    "slide": "4",
+    "fallback": null,
+    "focus": "",
+    "historySlide": 3,
+    "pageshow": [
+      {
+        "persisted": false,
+        "y": 0
+      }
+    ],
+    "type": "navigate"
+  },
+  "logoAtHome": {
+    "path": "/",
+    "hash": "",
+    "y": 0,
+    "slide": "4",
+    "fallback": null,
+    "focus": "",
+    "historySlide": 3,
+    "pageshow": [
+      {
+        "persisted": false,
+        "y": 0
+      }
+    ],
+    "type": "navigate"
+  },
+  "entry": {
+    "path": "/",
+    "hash": "#home-popular",
+    "y": 1072,
+    "slide": "6",
+    "fallback": null,
+    "focus": "",
+    "historySlide": 5,
+    "pageshow": [
+      {
+        "persisted": false,
+        "y": 1072
+      }
+    ],
+    "type": "navigate"
+  },
+  "pdpBackPath": "/products",
+  "returnLink": {
+    "path": "/products",
+    "hash": "",
+    "y": 0,
+    "slide": null,
+    "fallback": null,
+    "focus": "",
+    "historySlide": null,
+    "pageshow": [
+      {
+        "persisted": false,
+        "y": 0
+      }
+    ],
+    "type": "navigate"
+  },
+  "logoFromPdp": {
+    "path": "/",
+    "hash": "",
+    "y": 0,
+    "slide": "1",
+    "fallback": null,
+    "focus": "",
+    "historySlide": 0,
+    "pageshow": [
+      {
+        "persisted": false,
+        "y": 0
+      }
+    ],
+    "type": "navigate"
+  }
+}

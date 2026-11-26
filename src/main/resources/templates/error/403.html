@@ -3,16 +3,7 @@
 <head th:replace="~{fragments/head :: head('Bạn chưa có quyền truy cập · BeautyShop')}"></head>
 <body>
 <div th:replace="~{fragments/header :: siteHeader}"></div>
-<main id="main" tabindex="-1" class="page-content error-page">
-  <p class="eyebrow">BEAUTYSHOP · LUÔN CÓ MỘT LỐI ĐI TIẾP</p>
-  <p class="error-code" aria-label="Mã lỗi 403">403</p>
-  <h1>Bạn chưa có quyền truy cập</h1>
-  <p class="muted">Vui lòng dùng tài khoản có quyền phù hợp để mở nội dung này.</p>
-  <div class="button-group">
-    <a class="btn btn--primary" th:href="@{/products}">Xem sản phẩm</a>
-    <a class="btn btn--secondary" th:href="@{/}">Về trang chủ</a>
-  </div>
-</main>
+<main th:replace="~{fragments/error :: noiDung(403, 'Bạn chưa có quyền truy cập', 'Vui lòng dùng tài khoản có quyền phù hợp để mở nội dung này.')}"></main>
 <div th:replace="~{fragments/footer :: siteFooter}"></div>
 </body>
 </html>

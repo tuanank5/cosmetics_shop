@@ -29,6 +29,8 @@ import org.springframework.web.server.ResponseStatusException;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.verifyNoMoreInteractions;
 import static org.mockito.Mockito.when;
 
 /**
@@ -59,6 +61,22 @@ class SauMuaDanhGiaServiceTest {
         form.setSoSao(soSao);
         form.setNoiDung(noiDung);
         return form;
+    }
+
+    @Test
+    void danhGiaCongKhaiChiDocLaiMotLanVaPhanBietLoiKho() {
+        var store = mock(DanhGia_Store.class);
+        var doc = new SauMua_Service(danhGia, store, mock(DoiTra_Repository.class), mock(YeuThich_Repository.class));
+        var trangYeuCau = PageRequest.of(9, 10);
+        var trangCuoi = PageRequest.of(2, 10);
+        when(store.congKhai(30, trangYeuCau)).thenReturn(new PageImpl<>(List.of(), trangYeuCau, 21));
+        when(store.congKhai(30, trangCuoi)).thenThrow(new DataAccessResourceFailureException("fixture"));
+
+        assertThat(doc.danhGiaSanPham(30, 9).khongTaiDuoc()).isTrue();
+        verify(store).tomTat(30);
+        verify(store).congKhai(30, trangYeuCau);
+        verify(store).congKhai(30, trangCuoi);
+        verifyNoMoreInteractions(store);
     }
 
     @Test
@@ -143,7 +161,9 @@ class SauMuaDanhGiaServiceTest {
         var trang = service.danhGiaSanPham(30, 0);
         assertThat(trang.khongTaiDuoc()).isTrue();
         assertThat(trang.tomTat().soLuong()).isZero();
-        assertThat(service.tomTatDanhGia(List.of(30L))).isEmpty();
+        var tomTat = service.tomTatDanhGia(List.of(30L));
+        assertThat(tomTat.theoSanPham()).isEmpty();
+        assertThat(tomTat.khongTaiDuoc()).isTrue();
         assertThat(service.xemDanhGia(KHACH, MUC_DA_GIAO).khongTaiDuoc()).isTrue();
         // Ghi lỗi -> DataAccessException cho controller báo lỗi thân thiện; Admin nhận thông báo, không 500.
         assertThatThrownBy(() -> service.luuDanhGia(KHACH, MUC_DA_GIAO, form(5, ""), false))

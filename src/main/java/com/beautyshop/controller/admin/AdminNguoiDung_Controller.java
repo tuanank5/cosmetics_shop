@@ -1,7 +1,10 @@
 package com.beautyshop.controller.admin;
 
+import com.beautyshop.controller.NguonDieuHuong;
+import com.beautyshop.dto.PhanTrang;
 import com.beautyshop.security.PhienNguoiDung;
 import com.beautyshop.service.NguoiDung_Service;
+import java.util.Map;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
@@ -23,10 +26,9 @@ class AdminNguoiDung_Controller {
                     @AuthenticationPrincipal PhienNguoiDung nguoiDung, Model model) {
         String timKiem = chuanHoa(q);
         var pageable = PageRequest.of(Math.clamp(page, 0, 100_000), 15);
-        var ketQua = nguoiDungService.timNguoiDung(timKiem, pageable);
-        if (pageable.getPageNumber() > 0 && pageable.getPageNumber() >= ketQua.getTotalPages()) {
-            ketQua = nguoiDungService.timNguoiDung(timKiem, pageable.withPage(Math.max(0, ketQua.getTotalPages() - 1)));
-        }
+        var ketQua = PhanTrang.doc(pageable, trang -> nguoiDungService.timNguoiDung(timKiem, trang));
+        model.addAttribute("pager", PhanTrang.tu(ketQua,
+            so -> NguonDieuHuong.trangDanhSach("/admin/users", Map.of("q", timKiem), so)));
         model.addAttribute("q", timKiem);
         model.addAttribute("ketQua", ketQua);
         model.addAttribute("maAdmin", nguoiDung.getMaNguoiDung());

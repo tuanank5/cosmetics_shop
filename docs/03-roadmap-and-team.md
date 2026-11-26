@@ -76,3 +76,27 @@ F01/MariaDB và nghiệm thu thị giác của owner còn mở. Không mở rộ
 ## P20C · Dashboard quản trị v2 · 25/11/2026
 
 Đã bổ sung KPI, biểu đồ, bảng cảnh báo và sidebar quản trị. Test offline và tích hợp MariaDB trên database trống đã đạt. Chrome đã kiểm bố cục và biểu đồ bằng fixture MockMvc. Phiên QA Chrome với tài khoản Admin của owner và dữ liệu demo đang chờ cấu hình kết nối. [Báo cáo và bằng chứng](reviews/P20C-dashboard-v2.md)
+
+## SEC-01 · HTTP/error · 26/11/2026
+
+G1 đạt trên fixture riêng: ownership 404 qua REQUEST/ERROR dispatch, role/CSRF 403, upload/form và IPN giữ hợp đồng; dùng fragment lỗi chung, bổ sung nội dung 429. JDK21: 229 đạt/288 tổng, 59 skip; MariaDB 21/21; package thành công. DH-05 phiên owner chưa tái hiện. [Báo cáo và bằng chứng](reviews/SEC-01-ket-qua.md). DATA-01 chờ giao riêng; chưa commit/push.
+
+## DATA-01 · Kho đánh giá MongoDB · 26/11/2026
+
+Đã nghiệm thu G2 cho MongoDB duy nhất và giữ bảng đánh giá SQL lịch sử. Hồi quy, phục hồi fixture và kiểm trạng thái tạm ngưng trên Chrome headless đã đạt. [Báo cáo](reviews/DATA-01-ket-qua.md).
+
+## ARCH-01 · Package model · 26/11/2026
+
+Đã chuyển 11 lớp ánh xạ sang `com.beautyshop.model`. G3 đạt trên MariaDB và MongoDB riêng, gồm Flyway V1–V7, JPA validate và đọc/ghi BSON hai chiều. [Báo cáo](reviews/ARCH-01-ket-qua.md).
+
+## NAV-01 · Điều hướng và đường quay lại · 26/11/2026
+
+G4 đạt trên fixture MariaDB và Chrome headless. Logo mở chương 1, PDP quay lại đúng thẻ popular, checkout lấy lại giỏ và địa chỉ hiện hành sau khi quay về từ form. [Báo cáo](reviews/NAV-01-ket-qua.md).
+
+## UI-01C · Disclosure, mật khẩu và thông báo · 26/11/2026
+
+G5 đạt trên fixture MariaDB và Chrome headless. Ô mật khẩu ổn định qua init và hiện/ẩn. Bộ lọc, PDP, menu, bảng dashboard và xác nhận Admin đã kiểm bằng bàn phím và chế độ tắt JavaScript. Maven đạt 234/293, tích hợp 34/34 và đóng gói thành công. UI-01P chờ giao riêng. [Báo cáo](reviews/UI-01C-ket-qua.md)
+
+## UI-01P · Phân trang GET · 26/11/2026
+
+G6 đạt trên fixture MariaDB, MongoDB và Chrome. Catalog, tài khoản và hai màn đánh giá dùng chung pager. Đã kiểm bộ lọc, SKU, giới hạn trang, thứ tự khi trùng timestamp, bàn phím và Back khi tắt JavaScript. CART-01 chờ giao riêng. [Báo cáo](reviews/UI-01P-ket-qua.md)

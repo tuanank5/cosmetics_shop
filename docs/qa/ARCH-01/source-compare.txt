@@ -1,0 +1,1 @@
+305 src files match pre-rename snapshot except Java package/FQCN substitution. Migrations unchanged.

@@ -37,7 +37,7 @@ class AdminBaoMatTaiKhoan_Controller {
         model.addAttribute("daXacMinhEmail", user.getNgayXacMinhEmail() != null);
         model.addAttribute("duDieuKien", MatKhau_Service.duDieuKien(user));
         model.addAttribute("providers", identities.findByNguoiDung_MaNguoiDung(id).stream()
-            .map(com.beautyshop.entity.DanhTinhOAuth::getNhaCungCap).toList());
+            .map(com.beautyshop.model.DanhTinhOAuth::getNhaCungCap).toList());
         model.addAttribute("q", timKiem(q));
         model.addAttribute("page", Math.clamp(page, 0, 100_000));
         return "admin/user/detail";

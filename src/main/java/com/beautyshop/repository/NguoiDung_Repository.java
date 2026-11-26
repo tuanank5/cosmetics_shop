@@ -1,6 +1,6 @@
 package com.beautyshop.repository;
 
-import com.beautyshop.entity.NguoiDung;
+import com.beautyshop.model.NguoiDung;
 import jakarta.persistence.LockModeType;
 import java.util.Optional;
 import org.springframework.data.domain.Page;

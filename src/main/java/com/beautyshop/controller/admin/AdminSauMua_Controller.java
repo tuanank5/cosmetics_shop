@@ -1,5 +1,9 @@
 package com.beautyshop.controller.admin;
 
+import com.beautyshop.controller.NguonDieuHuong;
+import com.beautyshop.dto.PhanTrang;
+import java.util.LinkedHashMap;
+import java.util.Map;
 import com.beautyshop.order.ReturnStatus;
 import com.beautyshop.repository.DanhGia_Store;
 import com.beautyshop.service.SauMua_Service;
@@ -20,7 +24,16 @@ class AdminSauMua_Controller {
         var trangThai = DanhGia_Store.TrangThaiLoc.tu(status);
         Integer soSao = stars != null && stars >= 1 && stars <= 5 ? stars : null;
         Long sanPham = product != null && product > 0 ? product : null;
-        model.addAttribute("trang", sauMua.danhSachDanhGiaAdmin(new DanhGia_Store.BoLocDanhGia(trangThai, soSao, sanPham), page));
+        var trang = sauMua.danhSachDanhGiaAdmin(new DanhGia_Store.BoLocDanhGia(trangThai, soSao, sanPham), page);
+        if (!trang.khongTaiDuoc()) {
+            var boLoc = new LinkedHashMap<String, String>();
+            boLoc.put("status", trangThai.name());
+            if (soSao != null) boLoc.put("stars", soSao.toString());
+            if (sanPham != null) boLoc.put("product", sanPham.toString());
+            model.addAttribute("pager", PhanTrang.tu(trang.danhSach(),
+                so -> NguonDieuHuong.trangDanhSach("/admin/reviews", boLoc, so)));
+        }
+        model.addAttribute("trang", trang);
         model.addAttribute("locTrangThai", trangThai.name());
         model.addAttribute("locSao", soSao);
         model.addAttribute("locSanPham", sanPham);
@@ -66,20 +79,25 @@ class AdminSauMua_Controller {
     }
 
     @GetMapping("/admin/returns/{id}")
-    String chiTiet(@PathVariable long id, Model model) {
+    String chiTiet(@PathVariable long id, @RequestParam Map<String, String> thamSo, Model model) {
         model.addAttribute("trang", sauMua.chiTiet(id, null));
         model.addAttribute("base", "/admin/returns");
+        var ky = NguonDieuHuong.kyDashboard(thamSo);
+        model.addAttribute("navDashboard", ky);
+        model.addAttribute("returnBack", ky.isEmpty() ? null : NguonDieuHuong.veDashboard(ky));
         return "return/detail";
     }
 
     @PostMapping("/admin/returns/{id}/status")
-    String trangThai(@PathVariable long id, @RequestParam ReturnStatus status, RedirectAttributes flash) {
+    String trangThai(@PathVariable long id, @RequestParam ReturnStatus status,
+                     @RequestParam Map<String, String> thamSo, RedirectAttributes flash) {
         try {
             sauMua.chuyenDoiTra(id, status);
             flash.addFlashAttribute("message", "Đã cập nhật yêu cầu đổi trả.");
         } catch (IllegalStateException exception) {
             flash.addFlashAttribute("error", exception.getMessage());
         }
+        NguonDieuHuong.kyDashboard(thamSo).forEach(flash::addAttribute);
         return "redirect:/admin/returns/" + id;
     }
 }

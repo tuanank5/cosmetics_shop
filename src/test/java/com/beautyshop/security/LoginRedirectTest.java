@@ -1,6 +1,6 @@
 package com.beautyshop.security;
 
-import com.beautyshop.entity.NguoiDung;
+import com.beautyshop.model.NguoiDung;
 import com.beautyshop.repository.NguoiDung_Repository;
 import com.beautyshop.service.GioHang_Service;
 import org.junit.jupiter.api.Test;

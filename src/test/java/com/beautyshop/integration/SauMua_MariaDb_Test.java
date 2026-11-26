@@ -15,7 +15,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.test.context.TestPropertySource;
 import org.springframework.jdbc.core.simple.JdbcClient;
 import org.springframework.mock.web.MockHttpSession;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -36,9 +35,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  */
 @SpringBootTest
 @AutoConfigureMockMvc
-@TestPropertySource(properties = "app.reviews.store=mariadb")
 @EnabledIfEnvironmentVariable(named = "P01_MARIADB_TEST", matches = "true")
-class SauMua_MariaDb_Test {
+abstract class SauMua_MariaDb_Test {
     @Autowired JdbcClient jdbc;
     @Autowired MockMvc mvc;
     @Autowired PasswordEncoder encoder;

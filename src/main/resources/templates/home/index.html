@@ -59,7 +59,7 @@
         </li>
       </ul>
       <p class="home-chapter-fallback" th:if="${#lists.isEmpty(loaiDa)}">
-        <a class="btn btn--secondary btn--lg" th:href="@{/products#skin-type}">Tìm theo loại da <span aria-hidden="true">↗</span></a>
+        <a class="btn btn--secondary btn--lg" th:href="@{/products#skin-type(filterPanel='open')}">Tìm theo loại da <span aria-hidden="true">↗</span></a>
       </p>
     </div>
     <button class="story-media-toggle btn btn--secondary" type="button" data-story-toggle hidden>Tạm dừng video</button>
@@ -123,7 +123,7 @@
       </header>
       <ul class="store-grid home-featured-grid" th:unless="${#lists.isEmpty(sanPhamNoiBat)}">
         <li th:each="the : ${sanPhamNoiBat}">
-          <div th:replace="~{fragments/product-card :: productCard(${the}, false)}"></div>
+          <th:block th:with="navOrigin='home-featured'"><div th:replace="~{fragments/product-card :: productCard(${the}, false)}"></div></th:block>
         </li>
       </ul>
     </div>
@@ -159,7 +159,7 @@
     </header>
     <ul class="store-grid home-popular-grid">
       <li th:each="the : ${sanPhamPhoBien}">
-        <div th:replace="~{fragments/product-card :: productCard(${the}, false)}"></div>
+        <th:block th:with="navOrigin='home-popular'"><div th:replace="~{fragments/product-card :: productCard(${the}, false)}"></div></th:block>
       </li>
     </ul>
   </section>
@@ -177,7 +177,7 @@
     </header>
     <ul class="store-grid home-all-grid">
       <li th:each="the : ${tatCaSanPham}">
-        <div th:replace="~{fragments/product-card :: productCard(${the}, false)}"></div>
+        <th:block th:with="navOrigin='home-all-products'"><div th:replace="~{fragments/product-card :: productCard(${the}, false)}"></div></th:block>
       </li>
     </ul>
     <p class="home-all-more">

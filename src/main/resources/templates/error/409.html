@@ -3,16 +3,7 @@
 <head th:replace="~{fragments/head :: head('Thông tin vừa thay đổi · BeautyShop')}"></head>
 <body>
 <div th:replace="~{fragments/header :: siteHeader}"></div>
-<main id="main" tabindex="-1" class="page-content error-page">
-  <p class="eyebrow">BEAUTYSHOP · LUÔN CÓ MỘT LỐI ĐI TIẾP</p>
-  <p class="error-code" aria-label="Mã lỗi 409">409</p>
-  <h1>Thông tin vừa thay đổi</h1>
-  <p class="muted">Dữ liệu đã được cập nhật trong lúc bạn thao tác. Vui lòng mở lại trang và kiểm tra trước khi gửi.</p>
-  <div class="button-group">
-    <a class="btn btn--primary" th:href="@{/products}">Xem sản phẩm</a>
-    <a class="btn btn--secondary" th:href="@{/}">Về trang chủ</a>
-  </div>
-</main>
+<main th:replace="~{fragments/error :: noiDung(409, 'Thông tin vừa thay đổi', 'Dữ liệu đã được cập nhật trong lúc bạn thao tác. Vui lòng mở lại trang và kiểm tra trước khi gửi.')}"></main>
 <div th:replace="~{fragments/footer :: siteFooter}"></div>
 </body>
 </html>

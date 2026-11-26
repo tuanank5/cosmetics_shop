@@ -11,12 +11,9 @@
       - MoMo (cổng MOMO_MOCK): tam_giu_ton_kho; thanh toán PAID -> CONSUMED và trừ tồn, đơn chờ xác nhận rồi xử lý tiếp;
         thanh toán FAILED -> RELEASED, đơn EXPIRED (tồn không đổi), giống ThanhToanMomo_Service.ketThucDon.
       - Không áp voucher. Phí giao hàng theo ShippingFee_Policy (25.000 ₫, miễn phí từ 500.000 ₫). Giá = gia_ban hiện hành.
-      - Đánh giá demo chỉ cho dòng hàng của đơn DELIVERED thuộc chính người mua, tối đa một lần mỗi dòng, sau ngày giao.
-        P23: đánh giá được ghi vào bảng MariaDB danh_gia như trước; app đọc đánh giá từ MongoDB, nên sau khi seed
-        chạy app MỘT lần với REVIEWS_MIGRATE_FROM_MARIADB=true để chuyển sang MongoDB (xem docs/deployment/07-mongodb-danh-gia.md).
-      - P23: 30 lượt yêu thích demo (san_pham_yeu_thich) của các khách demo cho sản phẩm demo, chọn tất định theo -Seed.
+      - Thêm 30 lượt yêu thích demo, chọn tất định theo -Seed.
         Idempotent: chỉ thêm cặp chưa có; chạy lại (kể cả khi đơn demo đã có) không nhân đôi.
-    Đánh dấu demo: mã đơn DEMO-ORD-NNN, tên người nhận/địa chỉ/nội dung đánh giá bắt đầu "[DEMO]"
+    Đánh dấu demo: mã đơn DEMO-ORD-NNN, tên người nhận/địa chỉ bắt đầu "[DEMO]"
     (don_hang không có cột ghi chú). Chạy lại: nếu đã có đơn DEMO-ORD-% thì dừng, không tạo trùng.
     Tồn kho: kế hoạch lập từ tồn khả dụng hiện tại, mỗi SKU giữ lại tối thiểu 2; CHECK của schema
     (tồn >= 0, tạm giữ <= tồn) chặn mọi sai lệch và lỗi bất kỳ làm rollback toàn bộ transaction.
@@ -81,7 +78,6 @@ function New-RandomBcryptShape {
     return '$2a$10$' + (-join ($bytes | ForEach-Object { $alphabet[$_ % 64] }))
 }
 
-# P23: lượt yêu thích demo để thành phần "yêu thích" trong điểm phổ biến P21 có dữ liệu. Không đổi schema.
 function Add-DemoWishlists([int] $Target = 30) {
     $customerIds = @(Invoke-DemoSql "SELECT ma_nguoi_dung FROM nguoi_dung WHERE email LIKE 'demo-khach-%@example.test' ORDER BY email;" -Query |
         Where-Object { $_ } | ForEach-Object { [long]$_ })
@@ -156,12 +152,7 @@ SET @kh$k = (SELECT ma_nguoi_dung FROM nguoi_dung WHERE email = '$email');
 }
 
 $counts = @{}
-$reviews = 0
 $address = SqlText '[DEMO] Địa chỉ mô phỏng, Phường Bến Nghé, Quận 1, TP. Hồ Chí Minh'
-$reviewTexts = @{
-    5 = 'Sản phẩm dùng rất thích, giao hàng nhanh.'; 4 = 'Chất lượng tốt, đóng gói cẩn thận.'
-    3 = 'Tạm ổn, cần dùng thêm để đánh giá.'; 2 = 'Kết cấu chưa hợp với da mình.'; 1 = 'Không như mong đợi.'
-}
 for ($n = 1; $n -le $OrderCount; $n++) {
     $code = 'DEMO-ORD-{0:D3}' -f $n
     # Spread over the last 90 days, denser in recent weeks.
@@ -225,7 +216,6 @@ SET @d = LAST_INSERT_ID();
         $statements.Add(@"
 INSERT INTO chi_tiet_don_hang (ma_don_hang, ma_bien_the, sku_khi_dat, ten_san_pham_khi_dat, ten_bien_the_khi_dat, don_gia, so_luong)
 VALUES (@d, $($s.Id), '$($s.Sku)', $(SqlText $s.Product), $(SqlText $s.Variant), $($s.Price), $($line.Qty));
-SET @c$i = LAST_INSERT_ID();
 "@)
         if ($momo) {
             $hold = if ($consumes) { 'CONSUMED' } else { 'RELEASED' }
@@ -258,16 +248,6 @@ SET @c$i = LAST_INSERT_ID();
     } elseif ($status -eq 'DELIVERED') {
         $statements.Add("INSERT INTO van_chuyen (ma_don_hang, trang_thai, ngay_gui_hang, ngay_giao_thanh_cong) VALUES (@d, 'DELIVERED', UTC_TIMESTAMP(6) - INTERVAL $shipMinutes MINUTE, UTC_TIMESTAMP(6) - INTERVAL $deliverMinutes MINUTE);")
         $statements.Add("UPDATE don_hang SET ngay_giao_thanh_cong = UTC_TIMESTAMP(6) - INTERVAL $deliverMinutes MINUTE WHERE ma_don_hang = @d;")
-        # Reviews: only delivered items of the buyer's own order, at most once per order item, after delivery.
-        for ($j = 1; $j -le $lines.Count; $j++) {
-            if ($rand.NextDouble() -ge 0.45 -or $deliverMinutes -lt 1500) { continue }
-            $stars = @(5, 5, 5, 4, 4, 4, 3, 2, 1)[$rand.Next(9)]
-            $visible = if ($rand.NextDouble() -lt 0.75) { 'TRUE' } else { 'FALSE' }
-            $reviewMinutes = $deliverMinutes - $rand.Next(60, 1440)
-            $text = SqlText ('[DEMO] ' + $reviewTexts[$stars])
-            $statements.Add("INSERT INTO danh_gia (ma_nguoi_dung, ma_san_pham, ma_chi_tiet_don_hang, so_sao, noi_dung, hien_thi, ngay_tao) VALUES (@kh$customer, $($lines[$j - 1].Sku.ProductId), @c$j, $stars, $text, $visible, UTC_TIMESTAMP(6) - INTERVAL $reviewMinutes MINUTE);")
-            $reviews++
-        }
     }
     $statements.Add("UPDATE don_hang SET trang_thai = '$status' WHERE ma_don_hang = @d;")
     $counts[$status] = 1 + [int]$counts[$status]
@@ -277,8 +257,7 @@ $statements.Add('COMMIT;')
 Invoke-DemoSql ($statements -join "`n") | Out-Null
 $total = ($counts.Values | Measure-Object -Sum).Sum
 $summary = ($counts.GetEnumerator() | Sort-Object Name | ForEach-Object { "$($_.Name)=$($_.Value)" }) -join ', '
-Write-Output "Demo orders created: $total ($summary); reviews: $reviews; customers: $CustomerCount."
+Write-Output "Demo orders created: $total ($summary); customers: $CustomerCount."
 $check = Invoke-DemoSql 'SELECT COUNT(*), SUM(so_luong_trong_kho < 0), SUM(so_luong_tam_giu > so_luong_trong_kho), MIN(so_luong_trong_kho) FROM bien_the_san_pham;' -Query
 Write-Output "Stock check (SKUs, negative, reserved>onHand, min onHand): $check"
 Add-DemoWishlists
-Write-Output 'Next (P23): run the app once with REVIEWS_MIGRATE_FROM_MARIADB=true to copy demo reviews into MongoDB.' 

@@ -1,7 +1,7 @@
 
 package com.beautyshop.security;
 
-import com.beautyshop.entity.NguoiDung;
+import com.beautyshop.model.NguoiDung;
 
 import java.util.Collections;
 import java.util.HashMap;

@@ -4,10 +4,12 @@
 <body>
 <div th:replace="~{fragments/header :: siteHeader}"></div>
 <main id="main" tabindex="-1" class="page-content catalog-admin">
-    <a class="text-link" th:href="@{/admin/vouchers}">Quay lại voucher</a>
+    <a class="text-link" th:if="${voucherBack != null}" th:href="@{${voucherBack}}">Quay lại tổng quan</a>
+    <a class="text-link" th:unless="${voucherBack != null}" th:href="@{/admin/vouchers}">Quay lại voucher</a>
     <h1 th:text="${id == null ? 'Tạo voucher' : 'Chỉnh voucher'}">Chỉnh voucher</h1>
     <form class="catalog-form" th:action="${id == null} ? @{/admin/vouchers/new} : @{/admin/vouchers/{id}/edit(id=${id})}"
           th:object="${form}" method="post">
+        <th:block th:replace="~{fragments/nav-fields :: adminSource}"></th:block>
         <ul class="catalog-error" role="alert" th:if="${#fields.hasGlobalErrors()}">
             <li th:each="error : ${#fields.globalErrors()}" th:text="${error}"></li>
         </ul>

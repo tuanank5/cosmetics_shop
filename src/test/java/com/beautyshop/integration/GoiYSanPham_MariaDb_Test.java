@@ -3,7 +3,6 @@ package com.beautyshop.integration;
 import com.beautyshop.recommendation.DiemPhoBien_Policy.UngVien;
 import com.beautyshop.repository.CuaHang_Repository;
 import com.beautyshop.repository.GoiYSanPham_Repository;
-import com.beautyshop.repository.MariaDbDanhGia_Store;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
@@ -41,16 +40,18 @@ class GoiYSanPham_MariaDb_Test {
         bienThe(spTat, "GY-T-" + s, 10, 0);  // thương hiệu tắt -> không là ứng viên
 
         long donGiao = don(khach, "GY1-" + s, "DELIVERED", 1);
-        long ctGiao = dong(donGiao, btA, 3);
+        long mucLichSu = dong(donGiao, btA, 3);
+        // Hàng lưu trữ đặt riêng để chứng minh truy vấn xếp hạng không đọc nội dung SQL.
+        jdbc.sql("""
+            INSERT INTO danh_gia (ma_nguoi_dung, ma_san_pham, ma_chi_tiet_don_hang, so_sao, hien_thi)
+            VALUES (?, ?, ?, 5, TRUE)
+            """).params(khach, spA, mucLichSu).update();
         dong(don(khach, "GY2-" + s, "CANCELLED", 1), btA, 5);
         dong(don(khach, "GY3-" + s, "EXPIRED", 1), btA, 7);
         dong(don(khach, "GY4-" + s, "PENDING_PAYMENT", 1), btA, 11);
         dong(don(khach, "GY5-" + s, "DELIVERED", 200), btA, 13);  // ngoài 90 ngày
-        long ctAn = dong(don(khach, "GY6-" + s, "DELIVERED", 2), btA, 1);
-        long ctCu = dong(don(khach, "GY7-" + s, "DELIVERED", 200), btA, 1);
-        danhGia(khach, spA, ctGiao, 4, true, 1);
-        danhGia(khach, spA, ctAn, 1, false, 1);   // chờ duyệt -> không tính
-        danhGia(khach, spA, ctCu, 1, true, 150);  // ngoài 90 ngày -> không tính
+        dong(don(khach, "GY6-" + s, "DELIVERED", 2), btA, 1);
+        dong(don(khach, "GY7-" + s, "DELIVERED", 200), btA, 1);
         jdbc.sql("INSERT INTO san_pham_yeu_thich (ma_nguoi_dung, ma_san_pham) VALUES (?, ?)").params(khach, spA).update();
 
         LocalDateTime tu = jdbc.sql("SELECT UTC_TIMESTAMP(6) - INTERVAL 90 DAY").query(LocalDateTime.class).single();
@@ -64,12 +65,6 @@ class GoiYSanPham_MariaDb_Test {
         assertThat(a.soDanhGia()).isZero();
         assertThat(a.tongSao()).isZero();
         assertThat(a.soLuotYeuThich()).isEqualTo(1);
-        // Bản store MariaDB (dự phòng) giữ đúng bộ lọc cũ: chỉ đánh giá đang hiển thị, trong 90 ngày.
-        var store = new MariaDbDanhGia_Store(jdbc);
-        var tomTat = store.tomTatNhieu(List.of(spA), tu.toInstant(java.time.ZoneOffset.UTC)).get(spA);
-        assertThat(tomTat.soLuong()).isEqualTo(1);
-        assertThat(tomTat.tongSao()).isEqualTo(4);
-        assertThat(store.tomTatCuaHang(tu.toInstant(java.time.ZoneOffset.UTC)).soLuong()).isPositive();
         assertThat(cuaHangRepository.timTheTheoMa(List.of(spA, spHet, spTat)))
             .extracting(CuaHang_Repository.TheSanPhamCoMa::getMaSanPham).containsExactly(spA);
     }
@@ -103,9 +98,4 @@ class GoiYSanPham_MariaDb_Test {
             VALUES (?, ?, 'SKU', 'SP', '30 ml', 100000, ?) RETURNING ma_chi_tiet_don_hang""", don, bt, soLuong);
     }
 
-    private void danhGia(long khach, long sp, long ct, int sao, boolean hienThi, int soNgayTruoc) {
-        jdbc.sql("""
-            INSERT INTO danh_gia (ma_nguoi_dung, ma_san_pham, ma_chi_tiet_don_hang, so_sao, hien_thi, ngay_tao)
-            VALUES (?, ?, ?, ?, ?, UTC_TIMESTAMP(6) - INTERVAL ? DAY)""").params(khach, sp, ct, sao, hienThi, soNgayTruoc).update();
-    }
 }

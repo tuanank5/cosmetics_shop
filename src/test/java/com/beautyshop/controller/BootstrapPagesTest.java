@@ -53,10 +53,10 @@ class BootstrapPagesTest {
     void homeLinksToTheExistingCatalogDiscoveryControls() throws Exception {
         mvc.perform(get("/"))
             .andExpect(status().isOk())
-            .andExpect(content().string(containsString("href=\"/\" aria-current=\"page\"")))
-            .andExpect(content().string(containsString("href=\"/products#categories\"")))
-            .andExpect(content().string(containsString("href=\"/products#brands\"")))
-            .andExpect(content().string(containsString("href=\"/products#skin-type\"")))
+            .andExpect(content().string(containsString("href=\"/?home=opening\" aria-current=\"page\"")))
+            .andExpect(content().string(containsString("href=\"/products?filterPanel=open#categories\"")))
+            .andExpect(content().string(containsString("href=\"/products?filterPanel=open#brands\"")))
+            .andExpect(content().string(containsString("href=\"/products?filterPanel=open#skin-type\"")))
             // P18: chapter 3 "Xem sản phẩm mới" was replaced by chapter 5 (featured → /products) and chapter 6 (/chat).
             .andExpect(content().string(containsString("href=\"/chat\"")));
     }

@@ -1,0 +1,33 @@
+{
+  "browser": "Chrome/158.0.8127.88",
+  "mongo": "off",
+  "results": [
+    {
+      "width": 390,
+      "siteJavaScriptDisabled": true,
+      "noHorizontalOverflow": true,
+      "catalogUnavailableVisible": true,
+      "keyboardFocusVisible": true,
+      "enterOpensProduct": true,
+      "productUnavailableVisible": true
+    },
+    {
+      "width": 768,
+      "siteJavaScriptDisabled": true,
+      "noHorizontalOverflow": true,
+      "catalogUnavailableVisible": true,
+      "keyboardFocusVisible": true,
+      "enterOpensProduct": true,
+      "productUnavailableVisible": true
+    },
+    {
+      "width": 1366,
+      "siteJavaScriptDisabled": true,
+      "noHorizontalOverflow": true,
+      "catalogUnavailableVisible": true,
+      "keyboardFocusVisible": true,
+      "enterOpensProduct": true,
+      "productUnavailableVisible": true
+    }
+  ]
+}

@@ -25,6 +25,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 @DataJpaTest
 @TestPropertySource(properties = {"spring.flyway.enabled=false", "spring.jpa.hibernate.ddl-auto=create-drop"})
 class ThongKeServiceTest {
+    private com.beautyshop.repository.DanhGia_Store khoDanhGia() {
+        var kho = org.mockito.Mockito.mock(com.beautyshop.repository.DanhGia_Store.class);
+        org.mockito.Mockito.when(kho.thongKe(org.mockito.ArgumentMatchers.any(), org.mockito.ArgumentMatchers.any()))
+            .thenReturn(new com.beautyshop.repository.DanhGia_Store.ThongKeDanhGia(1, new long[]{0, 0, 0, 1, 1}));
+        return kho;
+    }
     private static final Clock CLOCK = Clock.fixed(Instant.parse("2026-11-23T05:00:00Z"), ZoneOffset.UTC);
 
     @Autowired JdbcClient jdbc;
@@ -33,7 +39,7 @@ class ThongKeServiceTest {
     @BeforeEach
     void setUp() {
         // P23: đánh giá qua DanhGia_Store; bản MariaDB đọc đúng bảng danh_gia H2 dựng bên dưới.
-        service = new ThongKe_Service(new ThongKe_Repository(jdbc), new com.beautyshop.repository.MariaDbDanhGia_Store(jdbc), CLOCK);
+        service = new ThongKe_Service(new ThongKe_Repository(jdbc), khoDanhGia(), CLOCK);
         jdbc.sql("ALTER TABLE nguoi_dung ADD COLUMN IF NOT EXISTS ngay_tao TIMESTAMP(6) DEFAULT CURRENT_TIMESTAMP").update();
         jdbc.sql("""
             CREATE TABLE IF NOT EXISTS don_hang (ma_don_hang BIGINT PRIMARY KEY, ma_don_hang_hien_thi VARCHAR(80) NOT NULL,
@@ -52,9 +58,6 @@ class ThongKeServiceTest {
         jdbc.sql("""
             CREATE TABLE IF NOT EXISTS chi_tiet_don_hang (ma_chi_tiet_don_hang BIGINT AUTO_INCREMENT PRIMARY KEY,
                 ma_don_hang BIGINT NOT NULL, ma_bien_the BIGINT NOT NULL, don_gia DECIMAL(15,0) NOT NULL, so_luong INT NOT NULL)""").update();
-        jdbc.sql("""
-            CREATE TABLE IF NOT EXISTS danh_gia (ma_danh_gia BIGINT AUTO_INCREMENT PRIMARY KEY, so_sao INT NOT NULL,
-                hien_thi BOOLEAN NOT NULL, ngay_tao TIMESTAMP(6) NOT NULL)""").update();
         jdbc.sql("""
             CREATE TABLE IF NOT EXISTS yeu_cau_doi_tra (ma_yeu_cau_doi_tra BIGINT AUTO_INCREMENT PRIMARY KEY,
                 trang_thai VARCHAR(30) NOT NULL, ma_don_hang BIGINT DEFAULT 1 NOT NULL,
@@ -92,7 +95,6 @@ class ThongKeServiceTest {
         // Đơn 6: thanh toán đang hoàn tiền -> không phải PAID.
         don(6, "DELIVERED", "MOMO", 120000, "2026-11-21 02:00:00");
         thanhToan(6, 120000, "REFUNDED", "2026-11-21 02:01:00");
-        jdbc.sql("INSERT INTO danh_gia (so_sao, hien_thi, ngay_tao) VALUES (5, TRUE, TIMESTAMP '2026-11-21 01:00:00'), (4, FALSE, TIMESTAMP '2026-11-22 01:00:00')").update();
         jdbc.sql("INSERT INTO yeu_cau_doi_tra (trang_thai) VALUES ('PENDING'), ('COMPLETED')").update();
         jdbc.sql("INSERT INTO phieu_giam_gia (dang_hoat_dong, ket_thuc_luc) VALUES (TRUE, TIMESTAMP '2026-11-25 00:00:00'), (TRUE, TIMESTAMP '2026-12-31 00:00:00'), (FALSE, TIMESTAMP '2026-11-25 00:00:00')").update();
 
@@ -204,7 +206,7 @@ class ThongKeServiceTest {
             """).update();
         var ky = new ThongKe_Service.Ky(LocalDate.of(2026, 11, 17), LocalDate.of(2026, 11, 23), "7d");
         var repository = new ThongKe_Repository(jdbc);
-        var dashboard = new ThongKe_Service(repository, new com.beautyshop.repository.MariaDbDanhGia_Store(jdbc), CLOCK, "MOMO_MOCK");
+        var dashboard = new ThongKe_Service(repository, khoDanhGia(), CLOCK, "MOMO_MOCK");
         var tq = dashboard.tongQuan(ky, 4);
         assertThat(tq.chiSo("da-giao").giaTri()).isEqualByComparingTo("1");
         assertThat(tq.chiSo("da-giao").kyTruoc()).isEqualByComparingTo("1");

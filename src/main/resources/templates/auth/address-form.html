@@ -3,18 +3,22 @@
 <head th:replace="~{fragments/head :: head('Địa chỉ giao hàng · BeautyShop')}"></head>
 <body><div th:replace="~{fragments/header :: siteHeader}"></div>
 <main id="main" tabindex="-1" class="page-content login-wrap">
-    <a class="text-link" th:href="@{/account/addresses}">Quay lại địa chỉ</a>
+    <a class="text-link" th:href="@{${addressBack}}" th:text="${tuCheckout ? 'Quay lại thanh toán' : 'Quay lại địa chỉ'}">Quay lại địa chỉ</a>
     <h1>Địa chỉ giao hàng</h1>
     <form class="login-card" method="post" th:action="@{${action}}" th:object="${form}">
+        <input th:if="${tuCheckout}" type="hidden" name="from" value="checkout">
         <label for="tenNguoiNhan">Tên người nhận</label>
-        <input th:field="*{tenNguoiNhan}" autocomplete="name" maxlength="160" required>
-        <small class="form-error" th:errors="*{tenNguoiNhan}"></small>
+        <input th:field="*{tenNguoiNhan}" autocomplete="name" maxlength="160" required
+               aria-describedby="tenNguoiNhan-error" th:attr="aria-invalid=${#fields.hasErrors('tenNguoiNhan') ? 'true' : null}">
+        <div th:replace="~{fragments/ui :: fieldError('tenNguoiNhan', 'tenNguoiNhan-error')}"></div>
         <label for="soDienThoai">Số điện thoại</label>
-        <input type="tel" th:field="*{soDienThoai}" autocomplete="tel" maxlength="16" required>
-        <small class="form-error" th:errors="*{soDienThoai}"></small>
+        <input type="tel" th:field="*{soDienThoai}" autocomplete="tel" maxlength="16" required
+               aria-describedby="soDienThoai-error" th:attr="aria-invalid=${#fields.hasErrors('soDienThoai') ? 'true' : null}">
+        <div th:replace="~{fragments/ui :: fieldError('soDienThoai', 'soDienThoai-error')}"></div>
         <label for="diaChiChiTiet">Địa chỉ chi tiết</label>
-        <input th:field="*{diaChiChiTiet}" autocomplete="street-address" maxlength="600" required>
-        <small class="form-error" th:errors="*{diaChiChiTiet}"></small>
+        <input th:field="*{diaChiChiTiet}" autocomplete="street-address" maxlength="600" required
+               aria-describedby="diaChiChiTiet-error" th:attr="aria-invalid=${#fields.hasErrors('diaChiChiTiet') ? 'true' : null}">
+        <div th:replace="~{fragments/ui :: fieldError('diaChiChiTiet', 'diaChiChiTiet-error')}"></div>
         <label><input type="checkbox" th:field="*{laMacDinh}"> Đặt làm mặc định</label>
         <button type="submit" class="btn btn--primary">Lưu địa chỉ</button>
     </form>

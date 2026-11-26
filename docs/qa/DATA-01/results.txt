@@ -1,0 +1,20 @@
+﻿[baseline]
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0
+[INFO] BUILD SUCCESS
+[integration]
+[INFO] Tests run: 22, Failures: 0, Errors: 0, Skipped: 0
+[INFO] BUILD SUCCESS
+[mongo-off]
+[INFO] Tests run: 8, Failures: 0, Errors: 0, Skipped: 0
+[INFO] BUILD SUCCESS
+[backup]
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0
+[INFO] BUILD SUCCESS
+[test]
+[INFO] Tests run: 287, Failures: 0, Errors: 0, Skipped: 58
+[INFO] BUILD SUCCESS
+[package]
+[INFO] BUILD SUCCESS
+[ui-fixture]
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0
+[INFO] BUILD SUCCESS

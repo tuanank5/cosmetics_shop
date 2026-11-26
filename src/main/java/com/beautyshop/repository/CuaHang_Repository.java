@@ -1,6 +1,6 @@
 package com.beautyshop.repository;
 
-import com.beautyshop.entity.SanPham;
+import com.beautyshop.model.SanPham;
 import java.math.BigDecimal;
 import java.util.Collection;
 import java.util.List;

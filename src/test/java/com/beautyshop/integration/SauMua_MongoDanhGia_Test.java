@@ -1,12 +1,11 @@
 package com.beautyshop.integration;
 
-import com.beautyshop.entity.DanhGia_Document;
+import com.beautyshop.model.DanhGia_Document;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.condition.EnabledIfEnvironmentVariable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Query;
-import org.springframework.test.context.TestPropertySource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -15,7 +14,6 @@ import static org.assertj.core.api.Assertions.assertThat;
  * nội dung đánh giá ghi/đọc ở MongoDB thật ({@code beautyshop_test_mongo}). Cần cả {@code P01_MARIADB_TEST} và
  * {@code P23_MONGO_TEST}.
  */
-@TestPropertySource(properties = "app.reviews.store=mongo")
 @EnabledIfEnvironmentVariable(named = "P01_MARIADB_TEST", matches = "true")
 @EnabledIfEnvironmentVariable(named = "P23_MONGO_TEST", matches = "true")
 class SauMua_MongoDanhGia_Test extends SauMua_MariaDb_Test {

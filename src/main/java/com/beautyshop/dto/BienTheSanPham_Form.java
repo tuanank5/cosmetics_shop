@@ -1,6 +1,6 @@
 package com.beautyshop.dto;
 
-import com.beautyshop.entity.BienTheSanPham;
+import com.beautyshop.model.BienTheSanPham;
 import jakarta.validation.constraints.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;

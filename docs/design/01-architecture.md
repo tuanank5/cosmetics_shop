@@ -32,7 +32,7 @@ flowchart TD
 src/main/java/com/beautyshop/
   BeautyShopApplication.java
   controller/              # Trang công khai và controller/admin
-  service/ repository/ entity/ dto/ security/
+  service/ repository/ model/ dto/ security/
   domain/catalog/ inventory/ order/ shipping/
 src/main/resources/
   templates/{home,product,auth,admin/catalog,fragments}/

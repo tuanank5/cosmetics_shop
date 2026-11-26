@@ -1,8 +1,10 @@
 package com.beautyshop.controller.admin;
 
+import com.beautyshop.controller.NguonDieuHuong;
 import com.beautyshop.order.OrderStatus;
 import com.beautyshop.service.DonHang_Service;
 import java.util.List;
+import java.util.Map;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -30,20 +32,29 @@ class AdminDonHang_Controller {
     }
 
     @GetMapping("/{id}")
-    String chiTiet(@PathVariable long id, Model model) {
+    String chiTiet(@PathVariable long id, @RequestParam Map<String, String> thamSo,
+                   @RequestParam(name = "listStatus", required = false) List<OrderStatus> loc, Model model) {
         model.addAttribute("chiTiet", donHangService.chiTietAdmin(id));
         model.addAttribute("base", "/admin/orders");
+        var ky = NguonDieuHuong.kyDashboard(thamSo);
+        model.addAttribute("navDashboard", ky);
+        model.addAttribute("listStatus", loc);
+        model.addAttribute("orderBack", ky.isEmpty() ? null : NguonDieuHuong.veDashboard(ky));
         return "order/detail";
     }
 
     @PostMapping("/{id}/status")
-    String chuyen(@PathVariable long id, @RequestParam OrderStatus status, RedirectAttributes flash) {
+    String chuyen(@PathVariable long id, @RequestParam OrderStatus status, @RequestParam Map<String, String> thamSo,
+                  @RequestParam(name = "listStatus", required = false) List<OrderStatus> loc, RedirectAttributes flash) {
         try {
             donHangService.chuyenAdmin(id, status);
             flash.addFlashAttribute("message", "Đã cập nhật trạng thái đơn.");
         } catch (IllegalStateException exception) {
             flash.addFlashAttribute("error", exception.getMessage());
         }
+        NguonDieuHuong.kyDashboard(thamSo).forEach(flash::addAttribute);
+        if (loc != null && !loc.isEmpty()) flash.addAttribute("listStatus", loc.stream().map(Enum::name)
+            .distinct().collect(java.util.stream.Collectors.joining(",")));
         return "redirect:/admin/orders/" + id;
     }
 }

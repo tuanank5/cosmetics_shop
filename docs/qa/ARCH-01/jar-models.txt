@@ -1,0 +1,12 @@
+BOOT-INF/classes/com/beautyshop/model/BienTheSanPham.class
+BOOT-INF/classes/com/beautyshop/model/DanhGia_Document.class
+BOOT-INF/classes/com/beautyshop/model/DanhMuc.class
+BOOT-INF/classes/com/beautyshop/model/DanhTinhOAuth.class
+BOOT-INF/classes/com/beautyshop/model/DiaChiNguoiDung.class
+BOOT-INF/classes/com/beautyshop/model/MucDanhMucSanPhamThuongHieu.class
+BOOT-INF/classes/com/beautyshop/model/NguoiDung$VaiTro.class
+BOOT-INF/classes/com/beautyshop/model/NguoiDung.class
+BOOT-INF/classes/com/beautyshop/model/NhatKyQuanTri.class
+BOOT-INF/classes/com/beautyshop/model/SanPham.class
+BOOT-INF/classes/com/beautyshop/model/ThuongHieu.class
+BOOT-INF/classes/com/beautyshop/model/YeuCauDatLaiMatKhau.class

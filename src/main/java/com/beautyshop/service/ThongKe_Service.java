@@ -80,13 +80,12 @@ public class ThongKe_Service {
         this.momoGateway = momoGateway;
     }
 
-    /** P23: đánh giá đọc từ DanhGia_Store (MongoDB); lỗi thì phần đánh giá rỗng, Dashboard vẫn hiển thị. */
-    private DanhGia_Store.ThongKeDanhGia thongKeDanhGia(LocalDateTime a, LocalDateTime b) {
+    private Optional<DanhGia_Store.ThongKeDanhGia> thongKeDanhGia(LocalDateTime a, LocalDateTime b) {
         try {
-            return danhGia.thongKe(a.toInstant(ZoneOffset.UTC), b.toInstant(ZoneOffset.UTC));
+            return Optional.ofNullable(danhGia.thongKe(a.toInstant(ZoneOffset.UTC), b.toInstant(ZoneOffset.UTC)));
         } catch (DataAccessException exception) {
             log.warn("Dashboard: khong doc duoc thong ke danh gia: {}", exception.getMessage());
-            return DanhGia_Store.ThongKeDanhGia.RONG;
+            return Optional.empty();
         }
     }
 
@@ -170,9 +169,11 @@ public class ThongKe_Service {
             doiNhan(phuongThuc.get("MOMO"), "MoMo"));
         var thongKeDanhGia = thongKeDanhGia(a, b);
         List<Nhom> theoSao = new ArrayList<>();
-        for (int s = 5; s >= 1; s--) {
-            theoSao.add(new Nhom(s + " sao", thongKeDanhGia.phanBoTrongKy()[s - 1], BigDecimal.ZERO));
-        }
+        thongKeDanhGia.ifPresent(thongKe -> {
+            for (int s = 5; s >= 1; s--) {
+                theoSao.add(new Nhom(s + " sao", thongKe.phanBoTrongKy()[s - 1], BigDecimal.ZERO));
+            }
+        });
         List<DonGanDay> donMoi = repository.donMoiNhat(8).stream().map(this::donGanDay).toList();
         List<SkuSapHet> sapHet = repository.skuSapHet(nguongTon, 20);
         var sanPhamBanChay = repository.topSanPhamChiTiet(a, b, 5);
@@ -180,7 +181,8 @@ public class ThongKe_Service {
             .collect(Collectors.toMap(NhomThanhToan::phuongThuc, Function.identity()));
         return new TongQuan(ky, truoc, kpi, hienTai.choXuLy(), theoNgay, theoTrangThai,
             sanPhamBanChay, repository.doanhThuTheoDanhMuc(a, b), theoPhuongThuc, theoSao,
-            donMoi, sapHet, nguongTon, thongKeDanhGia.choDuyet(), hienTai.doiTraCho(), hienTai.voucherSapHetHan(),
+            donMoi, sapHet, nguongTon, thongKeDanhGia.map(DanhGia_Store.ThongKeDanhGia::choDuyet).orElse(null),
+            hienTai.doiTraCho(), hienTai.voucherSapHetHan(),
             demDon.soHuy(), repository.demSkuSapHet(nguongTon), repository.tachDoanhThu(a, b),
             repository.doanhThuTheoThuongHieu(a, b),
             List.of(trangThaiThanhToan.getOrDefault("COD", new NhomThanhToan("COD", 0, 0, 0)),
@@ -271,7 +273,7 @@ public class ThongKe_Service {
     public record TongQuan(Ky ky, Ky kyTruoc, List<Kpi> kpi, long donChoXuLy, List<NgayThongKe> theoNgay,
                            List<Nhom> theoTrangThai, List<SanPhamBanChay> sanPhamBanChay, List<Nhom> theoDanhMuc,
                            List<Nhom> theoPhuongThuc, List<Nhom> theoSao, List<DonGanDay> donMoi,
-                           List<SkuSapHet> skuSapHet, int nguongTon, long danhGiaChoDuyet, long doiTraCho,
+                           List<SkuSapHet> skuSapHet, int nguongTon, Long danhGiaChoDuyet, long doiTraCho,
                            long voucherSapHetHan, long donBiHuy, long demSkuSapHet, TachDoanhThu tachDoanhThu,
                            List<Nhom> theoThuongHieu, List<NhomThanhToan> trangThaiThanhToan,
                            List<DoiTraCho> doiTraChoChiTiet, List<CanhBaoThanhToan> canhBaoThanhToan,
@@ -291,6 +293,7 @@ public class ThongKe_Service {
         public boolean coTrangThai() { return theoTrangThai.stream().anyMatch(n -> n.soLuong() > 0); }
         public boolean coThanhToan() { return theoPhuongThuc.stream().anyMatch(n -> n.soLuong() > 0); }
         public boolean coDanhGia() { return theoSao.stream().anyMatch(n -> n.soLuong() > 0); }
+        public boolean taiDuocDanhGia() { return danhGiaChoDuyet != null; }
     }
 
     private static LocalDateTime gioVietNam(LocalDateTime utc) {

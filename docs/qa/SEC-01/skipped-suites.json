@@ -1,0 +1,149 @@
+[
+    {
+        "suite":  "com.beautyshop.integration.BienTheSanPham_MariaDb_Test",
+        "skipped":  6,
+        "reasons":  [
+                        "Environment variable [P01_MARIADB_TEST] does not exist"
+                    ]
+    },
+    {
+        "suite":  "com.beautyshop.integration.CuaHang_MariaDb_Test",
+        "skipped":  2,
+        "reasons":  [
+                        "Environment variable [P01_MARIADB_TEST] does not exist"
+                    ]
+    },
+    {
+        "suite":  "com.beautyshop.integration.DanhMucSanPhamThuongHieu_MariaDb_Test",
+        "skipped":  1,
+        "reasons":  [
+                        "Environment variable [P01_MARIADB_TEST] does not exist"
+                    ]
+    },
+    {
+        "suite":  "com.beautyshop.integration.DonHangCOD_MariaDb_Test",
+        "skipped":  4,
+        "reasons":  [
+                        "Environment variable [P01_MARIADB_TEST] does not exist"
+                    ]
+    },
+    {
+        "suite":  "com.beautyshop.integration.GoiYPhoBienDemoReport_Test",
+        "skipped":  1,
+        "reasons":  [
+                        "Environment variable [P21_DEMO_REPORT] does not exist"
+                    ]
+    },
+    {
+        "suite":  "com.beautyshop.integration.GoiYSanPham_MariaDb_Test",
+        "skipped":  1,
+        "reasons":  [
+                        "Environment variable [P01_MARIADB_TEST] does not exist"
+                    ]
+    },
+    {
+        "suite":  "com.beautyshop.integration.HttpLoi_MariaDb_Test",
+        "skipped":  1,
+        "reasons":  [
+                        "Environment variable [P01_MARIADB_TEST] does not exist"
+                    ]
+    },
+    {
+        "suite":  "com.beautyshop.integration.Momo_MariaDb_Test",
+        "skipped":  3,
+        "reasons":  [
+                        "Environment variable [P01_MARIADB_TEST] does not exist"
+                    ]
+    },
+    {
+        "suite":  "com.beautyshop.integration.MongoTat_MariaDb_Test",
+        "skipped":  1,
+        "reasons":  [
+                        "Environment variable [P01_MARIADB_TEST] does not exist"
+                    ]
+    },
+    {
+        "suite":  "com.beautyshop.integration.OAuth2Callback_MariaDb_Test",
+        "skipped":  4,
+        "reasons":  [
+                        "Environment variable [P01_MARIADB_TEST] does not exist"
+                    ]
+    },
+    {
+        "suite":  "com.beautyshop.integration.OAuth2_MariaDb_Test",
+        "skipped":  4,
+        "reasons":  [
+                        "Environment variable [P01_MARIADB_TEST] does not exist"
+                    ]
+    },
+    {
+        "suite":  "com.beautyshop.integration.PhieuGiamGia_MariaDb_Test",
+        "skipped":  2,
+        "reasons":  [
+                        "Environment variable [P01_MARIADB_TEST] does not exist"
+                    ]
+    },
+    {
+        "suite":  "com.beautyshop.integration.SauMua_MariaDb_Test",
+        "skipped":  4,
+        "reasons":  [
+                        "Environment variable [P01_MARIADB_TEST] does not exist"
+                    ]
+    },
+    {
+        "suite":  "com.beautyshop.integration.SauMua_MongoDanhGia_Test",
+        "skipped":  4,
+        "reasons":  [
+                        "Environment variable [P01_MARIADB_TEST] does not exist"
+                    ]
+    },
+    {
+        "suite":  "com.beautyshop.integration.ThongKe_MariaDb_Test",
+        "skipped":  2,
+        "reasons":  [
+                        "Environment variable [P01_MARIADB_TEST] does not exist"
+                    ]
+    },
+    {
+        "suite":  "com.beautyshop.integration.TuVanFaq_MariaDb_Test",
+        "skipped":  2,
+        "reasons":  [
+                        "Environment variable [P01_MARIADB_TEST] does not exist"
+                    ]
+    },
+    {
+        "suite":  "com.beautyshop.integration.TuVanRag_MariaDb_Test",
+        "skipped":  2,
+        "reasons":  [
+                        "Environment variable [P01_MARIADB_TEST] does not exist"
+                    ]
+    },
+    {
+        "suite":  "com.beautyshop.integration.XacThucDaPhuongThuc_MariaDb_Test",
+        "skipped":  5,
+        "reasons":  [
+                        "Environment variable [P01_MARIADB_TEST] does not exist"
+                    ]
+    },
+    {
+        "suite":  "com.beautyshop.integration.XacThucMigration_MariaDb_Test",
+        "skipped":  1,
+        "reasons":  [
+                        "Environment variable [AUTH_02_MIGRATION_FIXTURE] does not exist"
+                    ]
+    },
+    {
+        "suite":  "com.beautyshop.integration.XacThuc_MariaDb_Test",
+        "skipped":  8,
+        "reasons":  [
+                        "Environment variable [P01_MARIADB_TEST] does not exist"
+                    ]
+    },
+    {
+        "suite":  "com.beautyshop.repository.MongoDanhGia_Store_Test",
+        "skipped":  5,
+        "reasons":  [
+                        "Environment variable [P23_MONGO_TEST] does not exist"
+                    ]
+    }
+]

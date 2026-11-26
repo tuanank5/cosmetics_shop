@@ -1,6 +1,6 @@
 package com.beautyshop.service;
 
-import com.beautyshop.entity.BienTheSanPham;
+import com.beautyshop.model.BienTheSanPham;
 import com.beautyshop.repository.BienTheSanPham_Repository;
 import com.beautyshop.repository.TonKho_Repository;
 import com.beautyshop.repository.TonKho_Repository.TrangThaiTamGiu;

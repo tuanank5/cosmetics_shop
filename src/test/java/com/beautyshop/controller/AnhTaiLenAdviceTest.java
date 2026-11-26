@@ -1,6 +1,6 @@
 package com.beautyshop.controller;
 
-import com.beautyshop.entity.SanPham;
+import com.beautyshop.model.SanPham;
 import com.beautyshop.service.BienTheSanPham_Service;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;

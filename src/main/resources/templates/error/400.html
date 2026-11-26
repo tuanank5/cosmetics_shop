@@ -3,16 +3,7 @@
 <head th:replace="~{fragments/head :: head('Yêu cầu chưa hợp lệ · BeautyShop')}"></head>
 <body>
 <div th:replace="~{fragments/header :: siteHeader}"></div>
-<main id="main" tabindex="-1" class="page-content error-page">
-  <p class="eyebrow">BEAUTYSHOP · LUÔN CÓ MỘT LỐI ĐI TIẾP</p>
-  <p class="error-code" aria-label="Mã lỗi 400">400</p>
-  <h1>Yêu cầu chưa hợp lệ</h1>
-  <p class="muted">Thông tin gửi lên chưa đúng định dạng. Vui lòng kiểm tra và thử lại.</p>
-  <div class="button-group">
-    <a class="btn btn--primary" th:href="@{/products}">Xem sản phẩm</a>
-    <a class="btn btn--secondary" th:href="@{/}">Về trang chủ</a>
-  </div>
-</main>
+<main th:replace="~{fragments/error :: noiDung(400, 'Yêu cầu chưa hợp lệ', 'Thông tin gửi lên chưa đúng định dạng. Vui lòng kiểm tra và thử lại.')}"></main>
 <div th:replace="~{fragments/footer :: siteFooter}"></div>
 </body>
 </html>

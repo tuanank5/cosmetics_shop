@@ -2,7 +2,7 @@ package com.beautyshop.integration;
 
 import com.beautyshop.cart.GioKhach;
 import com.beautyshop.dto.DiaChiNguoiDung_Form;
-import com.beautyshop.entity.NguoiDung.VaiTro;
+import com.beautyshop.model.NguoiDung.VaiTro;
 import com.beautyshop.repository.NguoiDung_Repository;
 import com.beautyshop.repository.DiaChiNguoiDung_Repository;
 import com.beautyshop.service.DiaChiNguoiDung_Service;
@@ -214,13 +214,23 @@ class XacThuc_MariaDb_Test {
 
         String base = "/account/addresses";
         mvc.perform(get(base + "/new").session(phienChu)).andExpect(status().isOk());
+        mvc.perform(get(base + "/new").session(phienChu).param("from", "checkout"))
+            .andExpect(model().attribute("addressBack", "/checkout"))
+            .andExpect(content().string(containsString("name=\"from\" value=\"checkout\"")));
+        mvc.perform(get(base + "/new").session(phienChu).param("from", "//other.invalid"))
+            .andExpect(model().attribute("addressBack", base));
+        mvc.perform(post(base + "/new").session(phienChu).with(csrf()).param("from", "checkout").param("tenNguoiNhan", "Fixture"))
+            .andExpect(model().attributeHasFieldErrors("form", "soDienThoai", "diaChiChiTiet"))
+            .andExpect(model().attribute("addressBack", "/checkout"))
+            .andExpect(content().string(containsString("value=\"Fixture\"")));
         mvc.perform(post(base + "/new").session(phienChu).with(csrf()).param("soDienThoai", "sai"))
             .andExpect(model().attributeHasFieldErrors("form", "tenNguoiNhan", "soDienThoai", "diaChiChiTiet"));
         mvc.perform(diaChi(base + "/new", phienChu, "Địa chỉ A"))
             .andExpect(redirectedUrl(base));
         mvc.perform(diaChi(base + "/new", phienChu, "Địa chỉ B").param("laMacDinh", "true")
+                .param("from", "checkout")
                 .param("maNguoiDung", Long.toString(maKhac)))
-            .andExpect(redirectedUrl(base));
+            .andExpect(redirectedUrl("/checkout"));
         var danhSach = diaChiRepository.findAllByNguoiDungMaNguoiDungOrderByMaDiaChiAsc(maChu);
         assertThat(danhSach).hasSize(2);
         long maA = danhSach.getFirst().getMaDiaChi();
@@ -230,13 +240,13 @@ class XacThuc_MariaDb_Test {
         mvc.perform(get(base).session(phienKhac)).andExpect(status().isOk())
             .andExpect(content().string(not(containsString("Địa chỉ B"))));
         mvc.perform(get(base + "/" + maB + "/edit").session(phienKhac)).andExpect(status().isNotFound());
-        mvc.perform(diaChi(base + "/" + maB + "/edit", phienKhac, "Không hợp lệ"))
+        mvc.perform(diaChi(base + "/" + maB + "/edit", phienKhac, "Không hợp lệ").param("from", "checkout"))
             .andExpect(status().isNotFound());
         mvc.perform(post(base + "/" + maB + "/delete").session(phienKhac).with(csrf()))
             .andExpect(status().isNotFound());
         mvc.perform(post(base + "/" + maB + "/delete").session(phienChu)).andExpect(status().isForbidden());
-        mvc.perform(diaChi(base + "/" + maA + "/edit", phienChu, "Địa chỉ A mới"))
-            .andExpect(redirectedUrl(base));
+        mvc.perform(diaChi(base + "/" + maA + "/edit", phienChu, "Địa chỉ A mới").param("from", "checkout"))
+            .andExpect(redirectedUrl("/checkout"));
         mvc.perform(post(base + "/" + maB + "/delete").session(phienChu).with(csrf()))
             .andExpect(redirectedUrl(base));
         var conLai = diaChiRepository.findAllByNguoiDungMaNguoiDungOrderByMaDiaChiAsc(maChu);
@@ -269,8 +279,9 @@ class XacThuc_MariaDb_Test {
             .andExpect(status().isOk()).andExpect(content().string(containsString("Trang 2 / 2")))
             .andExpect(content().string(containsString(customer)))
             .andExpect(content().string(not(containsString(mucTieu.getMatKhauBam()))));
-        mvc.perform(get("/admin/users").session(phienAdmin).param("q", customer))
-            .andExpect(status().isOk()).andExpect(content().string(containsString(customer)));
+        mvc.perform(get("/admin/users").session(phienAdmin).param("q", customer).param("page", "99"))
+            .andExpect(status().isOk()).andExpect(content().string(containsString(customer)))
+            .andExpect(content().string(not(containsString("Phân trang tài khoản"))));
         String url = "/admin/users/" + mucTieu.getMaNguoiDung() + "/status";
         mvc.perform(post(url).session(phienCustomer).with(csrf()).param("enabled", "false"))
             .andExpect(status().isForbidden());

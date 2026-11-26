@@ -1,6 +1,6 @@
 package com.beautyshop.dto;
 
-import com.beautyshop.entity.DiaChiNguoiDung;
+import com.beautyshop.model.DiaChiNguoiDung;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;

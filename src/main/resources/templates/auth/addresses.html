@@ -3,10 +3,11 @@
 <head th:replace="~{fragments/head :: head('Địa chỉ giao hàng · BeautyShop')}"></head>
 <body><div th:replace="~{fragments/header :: siteHeader}"></div>
 <main id="main" tabindex="-1" class="page-content catalog-admin">
-    <a class="text-link" th:href="@{/account}">Quay lại hồ sơ</a>
+    <a class="text-link" th:if="${tuCheckout}" th:href="@{/checkout}">Quay lại thanh toán</a>
+    <a class="text-link" th:unless="${tuCheckout}" th:href="@{/account}">Quay lại hồ sơ</a>
     <h1>Địa chỉ giao hàng</h1>
     <p class="notice" role="status" th:if="${message}" th:text="${message}"></p>
-    <a class="btn btn--primary" th:href="@{/account/addresses/new}">Thêm địa chỉ</a>
+    <a class="btn btn--primary" th:href="@{/account/addresses/new(from=${tuCheckout ? 'checkout' : null})}">Thêm địa chỉ</a>
     <p class="notice" th:if="${#lists.isEmpty(diaChi)}">Bạn chưa có địa chỉ giao hàng.</p>
     <ul class="catalog-list">
         <li th:each="muc : ${diaChi}">
@@ -17,8 +18,9 @@
                 <small th:if="${muc.laMacDinh}">Mặc định</small>
             </div>
             <div class="catalog-actions">
-                <a class="btn btn--primary" th:href="@{/account/addresses/{id}/edit(id=${muc.maDiaChi})}">Sửa</a>
+                <a class="btn btn--primary" th:href="@{/account/addresses/{id}/edit(id=${muc.maDiaChi},from=${tuCheckout ? 'checkout' : null})}">Sửa</a>
                 <form method="post" th:action="@{/account/addresses/{id}/delete(id=${muc.maDiaChi})}">
+                    <input th:if="${tuCheckout}" type="hidden" name="from" value="checkout">
                     <button type="submit" class="btn btn--primary">Xóa</button>
                 </form>
             </div>

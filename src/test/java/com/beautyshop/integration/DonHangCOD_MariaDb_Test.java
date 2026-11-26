@@ -66,7 +66,19 @@ class DonHangCOD_MariaDb_Test {
         mvc.perform(post("/cart/items/" + variant + "/quantity").session(session).with(csrf()).param("quantity", "1"))
             .andExpect(redirectedUrl("/cart"));
         mvc.perform(get("/checkout").session(session)).andExpect(status().isOk())
+            .andExpect(content().string(containsString("550.000")))
+            .andExpect(content().string(containsString("href=\"/account/addresses?from=checkout\"")));
+        mvc.perform(get("/account/addresses").param("from", "checkout").session(session))
+            .andExpect(content().string(containsString("href=\"/checkout\"")))
+            .andExpect(content().string(containsString("href=\"/account/addresses/" + chu.maDiaChi() + "/edit?from=checkout\"")));
+        mvc.perform(post("/account/addresses/" + chu.maDiaChi() + "/edit").session(session).with(csrf())
+                .param("from", "checkout").param("tenNguoiNhan", "Người nhận")
+                .param("soDienThoai", "0901234567").param("diaChiChiTiet", "Địa chỉ snapshot").param("laMacDinh", "true"))
+            .andExpect(redirectedUrl("/checkout"));
+        mvc.perform(get("/checkout").session(session))
+            .andExpect(model().attribute("baoGiaHopLe", false))
             .andExpect(content().string(containsString("550.000")));
+        assertThat(donHangService.danhSachCustomer(chu.id())).isEmpty();
         mvc.perform(post("/checkout/quote").session(session).with(csrf())
                 .param("addressId", Long.toString(chu.maDiaChi())).param("voucher", voucher))
             .andExpect(status().isOk()).andExpect(content().string(containsString("505.000")));
@@ -113,6 +125,10 @@ class DonHangCOD_MariaDb_Test {
         mvc.perform(get("/admin/orders").session(phienAdmin)).andExpect(status().isOk())
             .andExpect(model().attribute("tongQuan", tongQuanChuaThu));
         mvc.perform(get("/admin/orders/" + maDonGiao).session(phienAdmin)).andExpect(status().isOk());
+        mvc.perform(get("/admin/orders/" + maDonGiao).session(phienAdmin).param("listStatus", "PACKING", "SHIPPING"))
+            .andExpect(content().string(containsString("href=\"/admin/orders?status=PACKING&amp;status=SHIPPING\"")));
+        mvc.perform(get("/admin/orders/" + maDonGiao).session(phienAdmin).param("nav", "dashboard").param("range", "7d"))
+            .andExpect(content().string(containsString("href=\"/admin/dashboard?range=7d\"")));
         mvc.perform(post("/admin/orders/" + maDonGiao + "/status").session(session).with(csrf()).param("status", "DELIVERED"))
             .andExpect(status().isForbidden());
         mvc.perform(post("/admin/orders/" + maDonGiao + "/status").session(phienAdmin).with(csrf()).param("status", "SHIPPING"))

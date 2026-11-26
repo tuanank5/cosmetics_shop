@@ -1,6 +1,6 @@
 package com.beautyshop.controller;
 
-import com.beautyshop.entity.NguoiDung;
+import com.beautyshop.model.NguoiDung;
 import com.beautyshop.repository.DanhGia_Repository.MucMua;
 import com.beautyshop.repository.DanhGia_Repository.SanPhamLoc;
 import com.beautyshop.repository.DanhGia_Store.BoLocDanhGia;

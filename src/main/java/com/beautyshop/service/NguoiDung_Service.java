@@ -3,7 +3,7 @@ package com.beautyshop.service;
 import org.springframework.security.access.prepost.PreAuthorize;
 import com.beautyshop.dto.DangKy_Form;
 import com.beautyshop.dto.HoSo_Form;
-import com.beautyshop.entity.NguoiDung;
+import com.beautyshop.model.NguoiDung;
 import com.beautyshop.repository.NguoiDung_Repository;
 import java.util.Locale;
 import org.springframework.data.domain.Page;

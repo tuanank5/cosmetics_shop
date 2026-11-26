@@ -2,8 +2,8 @@ package com.beautyshop.service;
 
 import org.springframework.security.access.prepost.PreAuthorize;
 import com.beautyshop.dto.BienTheSanPham_Form;
-import com.beautyshop.entity.BienTheSanPham;
-import com.beautyshop.entity.SanPham;
+import com.beautyshop.model.BienTheSanPham;
+import com.beautyshop.model.SanPham;
 import com.beautyshop.repository.BienTheSanPham_Repository;
 import com.beautyshop.repository.SanPham_Repository;
 import java.io.UncheckedIOException;

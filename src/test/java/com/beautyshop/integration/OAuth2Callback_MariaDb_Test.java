@@ -1,6 +1,6 @@
 package com.beautyshop.integration;
 
-import com.beautyshop.entity.NguoiDung;
+import com.beautyshop.model.NguoiDung;
 import com.beautyshop.repository.NguoiDung_Repository;
 import com.beautyshop.security.OAuth2NguoiDung_Service;
 import com.beautyshop.service.DanhTinhOAuth_Service.BangChung;

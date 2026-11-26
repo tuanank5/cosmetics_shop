@@ -1,10 +1,12 @@
 package com.beautyshop.service;
 
+import com.beautyshop.dto.PhanTrang;
+
 import org.springframework.security.access.prepost.PreAuthorize;
 import com.beautyshop.dto.DanhGia_Form;
 import com.beautyshop.dto.DoiTra_Form;
 import com.beautyshop.order.ReturnStatus;
-import com.beautyshop.entity.DanhGia_Document;
+import com.beautyshop.model.DanhGia_Document;
 import com.beautyshop.repository.DanhGia_Repository;
 import com.beautyshop.repository.DanhGia_Repository.MucMua;
 import com.beautyshop.repository.DanhGia_Repository.SanPhamLoc;
@@ -62,7 +64,8 @@ public class SauMua_Service {
     public TrangDanhGiaSanPham danhGiaSanPham(long maSanPham, int trang) {
         var pageable = PageRequest.of(Math.clamp(trang, 0, 10_000), DANH_GIA_MOI_TRANG);
         try {
-            return new TrangDanhGiaSanPham(kho.tomTat(maSanPham), kho.congKhai(maSanPham, pageable), false);
+            return new TrangDanhGiaSanPham(kho.tomTat(maSanPham),
+                PhanTrang.doc(pageable, trangDoc -> kho.congKhai(maSanPham, trangDoc)), false);
         } catch (DataAccessException exception) {
             log.warn("Khong tai duoc danh gia san pham {}: {}", maSanPham, exception.getMessage());
             return new TrangDanhGiaSanPham(TomTatDanhGia.RONG, Page.empty(pageable), true);
@@ -70,16 +73,16 @@ public class SauMua_Service {
     }
 
     /** Sao trung bình + số đánh giá cho thẻ sản phẩm, một truy vấn cho cả trang; lỗi thì thẻ không hiện sao. */
-    public Map<Long, TomTatDanhGia> tomTatDanhGia(Collection<Long> maSanPham) {
+    public TomTatTheSanPham tomTatDanhGia(Collection<Long> maSanPham) {
         List<Long> ma = maSanPham.stream().filter(Objects::nonNull).distinct().toList();
         if (ma.isEmpty()) {
-            return Map.of();
+            return new TomTatTheSanPham(Map.of(), false);
         }
         try {
-            return kho.tomTatNhieu(ma, null);
+            return new TomTatTheSanPham(kho.tomTatNhieu(ma, null), false);
         } catch (DataAccessException exception) {
             log.warn("Khong tai duoc tom tat danh gia cho the san pham: {}", exception.getMessage());
-            return Map.of();
+            return new TomTatTheSanPham(Map.of(), true);
         }
     }
 
@@ -88,7 +91,7 @@ public class SauMua_Service {
         var pageable = PageRequest.of(Math.clamp(trang, 0, 10_000), DANH_GIA_ADMIN_MOI_TRANG);
         List<SanPhamLoc> sanPham = danhGia.sanPhamLoc();
         try {
-            Page<DanhGiaAdmin> ketQua = kho.danhSachAdmin(boLoc, pageable);
+            Page<DanhGiaAdmin> ketQua = PhanTrang.doc(pageable, trangDoc -> kho.danhSachAdmin(boLoc, trangDoc));
             Map<Long, String> ten = danhGia.tenSanPham(ketQua.getContent().stream().map(DanhGiaAdmin::maSanPham).distinct().toList());
             return new TrangDanhGiaAdmin(ketQua.map(d -> d.voiTenSanPham(ten.getOrDefault(d.maSanPham(), "Sản phẩm #" + d.maSanPham()))),
                 sanPham, false);
@@ -223,6 +226,7 @@ public class SauMua_Service {
 
     public record TrangDanhGia(MucMua muc, DanhGiaCuaKhach hienTai, boolean khongTaiDuoc) {}
     public record TrangDanhGiaSanPham(TomTatDanhGia tomTat, Page<DanhGiaCongKhai> danhSach, boolean khongTaiDuoc) {}
+    public record TomTatTheSanPham(Map<Long, TomTatDanhGia> theoSanPham, boolean khongTaiDuoc) {}
     public record TrangDanhGiaAdmin(Page<DanhGiaAdmin> danhSach, List<SanPhamLoc> sanPham, boolean khongTaiDuoc) {}
     public record TrangDoiTra(Don don, List<Muc> muc) {}
     public record ChiTietDoiTra(ChiTiet chiTiet, List<MucTra> muc) {}

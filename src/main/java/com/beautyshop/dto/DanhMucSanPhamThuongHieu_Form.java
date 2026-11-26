@@ -1,7 +1,7 @@
 package com.beautyshop.dto;
 
-import com.beautyshop.entity.MucDanhMucSanPhamThuongHieu;
-import com.beautyshop.entity.SanPham;
+import com.beautyshop.model.MucDanhMucSanPhamThuongHieu;
+import com.beautyshop.model.SanPham;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;

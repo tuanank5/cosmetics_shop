@@ -8,8 +8,7 @@
         <h1>Giỏ hàng</h1>
         <a th:unless="${#lists.isEmpty(mucGio)}" class="text-link" th:href="@{/products}">Tiếp tục mua sắm</a>
     </header>
-    <th:block th:if="${message}"><div th:replace="~{fragments/ui :: flash('success', ${message})}"></div></th:block>
-    <th:block th:if="${error}"><div th:replace="~{fragments/ui :: flash('error', ${error})}"></div></th:block>
+    <div th:replace="~{fragments/ui :: notices(${message}, ${error})}"></div>
     <p class="visually-hidden" aria-live="polite" data-cart-live></p>
     <p class="notice" role="status" th:if="${daGioiHan}">Một số SKU đã được điều chỉnh theo tồn hiện tại.</p>
 

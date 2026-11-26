@@ -32,14 +32,12 @@ Từ P23, nội dung đánh giá (số sao, bình luận, trạng thái duyệt)
 | Biến môi trường | Mặc định | Ý nghĩa |
 |---|---|---|
 | `MONGODB_URI` | `mongodb://127.0.0.1:27017/beautyshop_demo` | Kết nối và database đánh giá. |
-| `REVIEWS_STORE` | `mongo` | `mongo` hoặc `mariadb` (dự phòng: đọc/ghi bảng `danh_gia` cũ). |
-| `REVIEWS_MIGRATE_FROM_MARIADB` | `false` | `true`: khi khởi động, chép bảng `danh_gia` sang MongoDB một lần (idempotent). |
 
 - Local không bật xác thực vì chỉ bind `127.0.0.1`.
 - Production dùng URI có user/password và TLS, lấy từ secret store, ví dụ `mongodb+srv://<user>:<password>@<host>/beautyshop?retryWrites=true`. User chỉ cần quyền `readWrite` trên database của app.
 - Không commit URI có mật khẩu. `.env.example` chỉ ghi giá trị local.
 - Timeout ngắn (`review/MongoDanhGia_Config.java`): chọn server 2 s, kết nối 2 s, đọc 5 s.
-- Index được tạo khi app khởi động, từ annotation của `DanhGia_Document`, bằng `IndexOperations`. Nếu MongoDB tắt, app chỉ log WARN và vẫn chạy.
+- Ứng dụng kiểm index khi khởi động, khi kết nối phục hồi và trước khi ghi. Index `uq_ma_chi_tiet_don_hang` phải có key `{maChiTietDonHang: 1}`, unique, không sparse hay partial. Sai chỉ mục, trùng document hoặc thiếu quyền sẽ làm kho đánh giá tạm ngưng và thử lại sau 15 giây. Kiểm tra bằng tài khoản vận hành trước khi xử lý thủ công.
 
 Kiểm tra index:
 
@@ -50,24 +48,7 @@ mongosh beautyshop_demo --quiet --eval "db.danh_gia.getIndexes().map(i => i.name
 
 ## Quy trình dữ liệu demo
 
-`scripts/seed-demo-orders.ps1` vẫn ghi đánh giá demo vào bảng MariaDB `danh_gia`, như từ P20. Script không ghi trực tiếp vào MongoDB. Từ P23, script còn thêm 30 lượt yêu thích demo; script idempotent. Sau khi seed:
-
-```powershell
-# 1. Seed MariaDB (đơn, đánh giá demo, yêu thích demo); DB_PASSWORD lấy từ môi trường.
-.\scripts\seed-demo-orders.ps1 -Database beautyshop_demo -User $env:DB_USER -Client 'C:\Program Files\MariaDB 12.2\bin\mariadb.exe'
-
-# 2. Chạy app MỘT lần với cờ chuyển dữ liệu, xem log rồi dừng app.
-$env:REVIEWS_MIGRATE_FROM_MARIADB = 'true'
-java -jar target\beautyshop-0.0.1-SNAPSHOT.jar --server.port=8081
-#   log: "P23 migrate danh_gia MariaDB -> MongoDB: doc=N, ghi=N, bo qua=0 (...)"
-
-# 3. Tắt cờ và chạy bình thường.
-Remove-Item Env:REVIEWS_MIGRATE_FROM_MARIADB
-```
-
-- Chạy lại bước 2 không nhân đôi document: upsert theo `maChiTietDonHang`, chỉ dùng `$setOnInsert`. Document đã có, kể cả bản khách đã sửa hoặc Admin đã duyệt, không bị đè.
-- Đánh giá đang hiển thị trong MariaDB được coi là đã duyệt.
-- Khi store là `mongo`, bảng MariaDB `danh_gia` không còn được ghi.
+Chạy `scripts/seed-demo-orders.ps1` để tạo đơn, tồn minh họa và lượt yêu thích demo. Để tạo đánh giá demo, đăng nhập bằng Customer của fixture có đơn đã giao, gửi đánh giá từ dòng đơn và duyệt bằng Admin. Bảng SQL `danh_gia` chỉ lưu lịch sử; giữ nguyên các dòng đã có.
 
 ## Kiểm thử
 
@@ -79,11 +60,11 @@ $env:P23_MONGO_TEST = 'true'; mvn -o test     # thêm test MongoDB thật trên 
 - Mọi test tải Spring context đều dùng `beautyshop_test_mongo`, theo `src/test/resources/config/application.properties`. Database này bị xóa dữ liệu trước mỗi test.
 - `SauMua_MongoDanhGia_Test` cần cả `P01_MARIADB_TEST=true` và `P23_MONGO_TEST=true`.
 
-## Sao lưu demo
+## Sao lưu và diễn tập phục hồi
 
-```powershell
-mongodump --db beautyshop_demo --collection danh_gia --out backup\mongo-<ngày>
-mongorestore --db beautyshop_demo --collection danh_gia backup\mongo-<ngày>\beautyshop_demo\danh_gia.bson
-```
+1. Sao lưu SQL đầy đủ gồm bảng `danh_gia` lịch sử. Ghi số dòng, checksum mẫu và mốc migration.
+2. Dùng `mongodump --archive` cho collection `danh_gia` để giữ document và metadata index. Sao lưu thư mục ảnh và danh sách UUID tham chiếu.
+3. Khôi phục SQL vào schema mới. Khôi phục Mongo vào namespace mới bằng `mongorestore --archive --nsFrom --nsTo --stopOnError`. Đối chiếu số dòng, mẫu, revision và index unique trước khi cho ghi. Khôi phục ảnh vào thư mục riêng và đối chiếu hash. Giữ backup ngoài Git.
+4. Khi cần quay lui, tạm đóng tính năng review hoặc dùng bản tương thích cấu hình Mongo và tắt runner ở bản cũ. Giữ nguyên cả hai kho và dữ liệu đã tạo sau mốc backup.
 
-Lưu bản sao lưu ngoài Git, cùng bản backup MariaDB.
+Diễn tập với dữ liệu tổng hợp trong repository dùng `docs/qa/DATA-01/run-fixture.ps1`. Dữ liệu demo/owner cần bản sao riêng do người vận hành quản lý.

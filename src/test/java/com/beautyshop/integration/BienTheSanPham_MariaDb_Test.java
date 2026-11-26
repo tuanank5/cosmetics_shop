@@ -1,6 +1,6 @@
 package com.beautyshop.integration;
 
-import com.beautyshop.entity.BienTheSanPham;
+import com.beautyshop.model.BienTheSanPham;
 import com.beautyshop.repository.BienTheSanPham_Repository;
 import com.beautyshop.service.TonKho_Service;
 import java.awt.image.BufferedImage;

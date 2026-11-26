@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<body>
+<main th:fragment="noiDung(code, title, message)" id="main" tabindex="-1" class="page-content error-page">
+  <p class="eyebrow">BEAUTYSHOP · LUÔN CÓ MỘT LỐI ĐI TIẾP</p>
+  <p class="error-code" th:if="${code != null}" th:text="${code}" th:attr="aria-label=${'Mã lỗi ' + code}"></p>
+  <h1 th:text="${title}"></h1>
+  <p class="muted" th:text="${message}"></p>
+  <div class="button-group">
+    <a class="btn btn--primary" th:href="@{/products}">Xem sản phẩm</a>
+    <a class="btn btn--secondary" th:href="@{/}">Về trang chủ</a>
+    <a class="btn btn--secondary" th:href="@{/admin/dashboard}" sec:authorize="hasRole('ADMIN')">Về tổng quan quản trị</a>
+  </div>
+</main>
+</body>
+</html>

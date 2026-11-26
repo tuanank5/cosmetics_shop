@@ -28,7 +28,17 @@ class MongoDanhGiaStoreNghiTest {
 
     @Test
     void loiKetNoiThiNghiRoiThuLaiSauKhoangNghi() {
-        when(repository.findByMaSanPhamAndHienThiTrueOrderByNgayTaoDesc(anyLong(), any()))
+        var converter = mock(org.springframework.data.mongodb.core.convert.MongoConverter.class);
+        when(mongo.getConverter()).thenReturn(converter);
+        var mapping = new org.springframework.data.mongodb.core.mapping.MongoMappingContext();
+        mapping.setSimpleTypeHolder(org.springframework.data.mongodb.core.convert.MongoCustomConversions
+            .create(adapter -> {}).getSimpleTypeHolder());
+        org.mockito.Mockito.doReturn(mapping).when(converter).getMappingContext();
+        when(mongo.indexOps(com.beautyshop.model.DanhGia_Document.class))
+            .thenReturn(mock(org.springframework.data.mongodb.core.index.IndexOperations.class));
+        when(mongo.execute(any(String.class), any(org.springframework.data.mongodb.core.CollectionCallback.class)))
+            .thenReturn(true);
+        when(repository.findByMaSanPhamAndHienThiTrueOrderByNgayTaoDescIdDesc(anyLong(), any()))
             .thenThrow(new DataAccessResourceFailureException("timeout"))
             .thenReturn(Page.empty());
 
@@ -36,11 +46,11 @@ class MongoDanhGiaStoreNghiTest {
         dongHo.troi(MongoDanhGia_Store.NGHI_SAU_LOI_MS - 1);
         // Trong khoảng nghỉ: ném ngay, không gọi MongoDB.
         assertThatThrownBy(() -> store.congKhai(1, Pageable.ofSize(10))).hasMessageContaining("tam ngung");
-        verify(repository, times(1)).findByMaSanPhamAndHienThiTrueOrderByNgayTaoDesc(anyLong(), any());
+        verify(repository, times(1)).findByMaSanPhamAndHienThiTrueOrderByNgayTaoDescIdDesc(anyLong(), any());
 
         dongHo.troi(1);
         assertThat(store.congKhai(1, Pageable.ofSize(10))).isEmpty();
-        verify(repository, times(2)).findByMaSanPhamAndHienThiTrueOrderByNgayTaoDesc(anyLong(), any());
+        verify(repository, times(2)).findByMaSanPhamAndHienThiTrueOrderByNgayTaoDescIdDesc(anyLong(), any());
     }
 
     @Test

@@ -21,17 +21,7 @@
 
         <h1>Đăng ký</h1>
 
-        <!-- Thông báo thành công -->
-        <div class="notice" role="status"
-             th:if="${message != null}"
-             th:text="${message}">
-        </div>
-
-        <!-- Thông báo lỗi -->
-        <div class="error-summary" role="alert"
-             th:if="${error != null}"
-             th:text="${error}">
-        </div>
+        <div th:replace="~{fragments/ui :: notices(${message}, ${error})}"></div>
 
         <!-- THÔNG TIN ĐĂNG KÝ -->
         <div th:if="${otpSent != true}">
@@ -88,24 +78,17 @@
                         Từ 12 đến 72 ký tự, tối đa 72 byte UTF-8.
                     </p>
 
-                    <div class="password-control">
+                    <div th:replace="~{fragments/ui :: password(~{:: #matKhau}, 'matKhau', 'Hiện mật khẩu')}">
                         <input type="password"
                                id="matKhau"
                                name="matKhau"
                                th:attr="aria-invalid=${#fields.hasErrors('matKhau') or #fields.hasErrors('doDaiBcryptHopLe') ? 'true' : null}"
+                               aria-describedby="password-hint matKhau-error bcrypt-error"
                                autocomplete="new-password"
                                minlength="12"
                                maxlength="72"
                                required>
 
-                        <button class="btn btn--ghost"
-                                type="button"
-                                data-password-toggle="matKhau"
-                                aria-controls="matKhau"
-                                aria-pressed="false"
-                                hidden>
-                            Hiện mật khẩu
-                        </button>
                     </div>
 
                     <div th:replace="~{fragments/ui :: fieldError('matKhau', 'matKhau-error')}"></div>

@@ -1,6 +1,15 @@
 (() => {
   'use strict';
   const menu = document.querySelector('.header-menu');
+  const adminMenu = document.querySelector('.admin-menu');
+  const closeGroups = (container) => {
+    container.querySelectorAll('details[open]').forEach((group) => { group.open = false; });
+  };
+  document.querySelectorAll('.header-menu, .admin-menu, .nav-discovery').forEach((container) => {
+    container.addEventListener('toggle', () => {
+      if (!container.open) closeGroups(container);
+    });
+  });
   if (menu) {
     const desktop = window.matchMedia('(min-width: 1100px)');
     menu.open = desktop.matches;
@@ -8,11 +17,13 @@
       if (menu.contains(document.activeElement)) {
         menu.querySelector('summary').focus();
       }
-      menu.querySelectorAll('details[open]').forEach((group) => { group.open = false; });
+      closeGroups(menu);
       menu.open = desktop.matches;
     });
-    menu.addEventListener('keydown', (event) => {
-      if (event.key === 'Escape' && menu.open) {
+  }
+  [menu, adminMenu].filter(Boolean).forEach((container) => {
+    container.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && container.open) {
         const expanded = event.target.closest('details[open]');
         if (expanded) {
           expanded.open = false;
@@ -21,7 +32,7 @@
         }
       }
     });
-  }
+  });
   const skuImage = document.querySelector('[data-sku-image]');
   if (skuImage) {
     const showPlaceholder = () => {
@@ -85,11 +96,30 @@
   const catalogFilters = document.querySelector('[data-catalog-filters]');
   if (catalogFilters) {
     const targets = ['#categories', '#brands', '#skin-type'];
-    catalogFilters.open = targets.includes(location.hash);
-    window.addEventListener('hashchange', () => {
+    const revealAnchor = () => {
       if (targets.includes(location.hash)) catalogFilters.open = true;
+    };
+    revealAnchor();
+    window.addEventListener('hashchange', revealAnchor);
+    catalogFilters.addEventListener('toggle', () => {
+      document.querySelectorAll('[data-catalog-filter-pages] a, .catalog-results .store-card').forEach((link) => {
+        const url = new URL(link.href);
+        url.searchParams.set('filterPanel', catalogFilters.open ? 'open' : 'closed');
+        link.href = url;
+      });
     });
   }
+
+  document.querySelectorAll('[data-entry-disclosure]').forEach((details) => {
+    const previous = history.state?.productDisclosures?.[details.id];
+    if (typeof previous === 'boolean') details.open = previous;
+    details.addEventListener('toggle', () => {
+      history.replaceState({
+        ...history.state,
+        productDisclosures: { ...history.state?.productDisclosures, [details.id]: details.open },
+      }, '');
+    });
+  });
 
   document.querySelectorAll('[data-password-toggle]').forEach((button) => {
     const input = document.getElementById(button.dataset.passwordToggle);
@@ -97,8 +127,9 @@
     button.hidden = false;
     button.addEventListener('click', () => {
       const show = input.type === 'password';
+      const { selectionStart, selectionEnd, selectionDirection } = input;
       input.type = show ? 'text' : 'password';
-      button.textContent = show ? 'Ẩn mật khẩu' : 'Hiện mật khẩu';
+      input.setSelectionRange(selectionStart, selectionEnd, selectionDirection);
       button.setAttribute('aria-pressed', String(show));
     });
   });
@@ -168,5 +199,13 @@
         button.removeAttribute('aria-disabled');
       });
     });
+  });
+  window.addEventListener('pagehide', () => {
+    if (pending) closeDialog();
+    if (adminMenu) adminMenu.open = false;
+    if (menu) {
+      closeGroups(menu);
+      if (!window.matchMedia('(min-width: 1100px)').matches) menu.open = false;
+    }
   });
 })();

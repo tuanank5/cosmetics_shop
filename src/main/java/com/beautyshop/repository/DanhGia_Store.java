@@ -11,8 +11,7 @@ import org.springframework.data.domain.Pageable;
  * P23: nơi lưu nội dung đánh giá sao + bình luận. Điều kiện được đánh giá (BR16) luôn kiểm ở MariaDB
  * ({@link DanhGia_Repository#mucMua}) trước khi gọi store.
  *
- * <p>Bản cài đặt chọn bằng {@code app.reviews.store}: {@code mongo} (mặc định, {@link MongoDanhGia_Store}) hoặc
- * {@code mariadb} (dự phòng, {@link MariaDbDanhGia_Store}, bọc bảng {@code danh_gia} cũ).
+ * MongoDB lưu nội dung đánh giá.
  * Lỗi kết nối được ném dưới dạng {@link org.springframework.dao.DataAccessException}; caller quyết định ẩn/thông báo.
  */
 public interface DanhGia_Store {

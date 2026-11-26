@@ -1,6 +1,6 @@
 package com.beautyshop.service;
 
-import com.beautyshop.entity.NhatKyQuanTri;
+import com.beautyshop.model.NhatKyQuanTri;
 import com.beautyshop.repository.NhatKyQuanTri_Repository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;

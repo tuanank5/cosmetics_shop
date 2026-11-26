@@ -1,8 +1,5 @@
 package com.beautyshop.repository;
 
-import java.time.Instant;
-import java.time.LocalDateTime;
-import java.time.ZoneOffset;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
@@ -14,7 +11,6 @@ import org.springframework.stereotype.Repository;
 /**
  * Phần đánh giá luôn đọc từ MariaDB, dù nội dung đánh giá lưu ở store nào (P23):
  * điều kiện BR16 (chủ đơn, đơn DELIVERED, theo từng dòng đơn), tên sản phẩm theo lô cho Admin,
- * và nguồn dữ liệu cũ của bảng {@code danh_gia} cho bộ chuyển sang MongoDB.
  */
 @Repository
 public class DanhGia_Repository {
@@ -52,30 +48,9 @@ public class DanhGia_Repository {
             .query((rs, row) -> new SanPhamLoc(rs.getLong(1), rs.getString(2))).list();
     }
 
-    /** Toàn bộ bảng danh_gia cũ kèm snapshot đơn/biến thể/tên rút gọn, cho bộ chuyển sang MongoDB. */
-    public List<DanhGiaCu> tatCaDanhGiaCu() {
-        return jdbc.sql("""
-            SELECT dg.ma_danh_gia, dg.ma_chi_tiet_don_hang, ct.ma_don_hang, dg.ma_nguoi_dung, dg.ma_san_pham,
-                   ct.ma_bien_the, n.ho_ten, dg.so_sao, dg.noi_dung, dg.hien_thi, dg.ngay_tao
-            FROM danh_gia dg
-            JOIN chi_tiet_don_hang ct ON ct.ma_chi_tiet_don_hang = dg.ma_chi_tiet_don_hang
-            JOIN nguoi_dung n ON n.ma_nguoi_dung = dg.ma_nguoi_dung
-            ORDER BY dg.ma_danh_gia
-            """).query((rs, row) -> new DanhGiaCu(rs.getLong(1), rs.getLong(2), rs.getLong(3), rs.getLong(4), rs.getLong(5),
-                rs.getLong(6), DanhGia_Store.tenRutGon(rs.getString(7)), rs.getInt(8), rs.getString(9), rs.getBoolean(10),
-                utc(rs.getObject(11, LocalDateTime.class)))).list();
-    }
-
-    static Instant utc(LocalDateTime gio) {
-        return gio == null ? null : gio.toInstant(ZoneOffset.UTC);
-    }
-
     public record MucMua(long maSanPham, String tenSanPham, String tenBienThe, long maDon, String trangThai,
                          long maBienThe, String tenHienThi) {}
 
     public record SanPhamLoc(long ma, String ten) {}
 
-    /** {@code ngayTao} theo UTC (cột danh_gia.ngay_tao được ghi bằng UTC_TIMESTAMP). */
-    public record DanhGiaCu(long maDanhGia, long maChiTietDonHang, long maDonHang, long maNguoiDung, long maSanPham,
-                            long maBienThe, String tenHienThi, int soSao, String noiDung, boolean hienThi, Instant ngayTao) {}
 }

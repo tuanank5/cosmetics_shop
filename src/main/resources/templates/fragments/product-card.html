@@ -5,7 +5,13 @@
          th:with="preview=${catalogPreviewMedia != null ? catalogPreviewMedia[the.duongDan] : null},
                   thumbnail=${preview != null and preview['thumbnailUrl'] != null ? preview['thumbnailUrl'] :
                     (preview != null and preview['videoPosterUrl'] != null ? preview['videoPosterUrl'] : the.urlHinhAnh)}">
-<a class="store-card" th:href="@{/products/{slug}(slug=${the.duongDan})}">
+<a class="store-card"
+   th:id="${navOrigin != null and #strings.startsWith(navOrigin, 'home-') and the.maSanPham != null ? navOrigin + '-product-' + the.maSanPham : null}"
+   th:href="${navOrigin == 'catalog'}
+     ? @{/products/{slug}(slug=${the.duongDan},from='catalog',q=${q},brand=${brand},category=${category},skinType=${skinType},sort=${sort},page=${ketQua.number},size=${ketQua.size},filterPanel=${filterPanel})}
+     : (${sapXepTrangChu == 'priceAsc' or sapXepTrangChu == 'priceDesc'}
+       ? @{/products/{slug}(slug=${the.duongDan},from=${navOrigin},sort=${sapXepTrangChu})}
+       : @{/products/{slug}(slug=${the.duongDan},from=${navOrigin})})">
     <div class="store-card-media" th:with="coAnh=${!#strings.isEmpty(#strings.trim(thumbnail))}">
         <img th:if="${coAnh}" data-catalog-image th:src="@{${thumbnail}}" alt="" width="400" height="500"
              th:loading="${uuTienAnh ? 'eager' : 'lazy'}" decoding="async">
@@ -21,7 +27,8 @@
         <p class="store-card-brand" th:text="${the.tenThuongHieu}"></p>
         <h3 th:text="${the.tenSanPham}"></h3>
         <p class="store-card-price">Từ <span th:replace="~{fragments/ui :: money(${the.giaTu})}"></span></p>
-        <th:block th:with="tt=${tomTatDanhGia != null and the.maSanPham != null ? tomTatDanhGia[the.maSanPham] : null}">
+        <p class="muted" th:if="${tomTatDanhGia != null and tomTatDanhGia.khongTaiDuoc}">Đánh giá tạm thời không khả dụng.</p>
+        <th:block th:with="tt=${tomTatDanhGia != null and the.maSanPham != null ? tomTatDanhGia.theoSanPham[the.maSanPham] : null}">
             <p class="store-card-rating" th:if="${tt != null and tt.soLuong > 0}">
                 <span th:replace="~{fragments/rating :: stars(${tt.nuaSao}, |${tt.trungBinhHienThi} trên 5 sao|)}"></span>
                 <span th:text="|${tt.trungBinhHienThi} · ${tt.soLuong} đánh giá|"></span>

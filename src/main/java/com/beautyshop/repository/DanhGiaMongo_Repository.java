@@ -1,6 +1,6 @@
 package com.beautyshop.repository;
 
-import com.beautyshop.entity.DanhGia_Document;
+import com.beautyshop.model.DanhGia_Document;
 import java.util.Optional;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -10,7 +10,7 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 public interface DanhGiaMongo_Repository extends MongoRepository<DanhGia_Document, String> {
     Optional<DanhGia_Document> findByMaChiTietDonHangAndMaNguoiDung(Long maChiTietDonHang, Long maNguoiDung);
 
-    Page<DanhGia_Document> findByMaSanPhamAndHienThiTrueOrderByNgayTaoDesc(Long maSanPham, Pageable pageable);
+    Page<DanhGia_Document> findByMaSanPhamAndHienThiTrueOrderByNgayTaoDescIdDesc(Long maSanPham, Pageable pageable);
 
     long countByHienThiFalseAndNgayDuyetIsNull();
 }
