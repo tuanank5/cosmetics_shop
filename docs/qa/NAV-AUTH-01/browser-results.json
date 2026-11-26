@@ -1,0 +1,82 @@
+{
+  "browser": "Chrome/158.0.8127.88",
+  "checks": [
+    {
+      "chapterReturn": {
+        "slide": "5",
+        "stageTop": 0,
+        "stageBottom": 1080,
+        "chapterTop": 0,
+        "chapterBottom": 1080,
+        "viewportHeight": 1080,
+        "focusInCard": false
+      }
+    },
+    "Home all-products still restores focus to the originating card.",
+    "Home mobile with site JavaScript disabled: Chapter 5 heading remains visible after returning.",
+    {
+      "width": 390,
+      "catalogReturn": {
+        "hash": "#catalog-product-1",
+        "visible": true,
+        "params": {
+          "brand": "fixture-brand",
+          "sort": "priceDesc",
+          "page": "1",
+          "size": "1",
+          "filterPanel": "open"
+        }
+      }
+    },
+    {
+      "route": "/login",
+      "width": 390,
+      "logo": {
+        "alt": "BeautyShop",
+        "intrinsicWidth": 862,
+        "width": 280
+      }
+    },
+    {
+      "route": "/register",
+      "width": 390,
+      "logo": {
+        "alt": "BeautyShop",
+        "intrinsicWidth": 862,
+        "width": 280
+      }
+    },
+    {
+      "width": 1366,
+      "catalogReturn": {
+        "hash": "#catalog-product-1",
+        "visible": true,
+        "params": {
+          "brand": "fixture-brand",
+          "sort": "priceDesc",
+          "page": "1",
+          "size": "1",
+          "filterPanel": "open"
+        }
+      }
+    },
+    {
+      "route": "/login",
+      "width": 1366,
+      "logo": {
+        "alt": "BeautyShop",
+        "intrinsicWidth": 862,
+        "width": 280
+      }
+    },
+    {
+      "route": "/register",
+      "width": 1366,
+      "logo": {
+        "alt": "BeautyShop",
+        "intrinsicWidth": 862,
+        "width": 280
+      }
+    }
+  ]
+}

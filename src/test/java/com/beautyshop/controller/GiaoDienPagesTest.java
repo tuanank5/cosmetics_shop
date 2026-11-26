@@ -410,6 +410,10 @@ class GiaoDienPagesTest {
     @Test
     void productReturnKeepsOnlyTypedSourceAndRespectsContextPath() throws Exception {
         sanPhamHaiBienThe();
+        mvc.perform(get("/shop/products/kiem-thu").contextPath("/shop").param("from", "home-featured"))
+            .andExpect(status().isOk())
+            .andExpect(content().string(containsString("href=\"/shop/#home-featured\"")))
+            .andExpect(content().string(not(containsString("#home-featured-product-3"))));
         mvc.perform(get("/shop/products/kiem-thu").contextPath("/shop").param("from", "home-popular")
                 .param("token", "fixture").param("state", "fixture"))
             .andExpect(status().isOk())
@@ -419,7 +423,7 @@ class GiaoDienPagesTest {
         mvc.perform(get("/products/kiem-thu").param("from", "catalog").param("q", "kem + serum")
                 .param("sort", "priceAsc").param("page", "2").param("size", "7"))
             .andExpect(status().isOk())
-            .andExpect(content().string(containsString("href=\"/products?q=kem%20%2B%20serum&amp;sort=priceAsc&amp;page=2&amp;size=7\"")));
+            .andExpect(content().string(containsString("href=\"/products?q=kem%20%2B%20serum&amp;sort=priceAsc&amp;page=2&amp;size=7#catalog-product-3\"")));
         mvc.perform(get("/products/kiem-thu").param("from", "//other.invalid"))
             .andExpect(content().string(containsString("class=\"pdp-back text-link\" href=\"/products\"")));
         mvc.perform(get("/products/kiem-thu").param("from", "wishlist"))

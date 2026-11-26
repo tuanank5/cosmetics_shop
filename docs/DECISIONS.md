@@ -40,6 +40,7 @@
 | D35 | QA-01. Owner giao tiếp bản sửa bảo vệ dữ liệu trên `POST /chat`. Chỉ hiển thị lại câu hỏi đã qua validation, giới hạn tần suất và kiểm tra nội dung của BR19. | Nhánh từ chối, validation và HTTP 429 hiển thị ô trống và thông báo hiện hành. Giữ CSRF và bộ lọc chặn trước khi gọi AI. [Bằng chứng QA-01](reviews/QA-01-ket-qua.md) |
 | D36 | LOCAL-SETUP-01. Dùng một mẫu `.env` cho thiết lập dev và một lệnh seed có tùy chọn nạp đơn mẫu. Nâng schema bằng chuỗi Flyway V1–V7. | Giữ nguyên checksum, lịch sử và mặc định an toàn của Flyway. Khi schema cũ khác lịch sử repo, đối chiếu trên bản sao trước khi lập đường chuyển. [Hướng dẫn local](deployment/01-local-db-and-flyway.md) |
 | D37 | UI-COPY-01. Owner chọn khởi tạo database mới cho đợt bàn giao và duyệt cập nhật câu chữ FAQ mẫu ngay trong V5. | V5 đổi checksum. Khởi tạo một database trống để nạp FAQ mới. V1 và cấu trúc database giữ nguyên. [Hướng dẫn local](deployment/01-local-db-and-flyway.md) |
+| D38 | Từ sản phẩm nổi bật của chương 5, nút “Quay lại trang chủ” mở đầu chương. Từ danh sách sản phẩm, nút quay lại giữ truy vấn đã chọn và đến thẻ sản phẩm. | Dùng đích HTML để hoạt động cả khi tắt JavaScript. [Kết quả NAV-AUTH-01](reviews/NAV-AUTH-01-ket-qua.md) |
 
 ## Điểm còn cần xác minh/định cấu hình
 

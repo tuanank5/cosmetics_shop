@@ -146,7 +146,8 @@ public final class NguonDieuHuong {
             case "home-featured", "home-popular", "home-all-products" -> {
                 String sort = request.getOrDefault("sort", "");
                 if (sort.equals("priceAsc") || sort.equals("priceDesc")) thamSo.put("sort", sort);
-                ve = coThamSo("/", thamSo) + "#" + nguon + "-product-" + maSanPham;
+                String neo = nguon.equals("home-featured") ? nguon : nguon + "-product-" + maSanPham;
+                ve = coThamSo("/", thamSo) + "#" + neo;
                 nhan = "Quay lại trang chủ";
             }
             case "wishlist" -> {
@@ -169,7 +170,7 @@ public final class NguonDieuHuong {
                 so(thamSo, "size", request.get("size"), 1, 48);
                 String filterPanel = request.getOrDefault("filterPanel", "");
                 if (filterPanel.equals("open") || filterPanel.equals("closed")) thamSo.put("filterPanel", filterPanel);
-                ve = coThamSo("/products", thamSo);
+                ve = coThamSo("/products", thamSo) + "#catalog-product-" + maSanPham;
                 nhan = "Quay lại danh sách sản phẩm";
             }
             default -> { return macDinh(); }
@@ -194,8 +195,7 @@ public final class NguonDieuHuong {
         }
         var thamSo = new LinkedHashMap<>(request);
         thamSo.put("from", origin);
-        String ve = sanPham(thamSo, maSanPham, true).duongVe();
-        return origin.equals("catalog") ? ve + "#catalog-product-" + maSanPham : ve;
+        return sanPham(thamSo, maSanPham, true).duongVe();
     }
 
     private static void soLong(Map<String, String> thamSo, String ten, String value) {
