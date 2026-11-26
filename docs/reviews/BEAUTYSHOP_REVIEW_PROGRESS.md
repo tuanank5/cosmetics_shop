@@ -1,5 +1,9 @@
 # Tiến độ rà soát chức năng BeautyShop · Lượt 1
 
+## Cập nhật sau AUTH-02
+
+Đã cập nhật kế hoạch, Audit, manifest, 13 prompt và sổ triển khai theo AUTH-02. [Nghiệm thu auth](AUTH-02-nghiem-thu-xac-thuc.md) · [Manifest hiện hành](implementation-prompts/00-EXECUTION_ORDER.md)
+
 ## Điểm bắt đầu
 
 - Nhánh `main`, HEAD `9a812ca433be3875dd423ff69aacaa31cc00ed1c`. `git status --short --branch` hiển thị `main...origin/main`. Diff tracked và staged trống. Tài liệu kiểm thử thủ công của owner là file untracked duy nhất lúc bắt đầu.

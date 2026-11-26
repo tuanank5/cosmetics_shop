@@ -20,18 +20,38 @@ Bốn quyết định mới thay các câu hỏi còn mở trong Audit. DATA-01 
 | Index | DATA-01 bảo vệ unique index review. Index SQL mới cần EXPLAIN, đánh giá dữ liệu và phê duyệt riêng. |
 | Cache | Chưa cần thêm Caffeine/Redis; tránh stale giá/tồn, quyền và dữ liệu Customer. |
 | Thumbnail/WebP/ảnh | Giữ ảnh/giá SKU, preview, lazy load, placeholder; backlog riêng khi có số liệu payload/LCP. |
-| Bảo mật tài khoản | SEC-01 giữ quyền/status, QA kiểm session/CSRF/logout; UI-01C đổi nhãn nếu đúng. Reset password, email, 2FA và thay quyền ngoài gói hiện tại. |
+| Bảo mật tài khoản | AUTH-02 đã triển khai OTP, OAuth, reset và thu hồi phiên. SEC-01 giữ hợp đồng HTTP/quyền. QA-01 kiểm hồi quy. 2FA cần duyệt riêng. |
 | Background job | Giữ lịch và batch hiện tại. QA-01 kiểm restart và sự cô lập dịch vụ khi liên quan. Không tạo scheduler ranking. |
 | MoMo reconciliation | Giữ job kiểm gateway, trạng thái, hold và idempotency; QA regression mock, ORDER-01 chỉ đọc. Không giải phóng chỉ vì hết thời gian. |
 | Backup/restore | Baseline, DATA-01, ARCH-01, QA-01 kiểm kế hoạch phục hồi SQL/Mongo/ảnh trên bản sao độc lập. |
 | Tồn kho | Giữ khóa, available, V2, hold và kiểm lại checkout; nhiều lô/FEFO, kiểm kê mở rộng cần duyệt riêng. |
 | Đổi trả/hoàn tiền | Giữ state machine; regression snapshot, giới hạn số lượng và trạng thái. Tái nhập có kiểm định mỹ phẩm, hoàn một phần và sổ hoàn là backlog nghiệp vụ. |
-| Thông báo | CART-01 chỉ chi tiết khi giảm còn tồn dương; UI-01C vùng alert, REVIEW-01 focus. Inbox, realtime, audit DB cần duyệt thêm. |
+| Thông báo | CART-01 chỉ chi tiết khi giảm còn tồn dương; UI-01C vùng alert, REVIEW-01 focus. Nhật ký DB đã phục vụ xác thực và Admin gửi yêu cầu reset. Inbox, realtime và audit nghiệp vụ khác cần duyệt thêm. |
 | Các việc khác | SHOP-12 gồm toàn bộ footer/nhận diện/chính sách chỉ backlog. Giữ ranking, tìm SKU và D24; tìm gần đúng, quote có thời hạn và lịch sử từng attempt chưa triển khai. AI/RAG/Ollama và vai trò Admin chi tiết ngoài phạm vi. |
 
 Điều chỉnh đề xuất trước triển khai là ghi rõ người chịu trách nhiệm và gate cho UI chi tiết/checkout ở G4, G5, G13 và nhãn tài khoản ở G5. Không thêm gói, không thay ID. Nếu owner muốn thiết kế lại toàn bộ trang chi tiết thay vì chuẩn hóa theo component, cần duyệt riêng trước phần mở rộng.
 
-## Checklist baseline trước SEC-01 (chưa thực hiện)
+## Baseline AUTH-02 trước SEC-01
+
+AUTH-02 nằm trên working tree của main tại HEAD 72a2805. Maven verify có 226/284 ca đạt, 58 skip. Bộ MariaDB riêng đạt 26/26. Callback Google/GitHub thật, Redis thật, SMTP thật và kết quả kiểm thử thủ công của owner còn chờ ghi nhận. Khi bắt đầu gói, đối chiếu working tree với V7 và mã auth thực tế. [Nghiệm thu AUTH-02](../AUTH-02-nghiem-thu-xac-thuc.md)
+
+| Phase | Gói | Hợp đồng và gate bổ sung |
+|---|---|---|
+| 1 | SEC-01 | Dùng Security_Config và principal mới, NULL password, reset không dò email, CSRF, quyền Admin, version, OAuth-only, trang lỗi. Không xây hệ thống auth lần hai. Kiểm 403/404, CSRF và phản hồi xin reset chung cho mọi email. |
+| 1 | DATA-01 | Fixture người mua theo cùng ID, tài khoản mới có/không có hash. Review Mongo tắt không cản auth SQL; auth không fallback hay ghi audit nội dung review. Kiểm Mongo lỗi khi Customer đăng nhập và đọc đơn trên MariaDB. |
+| 2 | ARCH-01 | Di chuyển cả ba JPA entity mới khi đổi entity → model. Giữ tên bảng, JPQL, principal mapping và fixture V5/V6/V7. Chạy XacThucMigration_MariaDb_Test sau đổi package với V1–V7. |
+| 3 | NAV-01 | Kiểm saved request của login thật, quay về /account/security sau link và ngữ cảnh danh sách Admin. Loại token, state, callback và URL ngoài site khỏi nguồn Back. Kiểm login từ checkout, LINK/REAUTH và Back từ Admin chi tiết về q/page. |
+| 3 | UI-01C | Tái dùng form mật khẩu, vùng lỗi, xác nhận Admin, focus, nhãn quản lý tài khoản. Test cả no-JS, zoom và mobile. Kiểm zoom, bàn phím, JS tắt và form xác nhận ở admin/user/detail. |
+| 3 | UI-01P | Duy trì q/page ở /admin/users. Chỉ phân trang audit nếu owner duyệt riêng màn hình đọc sau này. Kiểm pager /admin/users khi danh sách lọc chỉ còn một trang. |
+| 4 | CART-01 | Ba phương thức login cùng ID, gộp đúng một lần. LINK/REAUTH/reset không gộp. Giữ scope điều chỉnh tồn dương và notice sau commit. Kiểm LOGIN qua cả ba phương thức với giỏ Guest và ca 5 + 7, tồn 10. |
+| 4 | CAT-01 | Bảo toàn chính sách ngừng hoạt động. Chỉ tái dùng hợp đồng audit nếu được duyệt thêm sự kiện catalog. Kiểm quyền Customer/Admin trên route catalog sau khi bỏ hard delete. |
+| 5 | WISH-01 | Đổi phương thức đăng nhập vẫn cùng wishlist. Kiểm phiên bị thu hồi khi thao tác từ tab cũ. Kiểm cùng wishlist trên hai tab sau khi thu hồi phiên. |
+| 5 | ORDER-01 | Ownership dựa trên cùng mã user, tài khoản khóa và phiên cũ không đọc đơn. Audit trạng thái đơn cần phê duyệt riêng. Kiểm ownership sau đổi phương thức đăng nhập và trạng thái thanh toán hiệu lực. |
+| 5 | REVIEW-01 | Quyền mua/review theo ID nội bộ, giữ revision Mongo và scope Moderator hiện thực bằng ROLE_ADMIN. Không ghi kép audit SQL làm nguồn nội dung review. Kiểm Customer OAuth bị từ chối duyệt và Admin gặp xung đột revision. |
+| 6 | DTO-01 | Projection tài khoản chỉ gồm trường cần hiển thị; loại hash, token, provider subject và thuộc tính nội bộ khỏi JSON/view. Kiểm HTML/JSON và model lienKetCho trong BaoMatTaiKhoan_Controller để tránh xuất hash, token hoặc subject. |
+| 7 | QA-01 | Chạy lại ma trận mục 9, các suite cũ và CI với baseline mới, phân biệt môi trường mô phỏng/thật. Chạy OAuth2Callback_MariaDb_Test, XacThucDaPhuongThuc_MariaDb_Test và XacThucMigration_MariaDb_Test trên DB riêng. |
+
+## Checklist chạy lại khi bắt đầu SEC-01
 
 - [ ] Owner giao SEC-01, một người ghi duy nhất trong working tree. Đọc AGENTS.md. Ghi branch, HEAD, status bao gồm untracked, diff tracked/staged; lưu danh sách thay đổi sẵn có, không ghi đè. Đặc biệt bảo toàn tài liệu untracked và phiếu test của owner.
 - [ ] Ghi phiên bản Java 21, Maven, profile và revision thực tế. Chạy compile trước, ví dụ `mvn -o compile`; ghi exit code. Với cùng revision chạy `mvn -o test` và `mvn -o -DskipTests package`. Đối chiếu Surefire: tổng, chạy đạt, failure, error, skip và tên ca bị chặn; tách từng profile. Ghi test đỏ có sẵn và lý do skip. Không dùng số 270/48 của lần P20C làm baseline.

@@ -1,4 +1,8 @@
-﻿# BeautyShop · Thiết kế nâng cấp và kế hoạch thực hiện (lượt 2/3)
+# BeautyShop · Thiết kế nâng cấp và kế hoạch thực hiện (lượt 2/3)
+
+## Cập nhật sau AUTH-02
+
+Thiết kế hiện hành dùng danh tính theo provider/subject, mật khẩu nullable, token reset và nhật ký SQL. AUTH-02 là đầu vào trước SEC-01. [Nghiệm thu auth](AUTH-02-nghiem-thu-xac-thuc.md) · [Manifest hiện hành](implementation-prompts/00-EXECUTION_ORDER.md)
 
 **Bản để phản biện, 25/11/2026.** Mốc thiết kế là `main`, commit `9a812ca433be3875dd423ff69aacaa31cc00ed1c`, cùng mốc lượt 1. Ban đầu không có diff tracked hoặc staged. Ba tài liệu chưa được Git theo dõi là hướng dẫn test thủ công, báo cáo chức năng và nhật ký tiến độ. Bằng chứng dưới đây là đọc tĩnh. Các bài đo, test và thao tác triển khai đều là tiêu chí cho tương lai.
 

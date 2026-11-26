@@ -16,7 +16,13 @@ import org.springframework.security.web.access.intercept.AuthorizationFilter;
 import org.springframework.security.web.servlet.util.matcher.PathPatternRequestMatcher;
 import org.springframework.web.util.HttpSessionMutexListener;
 import org.springframework.http.HttpMethod;
-import org.springframework.security.oauth2.client.userinfo.OAuth2UserService;
+import org.springframework.security.oauth2.client.registration.ClientRegistrationRepository;
+import org.springframework.security.oauth2.core.OAuth2AuthenticationException;
+import org.springframework.security.oauth2.client.web.OAuth2AuthorizationRequestRedirectFilter;
+import org.springframework.security.oauth2.client.web.OAuth2LoginAuthenticationFilter;
+import org.springframework.security.config.ObjectPostProcessor;
+import org.springframework.web.filter.RequestContextFilter;
+import com.beautyshop.service.DanhTinhOAuth_Service;
 
 @Configuration
 @EnableMethodSecurity
@@ -24,22 +30,56 @@ public class Security_Config {
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http, LoginSuccess_Handler loginSuccess,
                                             NguoiDung_Repository nguoiDungRepository,
-                                            OAuth2NguoiDung_Service oauth2NguoiDungService,
+                                            ObjectProvider<ClientRegistrationRepository> oauthClients,
+                                            ObjectProvider<OAuth2NguoiDung_Service> oauthUsers,
+                                            ObjectProvider<DanhTinhOAuth_Service> identities,
                                             ObjectProvider<Momo_Settings> momoSettings) throws Exception {
         var momo = momoSettings.getIfAvailable();
         if (momo != null && momo.enabled()) {
             http.csrf(csrf -> csrf.ignoringRequestMatchers(PathPatternRequestMatcher.withDefaults()
                 .matcher(HttpMethod.POST, "/payment/momo/ipn")));
         }
+        var clients = oauthClients.getIfAvailable();
+        if (clients != null) {
+            var oauthService = oauthUsers.getObject();
+            http.addFilterBefore(new RequestContextFilter(), OAuth2AuthorizationRequestRedirectFilter.class);
+            http.oauth2Login(oauth2 -> oauth2.loginPage("/login")
+                .clientRegistrationRepository(clients)
+                .authorizedClientRepository(new OAuth2ThaoTac.KhongLuuToken())
+                .authorizationEndpoint(endpoint -> endpoint.authorizationRequestRepository(new OAuth2ThaoTac.YeuCau()))
+                .userInfoEndpoint(userInfo -> userInfo.userService(oauthService).oidcUserService(oauthService::loadGoogle))
+                .withObjectPostProcessor(new ObjectPostProcessor<OAuth2LoginAuthenticationFilter>() {
+                    @Override
+                    public <O extends OAuth2LoginAuthenticationFilter> O postProcess(O filter) {
+                        filter.setAuthenticationResultConverter(token -> OAuth2ThaoTac.ketQua(token, identities.getObject()));
+                        return filter;
+                    }
+                })
+                .successHandler(loginSuccess)
+                .failureHandler((request, response, failure) -> {
+                    String code = failure instanceof OAuth2AuthenticationException oauthError
+                        ? oauthError.getError().getErrorCode() : "";
+                    String path = switch (code) {
+                        case "beautyshop_operation_verified" -> "/account/security";
+                        case "oauth_operation_invalid" -> "/account/security?oauthError";
+                        default -> OAuth2ThaoTac.laThaoTac(request)
+                            ? "/account/security?oauthError" : "/login?oauth2Error";
+                    };
+                    response.sendRedirect(request.getContextPath() + path);
+                }));
+        }
         return http
                 .addFilterBefore(new TrangThaiTaiKhoan_Filter(nguoiDungRepository), AuthorizationFilter.class)
                 .authorizeHttpRequests(auth -> auth
                     .requestMatchers("/", "/products", "/products/**", "/login", "/register","/register/**","/oauth2/**",
-                            "/login/oauth2/**","/css/**", "/js/**", "/img/**", "/error", "/favicon.ico").permitAll()
+                            "/login/oauth2/**", "/forgot-password", "/reset-password",
+                            "/css/**", "/js/**", "/img/**", "/error", "/favicon.ico").permitAll()
                     .requestMatchers(HttpMethod.GET, "/cart", "/cart/**", "/uploads/sku/*").permitAll()
                     .requestMatchers(HttpMethod.HEAD, "/uploads/sku/*").permitAll()
                     .requestMatchers(HttpMethod.GET, "/chat").permitAll()
                     .requestMatchers(HttpMethod.POST, "/chat").permitAll()
+                    .requestMatchers(HttpMethod.GET, "/tu-van-da").permitAll()
+                    .requestMatchers(HttpMethod.POST, "/tu-van-da").permitAll()
                     .requestMatchers(HttpMethod.POST, "/cart", "/cart/**")
                         .access(new WebExpressionAuthorizationManager("isAnonymous() or hasRole('CUSTOMER')"))
                     .requestMatchers(HttpMethod.POST, "/payment/momo/ipn").permitAll()
@@ -49,15 +89,6 @@ public class Security_Config {
                     .requestMatchers("/checkout/**", "/orders/**", "/account/**").hasRole("CUSTOMER")
                     .anyRequest().authenticated())
                 .formLogin(form -> form.loginPage("/login").successHandler(loginSuccess).permitAll())
-                // Đăng nhập Google và GitHub
-                .oauth2Login(oauth2 -> oauth2
-                        .loginPage("/login")
-                        .userInfoEndpoint(userInfo -> userInfo
-                                .userService(oauth2NguoiDungService)
-                        )
-                        .successHandler(loginSuccess)
-                        .failureUrl("/login?oauth2Error")
-                )
                 .logout(logout -> logout.logoutUrl("/logout").logoutSuccessUrl("/?logout").invalidateHttpSession(true))
                 .build();
     }

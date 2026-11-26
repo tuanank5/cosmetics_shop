@@ -13,6 +13,9 @@ import org.springframework.data.repository.query.Param;
 public interface NguoiDung_Repository extends JpaRepository<NguoiDung, Long> {
     Optional<NguoiDung> findByEmail(String email);
 
+    @Query("select n.maNguoiDung from NguoiDung n where n.email = :email")
+    Optional<Long> timMaTheoEmail(@Param("email") String email);
+
     @Lock(LockModeType.PESSIMISTIC_WRITE)
     @Query("select n from NguoiDung n where n.maNguoiDung = :id")
     Optional<NguoiDung> khoa(@Param("id") long id);

@@ -1,5 +1,9 @@
 # Rà soát toàn bộ chức năng BeautyShop · Lượt 1
 
+## Cập nhật sau AUTH-02
+
+Phiếu 73 ca ghi nhận phiên bản lượt 1. Các luồng auth mới có bằng chứng nghiệm thu riêng. [Nghiệm thu auth](AUTH-02-nghiem-thu-xac-thuc.md) · [Manifest hiện hành](implementation-prompts/00-EXECUTION_ORDER.md)
+
 ## 1. Phạm vi và phiên bản
 
 Rà soát workspace ở nhánh `main`, HEAD `9a812ca433be3875dd423ff69aacaa31cc00ed1c`. Khi bắt đầu, `git status --short --branch` hiển thị `main...origin/main`, diff tracked/staged trống và tài liệu kiểm thử gốc là file untracked duy nhất. Bản này giữ nguyên nội dung owner đã điền. Luồng được truy vết theo Controller, Security, Service, Repository, form, entity, template, JavaScript, migration và hồ sơ test có liên quan. Lượt này đọc tĩnh và đối chiếu bằng chứng sẵn có, không chạy app, truy cập DB hoặc chạy lại test. [Tài liệu 73 ca](../testing/03-huong-dan-kiem-thu-thu-cong.md) · [Nhật ký rà soát](BEAUTYSHOP_REVIEW_PROGRESS.md)

@@ -42,17 +42,17 @@
       </button>
     </form>
 
-    <div class="oauth-divider">
+    <div class="oauth-divider" th:if="${googleLogin or githubLogin}">
       <span>Hoặc đăng nhập bằng</span>
     </div>
 
-    <div class="oauth-buttons">
-      <a class="oauth-btn oauth-google"
+    <div class="oauth-buttons" th:if="${googleLogin or githubLogin}">
+      <a class="oauth-btn oauth-google" th:if="${googleLogin}"
          th:href="@{/oauth2/authorization/google}">
         <img src="https://developers.google.com/identity/images/g-logo.png" alt="Google Logo">
         Đăng nhập bằng Google
       </a>
-      <a class="oauth-btn oauth-github"
+      <a class="oauth-btn oauth-github" th:if="${githubLogin}"
          th:href="@{/oauth2/authorization/github}">
         <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub Logo">
         Đăng nhập bằng GitHub
@@ -61,9 +61,13 @@
 
     <p class="alert alert--error" role="alert" th:if="${param.oauth2Error}">
       Không thể đăng nhập bằng Google/GitHub.
-      Vui lòng kiểm tra tài khoản hoặc thử lại.
+      Nếu đã có tài khoản BeautyShop, hãy đăng nhập bằng phương thức hiện có rồi liên kết trong trang Bảo mật.
     </p>
 
+    <p class="notice" role="status" th:if="${param.passwordChanged != null or param.securityUpdated != null}">
+        Đã cập nhật bảo mật. Vui lòng đăng nhập lại.
+    </p>
+    <p><a class="text-link" th:href="@{/forgot-password}">Quên mật khẩu</a></p>
     <p class="auth-switch">Chưa có tài khoản? <a class="text-link" th:href="@{/register}">Tạo tài khoản</a></p>
   </section>
 </main>

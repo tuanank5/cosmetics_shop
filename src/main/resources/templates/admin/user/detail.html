@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/head :: head('Chi tiết tài khoản · BeautyShop')}"></head>
+<body>
+<div th:replace="~{fragments/header :: siteHeader}"></div>
+<main id="main" tabindex="-1" class="page-content login-wrap">
+    <h1>Chi tiết tài khoản</h1>
+    <p class="notice" role="status" th:if="${message}" th:text="${message}"></p>
+    <p class="form-error" role="alert" th:if="${error}" th:text="${error}"></p>
+    <p th:text="${hoTen}"></p>
+    <p th:text="${email}"></p>
+    <p th:text="${daXacMinhEmail ? 'Email đã xác minh' : 'Email chưa xác minh'}"></p>
+    <p th:text="${coMatKhau ? 'Đã thiết lập mật khẩu' : 'Chưa thiết lập mật khẩu'}"></p>
+    <p th:each="provider : ${providers}" th:text="${provider == 'google' ? 'Google đã liên kết' : 'GitHub đã liên kết'}"></p>
+    <details th:if="${duDieuKien}">
+        <summary>Gửi yêu cầu đặt lại mật khẩu</summary>
+        <form class="login-card" th:action="@{/admin/users/{id}/password-reset(id=${id})}" method="post">
+            <input type="hidden" name="q" th:value="${q}">
+            <input type="hidden" name="page" th:value="${page}">
+            <p>Customer sẽ nhận email để tự đặt mật khẩu mới.</p>
+            <label for="reason">Lý do hỗ trợ</label>
+            <select id="reason" name="reason" required>
+                <option value="">Chọn lý do</option>
+                <option value="KHACH_YEU_CAU">Khách yêu cầu</option>
+                <option value="HO_TRO_BAO_MAT">Hỗ trợ bảo mật</option>
+            </select>
+            <button class="btn btn--primary" type="submit">Xác nhận gửi yêu cầu</button>
+        </form>
+    </details>
+    <p th:unless="${duDieuKien}">Tài khoản hiện chưa đủ điều kiện đặt lại mật khẩu qua email.</p>
+    <p><a class="text-link" th:href="@{/admin/users(q=${q},page=${page})}">Quay lại danh sách</a></p>
+</main>
+<div th:replace="~{fragments/footer :: siteFooter}"></div>
+</body>
+</html>

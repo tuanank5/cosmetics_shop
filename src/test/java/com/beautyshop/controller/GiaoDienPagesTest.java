@@ -63,6 +63,7 @@ class GiaoDienPagesTest {
     @MockitoBean LoginSuccess_Handler loginSuccess;
     @MockitoBean NguoiDung_Repository nguoiDungRepository;
     @MockitoBean NguoiDung_Service nguoiDungService;
+    @MockitoBean com.beautyshop.service.EmailVerification_Service emailVerificationService;
     @MockitoBean CuaHang_Service cuaHangService;
     @MockitoBean SauMua_Service sauMuaService;
 
@@ -505,6 +506,14 @@ class GiaoDienPagesTest {
             .andExpect(content().string(containsString("aria-invalid=\"true\"")))
             .andExpect(content().string(containsString("name=\"_csrf\"")))
             .andExpect(content().string(not(containsString("value=\"short\""))));
+    }
+
+    @Test
+    void loginKeepsPasswordFormWhenNoOAuthProviderIsConfigured() throws Exception {
+        mvc.perform(get("/login"))
+            .andExpect(status().isOk())
+            .andExpect(content().string(containsString("name=\"password\"")))
+            .andExpect(content().string(not(containsString("/oauth2/authorization/"))));
     }
 
     @Test

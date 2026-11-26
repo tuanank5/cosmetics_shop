@@ -7,6 +7,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.web.filter.OncePerRequestFilter;
 
@@ -33,6 +34,8 @@ final class TrangThaiTaiKhoan_Filter extends OncePerRequestFilter {
             boolean hopLe = repository.findTrangThai(phien.getMaNguoiDung())
                 .filter(trangThai -> trangThai.isKichHoat()
                     && trangThai.getPhienBanXacThuc() == phien.getPhienBanXacThuc()
+                    && (!(authentication instanceof OAuth2AuthenticationToken)
+                        || "CUSTOMER".equals(trangThai.getVaiTro().name()))
                     && authentication.getAuthorities().stream().anyMatch(
                         role -> role.getAuthority().equals("ROLE_" + trangThai.getVaiTro().name())))
                 .isPresent();

@@ -1,4 +1,8 @@
-﻿# BeautyShop · Phản biện độc lập và kế hoạch cuối để phê duyệt
+# BeautyShop · Phản biện độc lập và kế hoạch cuối để phê duyệt
+
+## Cập nhật sau AUTH-02
+
+Các kết luận backlog của lần phản biện trước đã được thay thế đối với OAuth, reset và audit xác thực. Mở rộng audit sang nghiệp vụ khác cần duyệt riêng. [Nghiệm thu auth](AUTH-02-nghiem-thu-xac-thuc.md) · [Manifest hiện hành](implementation-prompts/00-EXECUTION_ORDER.md)
 
 **Kết luận: Có thể trình người dùng phê duyệt triển khai.** Đề nghị duyệt các gói và cửa kiểm tra bên dưới. Việc cho phép thực hiện từng gói thuộc owner. Audit ngày 25/11/2026, dùng workspace `main` tại `9a812ca433be3875dd423ff69aacaa31cc00ed1c`. Hai báo cáo trước cùng revision. Ban đầu tracked/staged sạch; đã có bốn Markdown untracked (phiếu tay, functional review, upgrade plan, progress). Đây là phản biện tĩnh. Không chạy ứng dụng, tạo fixture, truy vấn DB hay tái hiện lỗi trong lượt này.
 

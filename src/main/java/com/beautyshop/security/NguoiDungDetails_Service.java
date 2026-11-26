@@ -18,6 +18,7 @@ public class NguoiDungDetails_Service implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) {
         return repository.findByEmail(NguoiDung_Service.chuanHoaEmail(username))
+            .filter(user -> user.getMatKhauBam() != null)
             .map(PhienNguoiDung::new)
             .orElseThrow(() -> new UsernameNotFoundException("Tài khoản không tồn tại."));
     }

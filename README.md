@@ -16,6 +16,10 @@ mvn -DskipTests package
 
 Mở `http://localhost:8080/`, `/products` hoặc `/login`. Để chạy test tích hợp với MariaDB, dùng một database trống dành riêng cho test và đặt `P01_MARIADB_TEST=true` trước khi chạy `mvn test`.
 
+Đăng nhập bằng mật khẩu dùng cấu hình MariaDB ở trên. Để thử đăng ký OTP, chuẩn bị Redis và SMTP. Với Mailpit local đặt `MAIL_HOST=127.0.0.1`, `MAIL_PORT=1025`, `MAIL_SMTP_AUTH=false` và `MAIL_SMTP_STARTTLS=false`. Google và GitHub là tùy chọn. Mỗi nút chỉ xuất hiện khi cấu hình đủ cặp `GOOGLE_CLIENT_ID` / `GOOGLE_CLIENT_SECRET` hoặc `GITHUB_CLIENT_ID` / `GITHUB_CLIENT_SECRET`. Callback local dùng `http://localhost:8080/login/oauth2/code/google` hoặc `http://localhost:8080/login/oauth2/code/github`. Admin đăng nhập bằng mật khẩu.
+
+Thiết lập `AUTH_PUBLIC_URL` khớp URL website để tạo link đặt lại mật khẩu. Profile dev mặc định dùng `http://localhost:8080`. Các môi trường triển khai dùng URL HTTPS đã cấu hình. `MAIL_FROM` có thể đặt riêng, mặc định dùng `MAIL_USERNAME`. Redis phục vụ OTP và giới hạn tần suất, MariaDB lưu hash token đặt lại mật khẩu. Xem cách thử từng luồng và chuẩn bị migration ở [hướng dẫn AUTH-02](docs/reviews/AUTH-02-nghiem-thu-xac-thuc.md).
+
 ## Trạng thái
 
 - **P00:** ba trang giao diện nền trả HTTP 200 trong lần chạy thử. Xác nhận hiển thị ở 375, 768 và 1440 px còn mở.

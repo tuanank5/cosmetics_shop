@@ -56,8 +56,9 @@ public class NguoiDung_Service {
                     "Email đã được sử dụng."
             );
         }
-        repository.saveAndFlush(new NguoiDung(emailChuanHoa, matKhauBam, hoTen.strip())
-        );
+        var nguoiDung = new NguoiDung(emailChuanHoa, matKhauBam, hoTen.strip());
+        nguoiDung.xacNhanEmail(java.time.LocalDateTime.now(java.time.ZoneOffset.UTC));
+        repository.saveAndFlush(nguoiDung);
     }
 
     @Transactional(readOnly = true)

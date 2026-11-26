@@ -49,9 +49,10 @@
                     <p><strong>Lỗi: Vui lòng kiểm tra thông tin đăng ký.</strong></p>
 
                     <ul>
-                        <li th:each="loi : ${#fields.allErrors()}"
-                            th:text="${loi}">
-                        </li>
+                        <li th:each="loi : ${#fields.globalErrors()}" th:text="${loi}"></li>
+                        <li th:if="${#fields.hasErrors('hoTen')}"><a href="#hoTen" th:text="${#fields.errors('hoTen')[0]}"></a></li>
+                        <li th:if="${#fields.hasErrors('email')}"><a href="#email" th:text="${#fields.errors('email')[0]}"></a></li>
+                        <li th:if="${#fields.hasErrors('matKhau') or #fields.hasErrors('doDaiBcryptHopLe')}"><a href="#matKhau">Kiểm tra độ dài mật khẩu.</a></li>
                     </ul>
                 </div>
 
@@ -59,6 +60,7 @@
                     <label for="hoTen">Họ và tên</label>
 
                     <input th:field="*{hoTen}"
+                           th:attr="aria-invalid=${#fields.hasErrors('hoTen') ? 'true' : null},aria-describedby=${#fields.hasErrors('hoTen') ? 'hoTen-error' : null}"
                            autocomplete="name"
                            maxlength="160"
                            required>
@@ -71,6 +73,7 @@
 
                     <input type="email"
                            th:field="*{email}"
+                           th:attr="aria-invalid=${#fields.hasErrors('email') ? 'true' : null},aria-describedby=${#fields.hasErrors('email') ? 'email-error' : null}"
                            autocomplete="email"
                            maxlength="190"
                            required>
@@ -89,6 +92,7 @@
                         <input type="password"
                                id="matKhau"
                                name="matKhau"
+                               th:attr="aria-invalid=${#fields.hasErrors('matKhau') or #fields.hasErrors('doDaiBcryptHopLe') ? 'true' : null}"
                                autocomplete="new-password"
                                minlength="12"
                                maxlength="72"

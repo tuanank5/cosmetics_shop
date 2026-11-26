@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/head :: head('Bảo mật tài khoản · BeautyShop')}"></head>
+<body>
+<div th:replace="~{fragments/header :: siteHeader}"></div>
+<main id="main" tabindex="-1" class="page-content login-wrap">
+    <h1>Bảo mật và phương thức đăng nhập</h1>
+    <p class="notice" role="status" th:if="${message}" th:text="${message}"></p>
+    <p class="form-error" role="alert" th:if="${error}" th:text="${error}"></p>
+    <p class="form-error" role="alert" th:if="${param.oauthError}">Phiên xác thực OAuth không hợp lệ hoặc đã hết hạn.</p>
+    <p th:text="${email}"></p>
+    <p th:text="${daXacMinhEmail ? 'Email BeautyShop đã xác minh' : 'Email BeautyShop chưa xác minh'}"></p>
+    <p th:if="${grant}" role="status">Đã xác thực lại. Bạn có thể thực hiện thao tác bảo mật trong 5 phút.</p>
+    <section>
+        <h2>Phương thức đăng nhập</h2>
+        <p th:text="${coMatKhau ? 'Đã có mật khẩu BeautyShop' : 'Chưa thiết lập mật khẩu BeautyShop'}"></p>
+        <form th:if="${coMatKhau}" class="login-card" method="post" th:action="@{/account/security/reauth/password}">
+            <label for="reauthPassword">Mật khẩu hiện tại</label>
+            <input id="reauthPassword" name="matKhau" type="password" autocomplete="current-password" maxlength="72" required>
+            <button class="btn btn--primary" type="submit">Xác thực lại bằng mật khẩu</button>
+        </form>
+        <div th:each="provider : ${ {'google', 'github'} }">
+            <h3 th:text="${provider == 'google' ? 'Google' : 'GitHub'}"></h3>
+            <p th:text="${linked.contains(provider) ? 'Đã liên kết' : 'Chưa liên kết'}"></p>
+            <p th:unless="${providers.contains(provider)}">Đăng nhập bằng phương thức này đang tắt.</p>
+            <form th:if="${providers.contains(provider) and (linked.contains(provider) or grant)}" method="post"
+                  th:action="@{/account/security/oauth/{provider}(provider=${provider})}">
+                <input type="hidden" name="purpose" th:value="${linked.contains(provider) ? 'XAC_THUC_LAI' : 'LIEN_KET'}">
+                <button class="btn btn--primary" type="submit"
+                        th:text="${linked.contains(provider) ? 'Xác thực lại' : 'Bắt đầu liên kết'}"></button>
+            </form>
+            <form th:if="${linked.contains(provider) and grant}" method="post"
+                  th:action="@{/account/security/oauth/{provider}/unlink(provider=${provider})}">
+                <button class="btn btn--secondary" type="submit">Gỡ liên kết</button>
+            </form>
+        </div>
+        <form th:if="${lienKetCho != null}" class="login-card" method="post" th:action="@{/account/security/oauth/confirm}">
+            <p>Xác nhận liên kết với tài khoản <strong th:text="${lienKetCho.email()}"></strong>.</p>
+            <button class="btn btn--primary" type="submit">Xác nhận liên kết</button>
+        </form>
+    </section>
+    <section th:if="${xacThucOAuthCho or (!daXacMinhEmail and coMatKhau and grant) or otpCho}">
+        <h2>Xác minh hộp thư BeautyShop</h2>
+        <form method="post" th:action="@{/account/security/email/send}">
+            <button class="btn btn--primary" type="submit">Gửi mã xác minh</button>
+        </form>
+        <form th:if="${otpCho}" class="login-card" method="post" th:action="@{/account/security/email/verify}">
+            <label for="ma">Mã xác minh</label>
+            <input id="ma" name="ma" inputmode="numeric" autocomplete="one-time-code" pattern="[0-9]{6}" required>
+            <button class="btn btn--primary" type="submit">Xác minh</button>
+        </form>
+    </section>
+    <section>
+        <h2 th:text="${coMatKhau ? 'Đổi mật khẩu' : 'Thiết lập mật khẩu'}"></h2>
+        <p th:if="${!coMatKhau and !grant}">Hãy xác thực lại bằng Google hoặc GitHub đã liên kết, rồi xác minh email BeautyShop.</p>
+        <form th:if="${coMatKhau or grant}" class="login-card" method="post" th:action="@{/account/security/password}">
+            <label th:if="${coMatKhau}" for="matKhauHienTai">Mật khẩu hiện tại</label>
+            <input th:if="${coMatKhau}" id="matKhauHienTai" name="matKhauHienTai"
+                   type="password" autocomplete="current-password" maxlength="72" required>
+        <label for="matKhauMoi">Mật khẩu mới</label>
+        <input id="matKhauMoi" name="matKhauMoi" type="password" autocomplete="new-password" minlength="12" maxlength="72" required>
+        <label for="xacNhan">Nhập lại mật khẩu mới</label>
+        <input id="xacNhan" name="xacNhan" type="password" autocomplete="new-password" minlength="12" maxlength="72" required>
+            <button class="btn btn--primary" type="submit">Lưu mật khẩu</button>
+        </form>
+    </section>
+    <p><a class="text-link" th:href="@{/account}">Về hồ sơ</a></p>
+</main>
+<div th:replace="~{fragments/footer :: siteFooter}"></div>
+</body>
+</html>

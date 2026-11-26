@@ -38,6 +38,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @AutoConfigureMockMvc
 @EnabledIfEnvironmentVariable(named = "P01_MARIADB_TEST", matches = "true")
 class XacThuc_MariaDb_Test {
+    @org.springframework.test.context.bean.override.mockito.MockitoBean
+    com.beautyshop.service.EmailVerification_Service otp;
     @Autowired MockMvc mvc;
     @Autowired JdbcClient jdbc;
     @Autowired NguoiDung_Repository nguoiDungRepository;
@@ -330,9 +332,7 @@ class XacThuc_MariaDb_Test {
     }
 
     private void dangKy(String email) throws Exception {
-        mvc.perform(post("/register").with(csrf()).param("email", email).param("hoTen", "Khách thử")
-                .param("matKhau", matKhau).param("vaiTro", "ADMIN"))
-            .andExpect(redirectedUrl("/login?registered")).andExpect(unauthenticated());
+        DangKyOtp_TestSupport.dangKy(mvc, otp, email, matKhau);
     }
 
     private String email() {

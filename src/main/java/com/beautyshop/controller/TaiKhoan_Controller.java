@@ -19,6 +19,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.util.WebUtils;
 
 @Controller
 class TaiKhoan_Controller {
@@ -29,6 +30,7 @@ class TaiKhoan_Controller {
 
     private static final String SESSION_EMAIL = "registerEmail";
     private static final String SESSION_NAME = "registerHoTen";
+    private static final String SESSION_CHALLENGE = "registerChallenge";
     private static final String SESSION_PASSWORD = "registerPasswordHash";
 
     TaiKhoan_Controller(
@@ -51,6 +53,12 @@ class TaiKhoan_Controller {
     // Bước 1: Kiểm tra thông tin và gửi OTP
     @PostMapping("/register")
     String dangKy(@Valid @ModelAttribute("form") DangKy_Form form, BindingResult errors, Model model, HttpSession session, RedirectAttributes flash) {
+        synchronized (WebUtils.getSessionMutex(session)) {
+            return batDauDangKy(form, errors, session, flash);
+        }
+    }
+
+    private String batDauDangKy(DangKy_Form form, BindingResult errors, HttpSession session, RedirectAttributes flash) {
         if (errors.hasErrors()) {
             return "auth/register";
         }
@@ -65,7 +73,9 @@ class TaiKhoan_Controller {
             // Mã hóa mật khẩu trước khi lưu tạm
             String matKhauBam = nguoiDungService.bamMatKhau(form.getMatKhau());
             // Gửi OTP đến email
-            emailVerificationService.guiOTP(email);
+            String challenge = emailVerificationService.guiOTP(email, "register");
+            emailVerificationService.xoaOTP((String) session.getAttribute(SESSION_CHALLENGE));
+            session.setAttribute(SESSION_CHALLENGE, challenge);
             // Chỉ lưu thông tin đã mã hóa trong Session
             session.setAttribute(SESSION_EMAIL, email);
             session.setAttribute(SESSION_NAME, form.getHoTen().strip());
@@ -73,10 +83,10 @@ class TaiKhoan_Controller {
             flash.addFlashAttribute("message", "Mã OTP đã được gửi đến email của bạn.");
             return "redirect:/register";
         } catch (IllegalStateException exception) {
-            logger.error("Lỗi trạng thái khi gửi OTP cho email: {}", email, exception);
-            errors.reject("register.otp", exception.getMessage());
+            logger.warn("Đăng ký chưa thể gửi OTP: {}", exception.getClass().getSimpleName());
+            errors.reject("register.otp", "Chưa thể gửi OTP. Vui lòng đợi rồi thử lại.");
         } catch (RuntimeException exception) {
-            logger.error("Lỗi trạng thái khi gửi OTP cho email: {}", email, exception);
+            logger.warn("Đăng ký chưa thể gửi OTP: {}", exception.getClass().getSimpleName());
             errors.reject("register.mail", "Không thể gửi mã OTP. Vui lòng kiểm tra cấu hình email và thử lại.");
         }
         return "auth/register";
@@ -85,6 +95,12 @@ class TaiKhoan_Controller {
     // Bước 2: Xác thực OTP và tạo tài khoản
     @PostMapping("/register/verify-otp")
     String xacThucOTP(@RequestParam("otp") String otp, HttpSession session, RedirectAttributes flash) {
+        synchronized (WebUtils.getSessionMutex(session)) {
+            return hoanTatDangKy(otp, session, flash);
+        }
+    }
+
+    private String hoanTatDangKy(String otp, HttpSession session, RedirectAttributes flash) {
         String email = (String) session.getAttribute(SESSION_EMAIL);
         String hoTen = (String) session.getAttribute(SESSION_NAME);
         String matKhauBam = (String) session.getAttribute(SESSION_PASSWORD);
@@ -98,14 +114,14 @@ class TaiKhoan_Controller {
         }
 
         try {
-            boolean hopLe = emailVerificationService.xacThucOTP(email, otp);
+            boolean hopLe = emailVerificationService.xacThucOTP((String) session.getAttribute(SESSION_CHALLENGE), otp);
             if (!hopLe) {flash.addFlashAttribute("error", "Mã OTP không chính xác, đã hết hạn hoặc vượt quá số lần thử.");
                 return "redirect:/register";
             }
 
             // Chỉ tạo tài khoản khi OTP hợp lệ
             nguoiDungService.dangKyDaXacThuc(email, hoTen, matKhauBam);
-            emailVerificationService.xoaOTP(email);
+            session.removeAttribute(SESSION_CHALLENGE);
             session.removeAttribute(SESSION_EMAIL);
             session.removeAttribute(SESSION_NAME);
             session.removeAttribute(SESSION_PASSWORD);
@@ -113,7 +129,7 @@ class TaiKhoan_Controller {
             );
             return "redirect:/login?registered";
         } catch (DataIntegrityViolationException exception) {
-            emailVerificationService.xoaOTP(email);
+            session.removeAttribute(SESSION_CHALLENGE);
             session.removeAttribute(SESSION_EMAIL);
             session.removeAttribute(SESSION_NAME);
             session.removeAttribute(SESSION_PASSWORD);
@@ -130,7 +146,12 @@ class TaiKhoan_Controller {
     String guiLaiOTP(
             HttpSession session,
             RedirectAttributes flash) {
+        synchronized (WebUtils.getSessionMutex(session)) {
+            return capLaiMa(session, flash);
+        }
+    }
 
+    private String capLaiMa(HttpSession session, RedirectAttributes flash) {
         String email = (String) session.getAttribute(SESSION_EMAIL);
 
         if (email == null) {
@@ -142,7 +163,9 @@ class TaiKhoan_Controller {
         }
 
         try {
-            emailVerificationService.guiOTP(email);
+            String challenge = emailVerificationService.guiOTP(email, "register");
+            emailVerificationService.xoaOTP((String) session.getAttribute(SESSION_CHALLENGE));
+            session.setAttribute(SESSION_CHALLENGE, challenge);
 
             flash.addFlashAttribute(
                     "message",
@@ -153,11 +176,11 @@ class TaiKhoan_Controller {
 
             flash.addFlashAttribute(
                     "error",
-                    exception.getMessage()
+                    "Chưa thể gửi lại OTP. Vui lòng đợi rồi thử lại."
             );
 
         } catch (RuntimeException exception) {
-            exception.printStackTrace();
+            logger.warn("Đăng ký chưa thể gửi lại OTP: {}", exception.getClass().getSimpleName());
             flash.addFlashAttribute(
                     "error",
                     "Không thể gửi lại OTP. Vui lòng thử lại sau."
@@ -170,16 +193,12 @@ class TaiKhoan_Controller {
     // Hủy đăng ký đang chờ xác thực
     @PostMapping("/register/cancel")
     String huyDangKy(HttpSession session, RedirectAttributes flash) {
-
-        String email = (String) session.getAttribute(SESSION_EMAIL);
-
-        if (email != null) {
-            emailVerificationService.xoaOTP(email);
+        synchronized (WebUtils.getSessionMutex(session)) {
+            session.removeAttribute(SESSION_CHALLENGE);
+            session.removeAttribute(SESSION_EMAIL);
+            session.removeAttribute(SESSION_NAME);
+            session.removeAttribute(SESSION_PASSWORD);
         }
-
-        session.removeAttribute(SESSION_EMAIL);
-        session.removeAttribute(SESSION_NAME);
-        session.removeAttribute(SESSION_PASSWORD);
 
         flash.addFlashAttribute(
                 "message",

@@ -1,5 +1,9 @@
 # REVIEW-01 · UI kiểm duyệt
 
+## Cập nhật sau AUTH-02
+
+Quyền mua/review theo ID nội bộ, giữ revision Mongo và scope Moderator hiện thực bằng ROLE_ADMIN. Không ghi kép audit SQL làm nguồn nội dung review. Kiểm Customer OAuth bị từ chối duyệt và Admin gặp xung đột revision. [Nghiệm thu AUTH-02](../AUTH-02-nghiem-thu-xac-thuc.md)
+
 Khi owner giao prompt này, hãy thực hiện duy nhất REVIEW-01, Phase 5, và dừng sau checkpoint G11. BeautyShop là monolith Java 21, Spring MVC, Thymeleaf, JPA/JDBC, MariaDB và MongoDB cho nội dung review. Controller nhận HTTP/form, service giữ nghiệp vụ/transaction, repository đọc và ghi dữ liệu.
 
 ## Mục tiêu và quyết định

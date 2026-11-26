@@ -25,7 +25,17 @@ public final class PhienNguoiDung extends User implements OAuth2User {
 
     // Đăng nhập bằng Google hoặc GitHub
     PhienNguoiDung(NguoiDung nguoiDung, Map<String, Object> attributes) {
-        super(nguoiDung.getEmail(), nguoiDung.getMatKhauBam(), nguoiDung.isKichHoat(),
+        this(nguoiDung, nguoiDung.getMatKhauBam(), attributes);
+    }
+
+    static PhienNguoiDung oauth(NguoiDung nguoiDung) {
+        var phien = new PhienNguoiDung(nguoiDung, "", Map.of());
+        phien.eraseCredentials();
+        return phien;
+    }
+
+    private PhienNguoiDung(NguoiDung nguoiDung, String hash, Map<String, Object> attributes) {
+        super(nguoiDung.getEmail(), hash, nguoiDung.isKichHoat(),
                 true, true, true,
                 List.of(new SimpleGrantedAuthority("ROLE_" + nguoiDung.getVaiTro().name()))
         );

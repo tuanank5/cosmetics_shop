@@ -20,6 +20,7 @@
                 <small th:text="${muc.kichHoat ? 'Đang hoạt động' : 'Đã khóa'}"></small>
             </div>
             <div class="catalog-actions">
+                <a class="text-link" th:href="@{/admin/users/{id}(id=${muc.maNguoiDung},q=${q},page=${ketQua.number})}">Chi tiết</a>
                 <form th:if="${muc.maNguoiDung != maAdmin}" method="post"
                       th:action="@{/admin/users/{id}/status(id=${muc.maNguoiDung})}">
                     <input type="hidden" name="q" th:value="${q}">

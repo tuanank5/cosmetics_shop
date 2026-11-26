@@ -1,5 +1,9 @@
 # ORDER-01 · Danh sách đơn Admin
 
+## Cập nhật sau AUTH-02
+
+Ownership dựa trên cùng mã user, tài khoản khóa và phiên cũ không đọc đơn. Audit trạng thái đơn cần phê duyệt riêng. Kiểm ownership sau đổi phương thức đăng nhập và trạng thái thanh toán hiệu lực. [Nghiệm thu AUTH-02](../AUTH-02-nghiem-thu-xac-thuc.md)
+
 Khi owner giao prompt này, hãy thực hiện duy nhất ORDER-01, Phase 5, và dừng sau checkpoint G10. BeautyShop là monolith Java 21, Spring MVC, Thymeleaf, JPA/JDBC, MariaDB và MongoDB cho nội dung review. Controller nhận HTTP/form, service giữ nghiệp vụ/transaction, repository đọc và ghi dữ liệu.
 
 ## Mục tiêu và quyết định

@@ -1,6 +1,7 @@
 package com.beautyshop.entity;
 
 import jakarta.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "nguoi_dung")
@@ -13,7 +14,7 @@ public class NguoiDung {
     @Column(name = "email", nullable = false, length = 190)
     private String email;
 
-    @Column(name = "mat_khau_bam", nullable = false, length = 255)
+    @Column(name = "mat_khau_bam", length = 255)
     private String matKhauBam;
 
     @Column(name = "ho_ten", nullable = false, length = 160)
@@ -31,6 +32,9 @@ public class NguoiDung {
 
     @Column(name = "phien_ban_xac_thuc", nullable = false)
     private long phienBanXacThuc;
+
+    @Column(name = "ngay_xac_minh_email")
+    private LocalDateTime ngayXacMinhEmail;
 
     protected NguoiDung() {}
 
@@ -50,6 +54,22 @@ public class NguoiDung {
     public VaiTro getVaiTro() { return vaiTro; }
     public boolean isKichHoat() { return kichHoat; }
     public long getPhienBanXacThuc() { return phienBanXacThuc; }
+    public LocalDateTime getNgayXacMinhEmail() { return ngayXacMinhEmail; }
+
+    public void xacNhanEmail(LocalDateTime thoiDiem) {
+        if (ngayXacMinhEmail == null) {
+            ngayXacMinhEmail = thoiDiem;
+        }
+    }
+
+    public void doiMatKhau(String matKhauBam) {
+        this.matKhauBam = matKhauBam;
+        thuHoiPhien();
+    }
+
+    public void thuHoiPhien() {
+        phienBanXacThuc++;
+    }
 
     public void capNhatHoSo(String hoTen, String soDienThoai) {
         this.hoTen = hoTen;
