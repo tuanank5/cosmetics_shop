@@ -60,7 +60,7 @@ public class BienTheSanPham_Service {
         BienTheSanPham bienThe = maBienThe == null ? new BienTheSanPham(sanPham(maSanPham))
             : khoa(maSanPham, maBienThe);
         if (form.getSoLuongTrongKho() < bienThe.getSoLuongTamGiu()) {
-            errors.rejectValue("soLuongTrongKho", "sku.inventory", "Tồn kho phải đủ cho số lượng đang tạm giữ.");
+            errors.rejectValue("soLuongTrongKho", "sku.inventory", "Số lượng trong kho phải đủ cho số hàng đang giữ cho đơn hàng.");
             return;
         }
 

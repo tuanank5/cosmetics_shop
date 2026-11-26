@@ -98,7 +98,7 @@ class TuVanDaServiceTest {
 
         assertThat(ketQua)
                 .contains("Serum chính xác từ database", "125.000 ₫", "Niacinamide",
-                        "Dùng theo hướng dẫn DB", "Tồn khả dụng: 3")
+                        "Dùng theo hướng dẫn DB", "Số lượng còn mua được: 3")
                 .doesNotContain("42");
 
         ArgumentCaptor<Prompt> prompt = ArgumentCaptor.forClass(Prompt.class);

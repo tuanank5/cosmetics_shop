@@ -1,0 +1,8 @@
+{
+  "browser": "Chrome/158.0.8127.88",
+  "checks": [
+    "Guest mobile: unchanged product code, cart update and live announcement",
+    "Customer: simulated wishlist HTTP 403 gives the new message and preserves button state",
+    "Admin desktop: list, new/edit variant labels and unchanged stored code"
+  ]
+}

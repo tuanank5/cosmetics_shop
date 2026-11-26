@@ -57,7 +57,7 @@ public class AnhBienTheSanPham_Service {
             if (daTao) {
                 xoa(URL_PREFIX + ten);
             }
-            throw new UncheckedIOException("Không thể lưu ảnh SKU.", exception);
+            throw new UncheckedIOException("Không thể lưu ảnh biến thể sản phẩm.", exception);
         }
         return URL_PREFIX + ten;
     }

@@ -80,10 +80,10 @@
         return;
       }
       if (!userMovedOn && live) {
-        const sku = textOf(line.querySelector('.cart-sku')).replace(/^SKU\s*/, '');
+        const sku = line.dataset.sku;
         const lineTotal = textOf(line.querySelectorAll('.cart-prices dd')[1]);
         const subtotal = textOf(page.querySelector('.cart-summary dd'));
-        live.textContent = `Đã cập nhật số lượng SKU ${sku}: ${state.server}. Thành tiền ${lineTotal}. Tạm tính ${subtotal}.`;
+        live.textContent = `Đã cập nhật số lượng cho mã biến thể sản phẩm ${sku}: ${state.server}. Thành tiền ${lineTotal}. Tiền hàng ${subtotal}.`;
       }
     };
 

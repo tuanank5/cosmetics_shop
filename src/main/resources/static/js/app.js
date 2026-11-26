@@ -201,6 +201,7 @@
     });
   });
   window.addEventListener('pagehide', () => {
+    document.querySelector('[data-cart-merge-notice]')?.remove();
     if (pending) closeDialog();
     if (adminMenu) adminMenu.open = false;
     if (menu) {

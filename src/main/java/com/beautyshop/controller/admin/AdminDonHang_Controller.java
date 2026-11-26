@@ -1,6 +1,9 @@
 package com.beautyshop.controller.admin;
 
 import com.beautyshop.controller.NguonDieuHuong;
+import com.beautyshop.controller.NguonDieuHuong.NguonDonAdmin;
+import com.beautyshop.dto.BoLocDonHangAdmin;
+import com.beautyshop.dto.PhanTrang;
 import com.beautyshop.order.OrderStatus;
 import com.beautyshop.service.DonHang_Service;
 import java.util.List;
@@ -18,27 +21,37 @@ class AdminDonHang_Controller {
     AdminDonHang_Controller(DonHang_Service donHangService) { this.donHangService = donHangService; }
 
     @GetMapping
-    String danhSach(@RequestParam(name = "status", required = false) List<OrderStatus> loc, Model model) {
-        // P20: Dashboard links here with ?status=... to show only orders waiting for Admin action.
-        var donHang = donHangService.danhSachAdmin();
-        if (loc != null && !loc.isEmpty()) {
-            donHang = donHang.stream().filter(don -> loc.contains(don.trangThai())).toList();
-            model.addAttribute("locTrangThai", loc);
-        }
-        model.addAttribute("donHang", donHang);
+    String danhSach(@RequestParam(name = "status", required = false) List<OrderStatus> loc,
+                    @RequestParam Map<String, String> thamSo, Model model) {
+        var nguon = NguonDieuHuong.donAdmin(thamSo, loc, false);
+        var trang = donHangService.danhSachAdmin(nguon.loc(), nguon.page());
+        model.addAttribute("donHang", trang.getContent());
+        model.addAttribute("orderOrigin", new NguonDonAdmin(nguon.loc(), trang.getNumber()));
+        model.addAttribute("pager", PhanTrang.tu(trang, nguon::danhSach));
+        model.addAttribute("boLoc", nguon.loc());
+        model.addAttribute("trangThaiDon", OrderStatus.values());
+        model.addAttribute("phuongThucThanhToan", BoLocDonHangAdmin.PhuongThuc.values());
+        model.addAttribute("trangThaiThanhToan", BoLocDonHangAdmin.ThanhToan.values());
+        model.addAttribute("sapXep", BoLocDonHangAdmin.SapXep.values());
+        model.addAttribute("kichThuocTrang", BoLocDonHangAdmin.KICH_THUOC);
         model.addAttribute("tongQuan", donHangService.tongQuanAdmin());
-        model.addAttribute("base", "/admin/orders");
+        model.addAttribute("base", NguonDieuHuong.DON_ADMIN);
         return "order/list";
     }
 
     @GetMapping("/{id}")
     String chiTiet(@PathVariable long id, @RequestParam Map<String, String> thamSo,
                    @RequestParam(name = "listStatus", required = false) List<OrderStatus> loc, Model model) {
-        model.addAttribute("chiTiet", donHangService.chiTietAdmin(id));
-        model.addAttribute("base", "/admin/orders");
+        var chiTiet = donHangService.chiTietAdmin(id);
+        var nguon = NguonDieuHuong.donAdmin(thamSo, loc, true);
+        model.addAttribute("chiTiet", chiTiet);
+        model.addAttribute("nhanThanhToanAdmin", BoLocDonHangAdmin.ThanhToan.nhan(chiTiet.thanhToan()));
+        model.addAttribute("base", NguonDieuHuong.DON_ADMIN);
         var ky = NguonDieuHuong.kyDashboard(thamSo);
         model.addAttribute("navDashboard", ky);
-        model.addAttribute("listStatus", loc);
+        model.addAttribute("listStatus", nguon.loc().trangThai());
+        model.addAttribute("orderListFields", nguon.truongAn());
+        model.addAttribute("backToOrders", nguon.quayLai(id));
         model.addAttribute("orderBack", ky.isEmpty() ? null : NguonDieuHuong.veDashboard(ky));
         return "order/detail";
     }
@@ -53,8 +66,7 @@ class AdminDonHang_Controller {
             flash.addFlashAttribute("error", exception.getMessage());
         }
         NguonDieuHuong.kyDashboard(thamSo).forEach(flash::addAttribute);
-        if (loc != null && !loc.isEmpty()) flash.addAttribute("listStatus", loc.stream().map(Enum::name)
-            .distinct().collect(java.util.stream.Collectors.joining(",")));
+        NguonDieuHuong.donAdmin(thamSo, loc, true).giuQuaRedirect(flash);
         return "redirect:/admin/orders/" + id;
     }
 }

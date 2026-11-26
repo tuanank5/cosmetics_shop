@@ -1,10 +1,15 @@
 package com.beautyshop.integration;
 
+import com.beautyshop.cart.GioKhach;
+import com.beautyshop.model.DanhTinhOAuth;
 import com.beautyshop.model.NguoiDung;
+import com.beautyshop.repository.DanhTinhOAuth_Repository;
 import com.beautyshop.repository.NguoiDung_Repository;
 import com.beautyshop.security.OAuth2NguoiDung_Service;
+import com.beautyshop.security.PhienNguoiDung;
 import com.beautyshop.service.DanhTinhOAuth_Service.BangChung;
 import com.beautyshop.service.EmailVerification_Service;
+import com.beautyshop.service.GioHang_Service;
 import com.sun.net.httpserver.HttpServer;
 import com.nimbusds.jose.JWSAlgorithm;
 import com.nimbusds.jose.JWSHeader;
@@ -21,6 +26,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.Map;
 import java.time.Instant;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.UUID;
 import org.junit.jupiter.api.AfterAll;
@@ -33,8 +39,11 @@ import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.core.script.RedisScript;
+import org.springframework.jdbc.core.simple.JdbcClient;
 import org.springframework.mock.web.MockHttpSession;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.web.context.HttpSessionSecurityContextRepository;
 import org.springframework.security.oauth2.client.registration.*;
 import org.springframework.security.oauth2.core.AuthorizationGrantType;
 import org.springframework.security.oauth2.core.user.DefaultOAuth2User;
@@ -44,6 +53,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.hamcrest.Matchers.containsString;
 import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.when;
 import static org.mockito.Mockito.doReturn;
@@ -60,6 +70,9 @@ class OAuth2Callback_MariaDb_Test {
     @Autowired MockMvc mvc;
     @Autowired NguoiDung_Repository users;
     @Autowired PasswordEncoder encoder;
+    @Autowired DanhTinhOAuth_Repository identities;
+    @Autowired GioHang_Service gioHang;
+    @Autowired JdbcClient jdbc;
     @MockitoSpyBean OAuth2NguoiDung_Service providerUser;
     @MockitoBean StringRedisTemplate redis;
     @MockitoBean EmailVerification_Service otp;
@@ -88,6 +101,7 @@ class OAuth2Callback_MariaDb_Test {
     @Test
     void googleOidcKiemChuKyNonceVaEmailDaXacMinh() throws Exception {
         Clients.googleEmail = UUID.randomUUID() + "@example.invalid";
+        Clients.googleSubject = "fixture-google-id";
         var session = new MockHttpSession();
         String location = mvc.perform(get("/oauth2/authorization/google").session(session))
             .andExpect(status().is3xxRedirection()).andReturn().getResponse().getRedirectedUrl();
@@ -98,6 +112,93 @@ class OAuth2Callback_MariaDb_Test {
             .andExpect(redirectedUrl("/"));
         assertThat(users.findByEmail(Clients.googleEmail)).isPresent();
         mvc.perform(get("/account").session(session)).andExpect(authenticated()).andExpect(status().isOk());
+    }
+
+    @Test
+    void baCachLoginCungIdVaMoiPhienGopGioDungMotLan() throws Exception {
+        String email = UUID.randomUUID() + "@example.invalid";
+        var owner = users.saveAndFlush(new NguoiDung(email, encoder.encode(PASSWORD), "Owner"));
+        long id = owner.getMaNguoiDung();
+        Clients.googleEmail = email;
+        Clients.googleSubject = "fixture-google-merge";
+        identities.saveAllAndFlush(List.of(
+            new DanhTinhOAuth(owner, "google", Clients.googleSubject, LocalDateTime.now()),
+            new DanhTinhOAuth(owner, "github", "1204", LocalDateTime.now())));
+        chungMinh(new BangChung("github", "1204", email, "OAuth fixture"));
+        String slug = "cart-" + UUID.randomUUID();
+        long danhMuc = jdbc.sql("INSERT INTO danh_muc (ten_danh_muc, duong_dan) VALUES ('Fixture', ?) RETURNING ma_danh_muc")
+            .param(slug).query(Long.class).single();
+        long thuongHieu = jdbc.sql("INSERT INTO thuong_hieu (ten_thuong_hieu, duong_dan) VALUES ('Fixture', ?) RETURNING ma_thuong_hieu")
+            .param(slug).query(Long.class).single();
+        long sanPham = jdbc.sql("""
+            INSERT INTO san_pham (ma_danh_muc, ma_thuong_hieu, ten_san_pham, duong_dan)
+            VALUES (?, ?, 'Fixture', ?) RETURNING ma_san_pham
+            """).params(danhMuc, thuongHieu, slug).query(Long.class).single();
+        long sku = jdbc.sql("""
+            INSERT INTO bien_the_san_pham (ma_san_pham, sku, ten_bien_the, gia_ban, so_luong_trong_kho)
+            VALUES (?, ?, '50 ml', 100000, 10) RETURNING ma_bien_the
+            """).params(sanPham, slug).query(Long.class).single();
+        gioHang.themGioCustomer(id, sku);
+        long nguoiKhac = users.saveAndFlush(new NguoiDung(UUID.randomUUID() + "@example.invalid", null, "Fixture")).getMaNguoiDung();
+        long donSoHuu = taoDonFixture(id);
+        long donNguoiKhac = taoDonFixture(nguoiKhac);
+        var phienDangNhap = new java.util.ArrayList<MockHttpSession>();
+        for (String phuongThuc : List.of("password", "google", "github")) {
+            var session = new MockHttpSession();
+            phienDangNhap.add(session);
+            var snapshot = GioKhach.doc(session).them(sku, 5);
+            snapshot.luu(session);
+            gioHang.datSoLuongCustomer(id, sku, 7);
+            var login = post("/login").session(session).with(csrf()).param("username", email).param("password", PASSWORD);
+            if (!phuongThuc.equals("password")) {
+                String url = mvc.perform(get("/oauth2/authorization/" + phuongThuc).session(session))
+                    .andExpect(status().is3xxRedirection()).andReturn().getResponse().getRedirectedUrl();
+                if (phuongThuc.equals("google")) {
+                    Clients.nonce = UriComponentsBuilder.fromUriString(url).build().getQueryParams().getFirst("nonce");
+                }
+                login = get("/login/oauth2/code/" + phuongThuc).session(session).param("code", "fixture").param("state", state(url));
+            }
+            String dich = mvc.perform(login).andExpect(authenticated()).andReturn().getResponse().getRedirectedUrl();
+            var security = (SecurityContext) session.getAttribute(HttpSessionSecurityContextRepository.SPRING_SECURITY_CONTEXT_KEY);
+            assertThat(((PhienNguoiDung) security.getAuthentication().getPrincipal()).getMaNguoiDung()).isEqualTo(id);
+            if (phuongThuc.equals("password")) {
+                mvc.perform(post("/account/wishlist/" + sanPham).session(session).with(csrf()).header("X-Wishlist-Partial", "1"))
+                    .andExpect(status().isOk()).andExpect(jsonPath("$.saved").value(true));
+            }
+            mvc.perform(get("/account/wishlist/state").session(session).param("ids", Long.toString(sanPham)))
+                .andExpect(content().json("[\"" + sanPham + "\"]"));
+            mvc.perform(get("/orders/" + donSoHuu).session(session)).andExpect(status().isOk());
+            mvc.perform(get("/orders/" + donNguoiKhac).session(session)).andExpect(status().isNotFound());
+            mvc.perform(post("/admin/reviews/65f000000000000000000001/visibility").session(session).with(csrf())
+                    .param("visible", "true").param("revision", "0"))
+                .andExpect(status().isForbidden());
+            assertThat(dich).startsWith("/?cartMerge=");
+            mvc.perform(get(URI.create(dich)).session(session)).andExpect(status().isOk())
+                .andExpect(content().string(containsString("Dự kiến 12, thực nhận 10, giảm 2")));
+            assertThat(GioKhach.doc(session).soLuong()).isEmpty();
+            assertThat(gioHang.gopSauDangNhap(id, snapshot).daGioiHan()).isFalse();
+            assertThat(gioHang.docGioCustomer(id).getFirst().soLuong()).isEqualTo(10);
+        }
+        jdbc.sql("UPDATE nguoi_dung SET phien_ban_xac_thuc = phien_ban_xac_thuc + 1 WHERE ma_nguoi_dung = ?")
+            .param(id).update();
+        for (var session : phienDangNhap) {
+            mvc.perform(get("/orders/" + donSoHuu).session(session)).andExpect(redirectedUrl("/login?inactive"));
+        }
+        var phienMoi = new MockHttpSession();
+        mvc.perform(post("/login").session(phienMoi).with(csrf()).param("username", email).param("password", PASSWORD))
+            .andExpect(authenticated());
+        mvc.perform(get("/orders/" + donSoHuu).session(phienMoi)).andExpect(status().isOk());
+        jdbc.sql("UPDATE nguoi_dung SET kich_hoat = FALSE WHERE ma_nguoi_dung = ?").param(id).update();
+        mvc.perform(get("/orders/" + donSoHuu).session(phienMoi)).andExpect(redirectedUrl("/login?inactive"));
+    }
+
+    private long taoDonFixture(long owner) {
+        return jdbc.sql("""
+            INSERT INTO don_hang (ma_don_hang_hien_thi, ma_nguoi_dung, ten_nguoi_nhan, sdt_nguoi_nhan,
+                dia_chi_khi_dat, tam_tinh, tong_thanh_toan, trang_thai, phuong_thuc_thanh_toan)
+            VALUES (?, ?, 'Fixture', '000', 'Fixture', 1000, 1000, 'PENDING_CONFIRMATION', 'COD')
+            RETURNING ma_don_hang
+            """).params("ORDER-" + UUID.randomUUID(), owner).query(Long.class).single();
     }
 
     @Test
@@ -116,10 +217,18 @@ class OAuth2Callback_MariaDb_Test {
                 .param("purpose", "LIEN_KET")).andExpect(status().is3xxRedirection())
             .andReturn().getResponse().getRedirectedUrl();
         assertThat(path).contains("operation=");
+        var snapshot = GioKhach.doc(session).them(Long.MAX_VALUE, 1);
+        snapshot.luu(session);
         callback(session, batDau(session, path), "/account/security");
+        assertThat(GioKhach.doc(session)).isEqualTo(snapshot);
         assertThat(users.findByEmail(providerEmail)).isEmpty();
         assertThat(users.findByEmail(ownerEmail).orElseThrow().getPhienBanXacThuc()).isZero();
-        mvc.perform(get("/account/security").session(session)).andExpect(status().isOk()).andExpect(authenticated());
+        var hienThi = mvc.perform(get("/account/security").session(session)).andExpect(status().isOk()).andExpect(authenticated())
+            .andExpect(model().attribute("lienKetCho", providerEmail)).andReturn();
+        assertThat(hienThi.getResponse().getContentAsString()).contains(providerEmail, "/account/security/oauth/confirm")
+            .doesNotContain(owner.getMatKhauBam(), "Khác email", "name=\"subject\"", "name=\"operation\"");
+        assertThat(new com.fasterxml.jackson.databind.ObjectMapper().writeValueAsString(
+            hienThi.getModelAndView().getModel().get("lienKetCho"))).isEqualTo("\"" + providerEmail + "\"");
         mvc.perform(post("/account/security/oauth/confirm").with(csrf()).session(session))
             .andExpect(redirectedUrl("/login?securityUpdated"));
         assertThat(users.findByEmail(ownerEmail).orElseThrow().getPhienBanXacThuc()).isEqualTo(1);
@@ -138,7 +247,10 @@ class OAuth2Callback_MariaDb_Test {
         String path = mvc.perform(post("/account/security/oauth/github").with(csrf()).session(session)
                 .param("purpose", "XAC_THUC_LAI")).andExpect(status().is3xxRedirection())
             .andReturn().getResponse().getRedirectedUrl();
+        var snapshot = GioKhach.doc(session).them(Long.MAX_VALUE, 1);
+        snapshot.luu(session);
         callback(session, batDau(session, path), "/account/security");
+        assertThat(GioKhach.doc(session)).isEqualTo(snapshot);
         when(otp.guiOTP(email, "security")).thenReturn("fixture-challenge");
         when(otp.xacThucOTP("fixture-challenge", "123456")).thenReturn(true);
         mvc.perform(post("/account/security/email/send").with(csrf()).session(session))
@@ -182,6 +294,7 @@ class OAuth2Callback_MariaDb_Test {
         private static HttpServer server;
         private static volatile String nonce;
         private static volatile String googleEmail;
+        private static volatile String googleSubject;
 
         @Bean
         ClientRegistrationRepository oauthFixture() throws IOException, com.nimbusds.jose.JOSEException {
@@ -193,7 +306,7 @@ class OAuth2Callback_MariaDb_Test {
             server.createContext("/google-token", exchange -> {
                 Instant now = Instant.now();
                 var claims = new JWTClaimsSet.Builder().issuer("https://accounts.google.com").audience("fixture-google")
-                    .subject("fixture-google-id").issueTime(Date.from(now)).expirationTime(Date.from(now.plusSeconds(300)))
+                    .subject(googleSubject).issueTime(Date.from(now)).expirationTime(Date.from(now.plusSeconds(300)))
                     .claim("email", googleEmail).claim("email_verified", true).claim("nonce", nonce).build();
                 var token = new SignedJWT(new JWSHeader.Builder(JWSAlgorithm.RS256).keyID(key.getKeyID()).build(), claims);
                 try {

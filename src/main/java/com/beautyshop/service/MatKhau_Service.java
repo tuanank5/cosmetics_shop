@@ -237,9 +237,12 @@ public class MatKhau_Service {
         return value != null && value.matches("[A-Za-z0-9_-]{43}");
     }
 
-    public static boolean duDieuKien(NguoiDung user) {
-        return user.isKichHoat() && user.getVaiTro() == NguoiDung.VaiTro.CUSTOMER
-            && user.getMatKhauBam() != null && user.getNgayXacMinhEmail() != null;
+    private static boolean duDieuKien(NguoiDung user) {
+        return duDieuKien(user.isKichHoat(), user.getVaiTro(), user.getMatKhauBam() != null, user.getNgayXacMinhEmail() != null);
+    }
+
+    public static boolean duDieuKien(boolean kichHoat, NguoiDung.VaiTro vaiTro, boolean coMatKhau, boolean daXacMinhEmail) {
+        return kichHoat && vaiTro == NguoiDung.VaiTro.CUSTOMER && coMatKhau && daXacMinhEmail;
     }
 
     private boolean linkHopLe() {

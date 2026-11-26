@@ -1,4 +1,5 @@
 <th:block xmlns:th="http://www.thymeleaf.org" th:fragment="adminSource">
     <input th:each="p : ${navDashboard}" type="hidden" th:name="${p.key}" th:value="${p.value}">
     <input th:each="s : ${listStatus}" type="hidden" name="listStatus" th:value="${s.name()}">
+    <input th:each="p : ${orderListFields}" type="hidden" th:name="${p.key}" th:value="${p.value}">
 </th:block>

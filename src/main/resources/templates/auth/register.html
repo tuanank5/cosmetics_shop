@@ -75,7 +75,7 @@
                     <label for="matKhau">Mật khẩu</label>
 
                     <p id="password-hint" class="hint">
-                        Từ 12 đến 72 ký tự, tối đa 72 byte UTF-8.
+                        Mật khẩu cần ít nhất 12 ký tự. Nếu được báo quá dài, hãy rút ngắn, nhất là khi dùng chữ có dấu hoặc emoji.
                     </p>
 
                     <div th:replace="~{fragments/ui :: password(~{:: #matKhau}, 'matKhau', 'Hiện mật khẩu')}">
@@ -97,7 +97,7 @@
                 </div>
 
                 <button class="btn btn--primary btn--lg" type="submit">
-                    Gửi mã xác thực OTP
+                    Gửi mã xác minh qua email
                 </button>
 
             </form>
@@ -120,7 +120,7 @@
                   th:action="@{/register/verify-otp}">
 
                 <div class="field">
-                    <label for="otp">Mã xác thực OTP</label>
+                    <label for="otp">Mã xác minh qua email</label>
 
                     <input type="text"
                            id="otp"
@@ -142,7 +142,7 @@
 
             <form method="post" th:action="@{/register/resend-otp}">
                 <button class="btn btn--ghost" type="submit">
-                    Gửi lại mã OTP
+                    Gửi lại mã xác minh
                 </button>
             </form>
 

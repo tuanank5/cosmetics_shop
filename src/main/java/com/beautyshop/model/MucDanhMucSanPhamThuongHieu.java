@@ -15,11 +15,11 @@ public abstract class MucDanhMucSanPhamThuongHieu {
     public void update(DanhMucSanPhamThuongHieu_Form form) {
         ganTen(form.getName().strip());
         duongDan = form.getSlug();
-        dangHoatDong = form.isActive();
+        datTrangThai(form.isActive());
     }
 
-    public void deactivate() {
-        dangHoatDong = false;
+    public void datTrangThai(boolean hoatDong) {
+        dangHoatDong = hoatDong;
     }
 
     protected abstract void ganTen(String ten);

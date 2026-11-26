@@ -80,14 +80,14 @@ class TaiKhoan_Controller {
             session.setAttribute(SESSION_EMAIL, email);
             session.setAttribute(SESSION_NAME, form.getHoTen().strip());
             session.setAttribute(SESSION_PASSWORD, matKhauBam);
-            flash.addFlashAttribute("message", "Mã OTP đã được gửi đến email của bạn.");
+            flash.addFlashAttribute("message", "Mã xác minh đã được gửi đến email của bạn.");
             return "redirect:/register";
         } catch (IllegalStateException exception) {
             logger.warn("Đăng ký chưa thể gửi OTP: {}", exception.getClass().getSimpleName());
-            errors.reject("register.otp", "Chưa thể gửi OTP. Vui lòng đợi rồi thử lại.");
+            errors.reject("register.otp", "Chưa thể gửi mã xác minh. Vui lòng đợi rồi thử lại.");
         } catch (RuntimeException exception) {
             logger.warn("Đăng ký chưa thể gửi OTP: {}", exception.getClass().getSimpleName());
-            errors.reject("register.mail", "Không thể gửi mã OTP. Vui lòng kiểm tra cấu hình email và thử lại.");
+            errors.reject("register.mail", "Chưa thể gửi mã xác minh. Vui lòng thử lại sau.");
         }
         return "auth/register";
     }
@@ -109,13 +109,13 @@ class TaiKhoan_Controller {
             return "redirect:/register";
         }
         if (otp == null || !otp.matches("\\d{6}")) {
-            flash.addFlashAttribute("error", "Mã OTP phải gồm đúng 6 chữ số.");
+            flash.addFlashAttribute("error", "Mã xác minh phải gồm đúng 6 chữ số.");
             return "redirect:/register";
         }
 
         try {
             boolean hopLe = emailVerificationService.xacThucOTP((String) session.getAttribute(SESSION_CHALLENGE), otp);
-            if (!hopLe) {flash.addFlashAttribute("error", "Mã OTP không chính xác, đã hết hạn hoặc vượt quá số lần thử.");
+            if (!hopLe) {flash.addFlashAttribute("error", "Mã xác minh không chính xác, đã hết hạn hoặc bạn đã thử quá nhiều lần.");
                 return "redirect:/register";
             }
 
@@ -169,21 +169,21 @@ class TaiKhoan_Controller {
 
             flash.addFlashAttribute(
                     "message",
-                    "Mã OTP mới đã được gửi đến email của bạn."
+                    "Mã xác minh mới đã được gửi đến email của bạn."
             );
 
         } catch (IllegalStateException exception) {
 
             flash.addFlashAttribute(
                     "error",
-                    "Chưa thể gửi lại OTP. Vui lòng đợi rồi thử lại."
+                    "Chưa thể gửi lại mã xác minh. Vui lòng đợi rồi thử lại."
             );
 
         } catch (RuntimeException exception) {
             logger.warn("Đăng ký chưa thể gửi lại OTP: {}", exception.getClass().getSimpleName());
             flash.addFlashAttribute(
                     "error",
-                    "Không thể gửi lại OTP. Vui lòng thử lại sau."
+                    "Không thể gửi lại mã xác minh. Vui lòng thử lại sau."
             );
         }
 

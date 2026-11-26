@@ -17,7 +17,7 @@ public class DangKy_Form {
     @Size(min = 12, max = 72, message = "Mật khẩu phải có từ 12 đến 72 ký tự.")
     private String matKhau;
 
-    @AssertTrue(message = "Mật khẩu UTF-8 tối đa 72 byte.")
+    @AssertTrue(message = "Mật khẩu quá dài. Hãy nhập mật khẩu ngắn hơn.")
     public boolean isDoDaiBcryptHopLe() {
         return matKhau == null || matKhau.getBytes(StandardCharsets.UTF_8).length <= 72;
     }

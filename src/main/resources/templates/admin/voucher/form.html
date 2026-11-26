@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="vi" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="~{fragments/head :: head('Chỉnh voucher · Quản trị BeautyShop')}"></head>
+<head th:replace="~{fragments/head :: head('Mã giảm giá · Quản trị BeautyShop')}"></head>
 <body>
 <div th:replace="~{fragments/header :: siteHeader}"></div>
 <main id="main" tabindex="-1" class="page-content catalog-admin">
     <a class="text-link" th:if="${voucherBack != null}" th:href="@{${voucherBack}}">Quay lại tổng quan</a>
-    <a class="text-link" th:unless="${voucherBack != null}" th:href="@{/admin/vouchers}">Quay lại voucher</a>
-    <h1 th:text="${id == null ? 'Tạo voucher' : 'Chỉnh voucher'}">Chỉnh voucher</h1>
+    <a class="text-link" th:unless="${voucherBack != null}" th:href="@{/admin/vouchers}">Quay lại danh sách mã giảm giá</a>
+    <h1 th:text="${id == null ? 'Tạo mã giảm giá' : 'Sửa mã giảm giá'}">Sửa mã giảm giá</h1>
     <form class="catalog-form" th:action="${id == null} ? @{/admin/vouchers/new} : @{/admin/vouchers/{id}/edit(id=${id})}"
           th:object="${form}" method="post">
         <th:block th:replace="~{fragments/nav-fields :: adminSource}"></th:block>
         <ul class="catalog-error" role="alert" th:if="${#fields.hasGlobalErrors()}">
             <li th:each="error : ${#fields.globalErrors()}" th:text="${error}"></li>
         </ul>
-        <label>Mã voucher <input th:field="*{maApDung}" maxlength="80" required></label>
+        <label>Mã giảm giá <input th:field="*{maApDung}" maxlength="80" required></label>
         <small class="catalog-error" th:errors="*{maApDung}"></small>
         <label>Loại giảm giá
             <select th:field="*{loaiGiamGia}" required>
@@ -23,23 +23,23 @@
             </select>
         </label>
         <small class="catalog-error" th:errors="*{loaiGiamGia}"></small>
-        <label>Giá trị giảm <input type="number" th:field="*{giaTriGiam}" min="1" max="999999999999999" step="1" required></label>
+        <label>Số tiền hoặc phần trăm giảm <input type="number" th:field="*{giaTriGiam}" min="1" max="999999999999999" step="1" required></label>
         <small class="catalog-error" th:errors="*{giaTriGiam}"></small>
         <label>Mức giảm tối đa (₫, tùy chọn) <input type="number" th:field="*{mucGiamToiDa}" min="0" max="999999999999999" step="1"></label>
         <small class="catalog-error" th:errors="*{mucGiamToiDa}"></small>
-        <label>Tạm tính tối thiểu (₫) <input type="number" th:field="*{donToiThieu}" min="0" max="999999999999999" step="1" required></label>
+        <label>Tiền hàng tối thiểu để dùng mã (₫) <input type="number" th:field="*{donToiThieu}" min="0" max="999999999999999" step="1" required></label>
         <small class="catalog-error" th:errors="*{donToiThieu}"></small>
         <label>Giới hạn sử dụng <input type="number" th:field="*{gioiHanSuDung}" min="0" max="2147483647" step="1" required></label>
         <small class="catalog-error" th:errors="*{gioiHanSuDung}"></small>
         <fieldset>
-            <legend>Thời gian áp dụng (UTC)</legend>
+            <legend>Thời gian áp dụng (giờ UTC, chậm hơn giờ Việt Nam 7 tiếng)</legend>
             <label>Bắt đầu <input type="datetime-local" th:field="*{batDauLuc}" step="any" required></label>
             <small class="catalog-error" th:errors="*{batDauLuc}"></small>
             <label>Kết thúc <input type="datetime-local" th:field="*{ketThucLuc}" step="any" required></label>
             <small class="catalog-error" th:errors="*{ketThucLuc}"></small>
         </fieldset>
         <label class="catalog-checkbox"><input type="checkbox" th:field="*{dangHoatDong}"> Đang bật</label>
-        <div><button class="btn btn--primary" type="submit">Lưu voucher</button></div>
+        <div><button class="btn btn--primary" type="submit">Lưu mã giảm giá</button></div>
     </form>
 </main>
 <div th:replace="~{fragments/footer :: siteFooter}"></div>

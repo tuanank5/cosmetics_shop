@@ -39,20 +39,20 @@ class AdminBienTheSanPham_Controller {
             try {
                 bienTheService.luu(productId, variantId, form, errors);
             } catch (DataIntegrityViolationException exception) {
-                errors.rejectValue("sku", "sku.conflict", "SKU đã được dùng hoặc sản phẩm đã thay đổi.");
+                errors.rejectValue("sku", "sku.conflict", "Mã biến thể sản phẩm đã được dùng hoặc thông tin sản phẩm vừa thay đổi.");
             }
         }
         if (errors.hasErrors()) {
             return hienForm(productId, variantId, model);
         }
-        flash.addFlashAttribute("message", "Đã lưu biến thể.");
+        flash.addFlashAttribute("message", "Đã lưu biến thể sản phẩm.");
         return "redirect:" + duongDan(productId);
     }
 
     @PostMapping("/{variantId}/delete")
     String ngungHoatDong(@PathVariable long productId, @PathVariable long variantId, RedirectAttributes flash) {
         bienTheService.ngungHoatDong(productId, variantId);
-        flash.addFlashAttribute("message", "Đã ngừng bán biến thể.");
+        flash.addFlashAttribute("message", "Đã ngừng bán biến thể sản phẩm.");
         return "redirect:" + duongDan(productId);
     }
 

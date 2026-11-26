@@ -21,7 +21,7 @@
                 <input th:if="${ketQua.size != 12}" type="hidden" name="size" th:value="${ketQua.size}">
                 <div class="field">
                     <label for="catalog-q">Tìm kiếm</label>
-                    <input id="catalog-q" type="search" name="q" th:value="${q}" maxlength="160" placeholder="Tên sản phẩm hoặc SKU">
+                    <input id="catalog-q" type="search" name="q" th:value="${q}" maxlength="160" placeholder="Tên sản phẩm hoặc mã biến thể sản phẩm">
                 </div>
                 <div class="field">
                     <label for="categories">Danh mục</label>
@@ -55,6 +55,7 @@
         </details>
 
         <section class="catalog-results" aria-labelledby="catalog-results-title">
+            <p th:replace="~{fragments/wishlist :: feedback}"></p>
             <div class="catalog-results-head">
                 <h2 id="catalog-results-title">Kết quả</h2>
                 <p class="catalog-count muted" th:text="|${ketQua.totalElements} sản phẩm|">0 sản phẩm</p>
@@ -121,5 +122,6 @@
 </main>
 <div th:replace="~{fragments/footer :: siteFooter}"></div>
 <script defer th:src="@{/js/catalog-preview.js}"></script>
+<script defer th:src="@{/js/wishlist.js}"></script>
 </body>
 </html>

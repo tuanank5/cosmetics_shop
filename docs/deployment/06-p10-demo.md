@@ -2,22 +2,23 @@
 
 ## Demo local
 
-1. Tạo database trống `beautyshop_demo` và user riêng theo [hướng dẫn MariaDB](01-local-db-and-flyway.md). Cấp quyền cho user trên database demo. Dùng thông tin nhân vật giả cho phần đăng ký và giao hàng.
-2. Trong PowerShell, đặt `DB_URL=jdbc:mariadb://127.0.0.1:3306/beautyshop_demo`, `DB_USER`, `DB_PASSWORD`. Giữ các biến này trong môi trường local.
-3. Chạy `mvn -DskipTests package`, rồi chạy JAR với profile dev và bind loopback để Flyway khởi tạo database.
+Trong `.env`, điền `DB_PASSWORD` và đặt `DB_NAME=beautyshop_demo`. Có thể dùng `DB_URL` hiện có nếu nó trỏ tới schema demo trên loopback. Khi khởi tạo volume Compose mới, đặt tên demo trước lần đầu chạy `docker compose up`. Với volume đã có hoặc MariaDB cài trực tiếp, tạo schema demo riêng và cấp quyền cho user theo [hướng dẫn MariaDB](01-local-db-and-flyway.md). Dùng nhân vật giả cho đăng ký và giao hàng.
 
 ```powershell
-java -jar target/beautyshop-0.0.1-SNAPSHOT.jar --spring.profiles.active=dev --server.address=127.0.0.1
+.\scripts\p00.ps1 -Task demo
 ```
 
-4. Từ một PowerShell có cùng `DB_USER` và `DB_PASSWORD`, nạp catalog. Truyền `-Client` với đường dẫn đầy đủ tới `mariadb.exe` nếu client chưa có trong PATH. Nếu MariaDB chạy qua Compose, dùng cổng host tương ứng.
+Lệnh trên dùng MariaDB client trong PATH, nâng schema tới bản mới nhất, nạp catalog/đơn hàng/yêu thích rồi mở web trên loopback. Nếu client chưa có trong PATH, truyền `-Client <đường dẫn mariadb.exe>` vào lệnh demo. Để chọn riêng bước seed, chạy từng lệnh.
 
 ```powershell
-.\scripts\seed-demo.ps1 -Database beautyshop_demo -User $env:DB_USER -Port 3306
+.\scripts\p00.ps1 -Task migrate
+.\scripts\seed-demo.ps1 -WithOrders
+.\scripts\p00.ps1 -Task run
 ```
 
-5. Mở `http://127.0.0.1:8080/products`. `/products/demo-r026` có hai lựa chọn SKU, `DEMO-004` có tồn 1 và `DEMO-013` hết hàng lúc mới nạp. `DEMO10` giảm 10%, tối đa 50.000 ₫, cho đơn từ 200.000 ₫ trong 30 ngày kể từ lần nạp đầu.
-6. Đăng ký một Customer để mua. Đăng ký tài khoản khác và [cấp quyền Admin](03-cap-quyen-admin.md) để xử lý đơn demo. Dashboard ở `/admin/orders` ghi tổng số đơn, số đơn đã thu tiền và số tiền của thanh toán `PAID` hợp lệ theo từng đơn.
+Thêm `-Client <đường dẫn mariadb.exe>` khi cần. Bỏ `-WithOrders` để chỉ nạp catalog và voucher. Catalog riêng giữ mẫu `DEMO-004` tồn 1 và `DEMO-013` hết hàng lúc mới nạp. Khi thêm đơn, seed tiêu thụ tồn từ các SKU đủ điều kiện để minh họa giao dịch. Mở `http://127.0.0.1:8080/products`. `/products/demo-r026` có hai lựa chọn SKU. Voucher `DEMO10` giảm 10%, tối đa 50.000 ₫, cho đơn từ 200.000 ₫ trong 30 ngày kể từ lần nạp đầu.
+
+Đăng ký một Customer để mua. Đăng ký tài khoản khác và [cấp quyền Admin](03-cap-quyen-admin.md) để xử lý đơn demo. Dashboard ở `/admin/orders` ghi tổng số đơn, số đơn đã thu tiền và số tiền của thanh toán `PAID` hợp lệ theo từng đơn.
 
 Seeder chỉ kết nối loopback và nhận database có tên dành riêng cho demo. Chạy lại giữ dữ liệu, giá, tồn và số lượt hiện có của các bản ghi đã nạp. Muốn bắt đầu một kịch bản mới, dùng database demo trống riêng với hậu tố phân biệt.
 

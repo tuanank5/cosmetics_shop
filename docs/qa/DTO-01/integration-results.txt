@@ -1,0 +1,13 @@
+﻿[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 7.471 s -- in com.beautyshop.controller.admin.AdminCatalogSecurityTest
+[INFO] Tests run: 29, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.100 s -- in com.beautyshop.controller.CheckoutPagesTest
+[INFO] Tests run: 65, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.869 s -- in com.beautyshop.controller.GiaoDienPagesTest
+[INFO] Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 10.29 s -- in com.beautyshop.integration.BienTheSanPham_MariaDb_Test
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.614 s -- in com.beautyshop.integration.CuaHang_MariaDb_Test
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.545 s -- in com.beautyshop.integration.DanhMucSanPhamThuongHieu_MariaDb_Test
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.901 s -- in com.beautyshop.integration.DonHangCOD_MariaDb_Test
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 5.487 s -- in com.beautyshop.integration.OAuth2Callback_MariaDb_Test
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.674 s -- in com.beautyshop.integration.XacThucDaPhuongThuc_MariaDb_Test
+[INFO] Tests run: 11, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 6.095 s -- in com.beautyshop.integration.XacThuc_MariaDb_Test
+[INFO] Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.664 s -- in com.beautyshop.service.CheckoutIntegrityTest
+[INFO] Tests run: 144, Failures: 0, Errors: 0, Skipped: 0
+[INFO] BUILD SUCCESS

@@ -1,0 +1,386 @@
+[
+  {
+    "width": 390,
+    "js": true,
+    "days": 7,
+    "chartsMatch": 8,
+    "kpi": {
+      "doanh-thu": 125000,
+      "so-don": 2,
+      "cho-xu-ly": 1,
+      "sku-sap-het": 2,
+      "khach-moi": 1,
+      "aov": 125000,
+      "da-giao": 1,
+      "ti-le-huy": 0
+    }
+  },
+  {
+    "width": 390,
+    "js": true,
+    "days": 30,
+    "chartsMatch": 8,
+    "kpi": {
+      "doanh-thu": 125000,
+      "so-don": 3,
+      "cho-xu-ly": 1,
+      "sku-sap-het": 2,
+      "khach-moi": 1,
+      "aov": 125000,
+      "da-giao": 1,
+      "ti-le-huy": 1
+    }
+  },
+  {
+    "width": 390,
+    "js": true,
+    "days": 90,
+    "chartsMatch": 8,
+    "kpi": {
+      "doanh-thu": 125000,
+      "so-don": 3,
+      "cho-xu-ly": 1,
+      "sku-sap-het": 2,
+      "khach-moi": 1,
+      "aov": 125000,
+      "da-giao": 1,
+      "ti-le-huy": 1
+    }
+  },
+  {
+    "width": 768,
+    "js": true,
+    "days": 7,
+    "chartsMatch": 8,
+    "kpi": {
+      "doanh-thu": 125000,
+      "so-don": 2,
+      "cho-xu-ly": 1,
+      "sku-sap-het": 2,
+      "khach-moi": 1,
+      "aov": 125000,
+      "da-giao": 1,
+      "ti-le-huy": 0
+    }
+  },
+  {
+    "width": 768,
+    "js": true,
+    "days": 30,
+    "chartsMatch": 8,
+    "kpi": {
+      "doanh-thu": 125000,
+      "so-don": 3,
+      "cho-xu-ly": 1,
+      "sku-sap-het": 2,
+      "khach-moi": 1,
+      "aov": 125000,
+      "da-giao": 1,
+      "ti-le-huy": 1
+    }
+  },
+  {
+    "width": 768,
+    "js": true,
+    "days": 90,
+    "chartsMatch": 8,
+    "kpi": {
+      "doanh-thu": 125000,
+      "so-don": 3,
+      "cho-xu-ly": 1,
+      "sku-sap-het": 2,
+      "khach-moi": 1,
+      "aov": 125000,
+      "da-giao": 1,
+      "ti-le-huy": 1
+    }
+  },
+  {
+    "width": 1366,
+    "js": true,
+    "days": 7,
+    "chartsMatch": 8,
+    "kpi": {
+      "doanh-thu": 125000,
+      "so-don": 2,
+      "cho-xu-ly": 1,
+      "sku-sap-het": 2,
+      "khach-moi": 1,
+      "aov": 125000,
+      "da-giao": 1,
+      "ti-le-huy": 0
+    }
+  },
+  {
+    "width": 1366,
+    "js": true,
+    "days": 30,
+    "chartsMatch": 8,
+    "kpi": {
+      "doanh-thu": 125000,
+      "so-don": 3,
+      "cho-xu-ly": 1,
+      "sku-sap-het": 2,
+      "khach-moi": 1,
+      "aov": 125000,
+      "da-giao": 1,
+      "ti-le-huy": 1
+    }
+  },
+  {
+    "width": 1366,
+    "js": true,
+    "days": 90,
+    "chartsMatch": 8,
+    "kpi": {
+      "doanh-thu": 125000,
+      "so-don": 3,
+      "cho-xu-ly": 1,
+      "sku-sap-het": 2,
+      "khach-moi": 1,
+      "aov": 125000,
+      "da-giao": 1,
+      "ti-le-huy": 1
+    }
+  },
+  {
+    "width": 1920,
+    "js": true,
+    "days": 7,
+    "chartsMatch": 8,
+    "kpi": {
+      "doanh-thu": 125000,
+      "so-don": 2,
+      "cho-xu-ly": 1,
+      "sku-sap-het": 2,
+      "khach-moi": 1,
+      "aov": 125000,
+      "da-giao": 1,
+      "ti-le-huy": 0
+    }
+  },
+  {
+    "width": 1920,
+    "js": true,
+    "days": 30,
+    "chartsMatch": 8,
+    "kpi": {
+      "doanh-thu": 125000,
+      "so-don": 3,
+      "cho-xu-ly": 1,
+      "sku-sap-het": 2,
+      "khach-moi": 1,
+      "aov": 125000,
+      "da-giao": 1,
+      "ti-le-huy": 1
+    }
+  },
+  {
+    "width": 1920,
+    "js": true,
+    "days": 90,
+    "chartsMatch": 8,
+    "kpi": {
+      "doanh-thu": 125000,
+      "so-don": 3,
+      "cho-xu-ly": 1,
+      "sku-sap-het": 2,
+      "khach-moi": 1,
+      "aov": 125000,
+      "da-giao": 1,
+      "ti-le-huy": 1
+    }
+  },
+  {
+    "width": 390,
+    "js": false,
+    "days": 7,
+    "chartsMatch": 0,
+    "kpi": {
+      "doanh-thu": 125000,
+      "so-don": 2,
+      "cho-xu-ly": 1,
+      "sku-sap-het": 2,
+      "khach-moi": 1,
+      "aov": 125000,
+      "da-giao": 1,
+      "ti-le-huy": 0
+    }
+  },
+  {
+    "width": 390,
+    "js": false,
+    "days": 30,
+    "chartsMatch": 0,
+    "kpi": {
+      "doanh-thu": 125000,
+      "so-don": 3,
+      "cho-xu-ly": 1,
+      "sku-sap-het": 2,
+      "khach-moi": 1,
+      "aov": 125000,
+      "da-giao": 1,
+      "ti-le-huy": 1
+    }
+  },
+  {
+    "width": 390,
+    "js": false,
+    "days": 90,
+    "chartsMatch": 0,
+    "kpi": {
+      "doanh-thu": 125000,
+      "so-don": 3,
+      "cho-xu-ly": 1,
+      "sku-sap-het": 2,
+      "khach-moi": 1,
+      "aov": 125000,
+      "da-giao": 1,
+      "ti-le-huy": 1
+    }
+  },
+  {
+    "width": 768,
+    "js": false,
+    "days": 7,
+    "chartsMatch": 0,
+    "kpi": {
+      "doanh-thu": 125000,
+      "so-don": 2,
+      "cho-xu-ly": 1,
+      "sku-sap-het": 2,
+      "khach-moi": 1,
+      "aov": 125000,
+      "da-giao": 1,
+      "ti-le-huy": 0
+    }
+  },
+  {
+    "width": 768,
+    "js": false,
+    "days": 30,
+    "chartsMatch": 0,
+    "kpi": {
+      "doanh-thu": 125000,
+      "so-don": 3,
+      "cho-xu-ly": 1,
+      "sku-sap-het": 2,
+      "khach-moi": 1,
+      "aov": 125000,
+      "da-giao": 1,
+      "ti-le-huy": 1
+    }
+  },
+  {
+    "width": 768,
+    "js": false,
+    "days": 90,
+    "chartsMatch": 0,
+    "kpi": {
+      "doanh-thu": 125000,
+      "so-don": 3,
+      "cho-xu-ly": 1,
+      "sku-sap-het": 2,
+      "khach-moi": 1,
+      "aov": 125000,
+      "da-giao": 1,
+      "ti-le-huy": 1
+    }
+  },
+  {
+    "width": 1366,
+    "js": false,
+    "days": 7,
+    "chartsMatch": 0,
+    "kpi": {
+      "doanh-thu": 125000,
+      "so-don": 2,
+      "cho-xu-ly": 1,
+      "sku-sap-het": 2,
+      "khach-moi": 1,
+      "aov": 125000,
+      "da-giao": 1,
+      "ti-le-huy": 0
+    }
+  },
+  {
+    "width": 1366,
+    "js": false,
+    "days": 30,
+    "chartsMatch": 0,
+    "kpi": {
+      "doanh-thu": 125000,
+      "so-don": 3,
+      "cho-xu-ly": 1,
+      "sku-sap-het": 2,
+      "khach-moi": 1,
+      "aov": 125000,
+      "da-giao": 1,
+      "ti-le-huy": 1
+    }
+  },
+  {
+    "width": 1366,
+    "js": false,
+    "days": 90,
+    "chartsMatch": 0,
+    "kpi": {
+      "doanh-thu": 125000,
+      "so-don": 3,
+      "cho-xu-ly": 1,
+      "sku-sap-het": 2,
+      "khach-moi": 1,
+      "aov": 125000,
+      "da-giao": 1,
+      "ti-le-huy": 1
+    }
+  },
+  {
+    "width": 1920,
+    "js": false,
+    "days": 7,
+    "chartsMatch": 0,
+    "kpi": {
+      "doanh-thu": 125000,
+      "so-don": 2,
+      "cho-xu-ly": 1,
+      "sku-sap-het": 2,
+      "khach-moi": 1,
+      "aov": 125000,
+      "da-giao": 1,
+      "ti-le-huy": 0
+    }
+  },
+  {
+    "width": 1920,
+    "js": false,
+    "days": 30,
+    "chartsMatch": 0,
+    "kpi": {
+      "doanh-thu": 125000,
+      "so-don": 3,
+      "cho-xu-ly": 1,
+      "sku-sap-het": 2,
+      "khach-moi": 1,
+      "aov": 125000,
+      "da-giao": 1,
+      "ti-le-huy": 1
+    }
+  },
+  {
+    "width": 1920,
+    "js": false,
+    "days": 90,
+    "chartsMatch": 0,
+    "kpi": {
+      "doanh-thu": 125000,
+      "so-don": 3,
+      "cho-xu-ly": 1,
+      "sku-sap-het": 2,
+      "khach-moi": 1,
+      "aov": 125000,
+      "da-giao": 1,
+      "ti-le-huy": 1
+    }
+  }
+]

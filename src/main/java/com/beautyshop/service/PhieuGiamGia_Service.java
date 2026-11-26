@@ -55,7 +55,7 @@ public class PhieuGiamGia_Service {
     public void luuAdmin(Long ma, PhieuGiamGia_Form form, BindingResult errors) {
         String maApDung = chuanHoa(form.getMaApDung());
         if (maApDung.length() > 80) {
-            errors.rejectValue("maApDung", "voucher.code", "Mã voucher đã chuẩn hóa dài quá 80 ký tự.");
+            errors.rejectValue("maApDung", "voucher.code", "Mã giảm giá sau khi định dạng dài quá 80 ký tự.");
         }
         if (form.getLoaiGiamGia() == LoaiGiamGia.PERCENT && form.getGiaTriGiam().compareTo(BigDecimal.valueOf(100)) > 0) {
             errors.rejectValue("giaTriGiam", "voucher.percent", "Phần trăm giảm phải từ 1 đến 100.");
@@ -91,7 +91,7 @@ public class PhieuGiamGia_Service {
     public void xoaAdmin(long ma) {
         timTheoMa(ma, true);
         if (!repository.xoaChuaSuDung(ma)) {
-            throw new IllegalStateException("Voucher có lịch sử đơn hoặc lượt sử dụng. Hãy chuyển sang ngừng hoạt động.");
+            throw new IllegalStateException("Mã giảm giá đã gắn với đơn hàng hoặc có lượt sử dụng. Hãy tắt mã này.");
         }
     }
 
@@ -135,15 +135,15 @@ public class PhieuGiamGia_Service {
             return new GiamGia(null, BigDecimal.ZERO);
         }
         var phieu = repository.timPhieuHopLe(chuanHoa(ma), khoa)
-            .orElseThrow(() -> new IllegalArgumentException("Voucher không hợp lệ, đã hết hạn hoặc hết lượt."));
+            .orElseThrow(() -> new IllegalArgumentException("Mã giảm giá không hợp lệ, đã hết hạn hoặc hết lượt sử dụng."));
         if (tamTinh.compareTo(phieu.toiThieu()) < 0) {
-            throw new IllegalArgumentException("Đơn chưa đạt mức tối thiểu của voucher.");
+            throw new IllegalArgumentException("Tiền hàng chưa đạt mức tối thiểu để dùng mã giảm giá này.");
         }
         BigDecimal giam = switch (phieu.loai()) {
             case "FIXED" -> phieu.giaTri();
             case "PERCENT" -> tamTinh.multiply(phieu.giaTri().min(BigDecimal.valueOf(100)))
                 .movePointLeft(2).setScale(0, RoundingMode.DOWN);
-            default -> throw new IllegalArgumentException("Loại voucher không hợp lệ.");
+            default -> throw new IllegalArgumentException("Loại giảm giá không hợp lệ.");
         };
         if (phieu.toiDa() != null) {
             giam = giam.min(phieu.toiDa());
@@ -153,7 +153,7 @@ public class PhieuGiamGia_Service {
 
     public void hoanCOD(Long ma) {
         if (ma != null && !repository.hoanLuot(ma)) {
-            throw new IllegalStateException("Không thể hoàn lượt voucher của đơn.");
+            throw new IllegalStateException("Không thể trả lại lượt dùng mã giảm giá của đơn hàng.");
         }
     }
 
@@ -173,7 +173,7 @@ public class PhieuGiamGia_Service {
 
     public void ketThucTamGiu(long maDon, Long maVoucher, boolean suDung) {
         if (maVoucher != null && !repository.ketThucTamGiu(maDon, maVoucher, suDung)) {
-            throw new IllegalStateException("Không thể cập nhật lượt voucher đã giữ.");
+            throw new IllegalStateException("Không thể cập nhật lượt dùng mã giảm giá đã giữ.");
         }
     }
 

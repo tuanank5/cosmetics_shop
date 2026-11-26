@@ -1,6 +1,8 @@
 package com.beautyshop.repository;
 
+import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 import org.springframework.jdbc.core.simple.JdbcClient;
 import org.springframework.stereotype.Repository;
 
@@ -40,5 +42,27 @@ public class YeuThich_Repository {
             .params(maNguoiDung, maSanPham).update();
     }
 
+    public Set<Long> daLuu(long maNguoiDung, Collection<Long> sanPham) {
+        if (sanPham != null && sanPham.isEmpty()) return Set.of();
+        var query = jdbc.sql("""
+            SELECT ma_san_pham FROM san_pham_yeu_thich WHERE ma_nguoi_dung = :chu
+            """ + (sanPham == null ? "" : " AND ma_san_pham IN (:sanPham)")).param("chu", maNguoiDung);
+        if (sanPham != null) query.param("sanPham", sanPham);
+        return query.query(Long.class).set();
+    }
+
+    public TrangThai trangThai(long maNguoiDung, long maSanPham) {
+        return jdbc.sql("SELECT s.duong_dan, (" + DANG_BAN + "), y.ma_yeu_thich IS NOT NULL " + """
+            FROM san_pham s
+            JOIN danh_muc d ON d.ma_danh_muc = s.ma_danh_muc
+            JOIN thuong_hieu t ON t.ma_thuong_hieu = s.ma_thuong_hieu
+            LEFT JOIN san_pham_yeu_thich y ON y.ma_san_pham = s.ma_san_pham AND y.ma_nguoi_dung = ?
+            WHERE s.ma_san_pham = ?
+            """).params(maNguoiDung, maSanPham)
+            .query((rs, row) -> new TrangThai(rs.getString(1), rs.getBoolean(2), rs.getBoolean(3)))
+            .optional().orElse(new TrangThai(null, false, false));
+    }
+
     public record Muc(long maSanPham, String tenSanPham, String slug, boolean dangBan) {}
+    public record TrangThai(String slug, boolean dangBan, boolean daLuu) {}
 }

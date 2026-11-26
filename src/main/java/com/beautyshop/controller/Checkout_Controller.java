@@ -1,6 +1,7 @@
 package com.beautyshop.controller;
 
 import com.beautyshop.dto.Checkout_Form;
+import com.beautyshop.dto.DiaChiHienThi;
 import com.beautyshop.security.PhienNguoiDung;
 import com.beautyshop.service.DiaChiNguoiDung_Service;
 import com.beautyshop.service.DonHang_Service;
@@ -55,7 +56,7 @@ class Checkout_Controller {
             } catch (IllegalArgumentException exception) {
                 errors.rejectValue("voucher", "checkout.voucher", exception.getMessage());
             } catch (IllegalStateException | ConcurrencyFailureException exception) {
-                errors.reject("checkout.quote", "Chưa thể xác nhận báo giá. Vui lòng cập nhật lại báo giá.");
+                errors.reject("checkout.quote", "Chưa thể tính tổng tiền. Vui lòng thử tính lại.");
             }
         }
         return "order/checkout";
@@ -102,7 +103,7 @@ class Checkout_Controller {
         } catch (IllegalStateException | ConcurrencyFailureException exception) {
             // Đơn đã commit. Chờ đối soát khi chưa lấy được trang thanh toán.
         }
-        flash.addFlashAttribute("error", "Đơn đang chờ thanh toán. Có thể mở lại thanh toán hoặc chờ đối soát.");
+        flash.addFlashAttribute("error", "Đơn đang chờ thanh toán. Bạn có thể mở lại trang thanh toán hoặc chờ xác nhận kết quả.");
         return "redirect:/orders/" + maDon;
     }
 
@@ -111,7 +112,7 @@ class Checkout_Controller {
         var muc = gioHangService.docGioCustomer(phien.getMaNguoiDung());
         var form = (Checkout_Form) model.getAttribute("form");
         if (!model.containsAttribute(BindingResult.MODEL_KEY_PREFIX + "form") && form.getAddressId() == null) {
-            diaChi.stream().filter(dc -> dc.isLaMacDinh()).findFirst().ifPresent(dc -> form.setAddressId(dc.getMaDiaChi()));
+            diaChi.stream().filter(DiaChiHienThi::laMacDinh).findFirst().ifPresent(dc -> form.setAddressId(dc.maDiaChi()));
         }
         model.addAttribute("diaChi", diaChi);
         model.addAttribute("muc", muc);
@@ -121,7 +122,7 @@ class Checkout_Controller {
             .reduce(BigDecimal.ZERO, BigDecimal::add);
         model.addAttribute("tamTinh", tamTinh);
         model.addAttribute("baoGiaHopLe", false);
-        model.addAttribute("diaChiHopLe", diaChi.stream().anyMatch(dc -> dc.getMaDiaChi().equals(form.getAddressId())));
+        model.addAttribute("diaChiHopLe", diaChi.stream().anyMatch(dc -> dc.maDiaChi().equals(form.getAddressId())));
         return "order/checkout";
     }
 

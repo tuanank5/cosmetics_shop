@@ -32,7 +32,7 @@ public class TonKho_Service {
             if (hienTai.trangThai() == TrangThaiTamGiu.HELD && hienTai.soLuong() == soLuong) {
                 return;
             }
-            throw new IllegalStateException("Đơn đã có lượt tạm giữ khác cho SKU này.");
+            throw new IllegalStateException("Đơn hàng này đã có một lượt giữ hàng khác cho biến thể này.");
         }
         bienThe.giu(soLuong);
         tonKhoRepository.taoTamGiu(maDonHang, maBienThe, soLuong);
@@ -74,7 +74,7 @@ public class TonKho_Service {
     private void chuyenTamGiu(long maDonHang, long maBienThe, TrangThaiTamGiu dich) {
         BienTheSanPham bienThe = khoa(maDonHang, maBienThe, "MOMO");
         var tamGiu = tonKhoRepository.timTamGiu(maDonHang, maBienThe)
-            .orElseThrow(() -> new IllegalStateException("Không tìm thấy lượt tạm giữ SKU."));
+            .orElseThrow(() -> new IllegalStateException("Không tìm thấy lượt giữ hàng cho biến thể sản phẩm."));
         if (tamGiu.trangThai() == dich) {
             return;
         }
@@ -96,7 +96,7 @@ public class TonKho_Service {
             throw new IllegalArgumentException("Phương thức thanh toán của đơn không phù hợp.");
         }
         BienTheSanPham bienThe = bienTheRepository.khoa(maBienThe)
-            .orElseThrow(() -> new IllegalArgumentException("SKU không tồn tại."));
+            .orElseThrow(() -> new IllegalArgumentException("Biến thể sản phẩm không tồn tại."));
         // Checkout có thể đã đọc SKU để tính giá trước khi khóa hàng.
         entityManager.refresh(bienThe, LockModeType.PESSIMISTIC_WRITE);
         return bienThe;

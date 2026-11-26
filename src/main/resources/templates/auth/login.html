@@ -22,7 +22,7 @@
         <a href="#username">Kiểm tra email</a> · <a href="#password">Nhập lại mật khẩu</a>
       </div>
       <p class="alert alert--error" role="alert" th:if="${param.cartError}">Lỗi: Chưa thể đồng bộ giỏ. Vui lòng đăng nhập lại.</p>
-      <p class="alert alert--error" role="alert" th:if="${param.inactive}">Lỗi: Phiên đã hết hiệu lực. Vui lòng đăng nhập lại.</p>
+      <p class="alert alert--error" role="alert" th:if="${param.inactive}">Bạn cần đăng nhập lại để tiếp tục.</p>
       <div class="field">
         <label for="username">Email <span class="muted">(bắt buộc)</span></label>
         <input id="username" name="username" type="email" autocomplete="username" maxlength="190" required

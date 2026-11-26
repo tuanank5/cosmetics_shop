@@ -1,7 +1,6 @@
 package com.beautyshop.controller;
 
 import com.beautyshop.cart.GioKhach;
-import com.beautyshop.security.LoginSuccess_Handler;
 import com.beautyshop.security.PhienNguoiDung;
 import com.beautyshop.service.GioHang_Service;
 import jakarta.servlet.http.HttpSession;
@@ -29,8 +28,6 @@ class GioHang_Controller {
         synchronized (WebUtils.getSessionMutex(session)) {
             model.addAttribute("mucGio", nguoiDung == null ? gioHangService.docGioKhach(GioKhach.doc(session))
                 : gioHangService.docGioCustomer(nguoiDung.getMaNguoiDung()));
-            model.addAttribute("daGioiHan", session.getAttribute(LoginSuccess_Handler.CART_NOTICE));
-            session.removeAttribute(LoginSuccess_Handler.CART_NOTICE);
         }
         return "cart/index";
     }
@@ -46,7 +43,7 @@ class GioHang_Controller {
             } else {
                 gioHangService.themGioCustomer(nguoiDung.getMaNguoiDung(), variant);
             }
-            flash.addFlashAttribute("message", "Đã thêm SKU vào giỏ.");
+            flash.addFlashAttribute("message", "Đã thêm biến thể sản phẩm vào giỏ hàng.");
         } catch (IllegalArgumentException exception) {
             flash.addFlashAttribute("error", exception.getMessage());
         }
@@ -74,7 +71,7 @@ class GioHang_Controller {
                     gioHangService.datSoLuongCustomer(phien.getMaNguoiDung(), variant, quantity);
                 }
             }
-            flash.addFlashAttribute("message", quantity == 0 ? "Đã xóa SKU khỏi giỏ." : "Đã cập nhật số lượng.");
+            flash.addFlashAttribute("message", quantity == 0 ? "Đã xóa biến thể sản phẩm khỏi giỏ hàng." : "Đã cập nhật số lượng.");
         } catch (IllegalArgumentException exception) {
             flash.addFlashAttribute("error", exception.getMessage());
         }

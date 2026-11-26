@@ -100,3 +100,39 @@ G5 đạt trên fixture MariaDB và Chrome headless. Ô mật khẩu ổn địn
 ## UI-01P · Phân trang GET · 26/11/2026
 
 G6 đạt trên fixture MariaDB, MongoDB và Chrome. Catalog, tài khoản và hai màn đánh giá dùng chung pager. Đã kiểm bộ lọc, SKU, giới hạn trang, thứ tự khi trùng timestamp, bàn phím và Back khi tắt JavaScript. CART-01 chờ giao riêng. [Báo cáo](reviews/UI-01P-ket-qua.md)
+
+## CART-01 · Thông báo gộp giỏ · 26/11/2026
+
+G7 đạt trên MariaDB và Chrome. Checkout hiển thị số lượng điều chỉnh theo từng SKU còn tồn dương sau gộp. Test xác nhận 12→10 giảm 2, mỗi snapshot gộp một lần, rollback giữ snapshot và refresh/Back không phát lại thông báo. CAT-01 chờ giao riêng. [Báo cáo](reviews/CART-01-ket-qua.md)
+
+## CAT-01 · Vòng đời catalog · 26/11/2026
+
+G8 đạt trên MariaDB và Chrome. Admin dùng Ngừng hoạt động và Kích hoạt lại; URL xóa cũ của danh mục và thương hiệu trả 404. Đã kiểm visibility, SKU, voucher, COD và snapshot đơn. WISH-01 chờ giao riêng. [Báo cáo](reviews/CAT-01-ket-qua.md)
+
+## WISH-01 · Yêu thích tại chỗ · 26/11/2026
+
+G9 đạt trên MariaDB, MongoDB và Chrome. Home, catalog, PDP và danh sách yêu thích dùng cùng trạng thái theo sản phẩm. Đã kiểm luồng Guest và no-JS, hai tab, mất phản hồi, phiên thu hồi và sản phẩm vừa tắt. ORDER-01 chờ giao riêng. [Báo cáo](reviews/WISH-01-ket-qua.md)
+
+## ORDER-01 · Danh sách đơn Admin · 26/11/2026
+
+G10 đạt trên fixture MariaDB và Chrome headless. Bộ lọc và phân trang chạy trong SQL theo trạng thái thanh toán hiệu lực, giữ tổng toàn hệ thống riêng. Đã kiểm link dashboard, quyền sở hữu, COD/MoMo mock và quay lại đúng trang, đúng dòng với JavaScript tắt. REVIEW-01 chờ giao riêng. [Báo cáo](reviews/ORDER-01-ket-qua.md)
+
+## REVIEW-01 · Kiểm duyệt đánh giá · 26/11/2026
+
+G11 đạt trên MariaDB, MongoDB và Chrome headless. Duyệt và ẩn giữ bộ lọc, cập nhật count và focus, đồng thời đưa URL về trang hợp lệ nếu dòng cuối rời lọc. Đã kiểm revision cũ, mất phản hồi, MongoDB ngừng hoạt động và JavaScript tắt. DTO-01 chờ giao riêng. [Báo cáo](reviews/REVIEW-01-ket-qua.md)
+
+## DTO-01 · Projection theo màn · 26/11/2026
+
+G12 đạt. Thu hẹp cột đọc cho địa chỉ, catalog Admin và trang bảo mật. 13 mẫu HTML khớp sau chuẩn hóa CSRF, số SELECT JPA giữ nguyên khi tăng từ 1 lên 7 dòng. Tích hợp 144/144 và Chrome 2/2. QA-01 chờ giao riêng. [Báo cáo](reviews/DTO-01-ket-qua.md)
+
+## QA-01 · Bản tích hợp · 26/11/2026
+
+**G13 local đạt, QA-01 còn BLOCKED ở CI của revision tích hợp và quyết định phát hành.** Bản sửa HTML RAG đạt 3/3 ca tích hợp và 8/8 tổ hợp Chrome. JDK 21 compile/test/package đạt, hồi quy MariaDB/MongoDB có 312 đạt, 2 skip và 0 fail/error. BSON, phục hồi SQL/MongoDB/ảnh và REVIEW-01 đã đạt. OAuth Google/GitHub, Redis và SMTP thật còn chờ xác minh. GitHub Actions đạt cho `38fb1ca`. [Báo cáo](reviews/QA-01-ket-qua.md)
+
+## LOCAL-SETUP-01 · Thiết lập local và nâng cấp · 26/11/2026
+
+MariaDB fixture xác nhận schema trống và lịch sử chuẩn V1–V6 lên V7, seed chạy lặp giữ dữ liệu và một lệnh demo mở được web. Giữ V1–V7 để đối chiếu checkout cũ. Cấu hình Compose đã kiểm tĩnh và còn chờ chạy trên máy có Docker. [Báo cáo](reviews/LOCAL-SETUP-01-khoi-tao-va-nang-cap.md)
+
+## UI-COPY-01 · Thuật ngữ giao diện
+
+Đã đồng bộ câu chữ cho Guest, Customer và Admin. V5 nạp FAQ đã sửa khi khởi tạo MariaDB trống theo D37. Chrome kiểm ba nhóm tương tác. Hồi quy MariaDB/MongoDB có 313 đạt, 5 bỏ qua và 0 lỗi. [Báo cáo](reviews/UI-COPY-01-ket-qua.md)

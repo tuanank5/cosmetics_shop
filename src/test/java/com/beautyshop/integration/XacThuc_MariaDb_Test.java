@@ -9,6 +9,8 @@ import com.beautyshop.service.DiaChiNguoiDung_Service;
 import com.beautyshop.service.GioHang_Service;
 import com.beautyshop.service.QuyenDonHang_Service;
 import java.util.UUID;
+import java.net.URI;
+import java.util.List;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 import org.junit.jupiter.api.Test;
@@ -127,17 +129,139 @@ class XacThuc_MariaDb_Test {
         assertThat(banGioGuest.soLuong().get(maBienThe)).isEqualTo(2);
         jdbc.sql("UPDATE bien_the_san_pham SET so_luong_trong_kho = 2, gia_ban = 125000 WHERE ma_bien_the = ?")
             .param(maBienThe).update();
-        var session = dangNhap(email, guest, "CUSTOMER", "/");
+        String dich = dangNhapCoGop(email, guest);
+        var session = guest;
         assertThat(GioKhach.doc(session).soLuong()).isEmpty();
         mvc.perform(get("/cart").session(session)).andExpect(status().isOk())
-            .andExpect(content().string(containsString("điều chỉnh theo tồn hiện tại")))
+            .andExpect(content().string(not(containsString("data-cart-merge-notice"))))
             .andExpect(content().string(containsString("125.000")));
-        gioHang.gopSauDangNhap(maNguoiDung, banGioGuest);
+        mvc.perform(get(URI.create(dich)).session(session)).andExpect(status().isOk())
+            .andExpect(content().string(containsString("Dự kiến 3, thực nhận 2, giảm 1")));
+        assertThat(gioHang.gopSauDangNhap(maNguoiDung, banGioGuest).daGioiHan()).isFalse();
         jdbc.sql("UPDATE bien_the_san_pham SET so_luong_trong_kho = 10 WHERE ma_bien_the = ?").param(maBienThe).update();
         gioHang.gopSauDangNhap(maNguoiDung, banGioGuest);
         assertThat(gioHang.docGioCustomer(maNguoiDung).getFirst().soLuong()).isEqualTo(2);
         assertThat(jdbc.sql("SELECT count(*) FROM ghi_nhan_gop_gio_hang WHERE ma_gop = ?")
             .param(banGioGuest.maGop().toString()).query(Integer.class).single()).isEqualTo(1);
+    }
+
+    @Test
+    void noticeCheckoutChiDungMotLanQuaHaiTabVaChiTietTonDuong() throws Exception {
+        String email = email();
+        dangKy(email);
+        long id = nguoiDungRepository.findByEmail(email).orElseThrow().getMaNguoiDung();
+        long sku = taoSku(), skuHai = taoSku(), skuHet = taoSku();
+        ton(sku, 10);
+        ton(skuHai, 3);
+        gioHang.themGioCustomer(id, sku);
+        gioHang.datSoLuongCustomer(id, sku, 7);
+        gioHang.themGioCustomer(id, skuHai);
+        var session = new MockHttpSession();
+        GioKhach.doc(session).them(sku, 5).them(skuHai, 3).them(skuHet, 2).luu(session);
+        ton(skuHet, 0);
+        mvc.perform(get("/checkout").session(session)).andExpect(redirectedUrl("http://localhost/login"));
+        String dich = dangNhapCoGop(email, session);
+        assertThat(dich).startsWith("http://localhost/checkout?").contains("continue", "cartMerge=");
+        mvc.perform(get("/cart").session(session)).andExpect(content().string(not(containsString("data-cart-merge-notice"))));
+        mvc.perform(get(URI.create(dich)).session(session).header("Sec-Fetch-Mode", "cors").accept("text/html"))
+            .andExpect(content().string(not(containsString("data-cart-merge-notice"))));
+        try (var pool = Executors.newVirtualThreadPerTaskExecutor()) {
+            java.util.concurrent.Callable<String> doc = () -> mvc.perform(get(URI.create(dich)).session(session).accept("text/html"))
+                .andExpect(status().isOk()).andReturn().getResponse().getContentAsString();
+            var mot = pool.submit(doc);
+            var hai = pool.submit(doc);
+            assertThat(List.of(mot.get(10, TimeUnit.SECONDS), hai.get(10, TimeUnit.SECONDS))
+                .stream().filter(html -> html.contains("data-cart-merge-notice"))).singleElement().satisfies(html ->
+                    assertThat(html).contains("Dự kiến 12, thực nhận 10, giảm 2", "Dự kiến 4, thực nhận 3, giảm 1")
+                        .doesNotContain("Dự kiến 2, thực nhận 0"));
+        }
+        mvc.perform(get(URI.create(dich)).session(session)).andExpect(content().string(not(containsString("data-cart-merge-notice"))));
+        assertThat(gioHang.docGioCustomer(id).stream().map(m -> m.soLuong())).containsExactly(10, 3);
+        mvc.perform(post("/logout").with(csrf()).session(session)).andExpect(redirectedUrl("/?logout"));
+        String chuSau = email();
+        dangKy(chuSau);
+        var moi = dangNhap(chuSau, new MockHttpSession(), "CUSTOMER", "/");
+        mvc.perform(get(URI.create(dich)).session(moi)).andExpect(status().isOk())
+            .andExpect(content().string(not(containsString("data-cart-merge-notice"))));
+    }
+
+    @Test
+    void haiThietBiCungTaiKhoanMoiSnapshotGopMotLanVaCoNoticeRieng() throws Exception {
+        String email = email();
+        dangKy(email);
+        long id = nguoiDungRepository.findByEmail(email).orElseThrow().getMaNguoiDung();
+        long sku = taoSku();
+        ton(sku, 10);
+        gioHang.themGioCustomer(id, sku);
+        gioHang.datSoLuongCustomer(id, sku, 7);
+        var phienMot = new MockHttpSession();
+        var phienHai = new MockHttpSession();
+        var gioMot = GioKhach.doc(phienMot).them(sku, 5);
+        var gioHai = GioKhach.doc(phienHai).them(sku, 5);
+        gioMot.luu(phienMot);
+        gioHai.luu(phienHai);
+        try (var pool = Executors.newVirtualThreadPerTaskExecutor()) {
+            var mot = pool.submit(() -> dangNhapCoGop(email, phienMot));
+            var hai = pool.submit(() -> dangNhapCoGop(email, phienHai));
+            URI dichMot = URI.create(mot.get(10, TimeUnit.SECONDS));
+            URI dichHai = URI.create(hai.get(10, TimeUnit.SECONDS));
+            assertThat(dichMot).isNotEqualTo(dichHai);
+            mvc.perform(get(dichMot).session(phienHai)).andExpect(content().string(not(containsString("data-cart-merge-notice"))));
+            String htmlMot = mvc.perform(get(dichMot).session(phienMot)).andExpect(status().isOk())
+                .andReturn().getResponse().getContentAsString();
+            String htmlHai = mvc.perform(get(dichHai).session(phienHai)).andExpect(status().isOk())
+                .andReturn().getResponse().getContentAsString();
+            assertThat(List.of(htmlMot, htmlHai)).allSatisfy(html -> assertThat(html).contains("data-cart-merge-notice"));
+            assertThat(htmlMot + htmlHai).contains("Dự kiến 12, thực nhận 10, giảm 2", "Dự kiến 15, thực nhận 10, giảm 5");
+        }
+        assertThat(gioHang.docGioCustomer(id).getFirst().soLuong()).isEqualTo(10);
+        assertThat(jdbc.sql("SELECT count(*) FROM ghi_nhan_gop_gio_hang WHERE ma_nguoi_dung = ?")
+            .param(id).query(Integer.class).single()).isEqualTo(2);
+    }
+
+    @Test
+    void rollbackGopKhongPhatNoticeVaThuLaiCungSnapshot() throws Exception {
+        String email = email();
+        dangKy(email);
+        long id = nguoiDungRepository.findByEmail(email).orElseThrow().getMaNguoiDung();
+        long skuDau = taoSku(), skuLoi = taoSku();
+        var session = new MockHttpSession();
+        GioKhach gio = GioKhach.doc(session).them(skuDau, 5).them(skuLoi, 1);
+        gio.luu(session);
+        jdbc.sql("""
+            CREATE TRIGGER cart01_fixture_fail BEFORE INSERT ON chi_tiet_gio_hang FOR EACH ROW
+            SET NEW.so_luong = IF(NEW.ma_bien_the = %d, 0, NEW.so_luong)
+            """.formatted(skuLoi)).update();
+        try {
+            mvc.perform(post("/login").session(session).with(csrf()).param("username", email).param("password", matKhau))
+                .andExpect(redirectedUrl("/login?cartError")).andExpect(unauthenticated());
+            mvc.perform(get("/login").session(session).param("cartError", ""))
+                .andExpect(content().string(not(containsString("data-cart-merge-notice"))));
+            assertThat(gioHang.docGioCustomer(id)).isEmpty();
+            assertThat(jdbc.sql("SELECT count(*) FROM ghi_nhan_gop_gio_hang WHERE ma_gop = ?")
+                .param(gio.maGop().toString()).query(Integer.class).single()).isZero();
+            assertThat(GioKhach.doc(session)).isEqualTo(gio);
+        } finally {
+            jdbc.sql("DROP TRIGGER cart01_fixture_fail").update();
+        }
+        String dich = dangNhapCoGop(email, session);
+        mvc.perform(get(URI.create(dich)).session(session)).andExpect(status().isOk())
+            .andExpect(content().string(containsString("Dự kiến 5, thực nhận 3, giảm 2")));
+        assertThat(gioHang.docGioCustomer(id).stream().map(m -> m.soLuong())).containsExactly(3, 1);
+        assertThat(gioHang.gopSauDangNhap(id, gio).daGioiHan()).isFalse();
+    }
+
+    private String dangNhapCoGop(String email, MockHttpSession session) throws Exception {
+        String dich = mvc.perform(post("/login").session(session).with(csrf())
+                .param("username", email).param("password", matKhau))
+            .andExpect(status().is3xxRedirection()).andExpect(authenticated().withRoles("CUSTOMER"))
+            .andReturn().getResponse().getRedirectedUrl();
+        assertThat(dich).contains("cartMerge=");
+        return dich;
+    }
+
+    private void ton(long sku, int soLuong) {
+        jdbc.sql("UPDATE bien_the_san_pham SET so_luong_trong_kho = ? WHERE ma_bien_the = ?").params(soLuong, sku).update();
     }
 
     @Test

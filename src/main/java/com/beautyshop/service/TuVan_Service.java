@@ -34,8 +34,8 @@ import org.springframework.web.server.ResponseStatusException;
 @Service
 public class TuVan_Service {
     private static final String THIEU_NGUON = "Chưa đủ thông tin đã kiểm nguồn để trả lời câu hỏi này.";
-    private static final String FAQ_LABEL = "Tìm FAQ · không phải AI";
-    private static final String RAG_LABEL = "Tư vấn từ nguồn · RAG";
+    private static final String FAQ_LABEL = "Trả lời từ câu hỏi thường gặp";
+    private static final String RAG_LABEL = "Tư vấn AI từ thông tin cửa hàng đã kiểm tra";
     private static final int CHUNK = 550;
     private static final Pattern BIEN_THE = Pattern.compile("(?U)\\s+");
     private static final Pattern PII = Pattern.compile("(?i)\\b[\\w.+-]+@[\\w.-]+\\.[a-z]{2,}\\b|(?<![0-9])(?:\\+?[0-9][ .-]?){8,15}(?![0-9])");
@@ -69,7 +69,7 @@ public class TuVan_Service {
     public void napLai() {
         var ai = provider.getIfAvailable();
         if (ai == null) {
-            throw new IllegalStateException("Provider AI chưa được bật. FAQ vẫn có thể sử dụng.");
+            throw new IllegalStateException("Tư vấn AI đang tắt. Khách vẫn có thể tra cứu câu hỏi thường gặp.");
         }
         if (!dangNap.compareAndSet(false, true)) {
             throw new IllegalStateException("Đang nạp lại dữ liệu.");
@@ -79,7 +79,7 @@ public class TuVan_Service {
             var moi = gioiHan(() -> taoChiMuc(ai, nguon), 30);
             chiMuc = moi;
         } catch (KhongKhaDung exception) {
-            throw new IllegalStateException("Không thể nạp dữ liệu AI. Kiểm tra Ollama và mô hình đã tải.");
+            throw new IllegalStateException("Không thể làm mới nguồn tư vấn. Vui lòng kiểm tra dịch vụ AI và thử lại.");
         } finally {
             dangNap.set(false);
         }
@@ -87,8 +87,8 @@ public class TuVan_Service {
 
     public TraLoi hoi(String cauHoi) {
         if (PII.matcher(cauHoi).find() || NGOAI_PHAM_VI.matcher(chuanHoa(cauHoi)).find()) {
-            return new TraLoi("Hướng dẫn", "Chỉ hỗ trợ câu hỏi chung về catalog và mua sắm. "
-                + "Vui lòng bỏ dữ liệu cá nhân. BeautyShop không tư vấn chẩn đoán hoặc điều trị.", null, null, null, null);
+            return new TraLoi("Hướng dẫn", "Chỉ hỗ trợ câu hỏi chung về sản phẩm và mua sắm. "
+                + "Vui lòng bỏ dữ liệu cá nhân. BeautyShop không tư vấn chẩn đoán hoặc điều trị.", null, null, null, null, true);
         }
         var hienTai = chiMuc;
         var ai = provider.getIfAvailable();
@@ -270,7 +270,12 @@ public class TuVan_Service {
         return new TraLoi(nhan, noiDung, nguon.tieuDe(), nguon.url(), null, null);
     }
 
-    public record TraLoi(String nhan, String noiDung, String tieuDeNguon, String url, BigDecimal gia, Integer khaDung) {}
+    public record TraLoi(String nhan, String noiDung, String tieuDeNguon, String url, BigDecimal gia, Integer khaDung,
+                         boolean tuChoi) {
+        public TraLoi(String nhan, String noiDung, String tieuDeNguon, String url, BigDecimal gia, Integer khaDung) {
+            this(nhan, noiDung, tieuDeNguon, url, gia, khaDung, false);
+        }
+    }
     public record TrangThai(boolean aiEnabled, int soDoan, Instant capNhat, boolean dangNap) {}
     private record Doan(Nguon nguon, String noiDung) {}
     private record ChiMuc(SimpleVectorStore store, Map<String, Doan> fragments, Instant capNhat) {}

@@ -2,18 +2,19 @@
 <html lang="vi" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="~{fragments/head :: head('Yêu thích · BeautyShop')}"></head>
 <body><div th:replace="~{fragments/header :: siteHeader}"></div>
-<main id="main" tabindex="-1" class="page-content">
-    <h1>Sản phẩm yêu thích</h1>
-    <p class="notice" th:if="${#lists.isEmpty(yeuThich)}">Chưa có sản phẩm yêu thích.</p>
+<main id="main" tabindex="-1" class="page-content" data-wishlist-page th:attr="data-state=@{/account/wishlist/state}">
+    <h1 tabindex="-1" data-wishlist-heading>Sản phẩm yêu thích</h1>
+    <p th:replace="~{fragments/wishlist :: feedback}"></p>
+    <p class="notice" data-wishlist-empty th:hidden="${!#lists.isEmpty(yeuThich)}">Chưa có sản phẩm yêu thích.</p>
     <ul class="catalog-list">
-        <li th:each="muc : ${yeuThich}">
+        <li th:each="muc : ${yeuThich}" data-wishlist-row>
             <a class="text-link" th:if="${muc.dangBan}" th:href="@{/products/{slug}(slug=${muc.slug},from='wishlist')}" th:text="${muc.tenSanPham}"></a>
             <span th:unless="${muc.dangBan}" th:text="|${muc.tenSanPham} · Tạm ngừng bán|"></span>
-            <form method="post" th:action="@{/account/wishlist/{id}/delete(id=${muc.maSanPham})}">
-                <button type="submit" class="btn btn--primary">Bỏ yêu thích</button>
-            </form>
+            <th:block th:replace="~{fragments/wishlist :: control(${muc.maSanPham}, ${muc.tenSanPham}, 'wishlist', false, true)}"></th:block>
         </li>
     </ul>
     <a class="text-link" th:href="@{/products}">Xem sản phẩm</a>
 </main>
-<div th:replace="~{fragments/footer :: siteFooter}"></div></body></html>
+<div th:replace="~{fragments/footer :: siteFooter}"></div>
+<script defer th:src="@{/js/wishlist.js}"></script>
+</body></html>

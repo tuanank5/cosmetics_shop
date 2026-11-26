@@ -47,8 +47,8 @@ public class DanhMucSanPhamThuongHieu_Form {
     public String getName() { return ten; }
     public void setName(String ten) { this.ten = ten; }
 
-    @NotBlank(message = "Vui lòng nhập đường dẫn.")
-    @Size(max = 190, message = "Đường dẫn tối đa 190 ký tự.")
+    @NotBlank(message = "Vui lòng nhập tên dùng trong đường dẫn.")
+    @Size(max = 190, message = "Tên dùng trong đường dẫn tối đa 190 ký tự.")
     @Pattern(regexp = "[a-z0-9]+(?:-[a-z0-9]+)*", message = "Dùng chữ thường không dấu, số và dấu gạch ngang.")
     public String getSlug() { return duongDan; }
     public void setSlug(String duongDan) { this.duongDan = duongDan; }

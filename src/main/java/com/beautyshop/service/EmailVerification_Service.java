@@ -48,7 +48,7 @@ public class EmailVerification_Service {
     public String guiOTP(String email, String purpose) {
         String gioiHan = "beautyshop:otp:cooldown:" + purpose + ":" + hmac(email);
         if (!Boolean.TRUE.equals(redis.opsForValue().setIfAbsent(gioiHan, "1", Duration.ofSeconds(60)))) {
-            throw new IllegalStateException("Vui lòng đợi 60 giây trước khi gửi lại mã OTP.");
+            throw new IllegalStateException("Vui lòng đợi 60 giây trước khi gửi lại mã xác minh.");
         }
         String challenge = UUID.randomUUID().toString();
         String otp = String.format(Locale.ROOT, "%06d", random.nextInt(1_000_000));

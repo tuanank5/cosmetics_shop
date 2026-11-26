@@ -1,0 +1,2 @@
+﻿JDK 21 / MariaDB fixture / localhost 33391
+p00 -Task demo PASS: fresh schema, seed, dev startup and HTTP 200. Shell DB_PORT wins over .env.

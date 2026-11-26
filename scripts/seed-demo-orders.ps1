@@ -21,8 +21,7 @@
     không ai biết mật khẩu gốc nên các tài khoản này không đăng nhập được (chỉ phục vụ thống kê).
 
 .EXAMPLE
-    $env:DB_PASSWORD = '<mật khẩu DB local>'   # chỉ trong phiên hiện tại
-    ./scripts/seed-demo-orders.ps1 -Database beautyshop_demo -User beautyshop
+    ./scripts/seed-demo.ps1 -WithOrders
 #>
 param(
     [Parameter(Mandatory)]

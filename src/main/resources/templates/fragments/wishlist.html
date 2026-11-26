@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<body>
+<th:block th:fragment="control(id, name, origin, iconOnly, saved)">
+  <form sec:authorize="hasRole('CUSTOMER')" class="wishlist-form" method="post" th:if="${id != null}"
+        th:action="${saved} ? @{/account/wishlist/{id}/delete(id=${id})} : @{/account/wishlist/{id}(id=${id})}"
+        th:attr="data-wishlist-id=${id},data-wishlist-origin=${origin},data-wishlist-name=${name},
+          data-add=@{/account/wishlist/{id}(id=${id})},data-remove=@{/account/wishlist/{id}/delete(id=${id})},
+          data-state=@{/account/wishlist/state}">
+    <th:block th:replace="~{fragments/wishlist :: source(${origin})}"></th:block>
+    <button type="submit" th:class="${iconOnly ? 'product-wishlist' : 'btn btn--secondary wishlist-button'}"
+            th:attr="aria-pressed=${saved},aria-label=|${saved ? 'Bỏ yêu thích' : 'Lưu yêu thích'} ${name}|"
+            th:title="${saved ? 'Bỏ yêu thích' : 'Lưu yêu thích'}">
+      <svg th:replace="~{fragments/wishlist :: heart}"></svg>
+      <span data-wishlist-label th:class="${iconOnly ? 'visually-hidden' : null}"
+            th:text="${saved ? 'Bỏ yêu thích' : 'Lưu yêu thích'}"></span>
+    </button>
+  </form>
+  <form sec:authorize="isAnonymous()" method="get" th:if="${id != null}"
+        th:action="@{/account/wishlist/{id}/source(id=${id})}" th:attr="data-wishlist-origin=${origin}">
+    <th:block th:replace="~{fragments/wishlist :: source(${origin})}"></th:block>
+    <button type="submit" th:class="${iconOnly ? 'product-wishlist' : 'btn btn--secondary wishlist-button'}"
+            th:aria-label="|Đăng nhập để lưu yêu thích ${name}|" title="Đăng nhập để lưu yêu thích">
+      <svg th:replace="~{fragments/wishlist :: heart}"></svg>
+      <span th:class="${iconOnly ? 'visually-hidden' : null}">Đăng nhập để lưu yêu thích</span>
+    </button>
+  </form>
+</th:block>
+<th:block th:fragment="source(origin)">
+  <input type="hidden" name="origin" th:value="${origin}">
+  <input th:each="field : ${wishlistFields}" type="hidden" th:name="${field.key}" th:value="${field.value}">
+</th:block>
+<svg th:fragment="heart" class="wishlist-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path d="M12 21 3.5 12.5a5.3 5.3 0 0 1 7.5-7.5l1 1 1-1a5.3 5.3 0 0 1 7.5 7.5L12 21Z"/>
+</svg>
+<p th:fragment="feedback" class="wishlist-feedback" role="status" data-wishlist-feedback th:text="${wishlistError}"></p>
+</body>
+</html>

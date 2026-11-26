@@ -11,8 +11,8 @@ import java.time.LocalDateTime;
 import org.springframework.format.annotation.DateTimeFormat;
 
 public class PhieuGiamGia_Form {
-    @NotBlank(message = "Nhập mã voucher.")
-    @Size(max = 80, message = "Mã voucher dài tối đa 80 ký tự.")
+    @NotBlank(message = "Nhập mã giảm giá.")
+    @Size(max = 80, message = "Mã giảm giá dài tối đa 80 ký tự.")
     private String maApDung;
 
     @NotNull(message = "Chọn loại giảm giá.")
@@ -28,7 +28,7 @@ public class PhieuGiamGia_Form {
     private BigDecimal mucGiamToiDa;
 
     @NotNull(message = "Nhập tạm tính tối thiểu.")
-    @PositiveOrZero(message = "Tạm tính tối thiểu phải từ 0 trở lên.")
+    @PositiveOrZero(message = "Tiền hàng tối thiểu để dùng mã phải từ 0 trở lên.")
     @Digits(integer = 15, fraction = 0, message = "Nhập số nguyên tối đa 15 chữ số.")
     private BigDecimal donToiThieu = BigDecimal.ZERO;
 

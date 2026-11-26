@@ -1,5 +1,16 @@
 .catalog-list { list-style: none; padding: 0; }
 .catalog-list li { display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--space-4); padding-block: var(--space-4); border-bottom: 1px solid var(--color-border); overflow-wrap: anywhere; }
+.order-filter { display: grid; gap: var(--space-4); margin-block: var(--space-5); }
+.order-filter fieldset { min-inline-size: 0; }
+.order-filter__status, .order-filter__fields { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 12rem), 1fr)); gap: var(--space-3); }
+.order-filter__status { grid-template-columns: repeat(auto-fit, minmax(min(100%, 9rem), 1fr)); }
+.order-filter__fields label { display: grid; gap: var(--space-2); align-content: end; }
+.order-admin-list > li { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1.5fr) auto; align-items: start; }
+.order-row-link { scroll-margin-top: 6rem; }
+@media (max-width: 640px) {
+    .order-admin-list > li { grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: var(--space-2) var(--space-4); }
+    .order-admin-list > li > :nth-child(even) { text-align: end; }
+}
 .catalog-form, .catalog-form fieldset { display: grid; gap: var(--space-3); }
 .catalog-form { max-width: 42rem; }
 .catalog-form fieldset { min-width: 0; margin: 0; border: 1px solid var(--color-border); padding: var(--space-4); }
@@ -9,6 +20,11 @@
 .order-summary div { padding: var(--space-4); background: var(--color-surface); border: 1px solid var(--color-border); }
 .order-summary dt { color: var(--color-muted); }
 .order-summary dd { margin: var(--space-1) 0 0; font-weight: 600; font-size: 22px; overflow-wrap: anywhere; }
+.admin-review-notice { min-block-size: 5.5rem; }
+.admin-review-notice .alert { margin: 0; padding: var(--space-3) var(--space-4); }
+.admin-review-list .btn { inline-size: 11.5rem; }
+.admin-review-list .badge { min-inline-size: 7.25rem; justify-content: center; }
+#review-results, .admin-review-list .btn { scroll-margin-block-start: 6rem; }
 
 .site-header--admin {
     --admin-sidebar-width: 14.5rem;

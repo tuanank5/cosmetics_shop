@@ -117,8 +117,14 @@ class Momo_MariaDb_Test {
         assertThat(jdbc.sql("SELECT count(*) FROM lan_thanh_toan WHERE ma_don_hang = ?").param(don.id())
             .query(Integer.class).single()).isEqualTo(2);
         settings.moPhong(lanHai, 0); // Gateway biết kết quả dù callback chưa đến.
-        mvc.perform(post("/admin/orders/" + don.id() + "/momo/reconcile").session(login(taiKhoan(true))).with(csrf()))
-            .andExpect(redirectedUrl("/admin/orders/" + don.id()));
+        var admin = login(taiKhoan(true));
+        String dich = mvc.perform(post("/admin/orders/" + don.id() + "/momo/reconcile").session(admin).with(csrf())
+                .param("listStatus", "PENDING_PAYMENT", "PENDING_CONFIRMATION").param("listMethod", "MOMO")
+                .param("listPage", "0").param("listSize", "10"))
+            .andExpect(status().is3xxRedirection()).andReturn().getResponse().getRedirectedUrl();
+        mvc.perform(get(java.net.URI.create(dich)).session(admin)).andExpect(status().isOk())
+            .andExpect(content().string(containsString("href=\"/admin/orders?method=MOMO&amp;page=0&amp;size=10"
+                + "&amp;status=PENDING_PAYMENT&amp;status=PENDING_CONFIRMATION#admin-order-" + don.id() + "\"")));
         assertThat(trangThai(don)).isEqualTo("PENDING_CONFIRMATION");
         assertThat(soLuong(don, "so_luong_trong_kho")).isEqualTo(1);
     }

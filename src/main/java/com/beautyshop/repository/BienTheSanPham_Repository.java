@@ -38,7 +38,6 @@ public interface BienTheSanPham_Repository extends JpaRepository<BienTheSanPham,
 
     boolean existsByUrlHinhAnh(String urlHinhAnh);
 
-    // Lấy sản phẩm đang bán và còn hàng theo danh mục
     @Query("""
         select b
         from BienTheSanPham b
@@ -60,7 +59,6 @@ public interface BienTheSanPham_Repository extends JpaRepository<BienTheSanPham,
             @Param("tuKhoa") String tuKhoa,
             Pageable pageable);
 
-    // Lấy sản phẩm tổng quát khi khách không chỉ định loại
     @Query("""
         select b
         from BienTheSanPham b
@@ -75,16 +73,4 @@ public interface BienTheSanPham_Repository extends JpaRepository<BienTheSanPham,
         order by b.giaBan asc
         """)
     List<BienTheSanPham> findAllDangBanConHang(Pageable pageable);
-
-    // Giữ lại phương thức cũ để không ảnh hưởng các chức năng khác
-    @Query("""
-        select b
-        from BienTheSanPham b
-        join fetch b.sanPham sp
-        where b.dangHoatDong = true
-          and sp.dangHoatDong = true
-          and b.soLuongTrongKho > b.soLuongTamGiu
-        order by b.giaBan asc
-        """)
-    List<BienTheSanPham> findAllDangBanConHang();
 }

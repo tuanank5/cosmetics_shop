@@ -1,14 +1,15 @@
 <!DOCTYPE html>
-<html lang="vi" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="~{fragments/head :: head('Chỉnh sửa SKU · BeautyShop')}"></head>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org"
+      th:with="tieuDeBienThe=${#strings.endsWith(action, '/new') ? 'Thêm biến thể sản phẩm' : 'Chỉnh sửa biến thể sản phẩm'}">
+<head th:replace="~{fragments/head :: head(|${tieuDeBienThe} · BeautyShop|)}"></head>
 <body>
 <div th:replace="~{fragments/header :: siteHeader}"></div>
 <main id="main" tabindex="-1" class="page-content catalog-admin">
-    <a class="text-link" th:href="@{/admin/catalog/products/{p}/variants(p=${sanPham.ma})}">Quay lại SKU</a>
-    <h1 th:text="|SKU · ${sanPham.ten}|">SKU</h1>
+    <a class="text-link" th:href="@{/admin/catalog/products/{p}/variants(p=${sanPham.ma})}">Quay lại danh sách biến thể sản phẩm</a>
+    <h1 th:text="|${tieuDeBienThe} · ${sanPham.ten}|">Biến thể sản phẩm</h1>
     <p class="alert alert--error" role="alert" th:if="${uploadQuaLon}">Lỗi: Tệp vượt dung lượng cho phép. Dữ liệu chưa lưu trong lần gửi này chưa được nhận; vui lòng nhập lại và chọn ảnh nhỏ hơn.</p>
     <form class="catalog-form" th:action="@{${action}}" th:object="${form}" method="post" enctype="multipart/form-data">
-        <label>SKU <input th:field="*{sku}" required maxlength="100"></label>
+        <label>Mã biến thể sản phẩm <input th:field="*{sku}" required maxlength="100"></label>
         <small class="catalog-error" th:errors="*{sku}"></small>
         <label>Tên biến thể <input th:field="*{tenBienThe}" required maxlength="200" placeholder="Ví dụ: 30 ml"></label>
         <small class="catalog-error" th:errors="*{tenBienThe}"></small>
@@ -16,25 +17,25 @@
         <small class="catalog-error" th:errors="*{giaBan}"></small>
         <label>Số lượng trong kho <input type="number" min="0" step="1" th:field="*{soLuongTrongKho}" required></label>
         <small class="catalog-error" th:errors="*{soLuongTrongKho}"></small>
-        <label for="hinhAnh">Ảnh SKU</label>
+        <label for="hinhAnh">Ảnh biến thể sản phẩm</label>
         <input id="hinhAnh" type="file" name="hinhAnh" accept="image/jpeg,image/png" aria-describedby="upload-hint upload-error"
                th:attr="aria-invalid=${#fields.hasErrors('hinhAnh') ? 'true' : null}">
         <small id="upload-hint">PNG hoặc JPEG, tối đa 2 MB và 2048 × 2048 px. Khi sửa, để trống để giữ ảnh hiện có.</small>
         <div th:replace="~{fragments/ui :: fieldError('hinhAnh', 'upload-error')}"></div>
         <div th:if="${anhHienTai}">
-            <img th:src="@{${anhHienTai}}" alt="Ảnh SKU hiện có" width="80" height="80">
+            <img th:src="@{${anhHienTai}}" alt="Ảnh hiện có của biến thể" width="80" height="80">
             <label class="catalog-checkbox"><input type="checkbox" th:field="*{xoaHinhAnh}"> Xóa ảnh hiện có</label>
         </div>
         <fieldset>
-            <legend>Một lô minh họa (tùy chọn)</legend>
-            <p>Thông tin chỉ để hiển thị. Mỗi SKU hỗ trợ một lô minh họa.</p>
+            <legend>Thông tin lô hàng tham khảo (tùy chọn)</legend>
+            <p>Thông tin này chỉ để tham khảo. Mỗi biến thể sản phẩm có thể hiển thị một lô hàng.</p>
             <label>Mã lô <input th:field="*{maLoMinhHoa}" maxlength="100"></label>
             <small class="catalog-error" th:errors="*{maLoMinhHoa}"></small>
             <label>Hạn sử dụng <input type="date" th:field="*{hanSuDungMinhHoa}"></label>
             <small class="catalog-error" th:errors="*{hanSuDungMinhHoa}"></small>
         </fieldset>
         <label class="catalog-checkbox"><input type="checkbox" th:field="*{dangHoatDong}"> Đang hoạt động</label>
-        <div><button class="btn btn--primary" type="submit">Lưu SKU</button></div>
+        <div><button class="btn btn--primary" type="submit">Lưu biến thể sản phẩm</button></div>
     </form>
 </main>
 <div th:replace="~{fragments/footer :: siteFooter}"></div>

@@ -35,6 +35,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @EnabledIfEnvironmentVariable(named = "P01_MARIADB_TEST", matches = "true")
 class TuVanRag_MariaDb_Test {
     private static final ObjectMapper JSON = new ObjectMapper();
+    private static final AtomicInteger SO_LAN_EMBED = new AtomicInteger();
     private static final AtomicInteger SO_LAN_CHAT = new AtomicInteger();
     private static final AtomicReference<String> LUA_CHON = new AtomicReference<>("1");
     private static HttpServer server;
@@ -79,7 +80,7 @@ class TuVanRag_MariaDb_Test {
             .andExpect(flash().attributeExists("message"));
         mvc.perform(get("/admin/ai")).andExpect(status().isOk());
         mvc.perform(post("/chat").with(csrf()).param("cauHoi", "Serum RAG giá bao nhiêu?"))
-            .andExpect(status().isOk()).andExpect(content().string(containsString("Tư vấn từ nguồn · RAG")))
+            .andExpect(status().isOk()).andExpect(content().string(containsString("Tư vấn AI từ thông tin cửa hàng đã kiểm tra")))
             .andExpect(content().string(containsString("145.000")))
             .andExpect(content().string(containsString("/products/" + slug + "?variant=" + sku)))
             .andExpect(content().string(not(containsString("Khẳng định chưa kiểm nguồn"))));
@@ -87,7 +88,7 @@ class TuVanRag_MariaDb_Test {
             .param(sku).update();
         mvc.perform(post("/chat").with(csrf()).param("cauHoi", "Serum RAG"))
             .andExpect(content().string(containsString("178.000")))
-            .andExpect(content().string(containsString("Còn 3")));
+            .andExpect(content().string(containsString("Số lượng còn mua được: <strong>3</strong>")));
         mvc.perform(post("/chat").with(csrf()).param("cauHoi", "xyz-ngoai-nguon"))
             .andExpect(content().string(containsString("Chưa đủ thông tin")));
         int truoc = SO_LAN_CHAT.get();
@@ -105,7 +106,7 @@ class TuVanRag_MariaDb_Test {
             .andExpect(content().string(not(containsString("Giá bịa"))));
         LUA_CHON.set("error");
         mvc.perform(post("/chat").with(csrf()).param("cauHoi", "Đổi trả trong bao lâu?"))
-            .andExpect(content().string(containsString("không phải AI")))
+            .andExpect(content().string(containsString("Trả lời từ câu hỏi thường gặp")))
             .andExpect(content().string(containsString("7 ngày")));
         LUA_CHON.set("1");
         jdbc.sql("UPDATE san_pham SET dang_hoat_dong = FALSE WHERE ma_san_pham = ?").param(sp).update();
@@ -120,8 +121,34 @@ class TuVanRag_MariaDb_Test {
         mvc.perform(post("/admin/ai/reindex").with(csrf())).andExpect(status().isForbidden());
     }
 
+    @Test
+    @WithMockUser(roles = "ADMIN")
+    void cauHoiChuaDuLieuCaNhanKhongGoiEmbeddingHayChat() throws Exception {
+        mvc.perform(post("/admin/ai/reindex").with(csrf())).andExpect(redirectedUrl("/admin/ai"))
+            .andExpect(flash().attribute("message", "Đã làm mới nguồn thông tin tư vấn."));
+
+        int embedTruocDoiChung = SO_LAN_EMBED.get();
+        int chatTruocDoiChung = SO_LAN_CHAT.get();
+        mvc.perform(post("/chat").with(csrf()).param("cauHoi", "Đổi trả trong bao lâu?"))
+            .andExpect(status().isOk());
+        int embedSauDoiChung = SO_LAN_EMBED.get();
+        int chatSauDoiChung = SO_LAN_CHAT.get();
+        assertThat(embedSauDoiChung).isGreaterThan(embedTruocDoiChung);
+        assertThat(chatSauDoiChung).isGreaterThan(chatTruocDoiChung);
+
+        for (String duLieu : new String[]{"qa@example.invalid", "000 000 0000"}) {
+            mvc.perform(post("/chat").with(csrf()).param("cauHoi", "Đổi trả trong bao lâu? " + duLieu))
+                .andExpect(status().isOk())
+                .andExpect(content().string(containsString("Vui lòng bỏ dữ liệu cá nhân")))
+                .andExpect(content().string(not(containsString(duLieu))));
+        }
+        assertThat(SO_LAN_EMBED.get()).isEqualTo(embedSauDoiChung);
+        assertThat(SO_LAN_CHAT.get()).isEqualTo(chatSauDoiChung);
+    }
+
     private static void embedding(HttpExchange exchange) throws IOException {
         try (exchange) {
+            SO_LAN_EMBED.incrementAndGet();
             var input = JSON.readTree(exchange.getRequestBody()).get("input");
             var embeddings = new ArrayList<double[]>();
             if (input.isArray()) {

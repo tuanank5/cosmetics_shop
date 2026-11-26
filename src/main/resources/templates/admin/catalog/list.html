@@ -22,11 +22,13 @@
                 <small th:text="${item.dangHoatDong} ? 'Đang hoạt động' : 'Ngừng hoạt động'"></small>
             </div>
             <div class="catalog-actions">
-                <a class="btn btn--secondary" th:if="${product}" th:href="@{/admin/catalog/products/{id}/variants(id=${item.ma})}">SKU</a>
+                <a class="btn btn--secondary" th:if="${product}" th:href="@{/admin/catalog/products/{id}/variants(id=${item.ma})}">Quản lý biến thể sản phẩm</a>
                 <a class="btn btn--secondary" th:href="@{/admin/catalog/{section}/{id}/edit(section=${section},id=${item.ma})}">Sửa</a>
-                <form th:if="${!product or item.dangHoatDong}"
-                      th:action="@{/admin/catalog/{section}/{id}/delete(section=${section},id=${item.ma})}" method="post">
-                    <button class="btn btn--secondary" type="submit" th:text="${product} ? 'Ngừng hoạt động' : 'Xóa'">Xóa</button>
+                <form th:action="@{/admin/catalog/{section}/{id}/status(section=${section},id=${item.ma})}" method="post"
+                      th:with="hanhDong=${item.dangHoatDong ? 'Ngừng hoạt động' : 'Kích hoạt lại'}">
+                    <input type="hidden" name="active" th:value="${!item.dangHoatDong}">
+                    <button class="btn btn--secondary" type="submit" th:text="${hanhDong}"
+                            th:aria-label="|${hanhDong} ${item.ten}|">Ngừng hoạt động</button>
                 </form>
             </div>
         </li>

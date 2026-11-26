@@ -47,15 +47,15 @@ class AdminPhieuGiamGia_Controller {
             try {
                 phieuGiamGiaService.luuAdmin(id, form, errors);
             } catch (DuplicateKeyException exception) {
-                errors.rejectValue("maApDung", "voucher.duplicate", "Mã voucher đã tồn tại.");
+                errors.rejectValue("maApDung", "voucher.duplicate", "Mã giảm giá đã tồn tại.");
             } catch (ConcurrencyFailureException exception) {
-                errors.reject("voucher.retry", "Voucher đang được cập nhật. Vui lòng thử lại.");
+                errors.reject("voucher.retry", "Mã giảm giá đang được cập nhật. Vui lòng thử lại.");
             }
         }
         if (errors.hasErrors()) {
             return formView(id, ky, model);
         }
-        flash.addFlashAttribute("message", "Đã lưu voucher.");
+        flash.addFlashAttribute("message", "Đã lưu mã giảm giá.");
         return "redirect:" + (ky.isEmpty() ? "/admin/vouchers" : NguonDieuHuong.veDashboard(ky));
     }
 
@@ -63,11 +63,11 @@ class AdminPhieuGiamGia_Controller {
     String xoa(@PathVariable long id, RedirectAttributes flash) {
         try {
             phieuGiamGiaService.xoaAdmin(id);
-            flash.addFlashAttribute("message", "Đã xóa voucher.");
+            flash.addFlashAttribute("message", "Đã xóa mã giảm giá.");
         } catch (IllegalStateException exception) {
             flash.addFlashAttribute("error", exception.getMessage());
         } catch (ConcurrencyFailureException exception) {
-            flash.addFlashAttribute("error", "Voucher đang được cập nhật. Vui lòng thử lại.");
+            flash.addFlashAttribute("error", "Mã giảm giá đang được cập nhật. Vui lòng thử lại.");
         }
         return "redirect:/admin/vouchers";
     }

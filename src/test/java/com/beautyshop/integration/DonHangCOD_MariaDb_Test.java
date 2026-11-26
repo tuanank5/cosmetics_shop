@@ -168,7 +168,7 @@ class DonHangCOD_MariaDb_Test {
             .param(skuHetHang).update();
         mvc.perform(post("/checkout").session(phienKhach).with(csrf()).param("addressId", Long.toString(khach.maDiaChi())))
             .andExpect(status().isOk()).andExpect(model().attributeHasErrors("form"))
-            .andExpect(content().string(containsString("Không đủ tồn")));
+            .andExpect(content().string(containsString("Không còn đủ số lượng đã chọn")));
         assertThat(donHangService.danhSachCustomer(khach.id())).isEmpty();
         assertThat(ton(skuConHang)).isEqualTo(2);
         mvc.perform(post("/cart/items/" + skuHetHang + "/quantity").session(phienKhach).with(csrf()).param("quantity", "0"))
@@ -228,7 +228,7 @@ class DonHangCOD_MariaDb_Test {
         try {
             return donHangService.datCOD(taiKhoan.id(), taiKhoan.maDiaChi(), voucher);
         } catch (IllegalStateException exception) {
-            assertThat(exception.getMessage()).contains("Không đủ tồn");
+            assertThat(exception.getMessage()).contains("Không còn đủ số lượng đã chọn");
             return 0;
         }
     }
@@ -275,7 +275,7 @@ class DonHangCOD_MariaDb_Test {
         try {
             return donHangService.datCOD(taiKhoan.id(), taiKhoan.maDiaChi(), voucher);
         } catch (IllegalArgumentException exception) {
-            assertThat(exception.getMessage()).contains("Voucher");
+            assertThat(exception.getMessage()).contains("Mã giảm giá");
             return 0;
         }
     }

@@ -1,0 +1,7 @@
+﻿Apache Maven 3.9.15 (98b2cdbfdb5f1ac8781f537ea9acccaed7922349)
+Java version: 21.0.13.1, vendor: Eclipse Adoptium, runtime: C:\Program Files\Java\jdk-21.0.13.10002-hotspot
+MariaDB client: C:\Program Files\MariaDB 12.2\bin\mariadb.exe from 12.2.2-MariaDB, client 15.2 for Win64 (AMD64), source revision d26a6f44c1f2119377e79a9540886c6d8c01472f
+MongoDB: db version v6.0.8
+Node: v24.12.0
+Browser: see per-group JSON
+Profiles: default dev / browser dev / isolated MariaDB and Mongo for integration

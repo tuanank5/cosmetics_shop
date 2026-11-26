@@ -1,0 +1,8 @@
+{
+  "browser": "Chrome/158.0.8127.88",
+  "checks": [
+    "mobile-no-js-keyboard-filters-count-and-stable-sort",
+    "no-js-detail-back-preserves-page-filters-and-visible-row",
+    "reset-restores-default-page-and-size"
+  ]
+}

@@ -1,0 +1,16 @@
+﻿[DTO-01] customer-security selects=3 fields=[nguoi_dung=3, nguoi_dung=3, danh_tinh_oauth=1] html=d159ade32b0f5063f606a0918034baca2cad3c9ce863299ab9ef7ce6fb4bf8b7
+[DTO-01] admin-security selects=3 fields=[nguoi_dung=3, nguoi_dung=6, danh_tinh_oauth=1] html=7edcc01da703980ecf1ae63e5d176169039c4507bc65a44cb15ea61ca5e6a632
+[DTO-01] address-1 selects=2 fields=[dia_chi_nguoi_dung=5] html=6d3fabb2f6ac33ae8a834a99ce31509d94c9769ff8582d0eb2d154fcaaa11645
+[DTO-01] checkout-1 selects=2 fields=[dia_chi_nguoi_dung=5] html=f14f30f643c14858d3e7253c5484bd1ae8d569ecaa2c30233200e2eac9871cba
+[DTO-01] catalog-1 selects=2 fields=[san_pham=4] html=45f6380be8e38ca40e9b9a972e21d903d93294b4433c7767db80e50217e56dc5
+[DTO-01] pdp-1 selects=2 fields=[san_pham=19, bien_the_san_pham=11] html=b7a9c903239b0aa2b206de981d3de063f8090b199cd949a63bfe8b3fe468b3ed
+[DTO-01] sku-admin-1 selects=3 fields=[san_pham=11, bien_the_san_pham=11] html=9b90c706e94e30c64b21deebe4ccd6b68daf95a9f242f9ffa089275e1324fa67
+[DTO-01] address-7 selects=2 fields=[dia_chi_nguoi_dung=5] html=1d0b8d5a5990b21af9b902e1d834ff0a5d3466267031d0a2cdb0f907b48c4cea
+[DTO-01] checkout-7 selects=2 fields=[dia_chi_nguoi_dung=5] html=732384fac9db88884736ba47fee07b719cdc088aa754a219c79d2fc677736056
+[DTO-01] catalog-7 selects=2 fields=[san_pham=4] html=1e251bd88c79e9643882bc1a19eb1965d80bd26381f31fb9db514f344ea32632
+[DTO-01] pdp-7 selects=2 fields=[san_pham=19, bien_the_san_pham=11] html=93dcba783c58a086009c2d23e7d6ac7a320c18c2f70ea94b21bcb6cfa2f5cb6d
+[DTO-01] sku-admin-7 selects=3 fields=[san_pham=11, bien_the_san_pham=11] html=33027f66e027b4a3a16d5a21914da31b9fd21f011e97cdd885d7cb313e7f5fa5
+[DTO-01] catalog-edit-options selects=4 fields=[danh_muc=4, thuong_hieu=4] html=734e105e2268bac2a6e9eb2fb13aed83478095c350b31b9dbf2cb474a11d2b2b
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 13.57 s -- in com.beautyshop.integration.DocView_MariaDb_Test
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
+[INFO] BUILD SUCCESS

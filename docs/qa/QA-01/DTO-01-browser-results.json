@@ -1,0 +1,9 @@
+{
+  "browser": "Chrome/158.0.8127.88",
+  "checks": [
+    "mobile-no-js-keyboard-address-return-and-ownership",
+    "desktop-no-js-quote-renders-selected-address-and-server-total",
+    "no-js-create-and-edit-address-return-to-checkout",
+    "mobile-no-js-order-and-return-details-and-non-owner-404"
+  ]
+}

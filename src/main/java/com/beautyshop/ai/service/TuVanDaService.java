@@ -13,7 +13,6 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
-import org.springframework.ai.chat.model.ChatModel;
 import org.springframework.ai.chat.prompt.Prompt;
 import org.springframework.ai.ollama.api.OllamaChatOptions;
 import org.springframework.beans.factory.ObjectProvider;
@@ -227,9 +226,9 @@ public class TuVanDaService {
             List<LoaiSanPham_TimKiem.LoaiSanPham> loaiDaChon,
             List<BienTheSanPham> sanPham) {
         StringBuilder ketQua = new StringBuilder("Dựa trên thông tin bạn cung cấp (")
-                .append(request.loaiDa()).append("; nhu cầu: ").append(request.nhuCau()).append("), ");
+                .append(request.loaiDa()).append(", nhu cầu: ").append(request.nhuCau()).append("), ");
         if (loaiDaChon.isEmpty()) {
-            ketQua.append("đây là một số sản phẩm trong catalog có thể tham khảo:\n");
+            ketQua.append("bạn có thể tham khảo các sản phẩm sau:\n");
         } else {
             ketQua.append("các lựa chọn dưới đây đều thuộc loại ")
                     .append(loaiDaChon.stream()
@@ -248,20 +247,20 @@ public class TuVanDaService {
                     .append(muc.getTenSanPham())
                     .append(" — ").append(muc.getDanhMuc().getTenDanhMuc())
                     .append(" (").append(bienThe.getTenBienThe()).append(")\n")
-                    .append("   Giá trong database: ")
+                    .append("   Giá đang niêm yết: ")
                     .append(dinhDangTien.format(bienThe.getGiaBan())).append(" ₫\n")
-                    .append("   Tồn khả dụng: ").append(bienThe.getSoLuongKhaDung()).append('\n')
-                    .append("   Loại da ghi trong database: ")
+                    .append("   Số lượng còn mua được: ").append(bienThe.getSoLuongKhaDung()).append('\n')
+                    .append("   Loại da phù hợp theo thông tin sản phẩm: ")
                     .append(giaTri(muc.getLoaiDaPhuHop())).append('\n')
-                    .append("   Thành phần ghi trong database: ")
+                    .append("   Thành phần: ")
                     .append(giaTri(muc.getThanhPhan())).append('\n')
-                    .append("   Mô tả ghi trong database: ")
+                    .append("   Mô tả sản phẩm: ")
                     .append(giaTri(muc.getMoTa())).append('\n')
-                    .append("   Hướng dẫn sử dụng ghi trong database: ")
+                    .append("   Hướng dẫn sử dụng: ")
                     .append(giaTri(muc.getHuongDanSuDung())).append('\n');
         }
-        ketQua.append("\nThông tin sản phẩm được lấy trực tiếp từ catalog hiện hành; "
-                + "mô tả chưa có trong database sẽ được ghi rõ. Đây không phải chẩn đoán y khoa. "
+        ketQua.append("\nThông tin được lấy từ danh mục sản phẩm hiện tại của cửa hàng. "
+                + "Các mục còn thiếu được ghi rõ. Đây không phải chẩn đoán y khoa. "
                 + "Nếu da kích ứng nghiêm trọng, hãy ngừng sử dụng và hỏi bác sĩ da liễu.");
         return ketQua.toString();
     }
@@ -280,7 +279,7 @@ public class TuVanDaService {
     }
 
     private String giaTri(String value) {
-        return value == null || value.isBlank() ? "Chưa có thông tin trong database." : value;
+        return value == null || value.isBlank() ? "Cửa hàng chưa cung cấp thông tin này." : value;
     }
 
     private String rutGon(String value, int doDaiToiDa) {

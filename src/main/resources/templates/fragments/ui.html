@@ -7,6 +7,19 @@
 <div th:fragment="notices(message, error)" data-page-notices>
   <th:block th:if="${error}"><div th:replace="~{fragments/ui :: flash('error', ${error})}"></div></th:block>
   <th:block th:if="${message}"><div th:replace="~{fragments/ui :: flash('success', ${message})}"></div></th:block>
+  <th:block th:if="${uiPath == '/cart' or uiPath == '/checkout'}">
+    <div th:replace="~{fragments/ui :: cartMergeNotice(${gopGioNotice})}"></div>
+  </th:block>
+</div>
+<div th:fragment="cartMergeNotice(notice)" class="alert alert--success cart-merge-notice"
+     role="status" data-cart-merge-notice th:if="${notice != null}">
+  <strong>Số lượng một số biến thể sản phẩm trong giỏ đã được điều chỉnh theo số hàng còn bán được.</strong>
+  <ul th:unless="${#lists.isEmpty(notice.cacDongGiam)}">
+    <li th:each="muc : ${notice.cacDongGiam}">
+      <span th:text="|${muc.tenSanPham} · ${muc.tenBienThe}|"></span>
+      <span th:text="|. Dự kiến ${muc.duKien}, thực nhận ${muc.thucNhan}, giảm ${muc.daGiam()} vì chỉ còn ${muc.thucNhan} khả dụng.|"></span>
+    </li>
+  </ul>
 </div>
 <div th:fragment="password(input, id, label)" class="password-control">
   <input th:replace="${input}">

@@ -38,6 +38,31 @@ public interface NguoiDung_Repository extends JpaRepository<NguoiDung, Long> {
         """)
     Page<TomTat> timNguoiDung(@Param("q") String q, Pageable pageable);
 
+    @Query("""
+        select n.email as email, (n.matKhauBam is not null) as coMatKhau,
+               (n.ngayXacMinhEmail is not null) as daXacMinhEmail
+        from NguoiDung n where n.maNguoiDung = :id
+        """)
+    Optional<BaoMatTomTat> docBaoMat(@Param("id") long id);
+
+    @Query("""
+        select n.email as email, (n.matKhauBam is not null) as coMatKhau,
+               (n.ngayXacMinhEmail is not null) as daXacMinhEmail, n.hoTen as hoTen,
+               n.kichHoat as kichHoat, n.vaiTro as vaiTro
+        from NguoiDung n where n.maNguoiDung = :id
+        """)
+    Optional<BaoMatAdmin> docBaoMatAdmin(@Param("id") long id);
+
+    interface BaoMatTomTat {
+        String getEmail();
+        boolean getCoMatKhau();
+        boolean getDaXacMinhEmail();
+    }
+
+    interface BaoMatAdmin extends BaoMatTomTat, TrangThai {
+        String getHoTen();
+    }
+
     interface TrangThai {
         boolean isKichHoat();
         NguoiDung.VaiTro getVaiTro();

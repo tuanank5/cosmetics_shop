@@ -112,7 +112,7 @@ class AdminDashboardPagesTest {
             .andExpect(content().string(containsString("Kỳ thống kê không được ở tương lai")));
         mvc.perform(get("/admin/dashboard").param("nguong", "-3"))
             .andExpect(status().isOk())
-            .andExpect(content().string(containsString("Ngưỡng tồn phải là số nguyên từ 0 đến 1000")));
+            .andExpect(content().string(containsString("Số lượng để báo sắp hết hàng phải là số nguyên từ 0 đến 1000")));
     }
 
     @Test
@@ -130,7 +130,7 @@ class AdminDashboardPagesTest {
 
         String html = mvc.perform(get("/admin/dashboard"))
             .andExpect(status().isOk())
-            .andExpect(content().string(containsString("Doanh thu tính theo ngày thu tiền (COD: ngày giao thành công, MoMo: lúc thanh toán thành công). Số đơn tính theo ngày đặt.")))
+            .andExpect(content().string(containsString("Doanh thu tính theo ngày thu tiền: ngày giao thành công với đơn thanh toán khi nhận hàng, ngày thanh toán thành công với MoMo. Số đơn tính theo ngày đặt.")))
             .andExpect(content().string(containsString("Tiền hàng sau giảm giá")))
             .andExpect(content().string(containsString("Phí vận chuyển")))
             .andExpect(content().string(containsString("href=\"#stock-title\"")))

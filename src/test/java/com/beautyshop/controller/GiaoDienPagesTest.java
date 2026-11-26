@@ -297,6 +297,7 @@ class GiaoDienPagesTest {
     @Test
     void catalogOptionalPreviewDoesNotInventWishlistPostOrChangeTheProductLink() throws Exception {
         var card = mock(TheSanPham.class);
+        when(card.getMaSanPham()).thenReturn(21L);
         when(card.getDuongDan()).thenReturn("preview-fixture");
         when(card.getTenSanPham()).thenReturn("Kiểm thử media");
         when(card.getGiaTu()).thenReturn(new BigDecimal("125000"));
@@ -309,9 +310,9 @@ class GiaoDienPagesTest {
                 "preview-fixture", java.util.Map.of("thumbnailUrl", "/img/test-poster.png",
                     "previewVideoUrl", "/img/test-video.webm", "videoPosterUrl", "/img/test-poster.png"))))
             .andExpect(status().isOk()).andReturn().getResponse().getContentAsString();
-        assertThat(media).contains("href=\"/products/preview-fixture?from=catalog", "/products/preview-fixture#pdp-actions",
+        assertThat(media).contains("href=\"/products/preview-fixture?from=catalog", "action=\"/account/wishlist/21/source\"",
                 "src=\"/img/test-poster.png\"", "data-video-src=\"/img/test-video.webm\"", "preload=\"none\"")
-            .doesNotContain("<video src=", "action=\"/account/wishlist");
+            .doesNotContain("<video src=", "data-wishlist-id");
     }
 
     @ParameterizedTest
@@ -440,7 +441,7 @@ class GiaoDienPagesTest {
             .andExpect(content().string(containsString("type=\"hidden\" name=\"variant\" value=\"11\"")))
             .andExpect(content().string(containsString("action=\"/cart/items\"")))
             .andExpect(content().string(containsString("name=\"_csrf\"")))
-            .andExpect(content().string(containsString("Chưa có ảnh biến thể")))
+            .andExpect(content().string(containsString("Chưa có ảnh cho biến thể này")))
             .andExpect(content().string(containsString("Chưa có đánh giá được duyệt.")))
             .andExpect(content().string(not(containsString("<summary>Thành phần"))))
             .andExpect(content().string(not(containsString("name=\"quantity\""))));
@@ -456,11 +457,11 @@ class GiaoDienPagesTest {
         mvc.perform(get("/products/kiem-thu").param("variant", "22"))
             .andExpect(status().isOk())
             .andExpect(content().string(containsString("name=\"variant\" value=\"22\" aria-current=\"true\"")))
-            .andExpect(content().string(containsString("50 ml · SKU QA-22")))
+            .andExpect(content().string(containsString("50 ml · Mã biến thể sản phẩm: QA-22")))
             .andExpect(content().string(containsString("alt=\"Tinh chất kiểm thử · 50 ml\"")))
             .andExpect(content().string(containsString("/uploads/sku/fixture.png")))
             .andExpect(content().string(containsString("QA-LOT")))
-            .andExpect(content().string(containsString("Biến thể đã hết hàng")))
+            .andExpect(content().string(containsString("Biến thể này đã hết hàng")))
             .andExpect(content().string(not(containsString("action=\"/cart/items\""))))
             .andExpect(content().string(containsString("Ghi chú &lt;b&gt;")))
             .andExpect(content().string(containsString("Thịnh P.")))
@@ -570,7 +571,7 @@ class GiaoDienPagesTest {
     }
 
     @ParameterizedTest
-    @CsvSource({"400,Yêu cầu chưa hợp lệ", "403,Bạn chưa có quyền truy cập", "404,Không tìm thấy trang",
+    @CsvSource({"400,Thông tin bạn gửi chưa hợp lệ", "403,Bạn chưa có quyền truy cập", "404,Không tìm thấy trang",
         "409,Thông tin vừa thay đổi", "413,Tệp tải lên quá lớn", "429,Bạn thao tác quá nhanh", "500,Chưa thể hoàn tất yêu cầu", "503,Chưa thể mở nội dung"})
     void bootErrorsUseVietnameseViewsAndDoNotExposeDetails(int code, String heading) throws Exception {
         mvc.perform(get("/error").accept(MediaType.TEXT_HTML)

@@ -1,0 +1,53 @@
+{
+  "browser": "Chrome/158.0.8127.88",
+  "checks": [
+    {
+      "width": 390,
+      "javascript": true,
+      "control": "faq-retained",
+      "rejection": "email"
+    },
+    {
+      "width": 390,
+      "javascript": false,
+      "control": "faq-retained",
+      "rejection": "phone"
+    },
+    {
+      "width": 768,
+      "javascript": true,
+      "control": "faq-retained",
+      "rejection": "email"
+    },
+    {
+      "width": 768,
+      "javascript": false,
+      "control": "faq-retained",
+      "rejection": "phone"
+    },
+    {
+      "width": 1366,
+      "javascript": true,
+      "control": "faq-retained",
+      "rejection": "email"
+    },
+    {
+      "width": 1366,
+      "javascript": false,
+      "control": "faq-retained",
+      "rejection": "phone"
+    },
+    {
+      "width": 1920,
+      "javascript": true,
+      "control": "faq-retained",
+      "rejection": "email"
+    },
+    {
+      "width": 1920,
+      "javascript": false,
+      "control": "faq-retained",
+      "rejection": "phone"
+    }
+  ]
+}

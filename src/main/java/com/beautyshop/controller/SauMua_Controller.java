@@ -1,13 +1,21 @@
 package com.beautyshop.controller;
 
+import com.beautyshop.cart.ThongBaoGopGio;
 import com.beautyshop.dto.DanhGia_Form;
 import com.beautyshop.model.DanhGia_Document;
 import com.beautyshop.dto.DoiTra_Form;
 import com.beautyshop.security.PhienNguoiDung;
 import com.beautyshop.service.SauMua_Service;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
+import java.util.List;
+import java.util.Map;
 import org.springframework.dao.DataAccessException;
 import org.springframework.dao.DuplicateKeyException;
+import org.springframework.http.CacheControl;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,6 +23,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.server.ResponseStatusException;
 
 @Controller
 class SauMua_Controller {
@@ -115,15 +124,43 @@ class SauMua_Controller {
         return "auth/wishlist";
     }
 
-    @PostMapping("/account/wishlist/{id}")
-    String themYeuThich(@PathVariable long id, @AuthenticationPrincipal PhienNguoiDung phien) {
-        sauMua.themYeuThich(phien.getMaNguoiDung(), id);
-        return "redirect:/account/wishlist";
+    @GetMapping("/account/wishlist/{id}/source")
+    String nguonYeuThich(@PathVariable long id, @AuthenticationPrincipal PhienNguoiDung phien,
+                         @RequestParam Map<String, String> nguon, HttpServletRequest request) {
+        var hienTai = sauMua.trangThaiYeuThich(phien.getMaNguoiDung(), id);
+        String dich = NguonDieuHuong.veYeuThich(nguon, id, hienTai.dangBan() ? hienTai.slug() : null);
+        return "redirect:" + ThongBaoGopGio.chuyenDich(request, phien, dich);
     }
 
-    @PostMapping("/account/wishlist/{id}/delete")
-    String xoaYeuThich(@PathVariable long id, @AuthenticationPrincipal PhienNguoiDung phien) {
-        sauMua.xoaYeuThich(phien.getMaNguoiDung(), id);
-        return "redirect:/account/wishlist";
+    @GetMapping(path = "/account/wishlist/state", produces = MediaType.APPLICATION_JSON_VALUE)
+    ResponseEntity<List<String>> trangThaiYeuThich(@RequestParam(required = false) List<Long> ids,
+                                                    @AuthenticationPrincipal PhienNguoiDung phien) {
+        if (ids != null && (ids.size() > 48 || ids.stream().anyMatch(id -> id == null || id <= 0))) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+        }
+        return ResponseEntity.ok().cacheControl(CacheControl.noStore()).body(
+            sauMua.daYeuThich(phien.getMaNguoiDung(), ids).stream().map(String::valueOf).toList());
     }
+
+    @PostMapping(path = {"/account/wishlist/{id}", "/account/wishlist/{id}/{action:delete}"}, headers = "!X-Wishlist-Partial")
+    String datYeuThich(@PathVariable long id, @PathVariable(required = false) String action,
+                       @AuthenticationPrincipal PhienNguoiDung phien, @RequestParam Map<String, String> nguon,
+                       RedirectAttributes flash) {
+        var hienTai = sauMua.datYeuThich(phien.getMaNguoiDung(), id, action == null);
+        if (action == null && (!hienTai.dangBan() || !hienTai.daLuu())) flash.addFlashAttribute("wishlistError", LOI_YEU_THICH);
+        return "redirect:" + NguonDieuHuong.veYeuThich(nguon, id, hienTai.dangBan() ? hienTai.slug() : null);
+    }
+
+    @PostMapping(path = {"/account/wishlist/{id}", "/account/wishlist/{id}/{action:delete}"},
+        headers = "X-Wishlist-Partial=1", produces = MediaType.APPLICATION_JSON_VALUE)
+    ResponseEntity<KetQuaYeuThich> datYeuThichTaiCho(@PathVariable long id, @PathVariable(required = false) String action,
+                                                     @AuthenticationPrincipal PhienNguoiDung phien) {
+        var hienTai = sauMua.datYeuThich(phien.getMaNguoiDung(), id, action == null);
+        boolean biTuChoi = action == null && (!hienTai.dangBan() || !hienTai.daLuu());
+        return ResponseEntity.status(biTuChoi ? HttpStatus.CONFLICT : HttpStatus.OK).cacheControl(CacheControl.noStore())
+            .body(new KetQuaYeuThich(hienTai.daLuu(), biTuChoi ? LOI_YEU_THICH : null));
+    }
+
+    private static final String LOI_YEU_THICH = "Sản phẩm hiện không còn hiển thị. Không thể lưu yêu thích.";
+    record KetQuaYeuThich(boolean saved, String message) {}
 }

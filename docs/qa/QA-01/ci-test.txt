@@ -1,0 +1,2 @@
+﻿[INFO] Tests run: 310, Failures: 0, Errors: 0, Skipped: 70
+[INFO] BUILD SUCCESS

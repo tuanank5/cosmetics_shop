@@ -94,7 +94,7 @@ class Momo_Controller {
             if (url.isPresent()) {
                 return "redirect:" + url.get();
             }
-            flash.addFlashAttribute("error", "Chưa nhận được trang thanh toán. Có thể thử lại hoặc chờ đối soát.");
+            flash.addFlashAttribute("error", "Chưa nhận được trang thanh toán. Bạn có thể thử lại hoặc chờ xác nhận kết quả thanh toán.");
         } catch (IllegalStateException exception) {
             flash.addFlashAttribute("error", exception.getMessage());
         }
@@ -106,11 +106,10 @@ class Momo_Controller {
                    @RequestParam(name = "listStatus", required = false) java.util.List<com.beautyshop.order.OrderStatus> loc,
                    RedirectAttributes flash) {
         boolean coKetQua = momo.doiSoat(id);
-        flash.addFlashAttribute("message", coKetQua ? "Đã xử lý kết quả đối soát. Xem trạng thái đơn bên dưới."
-            : "Chưa có kết quả đối soát xác minh được.");
+        flash.addFlashAttribute("message", coKetQua ? "Đã kiểm tra lại thanh toán. Xem trạng thái đơn bên dưới."
+            : "Chưa thể xác nhận kết quả thanh toán.");
         NguonDieuHuong.kyDashboard(thamSo).forEach(flash::addAttribute);
-        if (loc != null && !loc.isEmpty()) flash.addAttribute("listStatus", loc.stream().map(Enum::name)
-            .distinct().collect(java.util.stream.Collectors.joining(",")));
+        NguonDieuHuong.donAdmin(thamSo, loc, true).giuQuaRedirect(flash);
         return "redirect:/admin/orders/" + id;
     }
 }

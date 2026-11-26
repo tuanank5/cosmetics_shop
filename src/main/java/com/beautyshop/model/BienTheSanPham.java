@@ -96,7 +96,7 @@ public class BienTheSanPham {
 
     private void kiemTraCoTheBan(int soLuong) {
         if (!dangHoatDong || !sanPham.isDangHoatDong() || soLuong <= 0 || soLuong > getSoLuongKhaDung()) {
-            throw new IllegalStateException("SKU không còn đủ tồn khả dụng hoặc đã ngừng bán.");
+            throw new IllegalStateException("Biến thể sản phẩm không còn đủ số lượng hoặc đã ngừng bán.");
         }
     }
 

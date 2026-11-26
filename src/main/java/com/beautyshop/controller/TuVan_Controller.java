@@ -33,7 +33,11 @@ class TuVan_Controller {
                HttpSession session, HttpServletResponse response, Model model) {
         if (!errors.hasErrors()) {
             if (choPhep(session)) {
-                model.addAttribute("traLoi", tuVanService.hoi(form.getCauHoi().strip()));
+                var traLoi = tuVanService.hoi(form.getCauHoi().strip());
+                model.addAttribute("traLoi", traLoi);
+                if (!traLoi.tuChoi()) {
+                    model.addAttribute("cauHoiHienThi", form.getCauHoi());
+                }
             } else {
                 response.setStatus(HttpStatus.TOO_MANY_REQUESTS.value());
                 response.setHeader("Retry-After", "60");

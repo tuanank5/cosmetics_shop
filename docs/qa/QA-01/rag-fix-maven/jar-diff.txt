@@ -1,0 +1,11 @@
+﻿JAR payload comparison against the previous G13 browser artifact.
+Changed zip entries:
+BOOT-INF/classes/com/beautyshop/controller/TuVan_Controller$CuaSo.class
+BOOT-INF/classes/com/beautyshop/controller/TuVan_Controller.class
+BOOT-INF/classes/com/beautyshop/service/TuVan_Service$ChiMuc.class
+BOOT-INF/classes/com/beautyshop/service/TuVan_Service$Doan.class
+BOOT-INF/classes/com/beautyshop/service/TuVan_Service$KhongKhaDung.class
+BOOT-INF/classes/com/beautyshop/service/TuVan_Service$TraLoi.class
+BOOT-INF/classes/com/beautyshop/service/TuVan_Service$TrangThai.class
+BOOT-INF/classes/com/beautyshop/service/TuVan_Service.class
+BOOT-INF/classes/templates/TuVanDa.html

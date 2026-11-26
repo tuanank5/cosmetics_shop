@@ -81,6 +81,12 @@ public class Bootstrap_Controller {
         }
         model.addAttribute("tomTatDanhGia", doc(sauMuaService, "tom tat danh gia", service -> service.tomTatDanhGia(maThe),
             new SauMua_Service.TomTatTheSanPham(java.util.Map.of(), true)));
+        maThe.remove(null);
+        if (phien != null && phien.getAuthorities().stream().anyMatch(quyen -> quyen.getAuthority().equals("ROLE_CUSTOMER"))) {
+            model.addAttribute("wishlistSaved", doc(sauMuaService, "yeu thich",
+                service -> service.daYeuThich(phien.getMaNguoiDung(), maThe), java.util.Set.of()));
+        }
+        model.addAttribute("wishlistFields", java.util.Map.of("sort", sapXep));
         return "home/index";
     }
 

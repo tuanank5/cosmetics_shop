@@ -9,7 +9,7 @@
         <input type="hidden" name="requestId" th:value="${lan.request.requestId}">
         <button class="btn btn--primary" type="submit" name="result" value="0">Mô phỏng thành công</button>
         <button class="btn btn--primary" type="submit" name="result" value="1006">Mô phỏng từ chối</button>
-        <button class="btn btn--primary" type="submit" name="result" value="1005">Mô phỏng cổng hết hạn</button>
+        <button class="btn btn--primary" type="submit" name="result" value="1005">Mô phỏng giao dịch hết hạn</button>
     </form>
     <p><a class="text-link" th:href="@{/orders/{id}(id=${lan.request.maDonHang})}">Quay lại đơn hàng</a></p>
 </main>

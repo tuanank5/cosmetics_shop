@@ -1,0 +1,8 @@
+﻿[INFO] Tests run: 65, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 8.120 s -- in com.beautyshop.controller.GiaoDienPagesTest
+[INFO] Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.962 s -- in com.beautyshop.controller.TrangChuPagesTest
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 6.619 s -- in com.beautyshop.integration.DanhMucSanPhamThuongHieu_MariaDb_Test
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.067 s -- in com.beautyshop.integration.OAuth2Callback_MariaDb_Test
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.513 s -- in com.beautyshop.integration.SauMua_MongoDanhGia_Test
+[INFO] Tests run: 11, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 5.022 s -- in com.beautyshop.integration.XacThuc_MariaDb_Test
+[INFO] Tests run: 97, Failures: 0, Errors: 0, Skipped: 0
+[INFO] BUILD SUCCESS

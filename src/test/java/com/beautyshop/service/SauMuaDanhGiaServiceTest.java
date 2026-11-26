@@ -169,7 +169,7 @@ class SauMuaDanhGiaServiceTest {
         assertThatThrownBy(() -> service.luuDanhGia(KHACH, MUC_DA_GIAO, form(5, ""), false))
             .isInstanceOf(DataAccessResourceFailureException.class);
         assertThatThrownBy(() -> service.datHienThi("abc", false, null))
-            .isInstanceOf(IllegalStateException.class).hasMessageContaining("Tạm thời");
+            .isInstanceOf(IllegalStateException.class).hasMessageContaining("tải lại để kiểm tra trạng thái");
     }
 
     /** Store giả: giữ đúng hợp đồng của DanhGia_Store (khóa duy nhất theo dòng đơn, phiên bản tăng khi sửa). */

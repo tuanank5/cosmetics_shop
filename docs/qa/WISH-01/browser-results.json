@@ -1,0 +1,10 @@
+{
+  "browser": "Chrome/158.0.8127.88",
+  "checks": [
+    "guest-login-origin-cart-notice-and-no-js-prg-both-directions",
+    "home-three-cards-stay-in-sync-after-rapid-clicks",
+    "pdp-and-home-sync-across-two-tabs-and-back",
+    "response-loss-after-write-reconciles-with-one-get-and-no-post-replay",
+    "last-wishlist-removal-keeps-page-and-focuses-heading"
+  ]
+}

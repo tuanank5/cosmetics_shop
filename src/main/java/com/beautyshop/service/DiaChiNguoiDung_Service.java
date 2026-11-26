@@ -1,5 +1,6 @@
 package com.beautyshop.service;
 
+import com.beautyshop.dto.DiaChiHienThi;
 import com.beautyshop.dto.DiaChiNguoiDung_Form;
 import com.beautyshop.model.DiaChiNguoiDung;
 import com.beautyshop.model.NguoiDung;
@@ -24,8 +25,8 @@ public class DiaChiNguoiDung_Service {
         this.nguoiDungRepository = nguoiDungRepository;
     }
 
-    public List<DiaChiNguoiDung> danhSach(long maNguoiDung) {
-        return diaChiRepository.findAllByNguoiDungMaNguoiDungOrderByMaDiaChiAsc(maNguoiDung);
+    public List<DiaChiHienThi> danhSach(long maNguoiDung) {
+        return diaChiRepository.docDanhSach(maNguoiDung);
     }
 
     public DiaChiNguoiDung_Form form(long maNguoiDung, long maDiaChi) {
@@ -36,7 +37,7 @@ public class DiaChiNguoiDung_Service {
     public void luu(long maNguoiDung, Long maDiaChi, DiaChiNguoiDung_Form form) {
         var nguoiDung = khoaCustomer(maNguoiDung);
         var diaChi = maDiaChi == null ? new DiaChiNguoiDung(nguoiDung) : timDiaChi(maNguoiDung, maDiaChi);
-        var danhSach = danhSach(maNguoiDung);
+        var danhSach = diaChiRepository.findAllByNguoiDungMaNguoiDungOrderByMaDiaChiAsc(maNguoiDung);
         diaChi.capNhat(form.getTenNguoiNhan(), form.getSoDienThoai(), form.getDiaChiChiTiet());
         if (form.isLaMacDinh() || danhSach.stream().noneMatch(DiaChiNguoiDung::isLaMacDinh)) {
             danhSach.forEach(muc -> muc.datMacDinh(false));
@@ -50,7 +51,8 @@ public class DiaChiNguoiDung_Service {
         khoaCustomer(maNguoiDung);
         var diaChi = timDiaChi(maNguoiDung, maDiaChi);
         if (diaChi.isLaMacDinh()) {
-            danhSach(maNguoiDung).stream().filter(muc -> !muc.getMaDiaChi().equals(maDiaChi))
+            diaChiRepository.findAllByNguoiDungMaNguoiDungOrderByMaDiaChiAsc(maNguoiDung).stream()
+                .filter(muc -> !muc.getMaDiaChi().equals(maDiaChi))
                 .findFirst().ifPresent(muc -> muc.datMacDinh(true));
         }
         diaChiRepository.delete(diaChi);

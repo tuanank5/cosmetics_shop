@@ -77,6 +77,7 @@ class AdminDanhGiaPagesTest {
             .andExpect(content().string(containsString("Thấm &lt;i&gt;")))
             .andExpect(content().string(containsString("4/5 · Thịnh P. · 21/11/2026")))
             .andExpect(content().string(containsString("action=\"/admin/reviews/65f000000000000000000001/visibility\"")))
+            .andExpect(model().attributeDoesNotExist("focusReviewId", "focusReviewResults"))
             .andExpect(content().string(containsString("name=\"revision\" value=\"3\"")))
             .andExpect(content().string(containsString("name=\"page\" value=\"1\"")))
             .andExpect(content().string(containsString("<a href=\"/admin/reviews\" aria-current=\"page\">")))
@@ -85,6 +86,33 @@ class AdminDanhGiaPagesTest {
             .andExpect(content().string(containsString("Trang 2 / 3")))
             .andExpect(content().string(containsString("/admin/reviews?status=CHO_DUYET&amp;stars=4&amp;product=30&amp;page=2")));
         verify(sauMua).danhSachDanhGiaAdmin(new BoLocDanhGia(TrangThaiLoc.CHO_DUYET, 4, 30L), 1);
+    }
+
+    @Test
+    void clampTrangCuoiGiuFlashVaDatFocusVaoKetQua() throws Exception {
+        var danhGia = new DanhGiaAdmin("65f000000000000000000002", 30, "Serum", 10, "Fixture", 4, "Ghi chú",
+            false, false, "0", Instant.EPOCH);
+        when(sauMua.danhSachDanhGiaAdmin(any(), anyInt())).thenReturn(new SauMua_Service.TrangDanhGiaAdmin(
+            new PageImpl<>(List.of(danhGia), PageRequest.of(0, 20), 20), List.of(new SanPhamLoc(30, "Serum")), false));
+        var doiTrang = mvc.perform(get("/admin/reviews").with(user("admin").roles("ADMIN"))
+                .param("status", "CHO_DUYET").param("stars", "4").param("product", "30").param("page", "1")
+                .flashAttr("danhGiaVuaXuLy", "65f000000000000000000001").flashAttr("message", "Đã duyệt đánh giá."))
+            .andExpect(redirectedUrl("/admin/reviews?status=CHO_DUYET&stars=4&product=30&page=0"))
+            .andExpect(flash().attribute("message", "Đã duyệt đánh giá.")).andReturn();
+
+        mvc.perform(get(java.net.URI.create(doiTrang.getResponse().getRedirectedUrl()))
+                .with(user("admin").roles("ADMIN")).flashAttrs(doiTrang.getFlashMap()))
+            .andExpect(status().isOk())
+            .andExpect(model().attribute("focusReviewResults", true))
+            .andExpect(content().string(containsString("autofocus=\"autofocus\" aria-describedby=\"review-notice\"")))
+            .andExpect(content().string(containsString("20 đánh giá")))
+            .andExpect(content().string(containsString("Đã duyệt đánh giá.")))
+            .andExpect(content().string(not(containsString("65f000000000000000000001"))));
+
+        mvc.perform(get("/admin/reviews").with(user("admin").roles("ADMIN"))
+                .flashAttr("danhGiaVuaXuLy", danhGia.ma()).flashAttr("error", "Vui lòng kiểm tra lại."))
+            .andExpect(model().attribute("focusReviewId", danhGia.ma()))
+            .andExpect(model().attribute("focusReviewResults", false));
     }
 
     @Test

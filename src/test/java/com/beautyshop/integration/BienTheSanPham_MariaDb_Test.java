@@ -85,7 +85,8 @@ class BienTheSanPham_MariaDb_Test {
                     throw new AssertionError("Giao dịch thứ hai chưa trừ được tồn.", exception);
                 }
                 tonKho.deductCOD(donA, maBienThe, 1);
-            })).isInstanceOf(IllegalStateException.class).hasMessageContaining("tồn khả dụng");
+            })).isInstanceOf(IllegalStateException.class)
+                .hasMessage("Biến thể sản phẩm không còn đủ số lượng hoặc đã ngừng bán.");
         } finally {
             executor.shutdownNow();
         }
@@ -169,7 +170,7 @@ class BienTheSanPham_MariaDb_Test {
             .andExpect(header().string("X-Content-Type-Options", "nosniff"));
         mvc.perform(get("/uploads/sku/unknown.png")).andExpect(status().isNotFound());
         mvc.perform(get(base)).andExpect(status().isOk())
-            .andExpect(content().string(containsString("Lô minh họa: LOT-DEMO")));
+            .andExpect(content().string(containsString("Mã lô tham khảo: LOT-DEMO")));
         mvc.perform(form(base + "/new", sku, 2).with(csrf()))
             .andExpect(model().attributeHasFieldErrors("form", "sku"));
         mvc.perform(get("/admin/catalog/products/" + taoSanPham() + "/variants/" + maBienThe + "/edit"))
@@ -217,7 +218,7 @@ class BienTheSanPham_MariaDb_Test {
             capTon(phuongThuc, maDonHang, maBienThe);
             return true;
         } catch (IllegalStateException exception) {
-            assertThat(exception.getMessage()).contains("tồn khả dụng");
+            assertThat(exception).hasMessage("Biến thể sản phẩm không còn đủ số lượng hoặc đã ngừng bán.");
             return false;
         }
     }

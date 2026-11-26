@@ -7,7 +7,7 @@
   <section class="auth-panel" aria-labelledby="chat-title">
     <p class="eyebrow">BEAUTYSHOP · HỖ TRỢ MUA SẮM</p>
     <h1 id="chat-title">Tư vấn sản phẩm</h1>
-    <p class="muted">Đặt câu hỏi về sản phẩm hoặc chính sách. Câu trả lời được tìm từ FAQ và nguồn cửa hàng đã kiểm tra.</p>
+    <p class="muted">Đặt câu hỏi về sản phẩm hoặc chính sách. Câu trả lời dựa trên câu hỏi thường gặp và thông tin cửa hàng đã kiểm tra.</p>
     <p class="muted">Cần gợi ý theo loại da? <a class="text-link" th:href="@{/tu-van-da}">Mở tư vấn chăm sóc da</a>.</p>
     <form method="post" th:action="@{/chat}" th:object="${form}" class="login-card">
       <div class="alert alert--error" role="alert" th:if="${#fields.hasGlobalErrors()}">
@@ -15,7 +15,7 @@
       </div>
       <div class="field">
         <label for="cauHoi">Câu hỏi <span class="muted">(tối đa 500 ký tự)</span></label>
-        <textarea id="cauHoi" th:field="*{cauHoi}" maxlength="500" rows="5" required
+        <textarea id="cauHoi" name="cauHoi" th:text="${cauHoiHienThi}" maxlength="500" rows="5" required
                   th:attr="aria-invalid=${#fields.hasErrors('cauHoi') ? 'true' : null},aria-describedby=${#fields.hasErrors('cauHoi') ? 'cauHoi-error' : null}"></textarea>
         <p id="cauHoi-error" class="field-error" th:if="${#fields.hasErrors('cauHoi')}" th:errors="*{cauHoi}">Vui lòng kiểm tra câu hỏi.</p>
       </div>
@@ -25,23 +25,23 @@
   <section class="auth-panel" aria-labelledby="answer-title">
     <p class="eyebrow">THÔNG TIN CÓ NGUỒN</p>
     <div th:if="${traLoi != null}">
-      <p class="muted" th:text="${traLoi.nhan}">Tìm FAQ · không phải AI</p>
+      <p class="muted" th:text="${traLoi.nhan}">Trả lời từ câu hỏi thường gặp</p>
       <h2 id="answer-title">Câu trả lời</h2>
       <p th:text="${traLoi.noiDung}">Câu trả lời sẽ hiển thị tại đây.</p>
       <p th:if="${traLoi.tieuDeNguon != null and traLoi.url != null}">
         <a class="text-link" th:href="${traLoi.url}" th:text="${'Nguồn: ' + traLoi.tieuDeNguon}">Nguồn đã kiểm tra</a>
       </p>
       <p class="muted" th:if="${traLoi.gia != null}">
-        Giá trong catalog:
+        Giá đang niêm yết:
         <strong th:text="${#numbers.formatDecimal(traLoi.gia, 0, 'POINT', 0, 'COMMA')} + ' ₫'">0 ₫</strong>
       </p>
       <p class="muted" th:if="${traLoi.khaDung != null}">
-        Tồn khả dụng: <strong th:text="${traLoi.khaDung}">0</strong>
+        Số lượng còn mua được: <strong th:text="${traLoi.khaDung}">0</strong>
       </p>
     </div>
     <div th:unless="${traLoi != null}">
       <h2 id="answer-title">Hỏi BeautyShop</h2>
-      <p class="muted">Chúng tôi chỉ trả lời khi tìm được thông tin phù hợp từ nguồn đã kiểm tra. Khi AI tắt, trang vẫn tìm câu trả lời trong FAQ.</p>
+      <p class="muted">Chúng tôi chỉ trả lời khi tìm được thông tin phù hợp từ nguồn đã kiểm tra. Khi tư vấn AI tắt, bạn vẫn có thể tra cứu câu hỏi thường gặp.</p>
     </div>
   </section>
 </main>

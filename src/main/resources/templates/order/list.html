@@ -4,7 +4,8 @@
 <body><div th:replace="~{fragments/header :: siteHeader}"></div>
 <main id="main" tabindex="-1" class="page-content">
     <h1 th:text="${base == '/admin/orders' ? 'Quản lý đơn hàng' : 'Đơn hàng của bạn'}">Đơn hàng</h1>
-    <dl class="order-summary" th:if="${tongQuan}" aria-label="Tổng quan đơn hàng">
+    <h2 th:if="${tongQuan}">Tổng quan toàn hệ thống</h2>
+    <dl class="order-summary" th:if="${tongQuan}" aria-label="Tổng quan đơn hàng toàn hệ thống">
         <div><dt>Tổng số đơn</dt><dd th:text="${tongQuan.tongSoDon}"></dd></div>
         <div><dt>Đơn đã thu tiền</dt><dd th:text="${tongQuan.soDonDaThu}"></dd></div>
         <div><dt>Doanh thu đã xác nhận</dt><dd th:text="|${#numbers.formatInteger(tongQuan.doanhThuDaThu, 1, 'POINT')} ₫|"></dd></div>
@@ -12,19 +13,64 @@
     <nav th:if="${base == '/admin/orders'}" class="catalog-actions" aria-label="Sau mua">
         <a class="text-link" th:href="@{/admin/reviews}">Duyệt đánh giá</a>
         <a class="text-link" th:href="@{/admin/returns}">Quản lý đổi trả</a>
-        <a class="text-link" th:href="@{/admin/ai}">Kho tri thức tư vấn</a>
+        <a class="text-link" th:href="@{/admin/ai}">Nguồn thông tin tư vấn</a>
     </nav>
-    <p class="notice" role="status" th:if="${locTrangThai != null}">
-        <span th:text="|Đang lọc ${#lists.size(donHang)} đơn: ${#strings.listJoin(locTrangThai.![label], ', ')}.|"></span>
-        <a class="text-link" th:href="@{/admin/orders}">Xem tất cả đơn</a>
-    </p>
-    <p class="notice" th:if="${#lists.isEmpty(donHang)}">Chưa có đơn hàng.</p>
-    <ul class="catalog-list">
+    <form th:if="${boLoc != null}" class="order-filter" method="get" th:action="@{/admin/orders}">
+        <fieldset>
+            <legend>Trạng thái đơn</legend>
+            <div class="order-filter__status">
+                <label th:each="s : ${trangThaiDon}">
+                    <input type="checkbox" name="status" th:value="${s.name()}" th:checked="${boLoc.trangThai.contains(s)}">
+                    <span th:text="${s.label}"></span>
+                </label>
+            </div>
+        </fieldset>
+        <div class="order-filter__fields">
+            <label>Mã đơn
+                <input type="search" name="q" maxlength="80" pattern="[A-Za-z0-9_\-]*" th:value="${boLoc.maDon}" placeholder="Nhập phần đầu mã đơn">
+            </label>
+            <label>Phương thức thanh toán
+                <select name="method">
+                    <option value="">Tất cả</option>
+                    <option th:each="p : ${phuongThucThanhToan}" th:value="${p.name()}" th:text="${p.nhan}" th:selected="${boLoc.phuongThuc == p}"></option>
+                </select>
+            </label>
+            <label>Trạng thái thanh toán
+                <select name="paymentStatus">
+                    <option value="">Tất cả</option>
+                    <option th:each="s : ${trangThaiThanhToan}" th:value="${s.name()}" th:text="${s.nhan}" th:selected="${boLoc.thanhToan == s}"></option>
+                </select>
+            </label>
+            <label>Sắp xếp
+                <select name="sort">
+                    <option th:each="s : ${sapXep}" th:value="${s.name()}" th:text="${s.nhan}" th:selected="${boLoc.sapXep == s}"></option>
+                </select>
+            </label>
+            <label>Số đơn mỗi trang
+                <select name="size">
+                    <option th:each="s : ${kichThuocTrang}" th:value="${s}" th:text="${s}" th:selected="${boLoc.kichThuoc == s}"></option>
+                </select>
+            </label>
+        </div>
+        <div class="catalog-actions">
+            <button type="submit" class="btn btn--primary">Áp dụng</button>
+            <a class="text-link" th:href="@{/admin/orders}">Xóa lọc, xem tất cả đơn</a>
+        </div>
+    </form>
+    <p role="status" id="order-result-count" th:if="${pager != null}" th:text="|${pager.tongMuc} đơn phù hợp|">0 đơn phù hợp</p>
+    <p class="notice" th:if="${#lists.isEmpty(donHang)}"
+       th:text="${boLoc == null ? 'Chưa có đơn hàng.' : 'Chưa có đơn hàng phù hợp.'}"></p>
+    <ul class="catalog-list" th:classappend="${orderOrigin != null ? 'order-admin-list' : ''}">
         <li th:each="muc : ${donHang}">
-            <a class="text-link" th:href="${locTrangThai == null} ? @{${base + '/' + muc.maDonHang}} : @{${base + '/' + muc.maDonHang}(listStatus=${locTrangThai})}" th:text="${muc.maHienThi}"></a>
+            <a class="text-link order-row-link" th:id="${orderOrigin != null ? 'admin-order-' + muc.maDonHang : null}"
+               th:href="@{${orderOrigin == null ? base + '/' + muc.maDonHang : orderOrigin.chiTiet(muc.maDonHang)}}" th:text="${muc.maHienThi}"></a>
             <span th:text="${muc.trangThai.label}"></span>
+            <span th:if="${orderOrigin != null}" th:text="|${muc.phuongThuc == 'MOMO' ? 'MoMo' : (muc.phuongThuc == 'COD' ? 'Thanh toán khi nhận hàng' : muc.phuongThuc)} · ${muc.nhanThanhToan()}|"></span>
             <span th:text="|${#numbers.formatInteger(muc.tong, 1, 'POINT')} ₫|"></span>
         </li>
     </ul>
+    <th:block th:if="${pager != null}">
+        <div th:replace="~{fragments/ui :: pagination(${pager}, 'Phân trang đơn hàng')}"></div>
+    </th:block>
 </main>
 <div th:replace="~{fragments/footer :: siteFooter}"></div></body></html>

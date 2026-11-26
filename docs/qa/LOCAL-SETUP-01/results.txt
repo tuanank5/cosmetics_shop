@@ -1,0 +1,22 @@
+﻿JDK 21 / MariaDB fixture / localhost 33391
+fresh-migrate-from-dotenv PASS
+[INFO] BUILD SUCCESS
+second-migrate-from-dotenv PASS
+[INFO] BUILD SUCCESS
+seed-catalog-orders-wishlist PASS
+Demo catalog imported: 31 products, 32 SKUs.
+Demo wishlists: 30 (target 30).
+repeat-seed PASS
+Demo catalog imported: 31 products, 32 SKUs.
+Demo orders already exist (120). Nothing to do for orders.
+Demo wishlists: 30 (target 30).
+Seed after repeat: 31 products, 32 SKUs, 120 orders, 30 wishlists, 123 stock, Flyway V7.
+maven-test PASS
+[INFO] Tests run: 315, Failures: 0, Errors: 0, Skipped: 74
+[INFO] BUILD SUCCESS
+upgrade-v1-v6-and-reject-drift PASS
+[INFO] Tests run: 8, Failures: 0, Errors: 0, Skipped: 0
+[INFO] BUILD SUCCESS
+maven-package PASS
+[INFO] BUILD SUCCESS
+Dev startup PASS: Flyway validate, JPA validate and seeded PDP returned HTTP 200 using DB_PORT/DB_NAME.

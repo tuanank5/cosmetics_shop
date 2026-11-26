@@ -13,6 +13,7 @@ import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.web.client.ResourceAccessException;
 
+import static org.hamcrest.Matchers.containsString;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
@@ -33,7 +34,9 @@ class TuVanDaControllerTest {
     void trangTuVanMoChoGuestCustomerVaAdmin() throws Exception {
         mvc.perform(get("/tu-van-da"))
             .andExpect(status().isOk())
-            .andExpect(view().name("chat/TuVanDa"));
+            .andExpect(view().name("chat/TuVanDa"))
+            .andExpect(content().string(containsString("id=\"main\"")))
+            .andExpect(content().string(containsString("maxlength=\"1000\"")));
         mvc.perform(get("/tu-van-da").with(user("customer").roles("CUSTOMER")))
             .andExpect(status().isOk());
         mvc.perform(get("/tu-van-da").with(user("admin").roles("ADMIN")))
@@ -87,7 +90,9 @@ class TuVanDaControllerTest {
                 .param("daNhayCam", "Ít nhạy cảm")
                 .param("nhuCau", "Dưỡng ẩm"))
             .andExpect(status().isOk())
-            .andExpect(model().attributeHasFieldErrors("form", "loaiDa"));
+            .andExpect(model().attributeHasFieldErrors("form", "loaiDa"))
+            .andExpect(content().string(containsString("aria-describedby=\"loai-da-error\"")))
+            .andExpect(content().string(containsString("id=\"loai-da-error\"")));
 
         verifyNoInteractions(tuVanDaService);
     }

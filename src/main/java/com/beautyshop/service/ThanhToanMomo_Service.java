@@ -38,13 +38,13 @@ public class ThanhToanMomo_Service {
         var don = khoaDon(maDon);
         var lan = moiNhat(maDon, gateway);
         if (don.trangThai() != OrderStatus.PENDING_PAYMENT || !thanhToan.conHan(maDon)) {
-            throw new IllegalStateException("Đơn đã hết thời gian thử lại. Vui lòng chờ đối soát.");
+            throw new IllegalStateException("Đơn đã hết thời gian thử lại. Vui lòng chờ xác nhận kết quả thanh toán.");
         }
         if ("PENDING".equals(lan.trangThai())) {
             return lan.request();
         }
         if (!"FAILED".equals(lan.trangThai())) {
-            throw new IllegalStateException("Lần thanh toán này đang cần đối soát.");
+            throw new IllegalStateException("Lần thanh toán này cần được kiểm tra lại.");
         }
         String requestId = UUID.randomUUID().toString();
         thanhToan.tao(maDon, requestId, don.tong(), gateway);

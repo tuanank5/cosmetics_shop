@@ -1,10 +1,16 @@
 package com.beautyshop.controller;
 
+import com.beautyshop.dto.BoLocDonHangAdmin;
+import com.beautyshop.dto.BoLocDonHangAdmin.PhuongThuc;
+import com.beautyshop.dto.BoLocDonHangAdmin.SapXep;
+import com.beautyshop.dto.BoLocDonHangAdmin.ThanhToan;
+import com.beautyshop.order.OrderStatus;
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 import java.time.temporal.ChronoUnit;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 import org.springframework.web.util.UriUtils;
 
@@ -45,6 +51,83 @@ public final class NguonDieuHuong {
         var thamSo = new LinkedHashMap<>(ky);
         thamSo.remove("nav");
         return coThamSo("/admin/dashboard", thamSo);
+    }
+
+    public static final String DON_ADMIN = "/admin/orders";
+
+    public static NguonDonAdmin donAdmin(Map<String, String> request, List<OrderStatus> trangThai, boolean tuChiTiet) {
+        String q = request.get(tuChiTiet ? "listQ" : "q");
+        String method = request.get(tuChiTiet ? "listMethod" : "method");
+        String payment = request.get(tuChiTiet ? "listPaymentStatus" : "paymentStatus");
+        String sort = request.get(tuChiTiet ? "listSort" : "sort");
+        int size = soNguyen(request.get(tuChiTiet ? "listSize" : "size"), 20);
+        int page = soNguyen(request.get(tuChiTiet ? "listPage" : "page"), -1);
+        var loc = new BoLocDonHangAdmin(trangThai, giaTri(PhuongThuc.class, method), giaTri(ThanhToan.class, payment),
+            q, giaTri(SapXep.class, sort), size);
+        return new NguonDonAdmin(loc, page);
+    }
+
+    private static <E extends Enum<E>> E giaTri(Class<E> loai, String value) {
+        if (value == null) return null;
+        try {
+            return Enum.valueOf(loai, value);
+        } catch (IllegalArgumentException ignored) {
+            return null;
+        }
+    }
+
+    private static int soNguyen(String value, int macDinh) {
+        try {
+            return Math.max(0, Integer.parseInt(value));
+        } catch (NumberFormatException ignored) {
+            return macDinh;
+        }
+    }
+
+    public record NguonDonAdmin(BoLocDonHangAdmin loc, int page) {
+        public String danhSach(int soTrang) {
+            return url(DON_ADMIN, thamSo(false, soTrang), "status");
+        }
+
+        public String chiTiet(long maDon) {
+            return url(DON_ADMIN + "/" + maDon, truongAn(), "listStatus");
+        }
+
+        public String quayLai(long maDon) {
+            String url = danhSach(page);
+            return page < 0 ? url : url + "#admin-order-" + maDon;
+        }
+
+        public Map<String, String> truongAn() {
+            return thamSo(true, page);
+        }
+
+        public void giuQuaRedirect(org.springframework.web.servlet.mvc.support.RedirectAttributes flash) {
+            truongAn().forEach(flash::addAttribute);
+            if (!loc.trangThai().isEmpty()) flash.addAttribute("listStatus", loc.trangThai().stream().map(Enum::name)
+                .collect(java.util.stream.Collectors.joining(",")));
+        }
+
+        private Map<String, String> thamSo(boolean chiTiet, int soTrang) {
+            var thamSo = new LinkedHashMap<String, String>();
+            if (!loc.maDon().isEmpty()) thamSo.put(chiTiet ? "listQ" : "q", loc.maDon());
+            if (loc.phuongThuc() != null) thamSo.put(chiTiet ? "listMethod" : "method", loc.phuongThuc().name());
+            if (loc.thanhToan() != null) thamSo.put(chiTiet ? "listPaymentStatus" : "paymentStatus", loc.thanhToan().name());
+            if (loc.sapXep() != SapXep.newest) thamSo.put(chiTiet ? "listSort" : "sort", loc.sapXep().name());
+            if (soTrang >= 0) thamSo.put(chiTiet ? "listPage" : "page", Integer.toString(soTrang));
+            if (loc.kichThuoc() != 20) thamSo.put(chiTiet ? "listSize" : "size", Integer.toString(loc.kichThuoc()));
+            return thamSo;
+        }
+
+        private String url(String path, Map<String, String> thamSo, String tenTrangThai) {
+            var url = new StringBuilder(coThamSo(path, thamSo));
+            String dauPhanCach = thamSo.isEmpty() ? "?" : "&";
+            for (var trangThai : loc.trangThai()) {
+                url.append(dauPhanCach).append(tenTrangThai).append('=').append(trangThai.name());
+                dauPhanCach = "&";
+            }
+            return url.toString();
+        }
     }
 
     /** Caller truyền route cố định và bộ lọc đã chuẩn hóa. */
@@ -97,6 +180,32 @@ public final class NguonDieuHuong {
 
     private static NguonSanPham macDinh() {
         return new NguonSanPham("/products", "Tất cả sản phẩm", Map.of());
+    }
+
+    static String veYeuThich(Map<String, String> request, long maSanPham, String slugCongKhai) {
+        String origin = request.getOrDefault("origin", "wishlist");
+        if (origin.equals("pdp")) {
+            var nguon = sanPham(request, maSanPham, true);
+            if (slugCongKhai == null) return nguon.duongVe();
+            var query = new LinkedHashMap<>(nguon.thamSo());
+            soLong(query, "variant", request.get("variant"));
+            so(query, "reviewPage", request.get("reviewPage"), 0, 10_000);
+            return coThamSo("/products/" + UriUtils.encodePathSegment(slugCongKhai, StandardCharsets.UTF_8), query) + "#pdp-actions";
+        }
+        var thamSo = new LinkedHashMap<>(request);
+        thamSo.put("from", origin);
+        String ve = sanPham(thamSo, maSanPham, true).duongVe();
+        return origin.equals("catalog") ? ve + "#catalog-product-" + maSanPham : ve;
+    }
+
+    private static void soLong(Map<String, String> thamSo, String ten, String value) {
+        if (value == null) return;
+        try {
+            long so = Long.parseLong(value);
+            if (so > 0) thamSo.put(ten, Long.toString(so));
+        } catch (NumberFormatException ignored) {
+            // Dùng biến thể mặc định khi mã không hợp lệ.
+        }
     }
 
     private static void them(Map<String, String> thamSo, String ten, String value, int max) {

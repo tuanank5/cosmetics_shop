@@ -3,6 +3,7 @@ package com.beautyshop.service;
 import org.springframework.security.access.prepost.PreAuthorize;
 import com.beautyshop.domain.catalog.NhomDanhMucSanPhamThuongHieu;
 import com.beautyshop.dto.DanhMucSanPhamThuongHieu_Form;
+import com.beautyshop.dto.MucCatalogAdmin;
 import com.beautyshop.model.ThuongHieu;
 import com.beautyshop.model.MucDanhMucSanPhamThuongHieu;
 import com.beautyshop.model.DanhMuc;
@@ -13,7 +14,6 @@ import com.beautyshop.repository.DanhMuc_Repository;
 import com.beautyshop.repository.SanPham_Repository;
 
 import java.util.List;
-import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -34,12 +34,12 @@ public class DanhMucSanPhamThuongHieu_Service {
     }
 
     @Transactional(readOnly = true)
-    public List<? extends MucDanhMucSanPhamThuongHieu> list(NhomDanhMucSanPhamThuongHieu nhom) {
-        return repository(nhom).findAll(switch (nhom) {
-            case DANH_MUC -> Sort.by("tenDanhMuc", "maDanhMuc");
-            case THUONG_HIEU -> Sort.by("tenThuongHieu", "maThuongHieu");
-            case SAN_PHAM -> Sort.by("tenSanPham", "maSanPham");
-        });
+    public List<MucCatalogAdmin> list(NhomDanhMucSanPhamThuongHieu nhom) {
+        return switch (nhom) {
+            case DANH_MUC -> danhMucRepository.docDanhSachAdmin();
+            case THUONG_HIEU -> thuongHieuRepository.docDanhSachAdmin();
+            case SAN_PHAM -> sanPhamRepository.docDanhSachAdmin();
+        };
     }
 
     @Transactional(readOnly = true)
@@ -62,7 +62,7 @@ public class DanhMucSanPhamThuongHieu_Service {
             errors.rejectValue("name", "catalog.name.length", "Tên tối đa 160 ký tự.");
             return;
         }
-        T muc = ma == null ? mucMoi : find(repository, ma);
+        T muc = ma == null ? mucMoi : khoa(repository, ma);
         muc.update(form);
         repository.saveAndFlush(muc);
     }
@@ -73,7 +73,7 @@ public class DanhMucSanPhamThuongHieu_Service {
         if (errors.hasErrors()) {
             return;
         }
-        SanPham sanPham = ma == null ? new SanPham() : find(sanPhamRepository, ma);
+        SanPham sanPham = ma == null ? new SanPham() : khoa(sanPhamRepository, ma);
         sanPham.update(form, danhMuc, thuongHieu);
         sanPhamRepository.saveAndFlush(sanPham);
     }
@@ -88,17 +88,12 @@ public class DanhMucSanPhamThuongHieu_Service {
     }
 
     @Transactional
-    public void remove(NhomDanhMucSanPhamThuongHieu nhom, long ma) {
-        if (nhom == NhomDanhMucSanPhamThuongHieu.SAN_PHAM) {
-            find(sanPhamRepository, ma).deactivate();
-            return;
-        }
-        delete(repository(nhom), ma);
+    public void datTrangThai(NhomDanhMucSanPhamThuongHieu nhom, long ma, boolean hoatDong) {
+        khoa(repository(nhom), ma).datTrangThai(hoatDong);
     }
 
-    private <T extends MucDanhMucSanPhamThuongHieu> void delete(DanhMucSanPhamThuongHieu_Repository<T> repository, long ma) {
-        repository.delete(find(repository, ma));
-        repository.flush();
+    private <T extends MucDanhMucSanPhamThuongHieu> T khoa(DanhMucSanPhamThuongHieu_Repository<T> repository, long ma) {
+        return repository.khoa(ma).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
 
     private DanhMucSanPhamThuongHieu_Repository<? extends MucDanhMucSanPhamThuongHieu> repository(NhomDanhMucSanPhamThuongHieu nhom) {

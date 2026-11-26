@@ -89,11 +89,16 @@ public class ThanhToanMomo_Repository {
     }
 
     public Optional<String> trangThaiHienThi(long maDon) {
-        return jdbc.sql("""
+        return jdbc.sql(sqlTrangThaiHienThi("?")).param(maDon).query(String.class).optional();
+    }
+
+    // Caller supplies a fixed SQL placeholder or the outer order's ID column.
+    static String sqlTrangThaiHienThi(String maDon) {
+        return """
             SELECT tt.trang_thai FROM lan_thanh_toan tt
-            WHERE tt.ma_don_hang = ? AND tt.cong_thanh_toan IN ('MOMO', 'MOMO_MOCK')
+            WHERE tt.ma_don_hang = %s AND tt.cong_thanh_toan IN ('MOMO', 'MOMO_MOCK')
             ORDER BY (tt.trang_thai = 'PAID') DESC, tt.ma_lan_thanh_toan DESC LIMIT 1
-            """).param(maDon).query(String.class).optional();
+            """.formatted(maDon);
     }
 
     public record LanThanhToan(MomoGateway.Request request, String gateway, String trangThai, String transId) {}

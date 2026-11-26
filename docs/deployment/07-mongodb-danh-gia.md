@@ -48,7 +48,7 @@ mongosh beautyshop_demo --quiet --eval "db.danh_gia.getIndexes().map(i => i.name
 
 ## Quy trình dữ liệu demo
 
-Chạy `scripts/seed-demo-orders.ps1` để tạo đơn, tồn minh họa và lượt yêu thích demo. Để tạo đánh giá demo, đăng nhập bằng Customer của fixture có đơn đã giao, gửi đánh giá từ dòng đơn và duyệt bằng Admin. Bảng SQL `danh_gia` chỉ lưu lịch sử; giữ nguyên các dòng đã có.
+Chạy `scripts/seed-demo.ps1 -WithOrders` để nạp catalog, đơn, tồn minh họa và lượt yêu thích demo. Để thử đánh giá, đăng ký Customer kiểm thử, mua một SKU còn hàng, dùng Admin đánh dấu đơn đã giao rồi gửi đánh giá từ dòng đơn. Tài khoản do seeder sinh phục vụ thống kê. Bảng SQL `danh_gia` chỉ lưu lịch sử và giữ nguyên các dòng đã có.
 
 ## Kiểm thử
 

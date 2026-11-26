@@ -4,6 +4,7 @@
 <body>
 <div id="home-stage" class="home-stage">
 <div th:replace="~{fragments/header :: siteHeader}"></div>
+<p th:replace="~{fragments/wishlist :: feedback}"></p>
 <main id="main" tabindex="-1" class="page-content shop-home home-carousel" data-home-carousel>
   <nav class="home-carousel-pagination" aria-label="Các chương BeautyShop">
     <a href="#home-opening"><span class="visually-hidden">Chương 1: Vẻ đẹp theo cách bạn</span></a>
@@ -192,5 +193,6 @@
 <script defer th:src="@{/js/home-story.js}"></script>
 <script defer th:src="@{/js/vendor/swiper-14.4.0.min.js}"></script>
 <script defer th:src="@{/js/home-carousel.js}"></script>
+<script defer th:src="@{/js/wishlist.js}"></script>
 </body>
 </html>

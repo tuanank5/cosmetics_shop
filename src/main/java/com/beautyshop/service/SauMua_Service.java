@@ -102,8 +102,21 @@ public class SauMua_Service {
     }
     public List<DoiTra_Repository.YeuCau> danhSachDoiTra(Long maNguoiDung) { return doiTra.danhSach(maNguoiDung); }
     public List<YeuThich_Repository.Muc> danhSachYeuThich(long maNguoiDung) { return yeuThich.danhSach(maNguoiDung); }
-    public void themYeuThich(long maNguoiDung, long maSanPham) { yeuThich.them(maNguoiDung, maSanPham); }
-    public void xoaYeuThich(long maNguoiDung, long maSanPham) { yeuThich.xoa(maNguoiDung, maSanPham); }
+
+    public java.util.Set<Long> daYeuThich(long maNguoiDung, Collection<Long> maSanPham) {
+        return yeuThich.daLuu(maNguoiDung, maSanPham);
+    }
+
+    public YeuThich_Repository.TrangThai trangThaiYeuThich(long maNguoiDung, long maSanPham) {
+        return yeuThich.trangThai(maNguoiDung, maSanPham);
+    }
+
+    @Transactional(isolation = Isolation.READ_COMMITTED)
+    public YeuThich_Repository.TrangThai datYeuThich(long maNguoiDung, long maSanPham, boolean luu) {
+        if (luu) yeuThich.them(maNguoiDung, maSanPham);
+        else yeuThich.xoa(maNguoiDung, maSanPham);
+        return yeuThich.trangThai(maNguoiDung, maSanPham);
+    }
 
     /** BR16 kiểm ở MariaDB trước; kho đánh giá lỗi thì vẫn hiện form nhưng báo không lưu được. */
     public TrangDanhGia xemDanhGia(long maNguoiDung, long maMuc) {
@@ -156,7 +169,7 @@ public class SauMua_Service {
             thanhCong = kho.datHienThi(maDanhGia, hienThi, phienBan);
         } catch (DataAccessException exception) {
             log.warn("Admin: khong cap nhat duoc hien thi danh gia {}: {}", maDanhGia, exception.getMessage());
-            throw new IllegalStateException("Tạm thời không kết nối được kho đánh giá. Vui lòng thử lại sau.");
+            throw new IllegalStateException("Kho đánh giá không phản hồi. Hãy tải lại để kiểm tra trạng thái trước khi thao tác lại.");
         }
         if (!thanhCong) {
             if (hienThi) {

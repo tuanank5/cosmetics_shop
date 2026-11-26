@@ -12,13 +12,13 @@
                      th:alt="|${sanPham.tenSanPham} · ${sku.tenBienThe}|" width="600" height="600" decoding="async">
                 <div class="store-placeholder" th:hidden="${coAnh}">
                     <span class="pdp-monogram" aria-hidden="true">B</span>
-                    <span>Chưa có ảnh biến thể</span>
+                    <span>Chưa có ảnh cho biến thể này</span>
                 </div>
             </div>
             <div class="pdp-buy">
                 <p class="eyebrow" th:text="${sanPham.thuongHieu.tenThuongHieu}"></p>
                 <h1 th:text="${sanPham.tenSanPham}"></h1>
-                <p class="pdp-selection" th:text="|${sku.tenBienThe} · SKU ${sku.sku}|"></p>
+                <p class="pdp-selection" th:text="|${sku.tenBienThe} · Mã biến thể sản phẩm: ${sku.sku}|"></p>
                 <div class="pdp-offer">
                     <strong class="pdp-price"><span th:replace="~{fragments/ui :: money(${sku.giaBan})}"></span></strong>
                     <span class="badge" th:classappend="${sku.soLuongKhaDung > 0 ? 'badge--success' : 'badge--error'}"
@@ -27,13 +27,13 @@
                 <form method="get" th:action="@{/products/{slug}(slug=${sanPham.duongDan})}">
                     <input th:each="p : ${navSource.thamSo}" type="hidden" th:name="${p.key}" th:value="${p.value}">
                     <fieldset class="pdp-variants">
-                        <legend>Chọn biến thể</legend>
+                        <legend>Chọn biến thể sản phẩm</legend>
                         <div class="pdp-options">
                             <button th:each="muc : ${chiTiet.bienThe}" th:with="daChon=${muc.maBienThe == sku.maBienThe}"
                                     class="btn btn--secondary pdp-option" type="submit" name="variant" th:value="${muc.maBienThe}"
                                     th:attr="aria-current=${daChon ? 'true' : null}">
                                 <span class="pdp-option-name" th:text="${muc.tenBienThe}"></span>
-                                <span class="pdp-option-code" th:text="|SKU ${muc.sku}|"></span>
+                                <span class="pdp-option-code" th:text="|Mã biến thể sản phẩm: ${muc.sku}|"></span>
                                 <span th:replace="~{fragments/ui :: money(${muc.giaBan})}"></span>
                                 <span class="pdp-option-stock" th:classappend="${muc.soLuongKhaDung == 0} ? 'sold-out'"
                                       th:text="${muc.soLuongKhaDung > 0} ? |Còn ${muc.soLuongKhaDung} sản phẩm| : 'Hết hàng'"></span>
@@ -47,15 +47,14 @@
                         <input type="hidden" name="variant" th:value="${sku.maBienThe}">
                         <button class="btn btn--primary btn--lg" type="submit">Thêm vào giỏ</button>
                     </form>
-                    <button th:unless="${sku.soLuongKhaDung > 0}" class="btn btn--lg" type="button" disabled>Biến thể đã hết hàng</button>
-                    <form sec:authorize="hasRole('CUSTOMER')" method="post" th:action="@{/account/wishlist/{id}(id=${sanPham.ma})}">
-                        <button class="btn btn--secondary" type="submit">Lưu yêu thích</button>
-                    </form>
-                    <a class="text-link" sec:authorize="isAnonymous()" th:href="@{/login}">Đăng nhập để lưu yêu thích</a>
+                    <button th:unless="${sku.soLuongKhaDung > 0}" class="btn btn--lg" type="button" disabled>Biến thể này đã hết hàng</button>
+                    <th:block th:replace="~{fragments/wishlist :: control(${sanPham.ma}, ${sanPham.tenSanPham}, 'pdp', false,
+                        ${wishlistSaved != null and wishlistSaved.contains(sanPham.ma)})}"></th:block>
+                    <p th:replace="~{fragments/wishlist :: feedback}"></p>
                 </div>
                 <dl class="pdp-lot" th:if="${!#strings.isEmpty(sku.maLoMinhHoa) or sku.hanSuDungMinhHoa != null}">
-                    <th:block th:if="${sku.maLoMinhHoa}"><dt>Lô minh họa</dt><dd th:text="${sku.maLoMinhHoa}"></dd></th:block>
-                    <th:block th:if="${sku.hanSuDungMinhHoa}"><dt>Hạn dùng minh họa</dt><dd th:text="${#temporals.format(sku.hanSuDungMinhHoa, 'dd/MM/yyyy')}"></dd></th:block>
+                    <th:block th:if="${sku.maLoMinhHoa}"><dt>Mã lô tham khảo</dt><dd th:text="${sku.maLoMinhHoa}"></dd></th:block>
+                    <th:block th:if="${sku.hanSuDungMinhHoa}"><dt>Hạn sử dụng tham khảo</dt><dd th:text="${#temporals.format(sku.hanSuDungMinhHoa, 'dd/MM/yyyy')}"></dd></th:block>
                 </dl>
             </div>
         </div>
@@ -111,5 +110,6 @@
     </article>
 </main>
 <div th:replace="~{fragments/footer :: siteFooter}"></div>
+<script defer th:src="@{/js/wishlist.js}"></script>
 </body>
 </html>

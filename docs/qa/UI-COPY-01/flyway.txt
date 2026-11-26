@@ -1,0 +1,9 @@
+﻿2026-11-26T19:02:21.766+07:00  INFO 25540 --- [BeautyShop] [           main] o.f.core.internal.command.DbMigrate      : Current version of schema `ui_01c_test`: << Empty Schema >>
+2026-11-26T19:02:21.789+07:00  INFO 25540 --- [BeautyShop] [           main] o.f.core.internal.command.DbMigrate      : Migrating schema `ui_01c_test` to version "1 - khoi tao co so du lieu"
+2026-11-26T19:02:21.932+07:00  INFO 25540 --- [BeautyShop] [           main] o.f.core.internal.command.DbMigrate      : Migrating schema `ui_01c_test` to version "2 - ghi nhan tru kho cod"
+2026-11-26T19:02:21.947+07:00  INFO 25540 --- [BeautyShop] [           main] o.f.core.internal.command.DbMigrate      : Migrating schema `ui_01c_test` to version "3 - ghi nhan gop gio hang"
+2026-11-26T19:02:21.964+07:00  INFO 25540 --- [BeautyShop] [           main] o.f.core.internal.command.DbMigrate      : Migrating schema `ui_01c_test` to version "4 - them phien ban xac thuc"
+2026-11-26T19:02:21.980+07:00  INFO 25540 --- [BeautyShop] [           main] o.f.core.internal.command.DbMigrate      : Migrating schema `ui_01c_test` to version "5 - nap faq beautyshop"
+2026-11-26T19:02:21.992+07:00  INFO 25540 --- [BeautyShop] [           main] o.f.core.internal.command.DbMigrate      : Migrating schema `ui_01c_test` to version "6 - them danh tinh oauth"
+2026-11-26T19:02:22.013+07:00  INFO 25540 --- [BeautyShop] [           main] o.f.core.internal.command.DbMigrate      : Migrating schema `ui_01c_test` to version "7 - xac thuc da phuong thuc"
+2026-11-26T19:02:22.061+07:00  INFO 25540 --- [BeautyShop] [           main] o.f.core.internal.command.DbMigrate      : Successfully applied 7 migrations to schema `ui_01c_test`, now at version v7 (execution time 00:00.213s)

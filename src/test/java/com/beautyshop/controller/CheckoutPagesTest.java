@@ -1,6 +1,6 @@
 package com.beautyshop.controller;
 
-import com.beautyshop.model.DiaChiNguoiDung;
+import com.beautyshop.dto.DiaChiHienThi;
 import com.beautyshop.model.NguoiDung;
 import com.beautyshop.repository.GioHang_Repository.MucGio;
 import com.beautyshop.repository.NguoiDung_Repository;
@@ -51,11 +51,7 @@ class CheckoutPagesTest {
         when(state.getVaiTro()).thenReturn(NguoiDung.VaiTro.CUSTOMER);
         when(users.findTrangThai(7L)).thenReturn(Optional.of(state));
         customer = (PhienNguoiDung) new NguoiDungDetails_Service(users).loadUserByUsername(account.getEmail());
-        var address = mock(DiaChiNguoiDung.class);
-        when(address.getMaDiaChi()).thenReturn(1L);
-        when(address.isLaMacDinh()).thenReturn(true);
-        when(address.getTenNguoiNhan()).thenReturn("Khách fixture");
-        when(address.getDiaChiChiTiet()).thenReturn("Địa chỉ fixture");
+        var address = new DiaChiHienThi(1L, "Khách fixture", "000", "Địa chỉ fixture", true);
         when(addresses.danhSach(7L)).thenReturn(List.of(address));
         when(cart.docGioCustomer(7L)).thenReturn(List.of(new MucGio(22,"Kem dưỡng","4 oz",new BigDecimal("245000"),10,2,"QA-22",null,null,null)));
         when(vouchers.xemTruoc(any(), any())).thenReturn(new PhieuGiamGia_Service.GiamGia(50L,new BigDecimal("50000")));
@@ -67,7 +63,7 @@ class CheckoutPagesTest {
     }
 
     void unconfirmed(String html) {
-        assertThat(html).contains("Cần cập nhật báo giá", "data-quote-valid=\"false\"")
+        assertThat(html).contains("Cần tính lại tổng tiền", "data-quote-valid=\"false\"")
             .doesNotContain("data-checkout-discount", "data-checkout-shipping", "data-checkout-total", "data-quote-amounts");
     }
 
@@ -92,7 +88,7 @@ class CheckoutPagesTest {
 
     @Test void successfulQuoteUsesOnlyServerAmountsAndRetainsContract() throws Exception {
         String html=quote("SAVE50");
-        assertThat(html).contains("data-quote-valid=\"true\"", "50.000 ₫", "25.000 ₫", "465.000 ₫", "Voucher được kiểm tra: SAVE50", "Địa chỉ báo giá: Khách fixture · Địa chỉ fixture")
+        assertThat(html).contains("data-quote-valid=\"true\"", "50.000 ₫", "25.000 ₫", "465.000 ₫", "Mã giảm giá đã kiểm tra: SAVE50", "Địa chỉ dùng để tính phí giao hàng: Khách fixture · Địa chỉ fixture")
             .contains("name=\"addressId\"", "name=\"voucher\"", "action=\"/checkout\"");
         verify(vouchers).xemTruoc("SAVE50",new BigDecimal("490000"));
         verifyNoInteractions(orders);
@@ -116,7 +112,7 @@ class CheckoutPagesTest {
     @ParameterizedTest @ValueSource(strings={"conflict","state"})
     void quoteFailuresRequireARefresh(String type) throws Exception {
         when(vouchers.xemTruoc(any(),any())).thenThrow(type.equals("conflict")?new ConcurrencyFailureException("fixture"):new IllegalStateException("fixture"));
-        String html=quote("SAVE50");unconfirmed(html);assertThat(html).contains("Chưa thể xác nhận báo giá");
+        String html=quote("SAVE50");unconfirmed(html);assertThat(html).contains("Chưa thể tính tổng tiền");
     }
 
     @ParameterizedTest @ValueSource(strings={"", "0", "999", "abc"})
@@ -182,7 +178,7 @@ class CheckoutPagesTest {
     @ParameterizedTest @ValueSource(booleans={true,false})
     void momoOnRendersCorrectLabelAndPreservesSubmitter(boolean mockMode) throws Exception {
         when(momo.enabled()).thenReturn(true);when(momo.mock()).thenReturn(mockMode);
-        assertThat(quote("SAVE50")).contains("name=\"payment\" value=\"MOMO\"",mockMode?"MÔ PHỎNG - KHÔNG THU TIỀN":"MoMo Sandbox");
+        assertThat(quote("SAVE50")).contains("name=\"payment\" value=\"MOMO\"",mockMode?"MÔ PHỎNG - KHÔNG THU TIỀN":"MoMo (chế độ thử nghiệm)");
         when(orders.datMomo(7L,1L,"SAVE50")).thenReturn(902L);
         when(momo.batDau(902L)).thenReturn(Optional.of(URI.create(mockMode?"/payment/momo/mock/902":"https://sandbox.example.invalid/fixture")));
         mvc.perform(post("/checkout").with(user(customer)).with(csrf()).param("addressId","1").param("voucher","SAVE50").param("payment","MOMO"))

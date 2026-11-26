@@ -1,5 +1,6 @@
 package com.beautyshop.integration;
 
+import com.beautyshop.cart.GioKhach;
 import com.beautyshop.model.NguoiDung;
 import com.beautyshop.repository.NguoiDung_Repository;
 import com.beautyshop.service.DanhTinhOAuth_Service;
@@ -179,13 +180,18 @@ class XacThucDaPhuongThuc_MariaDb_Test {
         assertThat(audit("PASSWORD_RESET_REQUESTED", users.findByEmail(customer).orElseThrow().getMaNguoiDung()))
             .isEqualTo(1);
         var session = new MockHttpSession();
+        var snapshot = GioKhach.doc(session).them(Long.MAX_VALUE, 1);
+        snapshot.luu(session);
         mvc.perform(get("/reset-password").session(session).param("token", link.getValue().split("token=", 2)[1]))
             .andExpect(redirectedUrl("/reset-password"));
         mvc.perform(post("/reset-password").session(session).param("matKhauMoi", NEW).param("xacNhan", NEW))
             .andExpect(status().isForbidden());
         mvc.perform(post("/reset-password").session(session).with(csrf())
                 .param("matKhauMoi", NEW).param("xacNhan", NEW))
-            .andExpect(redirectedUrl("/login?passwordChanged"));
+            .andExpect(redirectedUrl("/login?passwordChanged")).andExpect(unauthenticated());
+        assertThat(session.isInvalid()).isTrue();
+        assertThat(jdbc.sql("SELECT count(*) FROM ghi_nhan_gop_gio_hang WHERE ma_gop = ?")
+            .param(snapshot.maGop().toString()).query(Integer.class).single()).isZero();
     }
 
     private String token(String customer) {

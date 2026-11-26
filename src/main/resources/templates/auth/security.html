@@ -6,7 +6,7 @@
 <main id="main" tabindex="-1" class="page-content login-wrap">
     <h1>Bảo mật và phương thức đăng nhập</h1>
     <div th:replace="~{fragments/ui :: notices(${message}, ${error})}"></div>
-    <p class="form-error" role="alert" th:if="${param.oauthError}">Phiên xác thực OAuth không hợp lệ hoặc đã hết hạn.</p>
+    <p class="form-error" role="alert" th:if="${param.oauthError}">Không thể hoàn tất xác minh bằng Google hoặc GitHub. Vui lòng bắt đầu lại.</p>
     <p th:text="${email}"></p>
     <p th:text="${daXacMinhEmail ? 'Email BeautyShop đã xác minh' : 'Email BeautyShop chưa xác minh'}"></p>
     <p th:if="${grant}" role="status">Đã xác thực lại. Bạn có thể thực hiện thao tác bảo mật trong 5 phút.</p>
@@ -36,7 +36,7 @@
             </form>
         </div>
         <form th:if="${lienKetCho != null}" class="login-card" method="post" th:action="@{/account/security/oauth/confirm}">
-            <p>Xác nhận liên kết với tài khoản <strong th:text="${lienKetCho.email()}"></strong>.</p>
+            <p>Xác nhận liên kết với tài khoản <strong th:text="${lienKetCho}"></strong>.</p>
             <button class="btn btn--primary" type="submit">Xác nhận liên kết</button>
         </form>
     </section>

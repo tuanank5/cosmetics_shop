@@ -1,0 +1,26 @@
+﻿[
+    {
+        "Group":  "UI-01C",
+        "ExitCode":  0
+    },
+    {
+        "Group":  "CART-01",
+        "ExitCode":  0
+    },
+    {
+        "Group":  "WISH-01",
+        "ExitCode":  0
+    },
+    {
+        "Group":  "ORDER-01",
+        "ExitCode":  0
+    },
+    {
+        "Group":  "REVIEW-01",
+        "ExitCode":  0
+    },
+    {
+        "Group":  "DTO-01",
+        "ExitCode":  0
+    }
+]

@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html lang="vi" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="~{fragments/head :: head('Kho tri thức · BeautyShop')}"></head>
+<head th:replace="~{fragments/head :: head('Nguồn thông tin tư vấn · BeautyShop')}"></head>
 <body><div th:replace="~{fragments/header :: siteHeader}"></div>
 <main id="main" tabindex="-1" class="page-content">
-    <h1>Kho tri thức tư vấn</h1>
+    <h1>Nguồn thông tin tư vấn</h1>
     <p class="notice" role="status" th:if="${message}" th:text="${message}"></p>
     <p class="form-error" role="alert" th:if="${error}" th:text="${error}"></p>
-    <p th:unless="${trangThai.aiEnabled}">Provider đang tắt. Khách có thể tìm FAQ · không phải AI.</p>
+    <p th:unless="${trangThai.aiEnabled}">Tư vấn AI đang tắt. Khách vẫn có thể tra cứu câu hỏi thường gặp.</p>
     <div th:if="${trangThai.aiEnabled}">
-        <p th:text="|Số đoạn đã lập chỉ mục: ${trangThai.soDoan}|"></p>
-        <p th:if="${trangThai.capNhat}" th:text="|Nạp gần nhất (UTC): ${trangThai.capNhat}|"></p>
+        <p th:text="|Số đoạn thông tin đã chuẩn bị cho tư vấn AI: ${trangThai.soDoan}|"></p>
+        <p th:if="${trangThai.capNhat}" th:text="|Cập nhật nguồn lần gần nhất (giờ UTC): ${trangThai.capNhat}|"></p>
         <form method="post" th:action="@{/admin/ai/reindex}">
-            <button class="btn btn--primary" type="submit" th:disabled="${trangThai.dangNap}">Nạp lại FAQ và catalog</button>
+            <button class="btn btn--primary" type="submit" th:disabled="${trangThai.dangNap}">Làm mới nguồn tư vấn từ câu hỏi thường gặp và danh mục sản phẩm</button>
         </form>
     </div>
 </main>

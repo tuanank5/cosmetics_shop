@@ -1,6 +1,8 @@
 package com.beautyshop.service;
 
 import org.springframework.security.access.prepost.PreAuthorize;
+import com.beautyshop.dto.BoLocDonHangAdmin;
+import com.beautyshop.dto.PhanTrang;
 import com.beautyshop.order.OrderState_Policy;
 import com.beautyshop.order.OrderStatus;
 import com.beautyshop.payment.Momo_Settings;
@@ -8,6 +10,7 @@ import com.beautyshop.repository.DiaChiNguoiDung_Repository;
 import com.beautyshop.repository.DonHang_Repository;
 import com.beautyshop.repository.DonHang_Repository.ChiTiet;
 import com.beautyshop.repository.DonHang_Repository.Don;
+import com.beautyshop.repository.DonHang_Repository.DongDonAdmin;
 import com.beautyshop.repository.DonHang_Repository.TomTat;
 import com.beautyshop.repository.GioHang_Repository;
 import com.beautyshop.repository.ThanhToanMomo_Repository;
@@ -16,6 +19,8 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
@@ -74,9 +79,9 @@ public class DonHang_Service {
         BigDecimal tamTinh = BigDecimal.ZERO;
         for (var muc : gio) {
             var sku = gioHangRepository.timBienThe(muc.maBienThe(), true)
-                .orElseThrow(() -> new IllegalStateException("Một SKU trong giỏ không còn tồn tại."));
+                .orElseThrow(() -> new IllegalStateException("Có biến thể sản phẩm trong giỏ không còn tồn tại."));
             if (muc.soLuong() > sku.khaDung()) {
-                throw new IllegalStateException("Không đủ tồn cho " + sku.tenSanPham() + " · " + sku.tenBienThe() + ".");
+                throw new IllegalStateException("Không còn đủ số lượng đã chọn cho " + sku.tenSanPham() + " · " + sku.tenBienThe() + ".");
             }
             var snapshot = new ChiTiet(sku.maBienThe(), sku.sku(), sku.tenSanPham(), sku.tenBienThe(), sku.giaBan(), muc.soLuong(), null);
             chiTiet.add(snapshot);
@@ -90,7 +95,7 @@ public class DonHang_Service {
             throw new IllegalArgumentException("Giá trị đơn vượt giới hạn thanh toán.");
         }
         if (online && (tong.compareTo(BigDecimal.valueOf(1000)) < 0 || tong.compareTo(BigDecimal.valueOf(50_000_000)) > 0)) {
-            throw new IllegalArgumentException("MoMo Sandbox chỉ hỗ trợ đơn từ 1.000 ₫ đến 50.000.000 ₫.");
+            throw new IllegalArgumentException("MoMo ở chế độ thử nghiệm chỉ hỗ trợ đơn từ 1.000 ₫ đến 50.000.000 ₫.");
         }
 
         long maDon = donHangRepository.tao("BS-" + UUID.randomUUID(), maNguoiDung, giam.maVoucher(),
@@ -115,7 +120,11 @@ public class DonHang_Service {
 
     public List<TomTat> danhSachCustomer(long maNguoiDung) { return donHangRepository.danhSach(maNguoiDung); }
     @PreAuthorize("hasRole('ADMIN')")
-    public List<TomTat> danhSachAdmin() { return donHangRepository.danhSach(null); }
+    @Transactional(readOnly = true, isolation = Isolation.REPEATABLE_READ)
+    public Page<DongDonAdmin> danhSachAdmin(BoLocDonHangAdmin loc, int page) {
+        return PhanTrang.doc(PageRequest.of(Math.max(0, page), loc.kichThuoc()),
+            pageable -> donHangRepository.danhSachAdmin(loc, pageable));
+    }
     @PreAuthorize("hasRole('ADMIN')")
     public DonHang_Repository.TongQuan tongQuanAdmin() { return donHangRepository.tongQuan(); }
 

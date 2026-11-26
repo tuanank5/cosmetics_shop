@@ -70,15 +70,15 @@ class BaoMatTaiKhoan_Controller {
 
     @GetMapping
     String xem(@AuthenticationPrincipal PhienNguoiDung principal, HttpSession session, Model model) {
-        var user = users.findById(principal.getMaNguoiDung()).orElseThrow();
+        var user = users.docBaoMat(principal.getMaNguoiDung()).orElseThrow();
         var proof = OAuth2ThaoTac.bangChung(session, principal);
         model.addAttribute("email", user.getEmail());
-        model.addAttribute("daXacMinhEmail", user.getNgayXacMinhEmail() != null);
-        model.addAttribute("coMatKhau", user.getMatKhauBam() != null);
+        model.addAttribute("daXacMinhEmail", user.getDaXacMinhEmail());
+        model.addAttribute("coMatKhau", user.getCoMatKhau());
         model.addAttribute("providers", providers());
         model.addAttribute("linked", linked(principal));
         model.addAttribute("grant", grant(session, principal) != null);
-        model.addAttribute("lienKetCho", proof != null && proof.purpose() == MucDich.LIEN_KET ? proof.proof() : null);
+        model.addAttribute("lienKetCho", proof != null && proof.purpose() == MucDich.LIEN_KET ? proof.proof().email() : null);
         model.addAttribute("xacThucOAuthCho", proof != null && proof.purpose() == MucDich.XAC_THUC_LAI);
         model.addAttribute("otpCho", session.getAttribute(CHALLENGE) != null);
         return "auth/security";
@@ -126,7 +126,7 @@ class BaoMatTaiKhoan_Controller {
             }
             if (proof == null && (user.getNgayXacMinhEmail() != null || user.getMatKhauBam() == null
                 || grant(session, principal) == null || !"password".equals(grant(session, principal).method()))) {
-                flash.addFlashAttribute("error", "Hãy xác thực lại bằng mật khẩu hoặc phương thức OAuth đã liên kết.");
+                flash.addFlashAttribute("error", "Hãy xác thực lại bằng mật khẩu hoặc Google hoặc GitHub đã liên kết.");
                 return TRANG;
             }
             try {
@@ -156,7 +156,7 @@ class BaoMatTaiKhoan_Controller {
             if (challenge == null || challenge.user() != principal.getMaNguoiDung()
                 || challenge.version() != principal.getPhienBanXacThuc()
                 || (!oauth && (!password || challenge.proof() != null))) {
-                flash.addFlashAttribute("error", "Phiên xác minh đã hết hạn.");
+                flash.addFlashAttribute("error", "Yêu cầu xác minh đã hết hạn. Hãy bắt đầu lại.");
                 return TRANG;
             }
             try {
@@ -186,7 +186,7 @@ class BaoMatTaiKhoan_Controller {
             var proof = OAuth2ThaoTac.bangChung(session, principal);
             if (grant(session, principal) == null || proof == null || proof.purpose() != MucDich.LIEN_KET
                 || !providers().contains(proof.proof().provider())) {
-                flash.addFlashAttribute("error", "Phiên liên kết đã hết hạn.");
+                flash.addFlashAttribute("error", "Yêu cầu liên kết đã hết hạn. Hãy bắt đầu liên kết lại.");
                 return TRANG;
             }
             try {
@@ -227,7 +227,7 @@ class BaoMatTaiKhoan_Controller {
                      @AuthenticationPrincipal PhienNguoiDung principal, HttpServletRequest request,
                      HttpServletResponse response, Authentication auth, RedirectAttributes flash) {
         if (errors.hasErrors()) {
-            flash.addFlashAttribute("error", "Mật khẩu cần từ 12 ký tự, tối đa 72 byte và khớp xác nhận.");
+            flash.addFlashAttribute("error", "Mật khẩu cần ít nhất 12 ký tự và phải khớp với phần nhập lại. Nếu dùng nhiều chữ có dấu hoặc emoji, hãy thử rút ngắn mật khẩu.");
             return TRANG;
         }
         var session = request.getSession();
@@ -238,15 +238,14 @@ class BaoMatTaiKhoan_Controller {
                     form.getMatKhauMoi(), grant != null && providers().contains(grant.method()));
                 return thoat(request, response, auth);
             } catch (AccessDeniedException denied) {
-                flash.addFlashAttribute("error", "Hãy kiểm tra mật khẩu hiện tại hoặc xác thực lại bằng OAuth và email.");
+                flash.addFlashAttribute("error", "Hãy kiểm tra mật khẩu hiện tại hoặc xác minh lại bằng Google hay GitHub đã liên kết, rồi xác minh email.");
                 return TRANG;
             }
         }
     }
 
     private Set<String> linked(PhienNguoiDung principal) {
-        return identityRepository.findByNguoiDung_MaNguoiDung(principal.getMaNguoiDung()).stream()
-            .map(com.beautyshop.model.DanhTinhOAuth::getNhaCungCap).collect(Collectors.toSet());
+        return Set.copyOf(identityRepository.docNhaCungCap(principal.getMaNguoiDung()));
     }
 
     private Set<String> providers() {

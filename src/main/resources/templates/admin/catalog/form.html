@@ -12,7 +12,7 @@
         </ul>
         <label>Tên <input th:field="*{name}" required th:maxlength="${product ? 255 : 160}"></label>
         <small class="catalog-error" th:errors="*{name}"></small>
-        <label>Đường dẫn <input th:field="*{slug}" required maxlength="190" placeholder="vi-du"></label>
+        <label>Tên dùng trong đường dẫn <input th:field="*{slug}" required maxlength="190" placeholder="kem-duong-am"></label>
         <small class="catalog-error" th:errors="*{slug}"></small>
         <fieldset th:if="${product}">
             <legend>Thông tin sản phẩm</legend>

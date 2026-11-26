@@ -3,6 +3,7 @@ package com.beautyshop.security;
 import com.beautyshop.model.NguoiDung;
 import com.beautyshop.repository.NguoiDung_Repository;
 import com.beautyshop.service.GioHang_Service;
+import com.beautyshop.service.GioHang_Service.KetQuaGop;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -94,7 +95,7 @@ class LoginRedirectTest {
     @Test
     void customerVanGopGioKhachSauDangNhap() throws Exception {
         var gioHang = mock(GioHang_Service.class);
-        when(gioHang.gopSauDangNhap(anyLong(), any())).thenReturn(true);
+        when(gioHang.gopSauDangNhap(anyLong(), any())).thenReturn(new KetQuaGop(true, java.util.List.of()));
         var handler = new LoginSuccess_Handler(gioHang);
         var nguoiDung = new NguoiDung("khach@example.test", "x", "Khách");
         ReflectionTestUtils.setField(nguoiDung, "maNguoiDung", 42L);
@@ -106,8 +107,7 @@ class LoginRedirectTest {
         handler.onAuthenticationSuccess(request, response,
             UsernamePasswordAuthenticationToken.authenticated(phien, null, phien.getAuthorities()));
         verify(gioHang).gopSauDangNhap(org.mockito.ArgumentMatchers.eq(42L), any());
-        assertThat(response.getRedirectedUrl()).isEqualTo("/");
-        assertThat(request.getSession().getAttribute(LoginSuccess_Handler.CART_NOTICE)).isEqualTo(Boolean.TRUE);
+        assertThat(response.getRedirectedUrl()).startsWith("/?cartMerge=");
     }
 
     @Test

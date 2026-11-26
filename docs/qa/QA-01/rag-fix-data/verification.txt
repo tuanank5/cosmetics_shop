@@ -1,0 +1,8 @@
+﻿2026-11-26T16:50:42.547+07:00  INFO 17980 --- [BeautyShop] [           main] o.f.core.internal.command.DbMigrate      : Successfully applied 7 migrations to schema `auth_02_test`, now at version v7 (execution time 00:00.157s)
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.049 s -- in com.beautyshop.integration.OAuth2Callback_MariaDb_Test
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.140 s -- in com.beautyshop.integration.TuVanFaq_MariaDb_Test
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.464 s -- in com.beautyshop.integration.TuVanRag_MariaDb_Test
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.470 s -- in com.beautyshop.integration.XacThucDaPhuongThuc_MariaDb_Test
+2026-11-26T16:51:15.577+07:00  INFO 17980 --- [BeautyShop] [           main] o.f.core.internal.command.DbMigrate      : Successfully applied 2 migrations to schema `auth_02_v5`, now at version v7 (execution time 00:00.043s)
+2026-11-26T16:51:15.972+07:00  INFO 17980 --- [BeautyShop] [           main] o.f.core.internal.command.DbMigrate      : Successfully applied 1 migration to schema `auth_02_v6`, now at version v7 (execution time 00:00.033s)
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.734 s -- in com.beautyshop.integration.XacThucMigration_MariaDb_Test

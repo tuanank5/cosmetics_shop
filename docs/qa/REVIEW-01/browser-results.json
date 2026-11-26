@@ -1,0 +1,389 @@
+{
+  "browser": "Chrome/158.0.8127.88",
+  "checks": [
+    "retained-row-stable-and-focus-restored-removed-row-focuses-heading",
+    "keyboard-no-js-last-page-clamp-and-canonical-filters",
+    "two-tabs-reject-stale-approval-and-load-latest-revision",
+    "lost-post-response-recovered-by-get-with-one-mutation",
+    "browser-back-restores-filtered-get-without-resubmitting",
+    "mongo-read-and-write-outage-is-not-empty-or-success"
+  ],
+  "trace": {
+    "approveAll": {
+      "before": {
+        "filter": {
+          "y": 214,
+          "viewportY": -239,
+          "width": 343,
+          "height": 325
+        },
+        "row": {
+          "y": 732,
+          "viewportY": 279,
+          "width": 343,
+          "height": 236
+        },
+        "button": {
+          "y": 901,
+          "viewportY": 448,
+          "width": 184,
+          "height": 51
+        },
+        "badge": {
+          "y": 852,
+          "viewportY": 399,
+          "width": 116,
+          "height": 33
+        },
+        "state": "Chờ duyệt",
+        "count": "22 đánh giá",
+        "alert": "",
+        "scroll": 453,
+        "focus": "row-button",
+        "loading": false,
+        "page": "0"
+      },
+      "loading": {
+        "filter": {
+          "y": 214,
+          "viewportY": -239,
+          "width": 343,
+          "height": 325
+        },
+        "row": {
+          "y": 732,
+          "viewportY": 279,
+          "width": 343,
+          "height": 236
+        },
+        "button": {
+          "y": 901,
+          "viewportY": 448,
+          "width": 184,
+          "height": 51
+        },
+        "badge": {
+          "y": 852,
+          "viewportY": 399,
+          "width": 116,
+          "height": 33
+        },
+        "state": "Chờ duyệt",
+        "count": "22 đánh giá",
+        "alert": "",
+        "scroll": 453,
+        "focus": "row-button",
+        "loading": true,
+        "page": "0"
+      },
+      "after": {
+        "filter": {
+          "y": 214,
+          "viewportY": -239,
+          "width": 343,
+          "height": 325
+        },
+        "row": {
+          "y": 732,
+          "viewportY": 279,
+          "width": 343,
+          "height": 236
+        },
+        "button": {
+          "y": 901,
+          "viewportY": 448,
+          "width": 184,
+          "height": 51
+        },
+        "badge": {
+          "y": 852,
+          "viewportY": 399,
+          "width": 116,
+          "height": 33
+        },
+        "state": "Đang hiện",
+        "count": "22 đánh giá",
+        "alert": "Thông báo: Đã duyệt đánh giá.",
+        "scroll": 453,
+        "focus": "row-button",
+        "loading": false,
+        "page": "0"
+      }
+    },
+    "hideVisible": {
+      "before": {
+        "filter": {
+          "y": 214,
+          "viewportY": -239,
+          "width": 343,
+          "height": 325
+        },
+        "row": {
+          "y": 732,
+          "viewportY": 279,
+          "width": 343,
+          "height": 236
+        },
+        "button": {
+          "y": 901,
+          "viewportY": 448,
+          "width": 184,
+          "height": 51
+        },
+        "badge": {
+          "y": 852,
+          "viewportY": 399,
+          "width": 116,
+          "height": 33
+        },
+        "state": "Đang hiện",
+        "count": "1 đánh giá",
+        "alert": "",
+        "scroll": 453,
+        "focus": "row-button",
+        "loading": false,
+        "page": "0"
+      },
+      "loading": {
+        "filter": {
+          "y": 214,
+          "viewportY": -239,
+          "width": 343,
+          "height": 325
+        },
+        "row": {
+          "y": 732,
+          "viewportY": 279,
+          "width": 343,
+          "height": 236
+        },
+        "button": {
+          "y": 901,
+          "viewportY": 448,
+          "width": 184,
+          "height": 51
+        },
+        "badge": {
+          "y": 852,
+          "viewportY": 399,
+          "width": 116,
+          "height": 33
+        },
+        "state": "Đang hiện",
+        "count": "1 đánh giá",
+        "alert": "",
+        "scroll": 453,
+        "focus": "row-button",
+        "loading": true,
+        "page": "0"
+      },
+      "after": {
+        "filter": {
+          "y": 214,
+          "viewportY": 214,
+          "width": 343,
+          "height": 325
+        },
+        "row": null,
+        "button": null,
+        "badge": null,
+        "state": null,
+        "count": "0 đánh giá",
+        "alert": "Thông báo: Đã ẩn đánh giá.",
+        "scroll": 0,
+        "focus": "review-results",
+        "loading": false,
+        "page": "0"
+      }
+    },
+    "approveLastPendingNoJs": {
+      "before": {
+        "filter": {
+          "y": 214,
+          "viewportY": -239,
+          "width": 343,
+          "height": 325
+        },
+        "row": {
+          "y": 732,
+          "viewportY": 279,
+          "width": 343,
+          "height": 236
+        },
+        "button": {
+          "y": 901,
+          "viewportY": 448,
+          "width": 184,
+          "height": 51
+        },
+        "badge": {
+          "y": 852,
+          "viewportY": 399,
+          "width": 116,
+          "height": 33
+        },
+        "state": "Chờ duyệt",
+        "count": "21 đánh giá",
+        "alert": "",
+        "scroll": 453,
+        "focus": "row-button",
+        "loading": false,
+        "page": "1"
+      },
+      "after": {
+        "filter": {
+          "y": 214,
+          "viewportY": 214,
+          "width": 343,
+          "height": 325
+        },
+        "row": {
+          "y": 732,
+          "viewportY": 732,
+          "width": 343,
+          "height": 236
+        },
+        "button": {
+          "y": 901,
+          "viewportY": 901,
+          "width": 184,
+          "height": 51
+        },
+        "badge": {
+          "y": 852,
+          "viewportY": 852,
+          "width": 116,
+          "height": 33
+        },
+        "state": "Chờ duyệt",
+        "count": "20 đánh giá",
+        "alert": "Thông báo: Đã duyệt đánh giá.",
+        "scroll": 0,
+        "focus": "review-results",
+        "loading": false,
+        "page": "0"
+      }
+    },
+    "staleTwoTabs": {
+      "before": {
+        "filter": {
+          "y": 197,
+          "viewportY": 197,
+          "width": 969,
+          "height": 79
+        },
+        "row": {
+          "y": 470,
+          "viewportY": 470,
+          "width": 969,
+          "height": 169
+        },
+        "button": {
+          "y": 486,
+          "viewportY": 486,
+          "width": 184,
+          "height": 51
+        },
+        "badge": {
+          "y": 589,
+          "viewportY": 589,
+          "width": 116,
+          "height": 33
+        },
+        "state": "Đã ẩn",
+        "count": "22 đánh giá",
+        "alert": "",
+        "scroll": 0,
+        "focus": "row-button",
+        "loading": false,
+        "page": "0"
+      },
+      "after": {
+        "filter": {
+          "y": 197,
+          "viewportY": 197,
+          "width": 969,
+          "height": 79
+        },
+        "row": {
+          "y": 470,
+          "viewportY": 470,
+          "width": 969,
+          "height": 169
+        },
+        "button": {
+          "y": 486,
+          "viewportY": 486,
+          "width": 184,
+          "height": 51
+        },
+        "badge": {
+          "y": 589,
+          "viewportY": 589,
+          "width": 116,
+          "height": 33
+        },
+        "state": "Đã ẩn",
+        "count": "22 đánh giá",
+        "alert": "Lỗi: Đánh giá đã thay đổi. Vui lòng kiểm tra lại.",
+        "scroll": 0,
+        "focus": "row-button",
+        "loading": false,
+        "page": "0"
+      }
+    },
+    "outageWrite": {
+      "before": {
+        "filter": {
+          "y": 197,
+          "viewportY": 197,
+          "width": 969,
+          "height": 79
+        },
+        "row": {
+          "y": 470,
+          "viewportY": 470,
+          "width": 969,
+          "height": 169
+        },
+        "button": {
+          "y": 486,
+          "viewportY": 486,
+          "width": 184,
+          "height": 51
+        },
+        "badge": {
+          "y": 589,
+          "viewportY": 589,
+          "width": 116,
+          "height": 33
+        },
+        "state": "Đang hiện",
+        "count": "22 đánh giá",
+        "alert": "Thông báo: Đã duyệt đánh giá.",
+        "scroll": 0,
+        "focus": "row-button",
+        "loading": false,
+        "page": "0"
+      },
+      "after": {
+        "filter": {
+          "y": 197,
+          "viewportY": 197,
+          "width": 969,
+          "height": 79
+        },
+        "row": null,
+        "button": null,
+        "badge": null,
+        "state": null,
+        "count": "Kết quả đánh giá",
+        "alert": "Lỗi: Kho đánh giá không phản hồi. Hãy tải lại để kiểm tra trạng thái trước khi thao tác lại.",
+        "scroll": 0,
+        "focus": "review-results",
+        "loading": false,
+        "page": "0"
+      }
+    }
+  }
+}

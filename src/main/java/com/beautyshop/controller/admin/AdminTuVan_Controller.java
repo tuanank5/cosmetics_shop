@@ -23,7 +23,7 @@ class AdminTuVan_Controller {
     String napLai(RedirectAttributes flash) {
         try {
             tuVanService.napLai();
-            flash.addFlashAttribute("message", "Đã nạp kho tri thức.");
+            flash.addFlashAttribute("message", "Đã làm mới nguồn thông tin tư vấn.");
         } catch (IllegalStateException exception) {
             flash.addFlashAttribute("error", exception.getMessage());
         }

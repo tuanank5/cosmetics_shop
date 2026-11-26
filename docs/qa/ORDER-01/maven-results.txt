@@ -1,0 +1,5 @@
+﻿JDK 21 / Maven offline
+mvn -o -B -ntp test
+[INFO] Tests run: 307, Failures: 0, Errors: 0, Skipped: 69
+mvn -o -B -ntp -DskipTests package
+[INFO] BUILD SUCCESS

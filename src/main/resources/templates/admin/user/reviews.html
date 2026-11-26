@@ -4,7 +4,6 @@
 <body><div th:replace="~{fragments/header :: siteHeader}"></div>
 <main id="main" tabindex="-1" class="page-content admin-reviews">
     <h1>Duyệt đánh giá</h1>
-    <div th:replace="~{fragments/ui :: notices(${message}, ${error})}"></div>
     <form class="review-filter" method="get" th:action="@{/admin/reviews}" aria-label="Lọc đánh giá">
         <label>Trạng thái
             <select name="status">
@@ -29,10 +28,15 @@
         </label>
         <button type="submit" class="btn btn--secondary">Lọc</button>
     </form>
-    <p class="notice" role="status" th:if="${trang.khongTaiDuoc}">Tạm thời chưa tải được đánh giá (kho đánh giá không phản hồi).</p>
+    <div id="review-notice" class="admin-review-notice">
+        <div th:replace="~{fragments/ui :: notices(${message}, ${error})}"></div>
+    </div>
+    <h2 id="review-results" tabindex="-1"
+        th:attr="autofocus=${focusReviewResults == true ? 'autofocus' : null},aria-describedby=${focusReviewResults == true ? (trang.khongTaiDuoc ? 'review-notice review-unavailable' : 'review-notice') : null}"
+        th:text="${trang.khongTaiDuoc ? 'Kết quả đánh giá' : trang.danhSach.totalElements + ' đánh giá'}">Kết quả đánh giá</h2>
+    <p id="review-unavailable" class="notice" role="status" th:if="${trang.khongTaiDuoc}">Tạm thời chưa tải được đánh giá (kho đánh giá không phản hồi).</p>
     <p class="notice" th:if="${!trang.khongTaiDuoc and trang.danhSach.empty}">Không có đánh giá phù hợp.</p>
-    <p class="muted" th:unless="${trang.danhSach.empty}" th:text="|${trang.danhSach.totalElements} đánh giá|"></p>
-    <ul class="catalog-list admin-review-list">
+    <ul class="catalog-list admin-review-list" th:unless="${trang.danhSach.empty}">
         <li th:each="dg : ${trang.danhSach.content}">
             <div>
                 <strong th:text="${dg.tenSanPham}"></strong>
@@ -54,6 +58,7 @@
                 <input type="hidden" name="page" th:value="${trang.danhSach.number}">
                 <button type="submit" name="visible" th:value="${!dg.hienThi}" class="btn"
                         th:classappend="${dg.hienThi ? 'btn--secondary' : 'btn--primary'}"
+                        th:attr="autofocus=${focusReviewId == dg.ma ? 'autofocus' : null},aria-describedby=${focusReviewId == dg.ma ? 'review-notice' : null}"
                         th:text="${dg.hienThi ? 'Ẩn đánh giá' : 'Duyệt đánh giá'}"></button>
             </form>
         </li>

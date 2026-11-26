@@ -34,8 +34,8 @@
     </div>
     <a th:if="${admin}" class="admin-store-link" th:href="@{/(home='opening')}">Về cửa hàng</a>
     <form th:unless="${admin}" class="header-search" method="get" th:action="@{/products}" role="search" aria-label="Tìm sản phẩm">
-      <label class="visually-hidden" for="header-search">Tên sản phẩm hoặc SKU</label>
-      <input id="header-search" name="q" type="search" maxlength="160" placeholder="Tìm sản phẩm, SKU…">
+      <label class="visually-hidden" for="header-search">Tên sản phẩm hoặc mã biến thể sản phẩm</label>
+      <input id="header-search" name="q" type="search" maxlength="160" placeholder="Tên sản phẩm, mã biến thể…">
       <button class="btn btn--secondary" type="submit">Tìm kiếm</button>
     </form>
     <details th:unless="${admin}" class="header-menu">
@@ -86,7 +86,7 @@
         <a th:href="@{/admin/catalog}" sec:authorize="hasRole('ADMIN')" th:attr="aria-current=${path == '/admin/catalog' or path == '/admin/catalog/categories' ? 'page' : null}, data-active-group=${#strings.startsWith(path, '/admin/catalog/') ? 'catalog' : null}">Quản trị</a>
         <a th:href="@{/admin/users}" sec:authorize="hasRole('ADMIN')" th:attr="aria-current=${(path == '/admin/users' or #strings.startsWith(path, '/admin/users/')) ? 'page' : null}">Quản lý tài khoản</a>
         <a th:href="@{/admin/orders}" sec:authorize="hasRole('ADMIN')" th:attr="aria-current=${path == '/admin/orders' ? 'page' : null}, data-active-group=${#strings.startsWith(path, '/admin/orders/') ? 'orders' : null}">Đơn hàng</a>
-        <a th:href="@{/admin/vouchers}" sec:authorize="hasRole('ADMIN')" th:attr="aria-current=${path == '/admin/vouchers' ? 'page' : null}, data-active-group=${#strings.startsWith(path, '/admin/vouchers/') ? 'vouchers' : null}">Voucher</a>
+        <a th:href="@{/admin/vouchers}" sec:authorize="hasRole('ADMIN')" th:attr="aria-current=${path == '/admin/vouchers' ? 'page' : null}, data-active-group=${#strings.startsWith(path, '/admin/vouchers/') ? 'vouchers' : null}">Mã giảm giá</a>
         <form class="nav-logout" method="post" th:action="@{/logout}" sec:authorize="isAuthenticated()">
           <button class="btn btn--ghost" type="submit">Đăng xuất</button>
         </form>
@@ -101,6 +101,9 @@
       <summary>Menu quản trị</summary>
       <nav th:replace="~{fragments/admin-nav :: adminNav(${path})}"></nav>
     </details>
+  </th:block>
+  <th:block th:if="${path != '/cart' and path != '/checkout'}">
+    <div th:replace="~{fragments/ui :: cartMergeNotice(${gopGioNotice})}"></div>
   </th:block>
 </header>
 </body>

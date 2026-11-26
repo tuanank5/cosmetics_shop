@@ -145,13 +145,13 @@ public class ThongKe_Service {
         BigDecimal tiLeHuyTruoc = tiLe(demDon.soHuyKyTruoc(), demDon.soDonKyTruoc());
         List<Kpi> kpi = List.of(
             Kpi.tien("doanh-thu", "Doanh thu thực thu", doanhThu.hienTai(), doanhThu.kyTruoc(),
-                "Thanh toán PAID khớp tổng đơn. Loại đơn hủy, hết hạn và thanh toán đang hoàn."),
+                "Tính các khoản thanh toán thành công và khớp tổng tiền của đơn. Bỏ qua đơn đã hủy, hết hạn hoặc đang hoàn tiền."),
             Kpi.so("so-don", "Số đơn", demDon.soDon(), demDon.soDonKyTruoc(),
-                "Đơn đặt trong kỳ theo ngày tạo, trừ đơn online chưa thanh toán hoặc hết hạn."),
+                "Đơn đặt trong kỳ theo ngày tạo, trừ đơn thanh toán trực tuyến chưa trả tiền hoặc hết hạn."),
             Kpi.tien("aov", "Giá trị đơn trung bình", aov, aovTruoc,
                 "Doanh thu thực thu chia số đơn đã thu tiền trong kỳ."),
             Kpi.so("khach-moi", "Khách hàng mới", khachMoi[0], khachMoi[1],
-                "Tài khoản Customer đăng ký trong kỳ."),
+                "Tài khoản khách hàng đăng ký trong kỳ."),
             Kpi.tiLe("ti-le-huy", "Tỉ lệ hủy đơn", tiLeHuy, tiLeHuyTruoc,
                 "Đơn đã hủy chia số đơn đặt trong kỳ (cùng định nghĩa \"Số đơn\"). So sánh theo điểm phần trăm."),
             Kpi.so("da-giao", "Đơn đã giao", daGiao.hienTai(), daGiao.kyTruoc(),

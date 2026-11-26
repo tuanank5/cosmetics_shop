@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="vi" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="~{fragments/head :: head('Yêu cầu chưa hợp lệ · BeautyShop')}"></head>
+<head th:replace="~{fragments/head :: head('Thông tin bạn gửi chưa hợp lệ · BeautyShop')}"></head>
 <body>
 <div th:replace="~{fragments/header :: siteHeader}"></div>
-<main th:replace="~{fragments/error :: noiDung(400, 'Yêu cầu chưa hợp lệ', 'Thông tin gửi lên chưa đúng định dạng. Vui lòng kiểm tra và thử lại.')}"></main>
+<main th:replace="~{fragments/error :: noiDung(400, 'Thông tin bạn gửi chưa hợp lệ', 'Thông tin gửi lên chưa đúng định dạng. Vui lòng kiểm tra và thử lại.')}"></main>
 <div th:replace="~{fragments/footer :: siteFooter}"></div>
 </body>
 </html>

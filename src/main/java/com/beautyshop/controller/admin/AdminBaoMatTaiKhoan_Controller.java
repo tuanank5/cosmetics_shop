@@ -29,15 +29,15 @@ class AdminBaoMatTaiKhoan_Controller {
     @GetMapping
     String xem(@PathVariable long id, @RequestParam(defaultValue = "") String q,
                @RequestParam(defaultValue = "0") int page, Model model) {
-        var user = users.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+        var user = users.docBaoMatAdmin(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
         model.addAttribute("id", id);
         model.addAttribute("hoTen", user.getHoTen());
         model.addAttribute("email", user.getEmail());
-        model.addAttribute("coMatKhau", user.getMatKhauBam() != null);
-        model.addAttribute("daXacMinhEmail", user.getNgayXacMinhEmail() != null);
-        model.addAttribute("duDieuKien", MatKhau_Service.duDieuKien(user));
-        model.addAttribute("providers", identities.findByNguoiDung_MaNguoiDung(id).stream()
-            .map(com.beautyshop.model.DanhTinhOAuth::getNhaCungCap).toList());
+        model.addAttribute("coMatKhau", user.getCoMatKhau());
+        model.addAttribute("daXacMinhEmail", user.getDaXacMinhEmail());
+        model.addAttribute("duDieuKien", MatKhau_Service.duDieuKien(user.isKichHoat(), user.getVaiTro(),
+            user.getCoMatKhau(), user.getDaXacMinhEmail()));
+        model.addAttribute("providers", identities.docNhaCungCap(id));
         model.addAttribute("q", timKiem(q));
         model.addAttribute("page", Math.clamp(page, 0, 100_000));
         return "admin/user/detail";

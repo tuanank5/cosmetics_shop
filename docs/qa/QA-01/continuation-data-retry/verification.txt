@@ -1,0 +1,14 @@
+Revision: 38fb1ca300ce9903db033da13ee4105588ea394a + working diff G7–G12 and QA tests
+Run: docs/qa/QA-01/run-data.ps1 -EvidenceTag continuation-data-retry
+MariaDB 12.2.2 and MongoDB 6.0.8, separate loopback fixture, JDK 21
+Flyway auth_02_test: 7 migrations applied, final V7
+Flyway auth_02_v5: 2 migrations applied, final V7
+Flyway auth_02_v6: 1 migration applied, final V7
+OAuth2Callback_MariaDb_Test: 5/5
+XacThucDaPhuongThuc_MariaDb_Test: 5/5
+XacThucMigration_MariaDb_Test: 2/2
+TuVanRag_MariaDb_Test: 2 pass, 1 fail
+PASS cauHoiChuaEmailKhongGoiEmbeddingHayChat: valid control increased both mock counters; rejected input added 0 embedding calls and 0 chat calls.
+FAIL ragCoNguonGiaTonMoiVaFallbackKhiModelSaiHoacLoi:100: rejected input echoed in rendered HTML.
+Integration skips: ReviewBsonCompatibilityTest (standalone BSON phase passed), GoiYPhoBienDemoReport_Test (opt-in demo report).
+GitHub Actions REST: run 45777423089, Maven CI, completed/success, head_sha 38fb1ca300ce9903db033da13ee4105588ea394a.

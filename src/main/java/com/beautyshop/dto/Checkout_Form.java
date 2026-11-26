@@ -9,7 +9,7 @@ public class Checkout_Form {
     @Positive(message = "Địa chỉ chưa hợp lệ.")
     private Long addressId;
 
-    @Size(max = 80, message = "Mã voucher tối đa 80 ký tự.")
+    @Size(max = 80, message = "Mã giảm giá tối đa 80 ký tự.")
     private String voucher;
 
     public Long getAddressId() { return addressId; }

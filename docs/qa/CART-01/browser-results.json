@@ -1,0 +1,8 @@
+{
+  "browser": "Chrome/158.0.8127.88",
+  "checks": [
+    "two-tabs-one-checkout-notice-for-two-stock-reductions",
+    "back-refresh-logout-do-not-replay-notice",
+    "different-owner-cannot-read-old-notice-and-no-js-works"
+  ]
+}

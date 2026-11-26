@@ -1,0 +1,13 @@
+﻿address-1 HTML unchanged | SELECT 2 -> 2 | dia_chi_nguoi_dung=6 -> dia_chi_nguoi_dung=5
+address-7 HTML unchanged | SELECT 2 -> 2 | dia_chi_nguoi_dung=6 -> dia_chi_nguoi_dung=5
+admin-security HTML unchanged | SELECT 3 -> 3 | nguoi_dung=3, nguoi_dung=9, danh_tinh_oauth=5 -> nguoi_dung=3, nguoi_dung=6, danh_tinh_oauth=1
+catalog-1 HTML unchanged | SELECT 2 -> 2 | san_pham=11 -> san_pham=4
+catalog-7 HTML unchanged | SELECT 2 -> 2 | san_pham=11 -> san_pham=4
+catalog-edit-options HTML unchanged | SELECT 4 -> 4 | danh_muc=4, thuong_hieu=4 -> danh_muc=4, thuong_hieu=4
+checkout-1 HTML unchanged | SELECT 2 -> 2 | dia_chi_nguoi_dung=6 -> dia_chi_nguoi_dung=5
+checkout-7 HTML unchanged | SELECT 2 -> 2 | dia_chi_nguoi_dung=6 -> dia_chi_nguoi_dung=5
+customer-security HTML unchanged | SELECT 3 -> 3 | nguoi_dung=3, nguoi_dung=9, danh_tinh_oauth=5 -> nguoi_dung=3, nguoi_dung=3, danh_tinh_oauth=1
+pdp-1 HTML unchanged | SELECT 2 -> 2 | san_pham=19, bien_the_san_pham=11 -> san_pham=19, bien_the_san_pham=11
+pdp-7 HTML unchanged | SELECT 2 -> 2 | san_pham=19, bien_the_san_pham=11 -> san_pham=19, bien_the_san_pham=11
+sku-admin-1 HTML unchanged | SELECT 3 -> 3 | san_pham=11, bien_the_san_pham=11 -> san_pham=11, bien_the_san_pham=11
+sku-admin-7 HTML unchanged | SELECT 3 -> 3 | san_pham=11, bien_the_san_pham=11 -> san_pham=11, bien_the_san_pham=11

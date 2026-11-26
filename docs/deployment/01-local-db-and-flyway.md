@@ -1,39 +1,59 @@
-# Chạy MariaDB local + Flyway (v5)
+# Thiết lập local và nâng cấp MariaDB
 
-## 1. Tạo database một lần trên MariaDB cài trực tiếp (port 3306)
+## Máy mới
 
-```sql
-CREATE DATABASE IF NOT EXISTS beautyshop CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-CREATE USER IF NOT EXISTS 'beautyshop'@'localhost' IDENTIFIED BY '<MAT_KHAU_RIENG_CUA_BAN>';
-GRANT ALL PRIVILEGES ON beautyshop.* TO 'beautyshop'@'localhost';
-```
-
-Ví dụ trên chỉ tạo user local; **thay placeholder** bằng mật khẩu riêng, không đẩy mật khẩu vào Git. Nếu bạn đã có DB/user thì không tạo trùng. `FLUSH PRIVILEGES` thường không cần sau `GRANT`.
-
-## 2. Khởi chạy Windows PowerShell
+Với JDK 21, Maven 3.9+ và Docker Compose, sao chép `.env.example` thành `.env` và điền mật khẩu MariaDB riêng. Bao giá trị có dấu `#`, ký tự `$` hoặc khoảng trắng bằng nháy đơn.
 
 ```powershell
-$env:DB_URL='jdbc:mariadb://localhost:3306/beautyshop'
-$env:DB_USER='beautyshop'
-$env:DB_PASSWORD='<MAT_KHAU_RIENG_CUA_BAN>'
-.\scripts\p00.ps1 -Task test
+Copy-Item .env.example .env
+# Điền DB_PASSWORD trong .env trước khi chạy tiếp.
+docker compose up -d --wait
 .\scripts\p00.ps1 -Task run
 ```
 
-Dev `spring.jpa.hibernate.ddl-auto=validate`, `spring.flyway.enabled=true` ở `application-dev.properties`.
-Khi khởi động trên database trống, Flyway áp dụng V1 và các migration tiếp theo theo thứ tự, sau đó JPA kiểm tra các bảng được ánh xạ. Database đã có V1 chỉ nhận các phiên bản chưa áp dụng. Kiểm tra log Flyway rồi mở `/`, `/products` và `/login` trên cổng 8080.
+Compose dùng MariaDB trên 3307, Redis 6379, MongoDB 27017 và Mailpit 1025. Hộp thư thử nghiệm ở `http://127.0.0.1:8025`. Các cổng chỉ bind loopback. Java chạy trên máy host. Tên database và user mặc định là `beautyshop`. Khi dùng MariaDB cài trực tiếp, chọn `DB_PORT=3306` và tạo database/user một lần nếu máy chưa có. Chạy SQL sau bằng tài khoản quản trị MariaDB local với mật khẩu đã chọn.
 
-## 3. Flyway checklist
+```sql
+CREATE DATABASE IF NOT EXISTS beautyshop CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+CREATE USER IF NOT EXISTS 'beautyshop'@'127.0.0.1' IDENTIFIED BY '<MAT_KHAU_RIENG_CUA_BAN>';
+GRANT ALL PRIVILEGES ON beautyshop.* TO 'beautyshop'@'127.0.0.1';
+```
 
-- DB mới: không có bảng ứng dụng, Flyway tạo bảng + `flyway_schema_history`.
-- DB thử nghiệm đã áp dụng V1 tên tiếng Anh: dùng một database riêng, trống để khởi tạo v5. Nếu cần chuyển dữ liệu thật, lập kế hoạch backup và migration giữ dữ liệu. Giữ checksum của V1 đã áp dụng.
-- DB đã tồn tại bảng ngoài Flyway: kiểm tra lịch sử schema và backup trước. Không tự bật `baseline-on-migrate=true` hoặc xóa bảng.
-- Sau khi V1 được áp dụng: không sửa V1; viết V2__description.sql thay đổi schema.
-- `ddl-auto=validate` không sinh bảng; nếu lỗi validate => kiểm tra entity mapping, migration và tên cột.
-- `flyway-mysql` là module cần cho MariaDB/MySQL trên Flyway mới, phiên bản do Spring Boot quản lý.
+Nếu máy đã chạy một dịch vụ ngoài Compose trên các cổng này, chỉ khởi động các dịch vụ còn thiếu bằng cách thêm tên dịch vụ vào lệnh Compose, chẳng hạn `docker compose up -d --wait mariadb redis`.
 
-## 4. Docker tùy chọn
+`p00.ps1` và `seed-demo.ps1` đọc `.env` ở gốc repo. Biến đã có trong phiên shell được ưu tiên. `DB_URL` đã khai báo tiếp tục được dùng nguyên vẹn thay cho `DB_PORT` và `DB_NAME`. Với IntelliJ, Maven chạy trực tiếp hoặc `java -jar`, khai báo biến trong cấu hình chạy hoặc dùng launcher PowerShell. File `.env` nằm ngoài Git. Với PowerShell hạn chế chạy script, có thể dùng `powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\scripts\p00.ps1 -Task run` cho riêng tiến trình này.
 
-Nếu dùng Docker, khai báo `DB_PASSWORD` trước khi chạy `docker compose up -d`. Compose mở MariaDB trên **host 3307**, vì vậy đặt `DB_URL` thành `jdbc:mariadb://localhost:3307/beautyshop` trước khi chạy ứng dụng.
+MongoDB mặc định giữ tên `beautyshop_demo` để tương thích dữ liệu review local đang có. Khi chạy nhiều schema SQL độc lập, đặt `MONGODB_URI` riêng cho từng schema để tách dữ liệu đánh giá. Dev mặc định gửi thư vào Mailpit. Khi tiếp tục dùng SMTP từ môi trường cũ, giữ host, port, thông tin xác thực và đặt rõ `MAIL_SMTP_AUTH` cùng `MAIL_SMTP_STARTTLS`. Profile production khai báo `DB_URL`, `DB_USER`, `DB_PASSWORD` và các biến thật từ secret store.
 
-Xem [roadmap](../03-roadmap-and-team.md) để biết phiên bản MariaDB đã kiểm chứng. Đối chiếu tên bảng và cột trong [tài liệu dữ liệu](../data/README.md).
+## Máy đang dùng database của bản cũ
+
+Với đợt cập nhật FAQ UI-COPY-01, nếu máy đã chạy V5 cũ, tạo database trống cùng quyền cho tài khoản ứng dụng. Khi dùng cấu hình local mặc định, đặt `DB_NAME=beautyshop_moi` trong `.env`. Nếu đã khai báo `DB_URL`, đổi tên database ở cuối URL cho khớp. Với demo có thể dùng tên `beautyshop_demo_moi`. Tách cả `MONGODB_URI` nếu muốn bắt đầu với kho đánh giá trống.
+
+Các bước dưới áp dụng cho trường hợp cần giữ dữ liệu và lịch sử Flyway khớp với nhánh hiện tại.
+
+1. Dừng app cũ. Ghi nhận database, phiên bản app và lịch sử Flyway. Sao lưu MariaDB, MongoDB nếu có đánh giá và thư mục ảnh upload. Thử khôi phục vào schema riêng trước khi chuyển database đang dùng. Với Compose, giữ volume hiện tại. `DB_NAME`, `DB_USER` và `DB_PASSWORD` của Compose chỉ tạo database/user khi volume khởi tạo lần đầu.
+2. Giữ kết nối cũ trong `.env` hoặc shell. Kiểm schema bằng client MariaDB nếu có nghi ngờ về môi trường.
+
+```sql
+SELECT DATABASE();
+SELECT version, description, checksum, success
+FROM flyway_schema_history
+ORDER BY installed_rank;
+```
+
+3. Trên bản sao phù hợp, chạy migration và khởi động dev. Bước `migrate` chỉ nâng schema. Bước `run` mở web và Hibernate xác thực schema.
+
+```powershell
+.\scripts\p00.ps1 -Task migrate
+.\scripts\p00.ps1 -Task run
+```
+
+| Trạng thái database | Kết quả hoặc xử lý |
+|---|---|
+| Trống | Flyway tạo bảng lịch sử và áp dụng V1–V7. |
+| Đã áp dụng V1 đến V4 với checksum khớp repo | Flyway áp dụng các phiên bản còn thiếu, gồm V5 với nội dung FAQ đã chuẩn hóa. |
+| Đã áp dụng V5, V6 hoặc V7 với checksum khớp repo | Flyway kiểm lịch sử rồi áp dụng những phiên bản còn thiếu. V7 bổ sung dữ liệu xác thực đa phương thức và giữ ID người dùng. |
+| Đã áp dụng V5 trước UI-COPY-01 | Flyway báo khác checksum. Với đợt chuyển này, nhóm dùng một database trống và trỏ `DB_URL` đến database mới để Flyway nạp FAQ đã sửa. |
+| Có bảng nhưng thiếu lịch sử, dùng V1 tiếng Anh hoặc checksum khác | Dừng ở lỗi Flyway. Cần bản SQL cũ và đối chiếu schema/dữ liệu để lập đường chuyển riêng trên bản sao. Giữ lịch sử hiện tại cho đến khi có phương án. |
+
+Các file V1–V7 trong `src/main/resources/db/migration` là lịch sử triển khai, mỗi phiên bản có một file chuẩn trong nhánh hiện tại. Thay đổi schema tiếp theo dùng phiên bản mới. `baseline-on-migrate=false` và `ddl-auto=validate` được giữ ở dev/prod. Sao lưu và khôi phục dữ liệu mẫu xem [runbook demo](06-p10-demo.md). [Kiểm checksum Flyway](https://documentation.red-gate.com/flyway/reference/commands/validate)

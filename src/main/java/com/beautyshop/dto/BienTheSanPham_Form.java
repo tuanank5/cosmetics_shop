@@ -8,9 +8,9 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.multipart.MultipartFile;
 
 public class BienTheSanPham_Form {
-    @NotBlank(message = "Vui lòng nhập SKU.")
-    @Size(max = 100, message = "SKU tối đa 100 ký tự.")
-    @Pattern(regexp = "[A-Za-z0-9][A-Za-z0-9._-]*", message = "SKU chỉ dùng chữ, số, dấu chấm, gạch ngang hoặc gạch dưới.")
+    @NotBlank(message = "Vui lòng nhập mã biến thể sản phẩm.")
+    @Size(max = 100, message = "Mã biến thể sản phẩm tối đa 100 ký tự.")
+    @Pattern(regexp = "[A-Za-z0-9][A-Za-z0-9._-]*", message = "Mã biến thể sản phẩm chỉ dùng chữ, số, dấu chấm, gạch ngang hoặc gạch dưới.")
     private String sku;
 
     @NotBlank(message = "Vui lòng nhập tên biến thể.")

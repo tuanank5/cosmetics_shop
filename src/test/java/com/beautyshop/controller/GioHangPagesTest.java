@@ -1,20 +1,34 @@
 package com.beautyshop.controller;
 
 import com.beautyshop.cart.GioKhach;
+import com.beautyshop.model.NguoiDung;
 import com.beautyshop.repository.GioHang_Repository.MucGio;
 import com.beautyshop.repository.NguoiDung_Repository;
 import com.beautyshop.security.LoginSuccess_Handler;
+import com.beautyshop.security.PhienNguoiDung;
 import com.beautyshop.security.Security_Config;
 import com.beautyshop.service.GioHang_Service;
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.context.annotation.Import;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.mock.web.MockHttpSession;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.context.SecurityContextImpl;
+import org.springframework.security.web.context.HttpSessionSecurityContextRepository;
+import org.springframework.test.util.ReflectionTestUtils;
+import org.springframework.web.servlet.mvc.support.RedirectAttributesModelMap;
+import org.springframework.web.util.WebUtils;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.not;
 import static org.mockito.ArgumentMatchers.any;
@@ -33,6 +47,32 @@ class GioHangPagesTest {
     @MockitoBean GioHang_Service gioHang;
     @MockitoBean LoginSuccess_Handler loginSuccess;
     @MockitoBean NguoiDung_Repository nguoiDung;
+
+    @Test
+    void themGuestDangDoiMutexSeTheoPhienKhachVuaDangNhap() throws Exception {
+        var user = new NguoiDung("fixture@example.invalid", "", "Fixture");
+        ReflectionTestUtils.setField(user, "maNguoiDung", 42L);
+        var principal = BeanUtils.instantiateClass(PhienNguoiDung.class.getDeclaredConstructor(NguoiDung.class), user);
+        var session = new MockHttpSession();
+        GioKhach.doc(session).them(11L, 5).luu(session);
+        var started = new CountDownLatch(1);
+        try (var executor = Executors.newSingleThreadExecutor()) {
+            java.util.concurrent.Future<String> pending;
+            synchronized (WebUtils.getSessionMutex(session)) {
+                pending = executor.submit(() -> {
+                    started.countDown();
+                    return new GioHang_Controller(gioHang).them(11L, null, session, new RedirectAttributesModelMap());
+                });
+                assertThat(started.await(5, TimeUnit.SECONDS)).isTrue();
+                session.setAttribute(HttpSessionSecurityContextRepository.SPRING_SECURITY_CONTEXT_KEY,
+                    new SecurityContextImpl(UsernamePasswordAuthenticationToken.authenticated(principal, null, principal.getAuthorities())));
+                GioKhach.xoa(session);
+            }
+            assertThat(pending.get(5, TimeUnit.SECONDS)).isEqualTo("redirect:/cart");
+        }
+        verify(gioHang).themGioCustomer(42L, 11L);
+        assertThat(GioKhach.doc(session).soLuong()).isEmpty();
+    }
 
     @Test
     void gioTrongCoLoiMuaSamVaKhongCoNutThanhToan() throws Exception {
@@ -55,7 +95,7 @@ class GioHangPagesTest {
             .andExpect(content().string(containsString("9.999.999.999.999.990 ₫")))
             .andExpect(content().string(containsString("9.999.999.999.999.997 ₫")))
             .andExpect(content().string(containsString("Tinh chất &lt;mẫu&gt;")))
-            .andExpect(content().string(containsString("Số lượng trong giỏ vượt tồn hiện tại")))
+            .andExpect(content().string(containsString("Hãy xóa biến thể này khỏi giỏ.")))
             .andExpect(content().string(containsString("Biến thể hiện không còn hàng.")))
             .andExpect(content().string(containsString("action=\"/cart/items/11/quantity\"")))
             .andExpect(content().string(containsString("name=\"quantity\" value=\"0\"")))
@@ -73,7 +113,7 @@ class GioHangPagesTest {
             .contains("data-cart-line=\"11\"", "data-cart-live", "aria-live=\"polite\"", "class=\"cart-progress\"",
                 "<script defer src=\"/js/cart.js\"></script>",
                 "action=\"/cart/items/11/quantity\"", "name=\"quantity\"", "name=\"_csrf\"",
-                "type=\"submit\" class=\"btn btn--secondary\" aria-label=\"Cập nhật số lượng SKU QA-11\">Cập nhật</button>",
+                "type=\"submit\" class=\"btn btn--secondary\" aria-label=\"Cập nhật số lượng cho mã biến thể sản phẩm QA-11\">Cập nhật</button>",
                 "data-zero-confirm=", "id=\"error-11\"", "id=\"stock-11\"", "490.000 ₫")
             .doesNotContain("style=", "onclick=", "th:utext")
             .containsOnlyOnce("<h1");
@@ -118,7 +158,7 @@ class GioHangPagesTest {
             .andExpect(content().string(containsString("data=\"" + url + "\"")))
             .andExpect(content().string(containsString("href=\"/products/demo-r026?variant=11\"")))
             .andExpect(content().string(containsString("href=\"/products/demo-r026?variant=22\"")))
-            .andExpect(content().string(containsString("aria-label=\"Moisturizing Cream, 4 oz (SKU DEMO-026-B)\"")))
+            .andExpect(content().string(containsString("aria-label=\"Moisturizing Cream, 4 oz (mã biến thể sản phẩm DEMO-026-B)\"")))
             .andExpect(content().string(containsString("1.065.000 ₫")));
     }
 
@@ -144,7 +184,7 @@ class GioHangPagesTest {
         when(gioHang.datSoLuongKhach(any(), eq(11L), eq(0))).thenReturn(new GioKhach(null, java.util.Map.of()));
         mvc.perform(post("/cart/items/11/quantity").param("quantity", "0").with(csrf()))
             .andExpect(redirectedUrl("/cart"))
-            .andExpect(flash().attribute("message", "Đã xóa SKU khỏi giỏ."));
+            .andExpect(flash().attribute("message", "Đã xóa biến thể sản phẩm khỏi giỏ hàng."));
         verify(gioHang).datSoLuongKhach(any(), eq(11L), eq(0));
     }
 }

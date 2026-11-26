@@ -1,0 +1,7 @@
+﻿SQL don_hang : 58 rows, matching checksum
+SQL lan_thanh_toan : 42 rows, matching checksum
+SQL danh_gia : 1 rows, matching checksum
+SQL bien_the_san_pham : 60 rows, matching checksum
+SQL phieu_giam_gia : 9 rows, matching checksum
+Mongo danh_gia: matching BSON checksum and unique maChiTietDonHang index
+Image fixture: matching UUID filename, SHA-256 and SQL SKU reference

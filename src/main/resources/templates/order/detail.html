@@ -5,16 +5,17 @@
 <main id="main" tabindex="-1" class="page-content" th:with="don=${chiTiet.don}">
     <a class="text-link" th:if="${orderBack != null}" th:href="@{${orderBack}}">Quay lại tổng quan</a>
     <a class="text-link" th:unless="${orderBack != null}"
-       th:href="${listStatus == null} ? @{${base}} : @{${base}(status=${listStatus})}">Quay lại đơn hàng</a>
+       th:href="@{${backToOrders == null ? base : backToOrders}}">Quay lại đơn hàng</a>
     <h1>Chi tiết đơn hàng</h1>
     <p th:text="${don.maHienThi}"></p>
     <div th:replace="~{fragments/ui :: notices(${message}, ${error})}"></div>
     <p class="notice" th:if="${chiTiet.mock}">MÔ PHỎNG - KHÔNG THU TIỀN</p>
     <p><strong class="badge" th:text="${don.trangThai.label}"></strong>
-        <span th:if="${chiTiet.thanhToan == 'PAID'}" th:text="${don.phuongThuc == 'COD' ? '· Đã thu tiền COD' : '· Đã xác minh thanh toán MoMo'}"></span>
-        <span th:if="${chiTiet.thanhToan == 'UNPAID' and don.trangThai.name() != 'CANCELLED'}">· Chưa thu tiền COD</span>
+        <span th:if="${chiTiet.thanhToan == 'PAID'}" th:text="${don.phuongThuc == 'COD' ? '· Đã thu tiền khi giao hàng' : '· Đã xác minh thanh toán MoMo'}"></span>
+        <span th:if="${chiTiet.thanhToan == 'UNPAID' and don.trangThai.name() != 'CANCELLED'}">· Chưa thu tiền</span>
     </p>
-    <p th:if="${chiTiet.canHoanTien > 0}" class="notice">Có giao dịch cần đối soát và hoàn tiền.</p>
+    <p th:if="${nhanThanhToanAdmin != null}" th:text="|${don.phuongThuc == 'MOMO' ? 'MoMo' : (don.phuongThuc == 'COD' ? 'Thanh toán khi nhận hàng' : don.phuongThuc)} · ${nhanThanhToanAdmin}|"></p>
+    <p th:if="${chiTiet.canHoanTien > 0}" class="notice">Giao dịch cần được kiểm tra để hoàn tiền.</p>
     <p th:if="${don.phuongThuc == 'MOMO' and chiTiet.thanhToan == 'FAILED' and chiTiet.coTheThuLai}">Lần thanh toán chưa thành công. Bạn có thể thử lại khi đơn còn giữ hàng.</p>
     <section>
         <h2>Giao hàng</h2>
@@ -27,7 +28,7 @@
             <li th:each="muc : ${chiTiet.muc}">
                 <div>
                     <strong th:text="|${muc.tenSanPham} · ${muc.tenBienThe}|"></strong>
-                    <div th:text="|SKU ${muc.sku} · ${#numbers.formatInteger(muc.donGia, 1, 'POINT')} ₫ × ${muc.soLuong}|"></div>
+                    <div th:text="|Mã biến thể sản phẩm: ${muc.sku} · ${#numbers.formatInteger(muc.donGia, 1, 'POINT')} ₫ × ${muc.soLuong}|"></div>
                 </div>
                 <span th:text="|${#numbers.formatInteger(muc.thanhTien(), 1, 'POINT')} ₫|"></span>
                 <a th:if="${base == '/orders' and don.trangThai.name() == 'DELIVERED'}" class="text-link"
@@ -51,7 +52,7 @@
         <form th:if="${base == '/admin/orders' and chiTiet.doiSoat}" method="post"
               th:action="@{/admin/orders/{id}/momo/reconcile(id=${don.maDonHang})}">
             <th:block th:replace="~{fragments/nav-fields :: adminSource}"></th:block>
-            <button type="submit" class="btn btn--primary">Đối soát MoMo</button>
+            <button type="submit" class="btn btn--primary">Kiểm tra lại thanh toán MoMo</button>
         </form>
         <form th:if="${base == '/orders' and chiTiet.coTheHuy}" method="post"
               th:action="@{/orders/{id}/cancel(id=${don.maDonHang})}">

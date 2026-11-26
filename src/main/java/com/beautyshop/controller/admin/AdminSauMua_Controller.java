@@ -14,13 +14,17 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 class AdminSauMua_Controller {
+    private static final String DANH_GIA = "/admin/reviews";
+    private static final String DANH_GIA_VUA_XU_LY = "danhGiaVuaXuLy";
+
     private final SauMua_Service sauMua;
 
     AdminSauMua_Controller(SauMua_Service sauMua) { this.sauMua = sauMua; }
 
     @GetMapping("/admin/reviews")
     String danhGia(@RequestParam(required = false) String status, @RequestParam(required = false) Integer stars,
-                   @RequestParam(required = false) Long product, @RequestParam(defaultValue = "0") int page, Model model) {
+                   @RequestParam(required = false) Long product, @RequestParam(defaultValue = "0") int page,
+                   Model model, RedirectAttributes redirect) {
         var trangThai = DanhGia_Store.TrangThaiLoc.tu(status);
         Integer soSao = stars != null && stars >= 1 && stars <= 5 ? stars : null;
         Long sanPham = product != null && product > 0 ? product : null;
@@ -30,8 +34,23 @@ class AdminSauMua_Controller {
             boLoc.put("status", trangThai.name());
             if (soSao != null) boLoc.put("stars", soSao.toString());
             if (sanPham != null) boLoc.put("product", sanPham.toString());
+            if (page != trang.danhSach().getNumber()) {
+                boLoc.forEach(redirect::addAttribute);
+                redirect.addAttribute("page", trang.danhSach().getNumber());
+                for (String ten : java.util.List.of("message", "error", DANH_GIA_VUA_XU_LY)) {
+                    if (model.containsAttribute(ten)) redirect.addFlashAttribute(ten, model.getAttribute(ten));
+                }
+                return "redirect:" + DANH_GIA;
+            }
             model.addAttribute("pager", PhanTrang.tu(trang.danhSach(),
-                so -> NguonDieuHuong.trangDanhSach("/admin/reviews", boLoc, so)));
+                so -> NguonDieuHuong.trangDanhSach(DANH_GIA, boLoc, so)));
+        }
+        Object vuaXuLy = model.getAttribute(DANH_GIA_VUA_XU_LY);
+        if (vuaXuLy != null) {
+            boolean conTrongTrang = !trang.khongTaiDuoc()
+                && trang.danhSach().stream().anyMatch(danhGia -> danhGia.ma().equals(vuaXuLy));
+            model.addAttribute("focusReviewId", conTrongTrang ? vuaXuLy : null);
+            model.addAttribute("focusReviewResults", !conTrongTrang);
         }
         model.addAttribute("trang", trang);
         model.addAttribute("locTrangThai", trangThai.name());
@@ -51,6 +70,7 @@ class AdminSauMua_Controller {
         } catch (IllegalStateException exception) {
             flash.addFlashAttribute("error", exception.getMessage());
         }
+        flash.addFlashAttribute(DANH_GIA_VUA_XU_LY, id);
         var trangThai = DanhGia_Store.TrangThaiLoc.tu(status);
         if (trangThai != DanhGia_Store.TrangThaiLoc.TAT_CA || "TAT_CA".equalsIgnoreCase(status)) {
             flash.addAttribute("status", trangThai.name());
@@ -58,7 +78,7 @@ class AdminSauMua_Controller {
         giuThamSoSo(flash, "stars", stars, 1, 5);
         giuThamSoSo(flash, "product", product, 1, Long.MAX_VALUE);
         giuThamSoSo(flash, "page", page, 0, 10_000);
-        return "redirect:/admin/reviews";
+        return "redirect:" + DANH_GIA;
     }
 
     private static void giuThamSoSo(RedirectAttributes redirect, String ten, String giaTri, long min, long max) {

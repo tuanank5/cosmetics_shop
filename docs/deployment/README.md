@@ -12,7 +12,7 @@ Xem [FAQ và RAG với Ollama](05-chatbot-rag.md) cho P09.
 
 Xem [catalog, luồng COD và backup demo P10](06-p10-demo.md) để chuẩn bị trình diễn.
 
-Xem [MongoDB cho đánh giá sản phẩm P23](07-mongodb-danh-gia.md): cài đặt, `MONGODB_URI`, chuyển dữ liệu sau `seed-demo-orders.ps1`.
+Xem [MongoDB cho đánh giá sản phẩm P23](07-mongodb-danh-gia.md) để cài đặt, cấu hình `MONGODB_URI` và chuẩn bị đánh giá demo sau khi nạp `seed-demo.ps1 -WithOrders`.
 
 ## Production (chưa xác minh)
 

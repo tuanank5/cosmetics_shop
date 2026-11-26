@@ -1,0 +1,1072 @@
+{
+  "browser": "Chrome/158.0.8127.88",
+  "snapshots": [
+    {
+      "page": "/login",
+      "layout": "320px",
+      "before": {
+        "input": [
+          33,
+          1022.45,
+          183,
+          52.39
+        ],
+        "button": [
+          224,
+          1022.45,
+          48,
+          52.39
+        ],
+        "form": [
+          33,
+          877.28,
+          239,
+          277.56
+        ],
+        "font": "\"Segoe UI\", Arial, sans-serif"
+      },
+      "initialized": {
+        "input": [
+          33,
+          1022.45,
+          183,
+          52.39
+        ],
+        "button": [
+          224,
+          1022.45,
+          48,
+          52.39
+        ],
+        "form": [
+          33,
+          877.28,
+          239,
+          277.56
+        ],
+        "font": "\"Segoe UI\", Arial, sans-serif"
+      },
+      "shown": {
+        "input": [
+          33,
+          1022.45,
+          183,
+          52.39
+        ],
+        "button": [
+          224,
+          1022.45,
+          48,
+          52.39
+        ],
+        "form": [
+          33,
+          877.28,
+          239,
+          277.56
+        ],
+        "font": "\"Segoe UI\", Arial, sans-serif"
+      },
+      "hidden": {
+        "input": [
+          33,
+          1022.45,
+          183,
+          52.39
+        ],
+        "button": [
+          224,
+          1022.45,
+          48,
+          52.39
+        ],
+        "form": [
+          33,
+          877.28,
+          239,
+          277.56
+        ],
+        "font": "\"Segoe UI\", Arial, sans-serif"
+      }
+    },
+    {
+      "page": "/register",
+      "layout": "320px",
+      "before": {
+        "input": [
+          33,
+          1179.11,
+          183,
+          52.39
+        ],
+        "button": [
+          224,
+          1179.11,
+          48,
+          52.39
+        ],
+        "form": [
+          33,
+          830.38,
+          239,
+          497.13
+        ],
+        "font": "\"Segoe UI\", Arial, sans-serif"
+      },
+      "initialized": {
+        "input": [
+          33,
+          1179.11,
+          183,
+          52.39
+        ],
+        "button": [
+          224,
+          1179.11,
+          48,
+          52.39
+        ],
+        "form": [
+          33,
+          830.38,
+          239,
+          497.13
+        ],
+        "font": "\"Segoe UI\", Arial, sans-serif"
+      },
+      "shown": {
+        "input": [
+          33,
+          1179.11,
+          183,
+          52.39
+        ],
+        "button": [
+          224,
+          1179.11,
+          48,
+          52.39
+        ],
+        "form": [
+          33,
+          830.38,
+          239,
+          497.13
+        ],
+        "font": "\"Segoe UI\", Arial, sans-serif"
+      },
+      "hidden": {
+        "input": [
+          33,
+          1179.11,
+          183,
+          52.39
+        ],
+        "button": [
+          224,
+          1179.11,
+          48,
+          52.39
+        ],
+        "form": [
+          33,
+          830.38,
+          239,
+          497.13
+        ],
+        "font": "\"Segoe UI\", Arial, sans-serif"
+      }
+    },
+    {
+      "page": "/login",
+      "layout": "390px",
+      "before": {
+        "input": [
+          33,
+          792.88,
+          253,
+          52.39
+        ],
+        "button": [
+          294,
+          792.88,
+          48,
+          52.39
+        ],
+        "form": [
+          33,
+          647.7,
+          309,
+          277.56
+        ],
+        "font": "\"Segoe UI\", Arial, sans-serif"
+      },
+      "initialized": {
+        "input": [
+          33,
+          792.88,
+          253,
+          52.39
+        ],
+        "button": [
+          294,
+          792.88,
+          48,
+          52.39
+        ],
+        "form": [
+          33,
+          647.7,
+          309,
+          277.56
+        ],
+        "font": "\"Segoe UI\", Arial, sans-serif"
+      },
+      "shown": {
+        "input": [
+          33,
+          792.88,
+          253,
+          52.39
+        ],
+        "button": [
+          294,
+          792.88,
+          48,
+          52.39
+        ],
+        "form": [
+          33,
+          647.7,
+          309,
+          277.56
+        ],
+        "font": "\"Segoe UI\", Arial, sans-serif"
+      },
+      "hidden": {
+        "input": [
+          33,
+          792.88,
+          253,
+          52.39
+        ],
+        "button": [
+          294,
+          792.88,
+          48,
+          52.39
+        ],
+        "form": [
+          33,
+          647.7,
+          309,
+          277.56
+        ],
+        "font": "\"Segoe UI\", Arial, sans-serif"
+      }
+    },
+    {
+      "page": "/register",
+      "layout": "390px",
+      "before": {
+        "input": [
+          33,
+          946.95,
+          253,
+          52.39
+        ],
+        "button": [
+          294,
+          946.95,
+          48,
+          52.39
+        ],
+        "form": [
+          33,
+          624.61,
+          309,
+          470.73
+        ],
+        "font": "\"Segoe UI\", Arial, sans-serif"
+      },
+      "initialized": {
+        "input": [
+          33,
+          946.95,
+          253,
+          52.39
+        ],
+        "button": [
+          294,
+          946.95,
+          48,
+          52.39
+        ],
+        "form": [
+          33,
+          624.61,
+          309,
+          470.73
+        ],
+        "font": "\"Segoe UI\", Arial, sans-serif"
+      },
+      "shown": {
+        "input": [
+          33,
+          946.95,
+          253,
+          52.39
+        ],
+        "button": [
+          294,
+          946.95,
+          48,
+          52.39
+        ],
+        "form": [
+          33,
+          624.61,
+          309,
+          470.73
+        ],
+        "font": "\"Segoe UI\", Arial, sans-serif"
+      },
+      "hidden": {
+        "input": [
+          33,
+          946.95,
+          253,
+          52.39
+        ],
+        "button": [
+          294,
+          946.95,
+          48,
+          52.39
+        ],
+        "form": [
+          33,
+          624.61,
+          309,
+          470.73
+        ],
+        "font": "\"Segoe UI\", Arial, sans-serif"
+      }
+    },
+    {
+      "page": "/login",
+      "layout": "768px",
+      "before": {
+        "input": [
+          390.53,
+          509.05,
+          249.47,
+          52.39
+        ],
+        "button": [
+          648,
+          509.05,
+          48,
+          52.39
+        ],
+        "form": [
+          390.53,
+          363.88,
+          305.47,
+          277.56
+        ],
+        "font": "\"Segoe UI\", Arial, sans-serif"
+      },
+      "initialized": {
+        "input": [
+          390.53,
+          509.05,
+          249.47,
+          52.39
+        ],
+        "button": [
+          648,
+          509.05,
+          48,
+          52.39
+        ],
+        "form": [
+          390.53,
+          363.88,
+          305.47,
+          277.56
+        ],
+        "font": "\"Segoe UI\", Arial, sans-serif"
+      },
+      "shown": {
+        "input": [
+          390.53,
+          509.05,
+          249.47,
+          52.39
+        ],
+        "button": [
+          648,
+          509.05,
+          48,
+          52.39
+        ],
+        "form": [
+          390.53,
+          363.88,
+          305.47,
+          277.56
+        ],
+        "font": "\"Segoe UI\", Arial, sans-serif"
+      },
+      "hidden": {
+        "input": [
+          390.53,
+          509.05,
+          249.47,
+          52.39
+        ],
+        "button": [
+          648,
+          509.05,
+          48,
+          52.39
+        ],
+        "form": [
+          390.53,
+          363.88,
+          305.47,
+          277.56
+        ],
+        "font": "\"Segoe UI\", Arial, sans-serif"
+      }
+    },
+    {
+      "page": "/register",
+      "layout": "768px",
+      "before": {
+        "input": [
+          390.53,
+          686.22,
+          249.47,
+          52.39
+        ],
+        "button": [
+          648,
+          686.22,
+          48,
+          52.39
+        ],
+        "form": [
+          390.53,
+          363.88,
+          305.47,
+          470.73
+        ],
+        "font": "\"Segoe UI\", Arial, sans-serif"
+      },
+      "initialized": {
+        "input": [
+          390.53,
+          686.22,
+          249.47,
+          52.39
+        ],
+        "button": [
+          648,
+          686.22,
+          48,
+          52.39
+        ],
+        "form": [
+          390.53,
+          363.88,
+          305.47,
+          470.73
+        ],
+        "font": "\"Segoe UI\", Arial, sans-serif"
+      },
+      "shown": {
+        "input": [
+          390.53,
+          686.22,
+          249.47,
+          52.39
+        ],
+        "button": [
+          648,
+          686.22,
+          48,
+          52.39
+        ],
+        "form": [
+          390.53,
+          363.88,
+          305.47,
+          470.73
+        ],
+        "font": "\"Segoe UI\", Arial, sans-serif"
+      },
+      "hidden": {
+        "input": [
+          390.53,
+          686.22,
+          249.47,
+          52.39
+        ],
+        "button": [
+          648,
+          686.22,
+          48,
+          52.39
+        ],
+        "form": [
+          390.53,
+          363.88,
+          305.47,
+          470.73
+        ],
+        "font": "\"Segoe UI\", Arial, sans-serif"
+      }
+    },
+    {
+      "page": "/login",
+      "layout": "1366px",
+      "before": {
+        "input": [
+          696.13,
+          536.34,
+          458.38,
+          52.39
+        ],
+        "button": [
+          1162.5,
+          536.34,
+          48,
+          52.39
+        ],
+        "form": [
+          696.13,
+          391.17,
+          514.38,
+          277.56
+        ],
+        "font": "\"Segoe UI\", Arial, sans-serif"
+      },
+      "initialized": {
+        "input": [
+          696.13,
+          536.34,
+          458.38,
+          52.39
+        ],
+        "button": [
+          1162.5,
+          536.34,
+          48,
+          52.39
+        ],
+        "form": [
+          696.13,
+          391.17,
+          514.38,
+          277.56
+        ],
+        "font": "\"Segoe UI\", Arial, sans-serif"
+      },
+      "shown": {
+        "input": [
+          696.13,
+          536.34,
+          458.38,
+          52.39
+        ],
+        "button": [
+          1162.5,
+          536.34,
+          48,
+          52.39
+        ],
+        "form": [
+          696.13,
+          391.17,
+          514.38,
+          277.56
+        ],
+        "font": "\"Segoe UI\", Arial, sans-serif"
+      },
+      "hidden": {
+        "input": [
+          696.13,
+          536.34,
+          458.38,
+          52.39
+        ],
+        "button": [
+          1162.5,
+          536.34,
+          48,
+          52.39
+        ],
+        "form": [
+          696.13,
+          391.17,
+          514.38,
+          277.56
+        ],
+        "font": "\"Segoe UI\", Arial, sans-serif"
+      }
+    },
+    {
+      "page": "/register",
+      "layout": "1366px",
+      "before": {
+        "input": [
+          696.13,
+          713.52,
+          458.38,
+          52.39
+        ],
+        "button": [
+          1162.5,
+          713.52,
+          48,
+          52.39
+        ],
+        "form": [
+          696.13,
+          391.17,
+          514.38,
+          470.73
+        ],
+        "font": "\"Segoe UI\", Arial, sans-serif"
+      },
+      "initialized": {
+        "input": [
+          696.13,
+          713.52,
+          458.38,
+          52.39
+        ],
+        "button": [
+          1162.5,
+          713.52,
+          48,
+          52.39
+        ],
+        "form": [
+          696.13,
+          391.17,
+          514.38,
+          470.73
+        ],
+        "font": "\"Segoe UI\", Arial, sans-serif"
+      },
+      "shown": {
+        "input": [
+          696.13,
+          713.52,
+          458.38,
+          52.39
+        ],
+        "button": [
+          1162.5,
+          713.52,
+          48,
+          52.39
+        ],
+        "form": [
+          696.13,
+          391.17,
+          514.38,
+          470.73
+        ],
+        "font": "\"Segoe UI\", Arial, sans-serif"
+      },
+      "hidden": {
+        "input": [
+          696.13,
+          713.52,
+          458.38,
+          52.39
+        ],
+        "button": [
+          1162.5,
+          713.52,
+          48,
+          52.39
+        ],
+        "form": [
+          696.13,
+          391.17,
+          514.38,
+          470.73
+        ],
+        "font": "\"Segoe UI\", Arial, sans-serif"
+      }
+    },
+    {
+      "page": "/login",
+      "layout": "1366px-200%-equivalent",
+      "before": {
+        "input": [
+          351.91,
+          535.44,
+          203.09,
+          52.39
+        ],
+        "button": [
+          563,
+          535.44,
+          48,
+          52.39
+        ],
+        "form": [
+          351.91,
+          390.27,
+          259.09,
+          277.56
+        ],
+        "font": "\"Segoe UI\", Arial, sans-serif"
+      },
+      "initialized": {
+        "input": [
+          351.91,
+          535.44,
+          203.09,
+          52.39
+        ],
+        "button": [
+          563,
+          535.44,
+          48,
+          52.39
+        ],
+        "form": [
+          351.91,
+          390.27,
+          259.09,
+          277.56
+        ],
+        "font": "\"Segoe UI\", Arial, sans-serif"
+      },
+      "shown": {
+        "input": [
+          351.91,
+          535.44,
+          203.09,
+          52.39
+        ],
+        "button": [
+          563,
+          535.44,
+          48,
+          52.39
+        ],
+        "form": [
+          351.91,
+          390.27,
+          259.09,
+          277.56
+        ],
+        "font": "\"Segoe UI\", Arial, sans-serif"
+      },
+      "hidden": {
+        "input": [
+          351.91,
+          535.44,
+          203.09,
+          52.39
+        ],
+        "button": [
+          563,
+          535.44,
+          48,
+          52.39
+        ],
+        "form": [
+          351.91,
+          390.27,
+          259.09,
+          277.56
+        ],
+        "font": "\"Segoe UI\", Arial, sans-serif"
+      }
+    },
+    {
+      "page": "/register",
+      "layout": "1366px-200%-equivalent",
+      "before": {
+        "input": [
+          351.91,
+          739,
+          203.09,
+          52.39
+        ],
+        "button": [
+          563,
+          739,
+          48,
+          52.39
+        ],
+        "form": [
+          351.91,
+          390.27,
+          259.09,
+          497.13
+        ],
+        "font": "\"Segoe UI\", Arial, sans-serif"
+      },
+      "initialized": {
+        "input": [
+          351.91,
+          739,
+          203.09,
+          52.39
+        ],
+        "button": [
+          563,
+          739,
+          48,
+          52.39
+        ],
+        "form": [
+          351.91,
+          390.27,
+          259.09,
+          497.13
+        ],
+        "font": "\"Segoe UI\", Arial, sans-serif"
+      },
+      "shown": {
+        "input": [
+          351.91,
+          739,
+          203.09,
+          52.39
+        ],
+        "button": [
+          563,
+          739,
+          48,
+          52.39
+        ],
+        "form": [
+          351.91,
+          390.27,
+          259.09,
+          497.13
+        ],
+        "font": "\"Segoe UI\", Arial, sans-serif"
+      },
+      "hidden": {
+        "input": [
+          351.91,
+          739,
+          203.09,
+          52.39
+        ],
+        "button": [
+          563,
+          739,
+          48,
+          52.39
+        ],
+        "form": [
+          351.91,
+          390.27,
+          259.09,
+          497.13
+        ],
+        "font": "\"Segoe UI\", Arial, sans-serif"
+      }
+    },
+    {
+      "page": "/login",
+      "layout": "1920px",
+      "before": {
+        "input": [
+          973.13,
+          538.05,
+          458.38,
+          52.39
+        ],
+        "button": [
+          1439.5,
+          538.05,
+          48,
+          52.39
+        ],
+        "form": [
+          973.13,
+          392.88,
+          514.38,
+          277.56
+        ],
+        "font": "\"Segoe UI\", Arial, sans-serif"
+      },
+      "initialized": {
+        "input": [
+          973.13,
+          538.05,
+          458.38,
+          52.39
+        ],
+        "button": [
+          1439.5,
+          538.05,
+          48,
+          52.39
+        ],
+        "form": [
+          973.13,
+          392.88,
+          514.38,
+          277.56
+        ],
+        "font": "\"Segoe UI\", Arial, sans-serif"
+      },
+      "shown": {
+        "input": [
+          973.13,
+          538.05,
+          458.38,
+          52.39
+        ],
+        "button": [
+          1439.5,
+          538.05,
+          48,
+          52.39
+        ],
+        "form": [
+          973.13,
+          392.88,
+          514.38,
+          277.56
+        ],
+        "font": "\"Segoe UI\", Arial, sans-serif"
+      },
+      "hidden": {
+        "input": [
+          973.13,
+          538.05,
+          458.38,
+          52.39
+        ],
+        "button": [
+          1439.5,
+          538.05,
+          48,
+          52.39
+        ],
+        "form": [
+          973.13,
+          392.88,
+          514.38,
+          277.56
+        ],
+        "font": "\"Segoe UI\", Arial, sans-serif"
+      }
+    },
+    {
+      "page": "/register",
+      "layout": "1920px",
+      "before": {
+        "input": [
+          973.13,
+          715.22,
+          458.38,
+          52.39
+        ],
+        "button": [
+          1439.5,
+          715.22,
+          48,
+          52.39
+        ],
+        "form": [
+          973.13,
+          392.88,
+          514.38,
+          470.73
+        ],
+        "font": "\"Segoe UI\", Arial, sans-serif"
+      },
+      "initialized": {
+        "input": [
+          973.13,
+          715.22,
+          458.38,
+          52.39
+        ],
+        "button": [
+          1439.5,
+          715.22,
+          48,
+          52.39
+        ],
+        "form": [
+          973.13,
+          392.88,
+          514.38,
+          470.73
+        ],
+        "font": "\"Segoe UI\", Arial, sans-serif"
+      },
+      "shown": {
+        "input": [
+          973.13,
+          715.22,
+          458.38,
+          52.39
+        ],
+        "button": [
+          1439.5,
+          715.22,
+          48,
+          52.39
+        ],
+        "form": [
+          973.13,
+          392.88,
+          514.38,
+          470.73
+        ],
+        "font": "\"Segoe UI\", Arial, sans-serif"
+      },
+      "hidden": {
+        "input": [
+          973.13,
+          715.22,
+          458.38,
+          52.39
+        ],
+        "button": [
+          1439.5,
+          715.22,
+          48,
+          52.39
+        ],
+        "form": [
+          973.13,
+          392.88,
+          514.38,
+          470.73
+        ],
+        "font": "\"Segoe UI\", Arial, sans-serif"
+      }
+    }
+  ],
+  "checks": [
+    "catalog-active-and-closed-next-page",
+    "product-independent-summaries-back-new-entry",
+    "mobile-menu-keyboard-and-ephemeral-groups",
+    "no-js-catalog-sort-and-register-byte-validation",
+    "no-js-login-and-dashboard-table",
+    "no-js-admin-mobile-current-and-reset-required",
+    "charts-render-and-table-preference-is-independent",
+    "admin-reset-confirm-cancel-back-and-desktop-current",
+    "24-dashboard-combinations-eight-kpis-chart-table-and-redirect-period"
+  ]
+}

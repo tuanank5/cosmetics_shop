@@ -1,0 +1,1 @@
+﻿Compose YAML parsed with SnakeYAML. Docker runtime unavailable in this environment.

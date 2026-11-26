@@ -51,7 +51,7 @@ class AdminDanhMucSanPhamThuongHieu_Controller {
             try {
                 danhMucSanPhamThuongHieuService.save(nhomDaChon, id, form, errors);
             } catch (DataIntegrityViolationException exception) {
-                errors.reject("catalog.integrity", "Không thể lưu. Kiểm tra đường dẫn trùng hoặc danh mục và thương hiệu đã thay đổi.");
+                errors.reject("catalog.integrity", "Không thể lưu. Hãy kiểm tra tên dùng trong đường dẫn có bị trùng, hoặc danh mục và thương hiệu có vừa thay đổi hay không.");
             }
         }
         if (errors.hasErrors()) {
@@ -61,17 +61,20 @@ class AdminDanhMucSanPhamThuongHieu_Controller {
         return "redirect:" + ROOT + nhomDaChon.path;
     }
 
-    @PostMapping("/{section}/{id}/delete")
-    String delete(@PathVariable String section, @PathVariable long id, RedirectAttributes flash) {
+    @PostMapping("/{section}/{id}/status")
+    String trangThai(@PathVariable String section, @PathVariable long id, @RequestParam boolean active,
+                     RedirectAttributes flash) {
         NhomDanhMucSanPhamThuongHieu nhomDaChon = NhomDanhMucSanPhamThuongHieu.from(section);
-        try {
-            danhMucSanPhamThuongHieuService.remove(nhomDaChon, id);
-            flash.addFlashAttribute("message",
-                nhomDaChon == NhomDanhMucSanPhamThuongHieu.SAN_PHAM ? "Đã ngừng hiển thị sản phẩm." : "Đã xóa.");
-        } catch (DataIntegrityViolationException exception) {
-            flash.addFlashAttribute("error", "Mục này đang được sản phẩm sử dụng. Bạn có thể chuyển sang trạng thái ngừng hoạt động.");
-        }
+        danhMucSanPhamThuongHieuService.datTrangThai(nhomDaChon, id, active);
+        flash.addFlashAttribute("message", active ? "Đã kích hoạt lại." : "Đã ngừng hoạt động.");
         return "redirect:" + ROOT + nhomDaChon.path;
+    }
+
+    @PostMapping("/products/{id}/delete")
+    String ngungHienThiSanPham(@PathVariable long id, RedirectAttributes flash) {
+        danhMucSanPhamThuongHieuService.datTrangThai(NhomDanhMucSanPhamThuongHieu.SAN_PHAM, id, false);
+        flash.addFlashAttribute("message", "Đã ngừng hiển thị sản phẩm.");
+        return "redirect:" + ROOT + NhomDanhMucSanPhamThuongHieu.SAN_PHAM.path;
     }
 
     private String formView(Model model, NhomDanhMucSanPhamThuongHieu nhomDaChon, Long id) {

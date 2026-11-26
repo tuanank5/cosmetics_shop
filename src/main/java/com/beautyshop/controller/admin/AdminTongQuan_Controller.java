@@ -43,7 +43,7 @@ class AdminTongQuan_Controller {
         } catch (NumberFormatException ignored) {
             // rơi xuống thông báo lỗi bên dưới
         }
-        errors.reject("nguong", "Ngưỡng tồn phải là số nguyên từ 0 đến 1000. Đang dùng ngưỡng 5.");
+        errors.reject("nguong", "Số lượng để báo sắp hết hàng phải là số nguyên từ 0 đến 1000. Đang dùng mức 5.");
         return ThongKe_Service.NGUONG_TON_MAC_DINH;
     }
 }

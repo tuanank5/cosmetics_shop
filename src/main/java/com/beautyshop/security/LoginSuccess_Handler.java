@@ -1,6 +1,7 @@
 package com.beautyshop.security;
 
 import com.beautyshop.cart.GioKhach;
+import com.beautyshop.cart.ThongBaoGopGio;
 import com.beautyshop.service.GioHang_Service;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -21,7 +22,6 @@ import org.springframework.web.util.WebUtils;
 
 @Component
 public class LoginSuccess_Handler extends SavedRequestAwareAuthenticationSuccessHandler {
-    public static final String CART_NOTICE = LoginSuccess_Handler.class.getName() + ".notice";
     public static final String ADMIN_DASHBOARD = "/admin/dashboard";
     private static final Logger logger = LoggerFactory.getLogger(LoginSuccess_Handler.class);
     private final GioHang_Service gioHangService;
@@ -47,10 +47,10 @@ public class LoginSuccess_Handler extends SavedRequestAwareAuthenticationSuccess
             && authentication.getAuthorities().stream().anyMatch(role -> "ROLE_CUSTOMER".equals(role.getAuthority()))) {
             var session = request.getSession();
             synchronized (WebUtils.getSessionMutex(session)) {
+                ThongBaoGopGio.xoaNeuKhacChu(session, nguoiDung);
+                GioHang_Service.KetQuaGop ketQua;
                 try {
-                    if (gioHangService.gopSauDangNhap(nguoiDung.getMaNguoiDung(), GioKhach.doc(session))) {
-                        session.setAttribute(CART_NOTICE, Boolean.TRUE);
-                    }
+                    ketQua = gioHangService.gopSauDangNhap(nguoiDung.getMaNguoiDung(), GioKhach.doc(session));
                     GioKhach.xoa(session);
                 } catch (DataAccessException exception) {
                     logger.warn("Không thể hợp nhất giỏ khách trong lần đăng nhập này.");
@@ -59,6 +59,17 @@ public class LoginSuccess_Handler extends SavedRequestAwareAuthenticationSuccess
                     logout.logout(request, response, authentication);
                     getRedirectStrategy().sendRedirect(request, response, "/login?cartError");
                     return;
+                }
+                if (ketQua.daGioiHan()) {
+                    var saved = requestCache.getRequest(request, response);
+                    String url = saved == null ? getDefaultTargetUrl() : saved.getRedirectUrl();
+                    String dich = ThongBaoGopGio.ganDich(request, nguoiDung, ketQua, url);
+                    if (dich != null) {
+                        requestCache.removeRequest(request, response);
+                        clearAuthenticationAttributes(request);
+                        getRedirectStrategy().sendRedirect(request, response, dich);
+                        return;
+                    }
                 }
             }
         }
