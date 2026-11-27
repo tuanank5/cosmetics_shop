@@ -209,6 +209,10 @@ abstract class SauMua_MariaDb_Test {
         long maDonHetHan = taoDon(chu.id(), "DELIVERED", 8);
         long mucHetHan = themMuc(maDonHetHan, sku.id());
         String url = "/orders/" + maDon + "/returns/new";
+        mvc.perform(get("/orders/" + maDon).session(chu.session())).andExpect(status().isOk())
+            .andExpect(content().string(containsString("href=\"" + url + "\"")));
+        mvc.perform(get("/orders/" + maDonHetHan).session(chu.session())).andExpect(status().isOk())
+            .andExpect(content().string(not(containsString("/returns/new"))));
         mvc.perform(get(url).session(chu.session())).andExpect(status().isOk())
             .andExpect(content().string(containsString("soLuong[" + mucA + "]")));
         mvc.perform(tra(url, khac).param("soLuong[" + mucA + "]", "1")).andExpect(status().isNotFound());
@@ -234,6 +238,9 @@ abstract class SauMua_MariaDb_Test {
                 .andExpect(flash().attributeExists("message"));
             assertThat(sauMua.chiTiet(ma, chu.id()).chiTiet().yeuCau().trangThai().name()).isEqualTo(status);
         }
+        mvc.perform(get("/orders/" + maDon).session(chu.session())).andExpect(status().isOk())
+            .andExpect(content().string(containsString("href=\"" + redirect + "\"")))
+            .andExpect(content().string(containsString("Đã hoàn tất")));
         mvc.perform(tra(url, chu).param("soLuong[" + mucA + "]", "1")).andExpect(model().attributeHasErrors("doiTra"));
         long maTuChoi = sauMua.yeuCau(chu.id(), maDon, doiTra(mucB, 1));
         mvc.perform(post("/admin/returns/" + maTuChoi + "/status").session(admin.session()).with(csrf()).param("status", "REJECTED"))

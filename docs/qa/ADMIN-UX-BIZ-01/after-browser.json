@@ -1,0 +1,686 @@
+{
+  "revision": "after",
+  "engine": "Chrome headless",
+  "scope": "Loopback fixture; external network blocked",
+  "layout": [
+    {
+      "name": "footer",
+      "width": 320,
+      "visualScale": 1,
+      "viewport": 320,
+      "document": 305,
+      "tableContained": true,
+      "tableScrollable": false,
+      "mapContained": true
+    },
+    {
+      "name": "footer",
+      "width": 360,
+      "visualScale": 1,
+      "viewport": 360,
+      "document": 345,
+      "tableContained": true,
+      "tableScrollable": false,
+      "mapContained": true
+    },
+    {
+      "name": "footer",
+      "width": 390,
+      "visualScale": 1,
+      "viewport": 390,
+      "document": 375,
+      "tableContained": true,
+      "tableScrollable": false,
+      "mapContained": true
+    },
+    {
+      "name": "footer",
+      "width": 768,
+      "visualScale": 1,
+      "viewport": 768,
+      "document": 753,
+      "tableContained": true,
+      "tableScrollable": false,
+      "mapContained": true
+    },
+    {
+      "name": "footer",
+      "width": 1024,
+      "visualScale": 1,
+      "viewport": 1024,
+      "document": 1009,
+      "tableContained": true,
+      "tableScrollable": false,
+      "mapContained": true
+    },
+    {
+      "name": "footer",
+      "width": 1280,
+      "visualScale": 1,
+      "viewport": 1280,
+      "document": 1265,
+      "tableContained": true,
+      "tableScrollable": false,
+      "mapContained": true
+    },
+    {
+      "name": "footer",
+      "width": 1440,
+      "visualScale": 1,
+      "viewport": 1440,
+      "document": 1425,
+      "tableContained": true,
+      "tableScrollable": false,
+      "mapContained": true
+    },
+    {
+      "name": "footer",
+      "width": 1920,
+      "visualScale": 1,
+      "viewport": 1920,
+      "document": 1905,
+      "tableContained": true,
+      "tableScrollable": false,
+      "mapContained": true
+    },
+    {
+      "name": "footer",
+      "width": 1280,
+      "visualScale": 2,
+      "viewport": 640,
+      "document": 625,
+      "tableContained": true,
+      "tableScrollable": false,
+      "mapContained": true
+    },
+    {
+      "name": "footer",
+      "width": 1440,
+      "visualScale": 2,
+      "viewport": 720,
+      "document": 705,
+      "tableContained": true,
+      "tableScrollable": false,
+      "mapContained": true
+    },
+    {
+      "name": "footer",
+      "width": 1920,
+      "visualScale": 2,
+      "viewport": 960,
+      "document": 945,
+      "tableContained": true,
+      "tableScrollable": false,
+      "mapContained": true
+    },
+    {
+      "name": "orders",
+      "width": 320,
+      "visualScale": 1,
+      "viewport": 320,
+      "document": 305,
+      "tableContained": true,
+      "tableScrollable": true,
+      "mapContained": true
+    },
+    {
+      "name": "orders",
+      "width": 360,
+      "visualScale": 1,
+      "viewport": 360,
+      "document": 345,
+      "tableContained": true,
+      "tableScrollable": true,
+      "mapContained": true
+    },
+    {
+      "name": "orders",
+      "width": 390,
+      "visualScale": 1,
+      "viewport": 390,
+      "document": 375,
+      "tableContained": true,
+      "tableScrollable": true,
+      "mapContained": true
+    },
+    {
+      "name": "orders",
+      "width": 768,
+      "visualScale": 1,
+      "viewport": 768,
+      "document": 753,
+      "tableContained": true,
+      "tableScrollable": true,
+      "mapContained": true
+    },
+    {
+      "name": "orders",
+      "width": 1024,
+      "visualScale": 1,
+      "viewport": 1024,
+      "document": 1009,
+      "tableContained": true,
+      "tableScrollable": true,
+      "mapContained": true
+    },
+    {
+      "name": "orders",
+      "width": 1280,
+      "visualScale": 1,
+      "viewport": 1280,
+      "document": 1265,
+      "tableContained": true,
+      "tableScrollable": true,
+      "mapContained": true
+    },
+    {
+      "name": "orders",
+      "width": 1440,
+      "visualScale": 1,
+      "viewport": 1440,
+      "document": 1425,
+      "tableContained": true,
+      "tableScrollable": false,
+      "mapContained": true
+    },
+    {
+      "name": "orders",
+      "width": 1920,
+      "visualScale": 1,
+      "viewport": 1920,
+      "document": 1905,
+      "tableContained": true,
+      "tableScrollable": false,
+      "mapContained": true
+    },
+    {
+      "name": "orders",
+      "width": 1280,
+      "visualScale": 2,
+      "viewport": 640,
+      "document": 625,
+      "tableContained": true,
+      "tableScrollable": true,
+      "mapContained": true
+    },
+    {
+      "name": "orders",
+      "width": 1440,
+      "visualScale": 2,
+      "viewport": 720,
+      "document": 705,
+      "tableContained": true,
+      "tableScrollable": true,
+      "mapContained": true
+    },
+    {
+      "name": "orders",
+      "width": 1920,
+      "visualScale": 2,
+      "viewport": 960,
+      "document": 945,
+      "tableContained": true,
+      "tableScrollable": true,
+      "mapContained": true
+    },
+    {
+      "name": "detail",
+      "width": 320,
+      "visualScale": 1,
+      "viewport": 320,
+      "document": 305,
+      "tableContained": true,
+      "tableScrollable": true,
+      "mapContained": true
+    },
+    {
+      "name": "detail",
+      "width": 360,
+      "visualScale": 1,
+      "viewport": 360,
+      "document": 345,
+      "tableContained": true,
+      "tableScrollable": true,
+      "mapContained": true
+    },
+    {
+      "name": "detail",
+      "width": 390,
+      "visualScale": 1,
+      "viewport": 390,
+      "document": 375,
+      "tableContained": true,
+      "tableScrollable": true,
+      "mapContained": true
+    },
+    {
+      "name": "detail",
+      "width": 768,
+      "visualScale": 1,
+      "viewport": 768,
+      "document": 753,
+      "tableContained": true,
+      "tableScrollable": false,
+      "mapContained": true
+    },
+    {
+      "name": "detail",
+      "width": 1024,
+      "visualScale": 1,
+      "viewport": 1024,
+      "document": 1009,
+      "tableContained": true,
+      "tableScrollable": false,
+      "mapContained": true
+    },
+    {
+      "name": "detail",
+      "width": 1280,
+      "visualScale": 1,
+      "viewport": 1280,
+      "document": 1265,
+      "tableContained": true,
+      "tableScrollable": false,
+      "mapContained": true
+    },
+    {
+      "name": "detail",
+      "width": 1440,
+      "visualScale": 1,
+      "viewport": 1440,
+      "document": 1425,
+      "tableContained": true,
+      "tableScrollable": false,
+      "mapContained": true
+    },
+    {
+      "name": "detail",
+      "width": 1920,
+      "visualScale": 1,
+      "viewport": 1920,
+      "document": 1905,
+      "tableContained": true,
+      "tableScrollable": false,
+      "mapContained": true
+    },
+    {
+      "name": "detail",
+      "width": 1280,
+      "visualScale": 2,
+      "viewport": 640,
+      "document": 625,
+      "tableContained": true,
+      "tableScrollable": true,
+      "mapContained": true
+    },
+    {
+      "name": "detail",
+      "width": 1440,
+      "visualScale": 2,
+      "viewport": 720,
+      "document": 705,
+      "tableContained": true,
+      "tableScrollable": false,
+      "mapContained": true
+    },
+    {
+      "name": "detail",
+      "width": 1920,
+      "visualScale": 2,
+      "viewport": 960,
+      "document": 945,
+      "tableContained": true,
+      "tableScrollable": false,
+      "mapContained": true
+    },
+    {
+      "name": "catalog",
+      "width": 320,
+      "visualScale": 1,
+      "viewport": 320,
+      "document": 305,
+      "tableContained": true,
+      "tableScrollable": true,
+      "mapContained": true
+    },
+    {
+      "name": "catalog",
+      "width": 360,
+      "visualScale": 1,
+      "viewport": 360,
+      "document": 345,
+      "tableContained": true,
+      "tableScrollable": true,
+      "mapContained": true
+    },
+    {
+      "name": "catalog",
+      "width": 390,
+      "visualScale": 1,
+      "viewport": 390,
+      "document": 375,
+      "tableContained": true,
+      "tableScrollable": true,
+      "mapContained": true
+    },
+    {
+      "name": "catalog",
+      "width": 768,
+      "visualScale": 1,
+      "viewport": 768,
+      "document": 768,
+      "tableContained": true,
+      "tableScrollable": true,
+      "mapContained": true
+    },
+    {
+      "name": "catalog",
+      "width": 1024,
+      "visualScale": 1,
+      "viewport": 1024,
+      "document": 1024,
+      "tableContained": true,
+      "tableScrollable": false,
+      "mapContained": true
+    },
+    {
+      "name": "catalog",
+      "width": 1280,
+      "visualScale": 1,
+      "viewport": 1280,
+      "document": 1280,
+      "tableContained": true,
+      "tableScrollable": false,
+      "mapContained": true
+    },
+    {
+      "name": "catalog",
+      "width": 1440,
+      "visualScale": 1,
+      "viewport": 1440,
+      "document": 1440,
+      "tableContained": true,
+      "tableScrollable": false,
+      "mapContained": true
+    },
+    {
+      "name": "catalog",
+      "width": 1920,
+      "visualScale": 1,
+      "viewport": 1920,
+      "document": 1920,
+      "tableContained": true,
+      "tableScrollable": false,
+      "mapContained": true
+    },
+    {
+      "name": "catalog",
+      "width": 1280,
+      "visualScale": 2,
+      "viewport": 640,
+      "document": 625,
+      "tableContained": true,
+      "tableScrollable": true,
+      "mapContained": true
+    },
+    {
+      "name": "catalog",
+      "width": 1440,
+      "visualScale": 2,
+      "viewport": 720,
+      "document": 705,
+      "tableContained": true,
+      "tableScrollable": true,
+      "mapContained": true
+    },
+    {
+      "name": "catalog",
+      "width": 1920,
+      "visualScale": 2,
+      "viewport": 960,
+      "document": 945,
+      "tableContained": true,
+      "tableScrollable": true,
+      "mapContained": true
+    },
+    {
+      "name": "variants",
+      "width": 320,
+      "visualScale": 1,
+      "viewport": 320,
+      "document": 305,
+      "tableContained": true,
+      "tableScrollable": true,
+      "mapContained": true
+    },
+    {
+      "name": "variants",
+      "width": 360,
+      "visualScale": 1,
+      "viewport": 360,
+      "document": 345,
+      "tableContained": true,
+      "tableScrollable": true,
+      "mapContained": true
+    },
+    {
+      "name": "variants",
+      "width": 390,
+      "visualScale": 1,
+      "viewport": 390,
+      "document": 390,
+      "tableContained": true,
+      "tableScrollable": true,
+      "mapContained": true
+    },
+    {
+      "name": "variants",
+      "width": 768,
+      "visualScale": 1,
+      "viewport": 768,
+      "document": 768,
+      "tableContained": true,
+      "tableScrollable": true,
+      "mapContained": true
+    },
+    {
+      "name": "variants",
+      "width": 1024,
+      "visualScale": 1,
+      "viewport": 1024,
+      "document": 1024,
+      "tableContained": true,
+      "tableScrollable": false,
+      "mapContained": true
+    },
+    {
+      "name": "variants",
+      "width": 1280,
+      "visualScale": 1,
+      "viewport": 1280,
+      "document": 1280,
+      "tableContained": true,
+      "tableScrollable": false,
+      "mapContained": true
+    },
+    {
+      "name": "variants",
+      "width": 1440,
+      "visualScale": 1,
+      "viewport": 1440,
+      "document": 1440,
+      "tableContained": true,
+      "tableScrollable": false,
+      "mapContained": true
+    },
+    {
+      "name": "variants",
+      "width": 1920,
+      "visualScale": 1,
+      "viewport": 1920,
+      "document": 1920,
+      "tableContained": true,
+      "tableScrollable": false,
+      "mapContained": true
+    },
+    {
+      "name": "variants",
+      "width": 1280,
+      "visualScale": 2,
+      "viewport": 640,
+      "document": 625,
+      "tableContained": true,
+      "tableScrollable": true,
+      "mapContained": true
+    },
+    {
+      "name": "variants",
+      "width": 1440,
+      "visualScale": 2,
+      "viewport": 720,
+      "document": 705,
+      "tableContained": true,
+      "tableScrollable": true,
+      "mapContained": true
+    },
+    {
+      "name": "variants",
+      "width": 1920,
+      "visualScale": 2,
+      "viewport": 960,
+      "document": 945,
+      "tableContained": true,
+      "tableScrollable": true,
+      "mapContained": true
+    },
+    {
+      "name": "form",
+      "width": 320,
+      "visualScale": 1,
+      "viewport": 320,
+      "document": 305,
+      "tableContained": true,
+      "tableScrollable": false,
+      "mapContained": true
+    },
+    {
+      "name": "form",
+      "width": 360,
+      "visualScale": 1,
+      "viewport": 360,
+      "document": 345,
+      "tableContained": true,
+      "tableScrollable": false,
+      "mapContained": true
+    },
+    {
+      "name": "form",
+      "width": 390,
+      "visualScale": 1,
+      "viewport": 390,
+      "document": 375,
+      "tableContained": true,
+      "tableScrollable": false,
+      "mapContained": true
+    },
+    {
+      "name": "form",
+      "width": 768,
+      "visualScale": 1,
+      "viewport": 768,
+      "document": 753,
+      "tableContained": true,
+      "tableScrollable": false,
+      "mapContained": true
+    },
+    {
+      "name": "form",
+      "width": 1024,
+      "visualScale": 1,
+      "viewport": 1024,
+      "document": 1009,
+      "tableContained": true,
+      "tableScrollable": false,
+      "mapContained": true
+    },
+    {
+      "name": "form",
+      "width": 1280,
+      "visualScale": 1,
+      "viewport": 1280,
+      "document": 1265,
+      "tableContained": true,
+      "tableScrollable": false,
+      "mapContained": true
+    },
+    {
+      "name": "form",
+      "width": 1440,
+      "visualScale": 1,
+      "viewport": 1440,
+      "document": 1425,
+      "tableContained": true,
+      "tableScrollable": false,
+      "mapContained": true
+    },
+    {
+      "name": "form",
+      "width": 1920,
+      "visualScale": 1,
+      "viewport": 1920,
+      "document": 1905,
+      "tableContained": true,
+      "tableScrollable": false,
+      "mapContained": true
+    },
+    {
+      "name": "form",
+      "width": 1280,
+      "visualScale": 2,
+      "viewport": 640,
+      "document": 625,
+      "tableContained": true,
+      "tableScrollable": false,
+      "mapContained": true
+    },
+    {
+      "name": "form",
+      "width": 1440,
+      "visualScale": 2,
+      "viewport": 720,
+      "document": 705,
+      "tableContained": true,
+      "tableScrollable": false,
+      "mapContained": true
+    },
+    {
+      "name": "form",
+      "width": 1920,
+      "visualScale": 2,
+      "viewport": 960,
+      "document": 945,
+      "tableContained": true,
+      "tableScrollable": false,
+      "mapContained": true
+    }
+  ],
+  "checks": {
+    "mapIframe": {
+      "source": "www.google.com",
+      "height": 238,
+      "lazy": "lazy",
+      "title": true,
+      "fallback": true
+    },
+    "keyboard": {
+      "tab": true,
+      "enter": true,
+      "escape": true,
+      "focusVisible": true,
+      "axTable": true,
+      "skuDisabled": true,
+      "preview": true
+    }
+  },
+  "status": "PASS"
+}

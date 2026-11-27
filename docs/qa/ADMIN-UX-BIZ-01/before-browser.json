@@ -1,0 +1,8 @@
+{
+  "revision": "before",
+  "engine": "Chrome headless",
+  "scope": "Loopback fixture; external network blocked",
+  "layout": [],
+  "checks": {},
+  "status": "PASS"
+}

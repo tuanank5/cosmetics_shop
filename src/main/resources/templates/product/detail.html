@@ -26,7 +26,7 @@
                 </div>
                 <form method="get" th:action="@{/products/{slug}(slug=${sanPham.duongDan})}">
                     <input th:each="p : ${navSource.thamSo}" type="hidden" th:name="${p.key}" th:value="${p.value}">
-                    <fieldset class="pdp-variants">
+                    <fieldset id="pdp-variants" class="pdp-variants" tabindex="-1">
                         <legend>Chọn biến thể sản phẩm</legend>
                         <div class="pdp-options">
                             <button th:each="muc : ${chiTiet.bienThe}" th:with="daChon=${muc.maBienThe == sku.maBienThe}"

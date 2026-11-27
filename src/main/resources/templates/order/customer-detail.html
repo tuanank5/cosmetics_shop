@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/head :: head('Chi tiết đơn hàng · BeautyShop')}"></head>
+<body>
+<div th:replace="~{fragments/header :: siteHeader}"></div>
+<main id="main" tabindex="-1" class="page-content reference-page customer-order" th:with="don=${chiTiet.don}">
+    <header class="reference-hero order-hero">
+        <a class="text-link" th:href="@{/orders}">← Quay lại đơn hàng</a>
+        <h1>Chi tiết đơn hàng</h1>
+        <p class="muted">Theo dõi trạng thái và thông tin chi tiết về đơn hàng của bạn tại BeautyShop.</p>
+    </header>
+    <div th:replace="~{fragments/ui :: notices(${message}, ${error})}"></div>
+    <p class="notice" th:if="${chiTiet.mock}">MÔ PHỎNG - KHÔNG THU TIỀN</p>
+    <p class="notice" th:if="${chiTiet.canHoanTien > 0}">Giao dịch cần được kiểm tra để hoàn tiền.</p>
+    <p class="notice" th:if="${chiTiet.thanhToan == 'FAILED' and chiTiet.coTheThuLai}">Thanh toán chưa thành công. Bạn có thể mở lại thanh toán khi đơn còn giữ hàng.</p>
+
+    <section class="card order-progress" aria-labelledby="order-progress-title">
+        <div class="order-identity">
+            <p class="order-status-label" id="order-progress-title">Mã đơn hàng</p>
+            <div class="order-code-group">
+                <strong class="order-code" data-order-code th:text="${don.maHienThi}"></strong>
+                <button type="button" class="btn btn--ghost btn--icon" aria-label="Sao chép mã đơn hàng" data-copy-order hidden><svg th:replace="~{fragments/commerce :: icon('copy')}"></svg></button>
+            </div>
+            <p class="order-metadata">
+                <span th:if="${don.ngayTao != null}">Đặt lúc
+                    <time th:datetime="|${don.ngayTao}Z|" th:text="${#temporals.format(don.ngayTao.plusHours(7), 'dd/MM/yyyy, HH:mm')}"></time> (giờ Việt Nam)
+                </span>
+                <span th:text="|${soSanPham} sản phẩm|"></span>
+            </p>
+            <p class="order-copy-feedback" role="status" data-order-copy-status></p>
+        </div>
+        <div class="order-state">
+            <p class="order-status-label">Trạng thái đơn hàng</p>
+            <span class="badge order-status" th:classappend="${buocHienTai < 0} ? 'order-status--closed'">
+                <svg th:replace="~{fragments/commerce :: icon('clock')}"></svg> <span th:text="${don.trangThai.label}"></span>
+            </span>
+            <p class="muted" th:if="${don.trangThai.name() == 'PENDING_CONFIRMATION'}">Đơn hàng đang chờ BeautyShop xác nhận.</p>
+            <p class="muted" th:if="${don.trangThai.name() == 'CANCELLED'}">Đơn đã hủy. Các sản phẩm trong đơn sẽ không được giao.</p>
+            <p class="muted" th:if="${don.trangThai.name() == 'EXPIRED'}">Đơn đã hết thời gian chờ thanh toán.</p>
+        </div>
+        <ol class="order-timeline" th:if="${buocHienTai >= 0}" aria-label="Tiến trình đơn hàng"
+            th:style="|--order-steps: ${#lists.size(tienTrinh)}|">
+            <li th:each="buoc, status : ${tienTrinh}" th:classappend="${status.index <= buocHienTai} ? 'reached'"
+                th:attr="aria-current=${status.index == buocHienTai ? 'step' : null}">
+                <span class="order-timeline-dot" aria-hidden="true"></span>
+                <svg th:replace="~{fragments/commerce :: icon(${buoc.name() == 'SHIPPING' ? 'truck' : (buoc.name() == 'PACKING' ? 'box' : (buoc.name() == 'PENDING_PAYMENT' ? 'card' : (buoc.name() == 'PENDING_CONFIRMATION' ? 'clock' : 'check')))})}"></svg>
+                <span th:text="${buoc.label}"></span>
+            </li>
+        </ol>
+    </section>
+
+    <div class="order-detail-layout">
+        <div class="commerce-stack">
+            <section class="card" aria-labelledby="order-delivery-title">
+                <div class="reference-card-title"><svg th:replace="~{fragments/commerce :: icon('pin')}"></svg><h2 id="order-delivery-title">Thông tin giao hàng</h2></div>
+                <dl class="order-delivery-grid">
+                    <div><dt>Người nhận</dt><dd th:text="${don.tenNguoiNhan}"></dd></div>
+                    <div><dt>Số điện thoại</dt><dd th:text="${don.soDienThoai}"></dd></div>
+                    <div><dt>Địa chỉ giao hàng</dt><dd th:text="${don.diaChi}"></dd></div>
+                </dl>
+            </section>
+            <section class="card" aria-labelledby="order-items-title">
+                <div class="reference-card-title"><svg th:replace="~{fragments/commerce :: icon('bag')}"></svg><h2 id="order-items-title">Sản phẩm đã đặt</h2></div>
+                <table class="order-item-table" role="table" aria-labelledby="order-items-title">
+                    <thead role="rowgroup">
+                        <tr role="row">
+                            <th scope="col" role="columnheader">Sản phẩm</th>
+                            <th scope="col" role="columnheader">Đơn giá</th>
+                            <th scope="col" role="columnheader">Số lượng</th>
+                            <th scope="col" role="columnheader">Thành tiền</th>
+                        </tr>
+                    </thead>
+                    <tbody role="rowgroup">
+                        <tr th:each="muc : ${chiTiet.muc}" role="row">
+                            <td role="cell" class="order-product">
+                                <div class="order-product-media">
+                                    <span th:replace="~{fragments/commerce :: image(${muc.urlHinhAnh})}"></span>
+                                    <div class="commerce-item-copy">
+                                        <strong th:text="${muc.tenSanPham}"></strong>
+                                        <span class="muted" th:text="|${muc.tenBienThe} · ${muc.sku}|"></span>
+                                        <a th:if="${don.trangThai.name() == 'DELIVERED'}" class="text-link"
+                                           th:href="@{/orders/items/{id}/review(id=${muc.maMuc})}">Đánh giá hoặc sửa đánh giá</a>
+                                    </div>
+                                </div>
+                            </td>
+                            <td role="cell"><span class="order-mobile-label" aria-hidden="true">Đơn giá</span><span th:replace="~{fragments/ui :: money(${muc.donGia})}"></span></td>
+                            <td role="cell"><span class="order-mobile-label" aria-hidden="true">Số lượng</span><span th:text="|× ${muc.soLuong}|"></span></td>
+                            <td role="cell" class="commerce-line-total"><span class="order-mobile-label" aria-hidden="true">Thành tiền</span><span th:replace="~{fragments/ui :: money(${muc.thanhTien()})}"></span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            <section class="card" th:if="${yeuCauDoiTra != null and !#lists.isEmpty(yeuCauDoiTra)}"
+                     aria-labelledby="order-returns-title">
+                <h2 id="order-returns-title">Yêu cầu đổi trả</h2>
+                <ul>
+                    <li th:each="yeuCau : ${yeuCauDoiTra}">
+                        <a class="text-link" th:href="@{/account/returns/{id}(id=${yeuCau.ma})}"
+                           th:text="|Yêu cầu #${yeuCau.ma}|"></a>
+                        <span class="badge" th:text="${yeuCau.trangThai.label}"></span>
+                    </li>
+                </ul>
+            </section>
+        </div>
+
+        <aside class="card order-summary" aria-labelledby="order-summary-title">
+            <div class="reference-card-title"><svg th:replace="~{fragments/commerce :: icon('layers')}"></svg><h2 id="order-summary-title">Tổng thanh toán</h2></div>
+            <dl class="checkout-totals">
+                <dt>Tạm tính</dt><dd><span th:replace="~{fragments/ui :: money(${don.tamTinh})}"></span></dd>
+                <dt>Giảm giá</dt><dd>− <span th:replace="~{fragments/ui :: money(${don.giam})}"></span></dd>
+                <dt>Phí giao hàng</dt><dd><span th:replace="~{fragments/ui :: money(${don.phiVanChuyen})}"></span></dd>
+                <dt class="checkout-total">Tổng cộng</dt>
+                <dd class="checkout-total" data-order-total><span th:replace="~{fragments/ui :: money(${don.tong})}"></span></dd>
+            </dl>
+            <div class="order-payment-block">
+                <svg th:replace="~{fragments/commerce :: icon('card')}"></svg>
+                <div>
+                    <h3>Phương thức thanh toán</h3>
+                    <p th:text="${don.phuongThuc == 'COD' ? 'Thanh toán khi nhận hàng (COD)' : don.phuongThuc == 'MOMO' ? 'MoMo' : don.phuongThuc}"></p>
+                    <p class="muted" th:text="${nhanThanhToan}"></p>
+                </div>
+            </div>
+            <div class="commerce-stack order-actions">
+                <form th:if="${chiTiet.coTheThuLai}" method="post" th:action="@{/orders/{id}/momo/retry(id=${don.maDonHang})}">
+                    <button type="submit" class="btn btn--primary">Mở lại thanh toán MoMo</button>
+                </form>
+                <a th:if="${coTheYeuCauDoiTra}" class="btn btn--secondary"
+                   th:href="@{/orders/{id}/returns/new(id=${don.maDonHang})}">Yêu cầu đổi trả</a>
+                <details th:if="${chiTiet.coTheHuy}" class="order-cancel">
+                    <summary class="btn btn--secondary"><svg th:replace="~{fragments/commerce :: icon('close')}"></svg> Hủy đơn hàng</summary>
+                    <p>Bạn có chắc muốn hủy đơn hàng này?</p>
+                    <form method="post" th:action="@{/orders/{id}/cancel(id=${don.maDonHang})}">
+                        <button type="submit" class="btn btn--danger">Xác nhận hủy đơn</button>
+                    </form>
+                </details>
+            </div>
+        </aside>
+    </div>
+</main>
+<div th:replace="~{fragments/footer :: siteFooter}"></div>
+<script defer th:src="@{/js/order-detail.js}"></script>
+</body>
+</html>

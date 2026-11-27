@@ -105,11 +105,12 @@ class Momo_Controller {
     String doiSoat(@PathVariable long id, @RequestParam java.util.Map<String, String> thamSo,
                    @RequestParam(name = "listStatus", required = false) java.util.List<com.beautyshop.order.OrderStatus> loc,
                    RedirectAttributes flash) {
+        var nguon = NguonDieuHuong.donAdmin(thamSo, loc, true);
         boolean coKetQua = momo.doiSoat(id);
         flash.addFlashAttribute("message", coKetQua ? "Đã kiểm tra lại thanh toán. Xem trạng thái đơn bên dưới."
             : "Chưa thể xác nhận kết quả thanh toán.");
         NguonDieuHuong.kyDashboard(thamSo).forEach(flash::addAttribute);
-        NguonDieuHuong.donAdmin(thamSo, loc, true).giuQuaRedirect(flash);
+        nguon.giuQuaRedirect(flash);
         return "redirect:/admin/orders/" + id;
     }
 }

@@ -80,6 +80,19 @@ public class PhieuGiamGia_Repository {
                 rs.getBigDecimal(3), rs.getBigDecimal(4), rs.getBigDecimal(5))).optional();
     }
 
+    public Optional<String> lyDoKhongTheXemTruoc(String ma) {
+        return jdbc.sql("""
+            SELECT CASE
+                WHEN dang_hoat_dong = FALSE THEN 'Mã giảm giá hiện không áp dụng.'
+                WHEN ket_thuc_luc <= UTC_TIMESTAMP(6) THEN 'Mã giảm giá đã hết hạn.'
+                WHEN bat_dau_luc > UTC_TIMESTAMP(6) THEN 'Mã giảm giá chưa đến thời gian áp dụng.'
+                WHEN so_luot_da_dung + so_luot_tam_giu >= gioi_han_su_dung THEN 'Mã giảm giá đã hết lượt sử dụng.'
+                ELSE 'Mã giảm giá chưa khả dụng. Vui lòng kiểm tra lại.'
+            END
+            FROM phieu_giam_gia WHERE ma_ap_dung = ?
+            """).param(ma).query(String.class).optional();
+    }
+
     public void ghiNhanSuDung(long ma) {
         jdbc.sql("UPDATE phieu_giam_gia SET so_luot_da_dung = so_luot_da_dung + 1 WHERE ma_phieu_giam_gia = ?")
             .param(ma).update();

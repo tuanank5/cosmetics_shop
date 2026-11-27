@@ -86,6 +86,31 @@ class AdminOrderList_MariaDb_Test {
     }
 
     @Test
+    void locNgayTheoGioVietNamVaGiuKhoangNgayKhiQuayLai() throws Exception {
+        long owner = nguoiDung.saveAndFlush(new NguoiDung(UUID.randomUUID() + "@example.invalid", null, "Khách lọc ngày")).getMaNguoiDung();
+        String ma = "DATE-" + UUID.randomUUID();
+        long truoc = tao(owner, ma + "-BEFORE", "COD", "CONFIRMED", 1000);
+        long trong = tao(owner, ma + "-IN", "COD", "CONFIRMED", 1000);
+        long sau = tao(owner, ma + "-AFTER", "COD", "CONFIRMED", 1000);
+        for (var buoc : List.of(new Ngay(truoc, "2026-01-01 16:59:59"), new Ngay(trong, "2026-01-01 17:00:00"),
+                new Ngay(sau, "2026-01-02 17:00:00"))) {
+            jdbc.sql("UPDATE don_hang SET ngay_tao = ? WHERE ma_don_hang = ?").params(buoc.luc(), buoc.id()).update();
+            lan(buoc.id(), "COD-" + buoc.id(), "COD", "UNPAID", 1000);
+        }
+        var ketQua = mvc.perform(loc(ma).param("fromDate", "2026-01-02").param("toDate", "2026-01-02"))
+            .andExpect(content().string(containsString("02/01/2026 00:00")))
+            .andExpect(content().string(containsString("listFromDate=2026-01-02&amp;listToDate=2026-01-02")));
+        kiemTra(ketQua, 0, 20, 1, trong);
+        var post = mvc.perform(post("/admin/orders/" + trong + "/status").with(csrf()).param("status", "PACKING")
+                .param("listQ", ma).param("listFromDate", "2026-01-02").param("listToDate", "2026-01-02").param("listPage", "0"))
+            .andExpect(flash().attributeExists("message")).andReturn().getResponse().getRedirectedUrl();
+        mvc.perform(get(java.net.URI.create(post))).andExpect(status().isOk())
+            .andExpect(content().string(containsString("fromDate=2026-01-02&amp;toDate=2026-01-02&amp;page=0#admin-order-")));
+        mvc.perform(loc(ma).param("fromDate", "2026-02-30")).andExpect(status().isBadRequest());
+        mvc.perform(loc(ma).param("fromDate", "2026-01-03").param("toDate", "2026-01-02")).andExpect(status().isBadRequest());
+    }
+
+    @Test
     void phanTrangOnDinhVaGiuBoLocQuaPost() throws Exception {
         long owner = nguoiDung.saveAndFlush(new NguoiDung(UUID.randomUUID() + "@example.invalid", null, "Fixture")).getMaNguoiDung();
         String ma = "ORDER-" + UUID.randomUUID();
@@ -158,4 +183,5 @@ class AdminOrderList_MariaDb_Test {
     }
 
     private record GiaoDich(long id, String trangThai) {}
+    private record Ngay(long id, String luc) {}
 }

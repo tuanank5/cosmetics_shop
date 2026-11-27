@@ -55,6 +55,7 @@ class CheckoutPagesTest {
         when(addresses.danhSach(7L)).thenReturn(List.of(address));
         when(cart.docGioCustomer(7L)).thenReturn(List.of(new MucGio(22,"Kem dưỡng","4 oz",new BigDecimal("245000"),10,2,"QA-22",null,null,null)));
         when(vouchers.xemTruoc(any(), any())).thenReturn(new PhieuGiamGia_Service.GiamGia(50L,new BigDecimal("50000")));
+        when(vouchers.xemTruoc(isNull(), any())).thenReturn(new PhieuGiamGia_Service.GiamGia(null, BigDecimal.ZERO));
     }
 
     String quote(String voucher) throws Exception {
@@ -63,8 +64,8 @@ class CheckoutPagesTest {
     }
 
     void unconfirmed(String html) {
-        assertThat(html).contains("Cần tính lại tổng tiền", "data-quote-valid=\"false\"")
-            .doesNotContain("data-checkout-discount", "data-checkout-shipping", "data-checkout-total", "data-quote-amounts");
+        assertThat(html).contains("Chưa xác nhận", "data-quote-valid=\"false\"")
+            .doesNotContain("data-checkout-discount", "data-checkout-shipping", "data-checkout-total");
     }
 
     @Test void accessFollowsExistingRolesAndCsrf() throws Exception {
@@ -77,19 +78,22 @@ class CheckoutPagesTest {
         verifyNoInteractions(orders,vouchers);
     }
 
-    @Test void getStartsUnconfirmedWithoutInventingZeroDiscount() throws Exception {
+    @Test void getQuotesTheDefaultAddressWithoutRequiringInteraction() throws Exception {
         var result=mvc.perform(get("/checkout").with(user(customer))).andExpect(status().isOk())
-            .andExpect(model().attribute("baoGiaHopLe",false)).andReturn();
-        unconfirmed(result.getResponse().getContentAsString());
-        assertThat(result.getResponse().getContentAsString()).contains("490.000 ₫", "name=\"_csrf\"", "formaction=\"/checkout/quote\"")
-            .doesNotContain("gsap-", "home-motion.js", "value=\"MOMO\"");
-        verifyNoInteractions(vouchers,orders);
+            .andExpect(model().attribute("baoGiaHopLe",true)).andReturn();
+        assertThat(result.getResponse().getContentAsString()).contains("490.000 ₫", "515.000 ₫",
+                "name=\"_csrf\"", "action=\"/checkout/quote\"", "data-quote-fallback", "Giao đến Khách fixture")
+            .doesNotContain("Tính lại tổng tiền", "gsap-", "home-motion.js", "value=\"MOMO\"");
+        verify(vouchers).xemTruoc(null, new BigDecimal("490000"));
+        verifyNoInteractions(orders);
     }
 
     @Test void successfulQuoteUsesOnlyServerAmountsAndRetainsContract() throws Exception {
         String html=quote("SAVE50");
-        assertThat(html).contains("data-quote-valid=\"true\"", "50.000 ₫", "25.000 ₫", "465.000 ₫", "Mã giảm giá đã kiểm tra: SAVE50", "Địa chỉ dùng để tính phí giao hàng: Khách fixture · Địa chỉ fixture")
-            .contains("name=\"addressId\"", "name=\"voucher\"", "action=\"/checkout\"");
+        assertThat(html).contains("data-quote-valid=\"true\"", "50.000 ₫", "25.000 ₫", "465.000 ₫",
+                "Mã giảm giá hợp lệ: SAVE50", "Giao đến Khách fixture · Địa chỉ fixture")
+            .contains("type=\"hidden\" name=\"addressId\" value=\"1\"", "type=\"hidden\" name=\"voucher\" value=\"SAVE50\"",
+                "action=\"/checkout\"");
         verify(vouchers).xemTruoc("SAVE50",new BigDecimal("490000"));
         verifyNoInteractions(orders);
     }
@@ -124,13 +128,23 @@ class CheckoutPagesTest {
         verifyNoInteractions(vouchers,orders);
     }
 
-    @Test void emptyCartAndMissingAddressesNeverShowPaymentActions() throws Exception {
+    @Test void emptyCartAndMissingAddressesDisableOrdering() throws Exception {
         when(cart.docGioCustomer(7L)).thenReturn(List.of());
-        String empty=quote("SAVE50");assertThat(empty).contains("Giỏ hàng đang trống").doesNotContain("data-place-order");
+        String empty=quote("SAVE50");assertThat(empty).contains("Giỏ hàng đang trống", "data-place-order disabled");
         when(addresses.danhSach(7L)).thenReturn(List.of());
         String missing=mvc.perform(get("/checkout").with(user(customer))).andExpect(status().isOk()).andReturn().getResponse().getContentAsString();
-        assertThat(missing).contains("thêm địa chỉ giao hàng", "/account/addresses/new").doesNotContain("data-place-order");
+        assertThat(missing).contains("Thêm địa chỉ giao hàng", "/account/addresses/new", "data-place-order disabled");
         verifyNoInteractions(vouchers,orders);
+    }
+
+    @Test void quoteRejectsCartWhenASecondSkuIsNoLongerAvailable() throws Exception {
+        var first = cart.docGioCustomer(7L).getFirst();
+        var unavailable = new MucGio(23, "Tinh chất", "50 ml", new BigDecimal("90000"), 0, 1, "QA-23", null, null, null);
+        when(cart.docGioCustomer(7L)).thenReturn(List.of(first, unavailable));
+        String html = quote("SAVE50");
+        unconfirmed(html);
+        assertThat(html).contains("QA-23", "Sửa giỏ hàng", "value=\"SAVE50\"");
+        verifyNoInteractions(vouchers, orders);
     }
 
     @ParameterizedTest @ValueSource(strings={"conflict","stock","voucher"})

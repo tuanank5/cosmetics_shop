@@ -63,6 +63,10 @@ Caller phải tạo và flush đơn trong cùng transaction trước khi gọi, 
 
 P07 sử dụng contract giữ tồn 15 phút ở trên và phải giữ lượt voucher cùng transaction tạo đơn online. Gọi gateway ngoài transaction. Các route P06 phục vụ COD, dùng form session/CSRF. Quản trị tạo và sửa voucher thuộc P11.
 
+### Tuần tự hóa với thay đổi catalog (BR21)
+
+Checkout giữ khóa ghi mỗi SKU theo mã tăng dần và khóa đọc các hàng catalog cha khi đọc lại giá/tồn. Admin giữ khóa ghi trên hàng catalog đích trong `READ_COMMITTED` trước khi đếm đơn liên quan, gồm đơn mở và nghĩa vụ kho, thanh toán, voucher hoặc đổi trả chưa chốt. Truy vấn đếm dùng đọc thông thường. Hai hướng đều quyết định trên trạng thái mà giao dịch giữ khóa trước đã commit. Luồng xử lý đơn có sẵn giữ thứ tự khóa đơn rồi SKU.
+
 ## 4. Voucher
 
 - Chỉ một mã/đơn, `FIXED` hoặc `PERCENT`, giới hạn `usage_limit`, khung thời gian, minSpend, maxDiscount.

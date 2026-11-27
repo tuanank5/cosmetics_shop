@@ -10,6 +10,10 @@
     </header>
     <div th:replace="~{fragments/ui :: notices(${message}, ${error})}"></div>
     <p class="visually-hidden" aria-live="polite" data-cart-live></p>
+    <div class="alert alert--error cart-recovery" data-cart-recovery hidden>
+        <p role="alert"></p>
+        <a class="btn btn--secondary" th:href="@{/cart}">Xem giỏ hàng hiện tại</a>
+    </div>
 
     <section class="cart-empty" th:if="${#lists.isEmpty(mucGio)}">
         <h2>Giỏ hàng đang trống.</h2>
@@ -81,8 +85,8 @@
             <h2 id="summary-title">Tóm tắt giỏ hàng</h2>
             <dl><dt>Tiền hàng trước giảm giá và phí giao hàng</dt><dd><span th:replace="~{fragments/ui :: money(${#aggregates.sum(mucGio.![giaBan * soLuong])})}"></span></dd></dl>
             <p>Phí vận chuyển và mã giảm giá sẽ được xác nhận ở bước thanh toán.</p>
-            <a class="btn btn--primary btn--lg" th:href="@{/checkout}" sec:authorize="isAnonymous()">Đăng nhập để thanh toán</a>
-            <a class="btn btn--primary btn--lg" th:href="@{/checkout}" sec:authorize="hasRole('CUSTOMER')">Tiến hành thanh toán</a>
+            <a class="btn btn--primary btn--lg" data-cart-checkout th:href="@{/checkout}" sec:authorize="isAnonymous()">Đăng nhập để thanh toán</a>
+            <a class="btn btn--primary btn--lg" data-cart-checkout th:href="@{/checkout}" sec:authorize="hasRole('CUSTOMER')">Tiến hành thanh toán</a>
         </aside>
     </div>
 </main>

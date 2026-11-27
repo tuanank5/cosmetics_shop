@@ -1,0 +1,38 @@
+{
+  "head": "daea756053021310d9fd1c6ada9475564711fac6",
+  "branch": "main",
+  "trackedDiffAtStart": false,
+  "stagedDiffAtStart": false,
+  "preexistingUntracked": ["docs/prompts/PROMPT-BIZ-UX-01-BeautyShop.md", "docs/qa/AUTH-03", "docs/qa/REPORT-01", "docs/report", "docs/reviews/AUTH-03-kiem-tra-xac-thuc.md", "docs/reviews/CUSTOMER-TEST-tai-khoan-local.md", "docs/reviews/REPORT-01-bao-cao-do-an.md", "docs/ui/screenshots/REPORT-01", "env"],
+  "windows": "Windows 11 amd64",
+  "javaFromPath": "Temurin 21.0.13+9",
+  "initialMavenJava": "Oracle 17.0.17",
+  "qaMavenJava": "Temurin 21.0.13+9",
+  "maven": "3.9.11",
+  "git": "2.49.0.windows.1",
+  "node": "26.13.0",
+  "existingListeners": [1025, 3306, 3307, 6379, 8081, 27017],
+  "initialEnvPresent": ["JAVA_HOME", "DB_URL", "DB_USER", "DB_PASSWORD"],
+  "initialWriteTestGatesAbsent": ["P01_MARIADB_TEST", "P23_MONGO_TEST", "AUTH_02_MIGRATION_FIXTURE", "LOCAL_BOOTSTRAP_MIGRATION_FIXTURE", "P21_DEMO_REPORT", "ARCH_01_BSON_PHASE", "DATA_01_MONGOD"],
+  "fixture": {
+    "mariadb": "12.2.2",
+    "mongodb": "6.0",
+    "binding": "127.0.0.1, dynamic ports",
+    "sqlSchemas": ["biz_ux_01_browser", "auth_02_test", "auth_02_v5", "auth_02_v6", "beautyshop_demo_setup_*", "biz_ux_v5_drift"],
+    "mongoDatabases": ["biz_ux_01_browser", "beautyshop_test_mongo"],
+    "runtimeData": "target/biz-ux-01/<phase>-fixture-*/",
+    "externalProviders": "OAuth and RAG simulated in relevant suites, MoMo mock only, Redis/SMTP isolated or mocked"
+  },
+  "browser": {
+    "inApp": "No browser is available; discovery returned []",
+    "chrome": "158.0.8127.37, native WebSocket and ws with compression off, DevTools Page.enable timeout",
+    "firefox": "Headless screenshot probe failed to launch tab subprocess; no screenshot file created",
+    "status": "BLOCKED_BROWSER"
+  },
+  "ci": {
+    "githubPrWorkflowRuns": 0,
+    "githubCombinedStatuses": 0,
+    "directActionsApi": "socket denied",
+    "status": "UNVERIFIED_PUSH_WORKFLOW"
+  }
+}

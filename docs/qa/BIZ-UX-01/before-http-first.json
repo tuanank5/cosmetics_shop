@@ -1,0 +1,17 @@
+{
+  "phase": "before",
+  "checks": [
+    {
+      "name": "guest-catalog-and-advice",
+      "advisor": "/tu-van-da"
+    }
+  ],
+  "assetBytes": {
+    "/css/tokens.css": 905,
+    "/css/base.css": 2155,
+    "/css/components.css": 6509,
+    "/css/storefront.css": 65900,
+    "/css/admin.css": 12609
+  },
+  "error": "Expected values to be strictly equal:\n+ actual - expected\n\n+ 'http://127.0.0.1:61428/checkout'\n- '/checkout'\n"
+}

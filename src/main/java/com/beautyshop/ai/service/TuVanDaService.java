@@ -46,13 +46,13 @@ public class TuVanDaService {
         this.objectMapper = objectMapper;
     }
 
-    public String tuVan(TuVanDaRequest request) {
+    public KetQua tuVan(TuVanDaRequest request) {
         List<LoaiSanPham_TimKiem.LoaiSanPham> loaiDaChon =
                 LoaiSanPham_TimKiem.nhanDien(request.vanDeDa());
         List<BienTheSanPham> sanPham = timSanPham(loaiDaChon);
 
         if (sanPham.isEmpty()) {
-            return khongTimThay(loaiDaChon);
+            return new KetQua(khongTimThay(loaiDaChon), List.of());
         }
 
         RagProvider provider = ragProvider.getIfAvailable();
@@ -79,11 +79,20 @@ public class TuVanDaService {
         String luaChon = phanHoi.getResult().getOutput().getText();
         List<BienTheSanPham> duocChon = chonSanPham(luaChon, ungVien);
         if (duocChon.isEmpty()) {
-            return "Hiện chưa có sản phẩm trong danh sách dữ liệu đủ thông tin để xác nhận phù hợp "
-                    + "với nhu cầu của bạn. Bạn có thể hỏi lại với nhu cầu cụ thể hơn.";
+            return new KetQua("Hiện chưa có sản phẩm trong danh sách dữ liệu đủ thông tin để xác nhận phù hợp "
+                    + "với nhu cầu của bạn. Bạn có thể hỏi lại với nhu cầu cụ thể hơn.", List.of());
         }
-        return taoCauTraLoi(request, loaiDaChon, duocChon);
+        var lienKet = duocChon.stream().map(bienThe -> {
+            var sanPhamDaChon = bienThe.getSanPham();
+            return new LienKetSanPham(sanPhamDaChon.getTenSanPham(), sanPhamDaChon.getDuongDan(),
+                    bienThe.getMaBienThe(), bienThe.getTenBienThe());
+        }).toList();
+        return new KetQua(taoCauTraLoi(request, loaiDaChon, duocChon), lienKet);
     }
+
+    public record KetQua(String noiDung, List<LienKetSanPham> lienKet) {}
+
+    public record LienKetSanPham(String tenSanPham, String duongDan, Long maBienThe, String tenBienThe) {}
 
     private List<BienTheSanPham> timSanPham(
             List<LoaiSanPham_TimKiem.LoaiSanPham> loaiDaChon) {

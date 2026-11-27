@@ -84,9 +84,9 @@ class AdminDashboardPagesTest {
             .andExpect(content().string(containsString("src=\"/js/vendor/chart-4.6.1.umd.min.js\"")))
             .andExpect(content().string(containsString("src=\"/js/dashboard.js\"")))
             .andExpect(content().string(containsString("Kỳ này chưa có đơn đã thu tiền.")))
-            // Admin header: logout icon button inside a CSRF-protected POST form, light lockup.
+            // Admin header: logout button in a CSRF-protected POST form, light lockup.
             .andExpect(content().string(containsString("class=\"header-account-form\" method=\"post\" action=\"/logout\"")))
-            .andExpect(content().string(containsString("<span class=\"header-account-label\">Đăng xuất</span>")))
+            .andExpect(content().string(containsString("header-session\" type=\"submit\">Đăng xuất</button>")))
             .andExpect(content().string(containsString("beautyshop-lockup-light.svg")))
             .andExpect(content().string(not(containsString("style="))))
             .andExpect(content().string(not(containsString("onclick"))));

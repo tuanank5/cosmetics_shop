@@ -1,0 +1,50 @@
+{
+  "browser": "edge",
+  "version": "Edg/158.0.4370.33",
+  "steps": [
+    {
+      "name": "browser-target CDP",
+      "result": "PASS",
+      "product": "Edg/158.0.4370.33"
+    },
+    {
+      "name": "page-target WebSocket",
+      "result": "PASS"
+    }
+  ],
+  "renderer": "BLOCKED",
+  "targets": [
+    {
+      "type": "service_worker",
+      "attached": false
+    },
+    {
+      "type": "service_worker",
+      "attached": false
+    },
+    {
+      "type": "service_worker",
+      "attached": false
+    },
+    {
+      "type": "page",
+      "attached": false
+    }
+  ],
+  "error": "Page.enable timeout",
+  "diagnostics": [
+    "[15532:22028:1127/002255.333:WARNING:content\\browser\\gpu\\gpu_process_host.cc:1566] The GPU process has crashed 1 time(s)",
+    "[15532:27192:1127/002255.335:ERROR:components\\viz\\host\\persistent_cache_sandboxed_file_factory.cc:157] Failed to open persistent cache files in directory \"[profile]\\GPUPersistentCache\\DawnGraphiteCache\\NDWEEXLJMJ6C2FVOJVYE645YJQVCYHRX\", error: 0: The process cannot access the file because it is being used by another process. (0x20)",
+    "[15532:22028:1127/002255.453:WARNING:content\\browser\\gpu\\gpu_process_host.cc:1566] The GPU process has crashed 2 time(s)",
+    "[15532:11440:1127/002255.454:ERROR:components\\viz\\host\\persistent_cache_sandboxed_file_factory.cc:157] Failed to open persistent cache files in directory \"[profile]\\GPUPersistentCache\\DawnGraphiteCache\\NDWEEXLJMJ6C2FVOJVYE645YJQVCYHRX\", error: 0: The process cannot access the file because it is being used by another process. (0x20)",
+    "[15532:22028:1127/002255.508:WARNING:content\\browser\\gpu\\gpu_process_host.cc:1566] The GPU process has crashed 3 time(s)",
+    "[15532:22028:1127/002255.529:WARNING:content\\browser\\gpu\\gpu_process_host.cc:1566] The GPU process has crashed 4 time(s)",
+    "[15532:27192:1127/002255.529:ERROR:components\\viz\\host\\persistent_cache_sandboxed_file_factory.cc:157] Failed to open persistent cache files in directory \"[profile]\\GPUPersistentCache\\DawnGraphiteCache\\NDWEEXLJMJ6C2FVOJVYE645YJQVCYHRX\", error: 0: The process cannot access the file because it is being used by another process. (0x20)",
+    "[15532:16040:1127/002255.544:ERROR:services\\device\\public\\cpp\\geolocation\\system_geolocation_source_win.cc:124] Failed to create IAppCapability: Access is denied. (0x80070005)",
+    "[15532:22028:1127/002255.547:WARNING:content\\browser\\gpu\\gpu_process_host.cc:1566] The GPU process has crashed 5 time(s)",
+    "[15532:27192:1127/002255.564:ERROR:components\\viz\\host\\persistent_cache_sandboxed_file_factory.cc:157] Failed to open persistent cache files in directory \"[profile]\\GPUPersistentCache\\DawnGraphiteCache\\NDWEEXLJMJ6C2FVOJVYE645YJQVCYHRX\", error: 0: The process cannot access the file because it is being used by another process. (0x20)",
+    "[15532:22028:1127/002255.571:WARNING:content\\browser\\gpu\\gpu_process_host.cc:1566] The GPU process has crashed 6 time(s)",
+    "[15532:11440:1127/002256.243:ERROR:components\\viz\\host\\persistent_cache_sandboxed_file_factory.cc:157] Failed to open persistent cache files in directory \"[profile]\\GPUPersistentCache\\DawnGraphiteCache\\NDWEEXLJMJ6C2FVOJVYE645YJQVCYHRX\", error: 0: The process cannot access the file because it is being used by another process. (0x20)",
+    "[15532:11440:1127/002256.243:ERROR:components\\viz\\host\\persistent_cache_sandboxed_file_factory.cc:157] Failed to open persistent cache files in directory \"[profile]\\GPUPersistentCache\\DawnGraphiteCache\\NDWEEXLJMJ6C2FVOJVYE645YJQVCYHRX\", error: 0: The process cannot access the file because it is being used by another process. (0x20)"
+  ]
+}

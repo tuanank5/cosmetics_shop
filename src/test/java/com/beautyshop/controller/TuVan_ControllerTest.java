@@ -71,6 +71,19 @@ class TuVan_ControllerTest {
     }
 
     @Test
+    void chatEscapesContentAndShowsVerifiedFaqWhenAiIsUnavailable() throws Exception {
+        when(tuVanService.hoi("Có đổi trả không?")).thenReturn(new TuVan_Service.TraLoi(
+            "Trả lời từ câu hỏi thường gặp", "<em>Thông tin đã kiểm tra</em>", "Đổi trả",
+            "/account/returns", null, null, false, true));
+
+        mvc.perform(post("/chat").with(csrf()).param("cauHoi", "Có đổi trả không?"))
+            .andExpect(status().isOk())
+            .andExpect(content().string(containsString("AI hiện chưa sẵn sàng")))
+            .andExpect(content().string(containsString("&lt;em&gt;Thông tin đã kiểm tra&lt;/em&gt;")))
+            .andExpect(content().string(not(containsString("<em>Thông tin đã kiểm tra</em>"))));
+    }
+
+    @Test
     void cauHoiQuaDaiKhongGoiService() throws Exception {
         String email = "qa@example.invalid";
         mvc.perform(post("/chat").with(csrf()).param("cauHoi", email + "a".repeat(501)))

@@ -2,20 +2,20 @@
 <html lang="vi" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="~{fragments/head :: head('Đơn hàng · BeautyShop')}"></head>
 <body><div th:replace="~{fragments/header :: siteHeader}"></div>
-<main id="main" tabindex="-1" class="page-content">
+<main id="main" tabindex="-1" class="page-content" th:classappend="${boLoc != null ? 'admin-workspace' : null}">
     <h1 th:text="${base == '/admin/orders' ? 'Quản lý đơn hàng' : 'Đơn hàng của bạn'}">Đơn hàng</h1>
-    <h2 th:if="${tongQuan}">Tổng quan toàn hệ thống</h2>
+    <p class="admin-subtitle" th:if="${boLoc != null}">Theo dõi đơn hàng, thanh toán và các bước giao hàng.</p>
     <dl class="order-summary" th:if="${tongQuan}" aria-label="Tổng quan đơn hàng toàn hệ thống">
         <div><dt>Tổng số đơn</dt><dd th:text="${tongQuan.tongSoDon}"></dd></div>
-        <div><dt>Đơn đã thu tiền</dt><dd th:text="${tongQuan.soDonDaThu}"></dd></div>
-        <div><dt>Doanh thu đã xác nhận</dt><dd th:text="|${#numbers.formatInteger(tongQuan.doanhThuDaThu, 1, 'POINT')} ₫|"></dd></div>
+        <div><dt>Chờ xác nhận</dt><dd th:text="${tongQuan.choXacNhan}"></dd></div>
+        <div><dt>Đang xử lý hoặc giao</dt><dd th:text="${tongQuan.dangXuLy}"></dd></div>
+        <div><dt>Đã giao</dt><dd th:text="${tongQuan.daGiao}"></dd></div>
     </dl>
-    <nav th:if="${base == '/admin/orders'}" class="catalog-actions" aria-label="Sau mua">
-        <a class="text-link" th:href="@{/admin/reviews}">Duyệt đánh giá</a>
-        <a class="text-link" th:href="@{/admin/returns}">Quản lý đổi trả</a>
-        <a class="text-link" th:href="@{/admin/ai}">Nguồn thông tin tư vấn</a>
-    </nav>
-    <form th:if="${boLoc != null}" class="order-filter" method="get" th:action="@{/admin/orders}">
+    <dl class="admin-inline admin-collected" th:if="${tongQuan}" aria-label="Kết quả thanh toán toàn hệ thống">
+        <div><dt>Đơn đã thu tiền</dt><dd th:text="${tongQuan.soDonDaThu}"></dd></div>
+        <div><dt>Doanh thu đã xác nhận</dt><dd><span th:replace="~{fragments/ui :: money(${tongQuan.doanhThuDaThu})}"></span></dd></div>
+    </dl>
+    <form th:if="${boLoc != null}" class="order-filter admin-panel" method="get" th:action="@{/admin/orders}" aria-label="Lọc đơn hàng">
         <fieldset>
             <legend>Trạng thái đơn</legend>
             <div class="order-filter__status">
@@ -27,7 +27,7 @@
         </fieldset>
         <div class="order-filter__fields">
             <label>Mã đơn
-                <input type="search" name="q" maxlength="80" pattern="[A-Za-z0-9_\-]*" th:value="${boLoc.maDon}" placeholder="Nhập phần đầu mã đơn">
+                <input type="search" name="q" maxlength="80" pattern="[A-Za-z0-9_\-]*" th:value="${boLoc.maDon}" placeholder="Phần đầu mã đơn">
             </label>
             <label>Phương thức thanh toán
                 <select name="method">
@@ -51,6 +51,12 @@
                     <option th:each="s : ${kichThuocTrang}" th:value="${s}" th:text="${s}" th:selected="${boLoc.kichThuoc == s}"></option>
                 </select>
             </label>
+            <label>Từ ngày
+                <input type="date" name="fromDate" min="1000-01-02" max="9999-12-30" th:value="${boLoc.tuNgay}">
+            </label>
+            <label>Đến ngày
+                <input type="date" name="toDate" min="1000-01-02" max="9999-12-30" th:value="${boLoc.denNgay}">
+            </label>
         </div>
         <div class="catalog-actions">
             <button type="submit" class="btn btn--primary">Áp dụng</button>
@@ -60,12 +66,36 @@
     <p role="status" id="order-result-count" th:if="${pager != null}" th:text="|${pager.tongMuc} đơn phù hợp|">0 đơn phù hợp</p>
     <p class="notice" th:if="${#lists.isEmpty(donHang)}"
        th:text="${boLoc == null ? 'Chưa có đơn hàng.' : 'Chưa có đơn hàng phù hợp.'}"></p>
-    <ul class="catalog-list" th:classappend="${orderOrigin != null ? 'order-admin-list' : ''}">
+    <div th:if="${orderOrigin != null and !#lists.isEmpty(donHang)}" class="admin-table-scroll" tabindex="0" role="region" aria-label="Bảng đơn hàng">
+        <table class="admin-table">
+            <thead><tr>
+                <th scope="col">Mã đơn hàng</th><th scope="col">Khách hàng</th><th scope="col">Ngày đặt (giờ VN)</th>
+                <th scope="col" class="num">Số lượng SP</th><th scope="col" class="num">Tổng thanh toán</th>
+                <th scope="col">Phương thức</th><th scope="col">Thanh toán</th><th scope="col">Trạng thái đơn</th><th scope="col">Hành động</th>
+            </tr></thead>
+            <tbody>
+            <tr th:each="muc : ${donHang}">
+                <th scope="row">
+                    <a class="text-link order-row-link" th:id="|admin-order-${muc.maDonHang}|"
+                       th:href="@{${orderOrigin.chiTiet(muc.maDonHang)}}" th:text="${muc.maHienThi}"></a>
+                </th>
+                <td th:text="${muc.tenKhachHang}"></td>
+                <td><time th:datetime="${muc.gioDat().toOffsetDateTime()}" th:text="${#temporals.format(muc.gioDat(), 'dd/MM/yyyy HH:mm')}"></time></td>
+                <td class="num" th:text="${muc.soSanPham}"></td>
+                <td class="num"><span th:replace="~{fragments/ui :: money(${muc.tong})}"></span></td>
+                <td th:text="${muc.phuongThuc == 'MOMO' ? 'MoMo' : muc.phuongThuc}"></td>
+                <td><span class="admin-badge" th:attr="data-status=${muc.thanhToan}" th:text="${muc.nhanThanhToan()}"></span></td>
+                <td><span class="admin-badge" th:attr="data-status=${muc.trangThai}" th:text="${muc.trangThai.label}"></span></td>
+                <td><a class="btn btn--secondary admin-button" th:href="@{${orderOrigin.chiTiet(muc.maDonHang)}}"
+                       th:aria-label="|Xem chi tiết đơn ${muc.maHienThi}|">Chi tiết</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <ul class="catalog-list" th:if="${orderOrigin == null}">
         <li th:each="muc : ${donHang}">
-            <a class="text-link order-row-link" th:id="${orderOrigin != null ? 'admin-order-' + muc.maDonHang : null}"
-               th:href="@{${orderOrigin == null ? base + '/' + muc.maDonHang : orderOrigin.chiTiet(muc.maDonHang)}}" th:text="${muc.maHienThi}"></a>
+            <a class="text-link" th:href="@{${base + '/' + muc.maDonHang}}" th:text="${muc.maHienThi}"></a>
             <span th:text="${muc.trangThai.label}"></span>
-            <span th:if="${orderOrigin != null}" th:text="|${muc.phuongThuc == 'MOMO' ? 'MoMo' : (muc.phuongThuc == 'COD' ? 'Thanh toán khi nhận hàng' : muc.phuongThuc)} · ${muc.nhanThanhToan()}|"></span>
             <span th:text="|${#numbers.formatInteger(muc.tong, 1, 'POINT')} ₫|"></span>
         </li>
     </ul>

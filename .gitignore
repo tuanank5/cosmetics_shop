@@ -3,6 +3,7 @@
 *.iml
 /.vscode/
 .env
+/env
 .env.*
 !.env.example
 /uploads/**

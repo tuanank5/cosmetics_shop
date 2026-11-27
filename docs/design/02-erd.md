@@ -221,4 +221,6 @@ P04 bổ sung [V3](../../src/main/resources/db/migration/V3__ghi_nhan_gop_gio_ha
 
 P05 dùng khóa ngoại địa chỉ trong V1. [V4](../../src/main/resources/db/migration/V4__them_phien_ban_xac_thuc.sql) thêm `nguoi_dung.phien_ban_xac_thuc` để khóa tài khoản thu hồi phiên đăng nhập cũ.
 
+BR21 dùng quan hệ hiện có từ danh mục/thương hiệu qua sản phẩm và SKU tới dòng đơn, đơn hàng, lượt giữ và đổi trả. Kho vẫn theo SKU. Audit metadata mã lô và mô hình FEFO đề xuất nằm trong [checkpoint ADMIN-UX-BIZ-01](../reviews/ADMIN-UX-BIZ-01-tiep-tuc.md).
+
 P23 không đổi schema MariaDB. Nội dung đánh giá (sao, bình luận, trạng thái duyệt, phiên bản) lưu ở MongoDB, collection `danh_gia`, khóa duy nhất `maChiTietDonHang` (mã dòng đơn MariaDB). Điều kiện đánh giá BR16 vẫn kiểm trên các bảng MariaDB `chi_tiet_don_hang`, `don_hang` trước khi ghi. Từ DATA-01, bảng MariaDB `danh_gia` chỉ giữ lịch sử và được đưa vào bản sao lưu SQL. Ứng dụng dùng duy nhất MongoDB cho nội dung đánh giá. Cấu trúc document và index xem [báo cáo P23](../reviews/P23-danh-gia-mongodb.md).

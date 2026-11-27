@@ -1,0 +1,68 @@
+{
+  "phase": "after",
+  "checks": [
+    {
+      "name": "guest-catalog-and-advice",
+      "advisor": "/chat",
+      "dataHint": true,
+      "footerLinks": [
+        {
+          "href": "/products",
+          "label": "Tất cả sản phẩm"
+        },
+        {
+          "href": "/products?filterPanel=open#categories",
+          "label": "Danh mục"
+        },
+        {
+          "href": "/products?filterPanel=open#brands",
+          "label": "Thương hiệu"
+        },
+        {
+          "href": "/chat",
+          "label": "Hỏi về sản phẩm và chính sách"
+        },
+        {
+          "href": "/tu-van-da",
+          "label": "Tư vấn theo loại da"
+        },
+        {
+          "href": "/login",
+          "label": "Đăng nhập"
+        },
+        {
+          "href": "/register",
+          "label": "Đăng ký"
+        },
+        {
+          "href": "/cart",
+          "label": "Giỏ hàng"
+        }
+      ]
+    },
+    {
+      "name": "cart-form-csrf-merge-and-address",
+      "cartSubtotal": 200000,
+      "addressHint": true
+    },
+    {
+      "name": "quote-cod-concurrent-double-submit-and-owner-view",
+      "quote": 225000,
+      "statuses": [
+        200,
+        302
+      ],
+      "customerReturns": "Yêu cầu đổi trả"
+    },
+    {
+      "name": "customer-ownership-and-admin-confirmation"
+    }
+  ],
+  "assetBytes": {
+    "/css/tokens.css": 905,
+    "/css/base.css": 2155,
+    "/css/components.css": 6509,
+    "/css/storefront.css": 66332,
+    "/css/admin.css": 12609
+  }
+}

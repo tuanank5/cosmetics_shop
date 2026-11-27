@@ -1,0 +1,48 @@
+{
+  "method": "Static contrast from solid CSS colors",
+  "browserMeasured": false,
+  "pairs": [
+    {
+      "label": "Chữ chính trên card",
+      "foreground": "#F6F0E8",
+      "background": "#171516",
+      "contrast": 16.05
+    },
+    {
+      "label": "Chữ phụ trên card",
+      "foreground": "#B9B2AB",
+      "background": "#171516",
+      "contrast": 8.67
+    },
+    {
+      "label": "Tổng tiền trên card",
+      "foreground": "#E7C187",
+      "background": "#171516",
+      "contrast": 10.71
+    },
+    {
+      "label": "CTA chữ tối trên gold",
+      "foreground": "#171009",
+      "background": "#D8AD6B",
+      "contrast": 9.07
+    },
+    {
+      "label": "Focus vàng trên card phụ",
+      "foreground": "#E7C187",
+      "background": "#211D1C",
+      "contrast": 9.84
+    },
+    {
+      "label": "Còn hàng",
+      "foreground": "#C3E5A8",
+      "background": "#26371D",
+      "contrast": 9.17
+    },
+    {
+      "label": "Hết hàng",
+      "foreground": "#FFCAC6",
+      "background": "#452627",
+      "contrast": 9.31
+    }
+  ]
+}

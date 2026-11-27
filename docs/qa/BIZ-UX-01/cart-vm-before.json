@@ -1,0 +1,107 @@
+{
+  "phase": "before",
+  "environment": "Node VM, simulated DOM, clock and transport",
+  "reversed": {
+    "requests": [
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        2
+      ]
+    ],
+    "displayed": {
+      "subtotal": 350000,
+      "badge": 3,
+      "legacyPosts": 0,
+      "recovery": false,
+      "busy": false,
+      "focus": false,
+      "checkoutAvailable": true,
+      "inert": false
+    },
+    "serverSubtotal": 500000
+  },
+  "latest": {
+    "requests": [
+      [
+        1,
+        2
+      ],
+      [
+        1,
+        3
+      ]
+    ],
+    "displayed": {
+      "subtotal": 450000,
+      "badge": 4,
+      "legacyPosts": 0,
+      "recovery": false,
+      "busy": false,
+      "focus": false,
+      "checkoutAvailable": true,
+      "inert": false
+    }
+  },
+  "lost": {
+    "requests": [
+      [
+        1,
+        2
+      ]
+    ],
+    "displayed": {
+      "subtotal": 250000,
+      "badge": 2,
+      "legacyPosts": 1,
+      "recovery": false,
+      "busy": false,
+      "focus": false,
+      "checkoutAvailable": true,
+      "inert": false
+    },
+    "server": [
+      2,
+      1
+    ]
+  },
+  "hung": {
+    "requests": [
+      [
+        1,
+        2
+      ]
+    ],
+    "displayed": {
+      "subtotal": 250000,
+      "badge": 2,
+      "legacyPosts": 0,
+      "recovery": false,
+      "busy": true,
+      "focus": false,
+      "checkoutAvailable": true,
+      "inert": false
+    }
+  },
+  "anotherTab": {
+    "requests": [
+      [
+        2,
+        2
+      ]
+    ],
+    "displayed": {
+      "subtotal": 400000,
+      "badge": 3,
+      "legacyPosts": 0,
+      "recovery": false,
+      "busy": false,
+      "focus": false,
+      "checkoutAvailable": true,
+      "inert": false
+    }
+  }
+}

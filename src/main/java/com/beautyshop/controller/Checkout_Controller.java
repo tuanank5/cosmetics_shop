@@ -2,6 +2,7 @@ package com.beautyshop.controller;
 
 import com.beautyshop.dto.Checkout_Form;
 import com.beautyshop.dto.DiaChiHienThi;
+import com.beautyshop.repository.GioHang_Repository.MucGio;
 import com.beautyshop.security.PhienNguoiDung;
 import com.beautyshop.service.DiaChiNguoiDung_Service;
 import com.beautyshop.service.DonHang_Service;
@@ -11,10 +12,12 @@ import com.beautyshop.service.PhieuGiamGia_Service;
 import com.beautyshop.shipping.ShippingFee_Policy;
 import jakarta.validation.Valid;
 import java.math.BigDecimal;
+import java.util.List;
 import org.springframework.dao.ConcurrencyFailureException;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BeanPropertyBindingResult;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -40,9 +43,15 @@ class Checkout_Controller {
     @PostMapping("/quote")
     String baoGia(@AuthenticationPrincipal PhienNguoiDung phien,
                   @Valid @ModelAttribute("form") Checkout_Form form, BindingResult errors, Model model) {
-        hienCheckout(phien, model);
-        if (((java.util.List<?>) model.getAttribute("muc")).isEmpty()) {
+        tinhBaoGia(form, errors, model, chuanBiCheckout(phien, model));
+        return "order/checkout";
+    }
+
+    private void tinhBaoGia(Checkout_Form form, BindingResult errors, Model model, List<MucGio> mucGio) {
+        if (mucGio.isEmpty()) {
             errors.reject("checkout.empty", "Giỏ hàng đang trống. Vui lòng quay lại giỏ hàng.");
+        } else if (mucGio.stream().anyMatch(muc -> muc.soLuong() > muc.khaDung())) {
+            errors.reject("checkout.stock", "Số lượng trong giỏ vượt số hàng còn bán được. Hãy điều chỉnh giỏ hàng.");
         }
         if (!errors.hasFieldErrors("addressId") && !Boolean.TRUE.equals(model.getAttribute("diaChiHopLe"))) {
             errors.rejectValue("addressId", "checkout.address", "Chọn địa chỉ giao hàng của bạn.");
@@ -56,16 +65,23 @@ class Checkout_Controller {
             } catch (IllegalArgumentException exception) {
                 errors.rejectValue("voucher", "checkout.voucher", exception.getMessage());
             } catch (IllegalStateException | ConcurrencyFailureException exception) {
-                errors.reject("checkout.quote", "Chưa thể tính tổng tiền. Vui lòng thử tính lại.");
+                errors.reject("checkout.quote", "Chưa thể tính tổng tiền. Vui lòng thử lại báo giá.");
+                model.addAttribute("baoGiaLoiDichVu", true);
             }
         }
-        return "order/checkout";
     }
 
     @GetMapping
     String checkout(@AuthenticationPrincipal PhienNguoiDung phien, Model model) {
-        model.addAttribute("form", new Checkout_Form());
-        return hienCheckout(phien, model);
+        var form = new Checkout_Form();
+        model.addAttribute("form", form);
+        var muc = chuanBiCheckout(phien, model);
+        if (form.getAddressId() != null && !muc.isEmpty()) {
+            var errors = new BeanPropertyBindingResult(form, "form");
+            tinhBaoGia(form, errors, model, muc);
+            model.addAllAttributes(errors.getModel());
+        }
+        return "order/checkout";
     }
 
     @PostMapping
@@ -87,11 +103,15 @@ class Checkout_Controller {
                 return "redirect:/orders/" + maDon;
             } catch (IllegalArgumentException | IllegalStateException exception) {
                 errors.reject("checkout.invalid", exception.getMessage());
+                model.addAttribute("baoGiaLoiDichVu", true);
             } catch (ConcurrencyFailureException exception) {
                 errors.reject("checkout.retry", "Giỏ hàng hoặc tồn kho vừa thay đổi. Vui lòng thử lại.");
+                model.addAttribute("baoGiaLoiDichVu", true);
             }
         }
-        return hienCheckout(phien, model);
+        chuanBiCheckout(phien, model);
+        model.addAttribute("payment", payment);
+        return "order/checkout";
     }
 
     private String batDauMomo(long maDon, RedirectAttributes flash) {
@@ -107,23 +127,24 @@ class Checkout_Controller {
         return "redirect:/orders/" + maDon;
     }
 
-    private String hienCheckout(PhienNguoiDung phien, Model model) {
+    private List<MucGio> chuanBiCheckout(PhienNguoiDung phien, Model model) {
         var diaChi = diaChiService.danhSach(phien.getMaNguoiDung());
         var muc = gioHangService.docGioCustomer(phien.getMaNguoiDung());
         var form = (Checkout_Form) model.getAttribute("form");
         if (!model.containsAttribute(BindingResult.MODEL_KEY_PREFIX + "form") && form.getAddressId() == null) {
-            diaChi.stream().filter(DiaChiHienThi::laMacDinh).findFirst().ifPresent(dc -> form.setAddressId(dc.maDiaChi()));
+            diaChi.stream().filter(dc -> dc.laMacDinh() || diaChi.size() == 1).findFirst()
+                .ifPresent(dc -> form.setAddressId(dc.maDiaChi()));
         }
         model.addAttribute("diaChi", diaChi);
         model.addAttribute("muc", muc);
         model.addAttribute("momoEnabled", momo.enabled());
         model.addAttribute("momoMock", momo.mock());
-        BigDecimal tamTinh = muc.stream().map(sku -> sku.giaBan().multiply(BigDecimal.valueOf(sku.soLuong())))
+        BigDecimal tamTinh = muc.stream().map(MucGio::thanhTien)
             .reduce(BigDecimal.ZERO, BigDecimal::add);
         model.addAttribute("tamTinh", tamTinh);
         model.addAttribute("baoGiaHopLe", false);
         model.addAttribute("diaChiHopLe", diaChi.stream().anyMatch(dc -> dc.maDiaChi().equals(form.getAddressId())));
-        return "order/checkout";
+        return muc;
     }
 
     private void themBaoGia(Model model, BigDecimal tamTinh, BigDecimal giam) {

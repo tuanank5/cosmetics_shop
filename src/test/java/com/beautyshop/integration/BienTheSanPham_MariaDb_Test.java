@@ -170,13 +170,15 @@ class BienTheSanPham_MariaDb_Test {
             .andExpect(header().string("X-Content-Type-Options", "nosniff"));
         mvc.perform(get("/uploads/sku/unknown.png")).andExpect(status().isNotFound());
         mvc.perform(get(base)).andExpect(status().isOk())
-            .andExpect(content().string(containsString("Mã lô tham khảo: LOT-DEMO")));
+            .andExpect(content().string(containsString("Mã lô / HSD tham khảo")))
+            .andExpect(content().string(containsString("LOT-DEMO")));
         mvc.perform(form(base + "/new", sku, 2).with(csrf()))
             .andExpect(model().attributeHasFieldErrors("form", "sku"));
         mvc.perform(get("/admin/catalog/products/" + taoSanPham() + "/variants/" + maBienThe + "/edit"))
             .andExpect(status().isNotFound());
 
-        tonKho.reserveAtomically(taoDon("MOMO"), maBienThe, 1);
+        long donMomo = taoDon("MOMO");
+        tonKho.reserveAtomically(donMomo, maBienThe, 1);
         String edit = base + "/" + maBienThe + "/edit";
         mvc.perform(form(edit, sku, 0).with(csrf()))
             .andExpect(model().attributeHasFieldErrors("form", "soLuongTrongKho"));
@@ -186,7 +188,12 @@ class BienTheSanPham_MariaDb_Test {
         mvc.perform(form(edit, sku, 4).param("xoaHinhAnh", "true").with(csrf())).andExpect(redirectedUrl(base));
         assertThat(ton(maBienThe).getUrlHinhAnh()).isNull();
         mvc.perform(get(urlAnh)).andExpect(status().isNotFound());
-        mvc.perform(post(base + "/" + maBienThe + "/delete").with(csrf())).andExpect(redirectedUrl(base));
+        mvc.perform(post(base + "/" + maBienThe + "/delete").with(csrf())).andExpect(redirectedUrl(base))
+            .andExpect(flash().attributeExists("error"));
+        assertThat(ton(maBienThe).isDangHoatDong()).isTrue();
+        tonKho.releaseReservation(donMomo, maBienThe);
+        mvc.perform(post(base + "/" + maBienThe + "/delete").with(csrf())).andExpect(redirectedUrl(base))
+            .andExpect(flash().attributeExists("message"));
         assertThat(ton(maBienThe).isDangHoatDong()).isFalse();
     }
 

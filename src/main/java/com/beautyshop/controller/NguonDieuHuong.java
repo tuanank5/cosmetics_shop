@@ -12,6 +12,8 @@ import java.time.temporal.ChronoUnit;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.util.UriUtils;
 
 /** Chỉ tạo đích nội bộ từ các nguồn và tham số đã biết. */
@@ -63,8 +65,22 @@ public final class NguonDieuHuong {
         int size = soNguyen(request.get(tuChiTiet ? "listSize" : "size"), 20);
         int page = soNguyen(request.get(tuChiTiet ? "listPage" : "page"), -1);
         var loc = new BoLocDonHangAdmin(trangThai, giaTri(PhuongThuc.class, method), giaTri(ThanhToan.class, payment),
-            q, giaTri(SapXep.class, sort), size);
+            q, giaTri(SapXep.class, sort), size, ngayLoc(request.get(tuChiTiet ? "listFromDate" : "fromDate")),
+            ngayLoc(request.get(tuChiTiet ? "listToDate" : "toDate")));
         return new NguonDonAdmin(loc, page);
+    }
+
+    private static LocalDate ngayLoc(String value) {
+        if (value == null || value.isBlank()) return null;
+        try {
+            if (value.matches("[0-9]{4}-[0-9]{2}-[0-9]{2}") && value.compareTo("1000-01-02") >= 0
+                    && value.compareTo("9999-12-30") <= 0) {
+                return LocalDate.parse(value);
+            }
+        } catch (DateTimeParseException ignored) {
+            // The GET filter accepts ISO calendar dates.
+        }
+        throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Ngày lọc đơn hàng không hợp lệ.");
     }
 
     private static <E extends Enum<E>> E giaTri(Class<E> loai, String value) {
@@ -113,6 +129,8 @@ public final class NguonDieuHuong {
             if (!loc.maDon().isEmpty()) thamSo.put(chiTiet ? "listQ" : "q", loc.maDon());
             if (loc.phuongThuc() != null) thamSo.put(chiTiet ? "listMethod" : "method", loc.phuongThuc().name());
             if (loc.thanhToan() != null) thamSo.put(chiTiet ? "listPaymentStatus" : "paymentStatus", loc.thanhToan().name());
+            if (loc.tuNgay() != null) thamSo.put(chiTiet ? "listFromDate" : "fromDate", loc.tuNgay().toString());
+            if (loc.denNgay() != null) thamSo.put(chiTiet ? "listToDate" : "toDate", loc.denNgay().toString());
             if (loc.sapXep() != SapXep.newest) thamSo.put(chiTiet ? "listSort" : "sort", loc.sapXep().name());
             if (soTrang >= 0) thamSo.put(chiTiet ? "listPage" : "page", Integer.toString(soTrang));
             if (loc.kichThuoc() != 20) thamSo.put(chiTiet ? "listSize" : "size", Integer.toString(loc.kichThuoc()));

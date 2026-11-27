@@ -1,0 +1,4 @@
+﻿Successfully validated 7 migrations (execution time 00:00.021s)
+Successfully applied 7 migrations to schema `admin_ux_biz_01`, now at version v7 (execution time 00:00.074s)
+Successfully validated 7 migrations (execution time 00:00.007s)
+Current version of schema `admin_ux_biz_01`: 7

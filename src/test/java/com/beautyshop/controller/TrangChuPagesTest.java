@@ -78,7 +78,7 @@ class TrangChuPagesTest {
                 "id=\"skin-title\"", "id=\"ritual-title\"", "id=\"ingredients-title\"", "id=\"featured-title\"", "id=\"advisor-title\"")
             .contains("href=\"/products?skinType=Da%20kh%C3%B4\"", "9 sản phẩm", "Thường cảm thấy căng",
                 "href=\"/products?category=lam-sach\"", "href=\"/products?q=hyaluronic\"", "Xem 5 sản phẩm",
-                "href=\"/products/demo-r001?from=home-featured", "Xem tất cả sản phẩm", "href=\"/chat\"", "Hỏi BeautyShop",
+                "href=\"/products/demo-r001?from=home-featured", "Xem tất cả sản phẩm", "href=\"/chat\"", "Trò chuyện với BeautyShop AI",
                 "không thay thế tư vấn của bác sĩ da liễu", "href=\"#home-products\"")
             .doesNotContain("th:utext", "style=", "onclick=", "home-slide-1", "href=\"#ritual\"")
             .containsOnlyOnce("<h1");

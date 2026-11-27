@@ -2,116 +2,86 @@
 <html lang="vi" xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <body>
-
-<th:block th:fragment="siteFooter">
-
-  <footer class="site-footer">
+<th:block th:fragment="siteFooter" th:with="admin=${uiPath == '/admin' or #strings.startsWith(uiPath ?: '', '/admin/')}">
+  <footer th:if="${admin}" class="admin-footer">© 2026 BeautyShop</footer>
+  <footer th:unless="${admin}" class="site-footer" data-contact-footer th:with="lienHe=${lienHeCuaHang}">
     <div class="footer-grid">
-      <div>
-        <h2>VỀ BEAUTYSHOP</h2>
-
-        <a th:href="@{/}">Giới thiệu cửa hàng</a>
-        <a th:href="@{/products}">Sản phẩm</a>
-        <a th:href="@{/products#brands(filterPanel='open')}">Thương hiệu</a>
-        <a th:href="@{/chat}">Tư vấn làm đẹp</a>
-
-        <nav aria-label="Tài khoản" sec:authorize="isAnonymous()">
-          <h2>TÀI KHOẢN</h2>
-          <a th:href="@{/login}">Đăng nhập</a>
-          <a th:href="@{/register}">Đăng ký</a>
-          <a th:href="@{/cart}">Giỏ hàng</a>
+      <div class="footer-about">
+        <a class="footer-brand" th:href="@{/}" aria-label="BeautyShop – Trang chủ">
+          <img th:src="@{/img/brand/beautyshop-wordmark.svg}" alt="BeautyShop" width="862" height="71">
+        </a>
+        <p>Mỹ phẩm và sản phẩm chăm sóc da đa thương hiệu.</p>
+        <nav class="footer-social" aria-label="Mạng xã hội BeautyShop"
+             th:if="${lienHe != null and (lienHe.zalo != null or lienHe.facebook != null or lienHe.instagram != null)}">
+          <a th:if="${lienHe.zalo}" th:href="${lienHe.zalo}" target="_blank" rel="noopener noreferrer" aria-label="Zalo BeautyShop (mở tab mới)">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16v13H10l-6 4V4zm4 4h8l-8 5h8"/></svg>
+          </a>
+          <a th:if="${lienHe.facebook}" th:href="${lienHe.facebook}" target="_blank" rel="noopener noreferrer" aria-label="Facebook BeautyShop (mở tab mới)">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 21V12h3l.5-3H14V7c0-1 .5-2 2-2h2V2h-3a4 4 0 0 0-4 4v3H8v3h3v9"/></svg>
+          </a>
+          <a th:if="${lienHe.instagram}" th:href="${lienHe.instagram}" target="_blank" rel="noopener noreferrer" aria-label="Instagram BeautyShop (mở tab mới)">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17" cy="7" r=".65"/></svg>
+          </a>
         </nav>
-
-        <nav aria-label="Tài khoản khách hàng" sec:authorize="hasRole('CUSTOMER')">
-          <h2>TÀI KHOẢN CỦA BẠN</h2>
-          <a th:href="@{/account}">Thông tin tài khoản</a>
+      </div>
+      <nav aria-labelledby="footer-discover">
+        <h2 id="footer-discover">Khám phá</h2>
+        <a th:href="@{/}">Trang chủ</a>
+        <a th:href="@{/products}">Sản phẩm</a>
+        <a th:href="@{/products#categories(filterPanel='open')}">Danh mục</a>
+        <a th:href="@{/products#brands(filterPanel='open')}">Thương hiệu</a>
+        <a th:href="@{/chat}">Tư vấn AI</a>
+      </nav>
+      <nav aria-labelledby="footer-support">
+        <h2 id="footer-support">Hỗ trợ khách hàng</h2>
+        <a th:href="@{/cart}" sec:authorize="!hasRole('ADMIN')">Giỏ hàng</a>
+        <th:block sec:authorize="hasRole('CUSTOMER')">
           <a th:href="@{/orders}">Theo dõi đơn hàng</a>
           <a th:href="@{/account/wishlist}">Sản phẩm yêu thích</a>
-          <a th:href="@{/account/returns}">Chính sách đổi trả và hoàn tiền</a>
-          <a th:href="@{/cart}">Giỏ hàng</a>
-        </nav>
-
-        <nav aria-label="Quản trị" sec:authorize="hasRole('ADMIN')">
-          <h2>QUẢN TRỊ</h2>
+          <a th:href="@{/account/returns}">Yêu cầu đổi trả</a>
+        </th:block>
+        <a th:href="@{/account}" sec:authorize="hasRole('CUSTOMER')">Thông tin tài khoản</a>
+        <a th:href="@{/login}" sec:authorize="isAnonymous()">Đăng nhập</a>
+        <a th:href="@{/register}" sec:authorize="isAnonymous()">Đăng ký</a>
+        <th:block sec:authorize="hasRole('ADMIN')">
+          <a th:href="@{/admin/catalog/products}">Quản lý sản phẩm</a>
           <a th:href="@{/admin/catalog/categories}">Quản lý danh mục</a>
           <a th:href="@{/admin/catalog/brands}">Quản lý thương hiệu</a>
-          <a th:href="@{/admin/catalog/products}">Quản lý sản phẩm</a>
-        </nav>
-      </div>
-      <nav aria-label="Hướng dẫn mua hàng">
-        <h2>HƯỚNG DẪN MUA HÀNG</h2>
-
-        <a th:href="@{/products}">Hướng dẫn mua hàng</a>
-        <a th:href="@{/products}">Chính sách thanh toán</a>
-        <a th:href="@{/}">Chính sách bảo mật thông tin</a>
+        </th:block>
       </nav>
-      <nav aria-label="Hoạt động và hỗ trợ">
-        <h2>ĐỒNG HÀNH CÙNG BẠN</h2>
-
-        <a th:href="@{/chat}">Tư vấn sản phẩm</a>
-        <a th:href="@{/products}">Khám phá sản phẩm mới</a>
-      </nav>
-
-      <div class="footer-contact">
-
-        <h2>ĐỊA CHỈ CỬA HÀNG</h2>
-
-        <a th:href="@{/products}">
-          Khám phá cửa hàng
-        </a>
-
-        <div class="footer-contact-item">
-          <div>
-            <strong>EMAIL</strong>
-            <p>support@beautyshop.vn</p>
-          </div>
-        </div>
-
-        <div class="footer-contact-item">
-          <div>
-            <strong>HOTLINE</strong>
-            <p>1900 0000 00</p>
-          </div>
-        </div>
-        <div class="footer-social">
-          <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">
-            Facebook
+      <section class="footer-contact" aria-labelledby="footer-contact">
+        <h2 id="footer-contact">Địa chỉ liên hệ</h2>
+        <address>
+          <p>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg>
+            <span>12 Nguyễn Văn Bảo, Gò Vấp, Thành phố Hồ Chí Minh, Việt Nam.</span>
+          </p>
+          <a th:if="${lienHe?.dienThoai}" th:href="${lienHe.goiDien()}">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h4l2 5-3 2a13 13 0 0 0 5 5l2-3 5 2v4c0 2-2 3-4 3C9 20 4 15 3 7c0-2 1-4 3-4Z"/></svg>
+            <span th:text="${lienHe.dienThoai}"></span>
           </a>
-
-          <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">
-            Instagram
+          <a th:if="${lienHe?.email}" th:href="${lienHe.guiEmail()}">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+            <span th:text="${lienHe.email}"></span>
           </a>
-
-          <a href="https://chat.zalo.me/" target="_blank" rel="noopener noreferrer">
-            Zalo
-          </a>
-        </div>
-
-      </div>
-
+        </address>
+        <iframe src="https://www.google.com/maps?hl=vi&amp;output=embed&amp;q=12%20Nguy%E1%BB%85n%20V%C4%83n%20B%E1%BA%A3o%2C%20G%C3%B2%20V%E1%BA%A5p%2C%20Th%C3%A0nh%20ph%E1%BB%91%20H%E1%BB%93%20Ch%C3%AD%20Minh%2C%20Vi%E1%BB%87t%20Nam"
+                title="Google Maps – 12 Nguyễn Văn Bảo, Gò Vấp" loading="lazy" width="480" height="240"
+                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <a class="footer-map-link" href="https://www.google.com/maps/search/?api=1&amp;query=12%20Nguy%E1%BB%85n%20V%C4%83n%20B%E1%BA%A3o%2C%20G%C3%B2%20V%E1%BA%A5p%2C%20Th%C3%A0nh%20ph%E1%BB%91%20H%E1%BB%93%20Ch%C3%AD%20Minh%2C%20Vi%E1%BB%87t%20Nam"
+           target="_blank" rel="noopener noreferrer">Xem trên Google Maps <span aria-hidden="true">↗</span><span class="visually-hidden"> (mở tab mới)</span></a>
+      </section>
     </div>
-    <div class="footer-company">
-      <div>
-        <p class="footer-brand"><img th:src="@{/img/brand/beautyshop-wordmark.svg}" alt="BeautyShop" width="862" height="71"></p>
-        <h3>Công ty BeautyShop</h3>
-
-        <p>Hệ thống phân phối mỹ phẩm và sản phẩm chăm sóc sắc đẹp.</p>
-        <p>Cam kết mang đến những sản phẩm chất lượng cho khách hàng.</p>
-        <p>© 2026 BeautyShop. All rights reserved.</p>
-      </div>
+    <div class="footer-bottom">
+      <p>© 2026 BeautyShop</p>
+      <p>Công dụng sản phẩm có thể khác nhau tùy đặc điểm và tình trạng da.</p>
     </div>
-
   </footer>
-  <div class="footer-bottom">
-    <p>
-      *Lưu ý: Thông tin và công dụng sản phẩm có thể thay đổi
-      tùy theo đặc điểm và tình trạng da của mỗi người.
-    </p>
-  </div>
-
   <div th:replace="~{fragments/ui :: confirmDialog}"></div>
-
 </th:block>
 
+<th:block th:fragment="wishlistFooter">
+  <th:block th:replace="~{fragments/footer :: siteFooter}"></th:block>
+</th:block>
 </body>
 </html>

@@ -1,10 +1,12 @@
 package com.beautyshop.dto;
 
 import com.beautyshop.order.OrderStatus;
+import java.time.LocalDate;
 import java.util.List;
 
 public record BoLocDonHangAdmin(List<OrderStatus> trangThai, PhuongThuc phuongThuc,
-                               ThanhToan thanhToan, String maDon, SapXep sapXep, int kichThuoc) {
+                               ThanhToan thanhToan, String maDon, SapXep sapXep, int kichThuoc,
+                               LocalDate tuNgay, LocalDate denNgay) {
     public static final List<Integer> KICH_THUOC = List.of(10, 20, 50);
 
     public BoLocDonHangAdmin {
@@ -13,6 +15,15 @@ public record BoLocDonHangAdmin(List<OrderStatus> trangThai, PhuongThuc phuongTh
         if (maDon.length() > 80 || !maDon.matches("[A-Za-z0-9_-]*")) maDon = "";
         if (sapXep == null) sapXep = SapXep.newest;
         if (!KICH_THUOC.contains(kichThuoc)) kichThuoc = 20;
+        if (tuNgay != null && denNgay != null && denNgay.isBefore(tuNgay)) {
+            throw new org.springframework.web.server.ResponseStatusException(org.springframework.http.HttpStatus.BAD_REQUEST,
+                "Ngày kết thúc phải từ ngày bắt đầu trở đi.");
+        }
+    }
+
+    public BoLocDonHangAdmin(List<OrderStatus> trangThai, PhuongThuc phuongThuc, ThanhToan thanhToan,
+                            String maDon, SapXep sapXep, int kichThuoc) {
+        this(trangThai, phuongThuc, thanhToan, maDon, sapXep, kichThuoc, null, null);
     }
 
     public enum PhuongThuc {

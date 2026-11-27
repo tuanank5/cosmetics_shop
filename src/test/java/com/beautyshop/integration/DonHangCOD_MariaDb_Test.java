@@ -76,13 +76,14 @@ class DonHangCOD_MariaDb_Test {
                 .param("soDienThoai", "0901234567").param("diaChiChiTiet", "Địa chỉ snapshot").param("laMacDinh", "true"))
             .andExpect(redirectedUrl("/checkout"));
         mvc.perform(get("/checkout").session(session))
-            .andExpect(model().attribute("baoGiaHopLe", false))
+            .andExpect(model().attribute("baoGiaHopLe", true))
             .andExpect(content().string(containsString("550.000")));
         assertThat(donHangService.danhSachCustomer(chu.id())).isEmpty();
         mvc.perform(post("/checkout/quote").session(session).with(csrf())
                 .param("addressId", Long.toString(chu.maDiaChi())).param("voucher", voucher))
             .andExpect(status().isOk()).andExpect(content().string(containsString("505.000")));
         assertThat(luot(voucher)).isZero();
+        assertThat(ton(variant)).isEqualTo(3);
         mvc.perform(post("/checkout").session(session).with(csrf()).param("addressId", Long.toString(khac.maDiaChi())))
             .andExpect(model().attributeHasErrors("form"));
         mvc.perform(post("/checkout").session(session).param("addressId", Long.toString(chu.maDiaChi())))
@@ -113,6 +114,10 @@ class DonHangCOD_MariaDb_Test {
         assertThat(ton(variant)).isEqualTo(3);
         assertThat(luot(voucher)).isZero();
         assertThat(trangThai(maDon)).isEqualTo("CANCELLED");
+        mvc.perform(get("/orders/" + maDon).session(session)).andExpect(status().isOk())
+            .andExpect(content().string(containsString("Đơn đã hủy.")))
+            .andExpect(content().string(not(containsString("Xác nhận hủy đơn"))))
+            .andExpect(content().string(not(containsString("order-timeline"))));
 
         gioHangService.themGioCustomer(chu.id(), variant);
         var tongQuanTruoc = tongQuanAdmin();

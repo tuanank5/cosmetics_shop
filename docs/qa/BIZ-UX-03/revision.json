@@ -1,0 +1,10 @@
+﻿{
+    "HEAD":  "daea756053021310d9fd1c6ada9475564711fac6",
+    "branch":  "main",
+    "sourceFiles":  316,
+    "DifferencesWithBizUx02Current":  0,
+    "DifferencesWithBizUx03Build":  0,
+    "StagedFiles":  0,
+    "PreexistingBackupPatch":  true,
+    "Build":  "target/biz-ux-03/current"
+}

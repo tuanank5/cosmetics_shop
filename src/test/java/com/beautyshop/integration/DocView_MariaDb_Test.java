@@ -1,5 +1,6 @@
 package com.beautyshop.integration;
 
+import com.beautyshop.cart.GioKhach;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.util.ArrayList;
@@ -36,6 +37,42 @@ class DocView_MariaDb_Test {
     @Autowired MockMvc mvc;
     @Autowired JdbcClient jdbc;
     @Autowired PasswordEncoder encoder;
+
+    @Test
+    void gioKhachDocNhieuSkuTrongMotTruyVan() throws Exception {
+        long danhMuc = jdbc.sql("INSERT INTO danh_muc (ten_danh_muc, duong_dan) VALUES ('Fixture Cart', 'fixture-cart') RETURNING ma_danh_muc")
+            .query(Long.class).single();
+        long thuongHieu = jdbc.sql("INSERT INTO thuong_hieu (ten_thuong_hieu, duong_dan) VALUES ('Fixture Cart', 'fixture-cart') RETURNING ma_thuong_hieu")
+            .query(Long.class).single();
+        long sanPham = taoSanPham(danhMuc, thuongHieu, 77);
+        var gio = GioKhach.doc(null);
+        var phien = new MockHttpSession();
+        var luotDoc = new ArrayList<Long>();
+        for (int i = 1; i <= 7; i++) {
+            long sku = taoSku(sanPham, 70 + i);
+            gio = gio.them(sku, 2);
+            if (i == 7) {
+                jdbc.sql("UPDATE bien_the_san_pham SET dang_hoat_dong = FALSE WHERE ma_bien_the = ?").param(sku).update();
+            }
+            if (i == 1 || i == 7) {
+                gio.luu(phien);
+                long truoc = soSelectMariaDb();
+                var trang = doc("/cart", phien);
+                long selects = soSelectMariaDb() - truoc;
+                luotDoc.add(selects);
+                System.out.println("[BIZ-UX-01] guest-cart sku=" + i + " SELECT=" + selects);
+                assertThat(trang.html()).contains("DTO-SKU-71", "200.000 ₫");
+                if (i == 7) {
+                    assertThat(trang.html()).contains("DTO-SKU-77", "Biến thể hiện không còn hàng.", "1.400.000 ₫");
+                }
+            }
+        }
+        assertThat(luotDoc).containsExactly(1L, 1L);
+    }
+
+    private long soSelectMariaDb() {
+        return jdbc.sql("SHOW GLOBAL STATUS LIKE 'Com_select'").query((rs, row) -> rs.getLong(2)).single();
+    }
 
     @Test
     void doCotSoTruyVanVaHtmlCuaNhungDuongDoc() throws Exception {
@@ -88,7 +125,7 @@ class DocView_MariaDb_Test {
             assertThat(pdp.html()).contains("DTO Product 1", "DTO SKU 1", "DTO SKU " + soLuong);
             baoCao("pdp-" + soLuong, pdp, 2, "san_pham", "bien_the_san_pham");
             var skuAdmin = doc("/admin/catalog/products/" + sanPham + "/variants", phienAdmin);
-            assertThat(skuAdmin.html()).contains("Trong kho:", "Đang giữ cho đơn hàng:", "DTO SKU " + soLuong);
+            assertThat(skuAdmin.html()).contains(">Trong kho</th>", ">Đang giữ</th>", "DTO SKU " + soLuong);
             baoCao("sku-admin-" + soLuong, skuAdmin, 3, "san_pham", "bien_the_san_pham");
         }
         var form = doc("/admin/catalog/products/" + sanPham + "/edit", phienAdmin);

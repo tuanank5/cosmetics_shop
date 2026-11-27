@@ -1,0 +1,41 @@
+{
+  "revision": "after",
+  "checks": {
+    "footer": {
+      "embed": true,
+      "address": true,
+      "fallback": true,
+      "configuredContact": true
+    },
+    "checkout": {
+      "snapshotTotal": 165000,
+      "ownerOnly": true
+    },
+    "orders": {
+      "table": true,
+      "adminFooter": true
+    },
+    "detail": {
+      "table": true,
+      "adminFooter": true
+    },
+    "catalog": {
+      "table": true,
+      "adminFooter": true
+    },
+    "sku": {
+      "table": true,
+      "adminFooter": true
+    },
+    "skuForm": {
+      "table": false,
+      "adminFooter": true
+    },
+    "protection": {
+      "stalePostDenied": true,
+      "customerForbidden": true,
+      "csrfRequired": true
+    }
+  },
+  "status": "PASS"
+}

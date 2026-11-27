@@ -134,8 +134,12 @@ public class PhieuGiamGia_Service {
         if (ma == null || ma.isBlank()) {
             return new GiamGia(null, BigDecimal.ZERO);
         }
-        var phieu = repository.timPhieuHopLe(chuanHoa(ma), khoa)
-            .orElseThrow(() -> new IllegalArgumentException("Mã giảm giá không hợp lệ, đã hết hạn hoặc hết lượt sử dụng."));
+        String maApDung = chuanHoa(ma);
+        var phieu = repository.timPhieuHopLe(maApDung, khoa).orElseThrow(() -> {
+            String lyDo = khoa ? "Mã giảm giá không hợp lệ, đã hết hạn hoặc hết lượt sử dụng."
+                : repository.lyDoKhongTheXemTruoc(maApDung).orElse("Mã giảm giá không hợp lệ.");
+            return new IllegalArgumentException(lyDo);
+        });
         if (tamTinh.compareTo(phieu.toiThieu()) < 0) {
             throw new IllegalArgumentException("Tiền hàng chưa đạt mức tối thiểu để dùng mã giảm giá này.");
         }

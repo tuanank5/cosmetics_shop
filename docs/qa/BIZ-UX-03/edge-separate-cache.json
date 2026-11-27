@@ -1,0 +1,57 @@
+{
+  "engine": "edge",
+  "separateProfileAndDiskCache": true,
+  "processResources": {
+    "freeMemoryMiB": 1390,
+    "totalMemoryMiB": 7955,
+    "availableDiskMiB": 77185
+  },
+  "steps": [
+    {
+      "step": "browser transport",
+      "result": "PASS",
+      "detail": "Edg/158.0.4370.33"
+    },
+    {
+      "step": "Chromium process types",
+      "result": "PASS",
+      "detail": {
+        "browser": 1,
+        "network.mojom.NetworkService": 1
+      }
+    },
+    {
+      "step": "direct Page.enable",
+      "result": "BLOCKED",
+      "detail": "Page.enable timeout"
+    }
+  ],
+  "result": "BLOCKED",
+  "blocker": "Target.attachToTarget timeout",
+  "diagnostics": [
+    "[15204:29596:1127/004213.426:ERROR:content\\browser\\gpu\\gpu_process_host.cc:1097] GPU process exited unexpectedly: exit_code=-1073741790",
+    "[15204:29596:1127/004213.426:WARNING:content\\browser\\gpu\\gpu_process_host.cc:1566] The GPU process has crashed 1 time(s)",
+    "[15204:4516:1127/004213.427:ERROR:components\\viz\\host\\persistent_cache_sandboxed_file_factory.cc:157] Failed to open persistent cache files in directory \"[isolated]\\profile\\GPUPersistentCache\\DawnGraphiteCache\\NDWEEXLJMJ6C2FVOJVYE645YJQVCYHRX\", error: 0: The process cannot access the file because it is being used by another process. (0x20)",
+    "[15204:29596:1127/004213.495:ERROR:content\\browser\\gpu\\gpu_process_host.cc:1097] GPU process exited unexpectedly: exit_code=-1073741790",
+    "[15204:29596:1127/004213.495:WARNING:content\\browser\\gpu\\gpu_process_host.cc:1566] The GPU process has crashed 2 time(s)",
+    "[15204:29596:1127/004213.526:ERROR:content\\browser\\gpu\\gpu_process_host.cc:1097] GPU process exited unexpectedly: exit_code=-1073741790",
+    "[15204:29596:1127/004213.526:WARNING:content\\browser\\gpu\\gpu_process_host.cc:1566] The GPU process has crashed 3 time(s)",
+    "[15204:4516:1127/004213.526:ERROR:components\\viz\\host\\persistent_cache_sandboxed_file_factory.cc:157] Failed to open persistent cache files in directory \"[isolated]\\profile\\GPUPersistentCache\\DawnGraphiteCache\\NDWEEXLJMJ6C2FVOJVYE645YJQVCYHRX\", error: 0: The process cannot access the file because it is being used by another process. (0x20)",
+    "[15204:29596:1127/004213.538:ERROR:content\\browser\\gpu\\gpu_process_host.cc:1097] GPU process exited unexpectedly: exit_code=-1073741790",
+    "[15204:29596:1127/004213.538:WARNING:content\\browser\\gpu\\gpu_process_host.cc:1566] The GPU process has crashed 4 time(s)",
+    "[15204:4516:1127/004213.542:ERROR:components\\viz\\host\\persistent_cache_sandboxed_file_factory.cc:157] Failed to open persistent cache files in directory \"[isolated]\\profile\\GPUPersistentCache\\DawnGraphiteCache\\NDWEEXLJMJ6C2FVOJVYE645YJQVCYHRX\", error: 0: The process cannot access the file because it is being used by another process. (0x20)",
+    "[15204:29596:1127/004213.559:ERROR:content\\browser\\gpu\\gpu_process_host.cc:1097] GPU process exited unexpectedly: exit_code=-1073741790",
+    "[15204:29596:1127/004213.559:WARNING:content\\browser\\gpu\\gpu_process_host.cc:1566] The GPU process has crashed 5 time(s)",
+    "[15204:4516:1127/004213.559:ERROR:components\\viz\\host\\persistent_cache_sandboxed_file_factory.cc:157] Failed to open persistent cache files in directory \"[isolated]\\profile\\GPUPersistentCache\\DawnGraphiteCache\\NDWEEXLJMJ6C2FVOJVYE645YJQVCYHRX\", error: 0: The process cannot access the file because it is being used by another process. (0x20)",
+    "[15204:29596:1127/004213.576:ERROR:content\\browser\\gpu\\gpu_process_host.cc:1097] GPU process exited unexpectedly: exit_code=-1073741790",
+    "[15204:29596:1127/004213.576:WARNING:content\\browser\\gpu\\gpu_process_host.cc:1566] The GPU process has crashed 6 time(s)",
+    "[15204:29596:1127/004213.594:ERROR:content\\browser\\gpu\\gpu_process_host.cc:1097] GPU process exited unexpectedly: exit_code=-1073741790",
+    "[15204:29596:1127/004213.594:WARNING:content\\browser\\gpu\\gpu_process_host.cc:1566] The GPU process has crashed 7 time(s)",
+    "[15204:4516:1127/004213.595:ERROR:components\\viz\\host\\persistent_cache_sandboxed_file_factory.cc:157] Failed to open persistent cache files in directory \"[isolated]\\profile\\GPUPersistentCache\\DawnGraphiteCache\\NDWEEXLJMJ6C2FVOJVYE645YJQVCYHRX\", error: 0: The process cannot access the file because it is being used by another process. (0x20)",
+    "[15204:29596:1127/004213.608:ERROR:content\\browser\\gpu\\gpu_process_host.cc:1097] GPU process exited unexpectedly: exit_code=-1073741790",
+    "[15204:29596:1127/004213.608:WARNING:content\\browser\\gpu\\gpu_process_host.cc:1566] The GPU process has crashed 8 time(s)",
+    "[15204:29596:1127/004213.623:ERROR:content\\browser\\gpu\\gpu_process_host.cc:1097] GPU process exited unexpectedly: exit_code=-1073741790",
+    "[15204:29596:1127/004213.623:WARNING:content\\browser\\gpu\\gpu_process_host.cc:1566] The GPU process has crashed 9 time(s)",
+    "[15204:29596:1127/004213.623:FATAL:content\\browser\\gpu\\gpu_data_manager_impl_private.cc:404] GPU process isn't usable. Goodbye."
+  ]
+}

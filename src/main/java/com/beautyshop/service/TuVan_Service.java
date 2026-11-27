@@ -93,12 +93,12 @@ public class TuVan_Service {
         var hienTai = chiMuc;
         var ai = provider.getIfAvailable();
         if (ai == null || hienTai == null) {
-            return timFaq(cauHoi);
+            return timFaq(cauHoi).voiAiKhongKhaDung();
         }
         try {
             return gioiHan(() -> tuVan(ai, hienTai, cauHoi), 12);
         } catch (KhongKhaDung exception) {
-            return timFaq(cauHoi);
+            return timFaq(cauHoi).voiAiKhongKhaDung();
         }
     }
 
@@ -271,9 +271,18 @@ public class TuVan_Service {
     }
 
     public record TraLoi(String nhan, String noiDung, String tieuDeNguon, String url, BigDecimal gia, Integer khaDung,
-                         boolean tuChoi) {
+                         boolean tuChoi, boolean aiKhongKhaDung) {
         public TraLoi(String nhan, String noiDung, String tieuDeNguon, String url, BigDecimal gia, Integer khaDung) {
             this(nhan, noiDung, tieuDeNguon, url, gia, khaDung, false);
+        }
+
+        public TraLoi(String nhan, String noiDung, String tieuDeNguon, String url, BigDecimal gia, Integer khaDung,
+                      boolean tuChoi) {
+            this(nhan, noiDung, tieuDeNguon, url, gia, khaDung, tuChoi, false);
+        }
+
+        private TraLoi voiAiKhongKhaDung() {
+            return new TraLoi(nhan, noiDung, tieuDeNguon, url, gia, khaDung, tuChoi, true);
         }
     }
     public record TrangThai(boolean aiEnabled, int soDoan, Instant capNhat, boolean dangNap) {}

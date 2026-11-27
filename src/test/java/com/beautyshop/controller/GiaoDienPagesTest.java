@@ -106,14 +106,14 @@ class GiaoDienPagesTest {
     }
 
     @Test
-    void wishlistTrongHeaderChiDanhChoCustomer() throws Exception {
+    void wishlistTrongHeaderDanhChoGuestVaCustomer() throws Exception {
         mvc.perform(get("/").with(user("fixture").roles("CUSTOMER")))
             .andExpect(status().isOk())
             .andDo(result -> assertThat(header(result.getResponse().getContentAsString()))
                 .containsPattern("(?s)<a[^>]*href=\"/account/wishlist\"[^>]*aria-label=\"Sản phẩm yêu thích\"[^>]*>\\s*<svg"));
         mvc.perform(get("/"))
             .andDo(result -> assertThat(header(result.getResponse().getContentAsString()))
-                .doesNotContain("href=\"/account/wishlist\""));
+                .contains("href=\"/account/wishlist\""));
         mvc.perform(get("/").with(user("fixture").roles("ADMIN")))
             .andDo(result -> assertThat(header(result.getResponse().getContentAsString()))
                 .doesNotContain("href=\"/account/wishlist\"", "href=\"/cart\"", "href=\"/account\""));
@@ -163,7 +163,8 @@ class GiaoDienPagesTest {
             .andExpect(content().string(containsString("href=\"/products?filterPanel=open#categories\"")))
             .andExpect(content().string(containsString("href=\"/products?filterPanel=open#brands\"")))
             .andExpect(content().string(containsString("href=\"/products?filterPanel=open#skin-type\"")))
-            .andExpect(content().string(containsString("<summary>Loại da</summary>")))
+            .andExpect(content().string(containsString("Tìm sản phẩm theo loại da")))
+            .andExpect(content().string(containsString("aria-controls=\"discovery-panel\"")))
             .andExpect(content().string(containsString("method=\"get\" action=\"/products\"")))
             .andExpect(content().string(containsString("name=\"q\"")));
     }

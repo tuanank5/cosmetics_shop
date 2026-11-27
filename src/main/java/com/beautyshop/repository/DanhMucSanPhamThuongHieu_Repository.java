@@ -20,4 +20,8 @@ public interface DanhMucSanPhamThuongHieu_Repository<T extends MucDanhMucSanPham
     @Lock(LockModeType.PESSIMISTIC_WRITE)
     @Query("select m from #{#entityName} m where id(m) = :ma")
     Optional<T> khoa(@Param("ma") long ma);
+
+    @Lock(LockModeType.PESSIMISTIC_READ)
+    @Query("select m from #{#entityName} m where id(m) = :ma")
+    Optional<T> docCoKhoa(@Param("ma") long ma);
 }

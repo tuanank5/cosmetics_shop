@@ -18,6 +18,7 @@
   if (!statePath) return;
 
   const feedback = document.querySelector('[data-wishlist-feedback]');
+  const count = page?.querySelector('[data-wishlist-count]');
   const busy = new Set();
   let generation = 0;
   let hetPhien = false;
@@ -40,8 +41,9 @@
         const next = row.nextElementSibling || row.previousElementSibling;
         row.remove();
         forms.delete(id);
-        if (canFocus) (next?.querySelector('button') || page.querySelector('[data-wishlist-heading]')).focus();
+        if (canFocus) (next?.querySelector('[data-wishlist-id] button') || page.querySelector('[data-wishlist-heading]')).focus();
         page.querySelector('[data-wishlist-empty]').hidden = forms.size !== 0;
+        if (count) count.textContent = forms.size + ' sản phẩm';
       }
     }
   }

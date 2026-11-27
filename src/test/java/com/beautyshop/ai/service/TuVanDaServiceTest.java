@@ -50,9 +50,10 @@ class TuVanDaServiceTest {
         when(repository.findDangBanConHangTheoLoai(anyString(), any(Pageable.class)))
                 .thenReturn(List.of());
 
-        String ketQua = service.tuVan(yeuCau("Da dầu, tôi muốn tìm serum."));
+        var ketQua = service.tuVan(yeuCau("Da dầu, tôi muốn tìm serum."));
 
-        assertThat(ketQua).contains("serum", "không thay bằng loại sản phẩm khác");
+        assertThat(ketQua.noiDung()).contains("serum", "không thay bằng loại sản phẩm khác");
+        assertThat(ketQua.lienKet()).isEmpty();
         verify(repository).findDangBanConHangTheoLoai(eq("serum"), any(Pageable.class));
         verify(repository).findDangBanConHangTheoLoai(eq("tinh chất"), any(Pageable.class));
         verify(repository, never()).findAllDangBanConHang(any(Pageable.class));
@@ -94,12 +95,14 @@ class TuVanDaServiceTest {
                 .thenReturn(List.of(bienThe));
         when(chatModel.call(any(Prompt.class))).thenReturn(phanHoi("{\"ids\":[42]}"));
 
-        String ketQua = service.tuVan(yeuCau("Serum cho da dầu."));
+        var ketQua = service.tuVan(yeuCau("Serum cho da dầu."));
 
-        assertThat(ketQua)
+        assertThat(ketQua.noiDung())
                 .contains("Serum chính xác từ database", "125.000 ₫", "Niacinamide",
                         "Dùng theo hướng dẫn DB", "Số lượng còn mua được: 3")
                 .doesNotContain("42");
+        assertThat(ketQua.lienKet()).containsExactly(new TuVanDaService.LienKetSanPham(
+                "Serum chính xác từ database", "fixture-serum", 17L, "30 ml"));
 
         ArgumentCaptor<Prompt> prompt = ArgumentCaptor.forClass(Prompt.class);
         verify(chatModel).call(prompt.capture());
@@ -144,8 +147,9 @@ class TuVanDaServiceTest {
                 .thenReturn(List.of(bienThe));
         when(chatModel.call(any(Prompt.class))).thenReturn(phanHoi("{\"ids\":[]}"));
 
-        assertThat(service.tuVan(yeuCau("Serum cho da dầu.")))
-                .contains("chưa có sản phẩm", "đủ thông tin");
+        var ketQua = service.tuVan(yeuCau("Serum cho da dầu."));
+        assertThat(ketQua.noiDung()).contains("chưa có sản phẩm", "đủ thông tin");
+        assertThat(ketQua.lienKet()).isEmpty();
     }
 
     @Test
@@ -174,6 +178,7 @@ class TuVanDaServiceTest {
         SanPham sanPham = mock(SanPham.class);
         when(sanPham.getMaSanPham()).thenReturn(maSanPham);
         when(sanPham.getTenSanPham()).thenReturn("Serum chính xác từ database");
+        when(sanPham.getDuongDan()).thenReturn("fixture-serum");
         when(sanPham.getDanhMuc()).thenReturn(danhMuc);
         when(sanPham.getLoaiDaPhuHop()).thenReturn("Da dầu");
         when(sanPham.getThanhPhan()).thenReturn("Niacinamide");
@@ -182,6 +187,7 @@ class TuVanDaServiceTest {
 
         BienTheSanPham bienThe = mock(BienTheSanPham.class);
         when(bienThe.getSanPham()).thenReturn(sanPham);
+        when(bienThe.getMaBienThe()).thenReturn(17L);
         when(bienThe.getTenBienThe()).thenReturn("30 ml");
         when(bienThe.getGiaBan()).thenReturn(new BigDecimal("125000"));
         when(bienThe.getSoLuongKhaDung()).thenReturn(3);

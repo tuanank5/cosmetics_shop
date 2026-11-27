@@ -1,0 +1,107 @@
+{
+  "evidence": "actual JS predicate + author CSS colors; no browser layout or accessibility tree",
+  "carousel": [
+    {
+      "name": "320 CSS px",
+      "width": 320,
+      "height": 844,
+      "coarse": true,
+      "before": true,
+      "after": false
+    },
+    {
+      "name": "360 CSS px",
+      "width": 360,
+      "height": 844,
+      "coarse": true,
+      "before": true,
+      "after": false
+    },
+    {
+      "name": "390 CSS px",
+      "width": 390,
+      "height": 844,
+      "coarse": true,
+      "before": true,
+      "after": false
+    },
+    {
+      "name": "768 CSS px",
+      "width": 768,
+      "height": 844,
+      "coarse": true,
+      "before": true,
+      "after": false
+    },
+    {
+      "name": "1024 CSS px",
+      "width": 1024,
+      "height": 844,
+      "coarse": false,
+      "before": true,
+      "after": true
+    },
+    {
+      "name": "1280 CSS px",
+      "width": 1280,
+      "height": 844,
+      "coarse": false,
+      "before": true,
+      "after": true
+    },
+    {
+      "name": "1440 CSS px",
+      "width": 1440,
+      "height": 844,
+      "coarse": false,
+      "before": true,
+      "after": true
+    },
+    {
+      "name": "1920 CSS px",
+      "width": 1920,
+      "height": 844,
+      "coarse": false,
+      "before": true,
+      "after": true
+    },
+    {
+      "name": "short desktop",
+      "width": 1440,
+      "height": 540,
+      "before": false,
+      "after": false
+    },
+    {
+      "name": "wide touch",
+      "width": 1280,
+      "height": 844,
+      "coarse": true,
+      "before": true,
+      "after": false
+    },
+    {
+      "name": "wide reduced motion",
+      "width": 1440,
+      "height": 844,
+      "reduce": true,
+      "before": false,
+      "after": false
+    },
+    {
+      "name": "stylesheet unavailable",
+      "width": 1440,
+      "height": 844,
+      "noCss": true,
+      "before": false,
+      "after": false
+    }
+  ],
+  "dashboardSelectedFocus": {
+    "foregroundBefore": "#5e2f3e",
+    "foregroundAfter": "#ffffff",
+    "adjacent": "#7a5f33",
+    "beforeRatio": 1.8,
+    "afterRatio": 5.98
+  }
+}

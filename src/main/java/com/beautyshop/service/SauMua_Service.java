@@ -101,6 +101,9 @@ public class SauMua_Service {
         }
     }
     public List<DoiTra_Repository.YeuCau> danhSachDoiTra(Long maNguoiDung) { return doiTra.danhSach(maNguoiDung); }
+    public List<DoiTra_Repository.YeuCau> danhSachDoiTraCuaDon(long maNguoiDung, long maDon) {
+        return doiTra.danhSach(maNguoiDung, maDon);
+    }
     public List<YeuThich_Repository.Muc> danhSachYeuThich(long maNguoiDung) { return yeuThich.danhSach(maNguoiDung); }
 
     public java.util.Set<Long> daYeuThich(long maNguoiDung, Collection<Long> maSanPham) {

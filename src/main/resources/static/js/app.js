@@ -2,6 +2,8 @@
   'use strict';
   const menu = document.querySelector('.header-menu');
   const adminMenu = document.querySelector('.admin-menu');
+  const discovery = menu?.querySelector('.nav-discovery');
+  const desktop = window.matchMedia('(min-width: 1100px)');
   const closeGroups = (container) => {
     container.querySelectorAll('details[open]').forEach((group) => { group.open = false; });
   };
@@ -11,27 +13,45 @@
     });
   });
   if (menu) {
-    const desktop = window.matchMedia('(min-width: 1100px)');
     menu.open = desktop.matches;
     desktop.addEventListener('change', () => {
-      if (menu.contains(document.activeElement)) {
-        menu.querySelector('summary').focus();
-      }
+      const focusInMenu = menu.contains(document.activeElement);
       closeGroups(menu);
       menu.open = desktop.matches;
+      if (focusInMenu) menu.querySelector(desktop.matches ? '.nav-links a' : 'summary').focus();
     });
+  }
+  if (discovery) {
+    const summary = discovery.querySelector('summary');
+    const panel = discovery.querySelector('.nav-discovery-panel');
+    const closeDiscovery = panel.querySelector('[data-close-discovery]');
+    const updateExpanded = () => summary.setAttribute('aria-expanded', String(discovery.open));
+    discovery.addEventListener('toggle', updateExpanded);
+    updateExpanded();
+    closeDiscovery.addEventListener('click', () => {
+      discovery.open = false;
+      summary.focus();
+    });
+    closeDiscovery.hidden = false;
   }
   [menu, adminMenu].filter(Boolean).forEach((container) => {
     container.addEventListener('keydown', (event) => {
       if (event.key === 'Escape' && container.open) {
         const expanded = event.target.closest('details[open]');
-        if (expanded) {
+        if (expanded && (expanded !== menu || !desktop.matches)) {
           expanded.open = false;
           expanded.querySelector('summary').focus();
           event.preventDefault();
         }
       }
     });
+  });
+  const removeBrokenCommerceImage = image => { image.hidden = true; };
+  document.addEventListener('error', event => {
+    if (event.target.matches?.('[data-commerce-image]')) removeBrokenCommerceImage(event.target);
+  }, true);
+  document.querySelectorAll('[data-commerce-image]').forEach(image => {
+    if (image.complete && image.naturalWidth === 0) removeBrokenCommerceImage(image);
   });
   const skuImage = document.querySelector('[data-sku-image]');
   if (skuImage) {
@@ -53,6 +73,22 @@
     image.addEventListener('error', showPlaceholder, { once: true });
     if (image.complete && image.naturalWidth === 0) showPlaceholder();
   });
+
+  const skuUpload = document.querySelector('[data-sku-upload]');
+  const skuPreview = document.querySelector('[data-sku-preview]');
+  if (skuUpload && skuPreview) {
+    let url;
+    skuUpload.addEventListener('change', () => {
+      if (url) URL.revokeObjectURL(url);
+      const file = skuUpload.files[0];
+      url = file && ['image/jpeg', 'image/png'].includes(file.type) && file.size <= 2 * 1024 * 1024
+        ? URL.createObjectURL(file) : null;
+      skuPreview.hidden = !url;
+      if (url) skuPreview.src = url;
+      else skuPreview.removeAttribute('src');
+    });
+    skuPreview.addEventListener('error', () => { skuPreview.hidden = true; });
+  }
 
   document.querySelectorAll('.cart-edit').forEach((form) => {
     const input = form.elements.quantity;

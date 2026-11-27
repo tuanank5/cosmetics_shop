@@ -1,0 +1,8 @@
+{
+  "phase": "after",
+  "checks": [],
+  "resources": {},
+  "viewports": [],
+  "browser": "Chrome/158.0.8127.37",
+  "error": "Page.enable timed out"
+}

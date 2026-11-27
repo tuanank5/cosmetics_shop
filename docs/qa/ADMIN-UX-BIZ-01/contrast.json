@@ -1,0 +1,89 @@
+{
+  "formula": "WCAG contrast ratio, minimum 4.5:1 for normal text",
+  "checks": [
+    {
+      "label": "Footer · chữ chính",
+      "foreground": "#f5ede2",
+      "background": "#0b0a0b",
+      "ratio": 17.03,
+      "pass": true
+    },
+    {
+      "label": "Footer · link",
+      "foreground": "#ded2c4",
+      "background": "#0b0a0b",
+      "ratio": 13.29,
+      "pass": true
+    },
+    {
+      "label": "Footer · nhấn và focus",
+      "foreground": "#dfbe83",
+      "background": "#0b0a0b",
+      "ratio": 11.14,
+      "pass": true
+    },
+    {
+      "label": "Admin · tiêu đề bảng",
+      "foreground": "#4e4240",
+      "background": "#f6f3f2",
+      "ratio": 8.74,
+      "pass": true
+    },
+    {
+      "label": "Admin · nhãn phụ",
+      "foreground": "#625653",
+      "background": "#ffffff",
+      "ratio": 7.06,
+      "pass": true
+    },
+    {
+      "label": "Admin · cảnh báo còn đơn",
+      "foreground": "#6b4a21",
+      "background": "#ffffff",
+      "ratio": 8,
+      "pass": true
+    },
+    {
+      "label": "Admin · nút khóa",
+      "foreground": "#655e5b",
+      "background": "#f3efed",
+      "ratio": 5.56,
+      "pass": true
+    },
+    {
+      "label": "Badge · trung tính",
+      "foreground": "#504442",
+      "background": "#ede7e5",
+      "ratio": 7.64,
+      "pass": true
+    },
+    {
+      "label": "Badge · chờ",
+      "foreground": "#64420e",
+      "background": "#fff1d6",
+      "ratio": 8.08,
+      "pass": true
+    },
+    {
+      "label": "Badge · xử lý",
+      "foreground": "#304b77",
+      "background": "#e8edf8",
+      "ratio": 7.46,
+      "pass": true
+    },
+    {
+      "label": "Badge · hoàn tất",
+      "foreground": "#285338",
+      "background": "#e8f3ea",
+      "ratio": 7.73,
+      "pass": true
+    },
+    {
+      "label": "Badge · lỗi hoặc hủy",
+      "foreground": "#7f3042",
+      "background": "#f9e6e9",
+      "ratio": 7.29,
+      "pass": true
+    }
+  ]
+}

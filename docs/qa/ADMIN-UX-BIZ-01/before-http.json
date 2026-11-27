@@ -1,0 +1,36 @@
+{
+  "revision": "before",
+  "checks": {
+    "footer": {
+      "embed": false,
+      "address": false,
+      "fallback": false,
+      "configuredContact": false
+    },
+    "checkout": {
+      "snapshotTotal": 165000,
+      "ownerOnly": true
+    },
+    "orders": {
+      "table": false,
+      "adminFooter": false
+    },
+    "detail": {
+      "table": false,
+      "adminFooter": false
+    },
+    "catalog": {
+      "table": false,
+      "adminFooter": false
+    },
+    "sku": {
+      "table": false,
+      "adminFooter": false
+    },
+    "skuForm": {
+      "table": false,
+      "adminFooter": false
+    }
+  },
+  "status": "PASS"
+}

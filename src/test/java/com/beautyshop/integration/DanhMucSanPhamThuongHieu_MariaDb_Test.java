@@ -139,6 +139,14 @@ class DanhMucSanPhamThuongHieu_MariaDb_Test {
         long don = taoDonFixture(bienThe, slug);
 
         kiemCatalog(slug, 1);
+        mvc.perform(post(ADMIN + "categories/" + danhMuc + "/status").with(csrf()).param("active", "false"))
+            .andExpect(redirectedUrl(ADMIN + "categories")).andExpect(flash().attributeExists("error"));
+        kiemCatalog(slug, 1);
+        jdbc.sql("UPDATE don_hang SET trang_thai = 'DELIVERED' WHERE ma_don_hang = ?").param(don).update();
+        jdbc.sql("""
+            INSERT INTO lan_thanh_toan (ma_don_hang, ma_yeu_cau, cong_thanh_toan, so_tien, trang_thai)
+            VALUES (?, ?, 'COD', 125000, 'PAID')
+            """).params(don, "COD-" + don).update();
         for (String section : java.util.List.of("categories", "brands")) {
             long id = section.equals("categories") ? danhMuc : thuongHieu;
             datTrangThai(section, id, false);
@@ -147,7 +155,7 @@ class DanhMucSanPhamThuongHieu_MariaDb_Test {
             mvc.perform(get("/products/" + slug)).andExpect(status().isNotFound());
             mvc.perform(get("/admin/orders/" + don)).andExpect(status().isOk())
                 .andExpect(content().string(containsString("Tên sản phẩm lúc đặt")))
-                .andExpect(content().string(containsString("Mã biến thể sản phẩm: SNAPSHOT")));
+                .andExpect(content().string(containsString(">SNAPSHOT</strong>")));
             datTrangThai(section, id, true);
             kiemCatalog(slug, 1);
             mvc.perform(get("/products/" + slug)).andExpect(status().isOk())

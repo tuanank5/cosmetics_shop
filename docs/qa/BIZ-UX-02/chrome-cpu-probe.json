@@ -1,0 +1,14 @@
+{
+  "browser": "chrome",
+  "version": "Chrome/158.0.8127.37",
+  "steps": [],
+  "renderer": "BLOCKED",
+  "error": "Browser.getVersion timeout",
+  "diagnostics": [
+    "[19392:4160:1127/003013.106:WARNING:content\\browser\\gpu\\gpu_process_host.cc:1501] The GPU process has crashed 1 time(s)",
+    "[19392:17876:1127/003013.106:ERROR:components\\viz\\host\\persistent_cache_sandboxed_file_factory.cc:157] Failed to open persistent cache files in directory \"[profile]\\GPUPersistentCache\\DawnGraphiteCache\\NDWEEXLJMJ6C2FVOJVYE645YJQVCYHRX\", error: 0: The process cannot access the file because it is being used by another process. (0x20)",
+    "[19392:4160:1127/003013.144:WARNING:content\\browser\\gpu\\gpu_process_host.cc:1501] The GPU process has crashed 2 time(s)",
+    "[19392:4160:1127/003013.162:WARNING:content\\browser\\gpu\\gpu_process_host.cc:1501] The GPU process has crashed 3 time(s)",
+    "[19392:23708:1127/003013.378:ERROR:components\\viz\\host\\persistent_cache_sandboxed_file_factory.cc:157] Failed to open persistent cache files in directory \"[profile]\\GPUPersistentCache\\DawnGraphiteCache\\NDWEEXLJMJ6C2FVOJVYE645YJQVCYHRX\", error: 0: The process cannot access the file because it is being used by another process. (0x20)"
+  ]
+}

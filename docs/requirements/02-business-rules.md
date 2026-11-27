@@ -22,6 +22,7 @@
 | BR18 | Bất kỳ khách hàng nào chỉ được xem/sửa bản ghi thuộc sở hữu chính mình; Backend kiểm tra IDOR |
 | BR19 | Chatbot RAG không truy cập dữ liệu cá nhân, không ghi dữ liệu giao dịch; giá/tồn đọc từ DB, ngoài nguồn nói chưa có thông tin |
 | BR20 | Giữ lịch sử audit cho nghiệp vụ quan trọng; xóa mềm product khi đã từng bán |
+| BR21 | Từ ADMIN-UX-BIZ-01, chỉ tắt SKU, sản phẩm, danh mục hoặc thương hiệu khi các đơn liên quan đã kết thúc và đã xử lý nghĩa vụ liên quan. Áp dụng cả form sửa, thao tác tắt trực tiếp và checkout đồng thời. |
 
 ## Thứ tự tính tiền
 

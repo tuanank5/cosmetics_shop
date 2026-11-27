@@ -1,0 +1,19 @@
+﻿{
+    "head":  "daea756053021310d9fd1c6ada9475564711fac6",
+    "branch":  "main",
+    "windows":  "Microsoft Windows NT 10.0.26300.0",
+    "java":  "openjdk 21.0.13 2026-10-20 LTS",
+    "maven":  "Apache Maven 3.9.11 (3e54c93a704957b63ee3494413a2b544fd3d825b)",
+    "node":  "v26.13.0",
+    "mariadb":  "Ver 12.2.2-MariaDB for Win64 on AMD64 (MariaDB Server)",
+    "mongo":  "db version v6.0.8",
+    "browser":  {
+                    "state":  "BLOCKED",
+                    "connect":  "No browser is available",
+                    "selection":  [
+
+                                  ]
+                },
+    "baselineJarSha256":  "B07719C21CD6CD1ACA167AE022134FE46E476807AEA4386AFF50D07F9BB5C9FB",
+    "redesignJarSha256":  "D56152D89DB1D34BDA5AC9FECEBABE64CB0440DF62EAB27EB53F35149A0C5631"
+}

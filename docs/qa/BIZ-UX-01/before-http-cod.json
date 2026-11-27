@@ -1,0 +1,32 @@
+{
+  "phase": "before",
+  "checks": [
+    {
+      "name": "guest-catalog-and-advice",
+      "advisor": "/tu-van-da"
+    },
+    {
+      "name": "cart-form-csrf-merge-and-address",
+      "cartSubtotal": 200000
+    },
+    {
+      "name": "quote-cod-concurrent-double-submit-and-owner-view",
+      "quote": 225000,
+      "statuses": [
+        200,
+        302
+      ],
+      "customerReturns": "Chính sách đổi trả và hoàn tiền"
+    },
+    {
+      "name": "customer-ownership-and-admin-confirmation"
+    }
+  ],
+  "assetBytes": {
+    "/css/tokens.css": 905,
+    "/css/base.css": 2155,
+    "/css/components.css": 6509,
+    "/css/storefront.css": 65900,
+    "/css/admin.css": 12609
+  }
+}

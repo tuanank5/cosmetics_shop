@@ -1,0 +1,88 @@
+{
+  "phase": "before",
+  "checks": [
+    {
+      "name": "guest-catalog-and-advice",
+      "advisor": "/tu-van-da",
+      "dataHint": false,
+      "footerLinks": [
+        {
+          "href": "/",
+          "label": "Giới thiệu cửa hàng"
+        },
+        {
+          "href": "/products",
+          "label": "Sản phẩm"
+        },
+        {
+          "href": "/products?filterPanel=open#brands",
+          "label": "Thương hiệu"
+        },
+        {
+          "href": "/chat",
+          "label": "Tư vấn làm đẹp"
+        },
+        {
+          "href": "/login",
+          "label": "Đăng nhập"
+        },
+        {
+          "href": "/register",
+          "label": "Đăng ký"
+        },
+        {
+          "href": "/cart",
+          "label": "Giỏ hàng"
+        },
+        {
+          "href": "/products",
+          "label": "Hướng dẫn mua hàng"
+        },
+        {
+          "href": "/products",
+          "label": "Chính sách thanh toán"
+        },
+        {
+          "href": "/",
+          "label": "Chính sách bảo mật thông tin"
+        },
+        {
+          "href": "/chat",
+          "label": "Tư vấn sản phẩm"
+        },
+        {
+          "href": "/products",
+          "label": "Khám phá sản phẩm mới"
+        },
+        {
+          "href": "/products",
+          "label": "Khám phá cửa hàng"
+        }
+      ]
+    },
+    {
+      "name": "cart-form-csrf-merge-and-address",
+      "cartSubtotal": 200000,
+      "addressHint": false
+    },
+    {
+      "name": "quote-cod-concurrent-double-submit-and-owner-view",
+      "quote": 225000,
+      "statuses": [
+        200,
+        302
+      ],
+      "customerReturns": "Chính sách đổi trả và hoàn tiền"
+    },
+    {
+      "name": "customer-ownership-and-admin-confirmation"
+    }
+  ],
+  "assetBytes": {
+    "/css/tokens.css": 905,
+    "/css/base.css": 2155,
+    "/css/components.css": 6509,
+    "/css/storefront.css": 65900,
+    "/css/admin.css": 12609
+  }
+}

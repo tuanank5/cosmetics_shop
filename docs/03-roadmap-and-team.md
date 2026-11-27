@@ -136,3 +136,19 @@ MariaDB fixture xác nhận schema trống và lịch sử chuẩn V1–V6 lên 
 ## UI-COPY-01 · Thuật ngữ giao diện
 
 Đã đồng bộ câu chữ cho Guest, Customer và Admin. V5 nạp FAQ đã sửa khi khởi tạo MariaDB trống theo D37. Chrome kiểm ba nhóm tương tác. Hồi quy MariaDB/MongoDB có 313 đạt, 5 bỏ qua và 0 lỗi. [Báo cáo](reviews/UI-COPY-01-ket-qua.md)
+
+## BIZ-UX-01 · Nghiệp vụ và giao diện · 27/11/2026
+
+Đã sửa báo giá khi SKU thiếu tồn, phục hồi giỏ khi phản hồi đến chậm hoặc thất lạc, và đích điều hướng tư vấn/đổi trả. Giỏ Guest 7 SKU giảm từ 7 SELECT xuống 1 SELECT. COD tới Admin xác nhận đạt qua HTTP trên database cô lập. Nghiệm thu trực quan và ma trận tương tác còn bị chặn do trình duyệt. [Báo cáo](reviews/BIZ-UX-01-ra-soat-nghiep-vu-uiux.md) · [Checkpoint](reviews/BIZ-UX-01-tiep-tuc.md)
+
+## BIZ-UX-02 · Responsive và accessibility · 27/11/2026
+
+Đã sửa điều kiện bật Swiper, bổ sung đường dẫn từ gợi ý tư vấn tới đúng SKU, nối lỗi nhập với trường SKU và cải thiện viền focus của bộ chọn kỳ Admin. HTTP trước/sau đạt 35 lượt mỗi bên, integration 22/22 và Maven package đạt. Chrome, Edge và Firefox chưa render được trong môi trường QA của phiên này, nên ảnh trước/sau và nghiệm thu responsive thực vẫn mở. [Báo cáo](reviews/BIZ-UX-02-visual-qa-uiux.md) · [Checkpoint](reviews/BIZ-UX-02-tiep-tuc.md)
+
+## BIZ-UX-03 · Hồi quy và nghiệm thu giao diện · 27/11/2026
+
+HTTP đạt 35 phép kiểm route, MariaDB/MongoDB đạt 38/38. Truy vấn DB sau hai POST đồng thời xác nhận một đơn, một lần trừ tồn và một lượt voucher. Chrome/Edge vẫn chặn ở renderer với profile/cache mới. Đã bàn giao fixture và checklist để nghiệm thu thủ công trước release. [Báo cáo](reviews/BIZ-UX-03-nghiem-thu-giao-dien.md) · [Checkpoint](reviews/BIZ-UX-03-tiep-tuc.md)
+
+## ADMIN-UX-BIZ-01 · Đơn hàng, catalog và Footer · 27/11/2026
+
+Đã triển khai Footer liên hệ, bảng Admin Orders/Catalog/SKU và điều kiện ngừng hoạt động theo đơn liên quan. Tồn theo lô được bàn giao thiết kế chuyển đổi, kho hiện hành tiếp tục theo SKU. [Báo cáo](reviews/ADMIN-UX-BIZ-01-ket-qua.md) · [Checkpoint](reviews/ADMIN-UX-BIZ-01-tiep-tuc.md)

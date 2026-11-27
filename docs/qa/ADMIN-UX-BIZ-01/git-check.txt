@@ -1,0 +1,3 @@
+﻿git diff --check exit=0
+staged files: 0
+migration diff files: 0

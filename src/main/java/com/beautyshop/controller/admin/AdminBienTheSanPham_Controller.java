@@ -2,6 +2,7 @@ package com.beautyshop.controller.admin;
 
 import com.beautyshop.dto.BienTheSanPham_Form;
 import com.beautyshop.service.BienTheSanPham_Service;
+import com.beautyshop.service.NgungHoatDongCatalog_Service.ConDonDangXuLy;
 import jakarta.validation.Valid;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
@@ -23,6 +24,7 @@ class AdminBienTheSanPham_Controller {
     String danhSach(@PathVariable long productId, Model model) {
         model.addAttribute("sanPham", bienTheService.sanPham(productId));
         model.addAttribute("bienThe", bienTheService.danhSach(productId));
+        model.addAttribute("donDangXuLy", bienTheService.demDonDangXuLy(productId));
         return "admin/variant/list";
     }
 
@@ -38,6 +40,8 @@ class AdminBienTheSanPham_Controller {
         if (!errors.hasErrors()) {
             try {
                 bienTheService.luu(productId, variantId, form, errors);
+            } catch (ConDonDangXuLy exception) {
+                errors.rejectValue("dangHoatDong", "sku.active.orders", exception.getMessage());
             } catch (DataIntegrityViolationException exception) {
                 errors.rejectValue("sku", "sku.conflict", "Mã biến thể sản phẩm đã được dùng hoặc thông tin sản phẩm vừa thay đổi.");
             }
@@ -51,8 +55,18 @@ class AdminBienTheSanPham_Controller {
 
     @PostMapping("/{variantId}/delete")
     String ngungHoatDong(@PathVariable long productId, @PathVariable long variantId, RedirectAttributes flash) {
-        bienTheService.ngungHoatDong(productId, variantId);
-        flash.addFlashAttribute("message", "Đã ngừng bán biến thể sản phẩm.");
+        return trangThai(productId, variantId, false, flash);
+    }
+
+    @PostMapping("/{variantId}/status")
+    String trangThai(@PathVariable long productId, @PathVariable long variantId, @RequestParam boolean active,
+                     RedirectAttributes flash) {
+        try {
+            bienTheService.datTrangThai(productId, variantId, active);
+            flash.addFlashAttribute("message", active ? "Đã kích hoạt lại biến thể." : "Đã ngừng bán biến thể sản phẩm.");
+        } catch (ConDonDangXuLy exception) {
+            flash.addFlashAttribute("error", exception.getMessage());
+        }
         return "redirect:" + duongDan(productId);
     }
 
@@ -64,6 +78,7 @@ class AdminBienTheSanPham_Controller {
         }
         if (bienThe != null) {
             model.addAttribute("anhHienTai", bienThe.getUrlHinhAnh());
+            model.addAttribute("soDonDangXuLy", bienThe.isDangHoatDong() ? bienTheService.demDonCuaBienThe(variantId) : 0L);
         }
         model.addAttribute("action", duongDan(productId) + (variantId == null ? "/new" : "/" + variantId + "/edit"));
         return "admin/variant/form";

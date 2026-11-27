@@ -1,0 +1,32 @@
+{
+  "phase": "after",
+  "checks": [
+    {
+      "name": "guest-catalog-and-advice",
+      "advisor": "/chat"
+    },
+    {
+      "name": "cart-form-csrf-merge-and-address",
+      "cartSubtotal": 200000
+    },
+    {
+      "name": "quote-cod-concurrent-double-submit-and-owner-view",
+      "quote": 225000,
+      "statuses": [
+        200,
+        302
+      ],
+      "customerReturns": "Yêu cầu đổi trả"
+    },
+    {
+      "name": "customer-ownership-and-admin-confirmation"
+    }
+  ],
+  "assetBytes": {
+    "/css/tokens.css": 905,
+    "/css/base.css": 2155,
+    "/css/components.css": 6509,
+    "/css/storefront.css": 66332,
+    "/css/admin.css": 12609
+  }
+}

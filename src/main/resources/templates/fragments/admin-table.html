@@ -1,0 +1,9 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<body>
+<span th:fragment="thumbnail(url)" class="admin-thumbnail">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="4" width="14" height="16" rx="2"/><path d="m5 16 4-4 3 3 3-4 4 5"/><circle cx="10" cy="8" r="1"/></svg>
+    <img th:if="${url}" th:src="@{${url}}" alt="" loading="lazy" width="64" height="64" data-commerce-image>
+</span>
+</body>
+</html>

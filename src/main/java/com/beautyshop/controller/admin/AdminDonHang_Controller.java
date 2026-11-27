@@ -59,6 +59,7 @@ class AdminDonHang_Controller {
     @PostMapping("/{id}/status")
     String chuyen(@PathVariable long id, @RequestParam OrderStatus status, @RequestParam Map<String, String> thamSo,
                   @RequestParam(name = "listStatus", required = false) List<OrderStatus> loc, RedirectAttributes flash) {
+        var nguon = NguonDieuHuong.donAdmin(thamSo, loc, true);
         try {
             donHangService.chuyenAdmin(id, status);
             flash.addFlashAttribute("message", "Đã cập nhật trạng thái đơn.");
@@ -66,7 +67,7 @@ class AdminDonHang_Controller {
             flash.addFlashAttribute("error", exception.getMessage());
         }
         NguonDieuHuong.kyDashboard(thamSo).forEach(flash::addAttribute);
-        NguonDieuHuong.donAdmin(thamSo, loc, true).giuQuaRedirect(flash);
+        nguon.giuQuaRedirect(flash);
         return "redirect:/admin/orders/" + id;
     }
 }

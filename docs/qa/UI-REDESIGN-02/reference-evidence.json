@@ -1,0 +1,42 @@
+﻿{
+    "browser":  {
+                    "browsers":  [
+
+                                 ],
+                    "bootstrap":  "No browser is available",
+                    "state":  "BLOCKED"
+                },
+    "referenceImages":  [
+                            {
+                                "file":  "01-checkout.png",
+                                "width":  1672,
+                                "height":  941,
+                                "topLeftRgba":  "ff0d0d0d",
+                                "sha256":  "F8D205B3AB2A2CC2E3D638BB9348A753133587F156ADC9740B9B4FE261ADE2BC"
+                            },
+                            {
+                                "file":  "02-order-detail.png",
+                                "width":  1672,
+                                "height":  941,
+                                "topLeftRgba":  "ff090909",
+                                "sha256":  "25975402943E63C6B1B0E0155AB0BD3CE5EA72822A7C783961B4F0679A2B31D3"
+                            },
+                            {
+                                "file":  "03-ai-chat.png",
+                                "width":  1672,
+                                "height":  941,
+                                "topLeftRgba":  "ff0c0b0a",
+                                "sha256":  "AFD3BCE44FC08F0C1213818DD685F52A78E191E72EA98B80E1EEE7DDB2263F74"
+                            },
+                            {
+                                "file":  "04-wishlist-mega-menu.png",
+                                "width":  1672,
+                                "height":  941,
+                                "topLeftRgba":  "ff050605",
+                                "sha256":  "27E4125C9FB0F5F5A5CB1821A7A92F7CCD2F41BCBC44E4D8B1331F20B2A73D5D"
+                            }
+                        ],
+    "head":  "daea756053021310d9fd1c6ada9475564711fac6",
+    "baselineJarSha256":  "D56152D89DB1D34BDA5AC9FECEBABE64CB0440DF62EAB27EB53F35149A0C5631",
+    "redesignJarSha256":  "353C2C690727761B2B72A483F12F1B5E53861BEA438B001B77FE70AC5F66C19F"
+}

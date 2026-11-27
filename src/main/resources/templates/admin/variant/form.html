@@ -4,37 +4,59 @@
 <head th:replace="~{fragments/head :: head(|${tieuDeBienThe} · BeautyShop|)}"></head>
 <body>
 <div th:replace="~{fragments/header :: siteHeader}"></div>
-<main id="main" tabindex="-1" class="page-content catalog-admin">
+<main id="main" tabindex="-1" class="page-content admin-workspace">
     <a class="text-link" th:href="@{/admin/catalog/products/{p}/variants(p=${sanPham.ma})}">Quay lại danh sách biến thể sản phẩm</a>
     <h1 th:text="|${tieuDeBienThe} · ${sanPham.ten}|">Biến thể sản phẩm</h1>
     <p class="alert alert--error" role="alert" th:if="${uploadQuaLon}">Lỗi: Tệp vượt dung lượng cho phép. Dữ liệu chưa lưu trong lần gửi này chưa được nhận; vui lòng nhập lại và chọn ảnh nhỏ hơn.</p>
-    <form class="catalog-form" th:action="@{${action}}" th:object="${form}" method="post" enctype="multipart/form-data">
-        <label>Mã biến thể sản phẩm <input th:field="*{sku}" required maxlength="100"></label>
-        <small class="catalog-error" th:errors="*{sku}"></small>
-        <label>Tên biến thể <input th:field="*{tenBienThe}" required maxlength="200" placeholder="Ví dụ: 30 ml"></label>
-        <small class="catalog-error" th:errors="*{tenBienThe}"></small>
-        <label>Giá bán (VNĐ) <input type="number" min="0" step="1" th:field="*{giaBan}" required></label>
-        <small class="catalog-error" th:errors="*{giaBan}"></small>
-        <label>Số lượng trong kho <input type="number" min="0" step="1" th:field="*{soLuongTrongKho}" required></label>
-        <small class="catalog-error" th:errors="*{soLuongTrongKho}"></small>
-        <label for="hinhAnh">Ảnh biến thể sản phẩm</label>
-        <input id="hinhAnh" type="file" name="hinhAnh" accept="image/jpeg,image/png" aria-describedby="upload-hint upload-error"
-               th:attr="aria-invalid=${#fields.hasErrors('hinhAnh') ? 'true' : null}">
-        <small id="upload-hint">PNG hoặc JPEG, tối đa 2 MB và 2048 × 2048 px. Khi sửa, để trống để giữ ảnh hiện có.</small>
-        <div th:replace="~{fragments/ui :: fieldError('hinhAnh', 'upload-error')}"></div>
-        <div th:if="${anhHienTai}">
-            <img th:src="@{${anhHienTai}}" alt="Ảnh hiện có của biến thể" width="80" height="80">
-            <label class="catalog-checkbox"><input type="checkbox" th:field="*{xoaHinhAnh}"> Xóa ảnh hiện có</label>
-        </div>
+    <form class="catalog-form admin-sku-form" th:action="@{${action}}" th:object="${form}" method="post" enctype="multipart/form-data">
+        <fieldset>
+            <legend>Thông tin biến thể</legend>
+            <label>Mã biến thể sản phẩm <input th:field="*{sku}" th:attr="aria-invalid=${#fields.hasErrors('sku') ? 'true' : null},aria-describedby=${#fields.hasErrors('sku') ? 'sku-code-error' : null}" required maxlength="100"></label>
+            <small id="sku-code-error" class="catalog-error" th:errors="*{sku}"></small>
+            <label>Tên biến thể <input th:field="*{tenBienThe}" th:attr="aria-invalid=${#fields.hasErrors('tenBienThe') ? 'true' : null},aria-describedby=${#fields.hasErrors('tenBienThe') ? 'sku-name-error' : null}" required maxlength="200" placeholder="Ví dụ: 30 ml"></label>
+            <small id="sku-name-error" class="catalog-error" th:errors="*{tenBienThe}"></small>
+        </fieldset>
+        <fieldset>
+            <legend>Giá và tồn kho</legend>
+            <label>Giá bán (VNĐ) <input type="number" min="0" step="1" th:field="*{giaBan}" th:attr="aria-invalid=${#fields.hasErrors('giaBan') ? 'true' : null},aria-describedby=${#fields.hasErrors('giaBan') ? 'sku-price-error' : null}" required></label>
+            <small id="sku-price-error" class="catalog-error" th:errors="*{giaBan}"></small>
+            <label>Số lượng trong kho <input type="number" min="0" step="1" th:field="*{soLuongTrongKho}" th:attr="aria-invalid=${#fields.hasErrors('soLuongTrongKho') ? 'true' : null},aria-describedby=${#fields.hasErrors('soLuongTrongKho') ? 'sku-stock-error' : null}" required></label>
+            <small id="sku-stock-error" class="catalog-error" th:errors="*{soLuongTrongKho}"></small>
+        </fieldset>
+        <fieldset>
+            <legend>Ảnh</legend>
+            <label for="hinhAnh">Ảnh biến thể sản phẩm</label>
+            <input id="hinhAnh" type="file" name="hinhAnh" accept="image/jpeg,image/png" aria-describedby="upload-hint upload-error" data-sku-upload
+                   th:attr="aria-invalid=${#fields.hasErrors('hinhAnh') ? 'true' : null}">
+            <small id="upload-hint">PNG hoặc JPEG, tối đa 2 MB và 2048 × 2048 px. Khi sửa, để trống để giữ ảnh hiện có.</small>
+            <div th:replace="~{fragments/ui :: fieldError('hinhAnh', 'upload-error')}"></div>
+            <div th:if="${anhHienTai}">
+                <p class="admin-muted">Ảnh hiện tại</p>
+                <span th:replace="~{fragments/admin-table :: thumbnail(${anhHienTai})}"></span>
+                <label class="catalog-checkbox"><input type="checkbox" th:field="*{xoaHinhAnh}"> Xóa ảnh hiện có</label>
+            </div>
+            <img class="admin-sku-preview" alt="Ảnh mới chọn" width="80" height="80" data-sku-preview hidden>
+        </fieldset>
         <fieldset>
             <legend>Thông tin lô hàng tham khảo (tùy chọn)</legend>
-            <p>Thông tin này chỉ để tham khảo. Mỗi biến thể sản phẩm có thể hiển thị một lô hàng.</p>
-            <label>Mã lô <input th:field="*{maLoMinhHoa}" maxlength="100"></label>
-            <small class="catalog-error" th:errors="*{maLoMinhHoa}"></small>
-            <label>Hạn sử dụng <input type="date" th:field="*{hanSuDungMinhHoa}"></label>
-            <small class="catalog-error" th:errors="*{hanSuDungMinhHoa}"></small>
+            <p>Thông tin tham khảo. Tồn và giữ hàng được quản lý theo SKU.</p>
+            <label>Mã lô <input th:field="*{maLoMinhHoa}" th:attr="aria-invalid=${#fields.hasErrors('maLoMinhHoa') ? 'true' : null},aria-describedby=${#fields.hasErrors('maLoMinhHoa') ? 'sku-lot-error' : null}" maxlength="100"></label>
+            <small id="sku-lot-error" class="catalog-error" th:errors="*{maLoMinhHoa}"></small>
+            <label>Hạn sử dụng <input type="date" th:field="*{hanSuDungMinhHoa}" th:attr="aria-invalid=${#fields.hasErrors('hanSuDungMinhHoa') ? 'true' : null},aria-describedby=${#fields.hasErrors('hanSuDungMinhHoa') ? 'sku-expiry-error' : null}"></label>
+            <small id="sku-expiry-error" class="catalog-error" th:errors="*{hanSuDungMinhHoa}"></small>
         </fieldset>
-        <label class="catalog-checkbox"><input type="checkbox" th:field="*{dangHoatDong}"> Đang hoạt động</label>
+        <fieldset>
+            <legend>Trạng thái hoạt động</legend>
+            <label class="catalog-checkbox" th:unless="${soDonDangXuLy != null and soDonDangXuLy > 0}">
+                <input type="checkbox" th:field="*{dangHoatDong}"> Đang hoạt động
+            </label>
+            <div th:if="${soDonDangXuLy != null and soDonDangXuLy > 0}">
+                <input type="hidden" name="dangHoatDong" value="true">
+                <label class="catalog-checkbox"><input type="checkbox" checked disabled aria-describedby="sku-status-help"> Đang hoạt động</label>
+                <p class="admin-blocked" id="sku-status-help" th:text="|Còn ${soDonDangXuLy} đơn đang xử lý. Chưa thể ngừng hoạt động.|"></p>
+            </div>
+            <p class="catalog-error" role="alert" th:errors="*{dangHoatDong}"></p>
+        </fieldset>
         <div><button class="btn btn--primary" type="submit">Lưu biến thể sản phẩm</button></div>
     </form>
 </main>

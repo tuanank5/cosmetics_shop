@@ -48,12 +48,22 @@ public class DoiTra_Repository {
     }
 
     public List<YeuCau> danhSach(Long maNguoiDung) {
+        return danhSach(maNguoiDung, null);
+    }
+
+    public List<YeuCau> danhSach(Long maNguoiDung, Long maDon) {
         var query = jdbc.sql("""
             SELECT yc.ma_yeu_cau_doi_tra, yc.ma_don_hang, d.ma_don_hang_hien_thi, yc.trang_thai
             FROM yeu_cau_doi_tra yc JOIN don_hang d ON d.ma_don_hang = yc.ma_don_hang
-            """ + (maNguoiDung == null ? "" : " WHERE yc.ma_nguoi_dung = ? ") + " ORDER BY yc.ma_yeu_cau_doi_tra DESC");
+            WHERE 1 = 1
+            """ + (maNguoiDung == null ? "" : " AND yc.ma_nguoi_dung = :nguoiDung")
+            + (maDon == null ? "" : " AND yc.ma_don_hang = :don")
+            + " ORDER BY yc.ma_yeu_cau_doi_tra DESC");
         if (maNguoiDung != null) {
-            query.param(maNguoiDung);
+            query.param("nguoiDung", maNguoiDung);
+        }
+        if (maDon != null) {
+            query.param("don", maDon);
         }
         return query.query((rs, row) -> new YeuCau(rs.getLong(1), rs.getLong(2), rs.getString(3),
             ReturnStatus.valueOf(rs.getString(4)))).list();

@@ -1,0 +1,48 @@
+{
+  "method": "Static relative luminance from CSS solid colors",
+  "browserMeasured": false,
+  "pairs": [
+    {
+      "name": "Chữ chính trên card",
+      "foreground": "#f5f2ed",
+      "background": "#151518",
+      "contrast": 16.32
+    },
+    {
+      "name": "Chữ muted trên card",
+      "foreground": "#b9b6b0",
+      "background": "#151518",
+      "contrast": 9.01
+    },
+    {
+      "name": "Thông báo lỗi trên card",
+      "foreground": "#f4a6b3",
+      "background": "#151518",
+      "contrast": 9.5
+    },
+    {
+      "name": "Tổng tiền nổi bật",
+      "foreground": "#e7cda2",
+      "background": "#151518",
+      "contrast": 11.85
+    },
+    {
+      "name": "Chữ trên CTA chính",
+      "foreground": "#0a0a0b",
+      "background": "#f5f2ed",
+      "contrast": 17.72
+    },
+    {
+      "name": "Focus ring trên card",
+      "foreground": "#a88a5a",
+      "background": "#151518",
+      "contrast": 5.6
+    },
+    {
+      "name": "Viền input trên card",
+      "foreground": "#85817b",
+      "background": "#151518",
+      "contrast": 4.71
+    }
+  ]
+}

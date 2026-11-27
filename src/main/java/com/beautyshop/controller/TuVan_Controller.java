@@ -7,6 +7,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 import java.io.Serializable;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.web.csrf.CsrfToken;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -23,7 +24,9 @@ class TuVan_Controller {
     TuVan_Controller(TuVan_Service tuVanService) { this.tuVanService = tuVanService; }
 
     @GetMapping
-    String chat(Model model) {
+    String chat(CsrfToken csrf, Model model) {
+        // The composer is rendered after the transcript. Resolve CSRF before the view can flush.
+        csrf.getToken();
         model.addAttribute("form", new TuVan_Form());
         return "TuVanDa";
     }

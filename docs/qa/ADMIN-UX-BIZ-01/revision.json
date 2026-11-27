@@ -1,0 +1,150 @@
+{
+    "head":  "daea756053021310d9fd1c6ada9475564711fac6",
+    "branch":  "main",
+    "baseline":  "snapshot of the initial working tree",
+    "staged":  [
+
+               ],
+    "sourceChanges":  [
+                          {
+                              "path":  "src/main/java/com/beautyshop/config/LienHeCuaHang.java",
+                              "status":  "added"
+                          },
+                          {
+                              "path":  "src/main/java/com/beautyshop/controller/GiaoDien_Advice.java",
+                              "status":  "modified"
+                          },
+                          {
+                              "path":  "src/main/java/com/beautyshop/controller/Momo_Controller.java",
+                              "status":  "modified"
+                          },
+                          {
+                              "path":  "src/main/java/com/beautyshop/controller/NguonDieuHuong.java",
+                              "status":  "modified"
+                          },
+                          {
+                              "path":  "src/main/java/com/beautyshop/controller/admin/AdminBienTheSanPham_Controller.java",
+                              "status":  "modified"
+                          },
+                          {
+                              "path":  "src/main/java/com/beautyshop/controller/admin/AdminDanhMucSanPhamThuongHieu_Controller.java",
+                              "status":  "modified"
+                          },
+                          {
+                              "path":  "src/main/java/com/beautyshop/controller/admin/AdminDonHang_Controller.java",
+                              "status":  "modified"
+                          },
+                          {
+                              "path":  "src/main/java/com/beautyshop/dto/BoLocDonHangAdmin.java",
+                              "status":  "modified"
+                          },
+                          {
+                              "path":  "src/main/java/com/beautyshop/dto/MucCatalogAdmin.java",
+                              "status":  "modified"
+                          },
+                          {
+                              "path":  "src/main/java/com/beautyshop/model/BienTheSanPham.java",
+                              "status":  "modified"
+                          },
+                          {
+                              "path":  "src/main/java/com/beautyshop/repository/DanhMucSanPhamThuongHieu_Repository.java",
+                              "status":  "modified"
+                          },
+                          {
+                              "path":  "src/main/java/com/beautyshop/repository/DonHangCatalog_Repository.java",
+                              "status":  "added"
+                          },
+                          {
+                              "path":  "src/main/java/com/beautyshop/repository/DonHang_Repository.java",
+                              "status":  "modified"
+                          },
+                          {
+                              "path":  "src/main/java/com/beautyshop/repository/GioHang_Repository.java",
+                              "status":  "modified"
+                          },
+                          {
+                              "path":  "src/main/java/com/beautyshop/repository/SanPham_Repository.java",
+                              "status":  "modified"
+                          },
+                          {
+                              "path":  "src/main/java/com/beautyshop/service/BienTheSanPham_Service.java",
+                              "status":  "modified"
+                          },
+                          {
+                              "path":  "src/main/java/com/beautyshop/service/DanhMucSanPhamThuongHieu_Service.java",
+                              "status":  "modified"
+                          },
+                          {
+                              "path":  "src/main/java/com/beautyshop/service/NgungHoatDongCatalog_Service.java",
+                              "status":  "added"
+                          },
+                          {
+                              "path":  "src/main/resources/static/css/admin.css",
+                              "status":  "modified"
+                          },
+                          {
+                              "path":  "src/main/resources/static/css/storefront.css",
+                              "status":  "modified"
+                          },
+                          {
+                              "path":  "src/main/resources/static/js/app.js",
+                              "status":  "modified"
+                          },
+                          {
+                              "path":  "src/main/resources/templates/admin/catalog/form.html",
+                              "status":  "modified"
+                          },
+                          {
+                              "path":  "src/main/resources/templates/admin/catalog/list.html",
+                              "status":  "modified"
+                          },
+                          {
+                              "path":  "src/main/resources/templates/admin/variant/form.html",
+                              "status":  "modified"
+                          },
+                          {
+                              "path":  "src/main/resources/templates/admin/variant/list.html",
+                              "status":  "modified"
+                          },
+                          {
+                              "path":  "src/main/resources/templates/fragments/admin-table.html",
+                              "status":  "added"
+                          },
+                          {
+                              "path":  "src/main/resources/templates/fragments/footer.html",
+                              "status":  "modified"
+                          },
+                          {
+                              "path":  "src/main/resources/templates/order/detail.html",
+                              "status":  "modified"
+                          },
+                          {
+                              "path":  "src/main/resources/templates/order/list.html",
+                              "status":  "modified"
+                          },
+                          {
+                              "path":  "src/test/java/com/beautyshop/config/LienHeCuaHangTest.java",
+                              "status":  "added"
+                          },
+                          {
+                              "path":  "src/test/java/com/beautyshop/integration/AdminOrderList_MariaDb_Test.java",
+                              "status":  "modified"
+                          },
+                          {
+                              "path":  "src/test/java/com/beautyshop/integration/BienTheSanPham_MariaDb_Test.java",
+                              "status":  "modified"
+                          },
+                          {
+                              "path":  "src/test/java/com/beautyshop/integration/CatalogDonHang_MariaDb_Test.java",
+                              "status":  "added"
+                          },
+                          {
+                              "path":  "src/test/java/com/beautyshop/integration/DanhMucSanPhamThuongHieu_MariaDb_Test.java",
+                              "status":  "modified"
+                          },
+                          {
+                              "path":  "src/test/java/com/beautyshop/integration/DocView_MariaDb_Test.java",
+                              "status":  "modified"
+                          }
+                      ]
+}

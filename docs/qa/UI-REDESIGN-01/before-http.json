@@ -1,0 +1,127 @@
+{
+  "revision": "before",
+  "method": "HTTP with real Spring Boot and isolated databases",
+  "checks": {
+    "chat": {
+      "legacyGet": 200,
+      "unified": false,
+      "faqWithoutOllama": true
+    },
+    "imageResponse": {
+      "status": 200,
+      "type": "image/png;charset=UTF-8"
+    },
+    "wishlist": {
+      "image": false,
+      "price": false,
+      "stock": false,
+      "outOfStock": false,
+      "brand": false,
+      "variants": false,
+      "ownerOnly": true
+    },
+    "checkout": {
+      "initialQuote": false,
+      "oldRecalculateButton": true,
+      "stableOrderForm": false,
+      "image": false,
+      "secondAddress": true,
+      "voucherCases": 5,
+      "totalWithVoucher": 165000
+    },
+    "order": {
+      "timeline": false,
+      "image": false,
+      "cancelConfirmation": false,
+      "postStatuses": [
+        200,
+        302
+      ],
+      "ownerOnly": true
+    },
+    "roles": {
+      "guestHeader": {
+        "authInUtilities": false,
+        "loginAction": 2,
+        "logoutPost": 0,
+        "closeDiscoveryBeforeGroups": false
+      },
+      "customerHeader": {
+        "authInUtilities": false,
+        "loginAction": 0,
+        "logoutPost": 2,
+        "closeDiscoveryBeforeGroups": false
+      },
+      "adminHeader": {
+        "authInUtilities": false,
+        "loginAction": 0,
+        "logoutPost": 1,
+        "closeDiscoveryBeforeGroups": false
+      },
+      "csrfLogout": true
+    }
+  },
+  "pages": {
+    "guest /": {
+      "status": 200,
+      "headings": [
+        "Vẻ đẹp.<br>Theo cách bạn."
+      ],
+      "skipTarget": true,
+      "duplicateIds": [],
+      "unresolvedLabels": [],
+      "unresolvedAria": []
+    },
+    "guest /chat": {
+      "status": 200,
+      "headings": [
+        "Tư vấn sản phẩm"
+      ],
+      "skipTarget": true,
+      "duplicateIds": [],
+      "unresolvedLabels": [],
+      "unresolvedAria": []
+    },
+    "customer /account/wishlist": {
+      "status": 200,
+      "headings": [
+        "Sản phẩm yêu thích"
+      ],
+      "skipTarget": true,
+      "duplicateIds": [],
+      "unresolvedLabels": [],
+      "unresolvedAria": []
+    },
+    "customer /checkout": {
+      "status": 200,
+      "headings": [
+        "Giao hàng và thanh toán"
+      ],
+      "skipTarget": true,
+      "duplicateIds": [],
+      "unresolvedLabels": [],
+      "unresolvedAria": []
+    },
+    "customer /orders/{id}": {
+      "status": 200,
+      "headings": [
+        "Chi tiết đơn hàng"
+      ],
+      "skipTarget": true,
+      "duplicateIds": [],
+      "unresolvedLabels": [],
+      "unresolvedAria": []
+    },
+    "admin /admin/dashboard": {
+      "status": 200,
+      "headings": [
+        "Tổng quan cửa hàng"
+      ],
+      "skipTarget": true,
+      "duplicateIds": [],
+      "unresolvedLabels": [],
+      "unresolvedAria": []
+    }
+  },
+  "status": "PASS"
+}

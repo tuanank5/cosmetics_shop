@@ -8,17 +8,14 @@
   const slides = [...root.querySelectorAll('.home-slide')];
   const pagination = root.querySelector('.home-carousel-pagination');
   const header = stage.querySelector('.site-header');
-  const shell = header?.querySelector('.nav-shell');
   const menu = header?.querySelector('.header-menu');
-  const links = header?.querySelector('.nav-links');
-  const search = header?.querySelector('.header-search');
-  const cart = header?.querySelector('a[href="/cart"]');
-  if (!track || slides.length < 2 || !pagination || !shell || !menu || !links || !search) return;
+  const discovery = header?.querySelector('.nav-discovery');
+  if (!track || slides.length < 2 || !pagination || !menu) return;
   const sourcePagination = pagination.innerHTML;
   const sourceSlides = slides.map((slide) => ({ role: slide.getAttribute('role'), label: slide.getAttribute('aria-label') }));
-  const searchSlot = { parent: search.parentNode, next: search.nextSibling };
-  const cartSlot = cart && { parent: cart.parentNode, next: cart.nextSibling };
+  const desktop = matchMedia('(min-width: 1100px)');
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
+  const carouselViewport = matchMedia('(min-width: 901px) and (min-height: 560px) and (hover: hover) and (pointer: fine)');
   const traversal = performance.getEntriesByType('navigation')[0]?.type === 'back_forward';
   const opening = new URLSearchParams(location.search).get('home') === 'opening';
   const productAnchor = /^(home-featured|home-popular|home-all-products)-product-\d+$/;
@@ -80,12 +77,13 @@
   const controls = () => {
     if (!swiper || swiper.destroyed) return;
     const rect = root.getBoundingClientRect();
-    const visible = rect.top >= -2 && rect.bottom <= innerHeight + 2 && !menu.open && !document.hidden;
+    const interacting = discovery?.open || (!desktop.matches && menu.open)
+      || header.querySelector('form:focus-within') !== null;
+    const visible = rect.top >= -2 && rect.bottom <= innerHeight + 2 && !interacting && !document.hidden;
     if (visible) { swiper.mousewheel.enable(); swiper.keyboard.enable(); }
     else { swiper.mousewheel.disable(); swiper.keyboard.disable(); }
-    swiper.allowTouchMove = !menu.open;
+    swiper.allowTouchMove = !interacting;
   };
-  const insertAt = (node, slot) => slot.parent.insertBefore(node, slot.next?.parentNode === slot.parent ? slot.next : null);
   const disable = (reason) => {
     root.dataset.carouselFallback = reason;
     if (!swiper && !root.classList.contains('is-ready')) return;
@@ -103,15 +101,11 @@
         if (value === null) slide.removeAttribute(name); else slide.setAttribute(name, value);
       }
     });
-    insertAt(search, searchSlot); if (cart) insertAt(cart, cartSlot);
-    const open = matchMedia('(min-width: 1100px)').matches;
-    if (!open && menu.contains(document.activeElement)) menu.querySelector('summary').focus({ preventScroll: true });
-    menu.open = open;
     delete root.dataset.activeSlide;
     notify(false, index);
     if (wasInside) slides[index].scrollIntoView({ block: 'start' });
   };
-  const eligible = () => !reduced.matches && innerHeight >= 560 && innerWidth >= 320 && !!css?.sheet;
+  const eligible = () => !reduced.matches && carouselViewport.matches && !!css?.sheet;
   const enable = () => {
     if (!eligible()) { disable(reduced.matches ? 'reduced-motion' : 'viewport-or-css'); return; }
     if (swiper) {
@@ -141,9 +135,6 @@
     initial = false;
     root.classList.add('swiper', 'is-ready'); stage.classList.add('is-ready');
     track.classList.add('swiper-wrapper'); slides.forEach((slide) => slide.classList.add('swiper-slide'));
-    links.prepend(search); if (cart) shell.append(cart);
-    if (menu.contains(document.activeElement)) menu.querySelector('summary').focus({ preventScroll: true });
-    menu.open = false;
     try {
       swiper = new window.Swiper(root, {
         init: false, direction: 'vertical', slidesPerView: 1, loop: false, speed: 780,
@@ -169,6 +160,9 @@
   };
   const schedule = () => { cancelAnimationFrame(frame); frame = requestAnimationFrame(enable); };
   menu.addEventListener('toggle', controls);
+  discovery?.addEventListener('toggle', controls);
+  header.addEventListener('focusin', controls);
+  header.addEventListener('focusout', () => queueMicrotask(controls));
   stage.addEventListener('click', (event) => {
     if (!swiper) return;
     const link = event.target.closest('a[href^="#"]');
@@ -176,11 +170,9 @@
     if (link && index >= 0) { event.preventDefault(); swiper.slideTo(index); }
   });
   window.addEventListener('scroll', controls, { passive: true });
-  window.addEventListener('resize', () => {
-    if (swiper && menu.open) { if (menu.contains(document.activeElement)) menu.querySelector('summary').focus(); menu.open = false; }
-    schedule();
-  });
+  window.addEventListener('resize', schedule);
   reduced.addEventListener('change', schedule);
+  carouselViewport.addEventListener('change', schedule);
   document.addEventListener('visibilitychange', controls);
   window.addEventListener('pagehide', () => { swiper?.mousewheel.disable(); swiper?.keyboard.disable(); });
   window.addEventListener('pageshow', (event) => {

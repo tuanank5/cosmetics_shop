@@ -3,6 +3,7 @@ package com.beautyshop.controller.admin;
 import com.beautyshop.domain.catalog.NhomDanhMucSanPhamThuongHieu;
 import com.beautyshop.dto.DanhMucSanPhamThuongHieu_Form;
 import com.beautyshop.service.DanhMucSanPhamThuongHieu_Service;
+import com.beautyshop.service.NgungHoatDongCatalog_Service.ConDonDangXuLy;
 
 import jakarta.validation.Valid;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -32,13 +33,16 @@ class AdminDanhMucSanPhamThuongHieu_Controller {
         NhomDanhMucSanPhamThuongHieu nhomDaChon = NhomDanhMucSanPhamThuongHieu.from(section);
         prepare(model, nhomDaChon);
         model.addAttribute("items", danhMucSanPhamThuongHieuService.list(nhomDaChon));
+        model.addAttribute("donDangXuLy", danhMucSanPhamThuongHieuService.demDonDangXuLy(nhomDaChon));
         return "admin/catalog/list";
     }
 
     @GetMapping({"/{section}/new", "/{section}/{id}/edit"})
     String edit(@PathVariable String section, @PathVariable(required = false) Long id, Model model) {
         NhomDanhMucSanPhamThuongHieu nhomDaChon = NhomDanhMucSanPhamThuongHieu.from(section);
-        model.addAttribute("form", id == null ? new DanhMucSanPhamThuongHieu_Form() : danhMucSanPhamThuongHieuService.edit(nhomDaChon, id));
+        var form = id == null ? new DanhMucSanPhamThuongHieu_Form() : danhMucSanPhamThuongHieuService.edit(nhomDaChon, id);
+        model.addAttribute("form", form);
+        if (id != null) themCanhBao(model, nhomDaChon, id, form.isActive());
         return formView(model, nhomDaChon, id);
     }
 
@@ -50,11 +54,14 @@ class AdminDanhMucSanPhamThuongHieu_Controller {
         if (!errors.hasErrors()) {
             try {
                 danhMucSanPhamThuongHieuService.save(nhomDaChon, id, form, errors);
+            } catch (ConDonDangXuLy exception) {
+                errors.reject("catalog.active.orders", exception.getMessage());
             } catch (DataIntegrityViolationException exception) {
                 errors.reject("catalog.integrity", "Không thể lưu. Hãy kiểm tra tên dùng trong đường dẫn có bị trùng, hoặc danh mục và thương hiệu có vừa thay đổi hay không.");
             }
         }
         if (errors.hasErrors()) {
+            if (id != null) themCanhBao(model, nhomDaChon, id, danhMucSanPhamThuongHieuService.edit(nhomDaChon, id).isActive());
             return formView(model, nhomDaChon, id);
         }
         flash.addFlashAttribute("message", "Đã lưu.");
@@ -65,16 +72,18 @@ class AdminDanhMucSanPhamThuongHieu_Controller {
     String trangThai(@PathVariable String section, @PathVariable long id, @RequestParam boolean active,
                      RedirectAttributes flash) {
         NhomDanhMucSanPhamThuongHieu nhomDaChon = NhomDanhMucSanPhamThuongHieu.from(section);
-        danhMucSanPhamThuongHieuService.datTrangThai(nhomDaChon, id, active);
-        flash.addFlashAttribute("message", active ? "Đã kích hoạt lại." : "Đã ngừng hoạt động.");
+        try {
+            danhMucSanPhamThuongHieuService.datTrangThai(nhomDaChon, id, active);
+            flash.addFlashAttribute("message", active ? "Đã kích hoạt lại." : "Đã ngừng hoạt động.");
+        } catch (ConDonDangXuLy exception) {
+            flash.addFlashAttribute("error", exception.getMessage());
+        }
         return "redirect:" + ROOT + nhomDaChon.path;
     }
 
     @PostMapping("/products/{id}/delete")
     String ngungHienThiSanPham(@PathVariable long id, RedirectAttributes flash) {
-        danhMucSanPhamThuongHieuService.datTrangThai(NhomDanhMucSanPhamThuongHieu.SAN_PHAM, id, false);
-        flash.addFlashAttribute("message", "Đã ngừng hiển thị sản phẩm.");
-        return "redirect:" + ROOT + NhomDanhMucSanPhamThuongHieu.SAN_PHAM.path;
+        return trangThai(NhomDanhMucSanPhamThuongHieu.SAN_PHAM.path, id, false, flash);
     }
 
     private String formView(Model model, NhomDanhMucSanPhamThuongHieu nhomDaChon, Long id) {
@@ -86,6 +95,10 @@ class AdminDanhMucSanPhamThuongHieu_Controller {
             model.addAttribute("brands", danhMucSanPhamThuongHieuService.list(NhomDanhMucSanPhamThuongHieu.THUONG_HIEU));
         }
         return "admin/catalog/form";
+    }
+
+    private void themCanhBao(Model model, NhomDanhMucSanPhamThuongHieu nhom, long id, boolean hoatDong) {
+        if (hoatDong) model.addAttribute("soDonDangXuLy", danhMucSanPhamThuongHieuService.demDonDangXuLy(nhom, id));
     }
 
     private void prepare(Model model, NhomDanhMucSanPhamThuongHieu nhomDaChon) {

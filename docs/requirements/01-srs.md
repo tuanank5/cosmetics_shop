@@ -20,7 +20,7 @@ Website thương mại điện tử **single-store B2C** hỗ trợ khách tìm 
 | ID | Chức năng | Độ ưu tiên | Nghiệm thu |
 |---|---|---|---|
 | FR-01 | Trang chủ/catalog, 30–50 sản phẩm demo đa thương hiệu | P0 | Hiển thị được SKU còn bán |
-| FR-02 | CRUD category/brand/product, ảnh và thông tin thành phần/loại da | P0 | Validate dữ liệu và quyền Admin |
+| FR-02 | CRUD category/brand/product, ảnh và thông tin thành phần/loại da | P0 | Validate dữ liệu và quyền Admin. Kiểm BR21 khi tắt SKU, sản phẩm, danh mục hoặc thương hiệu. |
 | FR-03 | ProductVariant SKU, hình/giá/tồn riêng | P0 | Chọn biến thể làm thay đổi giá/tồn hiển thị |
 | FR-04 | Search/filter/sort/pagination | P0 | Kết quả tìm nhất quán |
 | FR-05 | Đăng ký/đăng nhập/đăng xuất, CUSTOMER/ADMIN | P0 | Password BCrypt, backend authorizes |

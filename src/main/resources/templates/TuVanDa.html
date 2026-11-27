@@ -1,50 +1,97 @@
 <!DOCTYPE html>
 <html lang="vi" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="~{fragments/head :: head('Tư vấn sản phẩm · BeautyShop')}"></head>
+<head th:replace="~{fragments/head :: head('BeautyShop AI · Tư vấn mỹ phẩm')}"></head>
 <body>
 <div th:replace="~{fragments/header :: siteHeader}"></div>
-<main id="main" tabindex="-1" class="page-content auth-layout">
-  <section class="auth-panel" aria-labelledby="chat-title">
-    <p class="eyebrow">BEAUTYSHOP · HỖ TRỢ MUA SẮM</p>
-    <h1 id="chat-title">Tư vấn sản phẩm</h1>
-    <p class="muted">Đặt câu hỏi về sản phẩm hoặc chính sách. Câu trả lời dựa trên câu hỏi thường gặp và thông tin cửa hàng đã kiểm tra.</p>
-    <p class="muted">Cần gợi ý theo loại da? <a class="text-link" th:href="@{/tu-van-da}">Mở tư vấn chăm sóc da</a>.</p>
-    <form method="post" th:action="@{/chat}" th:object="${form}" class="login-card">
-      <div class="alert alert--error" role="alert" th:if="${#fields.hasGlobalErrors()}">
-        <p th:each="loi : ${#fields.globalErrors()}" th:text="${loi}">Không thể gửi câu hỏi.</p>
-      </div>
-      <div class="field">
-        <label for="cauHoi">Câu hỏi <span class="muted">(tối đa 500 ký tự)</span></label>
-        <textarea id="cauHoi" name="cauHoi" th:text="${cauHoiHienThi}" maxlength="500" rows="5" required
-                  th:attr="aria-invalid=${#fields.hasErrors('cauHoi') ? 'true' : null},aria-describedby=${#fields.hasErrors('cauHoi') ? 'cauHoi-error' : null}"></textarea>
-        <p id="cauHoi-error" class="field-error" th:if="${#fields.hasErrors('cauHoi')}" th:errors="*{cauHoi}">Vui lòng kiểm tra câu hỏi.</p>
-      </div>
-      <button type="submit" class="btn btn--primary btn--lg">Gửi câu hỏi</button>
-    </form>
-  </section>
-  <section class="auth-panel" aria-labelledby="answer-title">
-    <p class="eyebrow">THÔNG TIN CÓ NGUỒN</p>
-    <div th:if="${traLoi != null}">
-      <p class="muted" th:text="${traLoi.nhan}">Trả lời từ câu hỏi thường gặp</p>
-      <h2 id="answer-title">Câu trả lời</h2>
-      <p th:text="${traLoi.noiDung}">Câu trả lời sẽ hiển thị tại đây.</p>
-      <p th:if="${traLoi.tieuDeNguon != null and traLoi.url != null}">
-        <a class="text-link" th:href="${traLoi.url}" th:text="${'Nguồn: ' + traLoi.tieuDeNguon}">Nguồn đã kiểm tra</a>
-      </p>
-      <p class="muted" th:if="${traLoi.gia != null}">
-        Giá đang niêm yết:
-        <strong th:text="${#numbers.formatDecimal(traLoi.gia, 0, 'POINT', 0, 'COMMA')} + ' ₫'">0 ₫</strong>
-      </p>
-      <p class="muted" th:if="${traLoi.khaDung != null}">
-        Số lượng còn mua được: <strong th:text="${traLoi.khaDung}">0</strong>
-      </p>
+<main id="main" tabindex="-1" class="page-content reference-page shop-chat">
+    <header class="reference-hero chat-intro">
+        <h1 id="chat-title">Tư vấn chăm sóc da AI <svg th:replace="~{fragments/commerce :: icon('sparkle')}"></svg></h1>
+        <p>Trò chuyện với BeautyShop AI để tìm hiểu sản phẩm và nhận gợi ý chăm sóc da phù hợp.</p>
+    </header>
+
+    <div class="chat-layout">
+        <aside class="card chat-feature" aria-labelledby="chat-feature-title">
+            <p class="reference-kicker">BeautyShop AI</p>
+            <h2 id="chat-feature-title">Đồng hành cùng<br>làn da của bạn</h2>
+            <p class="muted">Hỏi về mỹ phẩm và tra cứu thông tin từ danh mục sản phẩm hoặc chính sách đã kiểm tra của BeautyShop.</p>
+            <ul>
+                <li><span class="reference-icon-tile"><svg th:replace="~{fragments/commerce :: icon('sparkle')}"></svg></span> Tìm sản phẩm theo nhu cầu chăm sóc da</li>
+                <li><span class="reference-icon-tile"><svg th:replace="~{fragments/commerce :: icon('layers')}"></svg></span> Tìm hiểu các bước chăm sóc da</li>
+                <li><span class="reference-icon-tile"><svg th:replace="~{fragments/commerce :: icon('bag')}"></svg></span> Kiểm tra thông tin sản phẩm trong cửa hàng</li>
+                <li><span class="reference-icon-tile"><svg th:replace="~{fragments/commerce :: icon('chat')}"></svg></span> Tra cứu chính sách mua sắm</li>
+            </ul>
+        </aside>
+
+        <section class="card chat-panel" aria-labelledby="chat-panel-title">
+            <header class="chat-panel-header">
+                <img class="chat-avatar" th:src="@{/img/brand/beautyshop-mark.svg}" width="48" height="48" alt="">
+                <div>
+                    <h2 id="chat-panel-title">BeautyShop AI</h2>
+                    <p class="chat-panel-status" th:if="${traLoi == null}">Tư vấn sản phẩm và chính sách</p>
+                    <p class="chat-panel-status" th:if="${traLoi != null}" th:text="${traLoi.nhan}"></p>
+                </div>
+            </header>
+
+            <div class="chat-transcript" role="region" aria-label="Hội thoại" tabindex="0">
+                <div class="chat-message-row" th:if="${traLoi == null}">
+                    <img class="chat-avatar" th:src="@{/img/brand/beautyshop-mark.svg}" width="42" height="42" alt="">
+                    <div class="chat-message">
+                        <p>Bạn muốn tìm hiểu sản phẩm, cách chăm sóc da hay chính sách mua sắm của BeautyShop?</p>
+                    </div>
+                </div>
+                <div class="chat-message-row chat-message-row--user" th:if="${cauHoiHienThi != null and traLoi != null}">
+                    <article class="chat-message chat-message--user">
+                        <h3 class="visually-hidden">Bạn</h3>
+                        <p th:text="${cauHoiHienThi}"></p>
+                    </article>
+                    <span class="chat-avatar"><svg th:replace="~{fragments/commerce :: icon('user')}"></svg></span>
+                </div>
+                <div class="chat-message-row" th:if="${traLoi != null}">
+                    <img class="chat-avatar" th:src="@{/img/brand/beautyshop-mark.svg}" width="42" height="42" alt="">
+                    <article class="chat-message" tabindex="-1" data-chat-answer>
+                        <h3 class="visually-hidden">BeautyShop</h3>
+                        <p class="chat-service-notice" th:if="${traLoi.aiKhongKhaDung}">AI hiện chưa sẵn sàng. Bạn vẫn có thể tra cứu câu hỏi thường gặp.</p>
+                        <p th:text="${traLoi.noiDung}"></p>
+                        <p th:if="${traLoi.tieuDeNguon != null and traLoi.url != null}">
+                            <a class="text-link" th:href="${traLoi.url}" th:text="${'Nguồn: ' + traLoi.tieuDeNguon}"></a>
+                        </p>
+                        <p th:if="${traLoi.gia != null}">Giá đang niêm yết: <strong th:replace="~{fragments/ui :: money(${traLoi.gia})}"></strong></p>
+                        <p th:if="${traLoi.khaDung != null}">Số lượng còn mua được: <strong th:text="${traLoi.khaDung}"></strong></p>
+                    </article>
+                </div>
+            </div>
+
+            <div class="chat-starters" id="chat-starters">
+                <h3><svg th:replace="~{fragments/commerce :: icon('sparkle')}"></svg> Gợi ý nhanh</h3>
+                <ul>
+                    <li><span data-chat-example>Da mụn, mụn ẩn</span><button type="button" class="btn btn--secondary" data-chat-prompt="BeautyShop có sản phẩm chăm sóc da dễ nổi mụn nào?" hidden>Da mụn, mụn ẩn</button></li>
+                    <li><span data-chat-example>Da khô, thiếu ẩm</span><button type="button" class="btn btn--secondary" data-chat-prompt="Da khô nên chọn kem dưỡng nào?" hidden>Da khô, thiếu ẩm</button></li>
+                    <li><span data-chat-example>Da nhạy cảm</span><button type="button" class="btn btn--secondary" data-chat-prompt="BeautyShop có sản phẩm dành cho da nhạy cảm không?" hidden>Da nhạy cảm</button></li>
+                    <li><span data-chat-example>Quy trình cơ bản</span><button type="button" class="btn btn--secondary" data-chat-prompt="Gợi ý các bước chăm sóc da cơ bản với sản phẩm BeautyShop." hidden>Quy trình cơ bản</button></li>
+                    <li><span data-chat-example>Chống lão hóa</span><button type="button" class="btn btn--secondary" data-chat-prompt="BeautyShop có sản phẩm chăm sóc da chống lão hóa nào?" hidden>Chống lão hóa</button></li>
+                    <li><span data-chat-example>Làm sáng da</span><button type="button" class="btn btn--secondary" data-chat-prompt="BeautyShop có sản phẩm dưỡng sáng da nào?" hidden>Làm sáng da</button></li>
+                </ul>
+            </div>
+            <form method="post" th:action="@{/chat}" th:object="${form}" class="chat-composer" id="chat-composer" data-chat-form>
+                <div class="alert alert--error" role="alert" th:if="${#fields.hasGlobalErrors()}">
+                    <p th:each="loi : ${#fields.globalErrors()}" th:text="${loi}"></p>
+                </div>
+                <label for="cauHoi" class="visually-hidden">Câu hỏi</label>
+                <div class="chat-input-wrap">
+                    <textarea id="cauHoi" name="cauHoi" th:text="${cauHoiHienThi}" maxlength="500" rows="2" required
+                              placeholder="Nhập câu hỏi hoặc mô tả vấn đề da của bạn..."
+                              th:attr="aria-invalid=${#fields.hasErrors('cauHoi') ? 'true' : null},
+                                aria-describedby=${#fields.hasErrors('cauHoi') ? 'chat-help cauHoi-error' : 'chat-help'}"></textarea>
+                    <button type="submit" class="btn btn--primary" aria-label="Gửi câu hỏi" title="Gửi câu hỏi"><svg th:replace="~{fragments/commerce :: icon('send')}"></svg></button>
+                </div>
+                <p id="cauHoi-error" class="field-error" th:if="${#fields.hasErrors('cauHoi')}" th:errors="*{cauHoi}"></p>
+                <p id="chat-help" class="hint">Tối đa 500 ký tự. Tránh nhập thông tin riêng tư. Nội dung tư vấn mang tính tham khảo.</p>
+                <p role="status" class="hint chat-feedback" data-chat-status></p>
+            </form>
+        </section>
     </div>
-    <div th:unless="${traLoi != null}">
-      <h2 id="answer-title">Hỏi BeautyShop</h2>
-      <p class="muted">Chúng tôi chỉ trả lời khi tìm được thông tin phù hợp từ nguồn đã kiểm tra. Khi tư vấn AI tắt, bạn vẫn có thể tra cứu câu hỏi thường gặp.</p>
-    </div>
-  </section>
 </main>
 <div th:replace="~{fragments/footer :: siteFooter}"></div>
+<script defer th:src="@{/js/chat.js}"></script>
 </body>
 </html>

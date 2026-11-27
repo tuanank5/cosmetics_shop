@@ -5,7 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
-import java.util.regex.Pattern;
+import java.util.Set;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.jdbc.core.simple.JdbcClient;
 import org.springframework.stereotype.Repository;
@@ -32,8 +32,23 @@ public class GioHang_Repository {
     }
 
     public Optional<MucGio> timBienThe(long maBienThe, boolean khoa) {
-        return jdbc.sql("SELECT " + COT_SKU + ", 0 AS so_luong " + NGUON_SKU + " WHERE b.ma_bien_the = ?" + (khoa ? " FOR UPDATE" : "")).param(maBienThe)
+        if (khoa) {
+            // Serialize inventory changes on the SKU and share the parent locks
+            // with other carts. Admin status writes take an exclusive parent lock.
+            var maDaKhoa = jdbc.sql("SELECT ma_bien_the FROM bien_the_san_pham WHERE ma_bien_the = ? FOR UPDATE")
+                .param(maBienThe).query(Long.class).optional();
+            if (maDaKhoa.isEmpty()) return Optional.empty();
+        }
+        return jdbc.sql("SELECT " + COT_SKU + ", 0 AS so_luong " + NGUON_SKU + " WHERE b.ma_bien_the = ?"
+                + (khoa ? " LOCK IN SHARE MODE" : "")).param(maBienThe)
             .query(GioHang_Repository::docMucGio).optional();
+    }
+
+    public List<MucGio> docBienTheGioKhach(Set<Long> maBienThe) {
+        if (maBienThe.isEmpty()) return List.of();
+        return jdbc.sql("SELECT " + COT_SKU + ", 0 AS so_luong " + NGUON_SKU
+                + " WHERE b.ma_bien_the IN (:maBienThe) ORDER BY b.ma_bien_the")
+            .param("maBienThe", maBienThe).query(GioHang_Repository::docMucGio).list();
     }
 
     public List<MucGio> docGio(long maNguoiDung) {
@@ -90,16 +105,11 @@ public class GioHang_Repository {
 
     public record MucGio(long maBienThe, String tenSanPham, String tenBienThe, BigDecimal giaBan, int khaDung,
                          int soLuong, String sku, String urlHinhAnh, String tenThuongHieu, String duongDan) {
-        /** Ảnh Admin upload (UUID) hoặc ảnh demo đóng gói trong JAR dưới /img/products/ với tên an toàn. */
-        private static final Pattern ANH_SKU = Pattern.compile(
-            "/uploads/sku/[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}\\.(?:jpg|png)"
-                + "|/img/products/[a-z0-9](?:[a-z0-9-]{0,98}[a-z0-9])?\\.(?:webp|jpg|png)");
-
         public MucGio {
-            if (urlHinhAnh != null && !ANH_SKU.matcher(urlHinhAnh).matches()) {
-                urlHinhAnh = null;
-            }
+            urlHinhAnh = AnhBienTheHienThi.hopLe(urlHinhAnh);
         }
+
+        public BigDecimal thanhTien() { return giaBan.multiply(BigDecimal.valueOf(soLuong)); }
 
         public MucGio voiSoLuong(int soLuongMoi) {
             return new MucGio(maBienThe, tenSanPham, tenBienThe, giaBan, khaDung, soLuongMoi, sku,

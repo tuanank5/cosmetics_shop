@@ -1,155 +1,205 @@
 (() => {
   'use strict';
-  // P17: progressive enhancement for /cart quantity forms. The existing POST + redirect contract is reused:
-  // the form is sent with fetch, the redirected /cart HTML is parsed, and only server-rendered regions are imported.
-  // Prices and totals are never computed here. Without JS, the "Cập nhật" button and full POST keep working.
-  if (typeof window.fetch !== 'function' || typeof window.DOMParser !== 'function' || typeof FormData !== 'function') return;
+
   const page = document.querySelector('.cart-page');
-  if (!page) return;
+  const forms = page?.querySelectorAll('form.cart-edit');
+  const recovery = page?.querySelector('[data-cart-recovery]');
+  if (!forms?.length || !recovery || !window.fetch || !window.AbortController || !window.DOMParser) return;
+
+  const reload = recovery.querySelector('a');
+  const cartUrl = new URL(reload.href);
+  const recoveryText = recovery.querySelector('[role="alert"]');
   const live = page.querySelector('[data-cart-live]');
   const dialog = document.querySelector('[data-confirm-dialog]');
-  const DEBOUNCE_MS = 350;
-  const controllers = new Map();
+  const checkout = page.querySelector('[data-cart-checkout]');
+  const states = new Map();
+  const pending = new Set();
+  const changes = 'BroadcastChannel' in window ? new BroadcastChannel('beautyshop:cart:' + cartUrl.pathname) : null;
+  const debounceMs = 350;
+  const timeoutMs = 8000;
+  let timer;
+  let sending;
 
-  const cartPath = (url) => { try { return new URL(url, location.href).pathname; } catch { return ''; } };
+  const markBusy = (state, on) => {
+    if (on) state.line.setAttribute('aria-busy', 'true');
+    else state.line.removeAttribute('aria-busy');
+  };
+  const syncInput = (state, value) => {
+    state.input.value = value;
+    state.input.dispatchEvent(new Event('input', { bubbles: true }));
+  };
+  const stop = (message) => {
+    if (!recovery.hidden) return;
+    clearTimeout(timer);
+    pending.clear();
+    live.textContent = '';
+    recovery.hidden = false;
+    recoveryText.textContent = message;
+    checkout?.removeAttribute('href');
+    checkout?.setAttribute('role', 'link');
+    checkout?.setAttribute('aria-disabled', 'true');
+    if (page.contains(document.activeElement)) reload.focus();
+    page.querySelector('.cart-lines').inert = true;
+    states.forEach(state => markBusy(state, false));
+  };
+  const stale = () => stop('Giỏ hàng có thể đã thay đổi. Hãy xem lại số lượng và tiền hàng trước khi tiếp tục.');
+  changes?.addEventListener('message', stale);
+  window.addEventListener('pageshow', event => {
+    if (event.persisted) stale();
+  });
+
   const textOf = (node) => (node?.textContent || '').replace(/\s+/g, ' ').trim();
-  const adopt = (current, replacement) => {
-    if (current && replacement) current.replaceWith(document.importNode(replacement, true));
+  const apply = (doc, changed, sent) => {
+    const freshLines = new Map([...doc.querySelectorAll('.cart-page [data-cart-line]')]
+      .map(line => [line.dataset.cartLine, line]));
+    if (freshLines.size !== states.size || [...states.values()].some(state => !freshLines.has(state.line.dataset.cartLine))) {
+      stale();
+      return;
+    }
+    const move = (current, fresh) => {
+      if (current && fresh) current.replaceWith(document.importNode(fresh, true));
+    };
+
+    const failure = textOf(doc.querySelector('.cart-page .alert--error'));
+    states.forEach(state => {
+      const fresh = freshLines.get(state.line.dataset.cartLine);
+      const freshInput = fresh.querySelector('[name="quantity"]');
+      const draft = state === changed ? state.input.value !== sent : state.input.value !== state.server;
+      state.server = freshInput.value;
+      state.input.max = freshInput.max;
+      move(state.line.querySelector('.cart-prices'), fresh.querySelector('.cart-prices'));
+      move(state.line.querySelector('.cart-stock'), fresh.querySelector('.cart-stock'));
+      syncInput(state, draft ? state.input.value : state.server);
+    });
+    move(page.querySelector('.cart-summary dl'), doc.querySelector('.cart-summary dl'));
+    const badge = document.querySelector('[data-cart-link]');
+    const freshBadge = doc.querySelector('[data-cart-link]');
+    if (badge && freshBadge) {
+      badge.setAttribute('aria-label', freshBadge.getAttribute('aria-label'));
+      move(badge.querySelector('.cart-count'), freshBadge.querySelector('.cart-count'));
+    }
+
+    if (failure || changed.server !== sent) {
+      changed.error.textContent = failure || 'Số lượng đã thay đổi trên máy chủ. Hãy kiểm tra lại.';
+      return;
+    }
+    const sku = changed.line.dataset.sku;
+    const subtotal = textOf(page.querySelector('.cart-summary dd'));
+    live.textContent = 'Đã cập nhật số lượng cho ' + sku + ': ' + sent + '. Tiền hàng ' + subtotal + '.';
   };
 
-  const enhance = (form) => {
-    const line = form.closest('[data-cart-line]');
-    const input = form.elements.quantity;
-    if (!line || !input) return;
-    const id = line.dataset.cartLine;
-    const error = form.querySelector('.field-error');
-    const submit = form.querySelector('button[type="submit"]');
-    const state = { server: input.value, sent: null, timer: 0, inFlight: false, seq: 0, awaitingZero: false, origin: null };
-
-    form.dataset.cartAuto = 'true';
-    if (submit) submit.hidden = true;
-
-    const refreshSteps = () => input.dispatchEvent(new Event('input', { bubbles: true }));
-    const restore = () => { input.value = state.server; refreshSteps(); };
-    const busy = (on) => { if (on) line.setAttribute('aria-busy', 'true'); else line.removeAttribute('aria-busy'); };
-    const fullSubmit = () => { busy(false); HTMLFormElement.prototype.submit.call(form); };
-
-    const markZero = () => {
-      clearTimeout(state.timer);
-      busy(false);
-      state.awaitingZero = true;
-      state.origin = form.contains(document.activeElement) ? document.activeElement : input;
-    };
-    const cancelZero = () => {
-      state.awaitingZero = false;
-      restore();
-      state.origin?.focus();
-    };
-    const askToRemove = () => {
-      markZero();
-      // app.js turns a zero quantity into the shared confirmation dialog (data-zero-confirm).
-      form.requestSubmit();
-      if (!(dialog && dialog.open) && !form.dataset.submitting) cancelZero();
-    };
-
-    const apply = (doc, sentValue) => {
-      const fresh = doc.querySelector(`.cart-page [data-cart-line="${CSS.escape(id)}"]`);
-      if (!fresh) {
-        // The line disappeared server-side; show the server's whole cart rather than guessing.
-        adopt(page.querySelector('.cart-layout, .cart-empty'), doc.querySelector('.cart-page .cart-layout, .cart-page .cart-empty'));
-        adopt(document.querySelector('.site-header a.header-action[href="/cart"]'), doc.querySelector('.site-header a.header-action[href="/cart"]'));
-        page.focus();
-        return;
-      }
-      adopt(line.querySelector('.cart-prices'), fresh.querySelector('.cart-prices'));
-      adopt(line.querySelector('.cart-stock'), fresh.querySelector('.cart-stock'));
-      adopt(page.querySelector('.cart-summary dl'), doc.querySelector('.cart-page .cart-summary dl'));
-      adopt(document.querySelector('.site-header a.header-action[href="/cart"]'), doc.querySelector('.site-header a.header-action[href="/cart"]'));
-      page.querySelectorAll(':scope > .alert').forEach((alert) => alert.remove());
-
-      const freshInput = fresh.querySelector('input[name="quantity"]');
-      state.server = freshInput.value;
-      input.max = freshInput.max;
-      const failure = doc.querySelector('.cart-page > .alert--error');
-      const userMovedOn = input.value !== sentValue;
-      if (failure || !userMovedOn) input.value = state.server;
-      refreshSteps();
-      if (failure) {
-        error.textContent = textOf(failure);
-        input.setAttribute('aria-invalid', 'true');
-        return;
-      }
-      if (!userMovedOn && live) {
-        const sku = line.dataset.sku;
-        const lineTotal = textOf(line.querySelectorAll('.cart-prices dd')[1]);
-        const subtotal = textOf(page.querySelector('.cart-summary dd'));
-        live.textContent = `Đã cập nhật số lượng cho mã biến thể sản phẩm ${sku}: ${state.server}. Thành tiền ${lineTotal}. Tiền hàng ${subtotal}.`;
-      }
-    };
-
-    const send = async () => {
-      clearTimeout(state.timer);
-      if (state.inFlight) return; // the latest value is sent once the current request settles
-      const value = input.value;
-      if (value === state.server || !input.checkValidity()) { busy(false); return; }
-      if (input.valueAsNumber === 0) { askToRemove(); return; }
-      state.inFlight = true;
-      state.sent = value;
-      const seq = ++state.seq;
-      busy(true);
-      let doc = null;
-      try {
-        const response = await fetch(form.action, {
-          method: 'POST', body: new FormData(form), credentials: 'same-origin', headers: { Accept: 'text/html' }
-        });
-        if (response.ok && cartPath(response.url) === '/cart') {
-          doc = new DOMParser().parseFromString(await response.text(), 'text/html');
-          if (!doc.querySelector('.cart-page')) doc = null;
-        }
-      } catch {
-        doc = null;
-      }
-      state.inFlight = false;
-      if (!doc) { fullSubmit(); return; } // network, expired session or CSRF 403: fall back to the normal POST
-      if (seq === state.seq) apply(doc, value);
-      if (input.value !== state.server && input.value !== value && input.checkValidity()) send();
-      else busy(false);
-    };
-
-    const schedule = (delay) => {
-      clearTimeout(state.timer);
-      if (input.value === '') return;
-      if (!input.checkValidity()) { input.reportValidity(); return; }
-      if (input.valueAsNumber === 0) { askToRemove(); return; }
-      if (input.value !== state.server || state.inFlight) busy(true);
-      state.timer = setTimeout(send, delay);
-    };
-
-    form.querySelectorAll('[data-cart-step]').forEach((button) => {
-      // app.js has already stepped the value when this listener runs.
-      button.addEventListener('click', () => schedule(DEBOUNCE_MS));
-    });
-    input.addEventListener('change', () => schedule(DEBOUNCE_MS));
-    controllers.set(form, { schedule, markZero, isZero: () => input.valueAsNumber === 0 });
-
-    if (dialog) {
-      dialog.addEventListener('close', () => {
-        if (!state.awaitingZero) return;
-        if (form.dataset.submitting) state.awaitingZero = false;
-        else cancelZero();
+  const drain = async () => {
+    if (sending || !recovery.hidden) return;
+    const state = pending.values().next().value;
+    if (!state) return;
+    pending.delete(state);
+    const { form, input } = state;
+    const sent = input.value;
+    if (sent === state.server || !input.checkValidity()) {
+      markBusy(state, false);
+      drain();
+      return;
+    }
+    if (input.valueAsNumber === 0) {
+      markBusy(state, false);
+      restoreOrRemove(state);
+      drain();
+      return;
+    }
+    sending = state;
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), timeoutMs);
+    try {
+      const response = await fetch(form.action, {
+        method: 'POST', body: new FormData(form), credentials: 'same-origin', headers: { Accept: 'text/html' },
+        signal: controller.signal, cache: 'no-store',
       });
+      const target = new URL(response.url);
+      if (!response.ok || target.origin !== cartUrl.origin || target.pathname !== cartUrl.pathname) {
+        throw new Error('Unexpected cart response');
+      }
+      const doc = new DOMParser().parseFromString(await response.text(), 'text/html');
+      if (!doc.querySelector('.cart-page')) throw new Error('Missing cart page');
+      if (recovery.hidden) apply(doc, state, sent);
+    } catch {
+      stop('Chưa xác nhận được lần cập nhật vừa rồi. Hãy xem lại giỏ hàng để kiểm tra số lượng đã lưu.');
+    } finally {
+      clearTimeout(timeout);
+      sending = null;
+      changes?.postMessage('changed');
+      markBusy(state, pending.has(state));
+      drain();
     }
   };
 
-  // Capture phase: runs before app.js's generic submit handler, so Enter in the field is handled here.
-  document.addEventListener('submit', (event) => {
-    const controller = controllers.get(event.target);
-    if (!controller) return;
-    if (controller.isZero()) { controller.markZero(); return; } // zero keeps the confirm + full POST flow
+  const schedule = (state, delay) => {
+    if (!recovery.hidden) return;
+    pending.add(state);
+    markBusy(state, true);
+    clearTimeout(timer);
+    timer = setTimeout(drain, delay);
+  };
+  const markZero = (state) => {
+    state.returnFocus = state.form.contains(document.activeElement) ? document.activeElement : state.input;
+  };
+  const cancelZero = (state) => {
+    syncInput(state, state.server);
+    state.returnFocus?.focus();
+    state.returnFocus = null;
+  };
+  const restoreOrRemove = (state) => {
+    markZero(state);
+    state.form.requestSubmit();
+    if (!dialog?.open && !state.form.dataset.submitting) cancelZero(state);
+  };
+  const waitForCart = (event) => {
+    if (recovery.hidden && !sending && !pending.size) return false;
     event.preventDefault();
     event.stopPropagation();
-    controller.schedule(0);
-  }, true);
+    if (recovery.hidden) live.textContent = 'Đang cập nhật giỏ hàng. Vui lòng chờ.';
+    else reload.focus();
+    return true;
+  };
 
-  page.querySelectorAll('form.cart-edit').forEach(enhance);
+  forms.forEach(form => {
+    const input = form.elements.quantity;
+    const state = {
+      form, input, line: form.closest('[data-cart-line]'), error: form.querySelector('.field-error'),
+      server: input.value, returnFocus: null,
+    };
+    states.set(form, state);
+    form.dataset.cartAuto = 'true';
+    form.querySelector('button[type="submit"]').hidden = true;
+    form.querySelectorAll('[data-cart-step]').forEach(button => {
+      button.addEventListener('click', () => schedule(state, debounceMs));
+    });
+    input.addEventListener('change', () => schedule(state, debounceMs));
+  });
+
+  dialog?.addEventListener('close', () => {
+    states.forEach(state => {
+      if (!state.returnFocus) return;
+      if (state.form.dataset.submitting) state.returnFocus = null;
+      else cancelZero(state);
+    });
+    drain();
+  });
+  page.addEventListener('submit', event => {
+    const state = states.get(event.target);
+    if (!state) {
+      if (event.target.matches('.cart-remove')) waitForCart(event);
+      return;
+    }
+    if (state.input.valueAsNumber === 0) {
+      pending.delete(state);
+      markBusy(state, sending === state);
+      if (waitForCart(event)) syncInput(state, state.server);
+      else markZero(state);
+      return;
+    }
+    event.preventDefault();
+    event.stopPropagation();
+    schedule(state, 0);
+  }, true);
+  checkout?.addEventListener('click', waitForCart);
 })();

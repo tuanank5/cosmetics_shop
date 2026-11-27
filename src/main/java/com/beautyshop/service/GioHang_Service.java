@@ -20,9 +20,8 @@ public class GioHang_Service {
     }
 
     public List<MucGio> docGioKhach(GioKhach gio) {
-        return gio.soLuong().entrySet().stream().sorted(Map.Entry.comparingByKey())
-            .flatMap(muc -> repository.timBienThe(muc.getKey(), false).stream()
-                .map(sku -> sku.voiSoLuong(muc.getValue())))
+        return repository.docBienTheGioKhach(gio.soLuong().keySet()).stream()
+            .map(sku -> sku.voiSoLuong(gio.soLuong().get(sku.maBienThe())))
             .toList();
     }
 

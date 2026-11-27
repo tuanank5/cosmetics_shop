@@ -1,0 +1,555 @@
+{
+  "phase": "before",
+  "mode": "HTTP/SSR, no browser",
+  "screens": [
+    {
+      "role": "guest",
+      "route": "/",
+      "status": 200,
+      "h1": 1,
+      "skipTarget": true,
+      "duplicateIds": [],
+      "unresolvedLabels": [],
+      "unresolvedAria": []
+    },
+    {
+      "role": "guest",
+      "route": "/products",
+      "status": 200,
+      "h1": 1,
+      "skipTarget": true,
+      "duplicateIds": [],
+      "unresolvedLabels": [],
+      "unresolvedAria": []
+    },
+    {
+      "role": "guest",
+      "route": "/products?category=serum&sort=priceAsc",
+      "status": 200,
+      "h1": 1,
+      "skipTarget": true,
+      "duplicateIds": [],
+      "unresolvedLabels": [],
+      "unresolvedAria": []
+    },
+    {
+      "role": "guest",
+      "route": "/products/fixture-serum?variant=1",
+      "status": 200,
+      "h1": 1,
+      "skipTarget": true,
+      "duplicateIds": [],
+      "unresolvedLabels": [],
+      "unresolvedAria": []
+    },
+    {
+      "role": "guest",
+      "route": "/products/fixture-serum?variant=2",
+      "status": 200,
+      "h1": 1,
+      "skipTarget": true,
+      "duplicateIds": [],
+      "unresolvedLabels": [],
+      "unresolvedAria": []
+    },
+    {
+      "role": "guest",
+      "route": "/cart",
+      "status": 200,
+      "h1": 1,
+      "skipTarget": true,
+      "duplicateIds": [],
+      "unresolvedLabels": [],
+      "unresolvedAria": []
+    },
+    {
+      "role": "guest",
+      "route": "/login",
+      "status": 200,
+      "h1": 1,
+      "skipTarget": true,
+      "duplicateIds": [],
+      "unresolvedLabels": [],
+      "unresolvedAria": []
+    },
+    {
+      "role": "guest",
+      "route": "/register",
+      "status": 200,
+      "h1": 1,
+      "skipTarget": true,
+      "duplicateIds": [],
+      "unresolvedLabels": [],
+      "unresolvedAria": []
+    },
+    {
+      "role": "guest",
+      "route": "/forgot-password",
+      "status": 200,
+      "h1": 1,
+      "skipTarget": true,
+      "duplicateIds": [],
+      "unresolvedLabels": [],
+      "unresolvedAria": []
+    },
+    {
+      "role": "guest",
+      "route": "/chat",
+      "status": 200,
+      "h1": 1,
+      "skipTarget": true,
+      "duplicateIds": [],
+      "unresolvedLabels": [],
+      "unresolvedAria": []
+    },
+    {
+      "role": "guest",
+      "route": "/tu-van-da",
+      "status": 200,
+      "h1": 1,
+      "skipTarget": true,
+      "duplicateIds": [],
+      "unresolvedLabels": [],
+      "unresolvedAria": []
+    },
+    {
+      "role": "guest",
+      "route": "/products/does-not-exist",
+      "status": 404,
+      "h1": 1,
+      "skipTarget": true,
+      "duplicateIds": [],
+      "unresolvedLabels": [],
+      "unresolvedAria": []
+    },
+    {
+      "role": "guest",
+      "route": "/checkout",
+      "status": 302,
+      "h1": 0,
+      "skipTarget": false,
+      "duplicateIds": [],
+      "unresolvedLabels": [],
+      "unresolvedAria": []
+    },
+    {
+      "role": "customer",
+      "route": "/cart",
+      "status": 200,
+      "h1": 1,
+      "skipTarget": true,
+      "duplicateIds": [],
+      "unresolvedLabels": [],
+      "unresolvedAria": []
+    },
+    {
+      "role": "customer",
+      "route": "/account",
+      "status": 200,
+      "h1": 1,
+      "skipTarget": true,
+      "duplicateIds": [],
+      "unresolvedLabels": [],
+      "unresolvedAria": []
+    },
+    {
+      "role": "customer",
+      "route": "/account/addresses",
+      "status": 200,
+      "h1": 1,
+      "skipTarget": true,
+      "duplicateIds": [],
+      "unresolvedLabels": [],
+      "unresolvedAria": []
+    },
+    {
+      "role": "customer",
+      "route": "/account/security",
+      "status": 200,
+      "h1": 1,
+      "skipTarget": true,
+      "duplicateIds": [],
+      "unresolvedLabels": [],
+      "unresolvedAria": []
+    },
+    {
+      "role": "customer",
+      "route": "/account/wishlist",
+      "status": 200,
+      "h1": 1,
+      "skipTarget": true,
+      "duplicateIds": [],
+      "unresolvedLabels": [],
+      "unresolvedAria": []
+    },
+    {
+      "role": "customer",
+      "route": "/orders",
+      "status": 200,
+      "h1": 1,
+      "skipTarget": true,
+      "duplicateIds": [],
+      "unresolvedLabels": [],
+      "unresolvedAria": []
+    },
+    {
+      "role": "customer",
+      "route": "/orders/1",
+      "status": 200,
+      "h1": 1,
+      "skipTarget": true,
+      "duplicateIds": [],
+      "unresolvedLabels": [],
+      "unresolvedAria": []
+    },
+    {
+      "role": "customer",
+      "route": "/account/returns",
+      "status": 200,
+      "h1": 1,
+      "skipTarget": true,
+      "duplicateIds": [],
+      "unresolvedLabels": [],
+      "unresolvedAria": []
+    },
+    {
+      "role": "customer",
+      "route": "/admin/dashboard",
+      "status": 403,
+      "h1": 1,
+      "skipTarget": true,
+      "duplicateIds": [],
+      "unresolvedLabels": [],
+      "unresolvedAria": []
+    },
+    {
+      "role": "admin",
+      "route": "/admin/dashboard",
+      "status": 200,
+      "h1": 1,
+      "skipTarget": true,
+      "duplicateIds": [],
+      "unresolvedLabels": [],
+      "unresolvedAria": []
+    },
+    {
+      "role": "admin",
+      "route": "/admin/orders",
+      "status": 200,
+      "h1": 1,
+      "skipTarget": true,
+      "duplicateIds": [],
+      "unresolvedLabels": [],
+      "unresolvedAria": []
+    },
+    {
+      "role": "admin",
+      "route": "/admin/orders/1",
+      "status": 200,
+      "h1": 1,
+      "skipTarget": true,
+      "duplicateIds": [],
+      "unresolvedLabels": [],
+      "unresolvedAria": []
+    },
+    {
+      "role": "admin",
+      "route": "/admin/catalog/products",
+      "status": 200,
+      "h1": 1,
+      "skipTarget": true,
+      "duplicateIds": [],
+      "unresolvedLabels": [],
+      "unresolvedAria": []
+    },
+    {
+      "role": "admin",
+      "route": "/admin/catalog/products/1/variants",
+      "status": 200,
+      "h1": 1,
+      "skipTarget": true,
+      "duplicateIds": [],
+      "unresolvedLabels": [],
+      "unresolvedAria": []
+    },
+    {
+      "role": "admin",
+      "route": "/admin/catalog/products/1/variants/new",
+      "status": 200,
+      "h1": 1,
+      "skipTarget": true,
+      "duplicateIds": [],
+      "unresolvedLabels": [],
+      "unresolvedAria": []
+    },
+    {
+      "role": "admin",
+      "route": "/admin/catalog/categories",
+      "status": 200,
+      "h1": 1,
+      "skipTarget": true,
+      "duplicateIds": [],
+      "unresolvedLabels": [],
+      "unresolvedAria": []
+    },
+    {
+      "role": "admin",
+      "route": "/admin/catalog/brands",
+      "status": 200,
+      "h1": 1,
+      "skipTarget": true,
+      "duplicateIds": [],
+      "unresolvedLabels": [],
+      "unresolvedAria": []
+    },
+    {
+      "role": "admin",
+      "route": "/admin/returns",
+      "status": 200,
+      "h1": 1,
+      "skipTarget": true,
+      "duplicateIds": [],
+      "unresolvedLabels": [],
+      "unresolvedAria": []
+    },
+    {
+      "role": "admin",
+      "route": "/admin/vouchers",
+      "status": 200,
+      "h1": 1,
+      "skipTarget": true,
+      "duplicateIds": [],
+      "unresolvedLabels": [],
+      "unresolvedAria": []
+    },
+    {
+      "role": "admin",
+      "route": "/admin/users",
+      "status": 200,
+      "h1": 1,
+      "skipTarget": true,
+      "duplicateIds": [],
+      "unresolvedLabels": [],
+      "unresolvedAria": []
+    },
+    {
+      "role": "admin",
+      "route": "/admin/reviews",
+      "status": 200,
+      "h1": 1,
+      "skipTarget": true,
+      "duplicateIds": [],
+      "unresolvedLabels": [],
+      "unresolvedAria": []
+    },
+    {
+      "role": "admin",
+      "route": "/admin/ai",
+      "status": 200,
+      "h1": 1,
+      "skipTarget": true,
+      "duplicateIds": [],
+      "unresolvedLabels": [],
+      "unresolvedAria": []
+    }
+  ],
+  "checks": {
+    "homeAdvice": {
+      "faq": true,
+      "skin": false
+    },
+    "cod": {
+      "result": "PASS",
+      "quote": 165000,
+      "postStatuses": [
+        200,
+        302
+      ],
+      "voucherPreservedOnError": true
+    },
+    "skuError": {
+      "name": "giaBan",
+      "ariaInvalid": false,
+      "errorDescribed": false
+    },
+    "adminConfirmation": "PASS",
+    "skinProviderDisabled": "PASS"
+  },
+  "performance": {
+    "home": {
+      "tags": 14,
+      "duplicateAssetTags": 0,
+      "assets": {
+        "/js/app.js": {
+          "status": 200,
+          "bytes": 8524
+        },
+        "/js/vendor/gsap-3.15.1.min.js": {
+          "status": 200,
+          "bytes": 73357
+        },
+        "/js/home-motion.js": {
+          "status": 200,
+          "bytes": 1483
+        },
+        "/js/home-story.js": {
+          "status": 200,
+          "bytes": 4215
+        },
+        "/js/vendor/swiper-14.4.0.min.js": {
+          "status": 200,
+          "bytes": 154826
+        },
+        "/js/home-carousel.js": {
+          "status": 200,
+          "bytes": 11780
+        },
+        "/js/wishlist.js": {
+          "status": 200,
+          "bytes": 6292
+        },
+        "/css/tokens.css": {
+          "status": 200,
+          "bytes": 905
+        },
+        "/css/base.css": {
+          "status": 200,
+          "bytes": 2155
+        },
+        "/css/components.css": {
+          "status": 200,
+          "bytes": 6509
+        },
+        "/css/vendor/swiper-14.4.0.min.css": {
+          "status": 200,
+          "bytes": 14613
+        },
+        "/css/storefront.css": {
+          "status": 200,
+          "bytes": 66332
+        },
+        "/css/brand-hero.css": {
+          "status": 200,
+          "bytes": 2794
+        },
+        "/css/admin.css": {
+          "status": 200,
+          "bytes": 12609
+        }
+      },
+      "htmlBytes": 51427,
+      "elementStartTags": 401,
+      "headersSamples": [
+        65.4,
+        67.7,
+        57.7,
+        59.6,
+        55,
+        49.9,
+        53.4
+      ],
+      "medianHeadersMs": 57.7
+    },
+    "catalog": {
+      "tags": 8,
+      "duplicateAssetTags": 0,
+      "assets": {
+        "/js/app.js": {
+          "status": 200,
+          "bytes": 8524
+        },
+        "/js/catalog-preview.js": {
+          "status": 200,
+          "bytes": 3492
+        },
+        "/js/wishlist.js": {
+          "status": 200,
+          "bytes": 6292
+        },
+        "/css/tokens.css": {
+          "status": 200,
+          "bytes": 905
+        },
+        "/css/base.css": {
+          "status": 200,
+          "bytes": 2155
+        },
+        "/css/components.css": {
+          "status": 200,
+          "bytes": 6509
+        },
+        "/css/storefront.css": {
+          "status": 200,
+          "bytes": 66332
+        },
+        "/css/admin.css": {
+          "status": 200,
+          "bytes": 12609
+        }
+      },
+      "htmlBytes": 13567,
+      "elementStartTags": 191,
+      "headersSamples": [
+        75,
+        85.3,
+        44.6,
+        48.8,
+        65.9,
+        38.6,
+        53.5
+      ],
+      "medianHeadersMs": 53.5
+    },
+    "dashboard": {
+      "tags": 8,
+      "duplicateAssetTags": 0,
+      "assets": {
+        "/js/app.js": {
+          "status": 200,
+          "bytes": 8524
+        },
+        "/js/vendor/chart-4.6.1.umd.min.js": {
+          "status": 200,
+          "bytes": 210082
+        },
+        "/js/dashboard.js": {
+          "status": 200,
+          "bytes": 6620
+        },
+        "/css/tokens.css": {
+          "status": 200,
+          "bytes": 905
+        },
+        "/css/base.css": {
+          "status": 200,
+          "bytes": 2155
+        },
+        "/css/components.css": {
+          "status": 200,
+          "bytes": 6509
+        },
+        "/css/storefront.css": {
+          "status": 200,
+          "bytes": 66332
+        },
+        "/css/admin.css": {
+          "status": 200,
+          "bytes": 12609
+        }
+      },
+      "htmlBytes": 38950,
+      "elementStartTags": 675,
+      "headersSamples": [
+        77.6,
+        55.8,
+        82.3,
+        98.4,
+        54.8,
+        56.5,
+        65.3
+      ],
+      "medianHeadersMs": 65.3
+    }
+  },
+  "result": "PASS"
+}

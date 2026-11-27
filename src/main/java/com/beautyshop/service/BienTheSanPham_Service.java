@@ -5,15 +5,18 @@ import com.beautyshop.dto.BienTheSanPham_Form;
 import com.beautyshop.model.BienTheSanPham;
 import com.beautyshop.model.SanPham;
 import com.beautyshop.repository.BienTheSanPham_Repository;
+import com.beautyshop.repository.DonHangCatalog_Repository.PhamVi;
 import com.beautyshop.repository.SanPham_Repository;
 import java.io.UncheckedIOException;
 import java.nio.file.Path;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 import java.util.Optional;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.support.TransactionSynchronization;
 import org.springframework.transaction.support.TransactionSynchronizationManager;
 import org.springframework.validation.Errors;
@@ -25,12 +28,15 @@ public class BienTheSanPham_Service {
     private final BienTheSanPham_Repository bienTheRepository;
     private final SanPham_Repository sanPhamRepository;
     private final AnhBienTheSanPham_Service anhService;
+    private final NgungHoatDongCatalog_Service ngungHoatDong;
 
     public BienTheSanPham_Service(BienTheSanPham_Repository bienTheRepository,
-            SanPham_Repository sanPhamRepository, AnhBienTheSanPham_Service anhService) {
+            SanPham_Repository sanPhamRepository, AnhBienTheSanPham_Service anhService,
+            NgungHoatDongCatalog_Service ngungHoatDong) {
         this.bienTheRepository = bienTheRepository;
         this.sanPhamRepository = sanPhamRepository;
         this.anhService = anhService;
+        this.ngungHoatDong = ngungHoatDong;
     }
 
     @PreAuthorize("hasRole('ADMIN')")
@@ -54,11 +60,24 @@ public class BienTheSanPham_Service {
             .filter(path -> bienTheRepository.existsByUrlHinhAnh(AnhBienTheSanPham_Service.URL_PREFIX + tenTapTin));
     }
 
-    @Transactional
+    @PreAuthorize("hasRole('ADMIN')")
+    public Map<Long, Long> demDonDangXuLy(long maSanPham) {
+        return ngungHoatDong.demTheoBienThe(maSanPham);
+    }
+
+    @PreAuthorize("hasRole('ADMIN')")
+    public long demDonCuaBienThe(long maBienThe) {
+        return ngungHoatDong.dem(PhamVi.BIEN_THE, maBienThe);
+    }
+
+    @Transactional(isolation = Isolation.READ_COMMITTED)
     @PreAuthorize("hasRole('ADMIN')")
     public void luu(long maSanPham, Long maBienThe, BienTheSanPham_Form form, Errors errors) {
         BienTheSanPham bienThe = maBienThe == null ? new BienTheSanPham(sanPham(maSanPham))
             : khoa(maSanPham, maBienThe);
+        if (bienThe.isDangHoatDong() && !form.isDangHoatDong()) {
+            ngungHoatDong.kiemTra(PhamVi.BIEN_THE, maBienThe);
+        }
         if (form.getSoLuongTrongKho() < bienThe.getSoLuongTamGiu()) {
             errors.rejectValue("soLuongTrongKho", "sku.inventory", "Số lượng trong kho phải đủ cho số hàng đang giữ cho đơn hàng.");
             return;
@@ -94,10 +113,18 @@ public class BienTheSanPham_Service {
         bienTheRepository.saveAndFlush(bienThe);
     }
 
-    @Transactional
+    @Transactional(isolation = Isolation.READ_COMMITTED)
     @PreAuthorize("hasRole('ADMIN')")
     public void ngungHoatDong(long maSanPham, long maBienThe) {
-        khoa(maSanPham, maBienThe).ngungHoatDong();
+        datTrangThai(maSanPham, maBienThe, false);
+    }
+
+    @Transactional(isolation = Isolation.READ_COMMITTED)
+    @PreAuthorize("hasRole('ADMIN')")
+    public void datTrangThai(long maSanPham, long maBienThe, boolean hoatDong) {
+        var bienThe = khoa(maSanPham, maBienThe);
+        if (bienThe.isDangHoatDong() && !hoatDong) ngungHoatDong.kiemTra(PhamVi.BIEN_THE, maBienThe);
+        bienThe.datTrangThai(hoatDong);
     }
 
     private BienTheSanPham khoa(long maSanPham, long maBienThe) {

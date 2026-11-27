@@ -63,7 +63,7 @@ public class BienTheSanPham {
     }
 
     public void doiAnh(String urlHinhAnh) { this.urlHinhAnh = urlHinhAnh; }
-    public void ngungHoatDong() { dangHoatDong = false; }
+    public void datTrangThai(boolean hoatDong) { dangHoatDong = hoatDong; }
 
     public void giu(int soLuong) {
         kiemTraCoTheBan(soLuong);

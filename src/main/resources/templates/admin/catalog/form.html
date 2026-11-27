@@ -41,7 +41,14 @@
             <label>Loại da phù hợp <textarea th:field="*{skinTypeTags}" maxlength="600" rows="3"></textarea></label>
             <small class="catalog-error" th:errors="*{skinTypeTags}"></small>
         </fieldset>
-        <label class="catalog-checkbox"><input type="checkbox" th:field="*{active}"> Đang hoạt động</label>
+        <label class="catalog-checkbox" th:unless="${soDonDangXuLy != null and soDonDangXuLy > 0}">
+            <input type="checkbox" th:field="*{active}"> Đang hoạt động
+        </label>
+        <div th:if="${soDonDangXuLy != null and soDonDangXuLy > 0}">
+            <input type="hidden" name="active" value="true">
+            <label class="catalog-checkbox"><input type="checkbox" checked disabled aria-describedby="catalog-status-help"> Đang hoạt động</label>
+            <p class="admin-blocked" id="catalog-status-help" th:text="|Còn ${soDonDangXuLy} đơn đang xử lý. Chưa thể ngừng hoạt động.|"></p>
+        </div>
         <div><button class="btn btn--primary" type="submit">Lưu</button></div>
     </form>
 </main>

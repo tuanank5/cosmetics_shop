@@ -14,7 +14,18 @@
         <h3>Mô tả của bạn</h3>
         <p class="skin-advice-copy" th:text="${noiDungDaGui}"></p>
       </div>
-      <p th:if="${traLoi != null}" class="skin-advice-copy" th:text="${traLoi}"></p>
+      <th:block th:if="${ketQua != null}">
+        <p class="skin-advice-copy" th:text="${ketQua.noiDung}"></p>
+        <section th:unless="${#lists.isEmpty(ketQua.lienKet)}" aria-labelledby="skin-advice-products">
+          <h3 id="skin-advice-products">Xem chi tiết sản phẩm được gợi ý</h3>
+          <ol>
+            <li th:each="muc : ${ketQua.lienKet}">
+              <a class="text-link" th:href="@{/products/{slug}(slug=${muc.duongDan},variant=${muc.maBienThe})}"
+                 th:text="|${muc.tenSanPham} · ${muc.tenBienThe}|"></a>
+            </li>
+          </ol>
+        </section>
+      </th:block>
       <th:block th:if="${loi != null}">
         <div th:replace="~{fragments/ui :: flash('error', ${loi})}"></div>
       </th:block>
@@ -69,7 +80,8 @@
           <label for="vanDeDa">Vấn đề da đang gặp phải</label>
           <textarea id="vanDeDa" th:field="*{vanDeDa}" rows="5" maxlength="1000" required
                     placeholder="Ví dụ: Da dễ đổ dầu ở vùng chữ T"
-                    th:attr="aria-invalid=${#fields.hasErrors('vanDeDa') ? 'true' : null},aria-describedby=${#fields.hasErrors('vanDeDa') ? 'van-de-da-error' : null}"></textarea>
+                    th:attr="aria-invalid=${#fields.hasErrors('vanDeDa') ? 'true' : null},aria-describedby=${#fields.hasErrors('vanDeDa') ? 'skin-advice-data van-de-da-error' : 'skin-advice-data'}"></textarea>
+          <p class="hint" id="skin-advice-data">Khi AI được bật, mô tả và lựa chọn của bạn có thể được gửi tới dịch vụ AI để gợi ý sản phẩm. Tránh nhập thông tin cá nhân như tên, email hoặc số điện thoại.</p>
           <p th:replace="~{fragments/ui :: fieldError('vanDeDa', 'van-de-da-error')}"></p>
         </div>
 
