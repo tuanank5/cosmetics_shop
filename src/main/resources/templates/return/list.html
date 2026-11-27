@@ -3,13 +3,35 @@
 <head th:replace="~{fragments/head :: head('Đổi trả · BeautyShop')}"></head>
 <body><div th:replace="~{fragments/header :: siteHeader}"></div>
 <main id="main" tabindex="-1" class="page-content">
+    <th:block th:if="${base == '/account/returns'}">
+        <nav th:replace="~{fragments/ui :: breadcrumb('Yêu cầu đổi trả', ~{:: .crumb-parent})}">
+            <li class="crumb-parent"><a th:href="@{/account}">Tài khoản</a></li>
+        </nav>
+    </th:block>
     <h1>Yêu cầu đổi trả</h1>
     <p class="notice" th:if="${#lists.isEmpty(yeuCau)}">Chưa có yêu cầu đổi trả.</p>
-    <ul class="catalog-list">
-        <li th:each="muc : ${yeuCau}">
-            <a class="text-link" th:href="@{${base + '/' + muc.ma}}" th:text="|Yêu cầu #${muc.ma} · ${muc.maHienThi}|"></a>
-            <span th:text="${muc.trangThai.label}"></span>
-        </li>
-    </ul>
+    <p class="list-result-count" tabindex="-1" th:attr="data-scroll-list-start=${listSource != null ? 'admin-row' : 'customer-return'}"
+       th:classappend="${base == '/account/returns' ? 'list-result-count--end' : null}"
+       th:text="${pager.moTa('yêu cầu')}"></p>
+    <div class="admin-table-scroll" th:classappend="${base == '/account/returns' ? 'customer-list-table' : null}"
+         th:unless="${#lists.isEmpty(yeuCau)}" tabindex="0" role="region" aria-label="Bảng yêu cầu đổi trả">
+        <table class="admin-table admin-table--compact">
+            <thead><tr>
+                <th scope="col">Mã yêu cầu</th><th scope="col">Mã đơn hàng</th><th scope="col">Trạng thái đổi trả</th><th scope="col">Chi tiết</th>
+            </tr></thead>
+            <tbody>
+                <tr th:each="muc : ${yeuCau}" th:id="|${listSource != null ? 'admin-row' : 'customer-return'}-${muc.ma}|"
+                    data-scroll-row tabindex="-1">
+                    <th scope="row" th:text="|#${muc.ma}|"></th>
+                    <td th:text="${muc.maHienThi}"></td>
+                    <td th:text="${muc.trangThai.label}"></td>
+                    <td><a class="btn btn--secondary admin-button" data-scroll-entry
+                           th:href="${listSource == null} ? @{/account/returns/{id}(id=${muc.ma},listPage=${pager.trang})} : @{${listSource.vao(base + '/' + muc.ma)}}"
+                           th:aria-label="|Xem yêu cầu #${muc.ma}|">Xem yêu cầu</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div th:replace="~{fragments/ui :: pagination(${pager}, 'Phân trang đổi trả')}"></div>
 </main>
 <div th:replace="~{fragments/footer :: siteFooter}"></div></body></html>

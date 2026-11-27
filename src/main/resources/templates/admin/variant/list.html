@@ -4,17 +4,17 @@
 <body>
 <div th:replace="~{fragments/header :: siteHeader}"></div>
 <main id="main" tabindex="-1" class="page-content admin-workspace">
-    <nav class="admin-breadcrumb" aria-label="Điều hướng cấp trang">
-        <a class="text-link" th:href="@{/admin/catalog/products}">Sản phẩm</a>
-        <span aria-hidden="true">/</span><span aria-current="page">Biến thể</span>
+    <nav th:replace="~{fragments/ui :: breadcrumbTrail('Biến thể sản phẩm', ~{:: .crumb-parent}, false)}">
+        <li class="crumb-parent"><a th:href="@{${backToProducts}}">Sản phẩm</a></li>
     </nav>
     <header class="admin-page-head">
         <div><h1>Biến thể sản phẩm</h1><p class="admin-subtitle" th:text="${sanPham.ten}"></p></div>
-        <a class="btn btn--primary" th:href="@{/admin/catalog/products/{p}/variants/new(p=${sanPham.ma})}">Thêm biến thể</a>
+        <a class="btn btn--primary" th:href="@{${'/admin/catalog/products/' + sanPham.ma + '/variants/new' + variantQuery}}">Thêm biến thể</a>
     </header>
     <div th:replace="~{fragments/ui :: notices(${message}, ${error})}"></div>
     <p class="notice" th:if="${#lists.isEmpty(bienThe)}">Chưa có biến thể sản phẩm.</p>
     <p class="admin-muted" th:unless="${#lists.isEmpty(bienThe)}">Tồn khả dụng = trong kho − số lượng đang giữ. Mã lô và HSD bên dưới là thông tin tham khảo.</p>
+    <p class="list-result-count" data-admin-list-start tabindex="-1" th:text="${pager.moTa('biến thể')}"></p>
     <div th:unless="${#lists.isEmpty(bienThe)}" class="admin-table-scroll" tabindex="0" role="region" aria-label="Bảng biến thể sản phẩm">
         <table class="admin-table">
             <thead><tr>
@@ -24,7 +24,7 @@
                 <th scope="col">Mã lô / HSD tham khảo</th><th scope="col">Trạng thái</th><th scope="col">Hành động</th>
             </tr></thead>
             <tbody>
-            <tr th:each="sku : ${bienThe}"
+            <tr th:each="sku : ${bienThe}" th:id="|admin-row-${sku.maBienThe}|" tabindex="-1"
                 th:with="soDon=${donDangXuLy?.get(sku.maBienThe) ?: 0}, biChan=${sku.dangHoatDong and soDon > 0}, lyDo=|sku-block-${sku.maBienThe}|">
                 <td><span th:replace="~{fragments/admin-table :: thumbnail(${sku.urlHinhAnh})}"></span></td>
                 <th scope="row" class="admin-code" th:text="${sku.sku}"></th>
@@ -42,12 +42,13 @@
                 <td>
                     <div class="admin-inline">
                         <a class="btn btn--secondary admin-button"
-                           th:href="@{/admin/catalog/products/{p}/variants/{v}/edit(p=${sanPham.ma},v=${sku.maBienThe})}"
+                           data-admin-entry th:href="@{${'/admin/catalog/products/' + sanPham.ma + '/variants/' + sku.maBienThe + '/edit' + variantQuery}}"
                            th:aria-label="|Sửa ${sku.sku}|">Sửa</a>
                         <form method="post" th:action="@{/admin/catalog/products/{p}/variants/{v}/status(p=${sanPham.ma},v=${sku.maBienThe})}"
                               th:with="hanhDong=${sku.dangHoatDong ? 'Ngừng hoạt động' : 'Kích hoạt lại'}">
+                            <th:block th:replace="~{fragments/admin-table :: listSource(${listSourceFields})}"></th:block>
                             <input type="hidden" name="active" th:value="${!sku.dangHoatDong}">
-                            <button class="btn btn--secondary admin-button" type="submit" th:text="${hanhDong}" th:disabled="${biChan}"
+                            <button class="btn btn--secondary admin-button admin-toggle-status" type="submit" th:text="${hanhDong}" th:disabled="${biChan}"
                                     th:attr="aria-label=|${hanhDong} ${sku.sku}|,aria-describedby=${biChan ? lyDo : null}"></button>
                         </form>
                     </div>
@@ -57,6 +58,7 @@
             </tbody>
         </table>
     </div>
+    <div th:replace="~{fragments/ui :: pagination(${pager}, 'Phân trang biến thể')}"></div>
 </main>
 <div th:replace="~{fragments/footer :: siteFooter}"></div>
 </body>

@@ -4,12 +4,15 @@
 <body>
 <div th:replace="~{fragments/header :: siteHeader}"></div>
 <main id="main" tabindex="-1" class="page-content catalog-admin">
-    <a class="text-link" th:if="${voucherBack != null}" th:href="@{${voucherBack}}">Quay lại tổng quan</a>
-    <a class="text-link" th:unless="${voucherBack != null}" th:href="@{/admin/vouchers}">Quay lại danh sách mã giảm giá</a>
+    <nav th:replace="~{fragments/ui :: breadcrumbTrail(${id == null ? 'Thêm mới' : 'Chỉnh sửa'}, ~{:: .crumb-parent}, false)}">
+        <li class="crumb-parent" th:if="${voucherBack != null}"><a th:href="@{${voucherBack}}">Tổng quan</a></li>
+        <li class="crumb-parent"><a th:href="@{${backToVouchers}}">Mã giảm giá</a></li>
+    </nav>
     <h1 th:text="${id == null ? 'Tạo mã giảm giá' : 'Sửa mã giảm giá'}">Sửa mã giảm giá</h1>
     <form class="catalog-form" th:action="${id == null} ? @{/admin/vouchers/new} : @{/admin/vouchers/{id}/edit(id=${id})}"
           th:object="${form}" method="post">
         <th:block th:replace="~{fragments/nav-fields :: adminSource}"></th:block>
+        <th:block th:replace="~{fragments/admin-table :: listSource(${listSourceFields})}"></th:block>
         <ul class="catalog-error" role="alert" th:if="${#fields.hasGlobalErrors()}">
             <li th:each="error : ${#fields.globalErrors()}" th:text="${error}"></li>
         </ul>

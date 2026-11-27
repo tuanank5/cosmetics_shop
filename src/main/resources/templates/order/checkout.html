@@ -49,7 +49,7 @@
                             <option th:each="dc : ${diaChi}" th:value="${dc.maDiaChi}"
                                     th:text="|${dc.tenNguoiNhan} · ${dc.diaChiChiTiet}|"></option>
                         </select>
-                        <p id="addressId-error" class="field-error"><span th:if="${#fields.hasErrors('addressId')}">Chọn địa chỉ giao hàng hợp lệ của bạn.</span></p>
+                        <p id="addressId-error" class="field-error" th:hidden="${!#fields.hasErrors('addressId')}"><span th:if="${#fields.hasErrors('addressId')}">Chọn địa chỉ giao hàng hợp lệ của bạn.</span></p>
                     </div>
                     <dl class="checkout-address-preview" th:each="dc : ${diaChi}"
                         th:attr="data-address-preview=${dc.maDiaChi}" th:hidden="${dc.maDiaChi != form.addressId}">
@@ -77,7 +77,7 @@
                                      aria-describedby="voucher-error" th:attr="aria-invalid=${#fields.hasErrors('voucher') ? 'true' : null}"></div>
                                 <button type="submit" class="btn btn--secondary" th:disabled="${#lists.isEmpty(diaChi)}">Áp dụng</button>
                             </div>
-                            <p id="voucher-error" class="field-error"><span th:errors="*{voucher}"></span></p>
+                            <p id="voucher-error" class="field-error" th:hidden="${!#fields.hasErrors('voucher')}"><span th:errors="*{voucher}"></span></p>
                         </div>
                         <div class="checkout-quote-hint">
                             <svg th:replace="~{fragments/commerce :: icon('info')}"></svg>

@@ -3,22 +3,32 @@
 <head th:replace="~{fragments/head :: head('Địa chỉ giao hàng · BeautyShop')}"></head>
 <body><div th:replace="~{fragments/header :: siteHeader}"></div>
 <main id="main" tabindex="-1" class="page-content catalog-admin">
+    <nav th:replace="~{fragments/ui :: breadcrumb('Địa chỉ giao hàng', ~{:: .crumb-parent})}">
+        <li class="crumb-parent"><a th:href="@{/account}">Tài khoản</a></li>
+    </nav>
     <a class="text-link" th:if="${tuCheckout}" th:href="@{/checkout}">Quay lại thanh toán</a>
-    <a class="text-link" th:unless="${tuCheckout}" th:href="@{/account}">Quay lại hồ sơ</a>
-    <h1>Địa chỉ giao hàng</h1>
+    <h1 th:attr="data-scroll-list-start=${tuCheckout ? null : 'address'},tabindex=${tuCheckout ? null : '-1'}">Địa chỉ giao hàng</h1>
     <p class="notice" role="status" th:if="${message}" th:text="${message}"></p>
-    <a class="btn btn--primary" th:href="@{/account/addresses/new(from=${tuCheckout ? 'checkout' : null})}">Thêm địa chỉ</a>
+    <div th:replace="~{fragments/ui :: notices(null, ${error})}"></div>
+    <p class="muted" th:if="${#lists.size(diaChi) >= gioiHanDiaChi}">
+        Bạn đã đạt giới hạn lưu địa chỉ. Hãy xóa một địa chỉ trước khi thêm.
+    </p>
+    <a class="btn btn--primary" th:if="${#lists.size(diaChi) < gioiHanDiaChi}" th:href="@{/account/addresses/new(from=${tuCheckout ? 'checkout' : null})}">Thêm địa chỉ</a>
     <p class="notice" th:if="${#lists.isEmpty(diaChi)}">Bạn chưa có địa chỉ giao hàng.</p>
-    <ul class="catalog-list">
-        <li th:each="muc : ${diaChi}">
+    <ul class="catalog-list catalog-list--spaced account-address-list">
+        <li th:each="muc : ${diaChi}" th:id="|address-${muc.maDiaChi}|"
+            th:attr="data-scroll-row=${tuCheckout ? null : 'true'},tabindex=${tuCheckout ? null : '-1'}">
             <div>
-                <strong th:text="${muc.tenNguoiNhan}"></strong>
-                <p th:text="${muc.soDienThoai}"></p>
+                <div class="account-address-contact">
+                    <strong th:text="${muc.tenNguoiNhan}"></strong>
+                    <span th:text="${muc.soDienThoai}"></span>
+                    <small class="badge" th:if="${muc.laMacDinh}">Mặc định</small>
+                </div>
                 <p th:text="${muc.diaChiChiTiet}"></p>
-                <small th:if="${muc.laMacDinh}">Mặc định</small>
             </div>
             <div class="catalog-actions">
-                <a class="btn btn--primary" th:href="@{/account/addresses/{id}/edit(id=${muc.maDiaChi},from=${tuCheckout ? 'checkout' : null})}">Sửa</a>
+                <a class="btn btn--primary" th:attr="data-scroll-entry=${tuCheckout ? null : 'true'}"
+                   th:href="@{/account/addresses/{id}/edit(id=${muc.maDiaChi},from=${tuCheckout ? 'checkout' : 'addresses'})}">Sửa</a>
                 <form method="post" th:action="@{/account/addresses/{id}/delete(id=${muc.maDiaChi})}">
                     <input th:if="${tuCheckout}" type="hidden" name="from" value="checkout">
                     <button type="submit" class="btn btn--primary">Xóa</button>

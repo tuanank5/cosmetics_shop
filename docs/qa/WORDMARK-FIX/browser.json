@@ -1,0 +1,385 @@
+{
+  "browser": "Chrome/158.0.8127.88",
+  "checks": [
+    {
+      "asset": "/img/brand/beautyshop-wordmark.svg",
+      "margins": [
+        8.700000762939453,
+        8.199996948242188,
+        8.799999237060547,
+        9.5
+      ],
+      "topEdgeInk": 0,
+      "intrinsic": [
+        1292,
+        126
+      ],
+      "fills": [
+        "rgb(245, 242, 237)"
+      ],
+      "exactHeroPaths": true
+    },
+    {
+      "asset": "/img/brand/beautyshop-lockup.svg",
+      "margins": [
+        2,
+        6.8000006675720215,
+        3.20001220703125,
+        2.9999985694885254
+      ],
+      "sharesWordmarkUrl": false
+    },
+    {
+      "asset": "/img/brand/beautyshop-lockup-light.svg",
+      "margins": [
+        2,
+        6.8000006675720215,
+        3.20001220703125,
+        2.9999985694885254
+      ],
+      "sharesWordmarkUrl": false
+    },
+    {
+      "route": "/login",
+      "viewportWidth": 320,
+      "placement": "img.auth-wordmark",
+      "src": "/img/brand/beautyshop-wordmark.svg",
+      "alt": "BeautyShop",
+      "intrinsic": [
+        1292,
+        126
+      ],
+      "attrs": [
+        1292,
+        126
+      ],
+      "w": 225,
+      "h": 21.9375,
+      "background": "rgb(29, 29, 34)",
+      "withinFrame": true
+    },
+    {
+      "route": "/login",
+      "viewportWidth": 320,
+      "placement": ".footer-brand img",
+      "src": "/img/brand/beautyshop-wordmark.svg",
+      "alt": "BeautyShop",
+      "intrinsic": [
+        1292,
+        126
+      ],
+      "attrs": [
+        1292,
+        126
+      ],
+      "w": 240,
+      "h": 23.390625,
+      "background": "rgb(11, 10, 11)",
+      "withinFrame": true
+    },
+    {
+      "route": "/register",
+      "viewportWidth": 320,
+      "placement": "img.auth-wordmark",
+      "src": "/img/brand/beautyshop-wordmark.svg",
+      "alt": "BeautyShop",
+      "intrinsic": [
+        1292,
+        126
+      ],
+      "attrs": [
+        1292,
+        126
+      ],
+      "w": 225,
+      "h": 21.9375,
+      "background": "rgb(29, 29, 34)",
+      "withinFrame": true
+    },
+    {
+      "route": "/register",
+      "viewportWidth": 320,
+      "placement": ".footer-brand img",
+      "src": "/img/brand/beautyshop-wordmark.svg",
+      "alt": "BeautyShop",
+      "intrinsic": [
+        1292,
+        126
+      ],
+      "attrs": [
+        1292,
+        126
+      ],
+      "w": 240,
+      "h": 23.390625,
+      "background": "rgb(11, 10, 11)",
+      "withinFrame": true
+    },
+    {
+      "route": "/?home=opening",
+      "viewportWidth": 320,
+      "placement": ".footer-brand img",
+      "src": "/img/brand/beautyshop-wordmark.svg",
+      "alt": "BeautyShop",
+      "intrinsic": [
+        1292,
+        126
+      ],
+      "attrs": [
+        1292,
+        126
+      ],
+      "w": 240,
+      "h": 23.390625,
+      "background": "rgb(11, 10, 11)",
+      "withinFrame": true
+    },
+    {
+      "route": "/products",
+      "viewportWidth": 320,
+      "placement": ".footer-brand img",
+      "src": "/img/brand/beautyshop-wordmark.svg",
+      "alt": "BeautyShop",
+      "intrinsic": [
+        1292,
+        126
+      ],
+      "attrs": [
+        1292,
+        126
+      ],
+      "w": 240,
+      "h": 23.390625,
+      "background": "rgb(11, 10, 11)",
+      "withinFrame": true
+    },
+    {
+      "route": "/login",
+      "viewportWidth": 390,
+      "placement": "img.auth-wordmark",
+      "src": "/img/brand/beautyshop-wordmark.svg",
+      "alt": "BeautyShop",
+      "intrinsic": [
+        1292,
+        126
+      ],
+      "attrs": [
+        1292,
+        126
+      ],
+      "w": 280,
+      "h": 27.296875,
+      "background": "rgb(29, 29, 34)",
+      "withinFrame": true
+    },
+    {
+      "route": "/login",
+      "viewportWidth": 390,
+      "placement": ".footer-brand img",
+      "src": "/img/brand/beautyshop-wordmark.svg",
+      "alt": "BeautyShop",
+      "intrinsic": [
+        1292,
+        126
+      ],
+      "attrs": [
+        1292,
+        126
+      ],
+      "w": 240,
+      "h": 23.390625,
+      "background": "rgb(11, 10, 11)",
+      "withinFrame": true
+    },
+    {
+      "route": "/register",
+      "viewportWidth": 390,
+      "placement": "img.auth-wordmark",
+      "src": "/img/brand/beautyshop-wordmark.svg",
+      "alt": "BeautyShop",
+      "intrinsic": [
+        1292,
+        126
+      ],
+      "attrs": [
+        1292,
+        126
+      ],
+      "w": 280,
+      "h": 27.296875,
+      "background": "rgb(29, 29, 34)",
+      "withinFrame": true
+    },
+    {
+      "route": "/register",
+      "viewportWidth": 390,
+      "placement": ".footer-brand img",
+      "src": "/img/brand/beautyshop-wordmark.svg",
+      "alt": "BeautyShop",
+      "intrinsic": [
+        1292,
+        126
+      ],
+      "attrs": [
+        1292,
+        126
+      ],
+      "w": 240,
+      "h": 23.390625,
+      "background": "rgb(11, 10, 11)",
+      "withinFrame": true
+    },
+    {
+      "route": "/?home=opening",
+      "viewportWidth": 390,
+      "placement": ".footer-brand img",
+      "src": "/img/brand/beautyshop-wordmark.svg",
+      "alt": "BeautyShop",
+      "intrinsic": [
+        1292,
+        126
+      ],
+      "attrs": [
+        1292,
+        126
+      ],
+      "w": 240,
+      "h": 23.390625,
+      "background": "rgb(11, 10, 11)",
+      "withinFrame": true
+    },
+    {
+      "route": "/products",
+      "viewportWidth": 390,
+      "placement": ".footer-brand img",
+      "src": "/img/brand/beautyshop-wordmark.svg",
+      "alt": "BeautyShop",
+      "intrinsic": [
+        1292,
+        126
+      ],
+      "attrs": [
+        1292,
+        126
+      ],
+      "w": 240,
+      "h": 23.390625,
+      "background": "rgb(11, 10, 11)",
+      "withinFrame": true
+    },
+    {
+      "route": "/login",
+      "viewportWidth": 1366,
+      "placement": "img.auth-wordmark",
+      "src": "/img/brand/beautyshop-wordmark.svg",
+      "alt": "BeautyShop",
+      "intrinsic": [
+        1292,
+        126
+      ],
+      "attrs": [
+        1292,
+        126
+      ],
+      "w": 280,
+      "h": 27.296875,
+      "background": "rgb(29, 29, 34)",
+      "withinFrame": true
+    },
+    {
+      "route": "/login",
+      "viewportWidth": 1366,
+      "placement": ".footer-brand img",
+      "src": "/img/brand/beautyshop-wordmark.svg",
+      "alt": "BeautyShop",
+      "intrinsic": [
+        1292,
+        126
+      ],
+      "attrs": [
+        1292,
+        126
+      ],
+      "w": 240,
+      "h": 23.390625,
+      "background": "rgb(11, 10, 11)",
+      "withinFrame": true
+    },
+    {
+      "route": "/register",
+      "viewportWidth": 1366,
+      "placement": "img.auth-wordmark",
+      "src": "/img/brand/beautyshop-wordmark.svg",
+      "alt": "BeautyShop",
+      "intrinsic": [
+        1292,
+        126
+      ],
+      "attrs": [
+        1292,
+        126
+      ],
+      "w": 280,
+      "h": 27.296875,
+      "background": "rgb(29, 29, 34)",
+      "withinFrame": true
+    },
+    {
+      "route": "/register",
+      "viewportWidth": 1366,
+      "placement": ".footer-brand img",
+      "src": "/img/brand/beautyshop-wordmark.svg",
+      "alt": "BeautyShop",
+      "intrinsic": [
+        1292,
+        126
+      ],
+      "attrs": [
+        1292,
+        126
+      ],
+      "w": 240,
+      "h": 23.390625,
+      "background": "rgb(11, 10, 11)",
+      "withinFrame": true
+    },
+    {
+      "route": "/?home=opening",
+      "viewportWidth": 1366,
+      "placement": ".footer-brand img",
+      "src": "/img/brand/beautyshop-wordmark.svg",
+      "alt": "BeautyShop",
+      "intrinsic": [
+        1292,
+        126
+      ],
+      "attrs": [
+        1292,
+        126
+      ],
+      "w": 240,
+      "h": 23.390625,
+      "background": "rgb(11, 10, 11)",
+      "withinFrame": true
+    },
+    {
+      "route": "/products",
+      "viewportWidth": 1366,
+      "placement": ".footer-brand img",
+      "src": "/img/brand/beautyshop-wordmark.svg",
+      "alt": "BeautyShop",
+      "intrinsic": [
+        1292,
+        126
+      ],
+      "attrs": [
+        1292,
+        126
+      ],
+      "w": 240,
+      "h": 23.390625,
+      "background": "rgb(11, 10, 11)",
+      "withinFrame": true
+    }
+  ]
+}

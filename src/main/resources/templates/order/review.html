@@ -3,7 +3,7 @@
 <head th:replace="~{fragments/head :: head('Đánh giá · BeautyShop')}"></head>
 <body><div th:replace="~{fragments/header :: siteHeader}"></div>
 <main id="main" tabindex="-1" class="page-content storefront review-page">
-    <a class="text-link" th:href="@{/orders/{id}(id=${trang.muc.maDon})}"><span aria-hidden="true">←</span> Quay lại đơn</a>
+    <a class="back-link text-link" th:href="@{/orders/{id}(id=${trang.muc.maDon})}"><span aria-hidden="true">←</span> <span>Quay lại đơn</span></a>
     <h1>Đánh giá sản phẩm</h1>
     <p class="review-product" th:text="|${trang.muc.tenSanPham} · ${trang.muc.tenBienThe}|"></p>
     <p class="notice" role="status" th:if="${trang.khongTaiDuoc}">Tạm thời chưa tải được đánh giá trước đó. Bạn vẫn có thể gửi lại sau ít phút.</p>

@@ -1,0 +1,63 @@
+{
+  "browser": "Chrome/158.0.8127.88",
+  "checks": [
+    {
+      "flow": "Guest cart returns focus to entire variant card",
+      "width": 390
+    },
+    {
+      "flow": "Guest merge and switching PDP variant preserve source cart row"
+    },
+    {
+      "flow": "Cart browser Back preserves stale-cache protection and offers current cart"
+    },
+    {
+      "flow": "Removed cart variant focuses cart heading on explicit return"
+    },
+    {
+      "flow": "Browser Back focuses newly opened order even when previous URL anchors a different row"
+    },
+    {
+      "flow": "Order from page 2 restores whole row; direct order and linked return use plain list"
+    },
+    {
+      "flow": "Return page 2 focuses row on mobile; invalid page uses plain list",
+      "width": 430
+    },
+    {
+      "flow": "Address list restores full card after back or save and retains source on validation"
+    },
+    {
+      "flow": "Checkout manages and saves address with checkout destination after validation; preview refreshed"
+    },
+    {
+      "flow": "Checkout quote uses the saved default address and cart totals"
+    },
+    {
+      "flow": "Admin order breadcrumb focuses whole row with existing anchor"
+    },
+    {
+      "flow": "Review order return and moderation focus whole card; page and filters preserved"
+    },
+    {
+      "flow": "Admin add has no row focus and edit restores row",
+      "path": "/admin/catalog/products"
+    },
+    {
+      "flow": "Admin add has no row focus and edit restores row",
+      "path": "/admin/catalog/categories"
+    },
+    {
+      "flow": "Admin add has no row focus and edit restores row",
+      "path": "/admin/catalog/brands"
+    },
+    {
+      "flow": "Admin add has no row focus and edit restores row",
+      "path": "/admin/catalog/products/1/variants"
+    },
+    {
+      "flow": "Admin add has no row focus and edit restores row",
+      "path": "/admin/vouchers"
+    }
+  ]
+}

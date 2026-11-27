@@ -1,0 +1,177 @@
+{
+  "browser": "Chrome/158.0.8127.88",
+  "checks": [
+    {
+      "flow": "wishlist states",
+      "width": 320,
+      "dimensions": [
+        140,
+        44
+      ]
+    },
+    {
+      "flow": "wishlist states",
+      "width": 390,
+      "dimensions": [
+        140,
+        44
+      ]
+    },
+    {
+      "flow": "wishlist states",
+      "width": 768,
+      "dimensions": [
+        140,
+        44
+      ]
+    },
+    {
+      "flow": "wishlist states",
+      "width": 1100,
+      "dimensions": [
+        140,
+        44
+      ]
+    },
+    {
+      "flow": "wishlist states",
+      "width": 1366,
+      "dimensions": [
+        140,
+        44
+      ]
+    },
+    {
+      "flow": "catalog status widths",
+      "width": 390,
+      "dimensions": [
+        136,
+        44
+      ]
+    },
+    {
+      "flow": "filter actions widths",
+      "width": 390,
+      "sizes": [
+        150.5,
+        50.8
+      ]
+    },
+    {
+      "flow": "pager control heights",
+      "width": 390,
+      "height": 44
+    },
+    {
+      "flow": "catalog status widths",
+      "width": 1366,
+      "dimensions": [
+        136,
+        44
+      ]
+    },
+    {
+      "flow": "filter actions widths",
+      "width": 1366,
+      "sizes": [
+        [
+          123,
+          50.8
+        ],
+        [
+          138.1,
+          50.8
+        ]
+      ]
+    },
+    {
+      "flow": "pager control heights",
+      "width": 1366,
+      "height": 44
+    },
+    {
+      "flow": "dashboard range widths",
+      "dimensions": [
+        96,
+        44
+      ]
+    },
+    {
+      "flow": "voucher action widths",
+      "width": 320,
+      "dimensions": [
+        130.5,
+        61.4
+      ]
+    },
+    {
+      "flow": "voucher action widths",
+      "width": 390,
+      "dimensions": [
+        165.5,
+        61.4
+      ]
+    },
+    {
+      "flow": "voucher action widths",
+      "width": 1366,
+      "dimensions": [
+        178,
+        44
+      ]
+    },
+    {
+      "flow": "user status widths",
+      "dimensions": [
+        84,
+        44
+      ]
+    },
+    {
+      "flow": "user breadcrumb restores row and role"
+    },
+    {
+      "flow": "catalog row and filters restored",
+      "section": "products"
+    },
+    {
+      "flow": "catalog row and filters restored",
+      "section": "categories"
+    },
+    {
+      "flow": "catalog row and filters restored",
+      "section": "brands"
+    },
+    {
+      "flow": "browser Back restores scroll and focus"
+    },
+    {
+      "flow": "nested variant restores both rows and both pages"
+    },
+    {
+      "flow": "voucher form restores row/add button and deleted row falls back"
+    },
+    {
+      "flow": "return status widths",
+      "dimensions": [
+        202,
+        50.8
+      ]
+    },
+    {
+      "flow": "return status preserves page and focuses notification",
+      "status": "APPROVED"
+    },
+    {
+      "flow": "return status widths",
+      "dimensions": [
+        202,
+        50.8
+      ]
+    },
+    {
+      "flow": "return status preserves page and focuses notification",
+      "status": "REJECTED"
+    }
+  ]
+}

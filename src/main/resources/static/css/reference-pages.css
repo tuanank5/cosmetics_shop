@@ -382,9 +382,9 @@
 /* Saved products and their compact footer. */
 .reference-page.shop-wishlist { --reference-width: 1360px; }
 .wishlist-hero { margin-bottom: 18px; }
-.wishlist-breadcrumb ol, .wishlist-tags { display: flex; flex-wrap: wrap; align-items: center; gap: 5px 10px; margin: 0 0 8px; padding: 0; list-style: none; }
-.wishlist-breadcrumb li { color: var(--color-muted); font-size: .85rem; }
-.wishlist-breadcrumb li + li::before { margin-inline-end: 8px; color: var(--reference-edge); content: "›"; }
+.shop-wishlist :is(.wishlist-card, [data-wishlist-heading]) { scroll-margin-block-start: 7rem; }
+.shop-wishlist .wishlist-card:is(:target, :focus) { outline: var(--focus-ring); outline-offset: 2px; }
+.wishlist-tags { display: flex; flex-wrap: wrap; align-items: center; gap: 5px 10px; margin: 0 0 8px; padding: 0; list-style: none; }
 .wishlist-hero h1::after { display: block; width: 41px; height: 2px; margin: 9px 0 12px; background: var(--color-accent); content: ""; }
 .wishlist-hero-meta { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 4px 12px; }
 .wishlist-hero-meta p, .shop-wishlist .wishlist-feedback { margin: 0; }
@@ -417,6 +417,9 @@
 .reference-page .wishlist-actions { display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-start; gap: 6px clamp(6px, 1.1vw, 18px); padding-inline-start: clamp(10px, 1.8vw, 28px); border-inline-start: 1px solid var(--color-border); }
 .reference-page .wishlist-actions form { margin: 0; }
 .reference-page .wishlist-actions .btn { min-height: 44px; padding: 8px 11px; font-size: .82rem; letter-spacing: 0; }
+.reference-page .wishlist-actions .wishlist-buy { inline-size: 8.75rem; max-inline-size: 100%; }
+.reference-page .wishlist-actions .wishlist-buy-form { max-inline-size: 100%; }
+.reference-page .wishlist-actions .wishlist-form { margin-inline-start: auto; }
 .reference-page .wishlist-actions .wishlist-button { border-color: transparent; }
 .reference-page .wishlist-actions :is(.wishlist-icon, .shop-icon) { width: 17px; height: 17px; }
 .reference-page .wishlist-actions .wishlist-icon { color: var(--color-accent); }

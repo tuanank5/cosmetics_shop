@@ -1,0 +1,4 @@
+﻿[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 13.38 s -- in com.beautyshop.integration.TuVanFaq_MariaDb_Test
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.597 s -- in com.beautyshop.integration.TuVanRag_MariaDb_Test
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0
+[INFO] BUILD SUCCESS

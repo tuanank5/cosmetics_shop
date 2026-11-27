@@ -30,13 +30,18 @@ public interface NguoiDung_Repository extends JpaRepository<NguoiDung, Long> {
         select n.maNguoiDung as maNguoiDung, n.hoTen as hoTen, n.email as email,
                n.kichHoat as kichHoat, n.vaiTro as vaiTro
         from NguoiDung n
-        where :q = '' or lower(n.hoTen) like :q escape '!' or lower(n.email) like :q escape '!'
+        where (:q = '' or lower(n.hoTen) like :q escape '!' or lower(n.email) like :q escape '!')
+          and (:kichHoat is null or n.kichHoat = :kichHoat)
+          and (:vaiTro is null or n.vaiTro = :vaiTro)
         order by n.maNguoiDung desc
         """, countQuery = """
         select count(n) from NguoiDung n
-        where :q = '' or lower(n.hoTen) like :q escape '!' or lower(n.email) like :q escape '!'
+        where (:q = '' or lower(n.hoTen) like :q escape '!' or lower(n.email) like :q escape '!')
+          and (:kichHoat is null or n.kichHoat = :kichHoat)
+          and (:vaiTro is null or n.vaiTro = :vaiTro)
         """)
-    Page<TomTat> timNguoiDung(@Param("q") String q, Pageable pageable);
+    Page<TomTat> timNguoiDung(@Param("q") String q, @Param("kichHoat") Boolean kichHoat,
+                            @Param("vaiTro") NguoiDung.VaiTro vaiTro, Pageable pageable);
 
     @Query("""
         select n.email as email, (n.matKhauBam is not null) as coMatKhau,

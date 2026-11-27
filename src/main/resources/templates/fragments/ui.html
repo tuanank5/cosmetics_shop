@@ -36,17 +36,27 @@
   <summary th:text="${label}"></summary>
   <p class="pdp-copy" th:text="${copy}"></p>
 </details>
-<p th:fragment="fieldError(field, id)" th:id="${id}" class="field-error">
+<p th:fragment="fieldError(field, id)" th:id="${id}" th:hidden="${!#fields.hasErrors(field)}" class="field-error">
   <span th:if="${#fields.hasErrors(field)}">Lỗi: <span th:errors="*{__${field}__}"></span></span>
 </p>
 <span th:fragment="money(amount)" class="money" th:text="|${#numbers.formatInteger(amount, 1, 'POINT')} ₫|"></span>
+<nav th:fragment="breadcrumb(current, parents)" th:replace="~{fragments/ui :: breadcrumbTrail(${current}, ${parents}, true)}"></nav>
+<nav th:fragment="breadcrumbTrail(current, parents, showHome)" class="page-breadcrumb" aria-label="Đường dẫn">
+  <ol>
+    <li th:if="${showHome}"><a th:href="@{/}">Trang chủ</a></li>
+    <th:block th:replace="${parents}"></th:block>
+    <li aria-current="page" th:text="${current}"></li>
+  </ol>
+</nav>
 <nav th:fragment="pagination(pager, label)" class="pagination" th:aria-label="${label}"
      th:if="${pager != null and pager.tongTrang > 1}">
   <p class="pagination-status" th:if="${pager.trang < pager.tongTrang}" th:text="|Trang ${pager.trang + 1} / ${pager.tongTrang}|"></p>
   <div class="pagination-links">
-    <div class="pagination-group" th:if="${pager.dau != null}">
-      <a class="btn btn--secondary" th:href="@{${pager.dau}}">Trang đầu</a>
-      <a class="btn btn--secondary" th:href="@{${pager.truoc}}">Trang trước</a>
+    <div class="pagination-group">
+      <th:block th:if="${pager.dau != null}">
+        <a class="btn btn--secondary" th:href="@{${pager.dau}}">Trang đầu</a>
+        <a class="btn btn--secondary" th:href="@{${pager.truoc}}">Trang trước</a>
+      </th:block>
     </div>
     <div class="pagination-group">
       <span th:if="${pager.cachDauMobile}" th:classappend="${!pager.cachDau} ? 'pagination-mobile'" aria-hidden="true">…</span>
@@ -60,9 +70,11 @@
       </th:block>
       <span th:if="${pager.cachCuoiMobile}" th:classappend="${!pager.cachCuoi} ? 'pagination-mobile'" aria-hidden="true">…</span>
     </div>
-    <div class="pagination-group" th:if="${pager.sau != null}">
-      <a class="btn btn--secondary" th:href="@{${pager.sau}}">Trang sau</a>
-      <a class="btn btn--secondary" th:href="@{${pager.cuoi}}">Trang cuối</a>
+    <div class="pagination-group">
+      <th:block th:if="${pager.sau != null}">
+        <a class="btn btn--secondary" th:href="@{${pager.sau}}">Trang sau</a>
+        <a class="btn btn--secondary" th:href="@{${pager.cuoi}}">Trang cuối</a>
+      </th:block>
     </div>
   </div>
 </nav>

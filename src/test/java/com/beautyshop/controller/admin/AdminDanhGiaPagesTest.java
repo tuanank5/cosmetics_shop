@@ -30,6 +30,7 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.containsString;
+import static org.hamcrest.Matchers.matchesPattern;
 import static org.hamcrest.Matchers.not;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyBoolean;
@@ -73,7 +74,8 @@ class AdminDanhGiaPagesTest {
             .andExpect(content().string(containsString("<option value=\"CHO_DUYET\" selected=\"selected\">Chờ duyệt</option>")))
             .andExpect(content().string(containsString("<option value=\"4\" selected=\"selected\">4 sao</option>")))
             .andExpect(content().string(containsString("<option value=\"30\" selected=\"selected\">Serum</option>")))
-            .andExpect(content().string(containsString("42 đánh giá")))
+            .andExpect(content().string(containsString("21–40 trong tổng 42 đánh giá")))
+            .andExpect(content().string(not(containsString("id=\"review-notice\""))))
             .andExpect(content().string(containsString("Thấm &lt;i&gt;")))
             .andExpect(content().string(containsString("4/5 · Thịnh P. · 21/11/2026")))
             .andExpect(content().string(containsString("action=\"/admin/reviews/65f000000000000000000001/visibility\"")))
@@ -86,6 +88,14 @@ class AdminDanhGiaPagesTest {
             .andExpect(content().string(containsString("Trang 2 / 3")))
             .andExpect(content().string(containsString("/admin/reviews?status=CHO_DUYET&amp;stars=4&amp;product=30&amp;page=2")));
         verify(sauMua).danhSachDanhGiaAdmin(new BoLocDanhGia(TrangThaiLoc.CHO_DUYET, 4, 30L), 1);
+
+        mvc.perform(get("/admin/reviews").with(user("admin").roles("ADMIN"))
+                .param("status", "CHO_DUYET").param("stars", "4").param("product", "30").param("page", "1")
+                .param("focus", choDuyet.ma()))
+            .andExpect(status().isOk())
+            .andExpect(model().attribute("focusReviewOrder", choDuyet.ma()))
+            .andExpect(content().string(matchesPattern("(?s).*<li\\b(?=[^>]*id=\"review-" + choDuyet.ma()
+                + "\")(?=[^>]*tabindex=\"-1\")(?=[^>]*data-review-return-focus=\"true\")[^>]*>.*")));
     }
 
     @Test

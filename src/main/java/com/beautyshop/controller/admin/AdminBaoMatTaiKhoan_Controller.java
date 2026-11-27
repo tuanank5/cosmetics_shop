@@ -1,5 +1,7 @@
 package com.beautyshop.controller.admin;
 
+import com.beautyshop.controller.NguonDieuHuong;
+import com.beautyshop.model.NguoiDung.VaiTro;
 import com.beautyshop.repository.DanhTinhOAuth_Repository;
 import com.beautyshop.repository.NguoiDung_Repository;
 import com.beautyshop.security.PhienNguoiDung;
@@ -28,7 +30,8 @@ class AdminBaoMatTaiKhoan_Controller {
 
     @GetMapping
     String xem(@PathVariable long id, @RequestParam(defaultValue = "") String q,
-               @RequestParam(defaultValue = "0") int page, Model model) {
+               @RequestParam(required = false) Boolean active, @RequestParam(required = false) VaiTro role,
+               @RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "false") boolean fromList, Model model) {
         var user = users.docBaoMatAdmin(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
         model.addAttribute("id", id);
         model.addAttribute("hoTen", user.getHoTen());
@@ -39,13 +42,22 @@ class AdminBaoMatTaiKhoan_Controller {
             user.getCoMatKhau(), user.getDaXacMinhEmail()));
         model.addAttribute("providers", identities.docNhaCungCap(id));
         model.addAttribute("q", timKiem(q));
+        model.addAttribute("active", active);
+        model.addAttribute("role", role);
         model.addAttribute("page", Math.clamp(page, 0, 100_000));
+        model.addAttribute("fromList", fromList);
+        model.addAttribute("backToUsers", NguonDieuHuong.trangDanhSach("/admin/users",
+            AdminNguoiDung_Controller.boLoc(timKiem(q), active, role), Math.clamp(page, 0, 100_000))
+            + (fromList ? NguonDieuHuong.mocAdmin(id) : ""));
         return "admin/user/detail";
     }
 
     @PostMapping("/password-reset")
     String yeuCau(@PathVariable long id, @RequestParam MatKhau_Service.LyDoHoTro reason,
-                  @RequestParam(defaultValue = "") String q, @RequestParam(defaultValue = "0") int page,
+                  @RequestParam(defaultValue = "") String q, @RequestParam(required = false) Boolean active,
+                  @RequestParam(required = false) VaiTro role,
+                  @RequestParam(defaultValue = "0") int page,
+                  @RequestParam(defaultValue = "false") boolean fromList,
                   @AuthenticationPrincipal PhienNguoiDung admin, RedirectAttributes flash) {
         switch (passwords.adminYeuCau(admin.getMaNguoiDung(), admin.getPhienBanXacThuc(), id, reason)) {
             case DA_GUI -> flash.addFlashAttribute("message", "Máy chủ thư đã nhận yêu cầu gửi liên kết.");
@@ -54,6 +66,9 @@ class AdminBaoMatTaiKhoan_Controller {
             case LOI_GUI -> flash.addFlashAttribute("error", "Chưa gửi được thư. Vui lòng thử lại sau.");
         }
         flash.addAttribute("q", timKiem(q));
+        if (active != null) flash.addAttribute("active", active);
+        if (role != null) flash.addAttribute("role", role);
+        if (fromList) flash.addAttribute("fromList", true);
         flash.addAttribute("page", Math.clamp(page, 0, 100_000));
         return "redirect:/admin/users/" + id;
     }

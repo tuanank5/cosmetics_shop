@@ -41,13 +41,16 @@ class AnhTaiLenAdviceTest {
             "ui-test", null, AuthorityUtils.createAuthorityList("ROLE_ADMIN")));
         when(service.sanPham(1L)).thenReturn(mock(SanPham.class));
         var request = new MockHttpServletRequest("POST", "/admin/catalog/products/1/variants/new");
+        request.setQueryString("listQ=Serum%20Test&listPage=2&variantPage=1&next=https://example.invalid");
         var view = advice().quaDungLuong(request);
         assertThat(view.getViewName()).isEqualTo("admin/variant/form");
         assertThat(view.getStatus()).isEqualTo(HttpStatus.PAYLOAD_TOO_LARGE);
         var errors = (BindingResult) view.getModel().get(BindingResult.MODEL_KEY_PREFIX + "form");
         assertThat(errors.hasFieldErrors("hinhAnh")).isTrue();
         assertThat(view.getModel()).containsEntry("uploadQuaLon", true)
-            .containsEntry("action", request.getRequestURI());
+            .containsEntry("action", request.getRequestURI() + "?listQ=Serum%20Test&listPage=2&variantPage=1")
+            .containsEntry("backToProducts", "/admin/catalog/products?q=Serum%20Test&page=2#admin-row-1")
+            .containsEntry("backToVariants", "/admin/catalog/products/1/variants?listQ=Serum%20Test&listPage=2&page=1");
         verify(service).sanPham(1L);
         verifyNoMoreInteractions(service);
     }

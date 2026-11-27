@@ -20,6 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -119,6 +120,11 @@ public class DonHang_Service {
     }
 
     public List<TomTat> danhSachCustomer(long maNguoiDung) { return donHangRepository.danhSach(maNguoiDung); }
+
+    @Transactional(readOnly = true, isolation = Isolation.REPEATABLE_READ)
+    public Page<TomTat> danhSachCustomer(long maNguoiDung, Pageable pageable) {
+        return PhanTrang.doc(pageable, trang -> donHangRepository.danhSach(maNguoiDung, trang));
+    }
     @PreAuthorize("hasRole('ADMIN')")
     @Transactional(readOnly = true, isolation = Isolation.REPEATABLE_READ)
     public Page<DongDonAdmin> danhSachAdmin(BoLocDonHangAdmin loc, int page) {

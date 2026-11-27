@@ -156,8 +156,8 @@ class GioHangPagesTest {
             .andExpect(status().isOk())
             .andExpect(content().string(containsString("Vanicream")))
             .andExpect(content().string(containsString("data=\"" + url + "\"")))
-            .andExpect(content().string(containsString("href=\"/products/demo-r026?variant=11\"")))
-            .andExpect(content().string(containsString("href=\"/products/demo-r026?variant=22\"")))
+            .andExpect(content().string(containsString("href=\"/products/demo-r026?variant=11&amp;from=cart&amp;cartVariant=11\"")))
+            .andExpect(content().string(containsString("href=\"/products/demo-r026?variant=22&amp;from=cart&amp;cartVariant=22\"")))
             .andExpect(content().string(containsString("aria-label=\"Moisturizing Cream, 4 oz (mã biến thể sản phẩm DEMO-026-B)\"")))
             .andExpect(content().string(containsString("1.065.000 ₫")));
     }

@@ -1,0 +1,117 @@
+{
+  "browser": "Chrome/158.0.8127.88",
+  "checks": [
+    {
+      "screen": "register",
+      "width": 390,
+      "name": {
+        "gap": 8,
+        "errorHeight": 0,
+        "invalid": null,
+        "described": false,
+        "hasMessage": false
+      }
+    },
+    {
+      "screen": "register",
+      "width": 1366,
+      "name": {
+        "gap": 8,
+        "errorHeight": 0,
+        "invalid": null,
+        "described": false,
+        "hasMessage": false
+      }
+    },
+    {
+      "screen": "register validation"
+    },
+    {
+      "screen": "/account/addresses/new",
+      "width": 390,
+      "phone": {
+        "gap": 8,
+        "errorHeight": 0,
+        "invalid": null,
+        "described": true,
+        "hasMessage": false
+      }
+    },
+    {
+      "screen": "/account/addresses/new",
+      "width": 1366,
+      "phone": {
+        "gap": 8,
+        "errorHeight": 0,
+        "invalid": null,
+        "described": true,
+        "hasMessage": false
+      }
+    },
+    {
+      "screen": "/account/addresses/1/edit",
+      "width": 390,
+      "phone": {
+        "gap": 8,
+        "errorHeight": 0,
+        "invalid": null,
+        "described": true,
+        "hasMessage": false
+      }
+    },
+    {
+      "screen": "/account/addresses/1/edit",
+      "width": 1366,
+      "phone": {
+        "gap": 8,
+        "errorHeight": 0,
+        "invalid": null,
+        "described": true,
+        "hasMessage": false
+      }
+    },
+    {
+      "screen": "address validation",
+      "invalidPhone": {
+        "gap": 8,
+        "errorHeight": 26.390625,
+        "invalid": "true",
+        "described": true,
+        "hasMessage": true
+      }
+    },
+    {
+      "screen": "checkout",
+      "width": 390,
+      "address": {
+        "gap": 4,
+        "errorHeight": 0,
+        "invalid": null,
+        "described": true,
+        "hasMessage": false
+      }
+    },
+    {
+      "screen": "checkout",
+      "width": 1366,
+      "address": {
+        "gap": 4,
+        "errorHeight": 0,
+        "invalid": null,
+        "described": true,
+        "hasMessage": false
+      }
+    },
+    {
+      "screen": "checkout validation",
+      "invalidAddress": {
+        "gap": 4,
+        "errorHeight": 26.390625,
+        "invalid": "true",
+        "described": true,
+        "hasMessage": true
+      },
+      "voucherRecovery": true
+    }
+  ]
+}

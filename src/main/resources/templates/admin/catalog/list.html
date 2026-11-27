@@ -5,8 +5,8 @@
 <div th:replace="~{fragments/header :: siteHeader}"></div>
 <main id="main" tabindex="-1" class="page-content admin-workspace">
     <nav class="admin-tabs" aria-label="Quản lý catalog">
-        <a th:href="@{/admin/catalog/categories}" th:attr="aria-current=${section == 'categories' ? 'page' : null}">Danh mục</a>
         <a th:href="@{/admin/catalog/brands}" th:attr="aria-current=${section == 'brands' ? 'page' : null}">Thương hiệu</a>
+        <a th:href="@{/admin/catalog/categories}" th:attr="aria-current=${section == 'categories' ? 'page' : null}">Danh mục</a>
         <a th:href="@{/admin/catalog/products}" th:attr="aria-current=${product ? 'page' : null}">Sản phẩm</a>
     </nav>
     <header class="admin-page-head">
@@ -14,10 +14,12 @@
             <h1 th:text="|Quản lý ${#strings.toLowerCase(label)}|">Quản lý danh mục</h1>
             <p class="admin-subtitle" th:text="${product ? 'Quản lý thông tin, trạng thái bán và biến thể.' : 'Quản lý các nhóm sản phẩm hiển thị trên cửa hàng.'}"></p>
         </div>
-        <a class="btn btn--primary" th:href="@{/admin/catalog/{section}/new(section=${section})}" th:text="|Thêm ${#strings.toLowerCase(label)}|">Thêm mới</a>
+        <a class="btn btn--primary" th:href="@{${listSource.vao('/admin/catalog/' + section + '/new')}}" th:text="|Thêm ${#strings.toLowerCase(label)}|">Thêm mới</a>
     </header>
     <div th:replace="~{fragments/ui :: notices(${message}, ${error})}"></div>
-    <p class="notice" th:if="${#lists.isEmpty(items)}">Chưa có dữ liệu.</p>
+    <form th:replace="~{fragments/admin-table :: listFilters(|/admin/catalog/${section}|, 'Tìm theo tên hoặc đường dẫn', ${boLoc}, ${categories}, ${brands})}"></form>
+    <p class="list-result-count" data-admin-list-start tabindex="-1" th:text="${pager.moTa(#strings.toLowerCase(label))}"></p>
+    <p class="notice" th:if="${#lists.isEmpty(items)}">Không tìm thấy kết quả phù hợp.</p>
     <div th:unless="${#lists.isEmpty(items)}" class="admin-table-scroll" tabindex="0" role="region" th:aria-label="|Bảng ${#strings.toLowerCase(label)}|">
         <table class="admin-table" th:classappend="${!product ? 'admin-table--compact' : null}">
             <thead><tr>
@@ -30,7 +32,7 @@
                 <th scope="col">Trạng thái</th><th scope="col">Hành động</th>
             </tr></thead>
             <tbody>
-            <tr th:each="item : ${items}"
+            <tr th:each="item : ${items}" th:id="|admin-row-${item.ma}|" tabindex="-1"
                 th:with="soDon=${donDangXuLy?.get(item.ma) ?: 0}, biChan=${item.dangHoatDong and soDon > 0}, lyDo=|catalog-block-${item.ma}|">
                 <td th:if="${product}"><span th:replace="~{fragments/admin-table :: thumbnail(${item.urlHinhAnh})}"></span></td>
                 <td class="admin-code" th:text="${item.ma}"></td>
@@ -43,13 +45,14 @@
                 <td>
                     <div class="admin-inline">
                         <a class="btn btn--secondary admin-button" th:if="${product}"
-                           th:href="@{/admin/catalog/products/{id}/variants(id=${item.ma})}">Biến thể</a>
-                        <a class="btn btn--secondary admin-button" th:href="@{/admin/catalog/{section}/{id}/edit(section=${section},id=${item.ma})}"
+                           data-admin-entry th:href="@{${listSource.vao('/admin/catalog/products/' + item.ma + '/variants')}}">Biến thể</a>
+                        <a class="btn btn--secondary admin-button" data-admin-entry th:href="@{${listSource.vao('/admin/catalog/' + section + '/' + item.ma + '/edit')}}"
                            th:aria-label="|Sửa ${item.ten}|">Sửa</a>
                         <form th:action="@{/admin/catalog/{section}/{id}/status(section=${section},id=${item.ma})}" method="post"
                               th:with="hanhDong=${item.dangHoatDong ? 'Ngừng hoạt động' : 'Kích hoạt lại'}">
+                            <th:block th:replace="~{fragments/admin-table :: listSource(${listSource.truongAn()})}"></th:block>
                             <input type="hidden" name="active" th:value="${!item.dangHoatDong}">
-                            <button class="btn btn--secondary admin-button" type="submit" th:text="${hanhDong}" th:disabled="${biChan}"
+                            <button class="btn btn--secondary admin-button admin-toggle-status" type="submit" th:text="${hanhDong}" th:disabled="${biChan}"
                                     th:attr="aria-label=|${hanhDong} ${item.ten}|,aria-describedby=${biChan ? lyDo : null}"></button>
                         </form>
                     </div>
@@ -59,6 +62,7 @@
             </tbody>
         </table>
     </div>
+    <div th:replace="~{fragments/ui :: pagination(${pager}, |Phân trang ${#strings.toLowerCase(label)}|)}"></div>
 </main>
 <div th:replace="~{fragments/footer :: siteFooter}"></div>
 </body>

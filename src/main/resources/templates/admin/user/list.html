@@ -2,34 +2,66 @@
 <html lang="vi" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="~{fragments/head :: head('Quản lý tài khoản · BeautyShop')}"></head>
 <body><div th:replace="~{fragments/header :: siteHeader}"></div>
-<main id="main" tabindex="-1" class="page-content catalog-admin">
+<main id="main" tabindex="-1" class="page-content admin-workspace">
     <h1>Quản lý tài khoản</h1>
     <div th:replace="~{fragments/ui :: notices(${message}, ${error})}"></div>
-    <form class="catalog-form" th:action="@{/admin/users}" method="get" role="search">
-        <label>Tìm theo họ tên hoặc email <input type="search" name="q" th:value="${q}" maxlength="190"></label>
-        <button type="submit" class="btn btn--primary">Tìm kiếm</button>
+    <form class="admin-panel admin-user-filter" th:action="@{/admin/users}" method="get" role="search" aria-label="Lọc tài khoản">
+        <label>Tìm theo họ tên hoặc email
+            <input type="search" name="q" th:value="${q}" maxlength="190">
+        </label>
+        <label>Trạng thái
+            <select name="active">
+                <option value="" th:selected="${active == null}">Tất cả</option>
+                <option value="true" th:selected="${active == true}">Đang hoạt động</option>
+                <option value="false" th:selected="${active == false}">Đã khóa</option>
+            </select>
+        </label>
+        <label>Vai trò
+            <select name="role">
+                <option value="">Tất cả</option>
+                <option value="CUSTOMER" th:selected="${role?.name() == 'CUSTOMER'}">Khách hàng</option>
+                <option value="ADMIN" th:selected="${role?.name() == 'ADMIN'}">Quản trị</option>
+            </select>
+        </label>
+        <div class="catalog-actions admin-filter-actions">
+            <button type="submit" class="btn btn--primary">Áp dụng</button>
+            <a class="btn btn--secondary" th:if="${!#strings.isEmpty(q) or active != null or role != null}" th:href="@{/admin/users}">Xóa bộ lọc</a>
+        </div>
     </form>
+    <p class="list-result-count" data-admin-list-start tabindex="-1" th:text="${pager.moTa('tài khoản')}"></p>
     <p class="notice" th:if="${ketQua.empty}">Không tìm thấy tài khoản.</p>
-    <ul class="catalog-list">
-        <li th:each="muc : ${ketQua.content}">
-            <div>
-                <strong th:text="${muc.hoTen}"></strong>
-                <p th:text="${muc.email}"></p>
-                <small th:text="${muc.vaiTro.name() == 'ADMIN' ? 'Quản trị' : 'Khách hàng'}"></small>
-                <small th:text="${muc.kichHoat ? 'Đang hoạt động' : 'Đã khóa'}"></small>
-            </div>
-            <div class="catalog-actions">
-                <a class="text-link" th:href="@{/admin/users/{id}(id=${muc.maNguoiDung},q=${q},page=${ketQua.number})}">Chi tiết</a>
-                <form th:if="${muc.maNguoiDung != maAdmin}" method="post"
-                      th:action="@{/admin/users/{id}/status(id=${muc.maNguoiDung})}">
-                    <input type="hidden" name="q" th:value="${q}">
-                    <input type="hidden" name="page" th:value="${ketQua.number}">
-                    <input type="hidden" name="enabled" th:value="${!muc.kichHoat}">
-                    <button type="submit" class="btn btn--primary" th:text="${muc.kichHoat ? 'Khóa' : 'Mở khóa'}"></button>
-                </form>
-            </div>
-        </li>
-    </ul>
+    <div class="admin-table-scroll" th:unless="${ketQua.empty}" tabindex="0" role="region" aria-label="Bảng tài khoản">
+        <table class="admin-table admin-table--compact">
+            <thead><tr>
+                <th scope="col">Họ và tên</th><th scope="col">Email đăng nhập</th><th scope="col">Vai trò</th>
+                <th scope="col">Trạng thái</th><th scope="col">Thao tác</th>
+            </tr></thead>
+            <tbody>
+                <tr th:each="muc : ${ketQua.content}" th:id="|admin-row-${muc.maNguoiDung}|" tabindex="-1">
+                    <th scope="row" th:text="${muc.hoTen}"></th>
+                    <td th:text="${muc.email}"></td>
+                    <td th:text="${muc.vaiTro.name() == 'ADMIN' ? 'Quản trị' : 'Khách hàng'}"></td>
+                    <td><span class="admin-badge" th:attr="data-status=${muc.kichHoat ? 'ACTIVE' : 'LOCKED'}"
+                              th:text="${muc.kichHoat ? 'Đang hoạt động' : 'Đã khóa'}"></span></td>
+                    <td>
+                        <div class="catalog-actions">
+                            <a class="btn btn--secondary admin-button" data-admin-entry th:href="@{${'/admin/users/' + muc.maNguoiDung + userListQuery}}">Chi tiết</a>
+                            <form th:if="${muc.maNguoiDung != maAdmin}" method="post"
+                                  th:action="@{/admin/users/{id}/status(id=${muc.maNguoiDung})}">
+                                <input type="hidden" name="q" th:value="${q}">
+                                <input type="hidden" name="page" th:value="${ketQua.number}">
+                                <input th:if="${active != null}" type="hidden" name="active" th:value="${active}">
+                                <input th:if="${role != null}" type="hidden" name="role" th:value="${role.name()}">
+                                <input type="hidden" name="fromList" value="true">
+                                <input type="hidden" name="enabled" th:value="${!muc.kichHoat}">
+                                <button type="submit" class="btn btn--secondary admin-button admin-toggle-account" th:text="${muc.kichHoat ? 'Khóa' : 'Mở khóa'}"></button>
+                            </form>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
     <div th:replace="~{fragments/ui :: pagination(${pager}, 'Phân trang tài khoản')}"></div>
 </main>
 <div th:replace="~{fragments/footer :: siteFooter}"></div></body></html>

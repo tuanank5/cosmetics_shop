@@ -82,10 +82,10 @@ public class NguoiDung_Service {
 
     @Transactional(readOnly = true)
     @PreAuthorize("hasRole('ADMIN')")
-    public Page<NguoiDung_Repository.TomTat> timNguoiDung(String q, Pageable pageable) {
+    public Page<NguoiDung_Repository.TomTat> timNguoiDung(String q, Boolean kichHoat, NguoiDung.VaiTro vaiTro, Pageable pageable) {
         String mau = q.isEmpty() ? "" : "%" + q.toLowerCase(Locale.ROOT)
             .replace("!", "!!").replace("%", "!%").replace("_", "!_") + "%";
-        return repository.timNguoiDung(mau, pageable);
+        return repository.timNguoiDung(mau, kichHoat, vaiTro, pageable);
     }
 
     @Transactional

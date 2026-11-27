@@ -1,5 +1,6 @@
 package com.beautyshop.controller;
 
+import com.beautyshop.dto.PhanTrang;
 import com.beautyshop.cart.ThongBaoGopGio;
 import com.beautyshop.dto.DanhGia_Form;
 import com.beautyshop.model.DanhGia_Document;
@@ -105,22 +106,35 @@ class SauMua_Controller {
     }
 
     @GetMapping("/account/returns")
-    String yeuCau(@AuthenticationPrincipal PhienNguoiDung phien, Model model) {
-        model.addAttribute("yeuCau", sauMua.danhSachDoiTra(phien.getMaNguoiDung()));
+    String yeuCau(@AuthenticationPrincipal PhienNguoiDung phien, @RequestParam(defaultValue = "0") int page, Model model) {
+        var trang = sauMua.danhSachDoiTra(phien.getMaNguoiDung(), PhanTrang.yeuCau(page, 10));
+        model.addAttribute("yeuCau", trang.getContent());
+        model.addAttribute("pager", PhanTrang.tu(trang, so -> NguonDieuHuong.trangDanhSach("/account/returns", Map.of(), so)));
         model.addAttribute("base", "/account/returns");
         return "return/list";
     }
 
     @GetMapping("/account/returns/{id}")
-    String chiTiet(@PathVariable long id, @AuthenticationPrincipal PhienNguoiDung phien, Model model) {
+    String chiTiet(@PathVariable long id, @AuthenticationPrincipal PhienNguoiDung phien,
+                   @RequestParam Map<String, String> thamSo, Model model) {
         model.addAttribute("trang", sauMua.chiTiet(id, phien.getMaNguoiDung()));
         model.addAttribute("base", "/account/returns");
+        model.addAttribute("backToCustomerReturns",
+            NguonDieuHuong.veDanhSachKhach("/account/returns", thamSo, "customer-return", id));
         return "return/detail";
     }
 
     @GetMapping("/account/wishlist")
-    String yeuThich(@AuthenticationPrincipal PhienNguoiDung phien, Model model) {
-        model.addAttribute("yeuThich", sauMua.danhSachYeuThich(phien.getMaNguoiDung()));
+    String yeuThich(@AuthenticationPrincipal PhienNguoiDung phien, @RequestParam(defaultValue = "0") int page,
+                    Model model, RedirectAttributes redirect) {
+        var trang = sauMua.danhSachYeuThich(phien.getMaNguoiDung(), PhanTrang.yeuCau(page, 12));
+        if (page != trang.getNumber()) {
+            redirect.addAttribute("page", trang.getNumber());
+            return "redirect:/account/wishlist";
+        }
+        model.addAttribute("yeuThich", trang.getContent());
+        model.addAttribute("wishlistFields", page == 0 ? Map.of() : Map.of("wishlistPage", Integer.toString(page)));
+        model.addAttribute("pager", PhanTrang.tu(trang, so -> NguonDieuHuong.trangDanhSach("/account/wishlist", Map.of(), so)));
         return "auth/wishlist";
     }
 

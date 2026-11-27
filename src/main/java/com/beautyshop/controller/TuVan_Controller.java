@@ -28,7 +28,7 @@ class TuVan_Controller {
         // The composer is rendered after the transcript. Resolve CSRF before the view can flush.
         csrf.getToken();
         model.addAttribute("form", new TuVan_Form());
-        return "TuVanDa";
+        return "chat/index";
     }
 
     @PostMapping
@@ -47,7 +47,7 @@ class TuVan_Controller {
                 errors.reject("chat.rate", "Bạn vừa gửi nhiều câu hỏi. Vui lòng thử lại sau một phút.");
             }
         }
-        return "TuVanDa";
+        return "chat/index";
     }
 
     private boolean choPhep(HttpSession session) {

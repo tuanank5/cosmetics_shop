@@ -1,5 +1,36 @@
 (() => {
   'use strict';
+  const reviewReturn = document.querySelector('[data-review-return-focus]');
+  if (reviewReturn) requestAnimationFrame(() => reviewReturn.focus());
+
+  const listStart = document.querySelector('[data-scroll-list-start], [data-admin-list-start]');
+  const adminUpdate = document.querySelector('[data-admin-restore-focus]');
+  if (adminUpdate) requestAnimationFrame(() => adminUpdate.focus());
+  if (listStart) {
+    const rowId = new RegExp(`^${listStart.dataset.scrollListStart || 'admin-row'}-\\d+$`);
+    const rowSelector = '[data-scroll-row], [id^="admin-row-"]';
+    window.addEventListener('pageshow', (event) => {
+      const back = event.persisted || performance.getEntriesByType('navigation')[0]?.type === 'back_forward';
+      const remembered = back ? history.state?.listRowFocus : null;
+      const id = remembered || location.hash.slice(1);
+      if (!rowId.test(id)) return;
+      if (remembered) history.replaceState({ ...history.state, listRowFocus: null }, '');
+      const candidate = document.getElementById(id);
+      const target = candidate?.matches(rowSelector) ? candidate : listStart;
+      requestAnimationFrame(() => {
+        if (target.closest('[inert]')) return;
+        target.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+        target.focus({ preventScroll: true });
+      });
+    });
+    document.addEventListener('click', (event) => {
+      if (event.defaultPrevented || event.button !== 0 || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+      const link = event.target.closest?.('[data-scroll-entry], [data-admin-entry]');
+      const target = link?.closest(rowSelector);
+      if (target && rowId.test(target.id)) history.replaceState({ ...history.state, listRowFocus: target.id }, '');
+    });
+  }
+
   const menu = document.querySelector('.header-menu');
   const adminMenu = document.querySelector('.admin-menu');
   const discovery = menu?.querySelector('.nav-discovery');

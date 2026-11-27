@@ -364,6 +364,11 @@ class XacThuc_MariaDb_Test {
         mvc.perform(get(base).session(phienKhac)).andExpect(status().isOk())
             .andExpect(content().string(not(containsString("Địa chỉ B"))));
         mvc.perform(get(base + "/" + maB + "/edit").session(phienKhac)).andExpect(status().isNotFound());
+        mvc.perform(get(base + "/" + maA + "/edit").session(phienChu).param("from", "addresses"))
+            .andExpect(model().attribute("addressBack", base + "#address-" + maA))
+            .andExpect(content().string(containsString("name=\"from\" value=\"addresses\"")));
+        mvc.perform(diaChi(base + "/" + maA + "/edit", phienChu, "Địa chỉ A").param("from", "addresses"))
+            .andExpect(redirectedUrl(base + "#address-" + maA));
         mvc.perform(diaChi(base + "/" + maB + "/edit", phienKhac, "Không hợp lệ").param("from", "checkout"))
             .andExpect(status().isNotFound());
         mvc.perform(post(base + "/" + maB + "/delete").session(phienKhac).with(csrf()))
@@ -405,6 +410,12 @@ class XacThuc_MariaDb_Test {
             .andExpect(content().string(not(containsString(mucTieu.getMatKhauBam()))));
         mvc.perform(get("/admin/users").session(phienAdmin).param("q", customer).param("page", "99"))
             .andExpect(status().isOk()).andExpect(content().string(containsString(customer)))
+            .andExpect(content().string(not(containsString("Phân trang tài khoản"))));
+        mvc.perform(get("/admin/users").session(phienAdmin).param("q", q).param("active", "true"))
+            .andExpect(status().isOk()).andExpect(content().string(containsString(customer)))
+            .andExpect(content().string(not(containsString("Phân trang tài khoản"))));
+        mvc.perform(get("/admin/users").session(phienAdmin).param("q", q).param("active", "false").param("page", "99"))
+            .andExpect(status().isOk()).andExpect(content().string(not(containsString(customer))))
             .andExpect(content().string(not(containsString("Phân trang tài khoản"))));
         String url = "/admin/users/" + mucTieu.getMaNguoiDung() + "/status";
         mvc.perform(post(url).session(phienCustomer).with(csrf()).param("enabled", "false"))
@@ -451,6 +462,28 @@ class XacThuc_MariaDb_Test {
         form.setDiaChiChiTiet("Địa chỉ " + ten);
         form.setLaMacDinh(true);
         return form;
+    }
+
+    @Test
+    void gioiHanMuoiDiaChiTuMayChuVanChoPhepSua() throws Exception {
+        String email = email();
+        dangKy(email);
+        long id = nguoiDungRepository.findByEmail(email).orElseThrow().getMaNguoiDung();
+        var session = dangNhap(email, new MockHttpSession(), "CUSTOMER", "/");
+        for (int so = 1; so <= 10; so++) {
+            mvc.perform(diaChi("/account/addresses/new", session, "Địa chỉ " + so))
+                .andExpect(redirectedUrl("/account/addresses"));
+        }
+        mvc.perform(diaChi("/account/addresses/new", session, "Địa chỉ 11").param("from", "checkout"))
+            .andExpect(redirectedUrl("/account/addresses?from=checkout"))
+            .andExpect(flash().attributeExists("error"));
+        mvc.perform(get("/account/addresses/new").session(session)).andExpect(redirectedUrl("/account/addresses"));
+        var danhSach = diaChiRepository.findAllByNguoiDungMaNguoiDungOrderByMaDiaChiAsc(id);
+        assertThat(danhSach).hasSize(10);
+        mvc.perform(diaChi("/account/addresses/" + danhSach.getFirst().getMaDiaChi() + "/edit", session, "Đã sửa"))
+            .andExpect(redirectedUrl("/account/addresses")).andExpect(flash().attributeExists("message"));
+        assertThat(diaChiRepository.findAllByNguoiDungMaNguoiDungOrderByMaDiaChiAsc(id))
+            .hasSize(10).first().extracting(muc -> muc.getDiaChiChiTiet()).isEqualTo("Đã sửa");
     }
 
     private org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder diaChi(

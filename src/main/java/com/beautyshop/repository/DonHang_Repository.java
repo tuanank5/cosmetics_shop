@@ -58,10 +58,22 @@ public class DonHang_Repository {
     }
 
     public List<TomTat> danhSach(long maNguoiDung) {
-        return jdbc.sql("""
+        return docTomTat(maNguoiDung, Pageable.unpaged());
+    }
+
+    public Page<TomTat> danhSach(long maNguoiDung, Pageable pageable) {
+        long tong = jdbc.sql("SELECT COUNT(*) FROM don_hang WHERE ma_nguoi_dung = ?")
+            .param(maNguoiDung).query(Long.class).single();
+        return new PageImpl<>(docTomTat(maNguoiDung, pageable), pageable, tong);
+    }
+
+    private List<TomTat> docTomTat(long maNguoiDung, Pageable pageable) {
+        var query = jdbc.sql("""
             SELECT ma_don_hang, ma_don_hang_hien_thi, trang_thai, tong_thanh_toan, ngay_tao
             FROM don_hang WHERE ma_nguoi_dung = ? ORDER BY ma_don_hang DESC
-            """).param(maNguoiDung).query((rs, row) -> new TomTat(rs.getLong(1), rs.getString(2),
+            """ + (pageable.isPaged() ? " LIMIT ? OFFSET ?" : "")).param(maNguoiDung);
+        if (pageable.isPaged()) query.params(pageable.getPageSize(), pageable.getOffset());
+        return query.query((rs, row) -> new TomTat(rs.getLong(1), rs.getString(2),
             OrderStatus.valueOf(rs.getString(3)), rs.getBigDecimal(4), rs.getObject(5, LocalDateTime.class))).list();
     }
 

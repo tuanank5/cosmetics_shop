@@ -1,0 +1,43 @@
+{
+  "browser": "Chrome/158.0.8127.88",
+  "checks": [
+    {
+      "width": 390,
+      "shortPage": {
+        "height": 38,
+        "top": 862,
+        "bottom": 900,
+        "viewport": 900,
+        "contentBottom": 501,
+        "overflow": false
+      },
+      "longPage": {
+        "height": 38,
+        "top": 3729.015625,
+        "bottom": 3767.015625,
+        "viewport": 900,
+        "contentBottom": 3709.015625,
+        "overflow": false
+      }
+    },
+    {
+      "width": 1366,
+      "shortPage": {
+        "height": 38,
+        "top": 862,
+        "bottom": 900,
+        "viewport": 900,
+        "contentBottom": 417,
+        "overflow": false
+      },
+      "longPage": {
+        "height": 38,
+        "top": 2393.109375,
+        "bottom": 2431.109375,
+        "viewport": 900,
+        "contentBottom": 2357.109375,
+        "overflow": false
+      }
+    }
+  ]
+}

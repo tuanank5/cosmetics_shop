@@ -1,0 +1,100 @@
+{
+  "browser": "Chrome/158.0.8127.88",
+  "checks": [
+    {
+      "route": "/admin/vouchers/new",
+      "trail": [
+        [
+          "Mã giảm giá",
+          "/admin/vouchers"
+        ],
+        [
+          "Thêm mới",
+          "page"
+        ]
+      ]
+    },
+    {
+      "route": "/admin/vouchers/1/edit",
+      "trail": [
+        [
+          "Mã giảm giá",
+          "/admin/vouchers"
+        ],
+        [
+          "Chỉnh sửa",
+          "page"
+        ]
+      ]
+    },
+    {
+      "route": "/admin/vouchers/1/edit?nav=dashboard&range=7d",
+      "trail": [
+        [
+          "Tổng quan",
+          "/admin/dashboard?range=7d"
+        ],
+        [
+          "Mã giảm giá",
+          "/admin/vouchers"
+        ],
+        [
+          "Chỉnh sửa",
+          "page"
+        ]
+      ]
+    },
+    {
+      "route": "/admin/returns/1",
+      "trail": [
+        [
+          "Yêu cầu đổi trả",
+          "/admin/returns"
+        ],
+        [
+          "Chi tiết",
+          "page"
+        ]
+      ]
+    },
+    {
+      "route": "/admin/returns/1?nav=dashboard&range=7d",
+      "trail": [
+        [
+          "Tổng quan",
+          "/admin/dashboard?range=7d"
+        ],
+        [
+          "Yêu cầu đổi trả",
+          "/admin/returns"
+        ],
+        [
+          "Chi tiết",
+          "page"
+        ]
+      ]
+    },
+    {
+      "route": "/admin/reviews",
+      "width": 390,
+      "divider": [
+        "rgb(230, 218, 206)",
+        "solid",
+        "1px",
+        "0px",
+        "0px"
+      ]
+    },
+    {
+      "route": "/admin/reviews",
+      "width": 1366,
+      "divider": [
+        "rgb(230, 218, 206)",
+        "solid",
+        "1px",
+        "0px",
+        "0px"
+      ]
+    }
+  ]
+}

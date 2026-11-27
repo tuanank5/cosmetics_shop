@@ -1,0 +1,2 @@
+﻿[INFO] Building jar: C:\Users\ADMIN\Downloads\.4-HK1\Java_WWW\main\cosmetics_shop\target\scroll-restoration-20261127\target\beautyshop-0.0.1-SNAPSHOT.jar
+[INFO] BUILD SUCCESS

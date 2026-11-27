@@ -10,9 +10,13 @@
     <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 7l9-4 9 4v10l-9 4-9-4z M3 7l9 4 9-4 M12 11v10"/></svg>
     <span>Sản phẩm và biến thể</span>
   </a>
-  <a th:href="@{/admin/catalog/categories}" th:attr="aria-current=${(path == '/admin/catalog/categories' or #strings.startsWith(path, '/admin/catalog/categories/') or path == '/admin/catalog' or path == '/admin/catalog/brands' or #strings.startsWith(path, '/admin/catalog/brands/')) ? 'page' : null}">
+  <a th:href="@{/admin/catalog/categories}" th:attr="aria-current=${(path == '/admin/catalog/categories' or #strings.startsWith(path, '/admin/catalog/categories/') or path == '/admin/catalog') ? 'page' : null}">
     <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 6h18 M3 12h18 M3 18h18"/></svg>
-    <span>Danh mục &amp; thương hiệu</span>
+    <span>Danh mục</span>
+  </a>
+  <a th:href="@{/admin/catalog/brands}" th:attr="aria-current=${(path == '/admin/catalog/brands' or #strings.startsWith(path, '/admin/catalog/brands/')) ? 'page' : null}">
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 3h9l9 9-9 9-9-9z"/><circle cx="8" cy="8" r="1"/></svg>
+    <span>Thương hiệu</span>
   </a>
   <a th:href="@{/admin/orders}" th:attr="aria-current=${(path == '/admin/orders' or #strings.startsWith(path, '/admin/orders/')) ? 'page' : null}">
     <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 4h12v17l-3-2-3 2-3-2-3 2z M9 8h6 M9 12h6"/></svg>

@@ -4,6 +4,9 @@ import java.math.BigDecimal;
 import java.sql.Types;
 import java.time.LocalDateTime;
 import java.util.List;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
 import java.util.Optional;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.simple.JdbcClient;
@@ -27,6 +30,19 @@ public class PhieuGiamGia_Repository {
 
     public List<ThongTin> danhSach() {
         return jdbc.sql(DOC_PHIEU + " ORDER BY ma_phieu_giam_gia DESC").query(ANH_XA_PHIEU).list();
+    }
+
+    public Page<ThongTin> docTrang(String mauTim, Boolean active, Pageable pageable) {
+        String loc = """
+            WHERE (:q = '' OR LOWER(ma_ap_dung) LIKE :q ESCAPE '!')
+              AND (:active IS NULL OR dang_hoat_dong = :active)
+            """;
+        long tong = jdbc.sql("SELECT COUNT(*) FROM phieu_giam_gia " + loc)
+            .param("q", mauTim).param("active", active, Types.BOOLEAN).query(Long.class).single();
+        var muc = jdbc.sql(DOC_PHIEU + loc + " ORDER BY ma_phieu_giam_gia DESC LIMIT :size OFFSET :offset")
+            .param("q", mauTim).param("active", active, Types.BOOLEAN)
+            .param("size", pageable.getPageSize()).param("offset", pageable.getOffset()).query(ANH_XA_PHIEU).list();
+        return new PageImpl<>(muc, pageable, tong);
     }
 
     public Optional<ThongTin> timTheoMa(long ma, boolean khoa) {

@@ -12,6 +12,7 @@ import java.time.temporal.ChronoUnit;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.util.UriUtils;
@@ -19,6 +20,7 @@ import org.springframework.web.util.UriUtils;
 /** Chỉ tạo đích nội bộ từ các nguồn và tham số đã biết. */
 public final class NguonDieuHuong {
     private static final String CHECKOUT = "checkout";
+    private static final String SO_DIA_CHI = "addresses";
 
     private NguonDieuHuong() {}
 
@@ -26,8 +28,14 @@ public final class NguonDieuHuong {
         return CHECKOUT.equals(nguon);
     }
 
-    static String veDiaChi(String nguon) {
-        return tuCheckout(nguon) ? "/checkout" : "/account/addresses";
+    static String nguonSuaDiaChi(String nguon, Long id) {
+        if (tuCheckout(nguon)) return CHECKOUT;
+        return id != null && SO_DIA_CHI.equals(nguon) ? SO_DIA_CHI : null;
+    }
+
+    static String veDiaChi(String nguon, Long id) {
+        if (tuCheckout(nguon)) return "/checkout";
+        return "/account/addresses" + (SO_DIA_CHI.equals(nguonSuaDiaChi(nguon, id)) ? "#address-" + id : "");
     }
 
     public static Map<String, String> kyDashboard(Map<String, String> request) {
@@ -148,11 +156,94 @@ public final class NguonDieuHuong {
         }
     }
 
+    public static Map<String, String> nguonDanhGia(Map<String, String> request) {
+        String id = request.get("review");
+        if (id == null || !id.matches("[0-9a-fA-F]{24}")) return Map.of();
+        var query = new LinkedHashMap<String, String>();
+        query.put("review", id);
+        String status = request.getOrDefault("reviewStatus", "");
+        if (Set.of("TAT_CA", "CHO_DUYET", "DANG_HIEN", "DA_AN").contains(status)) query.put("reviewStatus", status);
+        so(query, "reviewStars", request.get("reviewStars"), 1, 5);
+        soLong(query, "reviewProduct", request.get("reviewProduct"));
+        so(query, "reviewPage", request.get("reviewPage"), 0, 10_000);
+        return query;
+    }
+
+    public static String veDanhGia(Map<String, String> nguon) {
+        var query = new LinkedHashMap<String, String>();
+        query.put("focus", nguon.get("review"));
+        for (String field : List.of("Status", "Stars", "Product", "Page")) {
+            String value = nguon.get("review" + field);
+            if (value != null) query.put(field.toLowerCase(java.util.Locale.ROOT), value);
+        }
+        return coThamSo("/admin/reviews", query) + "#review-" + nguon.get("review");
+    }
+
     /** Caller truyền route cố định và bộ lọc đã chuẩn hóa. */
     public static String trangDanhSach(String path, Map<String, String> boLoc, int page) {
         var thamSo = new LinkedHashMap<>(boLoc);
         thamSo.put("page", Integer.toString(page));
         return coThamSo(path, thamSo);
+    }
+
+    public static Integer trangNguon(Map<String, String> request, String ten) {
+        int trang = soNguyen(request.get(ten), -1);
+        return trang >= 0 && trang <= 100_000 ? trang : null;
+    }
+
+    static String veDanhSachKhach(String path, Map<String, String> request, String moc, long id) {
+        Integer trang = trangNguon(request, "listPage");
+        return trang == null ? path : trangDanhSach(path, Map.of(), trang) + "#" + moc + "-" + id;
+    }
+
+    public static NguonDanhSachAdmin nguonDanhSachAdmin(Map<String, String> request) {
+        var loc = new LinkedHashMap<String, String>();
+        them(loc, "q", request.get("listQ"), 190);
+        String active = request.get("listActive");
+        if ("true".equals(active) || "false".equals(active)) loc.put("active", active);
+        soLong(loc, "category", request.get("listCategory"));
+        soLong(loc, "brand", request.get("listBrand"));
+        return new NguonDanhSachAdmin(loc, trangNguon(request, "listPage"));
+    }
+
+    public record NguonDanhSachAdmin(Map<String, String> boLoc, Integer trang) {
+        public Map<String, String> truongAn() {
+            var fields = new LinkedHashMap<String, String>();
+            boLoc.forEach((ten, value) -> fields.put("list" + Character.toUpperCase(ten.charAt(0)) + ten.substring(1), value));
+            if (trang != null) fields.put("listPage", trang.toString());
+            return fields;
+        }
+
+        public String vao(String path) {
+            return coThamSo(path, truongAn());
+        }
+
+        public String quayLai(String path, Long id) {
+            return trang == null ? path : trangDanhSach(path, boLoc, trang) + mocAdmin(id);
+        }
+    }
+
+    public static String mocAdmin(Long id) {
+        return id == null ? "" : "#admin-row-" + id;
+    }
+
+    public static NguonBienTheAdmin nguonBienTheAdmin(Map<String, String> request) {
+        return new NguonBienTheAdmin(nguonDanhSachAdmin(request), trangNguon(request, "variantPage"));
+    }
+
+    public record NguonBienTheAdmin(NguonDanhSachAdmin sanPham, Integer trang) {
+        public Map<String, String> truongAn() {
+            var fields = new LinkedHashMap<>(sanPham.truongAn());
+            if (trang != null) fields.put("variantPage", trang.toString());
+            return fields;
+        }
+
+        public String veDanhSach(long maSanPham, Long maBienThe) {
+            String path = "/admin/catalog/products/" + maSanPham + "/variants";
+            var fields = sanPham.truongAn();
+            return trang == null ? coThamSo(path, fields)
+                : trangDanhSach(path, fields, trang) + mocAdmin(maBienThe);
+        }
     }
 
     static NguonSanPham sanPham(Map<String, String> request, Long maSanPham, boolean customer) {
@@ -170,11 +261,14 @@ public final class NguonDieuHuong {
             }
             case "wishlist" -> {
                 if (!customer) return macDinh();
-                ve = "/account/wishlist";
+                so(thamSo, "wishlistPage", request.get("wishlistPage"), 1, 100_000);
+                ve = coThamSo("/account/wishlist", thamSo.containsKey("wishlistPage")
+                    ? Map.of("page", thamSo.get("wishlistPage")) : Map.of());
                 nhan = "Quay lại sản phẩm yêu thích";
             }
             case "cart" -> {
-                ve = "/cart";
+                soLong(thamSo, "cartVariant", request.get("cartVariant"));
+                ve = "/cart" + (thamSo.containsKey("cartVariant") ? "#cart-variant-" + thamSo.get("cartVariant") : "");
                 nhan = "Quay lại giỏ hàng";
             }
             case "catalog" -> {
@@ -242,13 +336,18 @@ public final class NguonDieuHuong {
         }
     }
 
-    private static String coThamSo(String path, Map<String, String> thamSo) {
+    public static String coThamSo(String path, Map<String, String> thamSo) {
         var query = new java.util.StringJoiner("&", "?", "").setEmptyValue("");
         thamSo.forEach((key, value) -> query.add(key + "=" + UriUtils.encode(value, StandardCharsets.UTF_8)));
         return path + query;
     }
 
     public record NguonSanPham(String duongVe, String nhan, Map<String, String> thamSo) {
+        public String duongVeChiTiet(Long maSanPham) {
+            return maSanPham != null && "wishlist".equals(thamSo.get("from"))
+                ? duongVe + "#wishlist-product-" + maSanPham : duongVe;
+        }
+
         public String trangDanhGia(String slug, Long variant, int page) {
             var query = new LinkedHashMap<>(thamSo);
             query.put("variant", variant.toString());

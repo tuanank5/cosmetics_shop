@@ -78,8 +78,6 @@ public class Security_Config {
                     .requestMatchers(HttpMethod.HEAD, "/uploads/sku/*").permitAll()
                     .requestMatchers(HttpMethod.GET, "/chat").permitAll()
                     .requestMatchers(HttpMethod.POST, "/chat").permitAll()
-                    .requestMatchers(HttpMethod.GET, "/tu-van-da").permitAll()
-                    .requestMatchers(HttpMethod.POST, "/tu-van-da").permitAll()
                     .requestMatchers(HttpMethod.POST, "/cart", "/cart/**")
                         .access(new WebExpressionAuthorizationManager("isAnonymous() or hasRole('CUSTOMER')"))
                     .requestMatchers(HttpMethod.POST, "/payment/momo/ipn").permitAll()

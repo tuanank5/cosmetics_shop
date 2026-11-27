@@ -4,11 +4,13 @@
 <body>
 <div th:replace="~{fragments/header :: siteHeader}"></div>
 <main id="main" tabindex="-1" class="page-content admin-workspace" th:with="don=${chiTiet.don}">
-    <nav class="admin-breadcrumb" aria-label="Điều hướng cấp trang">
-        <a class="text-link" th:if="${orderBack != null}" th:href="@{${orderBack}}">Quay lại tổng quan</a>
-        <a class="text-link" th:href="@{${backToOrders ?: base}}" aria-label="Quay lại danh sách đơn hàng">Đơn hàng</a>
-        <span aria-hidden="true">/</span><span aria-current="page">Chi tiết</span>
+    <nav th:replace="~{fragments/ui :: breadcrumbTrail('Chi tiết', ~{:: .crumb-parent}, false)}">
+        <li class="crumb-parent" th:if="${orderBack != null}"><a th:href="@{${orderBack}}">Tổng quan</a></li>
+        <li class="crumb-parent"><a th:href="@{${backToOrders ?: base}}">Đơn hàng</a></li>
     </nav>
+    <a class="back-link text-link" th:if="${backToReviews != null}" th:href="@{${backToReviews}}">
+        <span aria-hidden="true">←</span> <span>Quay lại đánh giá</span>
+    </a>
     <header class="admin-detail-head">
         <h1>Chi tiết đơn hàng</h1>
         <div class="admin-inline">

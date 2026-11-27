@@ -101,6 +101,8 @@ G5 đạt trên fixture MariaDB và Chrome headless. Ô mật khẩu ổn địn
 
 G6 đạt trên fixture MariaDB, MongoDB và Chrome. Catalog, tài khoản và hai màn đánh giá dùng chung pager. Đã kiểm bộ lọc, SKU, giới hạn trang, thứ tự khi trùng timestamp, bàn phím và Back khi tắt JavaScript. CART-01 chờ giao riêng. [Báo cáo](reviews/UI-01P-ket-qua.md)
 
+Bổ sung phân trang cho đơn của khách, yêu thích, đổi trả, các danh sách catalog và mã giảm giá quản trị. P05 áp dụng trần 10 địa chỉ giao hàng theo D42. [Kết quả và cấu hình từng màn](reviews/LIST-PAGING-ket-qua.md)
+
 ## CART-01 · Thông báo gộp giỏ · 26/11/2026
 
 G7 đạt trên MariaDB và Chrome. Checkout hiển thị số lượng điều chỉnh theo từng SKU còn tồn dương sau gộp. Test xác nhận 12→10 giảm 2, mỗi snapshot gộp một lần, rollback giữ snapshot và refresh/Back không phát lại thông báo. CAT-01 chờ giao riêng. [Báo cáo](reviews/CART-01-ket-qua.md)
@@ -152,3 +154,7 @@ HTTP đạt 35 phép kiểm route, MariaDB/MongoDB đạt 38/38. Truy vấn DB s
 ## ADMIN-UX-BIZ-01 · Đơn hàng, catalog và Footer · 27/11/2026
 
 Đã triển khai Footer liên hệ, bảng Admin Orders/Catalog/SKU và điều kiện ngừng hoạt động theo đơn liên quan. Tồn theo lô được bàn giao thiết kế chuyển đổi, kho hiện hành tiếp tục theo SKU. [Báo cáo](reviews/ADMIN-UX-BIZ-01-ket-qua.md) · [Checkpoint](reviews/ADMIN-UX-BIZ-01-tiep-tuc.md)
+
+## CHAT-ROUTE-01 · Gỡ form tư vấn cũ
+
+Đã gỡ route và mã riêng của form tư vấn theo D41. Khách mở chức năng tư vấn tại `/chat`. [Kết quả](reviews/CHAT-ROUTE-01-ket-qua.md)

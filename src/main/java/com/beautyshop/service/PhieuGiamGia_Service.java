@@ -11,6 +11,10 @@ import java.math.RoundingMode;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import com.beautyshop.dto.BoLocDanhSachAdmin;
+import com.beautyshop.dto.PhanTrang;
 import java.util.Locale;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -31,6 +35,12 @@ public class PhieuGiamGia_Service {
     @PreAuthorize("hasRole('ADMIN')")
     public List<ThongTin> danhSachAdmin() {
         return repository.danhSach();
+    }
+
+    @Transactional(readOnly = true)
+    @PreAuthorize("hasRole('ADMIN')")
+    public Page<ThongTin> danhSachAdmin(BoLocDanhSachAdmin loc, Pageable pageable) {
+        return PhanTrang.doc(pageable, trang -> repository.docTrang(loc.mauTim(), loc.active(), trang));
     }
 
     @Transactional(readOnly = true)

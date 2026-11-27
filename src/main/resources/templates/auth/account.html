@@ -4,9 +4,9 @@
 <body><div th:replace="~{fragments/header :: siteHeader}"></div>
 <main id="main" tabindex="-1" class="page-content login-wrap">
     <h1>Tài khoản</h1>
-    <div class="notice"><strong>Email</strong><p th:text="${email}"></p></div>
+    <p class="notice"><strong>Email:</strong> <span th:text="${email}"></span></p>
     <p class="notice" role="status" th:if="${message}" th:text="${message}"></p>
-    <form class="login-card" method="post" th:action="@{/account}" th:object="${hoSo}">
+    <form class="login-card account-profile-form" method="post" th:action="@{/account}" th:object="${hoSo}">
         <label for="hoTen">Họ và tên</label>
         <input th:field="*{hoTen}" autocomplete="name" maxlength="160" required>
         <small class="form-error" th:errors="*{hoTen}"></small>
@@ -15,9 +15,9 @@
         <small class="form-error" th:errors="*{soDienThoai}"></small>
         <button class="btn btn--primary" type="submit">Lưu hồ sơ</button>
     </form>
+    <p><a class="text-link" th:href="@{/orders}">Xem đơn hàng của bạn</a></p>
     <p><a class="text-link" th:href="@{/account/security}">Bảo mật và phương thức đăng nhập</a></p>
     <p><a class="text-link" th:href="@{/account/addresses}">Quản lý địa chỉ giao hàng</a></p>
-    <p><a class="text-link" th:href="@{/orders}">Xem đơn hàng của bạn</a></p>
     <p><a class="text-link" th:href="@{/account/wishlist}">Sản phẩm yêu thích</a></p>
     <p><a class="text-link" th:href="@{/account/returns}">Yêu cầu đổi trả</a></p>
 </main>

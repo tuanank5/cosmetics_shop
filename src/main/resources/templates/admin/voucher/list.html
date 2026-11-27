@@ -3,14 +3,19 @@
 <head th:replace="~{fragments/head :: head('Mã giảm giá · Quản trị BeautyShop')}"></head>
 <body>
 <div th:replace="~{fragments/header :: siteHeader}"></div>
-<main id="main" tabindex="-1" class="page-content catalog-admin">
-    <h1>Quản lý mã giảm giá</h1>
+<main id="main" tabindex="-1" class="page-content admin-workspace">
+    <header class="admin-page-head">
+        <h1>Quản lý mã giảm giá</h1>
+        <a class="btn btn--primary" th:href="@{${listSource.vao('/admin/vouchers/new')}}">Tạo mã giảm giá</a>
+    </header>
     <p class="notice" role="status" th:if="${message}" th:text="${message}"></p>
     <p class="notice catalog-error" role="alert" th:if="${error}" th:text="${error}"></p>
-    <a class="btn btn--primary" th:href="@{/admin/vouchers/new}">Tạo mã giảm giá</a>
-    <p class="notice" th:if="${#lists.isEmpty(danhSach)}">Chưa có mã giảm giá.</p>
-    <ul class="catalog-list">
-        <li th:each="phieu : ${danhSach}" th:with="cauHinh=${phieu.cauHinh}">
+    <form th:replace="~{fragments/admin-table :: listFilters('/admin/vouchers', 'Tìm theo mã giảm giá', ${boLoc}, ${null}, ${null})}"></form>
+    <p class="list-result-count" data-admin-list-start tabindex="-1" th:text="${pager.moTa('mã giảm giá')}"></p>
+    <hr class="list-divider" th:unless="${#lists.isEmpty(danhSach)}">
+    <p class="notice" th:if="${#lists.isEmpty(danhSach)}">Không tìm thấy mã giảm giá phù hợp.</p>
+    <ul class="catalog-list catalog-list--spaced">
+        <li th:each="phieu : ${danhSach}" th:id="|admin-row-${phieu.maPhieuGiamGia}|" tabindex="-1" th:with="cauHinh=${phieu.cauHinh}">
             <div>
                 <strong th:text="${cauHinh.maApDung}"></strong>
                 <span th:text="${cauHinh.dangHoatDong ? 'Đang bật' : 'Ngừng hoạt động'}"></span>
@@ -22,14 +27,16 @@
                 <p th:text="|${#temporals.format(cauHinh.batDauLuc, 'dd/MM/yyyy HH:mm:ss')} – ${#temporals.format(cauHinh.ketThucLuc, 'dd/MM/yyyy HH:mm:ss')} (giờ UTC)|"></p>
                 <p th:text="|Giới hạn ${cauHinh.gioiHanSuDung} · Đã dùng ${phieu.soLuotDaDung} · Đang giữ ${phieu.soLuotTamGiu} · Còn ${phieu.soLuotConLai()}|"></p>
             </div>
-            <div class="catalog-actions">
-                <a class="btn btn--secondary" th:href="@{/admin/vouchers/{id}/edit(id=${phieu.maPhieuGiamGia})}">Sửa</a>
+            <div class="catalog-actions voucher-row-actions">
+                <a class="btn btn--secondary" data-admin-entry th:href="@{${listSource.vao('/admin/vouchers/' + phieu.maPhieuGiamGia + '/edit')}}">Sửa</a>
                 <form method="post" th:action="@{/admin/vouchers/{id}/delete(id=${phieu.maPhieuGiamGia})}">
+                    <th:block th:replace="~{fragments/admin-table :: listSource(${listSource.truongAn()})}"></th:block>
                     <button class="btn btn--secondary" type="submit" th:aria-label="|Xóa mã giảm giá ${cauHinh.maApDung}|">Xóa nếu chưa sử dụng</button>
                 </form>
             </div>
         </li>
     </ul>
+    <div th:replace="~{fragments/ui :: pagination(${pager}, 'Phân trang mã giảm giá')}"></div>
 </main>
 <div th:replace="~{fragments/footer :: siteFooter}"></div>
 </body>

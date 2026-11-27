@@ -15,6 +15,10 @@ import com.beautyshop.repository.DonHangCatalog_Repository.PhamVi;
 import com.beautyshop.repository.SanPham_Repository;
 
 import java.util.List;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import com.beautyshop.dto.BoLocDanhSachAdmin;
+import com.beautyshop.dto.PhanTrang;
 import java.util.Map;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -44,8 +48,18 @@ public class DanhMucSanPhamThuongHieu_Service {
         return switch (nhom) {
             case DANH_MUC -> danhMucRepository.docDanhSachAdmin();
             case THUONG_HIEU -> thuongHieuRepository.docDanhSachAdmin();
-            case SAN_PHAM -> sanPhamRepository.danhSachAdmin();
+            case SAN_PHAM -> sanPhamRepository.danhSachAdmin("", null, null, null, Pageable.unpaged()).getContent();
         };
+    }
+
+    @Transactional(readOnly = true)
+    public Page<MucCatalogAdmin> docTrang(NhomDanhMucSanPhamThuongHieu nhom, BoLocDanhSachAdmin loc, Pageable pageable) {
+        String mau = loc.mauTim();
+        return PhanTrang.doc(pageable, trang -> switch (nhom) {
+            case DANH_MUC -> danhMucRepository.docTrangAdmin(mau, loc.active(), trang);
+            case THUONG_HIEU -> thuongHieuRepository.docTrangAdmin(mau, loc.active(), trang);
+            case SAN_PHAM -> sanPhamRepository.danhSachAdmin(mau, loc.active(), loc.category(), loc.brand(), trang);
+        });
     }
 
     @Transactional(readOnly = true)

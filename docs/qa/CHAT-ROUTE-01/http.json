@@ -1,0 +1,12 @@
+{
+  "guest": [
+    200,
+    200,
+    200
+  ],
+  "legacyGuestGet": 302,
+  "legacyCustomerGet": 404,
+  "legacyCustomerPost": 404,
+  "chatFaqPost": 200,
+  "faqShippingFee": 25000
+}

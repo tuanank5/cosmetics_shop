@@ -5,7 +5,10 @@
 <div th:replace="~{fragments/header :: siteHeader}"></div>
 <main id="main" tabindex="-1" class="page-content reference-page customer-order" th:with="don=${chiTiet.don}">
     <header class="reference-hero order-hero">
-        <a class="text-link" th:href="@{/orders}">← Quay lại đơn hàng</a>
+        <nav th:replace="~{fragments/ui :: breadcrumb('Chi tiết', ~{:: .crumb-parent})}">
+            <li class="crumb-parent"><a th:href="@{/account}">Tài khoản</a></li>
+            <li class="crumb-parent"><a th:href="@{${backToCustomerOrders}}">Đơn hàng của bạn</a></li>
+        </nav>
         <h1>Chi tiết đơn hàng</h1>
         <p class="muted">Theo dõi trạng thái và thông tin chi tiết về đơn hàng của bạn tại BeautyShop.</p>
     </header>

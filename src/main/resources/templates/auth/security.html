@@ -4,6 +4,9 @@
 <body>
 <div th:replace="~{fragments/header :: siteHeader}"></div>
 <main id="main" tabindex="-1" class="page-content login-wrap">
+    <nav th:replace="~{fragments/ui :: breadcrumb('Bảo mật và phương thức đăng nhập', ~{:: .crumb-parent})}">
+        <li class="crumb-parent"><a th:href="@{/account}">Tài khoản</a></li>
+    </nav>
     <h1>Bảo mật và phương thức đăng nhập</h1>
     <div th:replace="~{fragments/ui :: notices(${message}, ${error})}"></div>
     <p class="form-error" role="alert" th:if="${param.oauthError}">Không thể hoàn tất xác minh bằng Google hoặc GitHub. Vui lòng bắt đầu lại.</p>
@@ -72,7 +75,6 @@
             <button class="btn btn--primary" type="submit">Lưu mật khẩu</button>
         </form>
     </section>
-    <p><a class="text-link" th:href="@{/account}">Về hồ sơ</a></p>
 </main>
 <div th:replace="~{fragments/footer :: siteFooter}"></div>
 </body>

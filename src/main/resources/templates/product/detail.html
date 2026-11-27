@@ -4,7 +4,10 @@
 <body>
 <div th:replace="~{fragments/header :: siteHeader}"></div>
 <main id="main" tabindex="-1" class="page-content storefront product-page">
-    <a class="pdp-back text-link" th:href="@{${navSource.duongVe}}"><span aria-hidden="true">←</span> <span th:text="${navSource.nhan}">Tất cả sản phẩm</span></a>
+    <nav th:replace="~{fragments/ui :: breadcrumb(${chiTiet.sanPham.tenSanPham}, ~{:: .crumb-parent})}">
+        <li class="crumb-parent"><a th:href="@{/products}">Bộ sưu tập</a></li>
+    </nav>
+    <a class="pdp-back text-link" th:href="@{${navSource.duongVeChiTiet(chiTiet.sanPham.ma)}}"><span aria-hidden="true">←</span> <span th:text="${navSource.nhan}">Tất cả sản phẩm</span></a>
     <article th:with="sanPham=${chiTiet.sanPham}, sku=${chiTiet.dangChon}">
         <div class="pdp-layout">
             <div class="pdp-media" th:with="coAnh=${!#strings.isEmpty(#strings.trim(sku.urlHinhAnh))}">

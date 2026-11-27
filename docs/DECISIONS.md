@@ -43,6 +43,8 @@
 | D38 | Từ sản phẩm nổi bật của chương 5, nút “Quay lại trang chủ” mở đầu chương. Từ danh sách sản phẩm, nút quay lại giữ truy vấn đã chọn và đến thẻ sản phẩm. | Dùng đích HTML để hoạt động cả khi tắt JavaScript. [Kết quả NAV-AUTH-01](reviews/NAV-AUTH-01-ket-qua.md) |
 | D39 | UI-REDESIGN-01. Owner chọn `/chat` làm giao diện tư vấn duy nhất và bỏ form lựa chọn chăm sóc da khỏi luồng công khai. Checkout tự báo giá khi có địa chỉ hợp lệ và khi cập nhật địa chỉ hoặc voucher. | Link tư vấn cũ chuyển đến Chat. POST cũ vẫn qua CSRF và chuyển bằng 303 mà không chuyển dữ liệu biểu mẫu. Áp dụng D35 và chỉ hiển thị nguồn, giá, tồn đã xác minh. Giữ định giá và giao dịch đặt đơn hiện hành. [Kết quả](reviews/UI-REDESIGN-01-ket-qua.md) |
 | D40 | ADMIN-UX-BIZ-01. Theo yêu cầu owner, ngừng hoạt động SKU, sản phẩm, danh mục hoặc thương hiệu cần hoàn tất các đơn và nghĩa vụ liên quan. | Bổ sung điều kiện cho D21 và D23. Kiểm tra mọi đường tắt trạng thái sau khi lấy khóa tương ứng với checkout. Tồn tiếp tục theo SKU theo D13, cùng thiết kế chuyển đổi lô chờ kiểm chứng. [Kết quả](reviews/ADMIN-UX-BIZ-01-ket-qua.md) |
+| D41 | Owner duyệt gỡ route `/tu-van-da` và các thành phần của form tư vấn đã ngừng sử dụng. | Bỏ chuyển hướng tương thích của D39. Điểm vào cho khách là `/chat`. |
+| D42 | Owner giới hạn tối đa 10 địa chỉ giao hàng lưu trên mỗi tài khoản khách. | Kiểm tra khi tạo địa chỉ mới sau khi khóa hàng tài khoản. Khách vẫn được sửa hoặc xóa địa chỉ hiện có và giữ quy tắc mặc định của D26. |
 
 ## Điểm còn cần xác minh/định cấu hình
 

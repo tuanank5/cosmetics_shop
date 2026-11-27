@@ -4,7 +4,9 @@
 <body>
 <div th:replace="~{fragments/header :: siteHeader}"></div>
 <main id="main" tabindex="-1" class="page-content login-wrap">
-    <a class="text-link" th:href="@{/admin/users(q=${q},page=${page})}">Quay lại danh sách</a>
+    <nav th:replace="~{fragments/ui :: breadcrumbTrail('Chi tiết tài khoản', ~{:: .crumb-parent}, false)}">
+        <li class="crumb-parent"><a th:href="@{${backToUsers}}">Quản lý tài khoản</a></li>
+    </nav>
     <h1>Chi tiết tài khoản</h1>
     <div th:replace="~{fragments/ui :: notices(${message}, ${error})}"></div>
     <p th:text="${hoTen}"></p>
@@ -16,7 +18,10 @@
         <summary>Gửi yêu cầu đặt lại mật khẩu</summary>
         <form class="login-card" th:action="@{/admin/users/{id}/password-reset(id=${id})}" method="post">
             <input type="hidden" name="q" th:value="${q}">
+            <input th:if="${fromList}" type="hidden" name="fromList" value="true">
             <input type="hidden" name="page" th:value="${page}">
+            <input th:if="${active != null}" type="hidden" name="active" th:value="${active}">
+            <input th:if="${role != null}" type="hidden" name="role" th:value="${role.name()}">
             <p>Chủ tài khoản sẽ nhận email để tự đặt mật khẩu mới.</p>
             <label for="reason">Lý do hỗ trợ</label>
             <select id="reason" name="reason" required>

@@ -1,0 +1,664 @@
+{
+  "browser": "Chrome/158.0.8127.88",
+  "checks": [
+    {
+      "route": "/account/addresses/new",
+      "width": 1366,
+      "buttons": [
+        {
+          "label": "Lưu địa chỉ",
+          "width": 560,
+          "height": 50.8
+        }
+      ]
+    },
+    {
+      "route": "/account/wishlist",
+      "width": 320,
+      "buttons": [
+        {
+          "label": "Xem sản phẩm",
+          "width": 112.1,
+          "height": 44,
+          "relativeTop": 0,
+          "group": "Audit 2 out of stock"
+        },
+        {
+          "label": "Hết hàng",
+          "width": 104,
+          "height": 44,
+          "relativeTop": 0,
+          "group": "Audit 2 out of stock"
+        },
+        {
+          "label": "Bỏ yêu thích",
+          "width": 122.8,
+          "height": 44,
+          "relativeTop": 50,
+          "group": "Audit 2 out of stock"
+        },
+        {
+          "label": "Xem sản phẩm",
+          "width": 112.1,
+          "height": 44,
+          "relativeTop": 0,
+          "group": "Audit 3 multi"
+        },
+        {
+          "label": "Chọn biến thể",
+          "width": 132.8,
+          "height": 44,
+          "relativeTop": 0,
+          "group": "Audit 3 multi"
+        },
+        {
+          "label": "Bỏ yêu thích",
+          "width": 122.8,
+          "height": 44,
+          "relativeTop": 50,
+          "group": "Audit 3 multi"
+        },
+        {
+          "label": "Bỏ yêu thích",
+          "width": 122.8,
+          "height": 44,
+          "relativeTop": 0,
+          "group": "Audit 4 inactive"
+        },
+        {
+          "label": "Xem sản phẩm",
+          "width": 112.1,
+          "height": 44,
+          "relativeTop": 0,
+          "group": "Audit 1 in stock"
+        },
+        {
+          "label": "Thêm vào giỏ",
+          "width": 130,
+          "height": 44,
+          "relativeTop": 0,
+          "group": "Audit 1 in stock"
+        },
+        {
+          "label": "Bỏ yêu thích",
+          "width": 122.8,
+          "height": 44,
+          "relativeTop": 50,
+          "group": "Audit 1 in stock"
+        }
+      ],
+      "noOverflow": true
+    },
+    {
+      "route": "/account/wishlist",
+      "width": 590,
+      "buttons": [
+        {
+          "label": "Xem sản phẩm",
+          "width": 112.1,
+          "height": 44,
+          "relativeTop": 0,
+          "group": "Audit 2 out of stock"
+        },
+        {
+          "label": "Hết hàng",
+          "width": 104,
+          "height": 44,
+          "relativeTop": 0,
+          "group": "Audit 2 out of stock"
+        },
+        {
+          "label": "Bỏ yêu thích",
+          "width": 122.8,
+          "height": 44,
+          "relativeTop": 0,
+          "group": "Audit 2 out of stock"
+        },
+        {
+          "label": "Xem sản phẩm",
+          "width": 112.1,
+          "height": 44,
+          "relativeTop": 0,
+          "group": "Audit 3 multi"
+        },
+        {
+          "label": "Chọn biến thể",
+          "width": 132.8,
+          "height": 44,
+          "relativeTop": 0,
+          "group": "Audit 3 multi"
+        },
+        {
+          "label": "Bỏ yêu thích",
+          "width": 122.8,
+          "height": 44,
+          "relativeTop": 0,
+          "group": "Audit 3 multi"
+        },
+        {
+          "label": "Bỏ yêu thích",
+          "width": 122.8,
+          "height": 44,
+          "relativeTop": 0,
+          "group": "Audit 4 inactive"
+        },
+        {
+          "label": "Xem sản phẩm",
+          "width": 112.1,
+          "height": 44,
+          "relativeTop": 0,
+          "group": "Audit 1 in stock"
+        },
+        {
+          "label": "Thêm vào giỏ",
+          "width": 130,
+          "height": 44,
+          "relativeTop": 0,
+          "group": "Audit 1 in stock"
+        },
+        {
+          "label": "Bỏ yêu thích",
+          "width": 122.8,
+          "height": 44,
+          "relativeTop": 0,
+          "group": "Audit 1 in stock"
+        }
+      ],
+      "noOverflow": true
+    },
+    {
+      "route": "/account/wishlist",
+      "width": 760,
+      "buttons": [
+        {
+          "label": "Xem sản phẩm",
+          "width": 112.1,
+          "height": 44,
+          "relativeTop": 0,
+          "group": "Audit 2 out of stock"
+        },
+        {
+          "label": "Hết hàng",
+          "width": 104,
+          "height": 44,
+          "relativeTop": 0,
+          "group": "Audit 2 out of stock"
+        },
+        {
+          "label": "Bỏ yêu thích",
+          "width": 122.8,
+          "height": 44,
+          "relativeTop": 0,
+          "group": "Audit 2 out of stock"
+        },
+        {
+          "label": "Xem sản phẩm",
+          "width": 112.1,
+          "height": 44,
+          "relativeTop": 0,
+          "group": "Audit 3 multi"
+        },
+        {
+          "label": "Chọn biến thể",
+          "width": 132.8,
+          "height": 44,
+          "relativeTop": 0,
+          "group": "Audit 3 multi"
+        },
+        {
+          "label": "Bỏ yêu thích",
+          "width": 122.8,
+          "height": 44,
+          "relativeTop": 0,
+          "group": "Audit 3 multi"
+        },
+        {
+          "label": "Bỏ yêu thích",
+          "width": 122.8,
+          "height": 44,
+          "relativeTop": 0,
+          "group": "Audit 4 inactive"
+        },
+        {
+          "label": "Xem sản phẩm",
+          "width": 112.1,
+          "height": 44,
+          "relativeTop": 0,
+          "group": "Audit 1 in stock"
+        },
+        {
+          "label": "Thêm vào giỏ",
+          "width": 130,
+          "height": 44,
+          "relativeTop": 0,
+          "group": "Audit 1 in stock"
+        },
+        {
+          "label": "Bỏ yêu thích",
+          "width": 122.8,
+          "height": 44,
+          "relativeTop": 0,
+          "group": "Audit 1 in stock"
+        }
+      ],
+      "noOverflow": true
+    },
+    {
+      "route": "/account/wishlist",
+      "width": 900,
+      "buttons": [
+        {
+          "label": "Xem sản phẩm",
+          "width": 112.1,
+          "height": 44,
+          "relativeTop": 0,
+          "group": "Audit 2 out of stock"
+        },
+        {
+          "label": "Hết hàng",
+          "width": 104,
+          "height": 44,
+          "relativeTop": 0,
+          "group": "Audit 2 out of stock"
+        },
+        {
+          "label": "Bỏ yêu thích",
+          "width": 122.8,
+          "height": 44,
+          "relativeTop": 50,
+          "group": "Audit 2 out of stock"
+        },
+        {
+          "label": "Xem sản phẩm",
+          "width": 112.1,
+          "height": 44,
+          "relativeTop": 0,
+          "group": "Audit 3 multi"
+        },
+        {
+          "label": "Chọn biến thể",
+          "width": 132.8,
+          "height": 44,
+          "relativeTop": 0,
+          "group": "Audit 3 multi"
+        },
+        {
+          "label": "Bỏ yêu thích",
+          "width": 122.8,
+          "height": 44,
+          "relativeTop": 50,
+          "group": "Audit 3 multi"
+        },
+        {
+          "label": "Bỏ yêu thích",
+          "width": 122.8,
+          "height": 44,
+          "relativeTop": 0,
+          "group": "Audit 4 inactive"
+        },
+        {
+          "label": "Xem sản phẩm",
+          "width": 112.1,
+          "height": 44,
+          "relativeTop": 0,
+          "group": "Audit 1 in stock"
+        },
+        {
+          "label": "Thêm vào giỏ",
+          "width": 130,
+          "height": 44,
+          "relativeTop": 0,
+          "group": "Audit 1 in stock"
+        },
+        {
+          "label": "Bỏ yêu thích",
+          "width": 122.8,
+          "height": 44,
+          "relativeTop": 50,
+          "group": "Audit 1 in stock"
+        }
+      ],
+      "noOverflow": true
+    },
+    {
+      "route": "/account/wishlist",
+      "width": 1024,
+      "buttons": [
+        {
+          "label": "Xem sản phẩm",
+          "width": 112.1,
+          "height": 44,
+          "relativeTop": 0,
+          "group": "Audit 2 out of stock"
+        },
+        {
+          "label": "Hết hàng",
+          "width": 104,
+          "height": 44,
+          "relativeTop": 0,
+          "group": "Audit 2 out of stock"
+        },
+        {
+          "label": "Bỏ yêu thích",
+          "width": 122.8,
+          "height": 44,
+          "relativeTop": 50,
+          "group": "Audit 2 out of stock"
+        },
+        {
+          "label": "Xem sản phẩm",
+          "width": 112.1,
+          "height": 44,
+          "relativeTop": 0,
+          "group": "Audit 3 multi"
+        },
+        {
+          "label": "Chọn biến thể",
+          "width": 132.8,
+          "height": 44,
+          "relativeTop": 0,
+          "group": "Audit 3 multi"
+        },
+        {
+          "label": "Bỏ yêu thích",
+          "width": 122.8,
+          "height": 44,
+          "relativeTop": 50,
+          "group": "Audit 3 multi"
+        },
+        {
+          "label": "Bỏ yêu thích",
+          "width": 122.8,
+          "height": 44,
+          "relativeTop": 0,
+          "group": "Audit 4 inactive"
+        },
+        {
+          "label": "Xem sản phẩm",
+          "width": 112.1,
+          "height": 44,
+          "relativeTop": 0,
+          "group": "Audit 1 in stock"
+        },
+        {
+          "label": "Thêm vào giỏ",
+          "width": 130,
+          "height": 44,
+          "relativeTop": 0,
+          "group": "Audit 1 in stock"
+        },
+        {
+          "label": "Bỏ yêu thích",
+          "width": 122.8,
+          "height": 44,
+          "relativeTop": 50,
+          "group": "Audit 1 in stock"
+        }
+      ],
+      "noOverflow": true
+    },
+    {
+      "route": "/account/wishlist",
+      "width": 1080,
+      "buttons": [
+        {
+          "label": "Xem sản phẩm",
+          "width": 112.1,
+          "height": 44,
+          "relativeTop": 0,
+          "group": "Audit 2 out of stock"
+        },
+        {
+          "label": "Hết hàng",
+          "width": 104,
+          "height": 44,
+          "relativeTop": 0,
+          "group": "Audit 2 out of stock"
+        },
+        {
+          "label": "Bỏ yêu thích",
+          "width": 122.8,
+          "height": 44,
+          "relativeTop": 50,
+          "group": "Audit 2 out of stock"
+        },
+        {
+          "label": "Xem sản phẩm",
+          "width": 112.1,
+          "height": 44,
+          "relativeTop": 0,
+          "group": "Audit 3 multi"
+        },
+        {
+          "label": "Chọn biến thể",
+          "width": 132.8,
+          "height": 44,
+          "relativeTop": 0,
+          "group": "Audit 3 multi"
+        },
+        {
+          "label": "Bỏ yêu thích",
+          "width": 122.8,
+          "height": 44,
+          "relativeTop": 50,
+          "group": "Audit 3 multi"
+        },
+        {
+          "label": "Bỏ yêu thích",
+          "width": 122.8,
+          "height": 44,
+          "relativeTop": 0,
+          "group": "Audit 4 inactive"
+        },
+        {
+          "label": "Xem sản phẩm",
+          "width": 112.1,
+          "height": 44,
+          "relativeTop": 0,
+          "group": "Audit 1 in stock"
+        },
+        {
+          "label": "Thêm vào giỏ",
+          "width": 130,
+          "height": 44,
+          "relativeTop": 0,
+          "group": "Audit 1 in stock"
+        },
+        {
+          "label": "Bỏ yêu thích",
+          "width": 122.8,
+          "height": 44,
+          "relativeTop": 50,
+          "group": "Audit 1 in stock"
+        }
+      ],
+      "noOverflow": true
+    },
+    {
+      "route": "/account/wishlist",
+      "width": 1100,
+      "buttons": [
+        {
+          "label": "Xem sản phẩm",
+          "width": 112.1,
+          "height": 44,
+          "relativeTop": 0,
+          "group": "Audit 2 out of stock"
+        },
+        {
+          "label": "Hết hàng",
+          "width": 104,
+          "height": 44,
+          "relativeTop": 0,
+          "group": "Audit 2 out of stock"
+        },
+        {
+          "label": "Bỏ yêu thích",
+          "width": 122.8,
+          "height": 44,
+          "relativeTop": 50,
+          "group": "Audit 2 out of stock"
+        },
+        {
+          "label": "Xem sản phẩm",
+          "width": 112.1,
+          "height": 44,
+          "relativeTop": 0,
+          "group": "Audit 3 multi"
+        },
+        {
+          "label": "Chọn biến thể",
+          "width": 132.8,
+          "height": 44,
+          "relativeTop": 0,
+          "group": "Audit 3 multi"
+        },
+        {
+          "label": "Bỏ yêu thích",
+          "width": 122.8,
+          "height": 44,
+          "relativeTop": 50,
+          "group": "Audit 3 multi"
+        },
+        {
+          "label": "Bỏ yêu thích",
+          "width": 122.8,
+          "height": 44,
+          "relativeTop": 0,
+          "group": "Audit 4 inactive"
+        },
+        {
+          "label": "Xem sản phẩm",
+          "width": 112.1,
+          "height": 44,
+          "relativeTop": 0,
+          "group": "Audit 1 in stock"
+        },
+        {
+          "label": "Thêm vào giỏ",
+          "width": 130,
+          "height": 44,
+          "relativeTop": 0,
+          "group": "Audit 1 in stock"
+        },
+        {
+          "label": "Bỏ yêu thích",
+          "width": 122.8,
+          "height": 44,
+          "relativeTop": 50,
+          "group": "Audit 1 in stock"
+        }
+      ],
+      "noOverflow": true
+    },
+    {
+      "route": "/account/wishlist",
+      "width": 1366,
+      "buttons": [
+        {
+          "label": "Xem sản phẩm",
+          "width": 112.1,
+          "height": 44,
+          "relativeTop": 0,
+          "group": "Audit 2 out of stock"
+        },
+        {
+          "label": "Hết hàng",
+          "width": 104,
+          "height": 44,
+          "relativeTop": 0,
+          "group": "Audit 2 out of stock"
+        },
+        {
+          "label": "Bỏ yêu thích",
+          "width": 122.8,
+          "height": 44,
+          "relativeTop": 0,
+          "group": "Audit 2 out of stock"
+        },
+        {
+          "label": "Xem sản phẩm",
+          "width": 112.1,
+          "height": 44,
+          "relativeTop": 0,
+          "group": "Audit 3 multi"
+        },
+        {
+          "label": "Chọn biến thể",
+          "width": 132.8,
+          "height": 44,
+          "relativeTop": 0,
+          "group": "Audit 3 multi"
+        },
+        {
+          "label": "Bỏ yêu thích",
+          "width": 122.8,
+          "height": 44,
+          "relativeTop": 0,
+          "group": "Audit 3 multi"
+        },
+        {
+          "label": "Bỏ yêu thích",
+          "width": 122.8,
+          "height": 44,
+          "relativeTop": 0,
+          "group": "Audit 4 inactive"
+        },
+        {
+          "label": "Xem sản phẩm",
+          "width": 112.1,
+          "height": 44,
+          "relativeTop": 0,
+          "group": "Audit 1 in stock"
+        },
+        {
+          "label": "Thêm vào giỏ",
+          "width": 130,
+          "height": 44,
+          "relativeTop": 0,
+          "group": "Audit 1 in stock"
+        },
+        {
+          "label": "Bỏ yêu thích",
+          "width": 122.8,
+          "height": 44,
+          "relativeTop": 0,
+          "group": "Audit 1 in stock"
+        }
+      ],
+      "noOverflow": true
+    },
+    {
+      "route": "/admin/users?role=CUSTOMER&page=1",
+      "width": 1366,
+      "buttons": [
+        {
+          "label": "Mở khóa",
+          "width": 75.3,
+          "height": 44
+        },
+        {
+          "label": "Khóa",
+          "width": 52.1,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "route": "/admin/reviews?page=1",
+      "width": 1366,
+      "buttons": [
+        {
+          "label": "Ẩn đánh giá",
+          "width": 184,
+          "height": 50.8
+        },
+        {
+          "label": "Duyệt đánh giá",
+          "width": 184,
+          "height": 50.8
+        }
+      ]
+    }
+  ]
+}

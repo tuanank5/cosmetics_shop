@@ -33,6 +33,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.dao.DataAccessException;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -101,10 +102,20 @@ public class SauMua_Service {
         }
     }
     public List<DoiTra_Repository.YeuCau> danhSachDoiTra(Long maNguoiDung) { return doiTra.danhSach(maNguoiDung); }
+    @Transactional(readOnly = true, isolation = Isolation.REPEATABLE_READ)
+    public Page<DoiTra_Repository.YeuCau> danhSachDoiTra(Long maNguoiDung, Pageable pageable) {
+        return PhanTrang.doc(pageable, trang -> doiTra.docTrang(maNguoiDung, trang));
+    }
+
     public List<DoiTra_Repository.YeuCau> danhSachDoiTraCuaDon(long maNguoiDung, long maDon) {
         return doiTra.danhSach(maNguoiDung, maDon);
     }
     public List<YeuThich_Repository.Muc> danhSachYeuThich(long maNguoiDung) { return yeuThich.danhSach(maNguoiDung); }
+
+    @Transactional(readOnly = true, isolation = Isolation.REPEATABLE_READ)
+    public Page<YeuThich_Repository.Muc> danhSachYeuThich(long maNguoiDung, Pageable pageable) {
+        return PhanTrang.doc(pageable, trang -> yeuThich.danhSach(maNguoiDung, trang));
+    }
 
     public java.util.Set<Long> daYeuThich(long maNguoiDung, Collection<Long> maSanPham) {
         return yeuThich.daLuu(maNguoiDung, maSanPham);

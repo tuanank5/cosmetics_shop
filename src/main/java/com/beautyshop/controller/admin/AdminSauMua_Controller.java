@@ -1,6 +1,7 @@
 package com.beautyshop.controller.admin;
 
 import com.beautyshop.controller.NguonDieuHuong;
+import com.beautyshop.controller.NguonDieuHuong.NguonDanhSachAdmin;
 import com.beautyshop.dto.PhanTrang;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -24,7 +25,8 @@ class AdminSauMua_Controller {
     @GetMapping("/admin/reviews")
     String danhGia(@RequestParam(required = false) String status, @RequestParam(required = false) Integer stars,
                    @RequestParam(required = false) Long product, @RequestParam(defaultValue = "0") int page,
-                   Model model, RedirectAttributes redirect) {
+                   @RequestParam(required = false) String focus, Model model, RedirectAttributes redirect) {
+        String maFocus = focus != null && focus.matches("[0-9a-fA-F]{24}") ? focus : null;
         var trangThai = DanhGia_Store.TrangThaiLoc.tu(status);
         Integer soSao = stars != null && stars >= 1 && stars <= 5 ? stars : null;
         Long sanPham = product != null && product > 0 ? product : null;
@@ -37,6 +39,7 @@ class AdminSauMua_Controller {
             if (page != trang.danhSach().getNumber()) {
                 boLoc.forEach(redirect::addAttribute);
                 redirect.addAttribute("page", trang.danhSach().getNumber());
+                if (maFocus != null) redirect.addAttribute("focus", maFocus);
                 for (String ten : java.util.List.of("message", "error", DANH_GIA_VUA_XU_LY)) {
                     if (model.containsAttribute(ten)) redirect.addFlashAttribute(ten, model.getAttribute(ten));
                 }
@@ -50,6 +53,12 @@ class AdminSauMua_Controller {
             boolean conTrongTrang = !trang.khongTaiDuoc()
                 && trang.danhSach().stream().anyMatch(danhGia -> danhGia.ma().equals(vuaXuLy));
             model.addAttribute("focusReviewId", conTrongTrang ? vuaXuLy : null);
+            model.addAttribute("focusReviewResults", !conTrongTrang);
+        }
+        if (maFocus != null) {
+            boolean conTrongTrang = !trang.khongTaiDuoc()
+                && trang.danhSach().stream().anyMatch(danhGia -> danhGia.ma().equals(maFocus));
+            model.addAttribute("focusReviewOrder", conTrongTrang ? maFocus : null);
             model.addAttribute("focusReviewResults", !conTrongTrang);
         }
         model.addAttribute("trang", trang);
@@ -92,8 +101,11 @@ class AdminSauMua_Controller {
     }
 
     @GetMapping("/admin/returns")
-    String yeuCau(Model model) {
-        model.addAttribute("yeuCau", sauMua.danhSachDoiTra(null));
+    String yeuCau(@RequestParam(defaultValue = "0") int page, Model model) {
+        var trang = sauMua.danhSachDoiTra(null, PhanTrang.yeuCau(page, 15));
+        model.addAttribute("yeuCau", trang.getContent());
+        model.addAttribute("listSource", new NguonDanhSachAdmin(Map.of(), trang.getNumber()));
+        model.addAttribute("pager", PhanTrang.tu(trang, so -> NguonDieuHuong.trangDanhSach("/admin/returns", Map.of(), so)));
         model.addAttribute("base", "/admin/returns");
         return "return/list";
     }
@@ -105,6 +117,9 @@ class AdminSauMua_Controller {
         var ky = NguonDieuHuong.kyDashboard(thamSo);
         model.addAttribute("navDashboard", ky);
         model.addAttribute("returnBack", ky.isEmpty() ? null : NguonDieuHuong.veDashboard(ky));
+        var nguon = nguonDoiTra(thamSo);
+        model.addAttribute("listSourceFields", nguon.truongAn());
+        model.addAttribute("backToReturns", nguon.quayLai("/admin/returns", id));
         return "return/detail";
     }
 
@@ -118,6 +133,12 @@ class AdminSauMua_Controller {
             flash.addFlashAttribute("error", exception.getMessage());
         }
         NguonDieuHuong.kyDashboard(thamSo).forEach(flash::addAttribute);
+        nguonDoiTra(thamSo).truongAn().forEach(flash::addAttribute);
+        flash.addFlashAttribute("focusReturnUpdate", true);
         return "redirect:/admin/returns/" + id;
+    }
+
+    private static NguonDanhSachAdmin nguonDoiTra(Map<String, String> request) {
+        return new NguonDanhSachAdmin(Map.of(), NguonDieuHuong.trangNguon(request, "listPage"));
     }
 }

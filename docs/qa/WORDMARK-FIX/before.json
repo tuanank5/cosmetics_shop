@@ -1,0 +1,15 @@
+{
+  "browser": "Chrome/158.0.8127.88",
+  "checks": [
+    {
+      "screen": "original wordmark",
+      "margins": [
+        4.5,
+        -3.9000000953674316,
+        7.9000244140625,
+        2.699995517730713
+      ],
+      "topEdgeInk": 126
+    }
+  ]
+}

@@ -4,9 +4,12 @@
 <body>
 <div th:replace="~{fragments/header :: siteHeader}"></div>
 <main id="main" tabindex="-1" class="page-content catalog-admin">
-    <a class="text-link" th:href="@{/admin/catalog/{section}(section=${section})}">Quay lại danh sách</a>
+    <nav th:replace="~{fragments/ui :: breadcrumbTrail(${heading}, ~{:: .crumb-parent}, false)}">
+        <li class="crumb-parent"><a th:href="@{${backToCatalog}}" th:text="${label}"></a></li>
+    </nav>
     <h1 th:text="|${heading} · ${label}|">Chỉnh sửa</h1>
     <form class="catalog-form" th:action="@{${action}}" th:object="${form}" method="post">
+        <th:block th:replace="~{fragments/admin-table :: listSource(${listSourceFields})}"></th:block>
         <ul class="catalog-error" role="alert" th:if="${#fields.hasGlobalErrors()}">
             <li th:each="error : ${#fields.globalErrors()}" th:text="${error}"></li>
         </ul>

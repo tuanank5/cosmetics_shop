@@ -3,19 +3,28 @@
 <head th:replace="~{fragments/head :: head('Chi tiết đổi trả · BeautyShop')}"></head>
 <body><div th:replace="~{fragments/header :: siteHeader}"></div>
 <main id="main" tabindex="-1" class="page-content">
-    <a class="text-link" th:if="${returnBack != null}" th:href="@{${returnBack}}">Quay lại tổng quan</a>
-    <a class="text-link" th:unless="${returnBack != null}" th:href="@{${base}}">Quay lại yêu cầu đổi trả</a>
+    <th:block th:if="${base == '/admin/returns'}">
+        <nav th:replace="~{fragments/ui :: breadcrumbTrail('Chi tiết', ~{:: .crumb-parent}, false)}">
+            <li class="crumb-parent" th:if="${returnBack != null}"><a th:href="@{${returnBack}}">Tổng quan</a></li>
+            <li class="crumb-parent"><a th:href="@{${backToReturns}}">Yêu cầu đổi trả</a></li>
+        </nav>
+    </th:block>
+    <a class="back-link text-link" th:unless="${base == '/admin/returns'}" th:href="@{${backToCustomerReturns}}"><span aria-hidden="true">←</span> <span>Quay lại yêu cầu đổi trả</span></a>
     <article th:with="yc=${trang.chiTiet.yeuCau}">
         <h1 th:text="|Yêu cầu #${yc.ma}|">Yêu cầu đổi trả</h1>
-        <div th:replace="~{fragments/ui :: notices(${message}, ${error})}"></div>
+        <div th:if="${message != null or error != null}" class="return-update" tabindex="-1"
+             th:attr="data-admin-restore-focus=${focusReturnUpdate == true ? 'true' : null},autofocus=${focusReturnUpdate == true ? 'autofocus' : null}">
+            <div th:replace="~{fragments/ui :: notices(${message}, ${error})}"></div>
+        </div>
         <p><span th:text="${yc.maHienThi}"></span> <strong class="badge" th:text="${yc.trangThai.label}"></strong></p>
         <p th:text="${trang.chiTiet.lyDo}"></p>
         <ul class="catalog-list">
             <li th:each="muc : ${trang.muc}" th:text="|${muc.tenSanPham} · ${muc.tenBienThe} × ${muc.soLuong}|"></li>
         </ul>
-        <form class="catalog-actions" th:if="${base == '/admin/returns'}" method="post"
+        <form class="catalog-actions return-status-actions" th:if="${base == '/admin/returns'}" method="post"
               th:action="@{/admin/returns/{id}/status(id=${yc.ma})}">
             <th:block th:replace="~{fragments/nav-fields :: adminSource}"></th:block>
+            <th:block th:replace="~{fragments/admin-table :: listSource(${listSourceFields})}"></th:block>
             <button th:each="dich : ${yc.trangThai.buocTiepTheo()}" class="btn btn--primary" type="submit"
                     name="status" th:value="${dich.name()}" th:text="${dich.label}"></button>
         </form>

@@ -1,11 +1,13 @@
 package com.beautyshop.controller;
 
+import com.beautyshop.dto.PhanTrang;
 import com.beautyshop.dto.BoLocDonHangAdmin.ThanhToan;
 import com.beautyshop.order.OrderStatus;
 import com.beautyshop.security.PhienNguoiDung;
 import com.beautyshop.service.DonHang_Service;
 import com.beautyshop.service.SauMua_Service;
 import java.util.List;
+import java.util.Map;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,19 +30,24 @@ class DonHang_Controller {
     }
 
     @GetMapping
-    String danhSach(@AuthenticationPrincipal PhienNguoiDung phien, Model model) {
-        model.addAttribute("donHang", donHangService.danhSachCustomer(phien.getMaNguoiDung()));
+    String danhSach(@AuthenticationPrincipal PhienNguoiDung phien,
+                     @RequestParam(defaultValue = "0") int page, Model model) {
+        var trang = donHangService.danhSachCustomer(phien.getMaNguoiDung(), PhanTrang.yeuCau(page, 10));
+        model.addAttribute("donHang", trang.getContent());
+        model.addAttribute("pager", PhanTrang.tu(trang, so -> NguonDieuHuong.trangDanhSach("/orders", Map.of(), so)));
         model.addAttribute("base", "/orders");
         return "order/list";
     }
 
     @GetMapping("/{id}")
-    String chiTiet(@PathVariable long id, @AuthenticationPrincipal PhienNguoiDung phien, Model model) {
+    String chiTiet(@PathVariable long id, @AuthenticationPrincipal PhienNguoiDung phien,
+                   @RequestParam Map<String, String> thamSo, Model model) {
         var chiTiet = donHangService.chiTietCustomer(id);
         var don = chiTiet.don();
         List<OrderStatus> tienTrinh = "MOMO".equals(don.phuongThuc())
             ? TIEN_TRINH : TIEN_TRINH.subList(1, TIEN_TRINH.size());
         model.addAttribute("chiTiet", chiTiet);
+        model.addAttribute("backToCustomerOrders", NguonDieuHuong.veDanhSachKhach("/orders", thamSo, "customer-order", id));
         model.addAttribute("soSanPham", chiTiet.muc().stream().mapToLong(muc -> muc.soLuong()).sum());
         model.addAttribute("tienTrinh", tienTrinh);
         model.addAttribute("buocHienTai", tienTrinh.indexOf(don.trangThai()));

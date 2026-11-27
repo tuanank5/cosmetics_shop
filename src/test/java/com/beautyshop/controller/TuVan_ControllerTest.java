@@ -34,7 +34,7 @@ class TuVan_ControllerTest {
     void trangChatRenderDungFormFaqChoGuestVaTaiKhoanDangNhap() throws Exception {
         mvc.perform(get("/chat"))
                 .andExpect(status().isOk())
-                .andExpect(view().name("TuVanDa"))
+                .andExpect(view().name("chat/index"))
                 .andExpect(content().string(containsString("action=\"/chat\"")))
                 .andExpect(content().string(containsString("name=\"cauHoi\"")))
                 .andExpect(content().string(containsString("Gửi câu hỏi")));

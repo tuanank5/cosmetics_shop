@@ -1,0 +1,5 @@
+﻿[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 19.59 s -- in com.beautyshop.integration.AdminOrderList_MariaDb_Test
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 13.77 s -- in com.beautyshop.integration.XacThucDaPhuongThuc_MariaDb_Test
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 6.183 s -- in com.beautyshop.integration.XacThuc_MariaDb_Test
+[INFO] Tests run: 9, Failures: 0, Errors: 0, Skipped: 0
+[INFO] BUILD SUCCESS

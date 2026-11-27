@@ -5,7 +5,10 @@
 <body>
 <div th:replace="~{fragments/header :: siteHeader}"></div>
 <main id="main" tabindex="-1" class="page-content admin-workspace">
-    <a class="text-link" th:href="@{/admin/catalog/products/{p}/variants(p=${sanPham.ma})}">Quay lại danh sách biến thể sản phẩm</a>
+    <nav th:replace="~{fragments/ui :: breadcrumbTrail(${tieuDeBienThe}, ~{:: .crumb-parent}, false)}">
+        <li class="crumb-parent"><a th:href="@{${backToProducts ?: '/admin/catalog/products'}}">Sản phẩm</a></li>
+        <li class="crumb-parent"><a th:href="@{${backToVariants ?: ('/admin/catalog/products/' + sanPham.ma + '/variants')}}">Biến thể sản phẩm</a></li>
+    </nav>
     <h1 th:text="|${tieuDeBienThe} · ${sanPham.ten}|">Biến thể sản phẩm</h1>
     <p class="alert alert--error" role="alert" th:if="${uploadQuaLon}">Lỗi: Tệp vượt dung lượng cho phép. Dữ liệu chưa lưu trong lần gửi này chưa được nhận; vui lòng nhập lại và chọn ảnh nhỏ hơn.</p>
     <form class="catalog-form admin-sku-form" th:action="@{${action}}" th:object="${form}" method="post" enctype="multipart/form-data">

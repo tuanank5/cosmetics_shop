@@ -32,7 +32,7 @@ class AdminServiceMethodSecurityTest {
     static class Config {
         @Bean NguoiDung_Repository nguoiDungRepository() {
             var repository = mock(NguoiDung_Repository.class);
-            when(repository.timNguoiDung(any(), any())).thenReturn(Page.empty());
+            when(repository.timNguoiDung(any(), any(), any(), any())).thenReturn(Page.empty());
             when(repository.findById(anyLong())).thenReturn(Optional.empty());
             return repository;
         }
@@ -50,7 +50,7 @@ class AdminServiceMethodSecurityTest {
     @WithMockUser(roles = "CUSTOMER")
     void customerBiTuChoiKhiGoiServiceAdmin() {
         assertThatThrownBy(() -> thongKeService.homNay()).isInstanceOf(AccessDeniedException.class);
-        assertThatThrownBy(() -> nguoiDungService.timNguoiDung("", PageRequest.of(0, 10))).isInstanceOf(AccessDeniedException.class);
+        assertThatThrownBy(() -> nguoiDungService.timNguoiDung("", false, null, PageRequest.of(0, 10))).isInstanceOf(AccessDeniedException.class);
         assertThatThrownBy(() -> nguoiDungService.datTrangThai(1, 0, 2, false)).isInstanceOf(AccessDeniedException.class);
     }
 
@@ -70,6 +70,6 @@ class AdminServiceMethodSecurityTest {
     @WithMockUser(roles = "ADMIN")
     void adminDuocGoi() {
         assertThatCode(() -> thongKeService.homNay()).doesNotThrowAnyException();
-        assertThatCode(() -> nguoiDungService.timNguoiDung("", PageRequest.of(0, 10))).doesNotThrowAnyException();
+        assertThatCode(() -> nguoiDungService.timNguoiDung("", false, null, PageRequest.of(0, 10))).doesNotThrowAnyException();
     }
 }

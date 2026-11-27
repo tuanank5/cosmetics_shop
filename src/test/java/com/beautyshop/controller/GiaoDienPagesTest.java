@@ -430,7 +430,10 @@ class GiaoDienPagesTest {
         mvc.perform(get("/products/kiem-thu").param("from", "wishlist"))
             .andExpect(content().string(containsString("class=\"pdp-back text-link\" href=\"/products\"")));
         mvc.perform(get("/products/kiem-thu").param("from", "wishlist").with(user("fixture").roles("CUSTOMER")))
-            .andExpect(content().string(containsString("class=\"pdp-back text-link\" href=\"/account/wishlist\"")));
+            .andExpect(content().string(containsString("class=\"pdp-back text-link\" href=\"/account/wishlist#wishlist-product-3\"")));
+        mvc.perform(get("/shop/products/kiem-thu").contextPath("/shop").param("from", "wishlist")
+                .param("wishlistPage", "2").with(user("fixture").roles("CUSTOMER")))
+            .andExpect(content().string(containsString("href=\"/shop/account/wishlist?page=2#wishlist-product-3\"")));
     }
 
     @Test

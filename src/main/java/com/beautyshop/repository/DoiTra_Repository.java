@@ -2,6 +2,9 @@ package com.beautyshop.repository;
 
 import com.beautyshop.order.ReturnStatus;
 import java.util.List;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
 import java.util.Optional;
 import org.springframework.jdbc.core.simple.JdbcClient;
 import org.springframework.stereotype.Repository;
@@ -52,19 +55,32 @@ public class DoiTra_Repository {
     }
 
     public List<YeuCau> danhSach(Long maNguoiDung, Long maDon) {
+        return docYeuCau(maNguoiDung, maDon, Pageable.unpaged());
+    }
+
+    public Page<YeuCau> docTrang(Long maNguoiDung, Pageable pageable) {
+        var dem = jdbc.sql("SELECT COUNT(*) FROM yeu_cau_doi_tra"
+            + (maNguoiDung == null ? "" : " WHERE ma_nguoi_dung = :nguoiDung"));
+        if (maNguoiDung != null) dem.param("nguoiDung", maNguoiDung);
+        return new PageImpl<>(docYeuCau(maNguoiDung, null, pageable), pageable, dem.query(Long.class).single());
+    }
+
+    private List<YeuCau> docYeuCau(Long maNguoiDung, Long maDon, Pageable pageable) {
         var query = jdbc.sql("""
             SELECT yc.ma_yeu_cau_doi_tra, yc.ma_don_hang, d.ma_don_hang_hien_thi, yc.trang_thai
             FROM yeu_cau_doi_tra yc JOIN don_hang d ON d.ma_don_hang = yc.ma_don_hang
             WHERE 1 = 1
             """ + (maNguoiDung == null ? "" : " AND yc.ma_nguoi_dung = :nguoiDung")
             + (maDon == null ? "" : " AND yc.ma_don_hang = :don")
-            + " ORDER BY yc.ma_yeu_cau_doi_tra DESC");
+            + " ORDER BY yc.ma_yeu_cau_doi_tra DESC"
+            + (pageable.isPaged() ? " LIMIT :size OFFSET :offset" : ""));
         if (maNguoiDung != null) {
             query.param("nguoiDung", maNguoiDung);
         }
         if (maDon != null) {
             query.param("don", maDon);
         }
+        if (pageable.isPaged()) query.param("size", pageable.getPageSize()).param("offset", pageable.getOffset());
         return query.query((rs, row) -> new YeuCau(rs.getLong(1), rs.getLong(2), rs.getString(3),
             ReturnStatus.valueOf(rs.getString(4)))).list();
     }

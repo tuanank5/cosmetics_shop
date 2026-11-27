@@ -1,0 +1,21 @@
+{
+  "browser": "Chrome/158.0.8127.88",
+  "checks": [
+    {
+      "flow": "guest without wishlist access falls back to products"
+    },
+    {
+      "flow": "wishlist detail returns to original card",
+      "width": 390,
+      "page": 1
+    },
+    {
+      "flow": "wishlist detail returns to original card",
+      "width": 1366,
+      "page": 2
+    },
+    {
+      "flow": "removed final card returns to previous page and focuses heading"
+    }
+  ]
+}

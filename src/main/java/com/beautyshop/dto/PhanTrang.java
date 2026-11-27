@@ -5,6 +5,7 @@ import java.util.function.Function;
 import java.util.function.IntFunction;
 import java.util.stream.IntStream;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 
 /** Cửa sổ liên kết GET. Số trang trong URL bắt đầu từ 0. */
@@ -12,6 +13,16 @@ public record PhanTrang(int trang, int kichThuoc, long tongMuc, int tongTrang,
                        String dau, String truoc, List<LienKet> cuaSo, String sau, String cuoi,
                        boolean cachDau, boolean cachCuoi, boolean cachDauMobile, boolean cachCuoiMobile) {
     public record LienKet(int soHienThi, String href, boolean hienTai, boolean chiDesktop) {}
+
+    public static Pageable yeuCau(int trang, int kichThuoc) {
+        return PageRequest.of(Math.clamp(trang, 0, 100_000), kichThuoc);
+    }
+
+    public String moTa(String donVi) {
+        if (tongTrang <= 1) return tongMuc + " " + donVi;
+        long dau = (long) trang * kichThuoc;
+        return (dau + 1) + "–" + Math.min(dau + kichThuoc, tongMuc) + " trong tổng " + tongMuc + " " + donVi;
+    }
 
     public static PhanTrang tu(Page<?> page, IntFunction<String> href) {
         int tong = page.getTotalPages();

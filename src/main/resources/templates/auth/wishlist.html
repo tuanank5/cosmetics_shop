@@ -3,19 +3,15 @@
 <head th:replace="~{fragments/head :: head('Yêu thích · BeautyShop')}"></head>
 <body>
 <div th:replace="~{fragments/header :: siteHeader}"></div>
-<main id="main" tabindex="-1" class="page-content reference-page shop-wishlist" data-wishlist-page th:attr="data-state=@{/account/wishlist/state}">
+<main id="main" tabindex="-1" class="page-content reference-page shop-wishlist" data-wishlist-page th:attr="data-state=@{/account/wishlist/state},data-wishlist-paged=${pager.tongTrang > 1},data-wishlist-total=${pager.tongMuc}">
     <header class="reference-hero wishlist-hero">
-        <nav class="wishlist-breadcrumb" aria-label="Đường dẫn">
-            <ol>
-                <li><a th:href="@{/}">Trang chủ</a></li>
-                <li><a th:href="@{/account}">Tài khoản</a></li>
-                <li aria-current="page">Sản phẩm yêu thích</li>
-            </ol>
+        <nav th:replace="~{fragments/ui :: breadcrumb('Sản phẩm yêu thích', ~{:: .crumb-parent})}">
+            <li class="crumb-parent"><a th:href="@{/account}">Tài khoản</a></li>
         </nav>
         <h1 tabindex="-1" data-wishlist-heading>Sản phẩm yêu thích</h1>
         <div class="wishlist-hero-meta">
             <p class="muted">Danh sách các sản phẩm bạn đã lưu để tham khảo hoặc mua sau.</p>
-            <p class="wishlist-count" data-wishlist-count th:text="|${#lists.size(yeuThich)} sản phẩm|"></p>
+            <p class="wishlist-count" data-wishlist-count th:text="${pager.moTa('sản phẩm')}"></p>
         </div>
     </header>
     <p th:replace="~{fragments/wishlist :: feedback}"></p>
@@ -25,8 +21,9 @@
         <a class="btn btn--primary" th:href="@{/products}">Xem sản phẩm</a>
     </section>
     <ul class="wishlist-grid">
-        <li th:each="muc : ${yeuThich}" class="card wishlist-card" data-wishlist-row>
-            <a class="wishlist-media" th:if="${muc.dangBan}" th:href="@{/products/{slug}(slug=${muc.slug},from='wishlist')}"
+        <li th:each="muc : ${yeuThich}" class="card wishlist-card" data-wishlist-row
+            th:id="|wishlist-product-${muc.maSanPham}|" tabindex="-1">
+            <a class="wishlist-media" th:if="${muc.dangBan}" th:href="@{/products/{slug}(slug=${muc.slug},from='wishlist',wishlistPage=${pager.trang > 0 ? pager.trang : null})}"
                th:aria-label="|Xem ${muc.tenSanPham}|">
                 <span th:replace="~{fragments/commerce :: image(${muc.urlHinhAnh})}"></span>
             </a>
@@ -52,19 +49,20 @@
                 </span>
             </div>
             <div class="wishlist-actions">
-                <a class="btn btn--secondary" th:if="${muc.dangBan}" th:href="@{/products/{slug}(slug=${muc.slug},from='wishlist')}">Xem sản phẩm</a>
+                <a class="btn btn--secondary" th:if="${muc.dangBan}" th:href="@{/products/{slug}(slug=${muc.slug},from='wishlist',wishlistPage=${pager.trang > 0 ? pager.trang : null})}">Xem sản phẩm</a>
                 <form th:if="${muc.dangBan and muc.conHang and muc.maBienTheDuyNhat != null}" method="post"
-                      th:action="@{/cart/items}">
+                      class="wishlist-buy-form" th:action="@{/cart/items}">
                     <input type="hidden" name="variant" th:value="${muc.maBienTheDuyNhat}">
-                    <button class="btn btn--primary" type="submit"><svg th:replace="~{fragments/commerce :: icon('cart')}"></svg> Thêm vào giỏ</button>
+                    <button class="btn btn--primary wishlist-buy" type="submit"><svg th:replace="~{fragments/commerce :: icon('cart')}"></svg> Thêm vào giỏ</button>
                 </form>
-                <a th:if="${muc.dangBan and muc.conHang and muc.maBienTheDuyNhat == null}" class="btn btn--primary"
-                   th:href="@{/products/{slug}#pdp-variants(slug=${muc.slug},from='wishlist')}"><svg th:replace="~{fragments/commerce :: icon('cart')}"></svg> Chọn biến thể</a>
-                <button th:if="${muc.dangBan and !muc.conHang}" class="btn btn--primary" type="button" disabled><svg th:replace="~{fragments/commerce :: icon('cart')}"></svg> Hết hàng</button>
+                <a th:if="${muc.dangBan and muc.conHang and muc.maBienTheDuyNhat == null}" class="btn btn--primary wishlist-buy"
+                   th:href="@{/products/{slug}#pdp-variants(slug=${muc.slug},from='wishlist',wishlistPage=${pager.trang > 0 ? pager.trang : null})}"><svg th:replace="~{fragments/commerce :: icon('cart')}"></svg> Chọn biến thể</a>
+                <button th:if="${muc.dangBan and !muc.conHang}" class="btn btn--primary wishlist-buy" type="button" disabled><svg th:replace="~{fragments/commerce :: icon('cart')}"></svg> Hết hàng</button>
                 <th:block th:replace="~{fragments/wishlist :: control(${muc.maSanPham}, ${muc.tenSanPham}, 'wishlist', false, true)}"></th:block>
             </div>
         </li>
     </ul>
+    <div th:replace="~{fragments/ui :: pagination(${pager}, 'Phân trang sản phẩm yêu thích')}"></div>
 </main>
 <div th:replace="~{fragments/footer :: wishlistFooter}"></div>
 <script defer th:src="@{/js/wishlist.js}"></script>

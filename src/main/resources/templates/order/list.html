@@ -3,6 +3,11 @@
 <head th:replace="~{fragments/head :: head('Đơn hàng · BeautyShop')}"></head>
 <body><div th:replace="~{fragments/header :: siteHeader}"></div>
 <main id="main" tabindex="-1" class="page-content" th:classappend="${boLoc != null ? 'admin-workspace' : null}">
+    <th:block th:if="${base == '/orders'}">
+        <nav th:replace="~{fragments/ui :: breadcrumb('Đơn hàng của bạn', ~{:: .crumb-parent})}">
+            <li class="crumb-parent"><a th:href="@{/account}">Tài khoản</a></li>
+        </nav>
+    </th:block>
     <h1 th:text="${base == '/admin/orders' ? 'Quản lý đơn hàng' : 'Đơn hàng của bạn'}">Đơn hàng</h1>
     <p class="admin-subtitle" th:if="${boLoc != null}">Theo dõi đơn hàng, thanh toán và các bước giao hàng.</p>
     <dl class="order-summary" th:if="${tongQuan}" aria-label="Tổng quan đơn hàng toàn hệ thống">
@@ -58,12 +63,15 @@
                 <input type="date" name="toDate" min="1000-01-02" max="9999-12-30" th:value="${boLoc.denNgay}">
             </label>
         </div>
-        <div class="catalog-actions">
+        <div class="catalog-actions admin-filter-actions">
             <button type="submit" class="btn btn--primary">Áp dụng</button>
-            <a class="text-link" th:href="@{/admin/orders}">Xóa lọc, xem tất cả đơn</a>
+            <a class="btn btn--secondary" th:href="@{/admin/orders}">Xóa lọc, xem tất cả đơn</a>
         </div>
     </form>
-    <p role="status" id="order-result-count" th:if="${pager != null}" th:text="|${pager.tongMuc} đơn phù hợp|">0 đơn phù hợp</p>
+    <p class="list-result-count" th:classappend="${boLoc == null ? 'list-result-count--end' : null}"
+       role="status" id="order-result-count" tabindex="-1" th:if="${pager != null}"
+       th:attr="data-scroll-list-start=${orderOrigin == null ? 'customer-order' : 'admin-order'}"
+       th:text="${boLoc == null ? pager.moTa('đơn hàng') : ((pager.tongTrang > 1 ? 'Đang hiển thị ' : '') + pager.moTa('đơn phù hợp'))}"></p>
     <p class="notice" th:if="${#lists.isEmpty(donHang)}"
        th:text="${boLoc == null ? 'Chưa có đơn hàng.' : 'Chưa có đơn hàng phù hợp.'}"></p>
     <div th:if="${orderOrigin != null and !#lists.isEmpty(donHang)}" class="admin-table-scroll" tabindex="0" role="region" aria-label="Bảng đơn hàng">
@@ -74,9 +82,9 @@
                 <th scope="col">Phương thức</th><th scope="col">Thanh toán</th><th scope="col">Trạng thái đơn</th><th scope="col">Hành động</th>
             </tr></thead>
             <tbody>
-            <tr th:each="muc : ${donHang}">
+            <tr th:each="muc : ${donHang}" th:id="|admin-order-${muc.maDonHang}|" data-scroll-row tabindex="-1">
                 <th scope="row">
-                    <a class="text-link order-row-link" th:id="|admin-order-${muc.maDonHang}|"
+                    <a class="text-link order-row-link" data-scroll-entry
                        th:href="@{${orderOrigin.chiTiet(muc.maDonHang)}}" th:text="${muc.maHienThi}"></a>
                 </th>
                 <td th:text="${muc.tenKhachHang}"></td>
@@ -86,19 +94,33 @@
                 <td th:text="${muc.phuongThuc == 'MOMO' ? 'MoMo' : muc.phuongThuc}"></td>
                 <td><span class="admin-badge" th:attr="data-status=${muc.thanhToan}" th:text="${muc.nhanThanhToan()}"></span></td>
                 <td><span class="admin-badge" th:attr="data-status=${muc.trangThai}" th:text="${muc.trangThai.label}"></span></td>
-                <td><a class="btn btn--secondary admin-button" th:href="@{${orderOrigin.chiTiet(muc.maDonHang)}}"
+                <td><a class="btn btn--secondary admin-button" data-scroll-entry th:href="@{${orderOrigin.chiTiet(muc.maDonHang)}}"
                        th:aria-label="|Xem chi tiết đơn ${muc.maHienThi}|">Chi tiết</a></td>
             </tr>
             </tbody>
         </table>
     </div>
-    <ul class="catalog-list" th:if="${orderOrigin == null}">
-        <li th:each="muc : ${donHang}">
-            <a class="text-link" th:href="@{${base + '/' + muc.maDonHang}}" th:text="${muc.maHienThi}"></a>
-            <span th:text="${muc.trangThai.label}"></span>
-            <span th:text="|${#numbers.formatInteger(muc.tong, 1, 'POINT')} ₫|"></span>
-        </li>
-    </ul>
+    <div class="admin-table-scroll customer-list-table" th:if="${orderOrigin == null and !#lists.isEmpty(donHang)}"
+         tabindex="0" role="region" aria-label="Bảng đơn hàng của bạn">
+        <table class="admin-table admin-table--compact">
+            <thead><tr>
+                <th scope="col">Mã đơn hàng</th><th scope="col">Ngày đặt (giờ VN)</th>
+                <th scope="col">Trạng thái đơn</th><th scope="col" class="num">Tổng thanh toán</th>
+                <th scope="col">Chi tiết</th>
+            </tr></thead>
+            <tbody>
+                <tr th:each="muc : ${donHang}" th:id="|customer-order-${muc.maDonHang}|" data-scroll-row tabindex="-1">
+                    <th scope="row" th:text="${muc.maHienThi}"></th>
+                    <td><time th:datetime="|${muc.ngayTao}Z|" th:text="${#temporals.format(muc.ngayTao.plusHours(7), 'dd/MM/yyyy HH:mm')}"></time></td>
+                    <td th:text="${muc.trangThai.label}"></td>
+                    <td class="num"><span th:replace="~{fragments/ui :: money(${muc.tong})}"></span></td>
+                    <td><a class="btn btn--secondary admin-button" data-scroll-entry
+                           th:href="@{/orders/{id}(id=${muc.maDonHang},listPage=${pager.trang})}"
+                           th:aria-label="|Xem đơn ${muc.maHienThi}|">Xem đơn</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
     <th:block th:if="${pager != null}">
         <div th:replace="~{fragments/ui :: pagination(${pager}, 'Phân trang đơn hàng')}"></div>
     </th:block>

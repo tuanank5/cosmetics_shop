@@ -1,0 +1,148 @@
+{
+  "browser": "Chrome/158.0.8127.88",
+  "checks": [
+    {
+      "route": "/orders?page=1",
+      "count": "11–20 trong tổng 41 đơn hàng",
+      "rows": 10,
+      "headers": [
+        "Mã đơn hàng",
+        "Ngày đặt (giờ VN)",
+        "Trạng thái đơn",
+        "Tổng thanh toán",
+        "Chi tiết"
+      ]
+    },
+    {
+      "route": "/account/returns?page=1",
+      "count": "11–17 trong tổng 17 yêu cầu",
+      "rows": 7,
+      "headers": [
+        "Mã yêu cầu",
+        "Mã đơn hàng",
+        "Trạng thái đổi trả",
+        "Chi tiết"
+      ]
+    },
+    {
+      "route": "/account/wishlist?page=1",
+      "count": "13–13 trong tổng 13 sản phẩm",
+      "rows": 1,
+      "headers": []
+    },
+    {
+      "flow": "wishlist removes last row of page 2 and returns to page 1"
+    },
+    {
+      "flow": "address limit UI and review back-link style"
+    },
+    {
+      "route": "/admin/catalog/products?q=Paged&active=true&category=1&brand=1&page=1",
+      "count": "16–16 trong tổng 16 sản phẩm",
+      "rows": 1,
+      "headers": [
+        "Ảnh",
+        "Mã sản phẩm",
+        "Tên sản phẩm",
+        "Danh mục",
+        "Thương hiệu",
+        "Biến thể",
+        "Trạng thái",
+        "Hành động"
+      ]
+    },
+    {
+      "route": "/admin/catalog/categories?q=Filter&page=1",
+      "count": "16–16 trong tổng 16 danh mục",
+      "rows": 1,
+      "headers": [
+        "Mã",
+        "Tên danh mục",
+        "Trạng thái",
+        "Hành động"
+      ]
+    },
+    {
+      "route": "/admin/catalog/brands?q=Filter&page=1",
+      "count": "16–16 trong tổng 16 thương hiệu",
+      "rows": 1,
+      "headers": [
+        "Mã",
+        "Tên thương hiệu",
+        "Trạng thái",
+        "Hành động"
+      ]
+    },
+    {
+      "route": "/admin/catalog/products/1/variants?page=1",
+      "count": "16–17 trong tổng 17 biến thể",
+      "rows": 2,
+      "headers": [
+        "Ảnh",
+        "Mã SKU",
+        "Tên biến thể",
+        "Giá bán",
+        "Trong kho",
+        "Đang giữ",
+        "Khả dụng",
+        "Mã lô / HSD tham khảo",
+        "Trạng thái",
+        "Hành động"
+      ]
+    },
+    {
+      "route": "/admin/vouchers?q=filter&active=true&page=1",
+      "count": "16–16 trong tổng 16 mã giảm giá",
+      "rows": 1,
+      "headers": []
+    },
+    {
+      "route": "/admin/orders?page=1",
+      "count": "Đang hiển thị 21–40 trong tổng 41 đơn phù hợp",
+      "rows": 20,
+      "headers": [
+        "Mã đơn hàng",
+        "Khách hàng",
+        "Ngày đặt (giờ VN)",
+        "Số lượng SP",
+        "Tổng thanh toán",
+        "Phương thức",
+        "Thanh toán",
+        "Trạng thái đơn",
+        "Hành động"
+      ]
+    },
+    {
+      "route": "/admin/users?role=CUSTOMER&active=false&page=1",
+      "count": "16–17 trong tổng 17 tài khoản",
+      "rows": 2,
+      "headers": [
+        "Họ và tên",
+        "Email đăng nhập",
+        "Vai trò",
+        "Trạng thái",
+        "Thao tác"
+      ]
+    },
+    {
+      "route": "/admin/returns?page=1",
+      "count": "16–17 trong tổng 17 yêu cầu",
+      "rows": 2,
+      "headers": [
+        "Mã yêu cầu",
+        "Mã đơn hàng",
+        "Trạng thái đổi trả",
+        "Chi tiết"
+      ]
+    },
+    {
+      "route": "/admin/reviews?status=TAT_CA&page=1",
+      "count": "21–22 trong tổng 22 đánh giá",
+      "rows": 2,
+      "headers": []
+    },
+    {
+      "flow": "review order back preserves filter and focuses original review"
+    }
+  ]
+}

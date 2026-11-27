@@ -1,0 +1,131 @@
+{
+  "browser": "Chrome/158.0.8127.88",
+  "checks": [
+    {
+      "width": 390,
+      "route": "/admin/catalog/brands",
+      "tabs": [
+        [
+          "Thương hiệu",
+          "/admin/catalog/brands",
+          "page"
+        ],
+        [
+          "Danh mục",
+          "/admin/catalog/categories",
+          null
+        ],
+        [
+          "Sản phẩm",
+          "/admin/catalog/products",
+          null
+        ]
+      ]
+    },
+    {
+      "width": 390,
+      "route": "/admin/catalog/categories",
+      "tabs": [
+        [
+          "Thương hiệu",
+          "/admin/catalog/brands",
+          null
+        ],
+        [
+          "Danh mục",
+          "/admin/catalog/categories",
+          "page"
+        ],
+        [
+          "Sản phẩm",
+          "/admin/catalog/products",
+          null
+        ]
+      ]
+    },
+    {
+      "width": 390,
+      "route": "/admin/catalog/products",
+      "tabs": [
+        [
+          "Thương hiệu",
+          "/admin/catalog/brands",
+          null
+        ],
+        [
+          "Danh mục",
+          "/admin/catalog/categories",
+          null
+        ],
+        [
+          "Sản phẩm",
+          "/admin/catalog/products",
+          "page"
+        ]
+      ]
+    },
+    {
+      "width": 1366,
+      "route": "/admin/catalog/brands",
+      "tabs": [
+        [
+          "Thương hiệu",
+          "/admin/catalog/brands",
+          "page"
+        ],
+        [
+          "Danh mục",
+          "/admin/catalog/categories",
+          null
+        ],
+        [
+          "Sản phẩm",
+          "/admin/catalog/products",
+          null
+        ]
+      ]
+    },
+    {
+      "width": 1366,
+      "route": "/admin/catalog/categories",
+      "tabs": [
+        [
+          "Thương hiệu",
+          "/admin/catalog/brands",
+          null
+        ],
+        [
+          "Danh mục",
+          "/admin/catalog/categories",
+          "page"
+        ],
+        [
+          "Sản phẩm",
+          "/admin/catalog/products",
+          null
+        ]
+      ]
+    },
+    {
+      "width": 1366,
+      "route": "/admin/catalog/products",
+      "tabs": [
+        [
+          "Thương hiệu",
+          "/admin/catalog/brands",
+          null
+        ],
+        [
+          "Danh mục",
+          "/admin/catalog/categories",
+          null
+        ],
+        [
+          "Sản phẩm",
+          "/admin/catalog/products",
+          "page"
+        ]
+      ]
+    }
+  ]
+}

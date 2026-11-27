@@ -28,16 +28,21 @@
         </label>
         <button type="submit" class="btn btn--secondary">Lọc</button>
     </form>
-    <div id="review-notice" class="admin-review-notice">
+    <div id="review-notice" class="admin-review-notice" th:if="${message != null or error != null}">
         <div th:replace="~{fragments/ui :: notices(${message}, ${error})}"></div>
     </div>
-    <h2 id="review-results" tabindex="-1"
-        th:attr="autofocus=${focusReviewResults == true ? 'autofocus' : null},aria-describedby=${focusReviewResults == true ? (trang.khongTaiDuoc ? 'review-notice review-unavailable' : 'review-notice') : null}"
-        th:text="${trang.khongTaiDuoc ? 'Kết quả đánh giá' : trang.danhSach.totalElements + ' đánh giá'}">Kết quả đánh giá</h2>
+    <h2 id="review-results" class="list-result-count" tabindex="-1"
+        th:attr="autofocus=${focusReviewResults == true ? 'autofocus' : null},aria-describedby=${focusReviewResults == true ? (trang.khongTaiDuoc ? 'review-unavailable' : ((message != null or error != null) ? 'review-notice' : null)) : null},
+                 data-review-return-focus=${focusReviewResults == true ? 'true' : null}"
+        th:text="${trang.khongTaiDuoc ? 'Kết quả đánh giá' : pager.moTa('đánh giá')}">Kết quả đánh giá</h2>
+    <hr class="list-divider" th:unless="${trang.danhSach.empty}">
     <p id="review-unavailable" class="notice" role="status" th:if="${trang.khongTaiDuoc}">Tạm thời chưa tải được đánh giá (kho đánh giá không phản hồi).</p>
     <p class="notice" th:if="${!trang.khongTaiDuoc and trang.danhSach.empty}">Không có đánh giá phù hợp.</p>
-    <ul class="catalog-list admin-review-list" th:unless="${trang.danhSach.empty}">
-        <li th:each="dg : ${trang.danhSach.content}">
+    <ul class="catalog-list catalog-list--spaced admin-review-list" th:unless="${trang.danhSach.empty}">
+        <li th:each="dg : ${trang.danhSach.content}" th:id="|review-${dg.ma}|" data-scroll-row tabindex="-1"
+            th:with="focusRow=${focusReviewOrder == dg.ma or focusReviewId == dg.ma}"
+            th:attr="autofocus=${focusRow ? 'autofocus' : null},data-review-return-focus=${focusRow ? 'true' : null},
+                     aria-describedby=${focusReviewId == dg.ma and (message != null or error != null) ? 'review-notice' : null}">
             <div>
                 <strong th:text="${dg.tenSanPham}"></strong>
                 <p class="admin-review-meta">
@@ -46,7 +51,7 @@
                 </p>
                 <p th:unless="${#strings.isEmpty(dg.noiDung)}" th:text="${dg.noiDung}"></p>
                 <p class="muted" th:if="${#strings.isEmpty(dg.noiDung)}">(Không có nhận xét)</p>
-                <a th:href="@{/admin/orders/{id}(id=${dg.maDonHang})}" class="text-link">Xem đơn mua</a>
+                <a class="text-link" th:href="@{/admin/orders/{id}(id=${dg.maDonHang},review=${dg.ma},reviewStatus=${locTrangThai},reviewStars=${locSao},reviewProduct=${locSanPham},reviewPage=${trang.danhSach.number})}">Xem đơn mua</a>
                 <span class="badge" th:classappend="${dg.hienThi ? 'badge--success' : ''}"
                       th:text="${dg.hienThi ? 'Đang hiện' : (dg.daDuyet ? 'Đã ẩn' : 'Chờ duyệt')}"></span>
             </div>
@@ -58,7 +63,6 @@
                 <input type="hidden" name="page" th:value="${trang.danhSach.number}">
                 <button type="submit" name="visible" th:value="${!dg.hienThi}" class="btn"
                         th:classappend="${dg.hienThi ? 'btn--secondary' : 'btn--primary'}"
-                        th:attr="autofocus=${focusReviewId == dg.ma ? 'autofocus' : null},aria-describedby=${focusReviewId == dg.ma ? 'review-notice' : null}"
                         th:text="${dg.hienThi ? 'Ẩn đánh giá' : 'Duyệt đánh giá'}"></button>
             </form>
         </li>

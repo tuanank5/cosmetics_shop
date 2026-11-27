@@ -1,0 +1,26 @@
+{
+  "browser": "Chrome/158.0.8127.88",
+  "checks": [
+    "/products",
+    "/products?size=1& 390px",
+    "/products?size=1& 1366px",
+    "/products/fixture-a",
+    "/account/security",
+    "/account/addresses",
+    "/account/returns",
+    "/account/wishlist",
+    "/admin/catalog/products",
+    "/admin/catalog/products/new",
+    "/admin/catalog/products/1/edit",
+    "/admin/catalog/categories",
+    "/admin/catalog/categories/new",
+    "/admin/catalog/categories/1/edit",
+    "/admin/catalog/brands",
+    "/admin/catalog/brands/new",
+    "/admin/catalog/brands/1/edit",
+    "/admin/catalog/products/1/variants",
+    "/admin/catalog/products/1/variants/1/edit",
+    "/admin/orders? 390px",
+    "/admin/orders? 1366px"
+  ]
+}

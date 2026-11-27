@@ -7,7 +7,7 @@
       th:with="coBoLoc=${q != '' or brand != '' or category != '' or skinType != ''},
                soBoLoc=${(brand != '' ? 1 : 0) + (category != '' ? 1 : 0) + (skinType != '' ? 1 : 0)}">
     <header class="catalog-intro">
-        <p class="eyebrow">BeautyShop / Bộ sưu tập</p>
+        <nav th:replace="~{fragments/ui :: breadcrumb('Bộ sưu tập', ~{})}"></nav>
         <h1>Sản phẩm mỹ phẩm</h1>
         <p class="muted">Khám phá mỹ phẩm theo danh mục, thương hiệu và loại da.</p>
     </header>

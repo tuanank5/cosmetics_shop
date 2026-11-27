@@ -3,6 +3,9 @@ package com.beautyshop.repository;
 import java.math.BigDecimal;
 import java.util.Collection;
 import java.util.List;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
 import java.util.Set;
 import org.springframework.jdbc.core.simple.JdbcClient;
 import org.springframework.stereotype.Repository;
@@ -18,7 +21,17 @@ public class YeuThich_Repository {
     YeuThich_Repository(JdbcClient jdbc) { this.jdbc = jdbc; }
 
     public List<Muc> danhSach(long maNguoiDung) {
-        return jdbc.sql("""
+        return docMuc(maNguoiDung, Pageable.unpaged());
+    }
+
+    public Page<Muc> danhSach(long maNguoiDung, Pageable pageable) {
+        long tong = jdbc.sql("SELECT COUNT(*) FROM san_pham_yeu_thich WHERE ma_nguoi_dung = ?")
+            .param(maNguoiDung).query(Long.class).single();
+        return new PageImpl<>(docMuc(maNguoiDung, pageable), pageable, tong);
+    }
+
+    private List<Muc> docMuc(long maNguoiDung, Pageable pageable) {
+        var query = jdbc.sql("""
             SELECT s.ma_san_pham, s.ten_san_pham, s.duong_dan, t.ten_thuong_hieu, d.ten_danh_muc,
                    (s.dang_hoat_dong AND d.dang_hoat_dong AND t.dang_hoat_dong AND COUNT(b.ma_bien_the) > 0) AS dang_ban,
                    MIN(NULLIF(b.url_hinh_anh, '')) AS url_hinh_anh, MIN(b.gia_ban) AS gia_tu,
@@ -34,7 +47,9 @@ public class YeuThich_Repository {
             GROUP BY y.ma_yeu_thich, s.ma_san_pham, s.ten_san_pham, s.duong_dan, t.ten_thuong_hieu, d.ten_danh_muc,
                      s.dang_hoat_dong, d.dang_hoat_dong, t.dang_hoat_dong
             ORDER BY y.ma_yeu_thich DESC
-            """).param(maNguoiDung).query((rs, row) -> new Muc(rs.getLong("ma_san_pham"), rs.getString("ten_san_pham"),
+            """ + (pageable.isPaged() ? " LIMIT ? OFFSET ?" : "")).param(maNguoiDung);
+        if (pageable.isPaged()) query.params(pageable.getPageSize(), pageable.getOffset());
+        return query.query((rs, row) -> new Muc(rs.getLong("ma_san_pham"), rs.getString("ten_san_pham"),
                 rs.getString("duong_dan"), rs.getBoolean("dang_ban"), rs.getString("ten_thuong_hieu"),
                 rs.getString("ten_danh_muc"), AnhBienTheHienThi.hopLe(rs.getString("url_hinh_anh")),
                 rs.getBigDecimal("gia_tu"), rs.getInt("so_bien_the"), rs.getBoolean("con_hang"),

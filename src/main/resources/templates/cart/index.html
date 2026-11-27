@@ -5,7 +5,7 @@
 <div th:replace="~{fragments/header :: siteHeader}"></div>
 <main id="main" tabindex="-1" class="page-content cart-page">
     <header class="cart-heading">
-        <h1>Giỏ hàng</h1>
+        <h1 data-scroll-list-start="cart-variant" tabindex="-1">Giỏ hàng</h1>
         <a th:unless="${#lists.isEmpty(mucGio)}" class="text-link" th:href="@{/products}">Tiếp tục mua sắm</a>
     </header>
     <div th:replace="~{fragments/ui :: notices(${message}, ${error})}"></div>
@@ -23,7 +23,8 @@
 
     <div class="cart-layout" th:unless="${#lists.isEmpty(mucGio)}">
         <ul class="cart-lines" aria-label="Sản phẩm trong giỏ">
-            <li class="cart-line" th:each="muc : ${mucGio}" th:attr="data-cart-line=${muc.maBienThe},data-sku=${muc.sku}"
+            <li class="cart-line" th:each="muc : ${mucGio}" th:id="|cart-variant-${muc.maBienThe}|" data-scroll-row tabindex="-1"
+                th:attr="data-cart-line=${muc.maBienThe},data-sku=${muc.sku}"
                 th:with="ma=${muc.maBienThe}, xacNhan=|Xóa ${muc.tenSanPham}, biến thể ${muc.tenBienThe}, khỏi giỏ hàng?|">
                 <div class="cart-item">
                     <div class="cart-media" aria-hidden="true">
@@ -37,7 +38,7 @@
                         <p class="eyebrow" th:unless="${#strings.isEmpty(muc.tenThuongHieu)}" th:text="${muc.tenThuongHieu}"></p>
                         <h2>
                             <a th:if="${!#strings.isEmpty(muc.duongDan)}"
-                               th:href="@{/products/{slug}(slug=${muc.duongDan},variant=${ma})}"
+                               data-scroll-entry th:href="@{/products/{slug}(slug=${muc.duongDan},variant=${ma},from='cart',cartVariant=${ma})}"
                                th:attr="aria-label=|${muc.tenSanPham}, ${muc.tenBienThe} (mã biến thể sản phẩm ${muc.sku})|"
                                th:text="${muc.tenSanPham}"></a>
                             <span th:if="${#strings.isEmpty(muc.duongDan)}" th:text="${muc.tenSanPham}"></span>

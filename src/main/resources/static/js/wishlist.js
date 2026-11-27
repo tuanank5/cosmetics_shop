@@ -17,8 +17,20 @@
   const statePath = page?.dataset.state || forms.values().next().value?.[0].dataset.state;
   if (!statePath) return;
 
+  if (page && /^#wishlist-product-[1-9]\d*$/.test(location.hash)) {
+    window.addEventListener('pageshow', (event) => {
+      if (event.persisted || performance.getEntriesByType('navigation')[0]?.type === 'back_forward') return;
+      const card = document.getElementById(location.hash.slice(1));
+      const target = card || page.querySelector('[data-wishlist-heading]');
+      target.scrollIntoView({ block: 'nearest' });
+      target.focus({ preventScroll: true });
+    });
+  }
+
   const feedback = document.querySelector('[data-wishlist-feedback]');
   const count = page?.querySelector('[data-wishlist-count]');
+  const paged = page?.dataset.wishlistPaged === 'true';
+  let total = Number(page?.dataset.wishlistTotal || 0);
   const busy = new Set();
   let generation = 0;
   let hetPhien = false;
@@ -43,7 +55,8 @@
         forms.delete(id);
         if (canFocus) (next?.querySelector('[data-wishlist-id] button') || page.querySelector('[data-wishlist-heading]')).focus();
         page.querySelector('[data-wishlist-empty]').hidden = forms.size !== 0;
-        if (count) count.textContent = forms.size + ' sản phẩm';
+        total = forms.size;
+        if (count) count.textContent = total + ' sản phẩm';
       }
     }
   }
@@ -79,7 +92,8 @@
       if (page) {
         const saved = await docTrangThai();
         if (luot !== generation) return;
-        if ([...saved].some(id => !forms.has(id))) {
+        if ((paged && (saved.size !== total || ids.some(id => !saved.has(id))))
+            || (!paged && [...saved].some(id => !forms.has(id)))) {
           location.reload();
           return;
         }
@@ -130,6 +144,11 @@
       });
       const result = await docJson(response);
       if (typeof result?.saved === 'boolean') {
+        if (paged && !result.saved) {
+          channel?.postMessage('refresh');
+          location.reload();
+          return;
+        }
         capNhat(id, result.saved);
         noi(result.message || '');
         channel?.postMessage('refresh');
@@ -143,6 +162,11 @@
       if (canDocLai) {
         try {
           const saved = await docTrangThai([id]);
+          if (paged && !saved.has(id)) {
+            channel?.postMessage('refresh');
+            location.reload();
+            return;
+          }
           capNhat(id, saved.has(id));
           noi('Kết nối bị gián đoạn. Đã đọc lại trạng thái yêu thích.');
           channel?.postMessage('refresh');

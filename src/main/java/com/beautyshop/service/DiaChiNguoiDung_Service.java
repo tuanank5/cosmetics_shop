@@ -17,6 +17,16 @@ import org.springframework.web.server.ResponseStatusException;
 @Service
 @Transactional(readOnly = true)
 public class DiaChiNguoiDung_Service {
+    public static final int GIOI_HAN = 10;
+    public static final String THONG_BAO_GIOI_HAN =
+        "Bạn đã lưu tối đa " + GIOI_HAN + " địa chỉ. Hãy xóa một địa chỉ trước khi thêm.";
+
+    public static class DatGioiHanDiaChi extends RuntimeException {
+        public DatGioiHanDiaChi() {
+            super(THONG_BAO_GIOI_HAN);
+        }
+    }
+
     private final DiaChiNguoiDung_Repository diaChiRepository;
     private final NguoiDung_Repository nguoiDungRepository;
 
@@ -36,8 +46,9 @@ public class DiaChiNguoiDung_Service {
     @Transactional(isolation = Isolation.READ_COMMITTED)
     public void luu(long maNguoiDung, Long maDiaChi, DiaChiNguoiDung_Form form) {
         var nguoiDung = khoaCustomer(maNguoiDung);
-        var diaChi = maDiaChi == null ? new DiaChiNguoiDung(nguoiDung) : timDiaChi(maNguoiDung, maDiaChi);
         var danhSach = diaChiRepository.findAllByNguoiDungMaNguoiDungOrderByMaDiaChiAsc(maNguoiDung);
+        if (maDiaChi == null && danhSach.size() >= GIOI_HAN) throw new DatGioiHanDiaChi();
+        var diaChi = maDiaChi == null ? new DiaChiNguoiDung(nguoiDung) : timDiaChi(maNguoiDung, maDiaChi);
         diaChi.capNhat(form.getTenNguoiNhan(), form.getSoDienThoai(), form.getDiaChiChiTiet());
         if (form.isLaMacDinh() || danhSach.stream().noneMatch(DiaChiNguoiDung::isLaMacDinh)) {
             danhSach.forEach(muc -> muc.datMacDinh(false));

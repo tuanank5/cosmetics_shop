@@ -2,6 +2,8 @@
 
 Phạm vi đối chiếu là mã nguồn trên `main` tại commit `9a812ca`. Mỗi dòng dưới đây mô tả **kết quả dự kiến**. Bấm mã ca để đọc luồng xử lý, kiểu dữ liệu của từng tầng, lỗi và đích quay lại. Đánh dấu kết quả của bạn sau khi thực hiện từng ca.
 
+**Khi kiểm bản hiện hành:** TV-01 đến TV-03 là ca lịch sử của form tư vấn đã gỡ. Mở **Tư vấn** từ header, trang chủ và footer để kiểm cả ba lối vào đều dẫn đến `/chat`. Tiếp tục với TV-04 đến TV-07. Khi chạy QA-03, kiểm giao diện `/chat`. [D41](../DECISIONS.md)
+
 ## 1. Chuẩn bị
 
 - Chạy BeautyShop theo [hướng dẫn local](../deployment/01-local-db-and-flyway.md). Các đường dẫn trong tài liệu bắt đầu từ `http://127.0.0.1:8080`. Nếu app dùng cổng khác, giữ nguyên phần đường dẫn sau cổng.

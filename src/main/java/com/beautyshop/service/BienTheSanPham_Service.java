@@ -10,6 +10,9 @@ import com.beautyshop.repository.SanPham_Repository;
 import java.io.UncheckedIOException;
 import java.nio.file.Path;
 import java.util.List;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import com.beautyshop.dto.PhanTrang;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Optional;
@@ -47,6 +50,11 @@ public class BienTheSanPham_Service {
     @PreAuthorize("hasRole('ADMIN')")
     public List<BienTheSanPham> danhSach(long maSanPham) {
         return bienTheRepository.findAllBySanPhamMaSanPhamOrderBySkuAsc(maSanPham);
+    }
+
+    @PreAuthorize("hasRole('ADMIN')")
+    public Page<BienTheSanPham> danhSach(long maSanPham, Pageable pageable) {
+        return PhanTrang.doc(pageable, trang -> bienTheRepository.findAllBySanPhamMaSanPhamOrderBySkuAsc(maSanPham, trang));
     }
 
     @PreAuthorize("hasRole('ADMIN')")

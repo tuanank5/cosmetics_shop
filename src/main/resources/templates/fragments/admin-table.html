@@ -5,5 +5,37 @@
     <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="4" width="14" height="16" rx="2"/><path d="m5 16 4-4 3 3 3-4 4 5"/><circle cx="10" cy="8" r="1"/></svg>
     <img th:if="${url}" th:src="@{${url}}" alt="" loading="lazy" width="64" height="64" data-commerce-image>
 </span>
+<form th:fragment="listFilters(path, searchLabel, filters, categories, brands)" class="admin-panel admin-list-filter"
+      th:action="@{${path}}" method="get" role="search" aria-label="Lọc danh sách">
+    <label><span th:text="${searchLabel}"></span>
+        <input type="search" name="q" th:value="${filters.q}" maxlength="190">
+    </label>
+    <label>Trạng thái
+        <select name="active">
+            <option value="">Tất cả</option>
+            <option value="true" th:selected="${filters.active == true}">Đang hoạt động</option>
+            <option value="false" th:selected="${filters.active == false}">Ngừng hoạt động</option>
+        </select>
+    </label>
+    <label th:if="${categories != null}">Danh mục
+        <select name="category">
+            <option value="">Tất cả danh mục</option>
+            <option th:each="muc : ${categories}" th:value="${muc.ma}" th:text="${muc.ten}" th:selected="${muc.ma == filters.category}"></option>
+        </select>
+    </label>
+    <label th:if="${brands != null}">Thương hiệu
+        <select name="brand">
+            <option value="">Tất cả thương hiệu</option>
+            <option th:each="muc : ${brands}" th:value="${muc.ma}" th:text="${muc.ten}" th:selected="${muc.ma == filters.brand}"></option>
+        </select>
+    </label>
+    <div class="catalog-actions admin-filter-actions">
+        <button class="btn btn--primary" type="submit">Áp dụng</button>
+        <a class="btn btn--secondary" th:if="${!filters.thamSo().isEmpty()}" th:href="@{${path}}">Xóa bộ lọc</a>
+    </div>
+</form>
+<th:block th:fragment="listSource(fields)">
+    <input th:each="field : ${fields}" type="hidden" th:name="${field.key}" th:value="${field.value}">
+</th:block>
 </body>
 </html>

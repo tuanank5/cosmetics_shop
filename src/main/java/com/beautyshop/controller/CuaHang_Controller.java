@@ -10,6 +10,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.web.csrf.CsrfToken;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -86,7 +87,7 @@ class CuaHang_Controller {
     String chiTiet(@PathVariable String slug, @RequestParam(required = false) Long variant,
                    @RequestParam(name = "reviewPage", defaultValue = "0") int reviewPage,
                    @RequestParam Map<String, String> thamSo, @AuthenticationPrincipal PhienNguoiDung phien,
-                   HttpServletRequest request, Model model) {
+                   HttpServletRequest request, CsrfToken csrf, Model model) {
         var chiTiet = cuaHangService.chiTiet(slug, variant);
         model.addAttribute("chiTiet", chiTiet);
         var danhGia = sauMua.danhGiaSanPham(chiTiet.sanPham().getMa(), reviewPage);
@@ -106,6 +107,8 @@ class CuaHang_Controller {
             model.addAttribute("pager", PhanTrang.tu(danhGia.danhSach(),
                 so -> nguon.trangDanhGia(chiTiet.sanPham().getDuongDan(), chiTiet.dangChon().getMaBienThe(), so)));
         }
+        // The cart form needs a session before Thymeleaf starts streaming the page.
+        csrf.getToken();
         return "product/detail";
     }
 

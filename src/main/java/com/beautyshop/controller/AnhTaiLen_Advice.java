@@ -3,6 +3,9 @@ package com.beautyshop.controller;
 import com.beautyshop.dto.BienTheSanPham_Form;
 import com.beautyshop.service.BienTheSanPham_Service;
 import jakarta.servlet.http.HttpServletRequest;
+import java.nio.charset.StandardCharsets;
+import java.util.LinkedHashMap;
+import java.util.Map;
 import java.util.regex.Pattern;
 import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.http.HttpStatus;
@@ -13,6 +16,8 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.multipart.MaxUploadSizeExceededException;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.util.UriComponentsBuilder;
+import org.springframework.web.util.UriUtils;
 
 /** Multipart parsing can fail before a controller is selected. Rebuild only the existing SKU form. */
 @ControllerAdvice
@@ -47,12 +52,30 @@ public class AnhTaiLen_Advice {
             view.addObject("form", form);
             view.addObject(BindingResult.MODEL_KEY_PREFIX + "form", errors);
             view.addObject("sanPham", sanPham);
-            view.addObject("action", path);
+            var nguon = NguonDieuHuong.nguonBienTheAdmin(docQuery(request.getQueryString()));
+            Long maBienThe = bienThe == null ? null : bienThe.getMaBienThe();
+            view.addObject("action", NguonDieuHuong.coThamSo(path, nguon.truongAn()));
+            view.addObject("backToProducts", nguon.sanPham().quayLai("/admin/catalog/products", maSanPham));
+            view.addObject("backToVariants", nguon.veDanhSach(maSanPham, maBienThe));
             view.addObject("uploadQuaLon", true);
             if (bienThe != null) view.addObject("anhHienTai", bienThe.getUrlHinhAnh());
         } catch (NumberFormatException | org.springframework.web.server.ResponseStatusException exception) {
             // A stale/invalid SKU URL still receives a safe 413 view.
         }
         return view;
+    }
+
+    private Map<String, String> docQuery(String query) {
+        if (query == null) return Map.of();
+        try {
+            var thamSo = new LinkedHashMap<String, String>();
+            UriComponentsBuilder.newInstance().query(query).build().getQueryParams()
+                .toSingleValueMap().forEach((ten, value) -> {
+                    if (value != null) thamSo.put(ten, UriUtils.decode(value, StandardCharsets.UTF_8));
+                });
+            return thamSo;
+        } catch (IllegalArgumentException exception) {
+            return Map.of();
+        }
     }
 }

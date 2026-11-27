@@ -51,6 +51,9 @@ class AdminDonHang_Controller {
         model.addAttribute("navDashboard", ky);
         model.addAttribute("listStatus", nguon.loc().trangThai());
         model.addAttribute("orderListFields", nguon.truongAn());
+        var reviewSource = NguonDieuHuong.nguonDanhGia(thamSo);
+        model.addAttribute("reviewSource", reviewSource);
+        if (!reviewSource.isEmpty()) model.addAttribute("backToReviews", NguonDieuHuong.veDanhGia(reviewSource));
         model.addAttribute("backToOrders", nguon.quayLai(id));
         model.addAttribute("orderBack", ky.isEmpty() ? null : NguonDieuHuong.veDashboard(ky));
         return "order/detail";
@@ -68,6 +71,7 @@ class AdminDonHang_Controller {
         }
         NguonDieuHuong.kyDashboard(thamSo).forEach(flash::addAttribute);
         nguon.giuQuaRedirect(flash);
+        NguonDieuHuong.nguonDanhGia(thamSo).forEach(flash::addAttribute);
         return "redirect:/admin/orders/" + id;
     }
 }
