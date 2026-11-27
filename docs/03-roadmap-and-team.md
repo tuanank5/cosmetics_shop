@@ -158,3 +158,7 @@ HTTP đạt 35 phép kiểm route, MariaDB/MongoDB đạt 38/38. Truy vấn DB s
 ## CHAT-ROUTE-01 · Gỡ form tư vấn cũ
 
 Đã gỡ route và mã riêng của form tư vấn theo D41. Khách mở chức năng tư vấn tại `/chat`. [Kết quả](reviews/CHAT-ROUTE-01-ket-qua.md)
+
+## Kế hoạch tiếp theo chờ duyệt · 28/11/2026
+
+Revision ứng viên là `a9870e1`, trùng remote main và Maven CI đã đạt. Owner yêu cầu rà soát tài liệu trước khi giao việc. Đề xuất 10 phase, 19 WP, BASE đứng đầu. AUTH-LIVE, PAY-LIVE và UI-UAT giữ phạm vi nghiệm thu riêng. AI đợt này chỉ dùng mock. Toàn bộ hạng mục lô/FEFO và AI-LIVE ở backlog. [Sổ trạng thái mới](reviews/BEAUTYSHOP_NEXT_UPGRADE_PROGRESS.md) · [Kế hoạch và tiêu chí](reviews/BEAUTYSHOP_NEXT_UPGRADE_PLAN.md)

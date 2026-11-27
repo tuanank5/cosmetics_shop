@@ -46,6 +46,22 @@
 | D41 | Owner duyệt gỡ route `/tu-van-da` và các thành phần của form tư vấn đã ngừng sử dụng. | Bỏ chuyển hướng tương thích của D39. Điểm vào cho khách là `/chat`. |
 | D42 | Owner giới hạn tối đa 10 địa chỉ giao hàng lưu trên mỗi tài khoản khách. | Kiểm tra khi tạo địa chỉ mới sau khi khóa hàng tài khoản. Khách vẫn được sửa hoặc xóa địa chỉ hiện có và giữ quy tắc mặc định của D26. |
 
+## Phạm vi owner lựa chọn cho đợt kế tiếp · 28/11/2026
+
+| ID | Quyết định về phạm vi | Ảnh hưởng đến yêu cầu hiện hành |
+|---|---|---|
+| D43 | Ưu tiên BASE trước triển khai. Kế thừa 13 WP, AUTH-02, các sửa UI/nghiệp vụ và D41/D42. | QA-01 theo sổ G13 thực tế. AUTH-LIVE, PAY-LIVE và UI-UAT là nghiệm thu đúng môi trường. Bảo toàn thiết kế LOT, đưa LOT và AI-LIVE về backlog, quản lý tồn theo biến thể. |
+| D44 | Giữ reset link email một lần và mô hình một Customer liên kết mật khẩu/Google/GitHub. Kiểm mật khẩu mới khác mật khẩu hiện tại ở reset và đổi. Mở rộng audit Admin, lý do khóa/mở và trạng thái gửi thư. | Kế thừa D26/D33/D34 và V6–V7. Không thêm role hay lịch sử mật khẩu. Audit Log mới có khôi phục bộ lọc, cuộn và focus. |
+| D45 | Owner chọn mở rộng D11/BR11 cho phép tối đa một mã hàng/đơn và một mã phí ship; mã có thể giới hạn theo sản phẩm/danh mục/hãng/khách. Chọn mua lại, kiểm định trước nhập lại SKU và hoàn toàn phần theo giao dịch thực thu. | D10/D27 vẫn là chính sách phí hiện hành. BR11 và ERD hiện mô tả bản chạy một mã; khi owner chốt quy tắc tính và giao WP mới cập nhật SRS/BR/ERD, migration và regression cùng PR. Chưa chốt trả lượt, kiểm định, xử lý trả một phần hoặc phương thức hoàn COD. |
+| D46 | Giữ thuật toán và câu trả lời văn bản của /chat. Chọn lưu lịch sử để Customer xem lại và số liệu vận hành tổng hợp; đợt này chỉ kiểm AI bằng mock. | Bổ sung phạm vi lưu hiển thị cho D14/BR19, không tự cấp cho model dữ liệu riêng hoặc cho Admin quyền đọc hội thoại. Guard áp dụng trước gửi/lưu. |
+| D47 | Chọn thông báo khuyến mãi trong website khi Admin chủ động xác nhận, tám trang shop và FAQ một nguồn, giao diện Admin tạo/quản lý backup. Email bổ sung chỉ theo luồng reset và khóa/mở. | BACKLOG-12 cũ được mở lại theo từng trang được chọn. Nội dung cần owner duyệt. Restore web và sinh mã SKU chỉ là lựa chọn cần đánh giá. Giữ Footer, local storage và SSR; ảnh/SQL/Redis chỉ chỉnh khi có số đo. |
+
+Các quyết định trên xác định **phạm vi lập kế hoạch**. Quy tắc còn mở, tiêu chí duyệt và tác động đến dữ liệu được ghi trong [phân tích phạm vi](reviews/BEAUTYSHOP_CHANGE_IMPACT_ANALYSIS.md). Bản hiện thực tại a9870e1 vẫn đối chiếu với D01–D42.
+
+**D48 · Lịch sử tư vấn.** Owner chọn MongoDB hiện có để lưu lịch sử riêng của Customer. D46 tiếp tục áp dụng cho quyền xem, guard và kiểm AI bằng mock. `maNguoiDung` từ phiên đã xác thực là tham chiếu chủ sở hữu giữa MariaDB và MongoDB. Thời hạn lưu, quyền xóa và việc dùng ngữ cảnh nhiều lượt vẫn theo các quyết định mở 8–10.
+
+**D49 · Google sau khi đăng xuất.** Owner yêu cầu xác minh phản ánh trong AUTH và AUTH-LIVE, sửa lỗi ứng dụng nếu tái hiện được. Phải kiểm quyền trên server trước khi bấm Google lần nữa và phân biệt callback mới qua phiên Google SSO. Yêu cầu bắt buộc bộ chọn tài khoản cho mỗi lần login chưa được duyệt.
+
 ## Điểm còn cần xác minh/định cấu hình
 
 **P15-V · 23/11/2026 — quyết định đã được owner duyệt:** storefront chuyển sang
