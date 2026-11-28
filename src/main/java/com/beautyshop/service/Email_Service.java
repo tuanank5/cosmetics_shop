@@ -1,7 +1,13 @@
 
 package com.beautyshop.service;
 
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZoneOffset;
+import java.time.format.DateTimeFormatter;
+import java.util.UUID;
 import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Value;
@@ -43,6 +49,38 @@ public class Email_Service {
     public void baoDaDoiMatKhau(String email) {
         gui(email, "Mật khẩu BeautyShop đã thay đổi",
             "Mật khẩu vừa được cập nhật. Nếu bạn không thực hiện, hãy liên hệ hỗ trợ BeautyShop.");
+    }
+
+    private static final String KHOA = """
+        Xin chào bạn,
+
+        BeautyShop đã khóa tài khoản của bạn lúc %s (giờ Việt Nam). Trong thời gian tài khoản bị khóa, bạn sẽ không thể đăng nhập vào BeautyShop.
+
+        Nếu bạn không nhận ra thay đổi này hoặc muốn yêu cầu xem xét mở khóa, vui lòng vào trang chủ BeautyShop và liên hệ bộ phận hỗ trợ qua thông tin ở cuối trang. Bạn có thể cung cấp thời điểm ghi trong thư để chúng tôi tra cứu. Vui lòng giữ kín mật khẩu và mã xác minh của bạn.
+
+        Trân trọng,
+        BeautyShop""";
+    private static final String MO = """
+        Xin chào bạn,
+
+        BeautyShop đã mở khóa tài khoản của bạn lúc %s (giờ Việt Nam). Bạn có thể đăng nhập lại trên BeautyShop bằng phương thức đã thiết lập cho tài khoản.
+
+        Nếu bạn vẫn gặp khó khăn hoặc không nhận ra thay đổi này, vui lòng vào trang chủ BeautyShop và liên hệ bộ phận hỗ trợ qua thông tin ở cuối trang. Bạn có thể cung cấp thời điểm ghi trong thư để chúng tôi tra cứu. Vui lòng giữ kín mật khẩu và mã xác minh của bạn.
+
+        Trân trọng,
+        BeautyShop""";
+
+    void guiTrangThai(UUID event, String email, boolean moKhoa, LocalDateTime utc) {
+        var gio = utc.atOffset(ZoneOffset.UTC).atZoneSameInstant(ZoneId.of("Asia/Ho_Chi_Minh"));
+        var luc = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm").format(gio);
+        mailSender.send(message -> {
+            var helper = new MimeMessageHelper(message, false, "UTF-8");
+            if (!from.isBlank()) helper.setFrom(from);
+            helper.setTo(email);
+            helper.setSubject(moKhoa ? "BeautyShop đã mở khóa tài khoản của bạn" : "BeautyShop đã khóa tài khoản của bạn");
+            helper.setText((moKhoa ? MO : KHOA).formatted(luc));
+            message.setHeader("Message-ID", "<" + event + "@account.beautyshop.invalid>");
+        });
     }
 
     private void gui(String email, String subject, String body) {

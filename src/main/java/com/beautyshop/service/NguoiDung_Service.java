@@ -6,6 +6,7 @@ import com.beautyshop.dto.HoSo_Form;
 import com.beautyshop.model.NguoiDung;
 import com.beautyshop.repository.NguoiDung_Repository;
 import java.util.Locale;
+import java.util.UUID;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
@@ -20,7 +21,13 @@ public class NguoiDung_Service {
     private final NguoiDung_Repository repository;
     private final PasswordEncoder passwordEncoder;
 
-    NguoiDung_Service(NguoiDung_Repository repository, PasswordEncoder passwordEncoder) {
+    private final SuKienQuanTri_Service audit;
+    private final ThuTrangThaiTaiKhoan thu;
+
+    NguoiDung_Service(NguoiDung_Repository repository, PasswordEncoder passwordEncoder,
+                      SuKienQuanTri_Service audit, ThuTrangThaiTaiKhoan thu) {
+        this.audit = audit;
+        this.thu = thu;
         this.repository = repository;
         this.passwordEncoder = passwordEncoder;
     }
@@ -90,22 +97,36 @@ public class NguoiDung_Service {
 
     @Transactional
     @PreAuthorize("hasRole('ADMIN')")
-    public boolean datTrangThai(long maAdmin, long phienBanXacThuc, long maMucTieu, boolean kichHoat) {
-        if (maAdmin == maMucTieu && !kichHoat) {
-            return false;
-        }
+    public KetQua datTrangThai(long maMucTieu, boolean kichHoat, long version, UUID id, LyDoTaiKhoan lyDo) {
+        var phien = SuKienQuanTri_Service.phienAdmin();
+        long maAdmin = phien.getMaNguoiDung();
         var dau = repository.khoa(Math.min(maAdmin, maMucTieu)).orElseThrow(NguoiDung_Service::khongTimThay);
         var sau = maAdmin == maMucTieu ? dau
             : repository.khoa(Math.max(maAdmin, maMucTieu)).orElseThrow(NguoiDung_Service::khongTimThay);
         var admin = dau.getMaNguoiDung() == maAdmin ? dau : sau;
         if (admin.getVaiTro() != NguoiDung.VaiTro.ADMIN || !admin.isKichHoat()
-            || admin.getPhienBanXacThuc() != phienBanXacThuc) {
+            || admin.getPhienBanXacThuc() != phien.getPhienBanXacThuc()) {
             throw new AccessDeniedException("Phiên Admin không còn quyền thay đổi tài khoản.");
         }
+        if (maAdmin == maMucTieu && !kichHoat) return KetQua.TU_KHOA;
         var mucTieu = dau.getMaNguoiDung() == maMucTieu ? dau : sau;
+        if (id == null || lyDo == null || lyDo.isMoKhoa() != kichHoat) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Hãy chọn lý do phù hợp.");
+        }
+        var bienNhan = thu.bienNhan(id, maAdmin, maMucTieu, version, lyDo);
+        if (bienNhan == ThuTrangThaiTaiKhoan.BienNhan.DA_GHI) return KetQua.DA_GHI;
+        if (bienNhan == ThuTrangThaiTaiKhoan.BienNhan.XUNG_DOT) return KetQua.FORM_CU;
+        if (mucTieu.isKichHoat() == kichHoat) return KetQua.KHONG_DOI;
+        if (mucTieu.getPhienBanXacThuc() != version) return KetQua.FORM_CU;
+        var action = kichHoat ? SuKienQuanTri_Service.HanhDong.ACCOUNT_UNLOCK : SuKienQuanTri_Service.HanhDong.ACCOUNT_LOCK;
+        var event = audit.batDau(action, "ACCOUNT", maMucTieu, id);
         mucTieu.datKichHoat(kichHoat);
-        return true;
+        audit.thanhCongTaiKhoan(event, maMucTieu, kichHoat, lyDo);
+        thu.tao(id, maAdmin, mucTieu, version, lyDo);
+        return KetQua.DA_DOI;
     }
+
+    public enum KetQua { DA_DOI, KHONG_DOI, DA_GHI, TU_KHOA, FORM_CU }
 
     private static ResponseStatusException khongTimThay() {
         return new ResponseStatusException(HttpStatus.NOT_FOUND);

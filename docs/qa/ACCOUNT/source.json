@@ -1,0 +1,31 @@
+{
+  "baseline": "5aa4932cc663de1115ff06ab7a8d7b837a673d93",
+  "algorithm": "SHA-256 of raw bytes per file, then UTF-8 sorted path + TAB + digest + LF",
+  "files": {
+    "src/main/java/com/beautyshop/controller/admin/AdminBaoMatTaiKhoan_Controller.java": "70787ec21ed3e1b7657e446a74244f7eab49b3280354db5a871bb9dc9ca2f822",
+    "src/main/java/com/beautyshop/controller/admin/AdminNguoiDung_Controller.java": "2978b9774d248b83e01e13d2219037853d96f527e1fbd28b40df0291dfdc7dc5",
+    "src/main/java/com/beautyshop/controller/admin/PhienDoiTrangThai.java": "e7b2d3174249f261530bfde18947c33f2ddccf047378322741db4757b26c00b5",
+    "src/main/java/com/beautyshop/repository/NguoiDung_Repository.java": "2fc60e513ed6bfd057639377e9a9acc43cb167fa8ce3fe3ae55e352a24db1eaf",
+    "src/main/java/com/beautyshop/service/Email_Service.java": "41dd442fd51a20e49a490fb755709ec7e1a2f88d46529f9bb3fb30ae09487868",
+    "src/main/java/com/beautyshop/service/GuiThuTaiKhoan_Job.java": "202c363384248f6c2a3d59c5552b94643c95a882ddde0d53ee87304e7e64a8de",
+    "src/main/java/com/beautyshop/service/LyDoTaiKhoan.java": "652e73de6e882a876ec193356698b0123220ec9c42334985681611134fa114ee",
+    "src/main/java/com/beautyshop/service/NguoiDung_Service.java": "2b832144eac8dc0b66fbd55908e6e3e7a219aff033c1d2e6749e17fdacd14f52",
+    "src/main/java/com/beautyshop/service/SuKienQuanTri_Service.java": "a6b219709dfc350c3b022c61ba4e59d414fa225c589cddc7f2ad48b90d6e9090",
+    "src/main/java/com/beautyshop/service/ThuTrangThaiTaiKhoan.java": "dbacf34232b8003b157717aee641fe5755c50eafb39da0bdbf29f590718e8e39",
+    "src/main/resources/application.properties": "8414a51209cf5c2cf60da03c8447e08d4e46e942897652a85747bfc7b2c9ebb3",
+    "src/main/resources/db/migration/V10__thu_trang_thai_tai_khoan.sql": "d549267ef7ea370e04d6cb2d28061839880f537e72f90d32e182a81c05026164",
+    "src/main/resources/templates/admin/user/detail.html": "cc4e1519ac896af26a6fda832e3e7884176bdf22978a90e323f45a1cc9d7c2ab",
+    "src/main/resources/templates/admin/user/list.html": "f1c11c35ed02ff86dbe417cb58199c1b493f17c8ee946dc899da10ba3538dd71",
+    "src/test/java/com/beautyshop/bootstrap/LocalDatabaseMigration_MariaDb_Test.java": "06038dae80033fd6973cf26f596b21ac2c98fb5a84e38c7d5defa2de952c2c97",
+    "src/test/java/com/beautyshop/integration/OAuth2Callback_MariaDb_Test.java": "728ef10473fa40deade4d45a0548c05273df87657f72f9b768821c4dde1c721e",
+    "src/test/java/com/beautyshop/integration/XacThuc_MariaDb_Test.java": "637c3108b062c322d1fa20e706f9d5fd262bef5e5a70bfcf0e154f7ad80b12cc",
+    "src/test/java/com/beautyshop/service/AdminServiceMethodSecurityTest.java": "d35a07481490eceb8fad4e4cdad29a786e63b48396db0e85774b6881ecbb9d91",
+    "src/test/java/com/beautyshop/service/ThuTaiKhoanSmtpTest.java": "0e70b4f79b575c498e06c04ebd8c9898726781ef292180501fb100006006871a",
+    "src/test/java/com/beautyshop/service/ThuTaiKhoan_MariaDb_Test.java": "7bbb2a02790d5f38ce72d63d7123931bb4bd0f5265121fa4390cf3ac066aee0c"
+  },
+  "aggregate": "0e4016177085a141ab10f5b8a91b4a11c6fde72a62062cda5f96105e8d5e079c",
+  "completeSrcComparison": [
+    "target/account-delivery",
+    "target/account-delivery-it"
+  ]
+}

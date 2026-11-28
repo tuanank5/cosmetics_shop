@@ -1,0 +1,16 @@
+﻿[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 27.77 s -- in com.beautyshop.integration.AdminOrderList_MariaDb_Test
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.710 s -- in com.beautyshop.integration.Audit_MariaDb_Test
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 5.765 s -- in com.beautyshop.integration.DocView_MariaDb_Test
+[INFO] Tests run: 10, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 11.79 s -- in com.beautyshop.integration.DonHangCOD_MariaDb_Test
+[INFO] Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 6.479 s -- in com.beautyshop.integration.Momo_MariaDb_Test
+[ACCOUNT WebKit] PASS password, Google OIDC fixture, GitHub fixture, stale sessions and fresh login
+[AUTH WebKit] PASS 26.6 reset/retry/replay, two-tab logout, new OIDC callback, reauth/OTP, last method, first password
+[AUTH WebKit] PASS reset/retry/replay, two-tab logout, fresh Google callback, reauth/OTP, last method and first password; fixture authorizations=3
+[INFO] Tests run: 11, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 20.05 s -- in com.beautyshop.integration.OAuth2Callback_MariaDb_Test
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.251 s -- in com.beautyshop.integration.PhieuGiamGia_MariaDb_Test
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.203 s -- in com.beautyshop.integration.ThongKe_MariaDb_Test
+[INFO] Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 5.860 s -- in com.beautyshop.integration.XacThucDaPhuongThuc_MariaDb_Test
+[INFO] Tests run: 12, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 5.795 s -- in com.beautyshop.integration.XacThuc_MariaDb_Test
+[INFO] Tests run: 14, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.834 s -- in com.beautyshop.service.ThuTaiKhoan_MariaDb_Test
+[INFO] Tests run: 81, Failures: 0, Errors: 0, Skipped: 0
+[INFO] BUILD SUCCESS

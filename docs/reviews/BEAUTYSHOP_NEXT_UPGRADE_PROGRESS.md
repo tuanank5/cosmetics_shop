@@ -12,7 +12,7 @@ Số thứ tự là số tệp. “Chờ BASE/phụ thuộc” xác định gate
 | 2 | 1 | [AUTH](implementation-prompts/next-upgrade/02-AUTH.md) | DONE | Owner nghiệm thu sau merge. | `0ed547b` · [PR #7](https://github.com/tuanank5/cosmetics_shop/pull/7) · [CI main PASS](https://github.com/tuanank5/cosmetics_shop/actions/runs/46110439984) · [Báo cáo](AUTH-ket-qua.md) |
 | 3 | 1 | [AUTH-LIVE](implementation-prompts/next-upgrade/03-AUTH-LIVE.md) | BLOCKED_EXTERNAL | BASE và AUTH đã đạt. Owner cần xác nhận môi trường test, client Google/GitHub, callback, hai Customer, Redis và Mailpit/SMTP thử. | Revision đầu vào `0ed547b` · chưa chạy |
 | 4 | 2 | [AUDIT](implementation-prompts/next-upgrade/04-AUDIT.md) | DONE | Owner chọn AUDIT-A. AUDIT PURGE — BLOCKED_EXTERNAL. | `5bdada6` · [Quyết định AUDIT-A](../DECISIONS.md#nghiệm-thu-audit-ngày-28112026) |
-| 5 | 2 | [ACCOUNT](implementation-prompts/next-upgrade/05-ACCOUNT.md) | BLOCKED_OWNER / phụ thuộc | Chốt nội dung mail, AUTH và AUDIT sẵn sàng. | — |
+| 5 | 2 | [ACCOUNT](implementation-prompts/next-upgrade/05-ACCOUNT.md) | IN_PROGRESS | ACCOUNT-1–5 được duyệt cho fixture. Gửi thật và vận hành đối soát chờ owner. | 28/11/2026 · `5aa4932` · [Quyết định](../DECISIONS.md#account--quyết-định-owner-ngày-28112026) |
 | 6 | 3 | [VOUCHER](implementation-prompts/next-upgrade/06-VOUCHER.md) | DONE | Owner nghiệm thu 28/11/2026. Hai slot HÀNG/SHIP, quota, V9 và COD/MoMo mock. | PR #12 · `e4c00c8` · [Closeout](VOUCHER-ket-qua.md) |
 | 7 | 3 | [PAYMENT](implementation-prompts/next-upgrade/07-PAYMENT.md) | DONE | Owner nghiệm thu 28/11/2026. Lịch sử attempt và bốn gate sau VOUCHER trong phạm vi COD/MoMo mock. | `e4c00c8` · [Revalidation](PAYMENT-ket-qua.md#revalidation-pr-12) |
 | 8 | 3 | [PAY-LIVE](implementation-prompts/next-upgrade/08-PAY-LIVE.md) | Chờ phụ thuộc · BLOCKED_EXTERNAL | Xác nhận môi trường thật, revision và số đầu kỳ. | — |
@@ -44,6 +44,12 @@ Số thứ tự là số tệp. “Chờ BASE/phụ thuộc” xác định gate
 Trên mỗi dòng, điền owner, revision gốc/tích hợp, PR/CI và kết quả; nối biên bản theo mẫu `ngày | WP | trạng thái trước → sau | quyết định/phụ thuộc | môi trường/fixture | PASS/FAIL/SKIP/NOT RUN | log/ảnh | bước kế tiếp`. Khi bị chặn, ghi người có thể mở khóa, quyết định cụ thể và phạm vi còn làm độc lập. Chỉ ghi DONE khi checkpoint, regression ảnh hưởng và review/CI đúng revision đã được xác nhận. Giữ lịch sử các lần thử, không cộng gộp suite khác môi trường.
 
 Mục 15 (restore web) và 17 (tự sinh mã SKU) tiếp tục ngoài phạm vi. D48 đã chốt MongoDB cho lịch sử Customer. D49 giao AUTH/AUTH-LIVE phân biệt logout BeautyShop với phiên Google, chỉ sửa lỗi ứng dụng tái hiện được.
+
+## Nhật ký ACCOUNT
+
+28/11/2026 · ACCOUNT IN_PROGRESS trên `5aa4932`. Đã triển khai năm quyết định trên fixture với migration V10. Maven 257 PASS/113 SKIP, integration 41/41 (gồm WebKit ACCOUNT và AUTH), migration 11/11 và package PASS. Chờ ACCOUNT-FINAL, CI, merge và nghiệm thu owner. [Báo cáo](ACCOUNT-ket-qua.md)
+
+28/11/2026 · ACCOUNT-FINAL giữ IN_PROGRESS. Đã sửa hai finding và kiểm trên fixture. Maven 257 PASS/121 SKIP, integration 81/81, bootstrap 11/11 và package PASS. Chờ review PR, CI, merge và owner nghiệm thu. [Review cuối](../qa/ACCOUNT/final-review/review.md)
 
 ## Nhật ký ORDER
 

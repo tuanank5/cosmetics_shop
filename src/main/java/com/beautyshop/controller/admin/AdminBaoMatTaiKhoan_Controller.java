@@ -6,6 +6,7 @@ import com.beautyshop.repository.DanhTinhOAuth_Repository;
 import com.beautyshop.repository.NguoiDung_Repository;
 import com.beautyshop.security.PhienNguoiDung;
 import com.beautyshop.service.MatKhau_Service;
+import com.beautyshop.service.ThuTrangThaiTaiKhoan;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
@@ -21,8 +22,11 @@ class AdminBaoMatTaiKhoan_Controller {
     private final DanhTinhOAuth_Repository identities;
     private final MatKhau_Service passwords;
 
+    private final ThuTrangThaiTaiKhoan thu;
+
     AdminBaoMatTaiKhoan_Controller(NguoiDung_Repository users, DanhTinhOAuth_Repository identities,
-                                   MatKhau_Service passwords) {
+                                   MatKhau_Service passwords, ThuTrangThaiTaiKhoan thu) {
+        this.thu = thu;
         this.users = users;
         this.identities = identities;
         this.passwords = passwords;
@@ -34,6 +38,7 @@ class AdminBaoMatTaiKhoan_Controller {
                @RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "false") boolean fromList, Model model) {
         var user = users.docBaoMatAdmin(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
         model.addAttribute("id", id);
+        model.addAttribute("lichSuTrangThai", thu.lichSu(id));
         model.addAttribute("hoTen", user.getHoTen());
         model.addAttribute("email", user.getEmail());
         model.addAttribute("coMatKhau", user.getCoMatKhau());

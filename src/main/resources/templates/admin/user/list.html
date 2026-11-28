@@ -42,7 +42,9 @@
                     <td th:text="${muc.email}"></td>
                     <td th:text="${muc.vaiTro.name() == 'ADMIN' ? 'Quản trị' : 'Khách hàng'}"></td>
                     <td><span class="admin-badge" th:attr="data-status=${muc.kichHoat ? 'ACTIVE' : 'LOCKED'}"
-                              th:text="${muc.kichHoat ? 'Đang hoạt động' : 'Đã khóa'}"></span></td>
+                              th:text="${muc.kichHoat ? 'Đang hoạt động' : 'Đã khóa'}"></span>
+                        <small th:if="${thu.containsKey(muc.maNguoiDung)}"
+                               th:text="|${thu[muc.maNguoiDung].lyDo.nhan} · ${thu[muc.maNguoiDung].trangThai.nhan}|"></small></td>
                     <td>
                         <div class="catalog-actions">
                             <a class="btn btn--secondary admin-button" data-admin-entry th:href="@{${'/admin/users/' + muc.maNguoiDung + userListQuery}}">Chi tiết</a>
@@ -53,7 +55,14 @@
                                 <input th:if="${active != null}" type="hidden" name="active" th:value="${active}">
                                 <input th:if="${role != null}" type="hidden" name="role" th:value="${role.name()}">
                                 <input type="hidden" name="fromList" value="true">
-                                <input type="hidden" name="enabled" th:value="${!muc.kichHoat}">
+                                <input type="hidden" name="operation" th:value="${lenh[muc.maNguoiDung]}">
+                                <label>Lý do
+                                    <select name="reason" required>
+                                        <option value="">Chọn lý do</option>
+                                        <option th:each="r : ${cacLyDo}" th:if="${r.moKhoa != muc.kichHoat}"
+                                                th:value="${r.name()}" th:text="${r.nhan}"></option>
+                                    </select>
+                                </label>
                                 <button type="submit" class="btn btn--secondary admin-button admin-toggle-account" th:text="${muc.kichHoat ? 'Khóa' : 'Mở khóa'}"></button>
                             </form>
                         </div>

@@ -1,0 +1,3 @@
+[INFO] Building BeautyShop 0.0.1-SNAPSHOT
+[INFO] BUILD SUCCESS
+[INFO] Finished at: 2026-11-28T20:33:44+07:00

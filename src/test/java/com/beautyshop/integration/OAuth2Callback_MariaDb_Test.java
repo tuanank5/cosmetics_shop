@@ -259,6 +259,93 @@ class OAuth2Callback_MariaDb_Test {
         mvc.perform(get("/orders/" + donSoHuu).session(phienMoi)).andExpect(redirectedUrl("/login?inactive"));
     }
 
+    @Test
+    @EnabledIfEnvironmentVariable(named = "ACCOUNT_BROWSER_SCRIPT", matches = ".+")
+    void webKitKhoaMoBaPhuongThuc() throws Exception {
+        String base = "http://127.0.0.1:" + port;
+        var admin = users.saveAndFlush(new NguoiDung(UUID.randomUUID() + "@example.invalid", encoder.encode(PASSWORD), "Admin"));
+        jdbc.sql("UPDATE nguoi_dung SET vai_tro='ADMIN' WHERE ma_nguoi_dung=?").param(admin.getMaNguoiDung()).update();
+        Clients.googleEmail = UUID.randomUUID() + "@example.invalid";
+        Clients.googleSubject = UUID.randomUUID().toString();
+        var customer = new NguoiDung(Clients.googleEmail, encoder.encode(PASSWORD), "Customer");
+        customer.xacNhanEmail(LocalDateTime.now(java.time.ZoneOffset.UTC));
+        users.saveAndFlush(customer);
+        String github = UUID.randomUUID().toString();
+        identities.saveAllAndFlush(List.of(new DanhTinhOAuth(customer, "google", Clients.googleSubject, LocalDateTime.now()),
+            new DanhTinhOAuth(customer, "github", github, LocalDateTime.now())));
+        chungMinh(new BangChung("github", github, customer.getEmail(), "Customer"));
+        Clients.server.createContext("/authorize", exchange -> {
+            var q = UriComponentsBuilder.fromUri(exchange.getRequestURI()).build().getQueryParams();
+            String callback = org.springframework.web.util.UriUtils.decode(q.getFirst("redirect_uri"), StandardCharsets.UTF_8);
+            if (List.of(base + "/login/oauth2/code/google", base + "/login/oauth2/code/github").contains(callback)) {
+                Clients.nonce = q.getFirst("nonce");
+                exchange.getResponseHeaders().set("Location", callback + "?code=fixture&state=" + q.getFirst("state"));
+                exchange.sendResponseHeaders(302, -1);
+            } else exchange.sendResponseHeaders(400, -1);
+            exchange.close();
+        });
+        var runner = new ProcessBuilder("node", System.getenv("ACCOUNT_BROWSER_SCRIPT"), base);
+        runner.environment().put("ACCOUNT_FIXTURE_PASSWORD", PASSWORD);
+        runner.environment().put("ACCOUNT_FIXTURE_ADMIN", admin.getEmail());
+        runner.environment().put("ACCOUNT_FIXTURE_CUSTOMER", customer.getEmail());
+        var process = runner.redirectErrorStream(true).start();
+        try {
+            assertThat(process.waitFor(150, java.util.concurrent.TimeUnit.SECONDS)).isTrue();
+            try (var lines = process.inputReader(StandardCharsets.UTF_8)) {
+                lines.lines().filter(line -> line.startsWith("[ACCOUNT WebKit]") || line.startsWith("ACCOUNT WebKit failed at"))
+                    .forEach(System.out::println);
+            }
+            assertThat(process.exitValue()).isZero();
+        } finally {
+            process.destroyForcibly();
+            Clients.server.removeContext("/authorize");
+        }
+    }
+
+    @org.junit.jupiter.params.ParameterizedTest
+    @org.junit.jupiter.params.provider.ValueSource(strings = {"google", "github"})
+    void callbackDenMuonVaThuHoiPhien(String provider) throws Exception {
+        var owner = users.saveAndFlush(new NguoiDung(UUID.randomUUID() + "@example.invalid", encoder.encode(PASSWORD), "Fixture"));
+        String subject = UUID.randomUUID().toString();
+        identities.saveAndFlush(new DanhTinhOAuth(owner, provider, subject, LocalDateTime.now()));
+        if (provider.equals("google")) {
+            Clients.googleEmail = owner.getEmail();
+            Clients.googleSubject = subject;
+        } else chungMinh(new BangChung(provider, subject, owner.getEmail(), "Fixture"));
+        var actor = users.saveAndFlush(new NguoiDung(UUID.randomUUID()+"@example.invalid",encoder.encode(PASSWORD),"Fixture"));
+        jdbc.sql("UPDATE nguoi_dung SET vai_tro='ADMIN' WHERE ma_nguoi_dung=?").param(actor.getMaNguoiDung()).update();
+        var admin = (MockHttpSession) mvc.perform(post("/login").with(csrf()).param("username",actor.getEmail())
+            .param("password",PASSWORD)).andExpect(authenticated()).andReturn().getRequest().getSession(false);
+        var sessionsSecurite = new java.util.ArrayList<MockHttpSession>();
+        for (int i=0; i<2; i++) {
+            sessionsSecurite.add((MockHttpSession) mvc.perform(post("/login").with(csrf()).param("username",owner.getEmail())
+                .param("password",PASSWORD)).andExpect(authenticated()).andReturn().getRequest().getSession(false));
+        }
+        for (boolean mo : List.of(false,true)) {
+            var session = new MockHttpSession();
+            var url = mvc.perform(get("/oauth2/authorization/"+provider).session(session))
+                .andReturn().getResponse().getRedirectedUrl();
+            if (provider.equals("google")) Clients.nonce = UriComponentsBuilder.fromUriString(url).build().getQueryParams().getFirst("nonce");
+            var view = mvc.perform(get("/admin/users").session(admin).param("q",owner.getEmail())).andReturn().getModelAndView();
+            var form = ((Map<?,?>) view.getModel().get("lenh")).get(owner.getMaNguoiDung());
+            mvc.perform(post("/admin/users/"+owner.getMaNguoiDung()+"/status").session(admin).with(csrf())
+                .param("operation",form.toString()).param("reason",mo ? "DA_XU_LY_RUI_RO" : "BAO_VE_TAI_KHOAN"))
+                .andExpect(flash().attributeExists("message"));
+            var result = mvc.perform(get("/login/oauth2/code/"+provider).session(session).param("code","fixture")
+                .param("state",state(url)));
+            if (mo) result.andExpect(authenticated());
+            else {
+                result.andExpect(unauthenticated());
+                for (String but : List.of("LIEN_KET","XAC_THUC_LAI")) {
+                    mvc.perform(post("/account/security/oauth/"+provider).session(sessionsSecurite.removeFirst())
+                        .with(csrf()).param("purpose",but)).andExpect(redirectedUrl("/login?inactive"));
+                }
+            }
+        }
+        assertThat(jdbc.sql("SELECT trang_thai FROM thu_trang_thai_tai_khoan WHERE ma_nguoi_dung=? ORDER BY ma_thu")
+            .param(owner.getMaNguoiDung()).query(String.class).list()).containsExactly("UNVERIFIED","UNVERIFIED");
+    }
+
     private long taoDonFixture(long owner) {
         return jdbc.sql("""
             INSERT INTO don_hang (ma_don_hang_hien_thi, ma_nguoi_dung, ten_nguoi_nhan, sdt_nguoi_nhan,
