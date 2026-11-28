@@ -1,0 +1,8 @@
+2026-11-29T00:06:22.179+07:00  INFO 12212 --- [BeautyShop] [           main] o.f.core.internal.command.DbMigrate      : Successfully applied 11 migrations to schema `ai_ops_fixture`, now at version v11 (execution time 00:00.256s)
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 23.90 s -- in com.beautyshop.integration.Audit_MariaDb_Test
+[AI-OPS WebKit] PASS disabled
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 10.45 s -- in com.beautyshop.integration.TuVanFaq_MariaDb_Test
+[AI-OPS WebKit] PASS enabled
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 19.24 s -- in com.beautyshop.integration.TuVanRag_MariaDb_Test
+[INFO] Tests run: 17, Failures: 0, Errors: 0, Skipped: 0
+[INFO] BUILD SUCCESS

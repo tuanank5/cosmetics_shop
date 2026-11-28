@@ -23,12 +23,14 @@ class OllamaRag_Config {
     @ConditionalOnProperty(name = "app.ai.provider", havingValue = "ollama")
     RagProvider ollamaRag(@Value("${app.ai.ollama.base-url}") String baseUrl,
                           @Value("${app.ai.ollama.chat-model}") String chatModel,
-                          @Value("${app.ai.ollama.embed-model}") String embedModel) {
+                          @Value("${app.ai.ollama.embed-model}") String embedModel, AiMetrics metrics) {
         var requestFactory = new SimpleClientHttpRequestFactory();
         requestFactory.setConnectTimeout(Duration.ofSeconds(2));
         requestFactory.setReadTimeout(Duration.ofSeconds(45));
+        var observations = io.micrometer.observation.ObservationRegistry.create();
+        observations.observationConfig().observationHandler(metrics);
         var api = OllamaApi.builder().baseUrl(baseUrl)
-            .restClientBuilder(RestClient.builder().requestFactory(requestFactory)).build();
+            .restClientBuilder(RestClient.builder().requestFactory(requestFactory).observationRegistry(observations)).build();
         var management = ModelManagementOptions.builder().pullModelStrategy(PullModelStrategy.NEVER).build();
         var embed = OllamaEmbeddingModel.builder().ollamaApi(api).modelManagementOptions(management)
             .defaultOptions(OllamaEmbeddingOptions.builder().model(embedModel).build()).build();

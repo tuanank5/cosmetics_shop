@@ -1,0 +1,10 @@
+2026-11-28T23:58:28.111+07:00  INFO 24388 --- [BeautyShop] [           main] o.f.core.internal.command.DbMigrate      : Successfully applied 11 migrations to schema `ai_ops_fixture`, now at version v11 (execution time 00:00.190s)
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 21.06 s -- in com.beautyshop.integration.Audit_MariaDb_Test
+[AI-OPS WebKit] PASS disabled
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 8.945 s -- in com.beautyshop.integration.TuVanFaq_MariaDb_Test
+[AI-OPS WebKit] PASS enabled
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 22.11 s -- in com.beautyshop.integration.TuVanRag_MariaDb_Test
+[INFO] Tests run: 16, Failures: 0, Errors: 0, Skipped: 0
+[INFO] BUILD SUCCESS
+[MongoDB] Error setting up listener / SocketException / An attempt was made to access a socket in a way forbidden by its access permissions.
+[AI-OPS fixture] FAIL: MongoDB did not start in initial run.

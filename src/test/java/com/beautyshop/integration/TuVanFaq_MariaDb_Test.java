@@ -16,18 +16,27 @@ import static org.springframework.security.test.web.servlet.request.SecurityMock
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-@SpringBootTest
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT, properties="app.ai.enabled=false")
 @AutoConfigureMockMvc
 @EnabledIfEnvironmentVariable(named = "P01_MARIADB_TEST", matches = "true")
 class TuVanFaq_MariaDb_Test {
     @Autowired MockMvc mvc;
     @Autowired JdbcClient jdbc;
+    @org.springframework.boot.test.web.server.LocalServerPort int port;
+    @Autowired com.beautyshop.ai.AiMetrics metrics;
+
+    @Test
+    @EnabledIfEnvironmentVariable(named="AI_OPS_BROWSER", matches=".+")
+    void webKitFaqVaTrangThaiChuaKiem() throws Exception {
+        AiOpsBrowser.run(port, jdbc, "disabled");
+        assertThat(metrics.snapshot().lastAttempt()).isNull();
+    }
 
     @Test
     void faqTimTiengVietLocNguonVaEscapeHtml() throws Exception {
         jdbc.sql("""
             INSERT INTO bai_viet_faq (cau_hoi, cau_tra_loi, url_nguon)
-            VALUES ('Xylophone mô phỏng', '<script>demoUnsafe()</script>', '/products'),
+            VALUES ('Xylophone mô phỏng', 'Số lượng < 5 & còn hàng', '/products'),
                    ('Quartz mô phỏng', 'Nguồn không hợp lệ', 'javascript:alert(1)')
             """).update();
         mvc.perform(get("/chat")).andExpect(status().isOk());
@@ -36,7 +45,7 @@ class TuVanFaq_MariaDb_Test {
             .andExpect(content().string(containsString("7 ngày")))
             .andExpect(content().string(containsString("href=\"/account/returns\"")));
         mvc.perform(post("/chat").with(csrf()).param("cauHoi", "Xylophone"))
-            .andExpect(content().string(containsString("&lt;script&gt;demoUnsafe()&lt;/script&gt;")))
+            .andExpect(content().string(containsString("&lt; 5 &amp; còn hàng")))
             .andExpect(content().string(not(containsString("<script>demoUnsafe()"))));
         mvc.perform(post("/chat").with(csrf()).param("cauHoi", "Quartz"))
             .andExpect(content().string(containsString("Chưa đủ thông tin")))
@@ -56,7 +65,16 @@ class TuVanFaq_MariaDb_Test {
     }
 
     @Test
+    @org.springframework.security.test.context.support.WithMockUser(roles="CUSTOMER")
+    void duongDanTuVanCuDaGo() throws Exception {
+        mvc.perform(get("/tu-van-da")).andExpect(status().isNotFound());
+        mvc.perform(post("/tu-van-da").with(csrf())).andExpect(status().isNotFound());
+    }
+
+    @Test
     void csrfGioiHanKyTuVaTanSuat() throws Exception {
+        var before = metrics.snapshot().rows().getFirst();
+        var reasons = metrics.snapshot();
         mvc.perform(post("/chat").param("cauHoi", "COD")).andExpect(status().isForbidden());
         mvc.perform(post("/chat").with(csrf()).param("cauHoi", "a".repeat(501)))
             .andExpect(model().attributeHasFieldErrors("form", "cauHoi"));
@@ -67,5 +85,12 @@ class TuVanFaq_MariaDb_Test {
         }
         mvc.perform(post("/chat").session(session).with(csrf()).param("cauHoi", "COD"))
             .andExpect(status().isTooManyRequests()).andExpect(header().string("Retry-After", "60"));
+        var after = metrics.snapshot().rows().getFirst();
+        assertThat(after.total() - before.total()).isEqualTo(9);
+        assertThat(after.rejected() - before.rejected()).isEqualTo(2);
+        assertThat(after.rateLimited() - before.rateLimited()).isOne();
+        assertThat(metrics.snapshot().denied() - reasons.denied()).isOne();
+        assertThat(metrics.snapshot().invalid() - reasons.invalid()).isOne();
+        assertThat(metrics.snapshot().lastResponse()).isNull();
     }
 }

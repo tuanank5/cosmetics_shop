@@ -1,0 +1,3 @@
+[INFO] Tests are skipped.
+[INFO] Building jar: target/beautyshop-0.0.1-SNAPSHOT.jar
+[INFO] BUILD SUCCESS

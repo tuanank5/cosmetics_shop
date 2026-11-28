@@ -17,7 +17,8 @@ import org.springframework.transaction.support.TransactionTemplate;
 public class SuKienQuanTri_Service {
     enum HanhDong { ORDER_STATUS, SKU_STOCK, CATALOG_CREATE, CATALOG_UPDATE, CATALOG_ACTIVE,
                     VOUCHER_CREATE, VOUCHER_UPDATE, VOUCHER_DELETE, AUDIT_PREVIEW, AUDIT_PURGE, ACCOUNT_LOCK, ACCOUNT_UNLOCK,
-                    RETURN_APPROVE, RETURN_REJECT, RETURN_RECEIVE, RETURN_INSPECT, RETURN_CONFIRM, RETURN_RECONCILE, RETURN_CLOSE }
+                    RETURN_APPROVE, RETURN_REJECT, RETURN_RECEIVE, RETURN_INSPECT, RETURN_CONFIRM, RETURN_RECONCILE, RETURN_CLOSE,
+                    AI_REINDEX }
 
     private final JdbcClient jdbc;
     private final TransactionTemplate sauRollback;

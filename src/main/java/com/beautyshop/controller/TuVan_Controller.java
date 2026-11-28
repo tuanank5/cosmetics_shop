@@ -3,6 +3,9 @@ package com.beautyshop.controller;
 import com.beautyshop.dto.TuVan_Form;
 import com.beautyshop.service.TuVan_Service;
 import jakarta.servlet.http.HttpSession;
+import jakarta.servlet.http.HttpServletRequest;
+import com.beautyshop.ai.ChatMetrics_Config;
+import com.beautyshop.ai.AiMetrics.Refusal;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 import java.io.Serializable;
@@ -33,13 +36,15 @@ class TuVan_Controller {
 
     @PostMapping
     String hoi(@Valid @ModelAttribute("form") TuVan_Form form, BindingResult errors,
-               HttpSession session, HttpServletResponse response, Model model) {
+               HttpSession session, HttpServletRequest request, HttpServletResponse response, Model model) {
         if (!errors.hasErrors()) {
             if (choPhep(session)) {
                 var traLoi = tuVanService.hoi(form.getCauHoi().strip());
                 model.addAttribute("traLoi", traLoi);
                 if (!traLoi.tuChoi()) {
                     model.addAttribute("cauHoiHienThi", form.getCauHoi());
+                } else {
+                    request.setAttribute(ChatMetrics_Config.REFUSED, Refusal.CONTENT);
                 }
             } else {
                 response.setStatus(HttpStatus.TOO_MANY_REQUESTS.value());
@@ -47,6 +52,7 @@ class TuVan_Controller {
                 errors.reject("chat.rate", "Bạn vừa gửi nhiều câu hỏi. Vui lòng thử lại sau một phút.");
             }
         }
+        if (errors.hasFieldErrors()) request.setAttribute(ChatMetrics_Config.REFUSED, Refusal.VALIDATION);
         return "chat/index";
     }
 

@@ -7,12 +7,35 @@
     <p class="notice" role="status" th:if="${message}" th:text="${message}"></p>
     <p class="form-error" role="alert" th:if="${error}" th:text="${error}"></p>
     <p th:unless="${trangThai.aiEnabled}">Tư vấn AI đang tắt. Khách vẫn có thể tra cứu câu hỏi thường gặp.</p>
-    <div th:if="${trangThai.aiEnabled}">
+    <p th:if="${trangThai.aiEnabled}">Tư vấn AI đang bật.</p>
+    <p th:if="${trangThai.aiEnabled and !trangThai.coProvider}">Chưa cấu hình provider.</p>
+    <p th:if="${trangThai.capNhat == null}">Chưa lập chỉ mục.</p>
+    <p th:if="${trangThai.dangNap}" role="status">Đang nạp chỉ mục.</p>
+    <div th:if="${trangThai.coProvider}">
         <p th:text="|Số đoạn thông tin đã chuẩn bị cho tư vấn AI: ${trangThai.soDoan}|"></p>
         <p th:if="${trangThai.capNhat}" th:text="|Cập nhật nguồn lần gần nhất (giờ UTC): ${trangThai.capNhat}|"></p>
         <form method="post" th:action="@{/admin/ai/reindex}">
             <button class="btn btn--primary" type="submit" th:disabled="${trangThai.dangNap}">Làm mới nguồn tư vấn từ câu hỏi thường gặp và danh mục sản phẩm</button>
         </form>
     </div>
+    <section th:with="m=${trangThai.metrics}">
+        <h2>Thống kê từ khi khởi động</h2>
+        <p th:unless="${m.lastAttempt}">Kết nối provider: chưa kiểm tra.</p>
+        <p th:if="${m.lastAttempt}" th:text="|Lần gọi kết thúc gần nhất (UTC): ${m.lastAttempt} · ${m.lastResult.label}|"></p>
+        <p th:if="${m.lastResponse}" th:text="|Phản hồi HTTP gần nhất (UTC): ${m.lastResponse}|"></p>
+        <p th:if="${m.lastAttempt != null and m.lastResponse == null}">Chưa nhận phản hồi HTTP từ provider.</p>
+        <div class="table-scroll"><table>
+            <caption>Yêu cầu và lần gọi đã kết thúc</caption>
+            <thead><tr><th scope="col">Loại</th><th scope="col">Tổng</th><th scope="col">Thành công</th>
+                <th scope="col">Từ chối</th><th scope="col">Lỗi</th><th scope="col">Timeout</th>
+                <th scope="col">HTTP 429</th><th scope="col">Trung bình (ms)</th></tr></thead>
+            <tbody><tr th:each="r : ${m.rows}"><th scope="row" th:text="${r.operation.label}"></th>
+                <td th:text="${r.total}"></td><td th:text="${r.success}"></td><td th:text="${r.rejected}"></td>
+                <td th:text="${r.errors}"></td><td th:text="${r.timeouts}"></td><td th:text="${r.rateLimited}"></td>
+                <td th:text="${r.averageMs}"></td></tr></tbody>
+        </table></div>
+        <p th:text="|Yêu cầu bị từ chối: biểu mẫu ${m.invalid} · nội dung ${m.sensitive} · quyền/CSRF ${m.denied} · giới hạn tần suất ${m.rows[0].rateLimited}|"></p>
+        <p th:text="|Tác vụ AI: hết worker ${m.busy} · quá hạn chờ ${m.deadline} · lỗi ${m.workerErrors}|"></p>
+    </section>
 </main>
 <div th:replace="~{fragments/footer :: siteFooter}"></div></body></html>

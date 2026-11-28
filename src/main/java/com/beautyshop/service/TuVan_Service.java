@@ -2,16 +2,15 @@ package com.beautyshop.service;
 
 import org.springframework.security.access.prepost.PreAuthorize;
 import com.beautyshop.ai.RagProvider;
+import com.beautyshop.ai.AiMetrics;
 import com.beautyshop.service.KhoTriThuc_Service.Nguon;
 import jakarta.annotation.PreDestroy;
 import java.math.BigDecimal;
-import java.text.Normalizer;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.Callable;
@@ -29,6 +28,10 @@ import org.springframework.ai.vectorstore.SearchRequest;
 import org.springframework.ai.vectorstore.SimpleVectorStore;
 import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.stereotype.Service;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.transaction.support.TransactionSynchronization;
+import org.springframework.transaction.support.TransactionSynchronizationManager;
 import org.springframework.web.server.ResponseStatusException;
 
 @Service
@@ -38,13 +41,12 @@ public class TuVan_Service {
     private static final String RAG_LABEL = "Tư vấn AI từ thông tin cửa hàng đã kiểm tra";
     private static final int CHUNK = 550;
     private static final Pattern BIEN_THE = Pattern.compile("(?U)\\s+");
-    private static final Pattern PII = Pattern.compile("(?i)\\b[\\w.+-]+@[\\w.-]+\\.[a-z]{2,}\\b|(?<![0-9])(?:\\+?[0-9][ .-]?){8,15}(?![0-9])");
-    private static final Pattern NGOAI_PHAM_VI = Pattern.compile(
-        "\\b(chan doan|dieu tri|chua benh|ke don|toa thuoc|benh da|mat khau|thong tin ca nhan|lich su don|"
-            + "don hang cua|dia chi cua|so dien thoai cua|system prompt|bo qua chi dan|ignore previous|xuat du lieu)\\b");
     private static final Set<String> TU_DEM = Set.of("toi", "ban", "cho", "the", "nao", "sao", "gi", "bao", "nhieu",
         "o", "dau", "cua", "co", "va", "la", "duoc", "mot", "cach", "nhu", "hay", "ve", "coi", "xem", "shop");
 
+    private final AiMetrics metrics;
+    private final SuKienQuanTri_Service audit;
+    private final boolean enabled;
     private final KhoTriThuc_Service kho;
     private final CuaHang_Service cuaHang;
     private final ObjectProvider<RagProvider> provider;
@@ -52,7 +54,12 @@ public class TuVan_Service {
     private final ThreadPoolExecutor worker = new ThreadPoolExecutor(2, 2, 0, TimeUnit.SECONDS, new SynchronousQueue<>());
     private volatile ChiMuc chiMuc;
 
-    TuVan_Service(KhoTriThuc_Service kho, CuaHang_Service cuaHang, ObjectProvider<RagProvider> provider) {
+    TuVan_Service(KhoTriThuc_Service kho, CuaHang_Service cuaHang, ObjectProvider<RagProvider> provider,
+                  AiMetrics metrics, SuKienQuanTri_Service audit,
+                  @Value("${app.ai.enabled:false}") boolean enabled) {
+        this.metrics = metrics;
+        this.audit = audit;
+        this.enabled = enabled;
         this.kho = kho;
         this.cuaHang = cuaHang;
         this.provider = provider;
@@ -61,12 +68,14 @@ public class TuVan_Service {
     @PreAuthorize("hasRole('ADMIN')")
     public TrangThai trangThai() {
         var hienTai = chiMuc;
-        return new TrangThai(provider.getIfAvailable() != null, hienTai == null ? 0 : hienTai.fragments().size(),
-            hienTai == null ? null : hienTai.capNhat(), dangNap.get());
+        return new TrangThai(enabled, provider.getIfAvailable() != null, hienTai == null ? 0 : hienTai.fragments().size(),
+            hienTai == null ? null : hienTai.capNhat(), dangNap.get(), metrics.snapshot());
     }
 
     @PreAuthorize("hasRole('ADMIN')")
+    @Transactional
     public void napLai() {
+        var event = audit.batDau(SuKienQuanTri_Service.HanhDong.AI_REINDEX, "AI_INDEX", 1L);
         var ai = provider.getIfAvailable();
         if (ai == null) {
             throw new IllegalStateException("Tư vấn AI đang tắt. Khách vẫn có thể tra cứu câu hỏi thường gặp.");
@@ -74,19 +83,25 @@ public class TuVan_Service {
         if (!dangNap.compareAndSet(false, true)) {
             throw new IllegalStateException("Đang nạp lại dữ liệu.");
         }
+        TransactionSynchronizationManager.registerSynchronization(new TransactionSynchronization() {
+            @Override public void afterCompletion(int status) { dangNap.set(false); }
+        });
         try {
+            var previous = chiMuc;
             var nguon = kho.tatCa();
-            var moi = gioiHan(() -> taoChiMuc(ai, nguon), 30);
-            chiMuc = moi;
+            var moi = gioiHan(() -> metrics.duringIndex(() -> taoChiMuc(ai, nguon)), 30);
+            audit.thanhCong(event, 1L, previous == null ? 0 : previous.fragments().size(), moi.fragments().size());
+            TransactionSynchronizationManager.registerSynchronization(
+                new TransactionSynchronization() {
+                    @Override public void afterCommit() { chiMuc = moi; }
+                });
         } catch (KhongKhaDung exception) {
             throw new IllegalStateException("Không thể làm mới nguồn tư vấn. Vui lòng kiểm tra dịch vụ AI và thử lại.");
-        } finally {
-            dangNap.set(false);
         }
     }
 
     public TraLoi hoi(String cauHoi) {
-        if (PII.matcher(cauHoi).find() || NGOAI_PHAM_VI.matcher(chuanHoa(cauHoi)).find()) {
+        if (!NoiDungTuVan.choPhep(cauHoi, 500)) {
             return new TraLoi("Hướng dẫn", "Chỉ hỗ trợ câu hỏi chung về sản phẩm và mua sắm. "
                 + "Vui lòng bỏ dữ liệu cá nhân. BeautyShop không tư vấn chẩn đoán hoặc điều trị.", null, null, null, null, true);
         }
@@ -148,6 +163,7 @@ public class TuVan_Service {
             prompt.append("\nĐoạn ").append(i + 1).append(": ").append(doan.get(i).noiDung());
         }
         prompt.append("\nCâu hỏi: ").append(cauHoi);
+        if (Thread.currentThread().isInterrupted()) throw new KhongKhaDung();
         String luaChon = ai.chat().call(prompt.toString());
         if (luaChon == null || !luaChon.strip().matches("[1-4]")) {
             return thieuNguon(RAG_LABEL);
@@ -200,13 +216,8 @@ public class TuVan_Service {
     }
 
     private Set<String> tuKhoa(String text) {
-        return Arrays.stream(chuanHoa(text).split("[^a-z0-9]+"))
+        return Arrays.stream(NoiDungTuVan.chuanHoa(text).split("[^a-z0-9]+"))
             .filter(tu -> tu.length() > 1 && !TU_DEM.contains(tu)).collect(Collectors.toSet());
-    }
-
-    private String chuanHoa(String text) {
-        return Normalizer.normalize(text.toLowerCase(Locale.ROOT), Normalizer.Form.NFD)
-            .replaceAll("\\p{M}+", "").replace('đ', 'd');
     }
 
     private List<String> chiaDoan(String text) {
@@ -247,15 +258,18 @@ public class TuVan_Service {
         try {
             future = worker.submit(tacVu);
         } catch (RejectedExecutionException exception) {
+            metrics.workerFailed(AiMetrics.WorkerFailure.BUSY);
             throw new KhongKhaDung();
         }
         try {
             return future.get(giay, TimeUnit.SECONDS);
         } catch (InterruptedException exception) {
+            metrics.workerFailed(AiMetrics.WorkerFailure.ERROR);
             future.cancel(true);
             Thread.currentThread().interrupt();
             throw new KhongKhaDung();
         } catch (ExecutionException | TimeoutException exception) {
+            metrics.workerFailed(exception instanceof TimeoutException ? AiMetrics.WorkerFailure.TIMEOUT : AiMetrics.WorkerFailure.ERROR);
             future.cancel(true);
             throw new KhongKhaDung();
         }
@@ -285,7 +299,8 @@ public class TuVan_Service {
             return new TraLoi(nhan, noiDung, tieuDeNguon, url, gia, khaDung, tuChoi, true);
         }
     }
-    public record TrangThai(boolean aiEnabled, int soDoan, Instant capNhat, boolean dangNap) {}
+    public record TrangThai(boolean aiEnabled, boolean coProvider, int soDoan, Instant capNhat, boolean dangNap,
+                            AiMetrics.Snapshot metrics) {}
     private record Doan(Nguon nguon, String noiDung) {}
     private record ChiMuc(SimpleVectorStore store, Map<String, Doan> fragments, Instant capNhat) {}
     private static final class KhongKhaDung extends RuntimeException {}
