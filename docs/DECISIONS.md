@@ -128,4 +128,18 @@ Baseline `5aa4932cc663de1115ff06ab7a8d7b837a673d93`. Owner duyệt triển khai 
 | ACCOUNT-4 | Outbox nguyên tử, claim bằng lease sau commit, giữ nguyên người nhận và giới hạn quyền đọc. Tối đa bốn lần tự động, retry sau 1/5/30 phút chỉ khi chắc chắn SMTP chưa nhận. UNKNOWN chờ đối soát, SENT là relay tiếp nhận. Đối soát thủ công chờ phân công. SMTP lỗi không đảo trạng thái tài khoản. |
 | ACCOUNT-5 | Password, Google, GitHub cùng kiểm active/version. Request động tiếp theo thu hồi phiên, mở khóa cần đăng nhập mới. Kiểm quyền lại trong giao dịch ghi nhạy cảm. OAuth fixture cho ACCOUNT, provider thật thuộc AUTH-LIVE. |
 
-[Hai mẫu thư và hồ sơ đề xuất](reviews/ACCOUNT-owner-decisions-proposal.md). ACCOUNT chờ review, regression, CI, merge và nghiệm thu riêng. AUTH-LIVE, PAY-LIVE và AUDIT PURGE tiếp tục BLOCKED_EXTERNAL.
+[Hai mẫu thư và hồ sơ đề xuất](reviews/ACCOUNT-owner-decisions-proposal.md). Khi duyệt triển khai, owner yêu cầu review, regression, CI, merge và nghiệm thu riêng. AUTH-LIVE, PAY-LIVE và AUDIT PURGE tiếp tục BLOCKED_EXTERNAL.
+
+## Nghiệm thu ACCOUNT ngày 28/11/2026
+
+Owner phê duyệt **05-ACCOUNT — DONE trong phạm vi fixture đã kiểm chứng**. Source đã merge tại `610c816b5bd7f7bf924f80a62cec4eba0f7c59bb`. Hồ sơ closeout đã merge tại `d7bc6e0164e2e07064e2fc12a646da05a1937621`. Owner chấp nhận bằng chứng ACCOUNT-FINAL và ACCOUNT-CLOSEOUT trên source này. Tiến độ chính thức tăng từ 8/19 lên **9/19 DONE**. [PR source #17](https://github.com/tuanank5/cosmetics_shop/pull/17) · [PR closeout #18](https://github.com/tuanank5/cosmetics_shop/pull/18)
+
+| Quyết định | Phạm vi nghiệm thu |
+|---|---|
+| ACCOUNT-1 | Khóa/mở có lý do, chống replay, từ chối form cũ và xử lý hai thao tác đồng thời. |
+| ACCOUNT-2 | Audit SUCCESS cùng transaction đổi trạng thái và tạo outbox. FAILED được ghi riêng sau rollback. |
+| ACCOUNT-3 | Hai mẫu thư đã duyệt qua SMTP loopback. Event lưu địa chỉ đã xác minh tại thời điểm thao tác và giữ nguyên người nhận khi retry. |
+| ACCOUNT-4 | Outbox V10 dùng lease, tối đa bốn lần gửi tự động. UNKNOWN dừng retry và chờ đối soát. |
+| ACCOUNT-5 | Thu hồi phiên, kiểm soát đăng nhập bằng mật khẩu và fixture Google OIDC/GitHub OAuth. |
+
+SMTP production tiếp tục tắt. Gửi thật, xác minh thư đến inbox, OAuth provider thật, manual UAT, tải production và 41 phương thức ngoài gate ACCOUNT đều **NOT RUN**. Đối soát email thủ công giữ **BLOCKED_OWNER** đến khi owner phân công người vận hành. AUTH-LIVE, PAY-LIVE và AUDIT PURGE tiếp tục **BLOCKED_EXTERNAL**. [Đối chiếu closeout](qa/ACCOUNT/closeout/verification.json) · [Kết quả fixture FINAL](qa/ACCOUNT/final-review/review.md)
