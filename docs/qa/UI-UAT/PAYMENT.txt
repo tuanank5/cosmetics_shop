@@ -1,0 +1,9 @@
+guest 1280 PASS
+other 1280 PASS
+buyer 1280 PASS
+admin 1280 PASS
+guest 390 PASS
+other 390 PASS
+buyer 390 PASS
+admin 390 PASS
+fixture exit=0

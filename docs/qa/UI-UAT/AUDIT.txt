@@ -1,0 +1,4 @@
+Guest and Customer permissions PASS
+Admin list/detail/back two tabs JS=false PASS
+Admin list/detail/back two tabs JS=true PASS
+fixture exit=0
