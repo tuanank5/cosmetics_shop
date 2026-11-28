@@ -103,3 +103,15 @@ Khi một quyết định thay đổi: cập nhật bảng này, SRS, ERD, promp
 | VOUCHER-1 | OR trong chiều, AND giữa các chiều, kiểm Customer riêng. minSpend HÀNG trên dòng phù hợp trước giảm. Quota tổng và theo khách gồm USED + HELD. |
 | VOUCHER-2 | Hai slot, phân bổ giảm HÀNG theo phần lẻ rồi ID. D27 sau giảm hàng. minSpend SHIP trên hàng phù hợp sau phân bổ. Miễn ship tự bỏ slot SHIP. |
 | VOUCHER-3 | COD dùng, MoMo giữ và chuyển theo kết quả xác minh. Hủy hợp lệ trước giao khi đã giải quyết nghĩa vụ tiền trả lượt một lần. Hoàn sau giao không trả lượt. |
+
+## Nghiệm thu VOUCHER, PAYMENT và ORDER ngày 28/11/2026
+
+Owner phê duyệt ba Work Package sau. Tiến độ chính thức tăng từ 5/19 lên **8/19 DONE**.
+
+| Work Package | Revision nghiệm thu | Phạm vi owner phê duyệt | Hồ sơ |
+|---|---|---|---|
+| VOUCHER · DONE | `e4c00c8dc977789eafec0a70a522f846a43898b4` | Hai slot HÀNG/SHIP, quota tổng và theo Customer, migration V9, tích hợp COD và MoMo mock. | [PR #12](https://github.com/tuanank5/cosmetics_shop/pull/12) · [PR #13](https://github.com/tuanank5/cosmetics_shop/pull/13) · [Đối chiếu](qa/VOUCHER/closeout/verification.json) |
+| PAYMENT · DONE | `e4c00c8dc977789eafec0a70a522f846a43898b4` | Lịch sử payment attempt và bốn gate sau VOUCHER trong phạm vi COD và MoMo mock. Các gate gồm tổng tiền, snapshot hai slot và đơn cũ, vòng đời lượt và rollback, regression thanh toán và phân quyền. | [Báo cáo bốn gate](reviews/PAYMENT-ket-qua.md#revalidation-pr-12) |
+| ORDER · DONE | `13c586ac0e5e9c637e071dedfa67dfb07dd0a6da` | Danh sách đơn Customer, bộ lọc, điều hướng và mua lại vào giỏ. Owner nghiệm thu kết quả kiểm thử phân quyền, idempotency và regression. | [PR #14](https://github.com/tuanank5/cosmetics_shop/pull/14) · [Đối chiếu](qa/ORDER/closeout/verification.json) |
+
+MoMo Sandbox thật và manual UAT vẫn NOT RUN. Các phương thức ngoài gate chưa chạy giữ nguyên NOT RUN theo từng hồ sơ. Tải production chưa được kiểm chứng. Chính sách retention biên nhận V3 chưa được nghiệm thu. AUTH-LIVE, PAY-LIVE và AUDIT PURGE tiếp tục BLOCKED_EXTERNAL.

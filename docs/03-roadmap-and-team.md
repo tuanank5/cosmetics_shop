@@ -172,3 +172,7 @@ PAYMENT giữ PARTIAL_ACCEPTED / BLOCKED_DEPENDENCY. Lịch sử từng lần th
 28/11/2026 · Owner chọn AUDIT-A. AUDIT DONE trên merge `5bdada6bb370b281319ff671fd8a9b62b5673560` (PR #11, CI main PASS theo owner). D7 và guard D6 đạt. AUDIT PURGE — BLOCKED_EXTERNAL. Giữ công tắc tắt cho đến khi nghiệm thu độ phủ, quyền cấp, thu hồi, thời hạn và retry của nguồn clearance. Tiến độ 5/19 DONE. Owner giao VOUCHER, đang IN_PROGRESS.
 
 28/11/2026 · Sau merge PR #12 tại `e4c00c8`. VOUCHER — MERGED / READY_FOR_OWNER_ACCEPTANCE. PAYMENT — PARTIAL_ACCEPTED, bốn gate tích hợp PASS local trên merge với MoMo mock. Chờ owner nghiệm thu VOUCHER và xác nhận phạm vi PAYMENT mock. Tổng 5/19 DONE. AUTH-LIVE và AUDIT PURGE tiếp tục BLOCKED_EXTERNAL. PAY-LIVE chưa nghiệm thu. [Kiểm chứng PAYMENT](reviews/PAYMENT-ket-qua.md#revalidation-pr-12)
+
+## Nghiệm thu ngày 28/11/2026
+
+Owner chốt **8/19 DONE** gồm BASE, AUTH, QUALITY, PERF, AUDIT, VOUCHER, PAYMENT và ORDER. VOUCHER và PAYMENT được nghiệm thu với COD và MoMo mock tại `e4c00c8`. ORDER được nghiệm thu tại `13c586a`. AUTH-LIVE, PAY-LIVE và AUDIT PURGE tiếp tục BLOCKED_EXTERNAL. [Quyết định owner](DECISIONS.md#nghiệm-thu-voucher-payment-và-order-ngày-28112026)

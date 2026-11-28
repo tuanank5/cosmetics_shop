@@ -1,5 +1,9 @@
 # 09-ORDER · Danh sách đơn Customer và mua lại
 
+**DONE · Owner nghiệm thu ngày 28/11/2026.** Danh sách đơn Customer, bộ lọc, điều hướng và mua lại vào giỏ trên `13c586a`, gồm kiểm thử phân quyền, idempotency và regression. [Quyết định owner](../DECISIONS.md#nghiệm-thu-voucher-payment-và-order-ngày-28112026)
+
+## Lịch sử triển khai và kiểm chứng
+
 **MERGED / READY_FOR_OWNER_ACCEPTANCE** tại `13c586a`. ORDER bắt đầu ngày 28/11/2026 trên baseline `3da645dd76f22b8f83351d63ca419bd5646af6e8`. Owner giao phần ORDER sau khi VOUCHER và PAYMENT đã tích hợp. Tiến độ 5/19 DONE. VOUCHER chờ nghiệm thu, PAYMENT chờ nghiệm thu phạm vi COD/MoMo mock. AUTH-LIVE, PAY-LIVE và AUDIT PURGE tiếp tục BLOCKED_EXTERNAL.
 
 ## Danh sách

@@ -1,5 +1,9 @@
 # VOUCHER · Phạm vi, hai slot và vòng đời lượt
 
+**DONE · Owner nghiệm thu ngày 28/11/2026.** Hai slot HÀNG/SHIP, quota, migration V9 và tích hợp COD/MoMo mock trên `e4c00c8` (PR #12 và #13). [Quyết định owner](../DECISIONS.md#nghiệm-thu-voucher-payment-và-order-ngày-28112026)
+
+## Lịch sử triển khai và kiểm chứng
+
 **IN_PROGRESS · 28/11/2026.** Owner giao VOUCHER-1–3 sau khi nghiệm thu AUDIT-A. Nền `5bdada6bb370b281319ff671fd8a9b62b5673560`. Bảng triển khai ban đầu được giữ làm lịch sử. [Kết quả cuối](../qa/VOUCHER/final-review/review.md). 5/19 DONE. PAYMENT giữ PARTIAL_ACCEPTED / BLOCKED_DEPENDENCY cho tới nghiệm thu trên revision tích hợp. [Quyết định và ví dụ](VOUCHER-quyet-dinh-1-3.md) · [Tiến độ](BEAUTYSHOP_NEXT_UPGRADE_PROGRESS.md)
 
 ## Mã và dữ liệu
