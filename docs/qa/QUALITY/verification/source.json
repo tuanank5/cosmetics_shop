@@ -1,0 +1,18 @@
+﻿{
+    "base":  "0ed547b5d4c18eab46fb3a194fbbdd327c37d827",
+    "working_tree":  true,
+    "verified_against":  [
+                             "checkout build moi",
+                             "checkout integration"
+                         ],
+    "files":  [
+                  {
+                      "path":  "src/main/java/com/beautyshop/service/DonHang_Service.java",
+                      "sha256":  "64F2AFF485F39D89756EE89C9C0F2E4920436935F49CA299C36B0353D84B287B"
+                  },
+                  {
+                      "path":  "src/test/java/com/beautyshop/service/CheckoutIntegrityTest.java",
+                      "sha256":  "9062A166F8A0CD214BAF12985BD2DB573CAAA1893C9977F9BBDCF176AEFE6804"
+                  }
+              ]
+}

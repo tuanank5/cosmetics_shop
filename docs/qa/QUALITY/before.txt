@@ -1,0 +1,11 @@
+﻿[ERROR] Tests run: 2, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 9.613 s <<< FAILURE! -- in com.beautyshop.service.CheckoutIntegrityTest
+Wanted 1 time:
+But was 2 times:
+Wanted 1 time:
+But was 2 times:
+Wanted 1 time:
+But was 2 times:
+Wanted 1 time:
+But was 2 times:
+[ERROR] Tests run: 2, Failures: 2, Errors: 0, Skipped: 0
+[INFO] BUILD FAILURE

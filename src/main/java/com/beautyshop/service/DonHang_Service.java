@@ -136,11 +136,15 @@ public class DonHang_Service {
 
     public ChiTietDon chiTietCustomer(long maDon) {
         quyenDonHang.kiemTraSoHuu(maDon);
-        return chiTietAdmin(maDon);
+        return docChiTiet(maDon);
     }
 
     @PreAuthorize("hasRole('ADMIN')")
     public ChiTietDon chiTietAdmin(long maDon) {
+        return docChiTiet(maDon);
+    }
+
+    private ChiTietDon docChiTiet(long maDon) {
         Don don = timDon(maDon, false);
         boolean online = "MOMO".equals(don.phuongThuc());
         var thanhToan = (online ? thanhToanMomo.trangThaiHienThi(maDon) : donHangRepository.trangThaiThanhToanCOD(maDon)).orElse("");
@@ -148,7 +152,7 @@ public class DonHang_Service {
             .map(lan -> com.beautyshop.payment.MomoGateway.MA_MOCK.equals(lan.gateway())).orElse(false);
         boolean doiSoat = online && momo.enabled() && don.trangThai() == OrderStatus.PENDING_PAYMENT;
         return new ChiTietDon(don, donHangRepository.chiTiet(maDon), thanhToan,
-            coTheHuy(don, thanhToan), next(don), mock, doiSoat,
+            coTheHuy(don, thanhToan), next(don, "PAID".equals(thanhToan)), mock, doiSoat,
             doiSoat && thanhToanMomo.conHan(maDon), online ? thanhToanMomo.soLanCanHoan(maDon) : 0);
     }
 
@@ -166,7 +170,9 @@ public class DonHang_Service {
             huyCOD(don);
             return;
         }
-        if (next(don) != trangThaiMoi
+        boolean momoDaThu = "MOMO".equals(don.phuongThuc())
+            && thanhToanMomo.trangThaiHienThi(maDon).filter("PAID"::equals).isPresent();
+        if (next(don, momoDaThu) != trangThaiMoi
             || !OrderState_Policy.canMove(don.trangThai(), trangThaiMoi)) {
             throw new IllegalStateException("Không thể chuyển đơn sang trạng thái đã chọn.");
         }
@@ -200,9 +206,8 @@ public class DonHang_Service {
             && OrderState_Policy.canMove(don.trangThai(), OrderStatus.CANCELLED);
     }
 
-    private OrderStatus next(Don don) {
-        if (!"COD".equals(don.phuongThuc()) && !("MOMO".equals(don.phuongThuc())
-            && thanhToanMomo.trangThaiHienThi(don.maDonHang()).filter("PAID"::equals).isPresent())) {
+    private OrderStatus next(Don don, boolean daThu) {
+        if (!"COD".equals(don.phuongThuc()) && !("MOMO".equals(don.phuongThuc()) && daThu)) {
             return null;
         }
         return switch (don.trangThai()) {

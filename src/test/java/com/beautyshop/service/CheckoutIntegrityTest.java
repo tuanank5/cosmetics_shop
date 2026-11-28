@@ -1,6 +1,7 @@
 package com.beautyshop.service;
 
 import com.beautyshop.model.DiaChiNguoiDung;
+import com.beautyshop.order.OrderStatus;
 import com.beautyshop.payment.MomoGateway;
 import com.beautyshop.payment.Momo_Settings;
 import com.beautyshop.repository.*;
@@ -81,6 +82,23 @@ class CheckoutIntegrityTest {
         assertThat(vouchers.xemTruoc("   ",new BigDecimal("490000")).maVoucher()).isNull();
         verify(voucherRepository,never()).ghiNhanSuDung(anyLong());
     }
+    @org.junit.jupiter.params.ParameterizedTest
+    @org.junit.jupiter.params.provider.ValueSource(strings = {"PAID", "PENDING"})
+    void chiTietMomoDungCungTrangThaiChoHienThiVaBuocTiepTheo(String trangThai) {
+        var don = mock(DonHang_Repository.Don.class);
+        when(don.maDonHang()).thenReturn(901L);
+        when(don.phuongThuc()).thenReturn("MOMO");
+        when(don.trangThai()).thenReturn(OrderStatus.PENDING_CONFIRMATION);
+        when(orders.timDon(901L, false)).thenReturn(Optional.of(don));
+        when(payments.trangThaiHienThi(901L)).thenReturn(Optional.of(trangThai));
+
+        var chiTiet = service.chiTietAdmin(901L);
+
+        assertThat(chiTiet.thanhToan()).isEqualTo(trangThai);
+        assertThat(chiTiet.tiepTheo()).isEqualTo("PAID".equals(trangThai) ? OrderStatus.CONFIRMED : null);
+        verify(payments).trangThaiHienThi(901L);
+    }
+
     @Test void momoDisabledIsRejectedByUnchangedService() {
         assertThatThrownBy(()->service.datMomo(7,1,"SAVE50")).isInstanceOf(IllegalStateException.class);
         verifyNoInteractions(orders,cart,stock,payments);

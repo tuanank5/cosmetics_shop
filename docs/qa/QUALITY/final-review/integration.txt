@@ -1,0 +1,18 @@
+﻿[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 23.31 s -- in com.beautyshop.integration.AdminOrderList_MariaDb_Test
+[INFO] Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.648 s -- in com.beautyshop.integration.BienTheSanPham_MariaDb_Test
+[INFO] Tests run: 26, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 9.097 s -- in com.beautyshop.integration.CatalogDonHang_MariaDb_Test
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 8.380 s -- in com.beautyshop.integration.DonHangCOD_MariaDb_Test
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.578 s -- in com.beautyshop.integration.Momo_MariaDb_Test
+[AUTH WebKit] PASS 26.6 reset/retry/replay, two-tab logout, new OIDC callback, reauth/OTP, last method, first password
+[AUTH WebKit] PASS reset/retry/replay, two-tab logout, fresh Google callback, reauth/OTP, last method and first password; fixture authorizations=3
+[INFO] Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 11.56 s -- in com.beautyshop.integration.OAuth2Callback_MariaDb_Test
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.209 s -- in com.beautyshop.integration.PhieuGiamGia_MariaDb_Test
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.289 s -- in com.beautyshop.integration.TuVanFaq_MariaDb_Test
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.636 s -- in com.beautyshop.integration.TuVanRag_MariaDb_Test
+[INFO] Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 5.582 s -- in com.beautyshop.integration.XacThucDaPhuongThuc_MariaDb_Test
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.533 s -- in com.beautyshop.integration.XacThucMigration_MariaDb_Test
+[INFO] Tests run: 12, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 5.665 s -- in com.beautyshop.integration.XacThuc_MariaDb_Test
+[INFO] Tests run: 10, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.892 s -- in com.beautyshop.service.CheckoutIntegrityTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.012 s -- in com.beautyshop.service.MatKhauMoiTest
+[INFO] Tests run: 94, Failures: 0, Errors: 0, Skipped: 0
+[INFO] BUILD SUCCESS

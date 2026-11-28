@@ -1,0 +1,3 @@
+﻿buyer order detail PASS
+other order detail PASS
+admin order detail PASS
