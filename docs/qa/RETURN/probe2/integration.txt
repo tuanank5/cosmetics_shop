@@ -1,0 +1,6 @@
+﻿2026-11-28T22:48:05.094+07:00  INFO 3376 --- [BeautyShop] [           main] o.f.core.internal.command.DbMigrate      : Successfully applied 11 migrations to schema `return_fixture`, now at version v11 (execution time 00:00.166s)
+2026-11-28T22:48:06.615+07:00  INFO 3376 --- [BeautyShop] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+[RETURN WebKit] PASS desktop Admin and mobile Customer
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 27.50 s -- in com.beautyshop.integration.KiemDinhDoiTra_MariaDb_Test
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
+[INFO] BUILD SUCCESS

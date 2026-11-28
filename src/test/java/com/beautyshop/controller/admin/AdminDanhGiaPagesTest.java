@@ -55,6 +55,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 class AdminDanhGiaPagesTest {
     @Autowired MockMvc mvc;
     @MockitoBean SauMua_Service sauMua;
+    @MockitoBean com.beautyshop.service.KiemDinhDoiTra_Service kiemDinh;
     @MockitoBean LoginSuccess_Handler login;
     @MockitoBean NguoiDung_Repository users;
     @MockitoBean org.springframework.security.core.userdetails.UserDetailsService userDetails;

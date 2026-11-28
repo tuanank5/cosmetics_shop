@@ -90,3 +90,9 @@ Trang `/admin/vouchers` dành cho Admin. Mã được bỏ khoảng trắng hai 
 Customer tự hủy khi Order trước `PACKING` và chưa bàn giao vận chuyển. Nếu PAID: cần trạng thái `REFUND_PENDING`, không được coi tiền đã trả lại. Yêu cầu đổi trả trong 7 ngày sau DELIVERED, admin quyết định và chỉ nhập kho khi đã nhận hàng phù hợp điều kiện.
 
 Trong P08, Customer gửi một yêu cầu gồm một hoặc nhiều dòng của chính đơn đã giao. Hệ thống dùng giờ UTC của MariaDB để kiểm cửa sổ 7 ngày và khóa hàng đơn khi kiểm số lượng còn có thể yêu cầu. Admin xử lý `PENDING → APPROVED → RECEIVED → COMPLETED` hoặc `PENDING → REJECTED`. Mọi yêu cầu trừ `REJECTED` đều tính vào số lượng đã yêu cầu. Trang đổi trả chỉ thao tác trạng thái yêu cầu. Tiếp nhận hàng, điều chỉnh tồn và hoàn tiền cần quy trình vận hành riêng.
+
+## Transaction nhập trả theo kiện
+
+Admin giữ khóa người thao tác, đơn, hồ sơ trả và khóa các SKU theo ID tăng dần khi xác nhận. Mọi lệnh ghi kiểm quyền, phiên, UUID và version. Tồn bán chỉ tăng khi toàn kiện đã có kết luận và các SKU được nhập vẫn được phép bán. Một transaction ghi phiếu nhập theo từng dòng nhận dương, cập nhật tồn, xác nhận kiện và ghi audit SUCCESS. Nếu rollback, FAILED được ghi riêng. Đơn đã giao, lượt hai voucher, reservation và lịch sử thanh toán tiếp tục là chứng từ gốc.
+
+Giờ gửi yêu cầu vẫn theo BR17. Không áp thời hạn này cho kiện đã duyệt. Khi nguồn DB báo chờ tiền/đối soát, có reservation HELD hoặc chưa có chứng từ thanh toán phù hợp, hồ sơ tiếp tục mở. Admin đối chiếu chứng từ ngoài hệ thống trước khi ghi mã đóng hồ sơ. Dòng còn thiếu lấy theo lượng duyệt trừ thực nhận tại lúc đóng, phần này phải có chứng từ giải quyết. D29 tiếp tục tính toàn lượng yêu cầu của hồ sơ COMPLETED. [Quyết định RETURN](../DECISIONS.md#return--quyết-định-owner-ngày-28112026)

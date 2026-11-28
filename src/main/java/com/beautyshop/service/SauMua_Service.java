@@ -5,7 +5,6 @@ import com.beautyshop.dto.PhanTrang;
 import org.springframework.security.access.prepost.PreAuthorize;
 import com.beautyshop.dto.DanhGia_Form;
 import com.beautyshop.dto.DoiTra_Form;
-import com.beautyshop.order.ReturnStatus;
 import com.beautyshop.model.DanhGia_Document;
 import com.beautyshop.repository.DanhGia_Repository;
 import com.beautyshop.repository.DanhGia_Repository.MucMua;
@@ -235,16 +234,9 @@ public class SauMua_Service {
 
     public ChiTietDoiTra chiTiet(long maYeuCau, Long maNguoiDung) {
         var chiTiet = doiTra.chiTiet(maYeuCau, maNguoiDung).orElseThrow(SauMua_Service::khongTimThay);
-        return new ChiTietDoiTra(chiTiet, doiTra.mucDaYeuCau(maYeuCau));
-    }
-
-    @Transactional
-    @PreAuthorize("hasRole('ADMIN')")
-    public void chuyenDoiTra(long maYeuCau, ReturnStatus dich) {
-        var hienTai = doiTra.chiTiet(maYeuCau, null).orElseThrow(SauMua_Service::khongTimThay).yeuCau().trangThai();
-        if (!hienTai.buocTiepTheo().contains(dich) || !doiTra.chuyen(maYeuCau, hienTai, dich)) {
-            throw new IllegalStateException("Không thể chuyển yêu cầu sang trạng thái đã chọn.");
-        }
+        var dotNhan = maNguoiDung == null ? List.<DoiTra_Repository.DotNhan>of()
+            : doiTra.dotNhanCuaKhach(maYeuCau, maNguoiDung);
+        return new ChiTietDoiTra(chiTiet, doiTra.mucDaYeuCau(maYeuCau), dotNhan);
     }
 
     private static ResponseStatusException khongTimThay() {
@@ -256,5 +248,5 @@ public class SauMua_Service {
     public record TomTatTheSanPham(Map<Long, TomTatDanhGia> theoSanPham, boolean khongTaiDuoc) {}
     public record TrangDanhGiaAdmin(Page<DanhGiaAdmin> danhSach, List<SanPhamLoc> sanPham, boolean khongTaiDuoc) {}
     public record TrangDoiTra(Don don, List<Muc> muc) {}
-    public record ChiTietDoiTra(ChiTiet chiTiet, List<MucTra> muc) {}
+    public record ChiTietDoiTra(ChiTiet chiTiet, List<MucTra> muc, List<DoiTra_Repository.DotNhan> dotNhan) {}
 }

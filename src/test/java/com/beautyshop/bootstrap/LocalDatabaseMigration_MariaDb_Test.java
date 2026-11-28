@@ -17,7 +17,7 @@ class LocalDatabaseMigration_MariaDb_Test {
     private static final String PASSWORD = System.getenv("DB_PASSWORD");
 
     @ParameterizedTest
-    @ValueSource(ints = {1, 2, 3, 4, 5, 6, 7, 8, 9})
+    @ValueSource(ints = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10})
     void nangCapVaGiuNguoiDungTuLichSuChinhThuc(int version) throws Exception {
         String url = fixtureUrl("v" + version);
         Flyway.configure().dataSource(url, USER, PASSWORD).target(Integer.toString(version)).load().migrate();
@@ -29,8 +29,10 @@ class LocalDatabaseMigration_MariaDb_Test {
                 """);
         }
 
+        if (version == 10) taoHoSoTraCu(url);
         LocalDatabaseMigration.migrate(url, USER, PASSWORD);
         LocalDatabaseMigration.migrate(url, USER, PASSWORD);
+        if (version == 10) kiemTraHoSoTraCu(url);
 
         try (var connection = DriverManager.getConnection(url, USER, PASSWORD);
              var statement = connection.createStatement();
@@ -45,14 +47,53 @@ class LocalDatabaseMigration_MariaDb_Test {
             assertThat(users.next()).isFalse();
         }
         var info = Flyway.configure().dataSource(url, USER, PASSWORD).load().info();
-        assertThat(info.current().getVersion().toString()).isEqualTo("10");
-        assertThat(info.applied()).hasSize(10);
+        assertThat(info.current().getVersion().toString()).isEqualTo("11");
+        assertThat(info.applied()).hasSize(11);
         try (var c = DriverManager.getConnection(url, USER, PASSWORD); var st = c.createStatement();
              var rows = st.executeQuery("SELECT COUNT(*) FROM thu_trang_thai_tai_khoan")) {
             assertThat(rows.next()).isTrue();
             assertThat(rows.getLong(1)).isZero();
         }
         if (version == 8) kiemTraRangBuocSlot(url);
+    }
+
+    private void taoHoSoTraCu(String url) throws Exception {
+        try (var cn = DriverManager.getConnection(url, USER, PASSWORD); var st = cn.createStatement()) {
+            st.executeUpdate("INSERT INTO danh_muc(ten_danh_muc,duong_dan) VALUES ('Test','test')");
+            st.executeUpdate("INSERT INTO thuong_hieu(ten_thuong_hieu,duong_dan) VALUES ('Test','test')");
+            st.executeUpdate("INSERT INTO san_pham(ma_danh_muc,ma_thuong_hieu,ten_san_pham,duong_dan) VALUES(1,1,'Test','test')");
+            st.executeUpdate("INSERT INTO bien_the_san_pham(ma_san_pham,sku,ten_bien_the,gia_ban,so_luong_trong_kho) VALUES(1,'A','A',100,8)");
+            st.executeUpdate("""
+                INSERT INTO don_hang(ma_don_hang_hien_thi,ma_nguoi_dung,ten_nguoi_nhan,sdt_nguoi_nhan,
+                 dia_chi_khi_dat,tam_tinh,tong_thanh_toan,trang_thai,phuong_thuc_thanh_toan)
+                VALUES('LEGACY',500,'Test','0','Test',500,500,'DELIVERED','COD')
+                """);
+            st.executeUpdate("""
+                INSERT INTO chi_tiet_don_hang(ma_don_hang,ma_bien_the,sku_khi_dat,ten_san_pham_khi_dat,
+                  ten_bien_the_khi_dat,don_gia,so_luong) VALUES(1,1,'A','Test','A',100,5)
+                """);
+            for (var trangThai : com.beautyshop.order.ReturnStatus.values()) {
+                st.executeUpdate("INSERT INTO yeu_cau_doi_tra(ma_don_hang,ma_nguoi_dung,trang_thai,ly_do) VALUES(1,500,'"
+                    + trangThai.name() + "','Fixture')");
+                st.executeUpdate("INSERT INTO chi_tiet_doi_tra(ma_yeu_cau_doi_tra,ma_chi_tiet_don_hang,so_luong) VALUES(LAST_INSERT_ID(),1,1)");
+            }
+        }
+    }
+
+    private void kiemTraHoSoTraCu(String url) throws Exception {
+        try (var cn = DriverManager.getConnection(url, USER, PASSWORD); var st = cn.createStatement();
+             var rows = st.executeQuery("""
+                SELECT COUNT(DISTINCT y.trang_thai),SUM(d.so_luong),
+                    (SELECT COUNT(*) FROM nhap_kho_doi_tra),(SELECT so_luong_trong_kho FROM bien_the_san_pham WHERE ma_bien_the=1)
+                FROM yeu_cau_doi_tra y JOIN chi_tiet_doi_tra d USING(ma_yeu_cau_doi_tra)
+                WHERE y.phien_ban_kiem IS NULL
+                """)) {
+            assertThat(rows.next()).isTrue();
+            assertThat(rows.getInt(1)).isEqualTo(5);
+            assertThat(rows.getInt(2)).isEqualTo(5);
+            assertThat(rows.getInt(3)).isZero();
+            assertThat(rows.getInt(4)).isEqualTo(8);
+        }
     }
 
     private void kiemTraRangBuocSlot(String url) throws Exception {

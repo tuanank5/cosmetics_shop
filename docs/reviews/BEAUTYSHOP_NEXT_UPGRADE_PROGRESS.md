@@ -17,7 +17,7 @@ Số thứ tự là số tệp. “Chờ BASE/phụ thuộc” xác định gate
 | 7 | 3 | [PAYMENT](implementation-prompts/next-upgrade/07-PAYMENT.md) | DONE | Owner nghiệm thu 28/11/2026. Lịch sử attempt và bốn gate sau VOUCHER trong phạm vi COD/MoMo mock. | `e4c00c8` · [Revalidation](PAYMENT-ket-qua.md#revalidation-pr-12) |
 | 8 | 3 | [PAY-LIVE](implementation-prompts/next-upgrade/08-PAY-LIVE.md) | Chờ phụ thuộc · BLOCKED_EXTERNAL | Xác nhận môi trường thật, revision và số đầu kỳ. | — |
 | 9 | 4 | [ORDER](implementation-prompts/next-upgrade/09-ORDER.md) | DONE | Owner nghiệm thu 28/11/2026. Danh sách đơn Customer, bộ lọc, điều hướng và mua lại. | 28/11/2026 · PR #14 · `13c586a` · [Báo cáo](ORDER-ket-qua.md) |
-| 10 | 4 | [RETURN](implementation-prompts/next-upgrade/10-RETURN.md) | BLOCKED_OWNER | Duyệt 12 và hợp đồng audit. | — |
+| 10 | 4 | [RETURN](implementation-prompts/next-upgrade/10-RETURN.md) | IN_PROGRESS | Owner duyệt RETURN-1–5 cho fixture. Local QA đạt, chờ RETURN-FINAL, CI và nghiệm thu. | 28/11/2026 · baseline `e100a1e` · 258 Maven + 63 MariaDB + 12 migration PASS · [Báo cáo](RETURN-ket-qua.md) · [QA](../qa/RETURN/verification.json) |
 | 11 | 4 | [REFUND](implementation-prompts/next-upgrade/11-REFUND.md) | BLOCKED_OWNER | Duyệt 3, 13–14 và nguồn bằng chứng chi tiền. | — |
 | 12 | 5 | [AI-OPS](implementation-prompts/next-upgrade/12-AI-OPS.md) | Chờ giao phần độc lập | BASE đã đạt cho guard/counter; AUDIT cho reindex. | — |
 | 13 | 5 | [AI-HISTORY](implementation-prompts/next-upgrade/13-AI-HISTORY.md) | BLOCKED_OWNER | Duyệt 8–9; AUTH và guard đạt; kiểm Mongo fixture. | — |

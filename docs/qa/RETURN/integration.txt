@@ -1,0 +1,9 @@
+﻿[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 28.03 s -- in com.beautyshop.integration.Audit_MariaDb_Test
+[INFO] Tests run: 26, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 13.36 s -- in com.beautyshop.integration.CatalogDonHang_MariaDb_Test
+[INFO] Tests run: 10, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 12.54 s -- in com.beautyshop.integration.DonHangCOD_MariaDb_Test
+[RETURN WebKit] PASS desktop Admin and mobile Customer
+[INFO] Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 12.14 s -- in com.beautyshop.integration.KiemDinhDoiTra_MariaDb_Test
+[INFO] Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 5.805 s -- in com.beautyshop.integration.Momo_MariaDb_Test
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.521 s -- in com.beautyshop.integration.PhieuGiamGia_MariaDb_Test
+[INFO] Tests run: 63, Failures: 0, Errors: 0, Skipped: 0
+[INFO] BUILD SUCCESS

@@ -18,16 +18,93 @@
         </div>
         <p><span th:text="${yc.maHienThi}"></span> <strong class="badge" th:text="${yc.trangThai.label}"></strong></p>
         <p th:text="${trang.chiTiet.lyDo}"></p>
+        <p th:if="${trang.chiTiet.phienBan == null}">Hồ sơ cũ · Chưa ghi nhận chứng cứ kiểm định.</p>
         <ul class="catalog-list">
-            <li th:each="muc : ${trang.muc}" th:text="|${muc.tenSanPham} · ${muc.tenBienThe} × ${muc.soLuong}|"></li>
+            <li th:each="muc : ${trang.muc}">
+                <strong th:text="|${muc.tenSanPham} · ${muc.tenBienThe} × ${muc.soLuong}|"></strong>
+                <p th:if="${trang.chiTiet.phienBan != null and (yc.trangThai.name() == 'APPROVED' or yc.trangThai.name() == 'RECEIVED' or yc.trangThai.name() == 'COMPLETED')}"
+                   th:text="|Đã duyệt ${muc.soLuong} · Đã nhận ${muc.thucNhan} · Đủ bán ${muc.duBan} · Cách ly ${muc.khongDu} · Chờ kiểm/xác nhận ${muc.choKiem()} · Chưa nhận ${muc.chuaNhan()}|"></p>
+            </li>
         </ul>
-        <form class="catalog-actions return-status-actions" th:if="${base == '/admin/returns'}" method="post"
-              th:action="@{/admin/returns/{id}/status(id=${yc.ma})}">
-            <th:block th:replace="~{fragments/nav-fields :: adminSource}"></th:block>
-            <th:block th:replace="~{fragments/admin-table :: listSource(${listSourceFields})}"></th:block>
-            <button th:each="dich : ${yc.trangThai.buocTiepTheo()}" class="btn btn--primary" type="submit"
-                    name="status" th:value="${dich.name()}" th:text="${dich.label}"></button>
-        </form>
+        <section th:if="${base == '/account/returns' and !trang.dotNhan.isEmpty()}">
+            <h2>Các đợt nhận hàng</h2>
+            <ul><li th:each="d : ${trang.dotNhan}">
+                <span th:text="|${d.lucNhan} UTC · ${d.bienThe} × ${d.soLuong}|"></span>
+                <p th:if="${d.duBan == null}">Chờ xác nhận kiểm định</p>
+                <p th:if="${d.duBan != null}" th:text="|Đủ bán ${d.duBan} · Đã mở ${d.daMo} · Hỏng ${d.hong} · Cách ly khác ${d.cachLyKhac}|"></p>
+            </li></ul>
+        </section>
+        <section th:if="${base == '/admin/returns' and (trang.chiTiet.phienBan != null or yc.trangThai.name() == 'PENDING')}">
+            <form th:if="${yc.trangThai.name() == 'PENDING'}" method="post" th:action="@{/admin/returns/{id}/status(id=${yc.ma})}">
+                <th:block th:replace="~{return/fields :: lenh}"></th:block>
+                <button th:each="dich : ${yc.trangThai.buocTiepTheo()}" class="btn" name="status" th:value="${dich.name()}" th:text="${dich.label}"></button>
+            </form>
+            <form th:if="${yc.trangThai.name() == 'APPROVED' or yc.trangThai.name() == 'RECEIVED'}" method="post" th:action="@{/admin/returns/{id}/receive(id=${yc.ma})}">
+                <fieldset><legend>Nhận kiện thực tế</legend>
+                    <label>Mã kiện đối chiếu (gồm mã đơn vị vận chuyển nếu có) <input name="thamChieu" required maxlength="80"></label>
+                    <label th:each="m : ${trang.muc}" th:if="${m.chuaNhan() > 0}">
+                        <span th:text="|${m.tenSanPham} · ${m.tenBienThe}|"></span>
+                        <input type="number" min="0" th:max="${m.chuaNhan()}" value="0" th:name="|soLuong[${m.ma}]|">
+                    </label>
+                    <th:block th:replace="~{return/fields :: lenh}"></th:block>
+                    <label>Lượng thừa, nhầm hoặc chưa xác minh <input type="number" name="lech" min="0" value="0"></label>
+                    <label>Lý do cách ly kiện <select name="lyDoLech"><option value="">Chọn khi có sai lệch</option>
+                        <option value="SAI_SKU">Sai SKU</option><option value="GUI_THUA">Gửi thừa</option>
+                        <option value="CHUA_XAC_MINH">Chưa xác minh</option></select></label>
+                    <button class="btn">Ghi nhận kiện</button>
+                </fieldset>
+            </form>
+            <div th:each="k : ${kienLech}">
+                <p th:text="|Kiện ${k.thamChieu} · Cách ly ${k.luongLech} · ${k.lyDo.nhan}|"></p>
+                <p th:if="${k.chungTu != null}" th:text="|Đã đối chiếu ${k.chungTu} · Khớp bổ sung ${k.khopBoSung}|"></p>
+                <form th:if="${k.chungTu == null}" method="post" th:action="@{/admin/returns/{id}/reconcile-parcel(id=${yc.ma})}">
+                    <fieldset><legend>Đối chiếu phần cách ly</legend>
+                        <input type="hidden" name="kien" th:value="${k.ma}">
+                        <label>Mã chứng từ xử lý toàn bộ sai lệch <input name="chungTu" required maxlength="80"></label>
+                        <label th:each="m : ${trang.muc}" th:if="${m.chuaNhan() > 0}">
+                            <span th:text="|Xác minh thêm đúng SKU · ${m.tenBienThe}|"></span>
+                            <input type="number" min="0" th:max="${m.chuaNhan()}" value="0" th:name="|soLuong[${m.ma}]|">
+                        </label>
+                        <th:block th:replace="~{return/fields :: lenh}"></th:block>
+                        <button class="btn">Ghi kết quả đối chiếu kiện</button>
+                    </fieldset>
+                </form>
+            </div>
+            <div th:each="d, it : ${dongNhan}">
+                <p th:text="|Kiện ${d.thamChieu} · ${d.ten} × ${d.nhan}|"></p>
+                <p th:if="${d.duBan != null}" th:text="|Đủ bán ${d.duBan} · Đã mở ${d.daMo} · Hỏng ${d.hong} · Khác ${d.khac} · ${d.lyDo}|"></p>
+                <p th:text="|Người nhận #${d.nguoiNhan} · ${d.lucNhan} UTC|"></p>
+                <p th:if="${d.lucKiem != null}" th:text="|Người kiểm #${d.nguoiKiem} · ${d.lucKiem} UTC|"></p>
+                <p th:if="${d.daChot}" th:text="|Đã xác nhận · Admin #${d.nguoiChot} · ${d.lucChot} UTC|"></p>
+                <form th:unless="${d.daChot}" method="post" th:action="@{/admin/returns/{id}/inspect(id=${yc.ma})}">
+                    <fieldset><legend>Kiểm định dòng nhận</legend>
+                        <input type="hidden" name="dong" th:value="${d.maDong}">
+                        <label>Đủ bán <input type="number" name="duBan" min="0" required th:value="${d.duBan ?: 0}"></label>
+                        <label>Đã mở/mất bảo vệ <input type="number" name="daMo" min="0" required th:value="${d.daMo ?: 0}"></label>
+                        <label>Hỏng <input type="number" name="hong" min="0" required th:value="${d.hong ?: 0}"></label>
+                        <label>Cách ly khác <input type="number" name="khac" min="0" required th:value="${d.khac ?: 0}"></label>
+                        <label>Lý do cách ly khác <input name="lyDo" maxlength="160" th:value="${d.lyDo}"></label>
+                        <label><input type="checkbox" name="datChecklist" value="true"> Phần đủ bán đúng SKU, nguyên bảo vệ, còn hạn, truy xuất được, không có dấu hiệu hỏng, thu hồi hoặc bảo quản sai.</label>
+                        <th:block th:replace="~{return/fields :: lenh}"></th:block>
+                        <button class="btn">Lưu kiểm định</button>
+                    </fieldset>
+                </form>
+                <form th:if="${!d.daChot and (it.last or dongNhan[it.index+1].maKien != d.maKien)}"
+                      method="post" th:action="@{/admin/returns/{id}/confirm(id=${yc.ma})}">
+                    <input type="hidden" name="kien" th:value="${d.maKien}">
+                    <th:block th:replace="~{return/fields :: lenh}"></th:block>
+                    <button class="btn">Xác nhận cả kiện và nhập phần đủ bán</button>
+                </form>
+            </div>
+            <form th:if="${yc.trangThai.name() == 'RECEIVED'}" method="post" th:action="@{/admin/returns/{id}/close(id=${yc.ma})}">
+                <fieldset><legend>Đóng hồ sơ sau đối chiếu</legend>
+                    <label>Mã chứng từ xác nhận mọi nghĩa vụ đã giải quyết <input name="nghiaVu" maxlength="80" required></label>
+                    <label>Mã chứng từ giải quyết toàn bộ phần thiếu (nếu có) <input name="thieu" maxlength="80"></label>
+                    <th:block th:replace="~{return/fields :: lenh}"></th:block>
+                    <button class="btn">Đóng hồ sơ</button>
+                </fieldset>
+            </form>
+        </section>
     </article>
 </main>
 <div th:replace="~{fragments/footer :: siteFooter}"></div></body></html>

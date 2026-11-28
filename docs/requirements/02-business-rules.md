@@ -18,7 +18,7 @@
 | BR14 | Canceled Order trả tồn kho hoặc reserved/voucher đúng một lần; nếu đã thu tiền phải theo quy trình refund |
 | BR15 | Admin cập nhật giao hàng thủ công; DELIVERED là xác nhận thủ công cho mục đích demo |
 | BR16 | Review chỉ qua OrderItem thuộc Customer trong Order DELIVERED, tối đa 1 review/order item |
-| BR17 | Return Request trong 7 ngày kể từ deliveredAt, admin duyệt, kiểm tra hàng thực tế; không tự động nhập hàng |
+| BR17 | Customer gửi yêu cầu trong 7 ngày kể từ deliveredAt. Admin nhận theo kiện, kiểm từng dòng và xác nhận cả kiện. Chỉ phần đủ bán được nhập đúng một lần. Đóng hồ sơ sau khi giải quyết đủ lượng và nghĩa vụ có chứng từ. [RETURN-1–5](../DECISIONS.md#return--quyết-định-owner-ngày-28112026) |
 | BR18 | Bất kỳ khách hàng nào chỉ được xem/sửa bản ghi thuộc sở hữu chính mình; Backend kiểm tra IDOR |
 | BR19 | Chatbot RAG không truy cập dữ liệu cá nhân, không ghi dữ liệu giao dịch; giá/tồn đọc từ DB, ngoài nguồn nói chưa có thông tin |
 | BR20 | Giữ lịch sử audit cho nghiệp vụ quan trọng; xóa mềm product khi đã từng bán |
