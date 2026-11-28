@@ -86,3 +86,8 @@ thêm field database, không dùng fixture để khẳng định có media thư�
 ## Nguyên tắc quản lý thay đổi
 
 Khi một quyết định thay đổi: cập nhật bảng này, SRS, ERD, prompt liên quan trong **cùng PR**, và ghi ai duyệt vào mô tả PR. Không coi ý tưởng P2 là yêu cầu P0.
+
+## AUDIT · Quyết định owner ngày 28/11/2026
+
+- **AUDIT-D6**. Retention mặc định 180 ngày, tối thiểu 180. Bảo lưu hồ sơ đối soát, tranh chấp và nghĩa vụ dài hơn. Admin do owner phân công được dry-run và dọn từng batch giới hạn, có số liệu và kết quả truy vết. Giữ mô hình role hiện hành.
+- **AUDIT-D7**. ROLE_ADMIN đọc list/detail. Chỉ ghi thao tác Admin quan trọng có hợp đồng rõ. Snapshot theo allowlist, tham chiếu ID chứng từ, correlation/action duy nhất. SUCCESS cùng transaction nghiệp vụ, FAILED sau rollback trong transaction riêng. Loại dữ liệu bí mật và riêng tư. Các dòng chưa rõ chờ owner. [Ma trận thực hiện](reviews/AUDIT-ket-qua.md)

@@ -131,7 +131,7 @@ class BienTheSanPham_MariaDb_Test {
     }
 
     @Test
-    @WithMockUser(roles = "ADMIN")
+    @QuanTriFixture
     void crudSkuVaAnhKiemTraQuyenSoHuuBienTheVaTonDangGiu() throws Exception {
         long maSanPham = taoSanPham();
         String base = "/admin/catalog/products/" + maSanPham + "/variants";
@@ -183,6 +183,9 @@ class BienTheSanPham_MariaDb_Test {
         mvc.perform(form(edit, sku, 0).with(csrf()))
             .andExpect(model().attributeHasFieldErrors("form", "soLuongTrongKho"));
         mvc.perform(form(edit, sku, 4).with(csrf())).andExpect(redirectedUrl(base));
+        mvc.perform(form(edit, sku, 4).with(csrf())).andExpect(redirectedUrl(base));
+        assertThat(jdbc.sql("SELECT COUNT(*) FROM nhat_ky_quan_tri WHERE hanh_dong='CATALOG_UPDATE' AND loai_doi_tuong='SKU' AND ma_doi_tuong=?")
+            .param(maBienThe).query(Long.class).single()).isZero();
         assertThat(ton(maBienThe).getSoLuongKhaDung()).isEqualTo(3);
         assertThat(ton(maBienThe).getUrlHinhAnh()).isEqualTo(urlAnh);
         mvc.perform(form(edit, sku, 4).param("xoaHinhAnh", "true").with(csrf())).andExpect(redirectedUrl(base));
@@ -195,6 +198,14 @@ class BienTheSanPham_MariaDb_Test {
         mvc.perform(post(base + "/" + maBienThe + "/delete").with(csrf())).andExpect(redirectedUrl(base))
             .andExpect(flash().attributeExists("message"));
         assertThat(ton(maBienThe).isDangHoatDong()).isFalse();
+        assertThat(jdbc.sql("""
+            SELECT ket_qua FROM nhat_ky_quan_tri WHERE loai_doi_tuong='SKU' AND ma_doi_tuong=?
+            AND hanh_dong='SKU_STOCK' ORDER BY ma_nhat_ky
+            """).param(maBienThe).query(String.class).list()).containsExactly("FAILED","SUCCESS");
+        assertThat(jdbc.sql("""
+            SELECT ket_qua FROM nhat_ky_quan_tri WHERE loai_doi_tuong='SKU' AND ma_doi_tuong=?
+            AND hanh_dong='CATALOG_ACTIVE' ORDER BY ma_nhat_ky
+            """).param(maBienThe).query(String.class).list()).containsExactly("FAILED","SUCCESS");
     }
 
     @Test

@@ -20,6 +20,7 @@ import org.springframework.data.domain.Pageable;
 import com.beautyshop.dto.BoLocDanhSachAdmin;
 import com.beautyshop.dto.PhanTrang;
 import java.util.Map;
+import java.util.Objects;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
@@ -30,13 +31,15 @@ import org.springframework.web.server.ResponseStatusException;
 @Service
 @PreAuthorize("hasRole('ADMIN')")
 public class DanhMucSanPhamThuongHieu_Service {
+    private final SuKienQuanTri_Service audit;
     private final DanhMuc_Repository danhMucRepository;
     private final ThuongHieu_Repository thuongHieuRepository;
     private final SanPham_Repository sanPhamRepository;
     private final NgungHoatDongCatalog_Service ngungHoatDong;
 
     DanhMucSanPhamThuongHieu_Service(DanhMuc_Repository danhMucRepository, ThuongHieu_Repository thuongHieuRepository,
-                                    SanPham_Repository sanPhamRepository, NgungHoatDongCatalog_Service ngungHoatDong) {
+                                    SanPham_Repository sanPhamRepository, NgungHoatDongCatalog_Service ngungHoatDong, SuKienQuanTri_Service audit) {
+        this.audit = audit;
         this.danhMucRepository = danhMucRepository;
         this.thuongHieuRepository = thuongHieuRepository;
         this.sanPhamRepository = sanPhamRepository;
@@ -94,9 +97,14 @@ public class DanhMucSanPhamThuongHieu_Service {
             return;
         }
         T muc = ma == null ? mucMoi : khoa(repository, ma);
+        if (ma != null && cungThongTin(muc, form)) return;
+        var suKien = audit.batDau(ma == null ? SuKienQuanTri_Service.HanhDong.CATALOG_CREATE :
+            SuKienQuanTri_Service.HanhDong.CATALOG_UPDATE, nhom.name(), ma);
+        Boolean truoc = ma == null ? null : muc.isDangHoatDong();
         kiemTraTrangThai(nhom, muc, form.isActive());
         muc.update(form);
         repository.saveAndFlush(muc);
+        audit.thanhCong(suKien, muc.getMa(), truoc, form.isActive());
     }
 
     private void luuSanPham(Long ma, DanhMucSanPhamThuongHieu_Form form, Errors errors) {
@@ -106,6 +114,16 @@ public class DanhMucSanPhamThuongHieu_Service {
         if (errors.hasErrors()) {
             return;
         }
+        if (ma != null && cungThongTin(sanPham, form)
+                && danhMuc.getMa().equals(sanPham.getDanhMuc().getMa())
+                && thuongHieu.getMa().equals(sanPham.getThuongHieu().getMa())
+                && Objects.equals(sanPham.getMoTa(), form.getDescription())
+                && Objects.equals(sanPham.getThanhPhan(), form.getIngredients())
+                && Objects.equals(sanPham.getHuongDanSuDung(), form.getUsageGuide())
+                && Objects.equals(sanPham.getLoaiDaPhuHop(), form.getSkinTypeTags())) return;
+        var suKien = audit.batDau(ma == null ? SuKienQuanTri_Service.HanhDong.CATALOG_CREATE :
+            SuKienQuanTri_Service.HanhDong.CATALOG_UPDATE, NhomDanhMucSanPhamThuongHieu.SAN_PHAM.name(), ma);
+        Boolean truoc = ma == null ? null : sanPham.isDangHoatDong();
         kiemTraTrangThai(NhomDanhMucSanPhamThuongHieu.SAN_PHAM, sanPham, form.isActive());
         if (ma != null && sanPham.isDangHoatDong()
                 && ((!danhMuc.isDangHoatDong() && !danhMuc.getMa().equals(sanPham.getDanhMuc().getMaDanhMuc()))
@@ -114,6 +132,7 @@ public class DanhMucSanPhamThuongHieu_Service {
         }
         sanPham.update(form, danhMuc, thuongHieu);
         sanPhamRepository.saveAndFlush(sanPham);
+        audit.thanhCong(suKien, sanPham.getMa(), truoc, form.isActive());
     }
 
     private <T extends MucDanhMucSanPhamThuongHieu> T select(
@@ -128,8 +147,16 @@ public class DanhMucSanPhamThuongHieu_Service {
     @Transactional(isolation = Isolation.READ_COMMITTED)
     public void datTrangThai(NhomDanhMucSanPhamThuongHieu nhom, long ma, boolean hoatDong) {
         var muc = khoa(repository(nhom), ma);
+        boolean truoc = muc.isDangHoatDong();
+        var suKien = audit.batDau(SuKienQuanTri_Service.HanhDong.CATALOG_ACTIVE, nhom.name(), ma);
         kiemTraTrangThai(nhom, muc, hoatDong);
         muc.datTrangThai(hoatDong);
+        if (truoc != hoatDong) audit.thanhCong(suKien, ma, truoc, hoatDong);
+    }
+
+    private boolean cungThongTin(MucDanhMucSanPhamThuongHieu muc, DanhMucSanPhamThuongHieu_Form form) {
+        return muc.isDangHoatDong() == form.isActive() && muc.getTen().equals(form.getName().strip())
+            && muc.getDuongDan().equals(form.getSlug());
     }
 
     private void kiemTraTrangThai(NhomDanhMucSanPhamThuongHieu nhom, MucDanhMucSanPhamThuongHieu muc, boolean hoatDong) {

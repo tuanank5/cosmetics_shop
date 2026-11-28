@@ -27,9 +27,13 @@ import org.springframework.web.server.ResponseStatusException;
 @Service
 @Transactional(propagation = Propagation.MANDATORY)
 public class PhieuGiamGia_Service {
+    private final SuKienQuanTri_Service audit;
     private final PhieuGiamGia_Repository repository;
 
-    PhieuGiamGia_Service(PhieuGiamGia_Repository repository) { this.repository = repository; }
+    PhieuGiamGia_Service(PhieuGiamGia_Repository repository, SuKienQuanTri_Service audit) {
+        this.audit = audit;
+        this.repository = repository;
+    }
 
     @Transactional(readOnly = true)
     @PreAuthorize("hasRole('ADMIN')")
@@ -86,23 +90,30 @@ public class PhieuGiamGia_Service {
             form.getMucGiamToiDa(), form.getDonToiThieu(), form.getGioiHanSuDung(),
             batDauLuc, ketThucLuc, form.isDangHoatDong());
         if (ma == null) {
-            repository.tao(cauHinh);
+            var event = audit.batDau(SuKienQuanTri_Service.HanhDong.VOUCHER_CREATE, "VOUCHER", null);
+            long id = repository.tao(cauHinh);
+            audit.thanhCong(event, id, null, cauHinh.dangHoatDong());
             return;
         }
         if (cauHinh.gioiHanSuDung() < (long) hienTai.soLuotDaDung() + hienTai.soLuotTamGiu()) {
             errors.rejectValue("gioiHanSuDung", "voucher.limit", "Giới hạn phải đủ cho lượt đã dùng và đang giữ.");
             return;
         }
-        repository.sua(ma, cauHinh);
+        var event = audit.batDau(SuKienQuanTri_Service.HanhDong.VOUCHER_UPDATE, "VOUCHER", ma);
+        if (repository.sua(ma, cauHinh)) {
+            audit.thanhCong(event, ma, cauHinhCu.dangHoatDong(), cauHinh.dangHoatDong());
+        }
     }
 
     @Transactional(isolation = Isolation.READ_COMMITTED)
     @PreAuthorize("hasRole('ADMIN')")
     public void xoaAdmin(long ma) {
-        timTheoMa(ma, true);
+        var truoc = timTheoMa(ma, true).cauHinh();
+        var event = audit.batDau(SuKienQuanTri_Service.HanhDong.VOUCHER_DELETE, "VOUCHER", ma);
         if (!repository.xoaChuaSuDung(ma)) {
             throw new IllegalStateException("Mã giảm giá đã gắn với đơn hàng hoặc có lượt sử dụng. Hãy tắt mã này.");
         }
+        audit.thanhCong(event, ma, truoc.dangHoatDong(), null);
     }
 
     private ThongTin timTheoMa(long ma, boolean khoa) {

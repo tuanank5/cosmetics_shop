@@ -20,6 +20,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.interceptor.TransactionAspectSupport;
 import org.springframework.transaction.support.TransactionSynchronization;
 import org.springframework.transaction.support.TransactionSynchronizationManager;
 import org.springframework.validation.Errors;
@@ -28,6 +29,7 @@ import org.springframework.web.server.ResponseStatusException;
 @Service
 @Transactional(readOnly = true)
 public class BienTheSanPham_Service {
+    private final SuKienQuanTri_Service audit;
     private final BienTheSanPham_Repository bienTheRepository;
     private final SanPham_Repository sanPhamRepository;
     private final AnhBienTheSanPham_Service anhService;
@@ -35,7 +37,8 @@ public class BienTheSanPham_Service {
 
     public BienTheSanPham_Service(BienTheSanPham_Repository bienTheRepository,
             SanPham_Repository sanPhamRepository, AnhBienTheSanPham_Service anhService,
-            NgungHoatDongCatalog_Service ngungHoatDong) {
+            NgungHoatDongCatalog_Service ngungHoatDong, SuKienQuanTri_Service audit) {
+        this.audit = audit;
         this.bienTheRepository = bienTheRepository;
         this.sanPhamRepository = sanPhamRepository;
         this.anhService = anhService;
@@ -83,15 +86,34 @@ public class BienTheSanPham_Service {
     public void luu(long maSanPham, Long maBienThe, BienTheSanPham_Form form, Errors errors) {
         BienTheSanPham bienThe = maBienThe == null ? new BienTheSanPham(sanPham(maSanPham))
             : khoa(maSanPham, maBienThe);
+        Boolean activeCu = maBienThe == null ? null : bienThe.isDangHoatDong();
+        int tonCu = bienThe.getSoLuongTrongKho();
+        var suKien = maBienThe != null && tonCu != form.getSoLuongTrongKho()
+            ? audit.batDau(SuKienQuanTri_Service.HanhDong.SKU_STOCK, "SKU", maBienThe) : null;
+        String sku = form.getSku().toUpperCase(Locale.ROOT);
+        String ten = form.getTenBienThe().strip();
+        String maLo = form.getMaLoMinhHoa();
+        maLo = maLo == null || maLo.isBlank() ? null : maLo.strip();
+        boolean coAnhMoi = form.getHinhAnh() != null && !form.getHinhAnh().isEmpty();
+        boolean doiCatalog = maBienThe == null || activeCu != form.isDangHoatDong()
+            || !sku.equals(bienThe.getSku()) || !ten.equals(bienThe.getTenBienThe())
+            || form.getGiaBan().compareTo(bienThe.getGiaBan()) != 0
+            || !java.util.Objects.equals(maLo,bienThe.getMaLoMinhHoa())
+            || !java.util.Objects.equals(form.getHanSuDungMinhHoa(),bienThe.getHanSuDungMinhHoa())
+            || coAnhMoi || (form.isXoaHinhAnh() && bienThe.getUrlHinhAnh() != null);
+        var catalog = !doiCatalog ? null :
+            audit.batDau(maBienThe == null ? SuKienQuanTri_Service.HanhDong.CATALOG_CREATE
+                : SuKienQuanTri_Service.HanhDong.CATALOG_UPDATE, "SKU", maBienThe,
+                suKien == null ? java.util.UUID.randomUUID() : suKien.correlation());
         if (bienThe.isDangHoatDong() && !form.isDangHoatDong()) {
             ngungHoatDong.kiemTra(PhamVi.BIEN_THE, maBienThe);
         }
         if (form.getSoLuongTrongKho() < bienThe.getSoLuongTamGiu()) {
+            TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
             errors.rejectValue("soLuongTrongKho", "sku.inventory", "Số lượng trong kho phải đủ cho số hàng đang giữ cho đơn hàng.");
             return;
         }
 
-        boolean coAnhMoi = form.getHinhAnh() != null && !form.getHinhAnh().isEmpty();
         if (form.isXoaHinhAnh() && coAnhMoi) {
             errors.rejectValue("hinhAnh", "sku.image.action", "Chọn thay ảnh hoặc xóa ảnh hiện có.");
             return;
@@ -114,11 +136,12 @@ public class BienTheSanPham_Service {
             bienThe.doiAnh(null);
         }
 
-        String maLo = form.getMaLoMinhHoa();
-        bienThe.capNhat(form.getSku().toUpperCase(Locale.ROOT), form.getTenBienThe().strip(), form.getGiaBan(),
-            form.getSoLuongTrongKho(), maLo == null || maLo.isBlank() ? null : maLo.strip(),
+        bienThe.capNhat(sku, ten, form.getGiaBan(),
+            form.getSoLuongTrongKho(), maLo,
             form.getHanSuDungMinhHoa(), form.isDangHoatDong());
         bienTheRepository.saveAndFlush(bienThe);
+        if (catalog != null) audit.thanhCong(catalog, bienThe.getMaBienThe(), activeCu, bienThe.isDangHoatDong());
+        if (suKien != null) audit.thanhCong(suKien, maBienThe, tonCu, bienThe.getSoLuongTrongKho());
     }
 
     @Transactional(isolation = Isolation.READ_COMMITTED)
@@ -131,8 +154,12 @@ public class BienTheSanPham_Service {
     @PreAuthorize("hasRole('ADMIN')")
     public void datTrangThai(long maSanPham, long maBienThe, boolean hoatDong) {
         var bienThe = khoa(maSanPham, maBienThe);
-        if (bienThe.isDangHoatDong() && !hoatDong) ngungHoatDong.kiemTra(PhamVi.BIEN_THE, maBienThe);
+        boolean truoc = bienThe.isDangHoatDong();
+        if (truoc == hoatDong) return;
+        var event = audit.batDau(SuKienQuanTri_Service.HanhDong.CATALOG_ACTIVE, "SKU", maBienThe);
+        if (truoc && !hoatDong) ngungHoatDong.kiemTra(PhamVi.BIEN_THE, maBienThe);
         bienThe.datTrangThai(hoatDong);
+        audit.thanhCong(event, maBienThe, truoc, hoatDong);
     }
 
     private BienTheSanPham khoa(long maSanPham, long maBienThe) {

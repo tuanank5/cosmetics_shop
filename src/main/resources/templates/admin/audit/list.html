@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/head :: head('Nhật ký quản trị · BeautyShop')}"></head>
+<body><div th:replace="~{fragments/header :: siteHeader}"></div>
+<main id="main" tabindex="-1" class="page-content admin-workspace">
+    <h1>Nhật ký quản trị</h1>
+    <form method="get" th:action="@{/admin/audit}" class="admin-panel admin-list-filter">
+        <label>Hành động hoặc ID<input name="q" type="search" maxlength="80" th:value="${loc['q']}"></label>
+        <label>ID người thực hiện<input name="actor" type="number" min="1" th:value="${loc['actor']}"></label>
+        <label>Loại đối tượng<input name="type" maxlength="30" th:value="${loc['type']}"></label>
+        <label>Kết quả<select name="result"><option value="">Tất cả</option>
+            <option th:each="r : ${ {'SUCCESS','FAILED'} }" th:value="${r}" th:text="${r}" th:selected="${r == loc['result']}"></option>
+        </select></label>
+        <label>Ngày (UTC)<input type="date" name="date" th:value="${loc['date']}"></label>
+        <label>Sắp xếp<select name="sort"><option value="newest">Mới nhất</option>
+            <option value="oldest" th:selected="${loc['sort'] == 'oldest'}">Cũ nhất</option></select></label>
+        <button class="btn btn--primary">Lọc nhật ký</button>
+    </form>
+    <p data-scroll-list-start="audit" tabindex="-1" th:text="${pager.moTa('sự kiện')}"></p>
+    <div class="admin-table-scroll"><table class="admin-table"><thead><tr>
+        <th>ID</th><th>Thời gian UTC</th><th>Hành động</th><th>Đối tượng</th><th>Kết quả</th>
+    </tr></thead><tbody>
+        <tr th:each="r : ${rows}" th:id="|audit-${r.id}|" data-scroll-row tabindex="-1">
+            <td><a data-scroll-entry th:href="@{|/admin/audit/${r.id}${query}|}" th:text="${r.id}"></a></td>
+            <td th:text="${r.utc}"></td><td th:text="${r.action}"></td>
+            <td th:text="|${r.loai} #${r.target}|"></td><td th:text="${r.result}"></td>
+        </tr>
+    </tbody></table></div>
+    <div th:replace="~{fragments/ui :: pagination(${pager}, 'Phân trang nhật ký')}"></div>
+</main><div th:replace="~{fragments/footer :: siteFooter}"></div></body></html>

@@ -79,8 +79,8 @@ Restore là runbook vận hành ngoại tuyến. Xác minh hash, phiên bản c�
 | 3 | Hoàn lượt USED | Trả một lần khi hủy trước hoàn tất hay tiếp tục tính với mã đã tiêu; chốt chính sách sau hoàn và tách release HELD. |
 | 4 | TTL reset | Duy trì 15 phút đang dùng hoặc chọn TTL mới và đồng bộ DB/session/email. |
 | 5 | Gỡ danh tính | Giữ bằng chứng gần đây từ phương thức còn dùng được, chặn phương thức cuối; chốt quy trình hỗ trợ nếu mất phương thức. |
-| 6 | Retention audit | Đề nghị 180 ngày, ngoại lệ hồ sơ đang đối soát; ai phê duyệt dọn. |
-| 7 | Phạm vi audit | Duyệt từng dòng ma trận trên và các failure quan trọng, trường allowlist, quyền đọc. |
+| 6 | Retention audit | Owner duyệt AUDIT-D6 ngày 28/11. Mặc định 180 ngày, bảo lưu đối soát/tranh chấp/nghĩa vụ dài hơn, chỉ Admin được owner phân công vận hành. [Quyết định](../DECISIONS.md) |
+| 7 | Phạm vi audit | Owner duyệt AUDIT-D7 cho nghiệp vụ đã có hợp đồng rõ, dữ liệu theo allowlist và ROLE_ADMIN đọc. Các dòng chưa chốt vẫn BLOCKED_OWNER. [Ma trận triển khai](AUDIT-ket-qua.md) |
 | 8 | Retention hội thoại | Đề nghị 90 ngày, dọn theo batch và thông báo cho Customer. |
 | 9 | Quyền xóa | Cho xóa cuộc của mình hoặc chỉ hết hạn; làm rõ vòng đời bản sao lưu. |
 | 10 | Ngữ cảnh AI | Đề nghị chỉ xem lại. Nếu muốn nhiều lượt, cần duyệt lượng ngữ cảnh và kiểm PII riêng. |

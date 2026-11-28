@@ -29,6 +29,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest
 @AutoConfigureMockMvc
 @EnabledIfEnvironmentVariable(named = "P01_MARIADB_TEST", matches = "true")
+@QuanTriFixture
 class PhieuGiamGia_MariaDb_Test {
     private static final String BASE = "/admin/vouchers";
 
@@ -40,12 +41,13 @@ class PhieuGiamGia_MariaDb_Test {
     @Test
     void adminCrudChuanHoaMaVaKhoaQuyenGhi() throws Exception {
         String code = UUID.randomUUID().toString();
-        mvc.perform(get(BASE)).andExpect(status().is3xxRedirection());
+        mvc.perform(get(BASE).with(org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.anonymous()))
+            .andExpect(status().is3xxRedirection());
         mvc.perform(get(BASE).with(user("customer").roles("CUSTOMER"))).andExpect(status().isForbidden());
         mvc.perform(post(BASE + "/new").with(user("customer").roles("CUSTOMER")).with(csrf()))
             .andExpect(status().isForbidden());
-        mvc.perform(post(BASE + "/new").with(user("admin").roles("ADMIN"))).andExpect(status().isForbidden());
-        mvc.perform(get(BASE + "/new").with(user("admin").roles("ADMIN"))).andExpect(status().isOk())
+        mvc.perform(post(BASE + "/new")).andExpect(status().isForbidden());
+        mvc.perform(get(BASE + "/new")).andExpect(status().isOk())
             .andExpect(content().string(containsString("name=\"_csrf\"")));
         mvc.perform(form(BASE + "/new", "  " + code + " ", "FIXED", "20000")
                 .param("soLuotDaDung", "1").param("soLuotTamGiu", "1"))
@@ -55,10 +57,10 @@ class PhieuGiamGia_MariaDb_Test {
         assertThat(phieu.cauHinh().maApDung()).isEqualTo(code.toUpperCase(Locale.ROOT));
         assertThat(phieu.soLuotDaDung()).isZero();
         assertThat(phieu.soLuotTamGiu()).isZero();
-        mvc.perform(get(BASE).with(user("admin").roles("ADMIN"))).andExpect(status().isOk())
+        mvc.perform(get(BASE)).andExpect(status().isOk())
             .andExpect(content().string(containsString(code.toUpperCase(Locale.ROOT))))
             .andExpect(content().string(containsString("Đã dùng 0 · Đang giữ 0 · Còn 2")));
-        mvc.perform(get(BASE + "/" + ma + "/edit").with(user("admin").roles("ADMIN")))
+        mvc.perform(get(BASE + "/" + ma + "/edit"))
             .andExpect(status().isOk()).andExpect(content().string(containsString("value=\"20000\"")));
         mvc.perform(form(BASE + "/new", code, "FIXED", "1"))
             .andExpect(model().attributeHasFieldErrors("form", "maApDung"));
@@ -67,16 +69,26 @@ class PhieuGiamGia_MariaDb_Test {
             request.setParameter("_dangHoatDong", "on");
             return request;
         })).andExpect(redirectedUrl(BASE));
+        var hienTai = repository.timTheoMa(ma, false).orElseThrow().cauHinh();
+        mvc.perform(form(BASE + "/" + ma + "/edit", code, "PERCENT", "20").with(request -> {
+            request.removeParameter("dangHoatDong");
+            request.setParameter("_dangHoatDong", "on");
+            request.setParameter("batDauLuc", hienTai.batDauLuc().toString());
+            request.setParameter("ketThucLuc", hienTai.ketThucLuc().toString());
+            return request;
+        })).andExpect(redirectedUrl(BASE));
+        assertThat(jdbc.sql("SELECT COUNT(*) FROM nhat_ky_quan_tri WHERE hanh_dong='VOUCHER_UPDATE' AND ma_doi_tuong=?")
+            .param(ma).query(Long.class).single()).isOne();
         var daSua = repository.timTheoMa(ma, false).orElseThrow().cauHinh();
         assertThat(daSua.loaiGiamGia()).isEqualTo("PERCENT");
         assertThat(daSua.dangHoatDong()).isFalse();
         assertThatThrownBy(() -> phieuGiamGiaService.xemTruoc(code, BigDecimal.TEN))
             .isInstanceOf(IllegalArgumentException.class);
-        mvc.perform(post(BASE + "/" + ma + "/delete").with(user("admin").roles("ADMIN")))
+        mvc.perform(post(BASE + "/" + ma + "/delete"))
             .andExpect(status().isForbidden());
-        mvc.perform(post(BASE + "/" + ma + "/delete").with(user("admin").roles("ADMIN")).with(csrf()))
+        mvc.perform(post(BASE + "/" + ma + "/delete").with(csrf()))
             .andExpect(redirectedUrl(BASE)).andExpect(flash().attributeExists("message"));
-        mvc.perform(get(BASE + "/" + ma + "/edit").with(user("admin").roles("ADMIN"))).andExpect(status().isNotFound());
+        mvc.perform(get(BASE + "/" + ma + "/edit")).andExpect(status().isNotFound());
     }
 
     @Test
@@ -109,7 +121,7 @@ class PhieuGiamGia_MariaDb_Test {
         jdbc.sql("UPDATE phieu_giam_gia SET bat_dau_luc = ?, ket_thuc_luc = ? WHERE ma_phieu_giam_gia = ?")
             .params(batDau, ketThuc, ma).update();
         String sua = BASE + "/" + ma + "/edit";
-        mvc.perform(get(sua).with(user("admin").roles("ADMIN"))).andExpect(status().isOk())
+        mvc.perform(get(sua)).andExpect(status().isOk())
             .andExpect(content().string(containsString("value=\"" + batDau.truncatedTo(ChronoUnit.MILLIS) + "\"")));
         mvc.perform(form(sua, code, "PERCENT", "10").with(request -> {
             request.setParameter("batDauLuc", batDau.truncatedTo(ChronoUnit.MILLIS).toString());
@@ -128,7 +140,7 @@ class PhieuGiamGia_MariaDb_Test {
 
     private MockHttpServletRequestBuilder form(String path, String code, String loai, String giaTri) {
         var now = LocalDateTime.now(ZoneOffset.UTC).withNano(0);
-        return post(path).with(user("admin").roles("ADMIN")).with(csrf())
+        return post(path).with(csrf())
             .param("maApDung", code).param("loaiGiamGia", loai).param("giaTriGiam", giaTri)
             .param("donToiThieu", "0").param("gioiHanSuDung", "2").param("dangHoatDong", "true")
             .param("batDauLuc", now.minusDays(1).toString()).param("ketThucLuc", now.plusDays(1).toString());

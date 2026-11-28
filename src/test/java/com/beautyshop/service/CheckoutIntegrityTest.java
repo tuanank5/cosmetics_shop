@@ -31,8 +31,8 @@ class CheckoutIntegrityTest {
         orders=mock(DonHang_Repository.class);cart=mock(GioHang_Repository.class);
         addresses=mock(DiaChiNguoiDung_Repository.class);voucherRepository=mock(PhieuGiamGia_Repository.class);
         stock=mock(TonKho_Service.class);payments=mock(ThanhToanMomo_Repository.class);settings=mock(Momo_Settings.class);
-        vouchers=new PhieuGiamGia_Service(voucherRepository);
-        service=new DonHang_Service(orders,cart,addresses,stock,vouchers,mock(QuyenDonHang_Service.class),payments,settings);
+        vouchers=new PhieuGiamGia_Service(voucherRepository,mock(SuKienQuanTri_Service.class));
+        service=new DonHang_Service(orders,cart,addresses,stock,vouchers,mock(QuyenDonHang_Service.class),payments,settings,mock(SuKienQuanTri_Service.class));
         when(addresses.findByMaDiaChiAndNguoiDungMaNguoiDung(1L,7L)).thenReturn(Optional.of(mock(DiaChiNguoiDung.class)));
         when(cart.khoaGio(7L)).thenReturn(8L);
         when(cart.docGio(7L)).thenReturn(List.of(line("1",10,2)));

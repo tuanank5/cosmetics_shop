@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/head :: head('Nhật ký quản trị · BeautyShop')}"></head>
+<body><div th:replace="~{fragments/header :: siteHeader}"></div>
+<main id="main" tabindex="-1" class="page-content admin-workspace">
+    <a class="back-link text-link" th:href="@{${back}}">Quay lại nhật ký</a>
+    <h1 th:text="|Sự kiện #${row.id}|"></h1>
+    <dl class="admin-panel admin-facts">
+        <div><dt>Hành động</dt><dd th:text="${row.action ?: 'Chưa ghi nhận'}"></dd></div>
+        <div><dt>Thời gian UTC</dt><dd th:text="${row.utc ?: 'Chưa ghi nhận'}"></dd></div>
+        <div><dt>ID người thực hiện</dt><dd th:text="${row.actor ?: 'Chưa ghi nhận'}"></dd></div>
+        <div><dt>Vai trò</dt><dd th:text="${row.role ?: 'Chưa ghi nhận'}"></dd></div>
+        <div><dt>Loại đối tượng</dt><dd th:text="${row.loai ?: 'Chưa ghi nhận'}"></dd></div>
+        <div><dt>ID đối tượng</dt><dd th:text="${row.target ?: 'Chưa ghi nhận'}"></dd></div>
+        <div><dt>Kết quả</dt><dd th:text="${row.result ?: 'Chưa ghi nhận'}"></dd></div>
+        <div><dt>Mã lý do</dt><dd th:text="${row.reason ?: 'Chưa ghi nhận'}"></dd></div>
+        <div><dt>Trước</dt><dd th:text="${row.truoc ?: 'Chưa ghi nhận'}"></dd></div>
+        <div><dt>Sau</dt><dd th:text="${row.sau ?: 'Chưa ghi nhận'}"></dd></div>
+        <div><dt>Correlation ID</dt><dd th:text="${row.correlation ?: 'Chưa ghi nhận'}"></dd></div>
+    </dl>
+</main><div th:replace="~{fragments/footer :: siteFooter}"></div></body></html>
