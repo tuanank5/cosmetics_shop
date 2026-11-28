@@ -1,6 +1,6 @@
 # Sổ thực thi nâng cấp · 10 phase, 19 Work Package
 
-**BASE DONE · AUTH IN_PROGRESS.** Owner đã nghiệm thu BASE trên main `f390c3a` và giao AUTH. [Nghiệm thu BASE](https://github.com/tuanank5/cosmetics_shop/pull/6) · [Checkpoint AUTH](AUTH-ket-qua.md)
+**5/19 DONE (BASE, AUTH, QUALITY, PERF, AUDIT).**
 
 ## Thứ tự thực thi và trạng thái
 
@@ -9,12 +9,12 @@ Số thứ tự là số tệp. “Chờ BASE/phụ thuộc” xác định gate
 | STT | Phase | Prompt | Trạng thái | Bước mở khóa / đầu vào | Owner · SHA · PR/CI · kết quả |
 |---|---|---|---|---|---|
 | 1 | 0 | [BASE](implementation-prompts/next-upgrade/01-BASE.md) | DONE | Owner nghiệm thu 28/11. | `faec999` → `f390c3a` · [PR #6](https://github.com/tuanank5/cosmetics_shop/pull/6) · [CI main PASS](https://github.com/tuanank5/cosmetics_shop/actions/runs/46106902807) |
-| 2 | 1 | [AUTH](implementation-prompts/next-upgrade/02-AUTH.md) | IN_PROGRESS · review local đạt, chờ CI và owner nghiệm thu | D1–D3 đã duyệt. Nhánh QA đã stage trong clone riêng. | Gốc `f390c3a` · Maven 234 PASS, 88 SKIP · MariaDB/WebKit 40/40 · package PASS · [Checkpoint](AUTH-ket-qua.md) |
-| 3 | 1 | [AUTH-LIVE](implementation-prompts/next-upgrade/03-AUTH-LIVE.md) | Chờ phụ thuộc · BLOCKED_EXTERNAL | Cấp môi trường thật, ghi SHA được nghiệm thu. | — |
-| 4 | 2 | [AUDIT](implementation-prompts/next-upgrade/04-AUDIT.md) | IN_PROGRESS | D6/D7 đã duyệt. Review local trên `4fa2262`; purge thực tế chờ nguồn bảo lưu có thẩm quyền. | [Phạm vi, kiểm chứng và gate](AUDIT-ket-qua.md) |
+| 2 | 1 | [AUTH](implementation-prompts/next-upgrade/02-AUTH.md) | DONE | Owner nghiệm thu sau merge. | `0ed547b` · [PR #7](https://github.com/tuanank5/cosmetics_shop/pull/7) · [CI main PASS](https://github.com/tuanank5/cosmetics_shop/actions/runs/46110439984) · [Báo cáo](AUTH-ket-qua.md) |
+| 3 | 1 | [AUTH-LIVE](implementation-prompts/next-upgrade/03-AUTH-LIVE.md) | BLOCKED_EXTERNAL | BASE và AUTH đã đạt. Owner cần xác nhận môi trường test, client Google/GitHub, callback, hai Customer, Redis và Mailpit/SMTP thử. | Revision đầu vào `0ed547b` · chưa chạy |
+| 4 | 2 | [AUDIT](implementation-prompts/next-upgrade/04-AUDIT.md) | DONE | Owner chọn AUDIT-A. AUDIT PURGE — BLOCKED_EXTERNAL. | `5bdada6` · [Quyết định AUDIT-A](../DECISIONS.md#nghiệm-thu-audit-ngày-28112026) |
 | 5 | 2 | [ACCOUNT](implementation-prompts/next-upgrade/05-ACCOUNT.md) | BLOCKED_OWNER / phụ thuộc | Chốt nội dung mail, AUTH và AUDIT sẵn sàng. | — |
-| 6 | 3 | [VOUCHER](implementation-prompts/next-upgrade/06-VOUCHER.md) | IN_PROGRESS | Owner duyệt VOUCHER-1–3 ngày 28/11/2026. | [Checkpoint](VOUCHER-ket-qua.md) |
-| 7 | 3 | [PAYMENT](implementation-prompts/next-upgrade/07-PAYMENT.md) | PARTIAL_ACCEPTED / BLOCKED_DEPENDENCY | Owner giao phần lịch sử độc lập tại `98d2fa3`. Tổng tiền, snapshot và đối soát hai slot BLOCKED_DEPENDENCY (VOUCHER). | [Báo cáo PAYMENT](PAYMENT-ket-qua.md) |
+| 6 | 3 | [VOUCHER](implementation-prompts/next-upgrade/06-VOUCHER.md) | MERGED / READY_FOR_OWNER_ACCEPTANCE | Chờ owner nghiệm thu. | PR #12 · `e4c00c8` · [Closeout](VOUCHER-ket-qua.md) |
+| 7 | 3 | [PAYMENT](implementation-prompts/next-upgrade/07-PAYMENT.md) | PARTIAL_ACCEPTED · READY_FOR_OWNER_ACCEPTANCE (mock) | Bốn gate sau VOUCHER đã chạy trên merge. Chờ quyết định owner. | `e4c00c8` · [Revalidation](PAYMENT-ket-qua.md#revalidation-pr-12) |
 | 8 | 3 | [PAY-LIVE](implementation-prompts/next-upgrade/08-PAY-LIVE.md) | Chờ phụ thuộc · BLOCKED_EXTERNAL | Xác nhận môi trường thật, revision và số đầu kỳ. | — |
 | 9 | 4 | [ORDER](implementation-prompts/next-upgrade/09-ORDER.md) | Chờ phụ thuộc | Chốt đầu vào AUTH; đồng bộ hai view chi tiết. | — |
 | 10 | 4 | [RETURN](implementation-prompts/next-upgrade/10-RETURN.md) | BLOCKED_OWNER | Duyệt 12 và hợp đồng audit. | — |
@@ -23,8 +23,8 @@ Số thứ tự là số tệp. “Chờ BASE/phụ thuộc” xác định gate
 | 13 | 5 | [AI-HISTORY](implementation-prompts/next-upgrade/13-AI-HISTORY.md) | BLOCKED_OWNER | Duyệt 8–9; AUTH và guard đạt; kiểm Mongo fixture. | — |
 | 14 | 6 | [NOTIFY](implementation-prompts/next-upgrade/14-NOTIFY.md) | BLOCKED_OWNER | Duyệt 11; sẵn hợp đồng phân quyền và sự kiện gửi. | — |
 | 15 | 6 | [SHOP-12](implementation-prompts/next-upgrade/15-SHOP-12.md) | BLOCKED_OWNER | Owner duyệt nội dung từng trang; phối hợp AI-OPS về reindex. | — |
-| 16 | 7 | [PERF](implementation-prompts/next-upgrade/16-PERF.md) | IN_PROGRESS | Owner giao phần độc lập tại `e33e4e3`. Fixture MariaDB riêng, catalog/giỏ/checkout/Admin và ảnh. | [Giao thức baseline](../qa/PERF/protocol.md) |
-| 17 | 7 | [QUALITY](implementation-prompts/next-upgrade/17-QUALITY.md) | IN_PROGRESS | Owner giao rà độc lập các module ổn định, ưu tiên checkout, đơn, thanh toán, kho, voucher, OAuth và AI. | Gốc `0ed547b` · [Checkpoint](QUALITY-ket-qua.md) |
+| 16 | 7 | [PERF](implementation-prompts/next-upgrade/16-PERF.md) | DONE | Tree merge trùng tree đã review, regression đạt. Owner xác nhận CI sau merge PASS. | `98d2fa3` · [PR #9](https://github.com/tuanank5/cosmetics_shop/pull/9) · [CI sau merge](https://github.com/tuanank5/cosmetics_shop/actions/runs/46117800147) · [Báo cáo](PERF-ket-qua.md) |
+| 17 | 7 | [QUALITY](implementation-prompts/next-upgrade/17-QUALITY.md) | DONE | Review local, tree merge khớp, CI sau merge PASS theo xác nhận owner. | `e33e4e3` · [PR #8](https://github.com/tuanank5/cosmetics_shop/pull/8) · [Nghiệm thu](QUALITY-ket-qua.md) |
 | 18 | 8 | [BACKUP](implementation-prompts/next-upgrade/18-BACKUP.md) | BLOCKED_OWNER / phụ thuộc | Duyệt quyền/quota, có fixture và hợp đồng audit. | — |
 | 19 | 9 | [UI-UAT](implementation-prompts/next-upgrade/19-UI-UAT.md) | Chờ phụ thuộc | Ghi coverage và revision bàn giao cho từng màn. | — |
 
@@ -106,3 +106,20 @@ Ngày 27/11/2026 đã đối chiếu working tree với b03e0bf và hoàn thành
 | 4 | RELEASE | Chờ phụ thuộc và owner | Chạy thử, đối soát và phương án khôi phục |
 
 Khi bắt đầu mỗi WP, ghi người duyệt, ngày, revision, môi trường, test thực chạy, pass/fail/skip và liên kết bằng chứng. Trạng thái 13 WP đời trước tiếp tục theo BEAUTYSHOP_IMPLEMENTATION_PROGRESS.md.
+
+## Mốc nghiệm thu khôi phục từ stash VOUCHER
+
+| Ngày | Mốc | Bằng chứng | Phạm vi tại thời điểm ghi |
+|---|---|---|---|
+| 28/11/2026 | BASE · Chờ giao → IN_PROGRESS, gate FAIL | Owner chọn `3ea897b4fe9905d4007d0ead38278f38e8bf806b`. Checkout sạch, JDK 21, CI/package PASS. Suite mặc định 231/313, 82 skip. Suite MariaDB/Mongo 329/337, 3 fail, 0 error, 5 skip. Flyway local 8/8, auth migration 2/2, BSON 1/1, P21 1/1. WebKit checkout và FAQ/D35 8/8 đạt. [PR nghiệm thu BASE](https://github.com/tuanank5/cosmetics_shop/pull/6) | Trên schema riêng, catalog CRUD đạt 3/3, G12 và assertion điều hướng vẫn đỏ. Owner chốt xử lý và xác nhận revision sau retest. QA-01/release chờ quyết định riêng. |
+| 28/11/2026 | BASE · gate tích hợp FAIL → PASS local · IN_PROGRESS | Revision kiểm `faec99999cd4646ebc64f6f9fbe126aa4cc8bb39`, nhánh local `qa/base-retest` trong clone `target/base-retest`. 7/7 tập trung, 231/313 mặc định, 332/337 tích hợp, 0 fail/error. WebKit checkout và 8/8 FAQ/D35 đạt. [PR nghiệm thu BASE](https://github.com/tuanank5/cosmetics_shop/pull/6) | Git HTTPS bị chặn; GitHub connector yêu cầu approval trong phiên có policy never. Chưa có PR/CI cho SHA mới. Lệnh push và mở draft PR ở checkpoint; owner duyệt ma trận sau CI/review. QA-01/release có quyết định riêng. |
+| 28/11/2026 11:06 UTC+7 | BASE · BLOCKED_EXTERNAL tại bước xuất bản | Local `faec999` đã kiểm; remote main `3ea897b`, nhánh QA trả 404, 0 PR và 0 run trên SHA mới. Git CLI bị chặn HTTPS; connector từ chối tạo tree. [PR nghiệm thu BASE](https://github.com/tuanank5/cosmetics_shop/pull/6) | Push từ phiên có quyền ghi, mở draft PR, đối chiếu CI theo SHA rồi trình owner duyệt ma trận. |
+| 28/11/2026 | BASE → DONE, AUTH → IN_PROGRESS | Owner nghiệm thu merge `f390c3a`. Ba CI đạt; tree trùng ứng viên đã kiểm. | AUTH thực hiện phần độc lập. |
+| 28/11/2026 | AUTH → DONE | PR #7, CI push/PR/main PASS, tree merge khớp bản đã kiểm. | AUTH-LIVE chờ owner cấp môi trường thử. |
+| 28/11/2026 | QUALITY → DONE | [PR #8](https://github.com/tuanank5/cosmetics_shop/pull/8), ứng viên `efcd5d5`, merge `e33e4e3`, cùng tree đã review. Owner xác nhận CI sau merge PASS. | Chuẩn bị PERF. AUTH-LIVE tiếp tục BLOCKED_EXTERNAL. |
+| 28/11/2026 | PERF → DONE | [PR #9](https://github.com/tuanank5/cosmetics_shop/pull/9), merge `98d2fa3`, 49 blob khớp manifest. Owner xác nhận [CI sau merge](https://github.com/tuanank5/cosmetics_shop/actions/runs/46117800147) PASS. | Đề xuất owner giao phần độc lập của PAYMENT. |
+| 28/11/2026 | PAYMENT · IN_PROGRESS | Owner giao phần lịch sử V1 sau BASE tại `98d2fa3`. Maven 238 PASS/89 SKIP, MariaDB 95/95, WebKit 8/8, package PASS. [Báo cáo và manifest](PAYMENT-ket-qua.md) | Chờ VOUCHER cho hai slot, review, CI và nghiệm thu đúng revision. |
+| 28/11/2026 | PAYMENT-CLOSEOUT · lịch sử MERGED / PARTIAL_ACCEPTED | Merge `4fa226210c95a4539ccb4279a2a78df54af7577f`, tree khớp ứng viên. [PR #10](https://github.com/tuanank5/cosmetics_shop/pull/10) · [CI main](https://github.com/tuanank5/cosmetics_shop/actions/runs/46120901806) PASS theo owner. | Tổng tiền tích hợp VOUCHER, snapshot hai slot, đối soát voucher/payment và regression sau VOUCHER còn BLOCKED_DEPENDENCY. PAY-LIVE nghiệm thu MoMo Sandbox thật riêng. |
+| 28/11/2026 | AUDIT → DONE (AUDIT-A) | Owner nghiệm thu D7 và guard D6 trên merge `5bdada6`. [PR #11](https://github.com/tuanank5/cosmetics_shop/pull/11) | Purge thực tế BLOCKED_EXTERNAL cho đến khi nguồn clearance đạt nghiệm thu. |
+
+28/11/2026 · VOUCHER — MERGED / READY_FOR_OWNER_ACCEPTANCE. PAYMENT — PARTIAL_ACCEPTED, bốn gate tích hợp PASS local trên merge với MoMo mock. Chờ owner nghiệm thu VOUCHER và xác nhận phạm vi PAYMENT mock. Tổng 5/19 DONE. AUTH-LIVE và AUDIT PURGE tiếp tục BLOCKED_EXTERNAL. PAY-LIVE chưa nghiệm thu.

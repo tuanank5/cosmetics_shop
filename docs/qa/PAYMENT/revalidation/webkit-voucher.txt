@@ -1,0 +1,8 @@
+Customer two slots, expiry, free shipping, role JS=false PASS
+Customer two slots, expiry, free shipping, role JS=true PASS
+Guest estimate and cart merge PASS
+Admin create scoped shipping voucher PASS
+ROW_COUNT()
+2
+SQL before and after changing value, expiry, quota PASS 370000,1,21346,520000,30000,25000,10000,505000,505000|150000,1,8654,520000,30000,25000,10000,505000,505000|HANG,30000,CONSUMED|VAN_CHUYEN,10000,CONSUMED
+COD orders and attempts 505000/505000/860000 VND, slot counts 2/2/1 PASS
