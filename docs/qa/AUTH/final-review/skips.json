@@ -1,0 +1,42 @@
+﻿{
+    "baseline_skipped":  82,
+    "owner_d1_d3_skipped":  87,
+    "final_skipped":  88,
+    "new_since_baseline":  [
+                               "com.beautyshop.integration.OAuth2Callback_MariaDb_Test | webkitDatLaiMatKhauVaXacThucLaiGoogleTrenHaiTab | Environment variable [P01_MARIADB_TEST] does not exist",
+                               "com.beautyshop.integration.OAuth2Callback_MariaDb_Test | haiPhienGoDongThoiVanConMotDuongDangNhap | Environment variable [P01_MARIADB_TEST] does not exist",
+                               "com.beautyshop.integration.XacThucDaPhuongThuc_MariaDb_Test | taiKhoanChiCoOAuthDaXacMinhEmailVanCanQuyenTaiProvider | Environment variable [P01_MARIADB_TEST] does not exist",
+                               "com.beautyshop.integration.XacThucDaPhuongThuc_MariaDb_Test | doiMatKhauTuChoiTrungVaChoThuLaiCungPhien | Environment variable [P01_MARIADB_TEST] does not exist",
+                               "com.beautyshop.integration.XacThucDaPhuongThuc_MariaDb_Test | haiCustomerTranhCungDanhTinhChiGhiNhanChoMotChu | Environment variable [P01_MARIADB_TEST] does not exist",
+                               "com.beautyshop.integration.XacThucDaPhuongThuc_MariaDb_Test | capLinkMoiVoHieuLinkCuVaChiChoDungTrongMuoiLamPhut | Environment variable [P01_MARIADB_TEST] does not exist"
+                           ],
+    "removed_since_baseline":  [
+
+                               ],
+    "final_by_condition":  [
+                               {
+                                   "condition":  "Environment variable [LOCAL_BOOTSTRAP_MIGRATION_FIXTURE] does not exist",
+                                   "count":  3
+                               },
+                               {
+                                   "condition":  "Environment variable [P01_MARIADB_TEST] does not exist",
+                                   "count":  73
+                               },
+                               {
+                                   "condition":  "Environment variable [P21_DEMO_REPORT] does not exist",
+                                   "count":  1
+                               },
+                               {
+                                   "condition":  "Environment variable [AUTH_02_MIGRATION_FIXTURE] does not exist",
+                                   "count":  1
+                               },
+                               {
+                                   "condition":  "Environment variable [P23_MONGO_TEST] does not exist",
+                                   "count":  9
+                               },
+                               {
+                                   "condition":  "Environment variable [ARCH_01_BSON_PHASE] does not exist",
+                                   "count":  1
+                               }
+                           ]
+}

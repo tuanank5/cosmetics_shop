@@ -1,0 +1,11 @@
+﻿[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 29.20 s -- in com.beautyshop.integration.DonHangCOD_MariaDb_Test
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.920 s -- in com.beautyshop.integration.Momo_MariaDb_Test
+[AUTH WebKit] PASS 26.6 reset/retry/replay, two-tab logout, new OIDC callback, reauth/OTP, last method, first password
+[AUTH WebKit] PASS reset/retry/replay, two-tab logout, fresh Google callback, reauth/OTP, last method and first password; fixture authorizations=3
+[INFO] Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 10.96 s -- in com.beautyshop.integration.OAuth2Callback_MariaDb_Test
+[INFO] Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 5.797 s -- in com.beautyshop.integration.XacThucDaPhuongThuc_MariaDb_Test
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.471 s -- in com.beautyshop.integration.XacThucMigration_MariaDb_Test
+[INFO] Tests run: 12, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 6.055 s -- in com.beautyshop.integration.XacThuc_MariaDb_Test
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.012 s -- in com.beautyshop.service.MatKhauMoiTest
+[INFO] Tests run: 39, Failures: 0, Errors: 0, Skipped: 0
+[INFO] BUILD SUCCESS

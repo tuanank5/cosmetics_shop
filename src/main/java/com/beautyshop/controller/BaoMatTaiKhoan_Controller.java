@@ -235,8 +235,11 @@ class BaoMatTaiKhoan_Controller {
             var grant = grant(session, principal);
             try {
                 passwords.doi(principal.getMaNguoiDung(), principal.getPhienBanXacThuc(), matKhauHienTai,
-                    form.getMatKhauMoi(), grant != null && providers().contains(grant.method()));
+                    form.getMatKhauMoi(), form.getXacNhan(), grant != null && providers().contains(grant.method()));
                 return thoat(request, response, auth);
+            } catch (MatKhau_Service.MatKhauMoiKhongHopLe invalid) {
+                flash.addFlashAttribute("error", invalid.getMessage());
+                return TRANG;
             } catch (AccessDeniedException denied) {
                 flash.addFlashAttribute("error", "Hãy kiểm tra mật khẩu hiện tại hoặc xác minh lại bằng Google hay GitHub đã liên kết, rồi xác minh email.");
                 return TRANG;

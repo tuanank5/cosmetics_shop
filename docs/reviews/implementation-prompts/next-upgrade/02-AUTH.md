@@ -10,6 +10,8 @@ Chặn tái sử dụng mật khẩu hiện tại và xác minh lỗi đăng nh�
 
 ## Phần đang chạy và phạm vi ảnh hưởng
 
+Ngày 28/11/2026 owner chốt các mục 4–5 và UX bộ chọn Google. Dùng AUTH-D1–D3 cho phần triển khai tiếp theo và đối chiếu kết quả provider thật ở WP riêng khi được giao. [Biên bản quyết định](../../../DECISIONS.md)
+
 Có form, reset link, OTP, unlink và tăng phiên bản xác thực. MatKhau_Service, MatKhauMoi_Form, DanhTinhOAuth_Service, hai auth controller và view. V7 đủ theo rà soát. Chặn tái dùng mật khẩu, kiểm xung đột link. Rủi ro mất đường đăng nhập. Giữ V6/V7, SMTP và mô hình danh tính, không thêm role/lịch sử mật khẩu.
 
 Điểm vào để đối chiếu mã hoặc bằng chứng: [MatKhau_Service.java](../../../../src/main/java/com/beautyshop/service/MatKhau_Service.java) · [Security_Config.java](../../../../src/main/java/com/beautyshop/security/Security_Config.java) · [OAuth2ThaoTac.java](../../../../src/main/java/com/beautyshop/security/OAuth2ThaoTac.java) · [auth](../../../../src/main/resources/templates/auth) · [OAuth2Callback_MariaDb_Test.java](../../../../src/test/java/com/beautyshop/integration/OAuth2Callback_MariaDb_Test.java)

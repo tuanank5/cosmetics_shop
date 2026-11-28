@@ -46,7 +46,9 @@ public class Security_Config {
             http.oauth2Login(oauth2 -> oauth2.loginPage("/login")
                 .clientRegistrationRepository(clients)
                 .authorizedClientRepository(new OAuth2ThaoTac.KhongLuuToken())
-                .authorizationEndpoint(endpoint -> endpoint.authorizationRequestRepository(new OAuth2ThaoTac.YeuCau()))
+                .authorizationEndpoint(endpoint -> endpoint
+                    .authorizationRequestResolver(new OAuth2ThaoTac.YeuCauDangNhap(clients))
+                    .authorizationRequestRepository(new OAuth2ThaoTac.YeuCau()))
                 .userInfoEndpoint(userInfo -> userInfo.userService(oauthService).oidcUserService(oauthService::loadGoogle))
                 .withObjectPostProcessor(new ObjectPostProcessor<OAuth2LoginAuthenticationFilter>() {
                     @Override

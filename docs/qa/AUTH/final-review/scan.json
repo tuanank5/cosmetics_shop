@@ -1,0 +1,13 @@
+{
+  "files": 38,
+  "rules": [
+    "private-key",
+    "service-token",
+    "signed-token",
+    "embedded-credentials",
+    "bearer-cookie-reset",
+    "literal-secret"
+  ],
+  "test_fixture_literals": 1,
+  "findings": []
+}

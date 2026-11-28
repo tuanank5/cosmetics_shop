@@ -60,7 +60,14 @@ Các quyết định trên xác định **phạm vi lập kế hoạch**. Quy t�
 
 **D48 · Lịch sử tư vấn.** Owner chọn MongoDB hiện có để lưu lịch sử riêng của Customer. D46 tiếp tục áp dụng cho quyền xem, guard và kiểm AI bằng mock. `maNguoiDung` từ phiên đã xác thực là tham chiếu chủ sở hữu giữa MariaDB và MongoDB. Thời hạn lưu, quyền xóa và việc dùng ngữ cảnh nhiều lượt vẫn theo các quyết định mở 8–10.
 
-**D49 · Google sau khi đăng xuất.** Owner yêu cầu xác minh phản ánh trong AUTH và AUTH-LIVE, sửa lỗi ứng dụng nếu tái hiện được. Phải kiểm quyền trên server trước khi bấm Google lần nữa và phân biệt callback mới qua phiên Google SSO. Yêu cầu bắt buộc bộ chọn tài khoản cho mỗi lần login chưa được duyệt.
+**D49 · Google sau khi đăng xuất.** Owner yêu cầu kiểm quyền trên server trước khi bấm Google lần nữa và phân biệt callback mới qua phiên Google SSO. Ngày 28/11/2026 owner chốt hành vi bộ chọn tại AUTH-D3.
+
+### AUTH · Quyết định của owner ngày 28/11/2026
+
+- **AUTH-D1 · Đặt lại mật khẩu.** Link có hiệu lực 15 phút, lưu SHA-256 trong MariaDB. Cấp link mới làm hết hạn các link cũ. Chỉ tiêu thụ link khi giao dịch đặt mật khẩu thành công và thu hồi mọi phiên BeautyShop cũ. Nhập sai chính sách, sai xác nhận hoặc trùng mật khẩu hiện tại cho phép thử lại trong thời hạn còn lại. Giữ giới hạn theo nguồn và email, khoảng cách gửi lại và phản hồi công khai giống nhau cho email đủ và thiếu điều kiện.
+- **AUTH-D2 · Quyền sở hữu và khôi phục.** Customer dùng mật khẩu, Google và GitHub trên cùng ID nội bộ. Liên kết yêu cầu xác thực lại bằng phương thức hiện có và chứng minh danh tính mới qua callback. Gỡ yêu cầu chứng minh phương thức sẽ giữ. Email trùng không đủ để gộp tài khoản. Khóa và ràng buộc V7 bảo đảm mỗi cặp provider/subject thuộc một Customer. Đặt mật khẩu đầu tiên cần callback của danh tính đã liên kết và OTP hộp thư BeautyShop. Admin tiếp tục dùng mật khẩu.
+- **Khi mất quyền truy cập OAuth**, đăng nhập bằng phương thức còn lại rồi vào Bảo mật để xác thực lại và gỡ liên kết đã mất. Customer đã có mật khẩu và email BeautyShop đã xác minh có thể dùng luồng quên mật khẩu. Nếu OAuth là phương thức duy nhất, trước tiên khôi phục tài khoản tại nhà cung cấp ban đầu. Email trùng, yêu cầu hỗ trợ hay phiên chưa xác thực lại đều không cấp quyền tạo mật khẩu hoặc chuyển danh tính. Admin chỉ được yêu cầu gửi link cho Customer đủ điều kiện.
+- **AUTH-D3 · Bộ chọn Google.** Khi người dùng bấm đăng nhập Google, BeautyShop gửi `prompt=select_account`. Google quyết định có cần nhập lại mật khẩu hay không. Logout kết thúc phiên BeautyShop. GitHub, liên kết và xác thực lại tiếp tục dùng yêu cầu OAuth hiện hành. Giữ state, nonce và kiểm callback của Spring Security.
 
 ## Điểm còn cần xác minh/định cấu hình
 

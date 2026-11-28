@@ -15,6 +15,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.oauth2.client.OAuth2AuthorizedClient;
 import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
 import org.springframework.security.oauth2.client.authentication.OAuth2LoginAuthenticationToken;
+import org.springframework.security.oauth2.client.registration.ClientRegistrationRepository;
 import org.springframework.security.oauth2.client.web.*;
 import org.springframework.security.oauth2.core.endpoint.OAuth2AuthorizationRequest;
 import org.springframework.web.context.request.RequestContextHolder;
@@ -118,6 +119,32 @@ public final class OAuth2ThaoTac {
         throw OAuth2NguoiDung_Service.loi("beautyshop_operation_verified");
     }
 
+    static final class YeuCauDangNhap implements OAuth2AuthorizationRequestResolver {
+        private final DefaultOAuth2AuthorizationRequestResolver delegate;
+
+        YeuCauDangNhap(ClientRegistrationRepository clients) {
+            delegate = new DefaultOAuth2AuthorizationRequestResolver(clients,
+                OAuth2AuthorizationRequestRedirectFilter.DEFAULT_AUTHORIZATION_REQUEST_BASE_URI);
+        }
+
+        @Override
+        public OAuth2AuthorizationRequest resolve(HttpServletRequest request) {
+            var authorization = delegate.resolve(request);
+            if (authorization != null && request.getParameter("operation") == null
+                && "google".equals(authorization.getAttribute("registration_id"))) {
+                return OAuth2AuthorizationRequest.from(authorization)
+                    .additionalParameters(params -> params.put("prompt", "select_account")).build();
+            }
+            return authorization;
+        }
+
+        @Override
+        public OAuth2AuthorizationRequest resolve(HttpServletRequest request, String registrationId) {
+            // Spring có thể yêu cầu client theo ID ngoài luồng người dùng bấm nút đăng nhập.
+            return delegate.resolve(request, registrationId);
+        }
+    }
+
     static final class YeuCau implements AuthorizationRequestRepository<OAuth2AuthorizationRequest> {
         private final HttpSessionOAuth2AuthorizationRequestRepository delegate =
             new HttpSessionOAuth2AuthorizationRequestRepository();
@@ -130,28 +157,39 @@ public final class OAuth2ThaoTac {
         @Override
         public void saveAuthorizationRequest(OAuth2AuthorizationRequest authorization, HttpServletRequest request,
                                              HttpServletResponse response) {
-            String nonce = request.getParameter("operation");
-            if (authorization != null && nonce != null) {
-                var session = request.getSession(false);
-                var intent = session == null ? null : (YDinh) session.getAttribute(INTENT);
-                if (intent == null || !intent.nonce().equals(nonce) || !Instant.now().isBefore(intent.expires())
-                    || !intent.provider().equals(authorization.getAttribute("registration_id"))) {
-                    throw OAuth2NguoiDung_Service.loi("oauth_operation_invalid");
-                }
-                authorization = OAuth2AuthorizationRequest.from(authorization)
-                    .attributes(attributes -> attributes.put(NONCE, nonce)).build();
+            var session = request.getSession(authorization != null);
+            if (session == null) {
+                return;
             }
-            delegate.saveAuthorizationRequest(authorization, request, response);
+            synchronized (WebUtils.getSessionMutex(session)) {
+                String nonce = request.getParameter("operation");
+                if (authorization != null && nonce != null) {
+                    var intent = (YDinh) session.getAttribute(INTENT);
+                    if (intent == null || !intent.nonce().equals(nonce) || !Instant.now().isBefore(intent.expires())
+                        || !intent.provider().equals(authorization.getAttribute("registration_id"))) {
+                        throw OAuth2NguoiDung_Service.loi("oauth_operation_invalid");
+                    }
+                    authorization = OAuth2AuthorizationRequest.from(authorization)
+                        .attributes(attributes -> attributes.put(NONCE, nonce)).build();
+                }
+                delegate.saveAuthorizationRequest(authorization, request, response);
+            }
         }
 
         @Override
         public OAuth2AuthorizationRequest removeAuthorizationRequest(HttpServletRequest request,
                                                                     HttpServletResponse response) {
-            var authorization = delegate.removeAuthorizationRequest(request, response);
-            if (authorization != null) {
-                request.setAttribute(NONCE, authorization.getAttribute(NONCE));
+            var session = request.getSession(false);
+            if (session == null) {
+                return null;
             }
-            return authorization;
+            synchronized (WebUtils.getSessionMutex(session)) {
+                var authorization = delegate.removeAuthorizationRequest(request, response);
+                if (authorization != null) {
+                    request.setAttribute(NONCE, authorization.getAttribute(NONCE));
+                }
+                return authorization;
+            }
         }
     }
 

@@ -164,8 +164,8 @@ public class MatKhau_Service {
         return sent ? KetQuaGui.DA_GUI : KetQuaGui.LOI_GUI;
     }
 
-    public boolean datLai(String token, String password) {
-        if (!dinhDangToken(token) || !matKhauHopLe(password)) {
+    public boolean datLai(String token, String password, String xacNhan) {
+        if (!dinhDangToken(token)) {
             return false;
         }
         byte[] hash = bam(token);
@@ -180,7 +180,7 @@ public class MatKhau_Service {
             if (!duDieuKien(user) || !request.hopLe(now, user.getPhienBanXacThuc())) {
                 return null;
             }
-            user.doiMatKhau(encoder.encode(password));
+            ganMatKhauMoi(user, password, xacNhan);
             request.tieuThu(now);
             audit.ghi(owner, "CUSTOMER", "PASSWORD_RESET_COMPLETED", "ACCOUNT", owner,
                 "SUCCESS", null, request.getCorrelationId());
@@ -202,24 +202,42 @@ public class MatKhau_Service {
     }
 
     @Transactional
-    public void doi(long id, long version, String currentPassword, String password, boolean oauthProof) {
+    public void doi(long id, long version, String currentPassword, String password, String xacNhan, boolean oauthProof) {
         boolean coTheThu = currentPassword != null && !currentPassword.isEmpty() && choPhepThuMatKhau(id);
         var user = identities.khoaCustomer(id, version);
         boolean first = user.getMatKhauBam() == null;
         boolean authorized = first ? oauthProof && user.getNgayXacMinhEmail() != null
             : coTheThu && encoder.matches(currentPassword, user.getMatKhauBam());
-        if (!authorized || !matKhauHopLe(password)) {
+        if (!authorized) {
             throw new AccessDeniedException("Xác minh lại để thay đổi mật khẩu.");
         }
-        user.doiMatKhau(encoder.encode(password));
+        ganMatKhauMoi(user, password, xacNhan);
         String correlation = UUID.randomUUID().toString();
         audit.ghi(id, "CUSTOMER", first ? "PASSWORD_CREATED" : "PASSWORD_CHANGED",
             "ACCOUNT", id, "SUCCESS", null, correlation);
         audit.thuHoiPhien(id, correlation);
     }
 
-    public static boolean matKhauHopLe(String value) {
-        return value != null && !value.isBlank() && value.length() >= 12
+    public static final class MatKhauMoiKhongHopLe extends RuntimeException {
+        private MatKhauMoiKhongHopLe(String message) { super(message); }
+    }
+
+    private void ganMatKhauMoi(NguoiDung user, String value, String xacNhan) {
+        user.doiMatKhau(bamMatKhauMoi(value, xacNhan, user.getMatKhauBam(), encoder));
+    }
+
+    static String bamMatKhauMoi(String value, String xacNhan, String bamHienTai, PasswordEncoder encoder) {
+        if (!matKhauMoiHopLe(value, xacNhan)) {
+            throw new MatKhauMoiKhongHopLe("Mật khẩu cần từ 12 ký tự, tối đa 72 byte và khớp xác nhận.");
+        }
+        if (bamHienTai != null && encoder.matches(value, bamHienTai)) {
+            throw new MatKhauMoiKhongHopLe("Hãy chọn mật khẩu mới khác mật khẩu hiện tại.");
+        }
+        return encoder.encode(value);
+    }
+
+    public static boolean matKhauMoiHopLe(String value, String xacNhan) {
+        return value != null && value.equals(xacNhan) && !value.isBlank() && value.codePointCount(0, value.length()) >= 12
             && value.getBytes(StandardCharsets.UTF_8).length <= 72;
     }
 

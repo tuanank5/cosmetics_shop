@@ -1,0 +1,202 @@
+﻿[
+    {
+        "suite":  "DonHangCOD_MariaDb_Test",
+        "test":  "checkoutHetHangGiuNguyenMucKhacVaAdminHuyHoanTonMotLan",
+        "result":  "PASS"
+    },
+    {
+        "suite":  "DonHangCOD_MariaDb_Test",
+        "test":  "haiCustomerTranhSkuVaRollbackKhoVoucherVaGio",
+        "result":  "PASS"
+    },
+    {
+        "suite":  "DonHangCOD_MariaDb_Test",
+        "test":  "checkoutHuyVaGiaoCodEndToEnd",
+        "result":  "PASS"
+    },
+    {
+        "suite":  "DonHangCOD_MariaDb_Test",
+        "test":  "voucherConMotLuotChiChoMotDonKhiHaiSkuKhacNhau",
+        "result":  "PASS"
+    },
+    {
+        "suite":  "Momo_MariaDb_Test",
+        "test":  "ipnKySaiSaiSoTienVaReplayKhongTruTonHaiLan",
+        "result":  "PASS"
+    },
+    {
+        "suite":  "Momo_MariaDb_Test",
+        "test":  "retryTransportGiuMaCuRetrySauTuChoiCoMaMoiVaDoiSoat",
+        "result":  "PASS"
+    },
+    {
+        "suite":  "Momo_MariaDb_Test",
+        "test":  "chiGiaiPhongKhiCongXacNhanHetHanVaDanhDauThanhCongMuon",
+        "result":  "PASS"
+    },
+    {
+        "suite":  "OAuth2Callback_MariaDb_Test",
+        "test":  "oauthChuaCoMatKhauCanCallbackDungDanhTinhVaOtpDeThietLap",
+        "result":  "PASS"
+    },
+    {
+        "suite":  "OAuth2Callback_MariaDb_Test",
+        "test":  "callbackLienKetGiuPhienVaChiGhiSauXacNhanPost(String)[1]",
+        "result":  "PASS"
+    },
+    {
+        "suite":  "OAuth2Callback_MariaDb_Test",
+        "test":  "callbackLienKetGiuPhienVaChiGhiSauXacNhanPost(String)[2]",
+        "result":  "PASS"
+    },
+    {
+        "suite":  "OAuth2Callback_MariaDb_Test",
+        "test":  "googleOidcKiemChuKyNonceVaEmailDaXacMinh",
+        "result":  "PASS"
+    },
+    {
+        "suite":  "OAuth2Callback_MariaDb_Test",
+        "test":  "baCachLoginCungIdVaMoiPhienGopGioDungMotLan",
+        "result":  "PASS"
+    },
+    {
+        "suite":  "OAuth2Callback_MariaDb_Test",
+        "test":  "callbackDoiCodeKiemStateVaDangNhapBangUserId",
+        "result":  "PASS"
+    },
+    {
+        "suite":  "OAuth2Callback_MariaDb_Test",
+        "test":  "webkitDatLaiMatKhauVaXacThucLaiGoogleTrenHaiTab",
+        "result":  "PASS"
+    },
+    {
+        "suite":  "OAuth2Callback_MariaDb_Test",
+        "test":  "haiPhienGoDongThoiVanConMotDuongDangNhap",
+        "result":  "PASS"
+    },
+    {
+        "suite":  "XacThucDaPhuongThuc_MariaDb_Test",
+        "test":  "adminGuiLinkKhachTuDatTokenChiMotLanVaPhienCuBiThuHoi",
+        "result":  "PASS"
+    },
+    {
+        "suite":  "XacThucDaPhuongThuc_MariaDb_Test",
+        "test":  "goCanPhuongThucConLaiVaHaiProviderDungCungNguoiDung",
+        "result":  "PASS"
+    },
+    {
+        "suite":  "XacThucDaPhuongThuc_MariaDb_Test",
+        "test":  "taiKhoanChiCoOAuthDaXacMinhEmailVanCanQuyenTaiProvider",
+        "result":  "PASS"
+    },
+    {
+        "suite":  "XacThucDaPhuongThuc_MariaDb_Test",
+        "test":  "doiMatKhauTuChoiTrungVaChoThuLaiCungPhien",
+        "result":  "PASS"
+    },
+    {
+        "suite":  "XacThucDaPhuongThuc_MariaDb_Test",
+        "test":  "haiCustomerTranhCungDanhTinhChiGhiNhanChoMotChu",
+        "result":  "PASS"
+    },
+    {
+        "suite":  "XacThucDaPhuongThuc_MariaDb_Test",
+        "test":  "smtpThatBaiKhongDoiHashVaHetHanLink",
+        "result":  "PASS"
+    },
+    {
+        "suite":  "XacThucDaPhuongThuc_MariaDb_Test",
+        "test":  "guestThayCungPhanHoiVaPostCanCsrf",
+        "result":  "PASS"
+    },
+    {
+        "suite":  "XacThucDaPhuongThuc_MariaDb_Test",
+        "test":  "oauthGiuaCacLanDangNhapNhanDungIdVaKhongGhiDeEmail",
+        "result":  "PASS"
+    },
+    {
+        "suite":  "XacThucDaPhuongThuc_MariaDb_Test",
+        "test":  "capLinkMoiVoHieuLinkCuVaChiChoDungTrongMuoiLamPhut",
+        "result":  "PASS"
+    },
+    {
+        "suite":  "XacThucMigration_MariaDb_Test",
+        "test":  "baoToanIdLichSuVaChiChuyenDanhTinhCoBangChung(int)[1]",
+        "result":  "PASS"
+    },
+    {
+        "suite":  "XacThucMigration_MariaDb_Test",
+        "test":  "baoToanIdLichSuVaChiChuyenDanhTinhCoBangChung(int)[2]",
+        "result":  "PASS"
+    },
+    {
+        "suite":  "XacThuc_MariaDb_Test",
+        "test":  "haiRequestGopCungSnapshotKhongCongHaiLan",
+        "result":  "PASS"
+    },
+    {
+        "suite":  "XacThuc_MariaDb_Test",
+        "test":  "gioiHanMuoiDiaChiTuMayChuVanChoPhepSua",
+        "result":  "PASS"
+    },
+    {
+        "suite":  "XacThuc_MariaDb_Test",
+        "test":  "hoSoVaDiaChiChiChoPhepChuTaiKhoan",
+        "result":  "PASS"
+    },
+    {
+        "suite":  "XacThuc_MariaDb_Test",
+        "test":  "haiThietBiCungTaiKhoanMoiSnapshotGopMotLanVaCoNoticeRieng",
+        "result":  "PASS"
+    },
+    {
+        "suite":  "XacThuc_MariaDb_Test",
+        "test":  "luuDiaChiSongSongChiCoMotMacDinh",
+        "result":  "PASS"
+    },
+    {
+        "suite":  "XacThuc_MariaDb_Test",
+        "test":  "gioGuestGopMotLanVaKiemTraTonLai",
+        "result":  "PASS"
+    },
+    {
+        "suite":  "XacThuc_MariaDb_Test",
+        "test":  "customerVaAdminDangNhapDungQuyenVaLogoutCoCsrf",
+        "result":  "PASS"
+    },
+    {
+        "suite":  "XacThuc_MariaDb_Test",
+        "test":  "dangKyBcryptEmailDuyNhatVaKhongNhanVaiTroTuClient",
+        "result":  "PASS"
+    },
+    {
+        "suite":  "XacThuc_MariaDb_Test",
+        "test":  "noticeCheckoutChiDungMotLanQuaHaiTabVaChiTietTonDuong",
+        "result":  "PASS"
+    },
+    {
+        "suite":  "XacThuc_MariaDb_Test",
+        "test":  "rollbackGopKhongPhatNoticeVaThuLaiCungSnapshot",
+        "result":  "PASS"
+    },
+    {
+        "suite":  "XacThuc_MariaDb_Test",
+        "test":  "adminTimPhanTrangKhoaMoVaThuHoiPhienCu",
+        "result":  "PASS"
+    },
+    {
+        "suite":  "XacThuc_MariaDb_Test",
+        "test":  "serviceChiChoPhepChuDon",
+        "result":  "PASS"
+    },
+    {
+        "suite":  "MatKhauMoiTest",
+        "test":  "kiemXacNhanSoKyTuVaSoByteUtf8",
+        "result":  "PASS"
+    },
+    {
+        "suite":  "MatKhauMoiTest",
+        "test":  "soSanhVoiHashHienTaiVaDatLanDauKhiChuaCoHash",
+        "result":  "PASS"
+    }
+]

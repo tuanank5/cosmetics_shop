@@ -162,3 +162,7 @@ HTTP đạt 35 phép kiểm route, MariaDB/MongoDB đạt 38/38. Truy vấn DB s
 ## Kế hoạch tiếp theo chờ duyệt · 28/11/2026
 
 Revision ứng viên là `a9870e1`, trùng remote main và Maven CI đã đạt. Owner yêu cầu rà soát tài liệu trước khi giao việc. Đề xuất 10 phase, 19 WP, BASE đứng đầu. AUTH-LIVE, PAY-LIVE và UI-UAT giữ phạm vi nghiệm thu riêng. AI đợt này chỉ dùng mock. Toàn bộ hạng mục lô/FEFO và AI-LIVE ở backlog. [Sổ trạng thái mới](reviews/BEAUTYSHOP_NEXT_UPGRADE_PROGRESS.md) · [Kế hoạch và tiêu chí](reviews/BEAUTYSHOP_NEXT_UPGRADE_PLAN.md)
+
+### AUTH · 28/11/2026
+
+AUTH đã triển khai D1–D3, gồm bộ chọn khi bấm đăng nhập Google. AUTH-FINAL đạt 40/40 ca với fixture MariaDB/WebKit. Nhánh QA chờ CI và owner nghiệm thu đúng revision. [Checkpoint AUTH](reviews/AUTH-ket-qua.md) · [Sổ 19 WP](reviews/BEAUTYSHOP_NEXT_UPGRADE_PROGRESS.md)

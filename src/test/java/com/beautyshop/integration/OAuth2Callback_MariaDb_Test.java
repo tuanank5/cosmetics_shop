@@ -62,7 +62,8 @@ import static org.springframework.security.test.web.servlet.response.SecurityMoc
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-@SpringBootTest(classes = {com.beautyshop.BeautyShopApplication.class, OAuth2Callback_MariaDb_Test.Clients.class})
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT, properties = "server.address=127.0.0.1",
+    classes = {com.beautyshop.BeautyShopApplication.class, OAuth2Callback_MariaDb_Test.Clients.class})
 @AutoConfigureMockMvc
 @EnabledIfEnvironmentVariable(named = "P01_MARIADB_TEST", matches = "true")
 class OAuth2Callback_MariaDb_Test {
@@ -76,6 +77,67 @@ class OAuth2Callback_MariaDb_Test {
     @MockitoSpyBean OAuth2NguoiDung_Service providerUser;
     @MockitoBean StringRedisTemplate redis;
     @MockitoBean EmailVerification_Service otp;
+
+    @org.springframework.boot.test.web.server.LocalServerPort int port;
+    @Autowired com.beautyshop.repository.YeuCauDatLaiMatKhau_Repository resets;
+
+    @Test
+    @EnabledIfEnvironmentVariable(named = "AUTH_BROWSER_SCRIPT", matches = ".+")
+    void webkitDatLaiMatKhauVaXacThucLaiGoogleTrenHaiTab() throws Exception {
+        String base = "http://127.0.0.1:" + port;
+        String callback = base + "/login/oauth2/code/google";
+        var lanGoogle = new java.util.concurrent.atomic.AtomicInteger();
+        var googlePrompts = new java.util.concurrent.CopyOnWriteArrayList<String>();
+        Clients.googleEmail = UUID.randomUUID() + "@example.invalid";
+        Clients.googleSubject = UUID.randomUUID().toString();
+        var customer = new NguoiDung(UUID.randomUUID() + "@example.invalid", encoder.encode(PASSWORD), "Fixture");
+        customer.xacNhanEmail(LocalDateTime.now(java.time.ZoneOffset.UTC));
+        users.saveAndFlush(customer);
+        byte[] bytes = new byte[32];
+        new java.security.SecureRandom().nextBytes(bytes);
+        String token = java.util.Base64.getUrlEncoder().withoutPadding().encodeToString(bytes);
+        resets.saveAndFlush(new com.beautyshop.model.YeuCauDatLaiMatKhau(customer,
+            java.security.MessageDigest.getInstance("SHA-256").digest(token.getBytes(StandardCharsets.UTF_8)),
+            LocalDateTime.now(java.time.ZoneOffset.UTC), "SELF", UUID.randomUUID().toString()));
+        when(otp.guiOTP(Clients.googleEmail, "security")).thenReturn("fixture-challenge");
+        when(otp.xacThucOTP("fixture-challenge", "123456")).thenReturn(true);
+        Clients.server.createContext("/authorize", exchange -> {
+            var params = UriComponentsBuilder.fromUri(exchange.getRequestURI()).build().getQueryParams();
+            if (callback.equals(org.springframework.web.util.UriUtils.decode(params.getFirst("redirect_uri"), StandardCharsets.UTF_8))) {
+                Clients.nonce = params.getFirst("nonce");
+                googlePrompts.add(params.getFirst("prompt"));
+                lanGoogle.incrementAndGet();
+                exchange.getResponseHeaders().set("Location", callback + "?code=fixture&state=" + params.getFirst("state"));
+                exchange.sendResponseHeaders(302, -1);
+            } else {
+                exchange.sendResponseHeaders(400, -1);
+            }
+            exchange.close();
+        });
+        var runner = new ProcessBuilder("node", System.getenv("AUTH_BROWSER_SCRIPT"), base);
+        runner.environment().put("AUTH_RESET_TOKEN", token);
+        runner.environment().put("AUTH_OLD_PASSWORD", PASSWORD);
+        runner.environment().put("AUTH_NEW_PASSWORD", UUID.randomUUID().toString());
+        var process = runner.redirectErrorStream(true).start();
+        try {
+            assertThat(process.waitFor(120, java.util.concurrent.TimeUnit.SECONDS)).isTrue();
+            try (var lines = process.inputReader(StandardCharsets.UTF_8)) {
+                lines.lines().filter(line -> line.startsWith("[AUTH WebKit]") || line.startsWith("Browser check failed at "))
+                    .forEach(System.out::println);
+            }
+            assertThat(process.exitValue()).isZero();
+            assertThat(lanGoogle).hasValue(3);
+            assertThat(googlePrompts).containsExactly("select_account", "select_account", null);
+            var owner = users.findByEmail(Clients.googleEmail).orElseThrow();
+            assertThat(encoder.matches(runner.environment().get("AUTH_NEW_PASSWORD"), owner.getMatKhauBam())).isTrue();
+            assertThat(identities.findByNguoiDung_MaNguoiDung(owner.getMaNguoiDung())).hasSize(1);
+            assertThat(users.findById(customer.getMaNguoiDung()).orElseThrow().getPhienBanXacThuc()).isOne();
+            System.out.println("[AUTH WebKit] PASS reset/retry/replay, two-tab logout, fresh Google callback, reauth/OTP, last method and first password; fixture authorizations=3");
+        } finally {
+            process.destroyForcibly();
+            Clients.server.removeContext("/authorize");
+        }
+    }
 
     @Test
     void callbackDoiCodeKiemStateVaDangNhapBangUserId() throws Exception {
@@ -93,9 +155,11 @@ class OAuth2Callback_MariaDb_Test {
         String changed = UUID.randomUUID() + "@example.invalid";
         chungMinh(new BangChung("github", "1201", changed, "OAuth fixture"));
         var nextSession = new MockHttpSession();
-        callback(nextSession, batDau(nextSession, "/oauth2/authorization/github"), "/");
+        String stateDaDung = batDau(nextSession, "/oauth2/authorization/github");
+        callback(nextSession, stateDaDung, "/");
         assertThat(users.findByEmail(email).orElseThrow().getMaNguoiDung()).isEqualTo(id);
         assertThat(users.findByEmail(changed)).isEmpty();
+        callback(nextSession, stateDaDung, "/login?oauth2Error");
     }
 
     @Test
@@ -106,6 +170,9 @@ class OAuth2Callback_MariaDb_Test {
         String location = mvc.perform(get("/oauth2/authorization/google").session(session))
             .andExpect(status().is3xxRedirection()).andReturn().getResponse().getRedirectedUrl();
         var parameters = UriComponentsBuilder.fromUriString(location).build().getQueryParams();
+        assertThat(parameters.get("prompt")).containsExactly("select_account");
+        assertThat(parameters.getFirst("state")).isNotBlank();
+        assertThat(parameters.getFirst("nonce")).isNotBlank();
         Clients.nonce = parameters.getFirst("nonce");
         mvc.perform(get("/login/oauth2/code/google").session(session).param("code", "fixture")
                 .param("state", state(location)))
@@ -201,25 +268,45 @@ class OAuth2Callback_MariaDb_Test {
             """).params("ORDER-" + UUID.randomUUID(), owner).query(Long.class).single();
     }
 
-    @Test
-    void callbackLienKetGiuPhienVaChiGhiSauXacNhanPost() throws Exception {
+    @org.junit.jupiter.params.ParameterizedTest
+    @org.junit.jupiter.params.provider.ValueSource(strings = {"github", "google"})
+    void callbackLienKetGiuPhienVaChiGhiSauXacNhanPost(String provider) throws Exception {
         String ownerEmail = UUID.randomUUID() + "@example.invalid";
         var owner = users.saveAndFlush(new NguoiDung(ownerEmail, encoder.encode(PASSWORD), "Owner"));
         String providerEmail = UUID.randomUUID() + "@example.invalid";
-        chungMinh(new BangChung("github", "1202", providerEmail, "Khác email"));
+        String subject = UUID.randomUUID().toString();
+        if (provider.equals("google")) {
+            Clients.googleEmail = providerEmail;
+            Clients.googleSubject = subject;
+        } else {
+            chungMinh(new BangChung(provider, subject, providerEmail, "Khác email"));
+        }
         var session = (MockHttpSession) mvc.perform(post("/login").with(csrf())
                 .param("username", ownerEmail).param("password", PASSWORD))
             .andExpect(authenticated()).andReturn().getRequest().getSession(false);
         when(redis.execute(org.mockito.ArgumentMatchers.<RedisScript<Long>>any(), anyList())).thenReturn(1L);
+        String operation = "/account/security/oauth/" + provider;
+        mvc.perform(post(operation).with(csrf()).session(session).param("purpose", "LIEN_KET"))
+            .andExpect(redirectedUrl("/account/security")).andExpect(flash().attributeExists("error"));
+        mvc.perform(post(operation + "/unlink").with(csrf()).session(session))
+            .andExpect(redirectedUrl("/account/security")).andExpect(flash().attributeExists("error"));
         mvc.perform(post("/account/security/reauth/password").with(csrf()).session(session)
                 .param("matKhau", PASSWORD)).andExpect(redirectedUrl("/account/security"));
-        String path = mvc.perform(post("/account/security/oauth/github").with(csrf()).session(session)
+        String path = mvc.perform(post(operation).with(csrf()).session(session)
                 .param("purpose", "LIEN_KET")).andExpect(status().is3xxRedirection())
             .andReturn().getResponse().getRedirectedUrl();
         assertThat(path).contains("operation=");
         var snapshot = GioKhach.doc(session).them(Long.MAX_VALUE, 1);
         snapshot.luu(session);
-        callback(session, batDau(session, path), "/account/security");
+        String location = mvc.perform(get(URI.create(path)).session(session)).andExpect(status().is3xxRedirection())
+            .andReturn().getResponse().getRedirectedUrl();
+        var params = UriComponentsBuilder.fromUriString(location).build().getQueryParams();
+        assertThat(params).doesNotContainKey("prompt");
+        if (provider.equals("google")) {
+            Clients.nonce = params.getFirst("nonce");
+        }
+        mvc.perform(get("/login/oauth2/code/" + provider).session(session)
+            .param("code", "fixture").param("state", state(location))).andExpect(redirectedUrl("/account/security"));
         assertThat(GioKhach.doc(session)).isEqualTo(snapshot);
         assertThat(users.findByEmail(providerEmail)).isEmpty();
         assertThat(users.findByEmail(ownerEmail).orElseThrow().getPhienBanXacThuc()).isZero();
@@ -233,6 +320,8 @@ class OAuth2Callback_MariaDb_Test {
             .andExpect(redirectedUrl("/login?securityUpdated"));
         assertThat(users.findByEmail(ownerEmail).orElseThrow().getPhienBanXacThuc()).isEqualTo(1);
         assertThat(users.findByEmail(ownerEmail).orElseThrow().getMaNguoiDung()).isEqualTo(owner.getMaNguoiDung());
+        assertThat(identities.findByNhaCungCapAndMaDinhDanhNhaCungCap(provider, subject).orElseThrow()
+            .getNguoiDung().getMaNguoiDung()).isEqualTo(owner.getMaNguoiDung());
     }
 
     @Test
@@ -241,6 +330,8 @@ class OAuth2Callback_MariaDb_Test {
         chungMinh(new BangChung("github", "1203", email, "OAuth only"));
         var session = new MockHttpSession();
         callback(session, batDau(session, "/oauth2/authorization/github"), "/");
+        mvc.perform(post("/account/security/oauth/github/unlink").with(csrf()).session(session))
+            .andExpect(redirectedUrl("/account/security")).andExpect(flash().attributeExists("error"));
         mvc.perform(post("/account/security/password").with(csrf()).session(session)
                 .param("matKhauMoi", PASSWORD).param("xacNhan", PASSWORD))
             .andExpect(redirectedUrl("/account/security")).andExpect(flash().attributeExists("error"));
@@ -265,6 +356,61 @@ class OAuth2Callback_MariaDb_Test {
         assertThat(encoder.matches(PASSWORD, user.getMatKhauBam())).isTrue();
     }
 
+    @Test
+    void haiPhienGoDongThoiVanConMotDuongDangNhap() throws Exception {
+        String email = UUID.randomUUID() + "@example.invalid";
+        var owner = users.saveAndFlush(new NguoiDung(email, null, "Fixture"));
+        Clients.googleEmail = email;
+        Clients.googleSubject = UUID.randomUUID().toString();
+        identities.saveAllAndFlush(List.of(
+            new DanhTinhOAuth(owner, "google", Clients.googleSubject, LocalDateTime.now()),
+            new DanhTinhOAuth(owner, "github", "1221", LocalDateTime.now())));
+        chungMinh(new BangChung("github", "1221", email, "Fixture"));
+        when(otp.guiOTP(email, "security")).thenReturn("fixture-challenge");
+        when(otp.xacThucOTP("fixture-challenge", "123456")).thenReturn(true);
+
+        var sessions = new java.util.HashMap<String, MockHttpSession>();
+        for (String method : List.of("google", "github")) {
+            var session = new MockHttpSession();
+            callback(session, batDau(session, "/oauth2/authorization/github"), "/");
+            String path = mvc.perform(post("/account/security/oauth/" + method).with(csrf()).session(session)
+                    .param("purpose", "XAC_THUC_LAI")).andReturn().getResponse().getRedirectedUrl();
+            String authorization = mvc.perform(get(URI.create(path)).session(session))
+                .andExpect(status().is3xxRedirection()).andReturn().getResponse().getRedirectedUrl();
+            Clients.nonce = UriComponentsBuilder.fromUriString(authorization).build().getQueryParams().getFirst("nonce");
+            mvc.perform(get("/login/oauth2/code/" + method).session(session)
+                .param("state", state(authorization)).param("code", "fixture")).andExpect(redirectedUrl("/account/security"));
+            mvc.perform(post("/account/security/email/send").with(csrf()).session(session))
+                .andExpect(flash().attributeExists("message"));
+            mvc.perform(post("/account/security/email/verify").with(csrf()).session(session).param("ma", "123456"))
+                .andExpect(flash().attributeExists("message"));
+            sessions.put(method, session);
+        }
+
+        var start = new java.util.concurrent.CyclicBarrier(2);
+        var results = new java.util.ArrayList<java.util.concurrent.Future<String>>();
+        try (var pool = java.util.concurrent.Executors.newFixedThreadPool(2)) {
+            for (String remove : List.of("google", "github")) {
+                var session = sessions.get(remove.equals("google") ? "github" : "google");
+                results.add(pool.submit(() -> {
+                    start.await(10, java.util.concurrent.TimeUnit.SECONDS);
+                    return mvc.perform(post("/account/security/oauth/" + remove + "/unlink").with(csrf()).session(session))
+                        .andExpect(status().is3xxRedirection()).andReturn().getResponse().getRedirectedUrl();
+                }));
+            }
+            String first = results.get(0).get(15, java.util.concurrent.TimeUnit.SECONDS);
+            String second = results.get(1).get(15, java.util.concurrent.TimeUnit.SECONDS);
+            assertThat(List.of(first, second)).containsOnlyOnce("/login?securityUpdated");
+            assertThat(List.of(first, second)).allMatch(path -> List.of("/account/security", "/login?inactive",
+                "/login?securityUpdated").contains(path));
+            String remaining = "/login?securityUpdated".equals(first) ? "github" : "google";
+            assertThat(identities.docNhaCungCap(owner.getMaNguoiDung())).containsExactly(remaining);
+        }
+        assertThat(users.findById(owner.getMaNguoiDung()).orElseThrow().getPhienBanXacThuc()).isOne();
+        assertThat(jdbc.sql("SELECT COUNT(*) FROM nhat_ky_quan_tri WHERE ma_doi_tuong=? AND hanh_dong='OAUTH_UNLINKED'")
+            .param(owner.getMaNguoiDung()).query(Integer.class).single()).isOne();
+    }
+
     private void chungMinh(BangChung proof) {
         doReturn(new DefaultOAuth2User(List.of(), Map.of("id", proof.subject(), "beautyshopProof", proof), "id"))
             .when(providerUser).loadUser(any());
@@ -273,6 +419,7 @@ class OAuth2Callback_MariaDb_Test {
     private String batDau(MockHttpSession session, String path) throws Exception {
         String location = mvc.perform(get(URI.create(path)).session(session)).andExpect(status().is3xxRedirection())
             .andReturn().getResponse().getRedirectedUrl();
+        assertThat(UriComponentsBuilder.fromUriString(location).build().getQueryParams()).doesNotContainKey("prompt");
         return state(location);
     }
 
