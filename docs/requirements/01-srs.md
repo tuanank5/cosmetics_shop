@@ -23,7 +23,7 @@ Website thương mại điện tử **single-store B2C** hỗ trợ khách tìm 
 | FR-02 | CRUD category/brand/product, ảnh và thông tin thành phần/loại da | P0 | Validate dữ liệu và quyền Admin. Kiểm BR21 khi tắt SKU, sản phẩm, danh mục hoặc thương hiệu. |
 | FR-03 | ProductVariant SKU, hình/giá/tồn riêng | P0 | Chọn biến thể làm thay đổi giá/tồn hiển thị |
 | FR-04 | Search/filter/sort/pagination | P0 | Kết quả tìm nhất quán |
-| FR-05 | Đăng ký/đăng nhập/đăng xuất, CUSTOMER/ADMIN | P0 | Password BCrypt, backend authorizes |
+| FR-05 | Đăng ký/đăng nhập/đăng xuất, CUSTOMER/ADMIN | P0 | Mật khẩu BCrypt, phân quyền backend. Customer có thể liên kết Google/GitHub sau xác thực lại. Bấm đăng nhập Google yêu cầu chọn tài khoản. Reset dùng link 15 phút một lần và thu hồi phiên khi thành công. [Quyết định AUTH-D1–D3](../DECISIONS.md) |
 | FR-06 | Giỏ Guest Session + giỏ Customer DB, merge khi login | P0 | Không gộp 2 lần, không lấy giá client |
 | FR-07 | Checkout chỉ Customer, snapshot và voucher một mã/đơn | P0 | Tính lại toàn bộ tiền trên server |
 | FR-08 | COD, tạo Order, bảo toàn tồn kho | P0 | Rollback nếu thiếu tồn / lỗi giao dịch |

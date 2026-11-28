@@ -98,6 +98,55 @@ class XacThucDaPhuongThuc_MariaDb_Test {
     }
 
     @Test
+    void haiCustomerTranhCungDanhTinhChiGhiNhanChoMotChu() throws Exception {
+        long a = users.findByEmail(taoUser(false, true)).orElseThrow().getMaNguoiDung();
+        long b = users.findByEmail(taoUser(false, true)).orElseThrow().getMaNguoiDung();
+        var proof = new BangChung("google", UUID.randomUUID().toString(), email(), "Fixture");
+        var batDau = new java.util.concurrent.CyclicBarrier(2);
+        try (var pool = Executors.newFixedThreadPool(2)) {
+            var ketQua = new java.util.ArrayList<java.util.concurrent.Future<Boolean>>();
+            for (long id : new long[]{a, b}) {
+                ketQua.add(pool.submit(() -> {
+                    batDau.await(10, TimeUnit.SECONDS);
+                    try {
+                        identities.lienKet(id, 0, proof);
+                        return true;
+                    } catch (org.springframework.dao.DataIntegrityViolationException conflict) {
+                        return false;
+                    }
+                }));
+            }
+            assertThat(ketQua.get(0).get(15, TimeUnit.SECONDS)).isNotEqualTo(ketQua.get(1).get(15, TimeUnit.SECONDS));
+        }
+        long chu = identities.danhTinhDaGan(proof).getMaNguoiDung();
+        assertThat(chu).isIn(a, b);
+        for (long id : new long[]{a, b}) {
+            assertThat(users.findById(id).orElseThrow().getPhienBanXacThuc()).isEqualTo(id == chu ? 1 : 0);
+            assertThat(audit("OAUTH_LINKED", id)).isEqualTo(id == chu ? 1 : 0);
+        }
+    }
+
+    @Test
+    void doiMatKhauTuChoiTrungVaChoThuLaiCungPhien() throws Exception {
+        String email = taoUser(false, true);
+        var user = users.findByEmail(email).orElseThrow();
+        var session = login(email);
+        when(redis.execute(any(RedisScript.class), anyList())).thenReturn(1L);
+        mvc.perform(post("/account/security/password").session(session).with(csrf())
+            .param("matKhauHienTai", OLD).param("matKhauMoi", OLD).param("xacNhan", OLD))
+            .andExpect(redirectedUrl("/account/security")).andExpect(flash().attribute("error", containsString("khác mật khẩu hiện tại")));
+        var sau = users.findById(user.getMaNguoiDung()).orElseThrow();
+        assertThat(sau.getMatKhauBam()).isEqualTo(user.getMatKhauBam());
+        assertThat(sau.getPhienBanXacThuc()).isEqualTo(user.getPhienBanXacThuc());
+        assertThat(audit("PASSWORD_CHANGED", user.getMaNguoiDung())).isZero();
+        mvc.perform(post("/account/security/password").session(session).with(csrf())
+            .param("matKhauHienTai", OLD).param("matKhauMoi", NEW).param("xacNhan", NEW))
+            .andExpect(redirectedUrl("/login?securityUpdated"));
+        assertThat(session.isInvalid()).isTrue();
+        assertThat(audit("PASSWORD_CHANGED", user.getMaNguoiDung())).isOne();
+    }
+
+    @Test
     void adminGuiLinkKhachTuDatTokenChiMotLanVaPhienCuBiThuHoi() throws Exception {
         String customer = taoUser(false, true);
         String admin = taoUser(true, true);
@@ -134,8 +183,8 @@ class XacThucDaPhuongThuc_MariaDb_Test {
         assertThat(audit("PASSWORD_RESET_COMPLETED", customerId)).isZero();
 
         try (var pool = Executors.newFixedThreadPool(2)) {
-            var a = pool.submit(() -> passwords.datLai(token, NEW));
-            var b = pool.submit(() -> passwords.datLai(token, NEW));
+            var a = pool.submit(() -> passwords.datLai(token, NEW, NEW));
+            var b = pool.submit(() -> passwords.datLai(token, NEW, NEW));
             assertThat(java.util.List.of(a.get(15, TimeUnit.SECONDS), b.get(15, TimeUnit.SECONDS)))
                 .containsExactlyInAnyOrder(true, false);
         }
@@ -147,6 +196,60 @@ class XacThucDaPhuongThuc_MariaDb_Test {
     }
 
     @Test
+    void capLinkMoiVoHieuLinkCuVaChiChoDungTrongMuoiLamPhut() throws Exception {
+        String customer = taoUser(false, true);
+        long id = users.findByEmail(customer).orElseThrow().getMaNguoiDung();
+        var admin = login(taoUser(true, true));
+        String route = "/admin/users/" + id + "/password-reset";
+        mvc.perform(post(route).session(admin).with(csrf()).param("reason", "KHACH_YEU_CAU"))
+            .andExpect(flash().attributeExists("message"));
+        String first = token(customer);
+        assertThat(passwords.linkConHieuLuc(first)).isTrue();
+        assertThat(jdbc.sql("SELECT TIMESTAMPDIFF(SECOND, ngay_tao, het_han_luc) FROM yeu_cau_dat_lai_mat_khau WHERE ma_nguoi_dung=?")
+            .param(id).query(Integer.class).single()).isEqualTo(900);
+        byte[] digest = java.security.MessageDigest.getInstance("SHA-256")
+            .digest(first.getBytes(java.nio.charset.StandardCharsets.UTF_8));
+        assertThat(jdbc.sql("SELECT token_bam FROM yeu_cau_dat_lai_mat_khau WHERE ma_nguoi_dung=?")
+            .param(id).query(byte[].class).single()).isEqualTo(digest);
+
+        clearInvocations(mail);
+        mvc.perform(post(route).session(admin).with(csrf()).param("reason", "KHACH_YEU_CAU"))
+            .andExpect(status().is3xxRedirection());
+        verifyNoInteractions(mail);
+        // Chỉ dịch mốc thời gian của fixture qua khoảng chờ gửi lại.
+        jdbc.sql("UPDATE yeu_cau_dat_lai_mat_khau SET ngay_tao = ngay_tao - INTERVAL 2 MINUTE WHERE ma_nguoi_dung=?")
+            .param(id).update();
+        mvc.perform(post(route).session(admin).with(csrf()).param("reason", "KHACH_YEU_CAU"))
+            .andExpect(flash().attributeExists("message"));
+        String second = token(customer);
+        assertThat(passwords.linkConHieuLuc(first)).isFalse();
+        assertThat(passwords.datLai(first, NEW, NEW)).isFalse();
+        assertThatThrownBy(() -> passwords.datLai(second, "short", "short"))
+            .isInstanceOf(MatKhau_Service.MatKhauMoiKhongHopLe.class);
+        assertThat(passwords.linkConHieuLuc(second)).isTrue();
+        jdbc.sql("UPDATE yeu_cau_dat_lai_mat_khau SET het_han_luc = UTC_TIMESTAMP(6) - INTERVAL 1 SECOND WHERE ma_nguoi_dung=?")
+            .param(id).update();
+        assertThat(passwords.linkConHieuLuc(second)).isFalse();
+        assertThat(passwords.datLai(second, NEW, NEW)).isFalse();
+        assertThat(audit("PASSWORD_RESET_COMPLETED", id)).isZero();
+        assertThat(users.findById(id).orElseThrow().getPhienBanXacThuc()).isZero();
+    }
+
+    @Test
+    void taiKhoanChiCoOAuthDaXacMinhEmailVanCanQuyenTaiProvider() throws Exception {
+        var owner = identities.dangNhap(new BangChung("google", UUID.randomUUID().toString(), email(), "Fixture"));
+        long id = owner.getMaNguoiDung();
+        identities.xacNhanEmail(id, 0);
+        mvc.perform(post("/admin/users/" + id + "/password-reset").session(login(taoUser(true, true)))
+                .with(csrf()).param("reason", "HO_TRO_BAO_MAT"))
+            .andExpect(status().is3xxRedirection());
+        verifyNoInteractions(mail);
+        assertThat(jdbc.sql("SELECT COUNT(*) FROM yeu_cau_dat_lai_mat_khau WHERE ma_nguoi_dung=?")
+            .param(id).query(Integer.class).single()).isZero();
+        assertThat(users.findById(id).orElseThrow().getMatKhauBam()).isNull();
+    }
+
+    @Test
     void smtpThatBaiKhongDoiHashVaHetHanLink() throws Exception {
         String customer = taoUser(false, true);
         String admin = taoUser(true, true);
@@ -155,7 +258,7 @@ class XacThucDaPhuongThuc_MariaDb_Test {
         mvc.perform(post("/admin/users/" + id + "/password-reset").session(login(admin)).with(csrf())
                 .param("reason", "HO_TRO_BAO_MAT"))
             .andExpect(status().is3xxRedirection()).andExpect(flash().attributeExists("error"));
-        assertThat(passwords.datLai(token(customer), NEW)).isFalse();
+        assertThat(passwords.datLai(token(customer), NEW, NEW)).isFalse();
         assertThat(audit("PASSWORD_RESET_COMPLETED", id)).isZero();
         assertThat(encoder.matches(OLD, users.findByEmail(customer).orElseThrow().getMatKhauBam())).isTrue();
     }
@@ -186,6 +289,15 @@ class XacThucDaPhuongThuc_MariaDb_Test {
             .andExpect(redirectedUrl("/reset-password"));
         mvc.perform(post("/reset-password").session(session).param("matKhauMoi", NEW).param("xacNhan", NEW))
             .andExpect(status().isForbidden());
+        var truoc = users.findByEmail(customer).orElseThrow();
+        mvc.perform(post("/reset-password").session(session).with(csrf())
+                .param("matKhauMoi", OLD).param("xacNhan", OLD))
+            .andExpect(redirectedUrl("/reset-password")).andExpect(flash().attribute("error", containsString("khác mật khẩu hiện tại")));
+        mvc.perform(get("/reset-password").session(session)).andExpect(model().attribute("coLink", true));
+        var sau = users.findByEmail(customer).orElseThrow();
+        assertThat(sau.getMatKhauBam()).isEqualTo(truoc.getMatKhauBam());
+        assertThat(sau.getPhienBanXacThuc()).isEqualTo(truoc.getPhienBanXacThuc());
+        assertThat(audit("PASSWORD_RESET_COMPLETED", sau.getMaNguoiDung())).isZero();
         mvc.perform(post("/reset-password").session(session).with(csrf())
                 .param("matKhauMoi", NEW).param("xacNhan", NEW))
             .andExpect(redirectedUrl("/login?passwordChanged")).andExpect(unauthenticated());

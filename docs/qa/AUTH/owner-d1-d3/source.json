@@ -1,0 +1,44 @@
+﻿{
+    "base":  "f390c3adb9ff2180638a425225007e871d41b6f0",
+    "git_status":  "uncommitted",
+    "sources":  [
+                    {
+                        "file":  "src/main/java/com/beautyshop/controller/BaoMatTaiKhoan_Controller.java",
+                        "sha256":  "B770B8BDFF615FB54A12473D43D0CC60766F506C1B5616D722EB519B3FCBBB69"
+                    },
+                    {
+                        "file":  "src/main/java/com/beautyshop/controller/DatLaiMatKhau_Controller.java",
+                        "sha256":  "BFDB1D5D6EB051614B3C093AEFEBAE18D27F177FCDA5FFE5F951DDED9058A57A"
+                    },
+                    {
+                        "file":  "src/main/java/com/beautyshop/dto/MatKhauMoi_Form.java",
+                        "sha256":  "4F6F8818B8E34426509098A56AFD70F8B497639B49DC9F70AC56DF42AF2B1CD2"
+                    },
+                    {
+                        "file":  "src/main/java/com/beautyshop/security/OAuth2ThaoTac.java",
+                        "sha256":  "D3E0E5E38D99B3C57215EDD576FCE0FC006BE5110BE4F77EEEAE3007ACE87C31"
+                    },
+                    {
+                        "file":  "src/main/java/com/beautyshop/security/Security_Config.java",
+                        "sha256":  "8C8CE08A3F938A2A22659B707E87ED1FC92B5CD7725ACC8AEBB882A659315841"
+                    },
+                    {
+                        "file":  "src/main/java/com/beautyshop/service/MatKhau_Service.java",
+                        "sha256":  "5171FA2AE7CE4B495ABC1C7E4E173AB0AB744DE071DB8826B5B9268E3301A901"
+                    },
+                    {
+                        "file":  "src/test/java/com/beautyshop/integration/OAuth2Callback_MariaDb_Test.java",
+                        "sha256":  "CBD7303068F6434893700AA93CDF9D7FAC34BC8B946FCAACBFC9BD8CD1145AEA"
+                    },
+                    {
+                        "file":  "src/test/java/com/beautyshop/integration/XacThucDaPhuongThuc_MariaDb_Test.java",
+                        "sha256":  "C2A3C379FD6ED72CBE5065DF3A2494E3C66517D82136464AA11AC7EE22CAD4FD"
+                    },
+                    {
+                        "file":  "src/test/java/com/beautyshop/service/MatKhauMoiTest.java",
+                        "sha256":  "7D056F6303BA5A230EC8EFC9CE33BCC6C9128494A7488B6488873C4B17729F11"
+                    }
+                ],
+    "browser_sha256":  "3654EC245D912279856CFEEFC39B1E425BC37DE9CB1DC62BF78B28438688F229",
+    "runner_sha256":  "0751132D45AF6006EB0EBC981286CCA10F6923D4D88523AB594EE30DBBC50FEA"
+}

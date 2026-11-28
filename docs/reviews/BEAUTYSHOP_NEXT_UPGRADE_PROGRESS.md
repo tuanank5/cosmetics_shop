@@ -1,6 +1,6 @@
 # Sổ thực thi nâng cấp · 10 phase, 19 Work Package
 
-Đã soạn đủ prompt theo thứ tự dưới đây. **Chưa có WP mới đang triển khai hoặc DONE.** SHA ứng viên của lượt rà là `a9870e1`; BASE cần owner chọn revision, đối chiếu build sạch và gate trước khi cho phép code. CI đã đạt trên SHA ứng viên. Sổ [13 WP cũ](BEAUTYSHOP_IMPLEMENTATION_PROGRESS.md), gồm QA-01 BLOCKED, tiếp tục theo bằng chứng đã ghi. [Hiện trạng](BEAUTYSHOP_CURRENT_STATE_REVIEW.md) · [Hồ sơ từng WP](BEAUTYSHOP_NEXT_UPGRADE_PLAN.md) · [Quyết định cần owner duyệt, mục 1–17](BEAUTYSHOP_CHANGE_IMPACT_ANALYSIS.md)
+**BASE DONE · AUTH IN_PROGRESS.** Owner đã nghiệm thu BASE trên main `f390c3a` và giao AUTH. [Nghiệm thu BASE](https://github.com/tuanank5/cosmetics_shop/pull/6) · [Checkpoint AUTH](AUTH-ket-qua.md)
 
 ## Thứ tự thực thi và trạng thái
 
@@ -8,8 +8,8 @@ Số thứ tự là số tệp. “Chờ BASE/phụ thuộc” xác định gate
 
 | STT | Phase | Prompt | Trạng thái | Bước mở khóa / đầu vào | Owner · SHA · PR/CI · kết quả |
 |---|---|---|---|---|---|
-| 1 | 0 | [BASE](implementation-prompts/next-upgrade/01-BASE.md) | Chờ giao BASE | Giao BASE và ghi SHA do owner chọn. | — |
-| 2 | 1 | [AUTH](implementation-prompts/next-upgrade/02-AUTH.md) | Chờ BASE · BLOCKED_OWNER một phần | BASE đạt; quyết định 4–5 chỉ chặn thay đổi chính sách tương ứng. | — |
+| 1 | 0 | [BASE](implementation-prompts/next-upgrade/01-BASE.md) | DONE | Owner nghiệm thu 28/11. | `faec999` → `f390c3a` · [PR #6](https://github.com/tuanank5/cosmetics_shop/pull/6) · [CI main PASS](https://github.com/tuanank5/cosmetics_shop/actions/runs/46106902807) |
+| 2 | 1 | [AUTH](implementation-prompts/next-upgrade/02-AUTH.md) | IN_PROGRESS · review local đạt, chờ CI và owner nghiệm thu | D1–D3 đã duyệt. Nhánh QA đã stage trong clone riêng. | Gốc `f390c3a` · Maven 234 PASS, 88 SKIP · MariaDB/WebKit 40/40 · package PASS · [Checkpoint](AUTH-ket-qua.md) |
 | 3 | 1 | [AUTH-LIVE](implementation-prompts/next-upgrade/03-AUTH-LIVE.md) | Chờ phụ thuộc · BLOCKED_EXTERNAL | Cấp môi trường thật, ghi SHA được nghiệm thu. | — |
 | 4 | 2 | [AUDIT](implementation-prompts/next-upgrade/04-AUDIT.md) | BLOCKED_OWNER | Owner duyệt 6–7 và BASE đạt. | — |
 | 5 | 2 | [ACCOUNT](implementation-prompts/next-upgrade/05-ACCOUNT.md) | BLOCKED_OWNER / phụ thuộc | Chốt nội dung mail, AUTH và AUDIT sẵn sàng. | — |
@@ -44,6 +44,14 @@ Số thứ tự là số tệp. “Chờ BASE/phụ thuộc” xác định gate
 Trên mỗi dòng, điền owner, revision gốc/tích hợp, PR/CI và kết quả; nối biên bản theo mẫu `ngày | WP | trạng thái trước → sau | quyết định/phụ thuộc | môi trường/fixture | PASS/FAIL/SKIP/NOT RUN | log/ảnh | bước kế tiếp`. Khi bị chặn, ghi người có thể mở khóa, quyết định cụ thể và phạm vi còn làm độc lập. Chỉ ghi DONE khi checkpoint, regression ảnh hưởng và review/CI đúng revision đã được xác nhận. Giữ lịch sử các lần thử, không cộng gộp suite khác môi trường.
 
 Mục 15 (restore web) và 17 (tự sinh mã SKU) tiếp tục ngoài phạm vi. D48 đã chốt MongoDB cho lịch sử Customer. D49 giao AUTH/AUTH-LIVE phân biệt logout BeautyShop với phiên Google, chỉ sửa lỗi ứng dụng tái hiện được.
+
+## Nhật ký AUTH
+
+| Ngày | WP và trạng thái | Môi trường, SHA và kết quả | Bước tiếp theo |
+|---|---|---|---|
+| 28/11/2026 | AUTH · IN_PROGRESS · checkpoint local | Working diff trên `f390c3a`. Đã chặn dùng lại mật khẩu cho cả reset và đổi mật khẩu. WebKit xác nhận phiên cũ mất quyền và cần callback mới sau logout. [Maven](../qa/AUTH/test.txt) · [Tích hợp và E2E](../qa/AUTH/integration.txt) · [Package](../qa/AUTH/package.txt) · [Manifest](../qa/AUTH/source.json) | Owner review kết quả và quyết định các mục 4, 5 và UX bộ chọn Google. Chưa có PR/CI AUTH. AUTH-LIVE chờ nghiệm thu. |
+| 28/11/2026 | AUTH · owner duyệt D1–D3 · IN_PROGRESS | Working diff trên `f390c3a`. Đã triển khai bộ chọn khi bấm đăng nhập Google, chốt quyền khôi phục và kiểm đủ 14 mục trên fixture. Maven 233 PASS, 87 SKIP. Suite riêng 39 PASS. Package PASS. [Quyết định](../DECISIONS.md) · [Báo cáo](AUTH-ket-qua.md) · [Bằng chứng](../qa/AUTH/owner-d1-d3/) | Owner review bản sau D1–D3. Chờ phép xuất bản và CI đúng revision. Provider thật chưa chạy. |
+| 28/11/2026 | AUTH-FINAL · IN_PROGRESS | Review đã sửa luân chuyển ID phiên khi nhận link reset và tiêu thụ state dưới khóa phiên. Hai POST gỡ đồng thời chỉ ghi một lần. Maven 234 PASS, 88 SKIP và suite riêng 40/40 PASS. Package đạt. [Bằng chứng](../qa/AUTH/final-review/) | Nhánh local `qa/auth` từ `f390c3a`, chưa có commit ứng viên. Owner duyệt commit/push, kiểm CI push/PR rồi nghiệm thu. AUTH-LIVE chưa chạy. |
 
 ## Backlog theo quyết định mới
 

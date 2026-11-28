@@ -18,7 +18,9 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @Controller
 class DatLaiMatKhau_Controller {
     private static final String KEY = DatLaiMatKhau_Controller.class.getName() + ".token";
-    private record TokenDatLai(String value, Instant expires) implements java.io.Serializable {}
+    private record TokenDatLai(String value, Instant expires) implements java.io.Serializable {
+        @Override public String toString() { return "TokenDatLai[redacted]"; }
+    }
     private final MatKhau_Service matKhau;
 
     DatLaiMatKhau_Controller(MatKhau_Service matKhau) { this.matKhau = matKhau; }
@@ -39,12 +41,14 @@ class DatLaiMatKhau_Controller {
     }
 
     @GetMapping("/reset-password")
-    String datLai(@RequestParam(required = false) String token, HttpSession session,
+    String datLai(@RequestParam(required = false) String token, HttpServletRequest request,
                  HttpServletResponse response, Model model) {
         headers(response);
+        var session = request.getSession();
         if (token != null) {
             session.removeAttribute(KEY);
             if (matKhau.linkConHieuLuc(token)) {
+                request.changeSessionId();
                 session.setAttribute(KEY, new TokenDatLai(token, Instant.now().plusSeconds(900)));
             }
             return "redirect:/reset-password";
@@ -65,11 +69,16 @@ class DatLaiMatKhau_Controller {
         }
         if (errors.hasErrors()) {
             flash.addFlashAttribute("error", "Mật khẩu cần từ 12 ký tự, tối đa 72 byte và khớp xác nhận.");
-        } else if (matKhau.datLai(token, form.getMatKhauMoi())) {
-            new SecurityContextLogoutHandler().logout(request, response, authentication);
-            return "redirect:/login?passwordChanged";
-        } else {
+            return "redirect:/reset-password";
+        }
+        try {
+            if (matKhau.datLai(token, form.getMatKhauMoi(), form.getXacNhan())) {
+                new SecurityContextLogoutHandler().logout(request, response, authentication);
+                return "redirect:/login?passwordChanged";
+            }
             session.removeAttribute(KEY);
+        } catch (MatKhau_Service.MatKhauMoiKhongHopLe invalid) {
+            flash.addFlashAttribute("error", invalid.getMessage());
         }
         return "redirect:/reset-password";
     }

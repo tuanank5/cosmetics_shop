@@ -1,0 +1,34 @@
+﻿{
+    "base":  "f390c3adb9ff2180638a425225007e871d41b6f0",
+    "git_status":  "working diff, uncommitted",
+    "sources":  [
+                    {
+                        "file":  "src/main/java/com/beautyshop/controller/BaoMatTaiKhoan_Controller.java",
+                        "sha256":  "B770B8BDFF615FB54A12473D43D0CC60766F506C1B5616D722EB519B3FCBBB69"
+                    },
+                    {
+                        "file":  "src/main/java/com/beautyshop/controller/DatLaiMatKhau_Controller.java",
+                        "sha256":  "BFDB1D5D6EB051614B3C093AEFEBAE18D27F177FCDA5FFE5F951DDED9058A57A"
+                    },
+                    {
+                        "file":  "src/main/java/com/beautyshop/dto/MatKhauMoi_Form.java",
+                        "sha256":  "4F6F8818B8E34426509098A56AFD70F8B497639B49DC9F70AC56DF42AF2B1CD2"
+                    },
+                    {
+                        "file":  "src/main/java/com/beautyshop/service/MatKhau_Service.java",
+                        "sha256":  "5171FA2AE7CE4B495ABC1C7E4E173AB0AB744DE071DB8826B5B9268E3301A901"
+                    },
+                    {
+                        "file":  "src/test/java/com/beautyshop/integration/OAuth2Callback_MariaDb_Test.java",
+                        "sha256":  "02692E5AE46A697F868EDB1C0AF1467378571E37DBBDFD5B1A3AB45F7AAB5046"
+                    },
+                    {
+                        "file":  "src/test/java/com/beautyshop/integration/XacThucDaPhuongThuc_MariaDb_Test.java",
+                        "sha256":  "13CC281B47EF0DD6EAAC9D8D45EFDC706882450C56C12F2BE3A519E25DE17BCB"
+                    },
+                    {
+                        "file":  "src/test/java/com/beautyshop/service/MatKhauMoiTest.java",
+                        "sha256":  "7D056F6303BA5A230EC8EFC9CE33BCC6C9128494A7488B6488873C4B17729F11"
+                    }
+                ]
+}

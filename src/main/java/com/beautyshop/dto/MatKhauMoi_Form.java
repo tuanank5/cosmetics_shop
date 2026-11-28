@@ -1,7 +1,6 @@
 package com.beautyshop.dto;
 
 import jakarta.validation.constraints.AssertTrue;
-import java.util.Objects;
 import com.beautyshop.service.MatKhau_Service;
 
 public class MatKhauMoi_Form {
@@ -14,6 +13,6 @@ public class MatKhauMoi_Form {
 
     @AssertTrue
     public boolean isHopLe() {
-        return MatKhau_Service.matKhauHopLe(matKhauMoi) && Objects.equals(matKhauMoi, xacNhan);
+        return MatKhau_Service.matKhauMoiHopLe(matKhauMoi, xacNhan);
     }
 }
