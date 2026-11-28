@@ -13,7 +13,7 @@ Số thứ tự là số tệp. “Chờ BASE/phụ thuộc” xác định gate
 | 3 | 1 | [AUTH-LIVE](implementation-prompts/next-upgrade/03-AUTH-LIVE.md) | Chờ phụ thuộc · BLOCKED_EXTERNAL | Cấp môi trường thật, ghi SHA được nghiệm thu. | — |
 | 4 | 2 | [AUDIT](implementation-prompts/next-upgrade/04-AUDIT.md) | IN_PROGRESS | D6/D7 đã duyệt. Review local trên `4fa2262`; purge thực tế chờ nguồn bảo lưu có thẩm quyền. | [Phạm vi, kiểm chứng và gate](AUDIT-ket-qua.md) |
 | 5 | 2 | [ACCOUNT](implementation-prompts/next-upgrade/05-ACCOUNT.md) | BLOCKED_OWNER / phụ thuộc | Chốt nội dung mail, AUTH và AUDIT sẵn sàng. | — |
-| 6 | 3 | [VOUCHER](implementation-prompts/next-upgrade/06-VOUCHER.md) | BLOCKED_OWNER | Owner duyệt 1–3; phối hợp AUDIT. | — |
+| 6 | 3 | [VOUCHER](implementation-prompts/next-upgrade/06-VOUCHER.md) | IN_PROGRESS | Owner duyệt VOUCHER-1–3 ngày 28/11/2026. | [Checkpoint](VOUCHER-ket-qua.md) |
 | 7 | 3 | [PAYMENT](implementation-prompts/next-upgrade/07-PAYMENT.md) | PARTIAL_ACCEPTED / BLOCKED_DEPENDENCY | Owner giao phần lịch sử độc lập tại `98d2fa3`. Tổng tiền, snapshot và đối soát hai slot BLOCKED_DEPENDENCY (VOUCHER). | [Báo cáo PAYMENT](PAYMENT-ket-qua.md) |
 | 8 | 3 | [PAY-LIVE](implementation-prompts/next-upgrade/08-PAY-LIVE.md) | Chờ phụ thuộc · BLOCKED_EXTERNAL | Xác nhận môi trường thật, revision và số đầu kỳ. | — |
 | 9 | 4 | [ORDER](implementation-prompts/next-upgrade/09-ORDER.md) | Chờ phụ thuộc | Chốt đầu vào AUTH; đồng bộ hai view chi tiết. | — |
@@ -44,6 +44,12 @@ Số thứ tự là số tệp. “Chờ BASE/phụ thuộc” xác định gate
 Trên mỗi dòng, điền owner, revision gốc/tích hợp, PR/CI và kết quả; nối biên bản theo mẫu `ngày | WP | trạng thái trước → sau | quyết định/phụ thuộc | môi trường/fixture | PASS/FAIL/SKIP/NOT RUN | log/ảnh | bước kế tiếp`. Khi bị chặn, ghi người có thể mở khóa, quyết định cụ thể và phạm vi còn làm độc lập. Chỉ ghi DONE khi checkpoint, regression ảnh hưởng và review/CI đúng revision đã được xác nhận. Giữ lịch sử các lần thử, không cộng gộp suite khác môi trường.
 
 Mục 15 (restore web) và 17 (tự sinh mã SKU) tiếp tục ngoài phạm vi. D48 đã chốt MongoDB cho lịch sử Customer. D49 giao AUTH/AUTH-LIVE phân biệt logout BeautyShop với phiên Google, chỉ sửa lỗi ứng dụng tái hiện được.
+
+## Nhật ký VOUCHER
+
+28/11/2026 · Owner giao VOUCHER-1–3 trên `5bdada6`. V9, hai slot HÀNG/VẬN_CHUYỂN, quota tổng và theo khách, checkout COD/MoMo, audit Admin và migration legacy đang ở gate review local. Chờ VOUCHER-FINAL, PR, CI và nghiệm thu đúng revision. [Báo cáo, regression và manifest](VOUCHER-ket-qua.md)
+
+28/11/2026 · VOUCHER-FINAL · IN_PROGRESS. Đã review SQL, quota, số tiền gateway mock và migration V9. Maven 244 PASS/102 SKIP, MariaDB/MongoDB 127/127, bootstrap 10/10, WebKit 4/4, package PASS. Chờ PR, CI đúng revision và owner nghiệm thu. [Review cuối](../qa/VOUCHER/final-review/review.md)
 
 ## Nhật ký AUDIT
 

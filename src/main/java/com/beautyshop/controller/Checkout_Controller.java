@@ -9,7 +9,6 @@ import com.beautyshop.service.DonHang_Service;
 import com.beautyshop.service.GioHang_Service;
 import com.beautyshop.service.Momo_Facade;
 import com.beautyshop.service.PhieuGiamGia_Service;
-import com.beautyshop.shipping.ShippingFee_Policy;
 import jakarta.validation.Valid;
 import java.math.BigDecimal;
 import java.util.List;
@@ -43,11 +42,11 @@ class Checkout_Controller {
     @PostMapping("/quote")
     String baoGia(@AuthenticationPrincipal PhienNguoiDung phien,
                   @Valid @ModelAttribute("form") Checkout_Form form, BindingResult errors, Model model) {
-        tinhBaoGia(form, errors, model, chuanBiCheckout(phien, model));
+        tinhBaoGia(phien.getMaNguoiDung(), form, errors, model, chuanBiCheckout(phien, model));
         return "order/checkout";
     }
 
-    private void tinhBaoGia(Checkout_Form form, BindingResult errors, Model model, List<MucGio> mucGio) {
+    private void tinhBaoGia(long khach, Checkout_Form form, BindingResult errors, Model model, List<MucGio> mucGio) {
         if (mucGio.isEmpty()) {
             errors.reject("checkout.empty", "Giỏ hàng đang trống. Vui lòng quay lại giỏ hàng.");
         } else if (mucGio.stream().anyMatch(muc -> muc.soLuong() > muc.khaDung())) {
@@ -57,11 +56,18 @@ class Checkout_Controller {
             errors.rejectValue("addressId", "checkout.address", "Chọn địa chỉ giao hàng của bạn.");
         }
         if (!errors.hasErrors()) {
-            BigDecimal tamTinh = (BigDecimal) model.getAttribute("tamTinh");
             try {
-                themBaoGia(model, tamTinh, voucherService.xemTruoc(form.getVoucher(), tamTinh).soTien());
+                var gia = voucherService.xemGio(form.getVoucher(), form.getShip(), khach, mucGio);
+                model.addAttribute("dieuKienMa", java.util.stream.Stream.of(gia.hang().dieuKien(), gia.ship().dieuKien())
+                    .filter(java.util.Objects::nonNull).toList());
+                model.addAttribute("phi", gia.phiChuan());
+                model.addAttribute("giam", gia.hang().soTien());
+                model.addAttribute("giamShip", gia.ship().soTien());
+                model.addAttribute("tong", gia.tong());
                 model.addAttribute("baoGiaHopLe", true);
                 model.addAttribute("voucherDaTinh", form.getVoucher() == null ? "" : form.getVoucher().strip());
+            } catch (PhieuGiamGia_Service.MaVanChuyenKhongHopLe exception) {
+                errors.rejectValue("ship", "checkout.ship", exception.getMessage());
             } catch (IllegalArgumentException exception) {
                 errors.rejectValue("voucher", "checkout.voucher", exception.getMessage());
             } catch (IllegalStateException | ConcurrencyFailureException exception) {
@@ -78,7 +84,7 @@ class Checkout_Controller {
         var muc = chuanBiCheckout(phien, model);
         if (form.getAddressId() != null && !muc.isEmpty()) {
             var errors = new BeanPropertyBindingResult(form, "form");
-            tinhBaoGia(form, errors, model, muc);
+            tinhBaoGia(phien.getMaNguoiDung(), form, errors, model, muc);
             model.addAllAttributes(errors.getModel());
         }
         return "order/checkout";
@@ -92,13 +98,13 @@ class Checkout_Controller {
         if (!errors.hasErrors()) {
             try {
                 if ("MOMO".equals(payment)) {
-                    long maDon = donHangService.datMomo(phien.getMaNguoiDung(), form.getAddressId(), form.getVoucher());
+                    long maDon = donHangService.datMomo(phien.getMaNguoiDung(), form.getAddressId(), form.getVoucher(), form.getShip());
                     return batDauMomo(maDon, flash);
                 }
                 if (!"COD".equals(payment)) {
                     throw new IllegalArgumentException("Phương thức thanh toán không hợp lệ.");
                 }
-                long maDon = donHangService.datCOD(phien.getMaNguoiDung(), form.getAddressId(), form.getVoucher());
+                long maDon = donHangService.datCOD(phien.getMaNguoiDung(), form.getAddressId(), form.getVoucher(), form.getShip());
                 flash.addFlashAttribute("message", "Đã đặt đơn COD.");
                 return "redirect:/orders/" + maDon;
             } catch (IllegalArgumentException | IllegalStateException exception) {
@@ -148,12 +154,4 @@ class Checkout_Controller {
         return muc;
     }
 
-    private void themBaoGia(Model model, BigDecimal tamTinh, BigDecimal giam) {
-        BigDecimal sauGiam = tamTinh.subtract(giam);
-        BigDecimal phi = ShippingFee_Policy.calculate(sauGiam);
-        model.addAttribute("tamTinh", tamTinh);
-        model.addAttribute("giam", giam);
-        model.addAttribute("phi", phi);
-        model.addAttribute("tong", sauGiam.add(phi));
-    }
 }

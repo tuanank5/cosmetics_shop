@@ -25,7 +25,7 @@ Website thương mại điện tử **single-store B2C** hỗ trợ khách tìm 
 | FR-04 | Search/filter/sort/pagination | P0 | Kết quả tìm nhất quán |
 | FR-05 | Đăng ký/đăng nhập/đăng xuất, CUSTOMER/ADMIN | P0 | Mật khẩu BCrypt, phân quyền backend. Customer có thể liên kết Google/GitHub sau xác thực lại. Bấm đăng nhập Google yêu cầu chọn tài khoản. Reset dùng link 15 phút một lần và thu hồi phiên khi thành công. [Quyết định AUTH-D1–D3](../DECISIONS.md) |
 | FR-06 | Giỏ Guest Session + giỏ Customer DB, merge khi login | P0 | Không gộp 2 lần, không lấy giá client |
-| FR-07 | Checkout chỉ Customer, snapshot và voucher một mã/đơn | P0 | Tính lại toàn bộ tiền trên server |
+| FR-07 | Checkout chỉ Customer, snapshot theo dòng và tối đa một mã HÀNG cùng một mã VẬN_CHUYỂN mỗi đơn | P0 | Tính lại toàn bộ tiền trên server |
 | FR-08 | COD, tạo Order, bảo toàn tồn kho | P0 | Rollback nếu thiếu tồn / lỗi giao dịch |
 | FR-09 | MoMo Sandbox, PaymentAttempt, IPN + idempotency | P1 có điều kiện | Duplicate callback không thanh toán/trừ kho 2 lần |
 | FR-10 | Giữ SKU 15 phút online, hết hạn & đối soát | P1 gắn MoMo | Không oversell khi đồng thời |

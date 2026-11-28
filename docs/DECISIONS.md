@@ -91,3 +91,11 @@ Khi một quyết định thay đổi: cập nhật bảng này, SRS, ERD, promp
 
 - **AUDIT-D6**. Retention mặc định 180 ngày, tối thiểu 180. Bảo lưu hồ sơ đối soát, tranh chấp và nghĩa vụ dài hơn. Admin do owner phân công được dry-run và dọn từng batch giới hạn, có số liệu và kết quả truy vết. Giữ mô hình role hiện hành.
 - **AUDIT-D7**. ROLE_ADMIN đọc list/detail. Chỉ ghi thao tác Admin quan trọng có hợp đồng rõ. Snapshot theo allowlist, tham chiếu ID chứng từ, correlation/action duy nhất. SUCCESS cùng transaction nghiệp vụ, FAILED sau rollback trong transaction riêng. Loại dữ liệu bí mật và riêng tư. Các dòng chưa rõ chờ owner. [Ma trận thực hiện](reviews/AUDIT-ket-qua.md)
+
+## Quyết định VOUCHER ngày 28/11/2026
+
+| ID | Quyết định owner |
+|---|---|
+| VOUCHER-1 | OR trong chiều, AND giữa các chiều, kiểm Customer riêng. minSpend HÀNG trên dòng phù hợp trước giảm. Quota tổng và theo khách gồm USED + HELD. |
+| VOUCHER-2 | Hai slot, phân bổ giảm HÀNG theo phần lẻ rồi ID. D27 sau giảm hàng. minSpend SHIP trên hàng phù hợp sau phân bổ. Miễn ship tự bỏ slot SHIP. |
+| VOUCHER-3 | COD dùng, MoMo giữ và chuyển theo kết quả xác minh. Hủy hợp lệ trước giao khi đã giải quyết nghĩa vụ tiền trả lượt một lần. Hoàn sau giao không trả lượt. |

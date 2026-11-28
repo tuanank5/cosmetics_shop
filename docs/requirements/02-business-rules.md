@@ -12,7 +12,7 @@
 | BR08 | IPN xác minh chữ ký, merchant, attempt, order, currency, amount; idempotent theo transaction reference và state |
 | BR09 | PaymentAttempt có thể nhiều lần/Order; một Order chỉ ghi nhận số tiền thanh toán thành công hợp lệ một lần (trừ nghiệp vụ refund riêng) |
 | BR10 | Không chấp nhận callback thành công muộn nếu reservation đã hết hạn/giải phóng; đưa trạng thái cần đối soát/hoàn tiền phù hợp, không oversell |
-| BR11 | Một voucher/Order; FIXED/PERCENT, minSpend/maxDiscount, thời gian, lượt dùng; giữ lượt cho pending và release/consume idempotent |
+| BR11 | Tối đa một mã HÀNG và một mã VẬN_CHUYỂN. Giao các chiều hàng đã cấu hình, hợp trong chiều, kiểm Customer riêng. HÀNG xét minSpend trước giảm, SHIP xét hàng hợp lệ sau phân bổ. Quota tổng/khách gồm HELD + USED. Miễn ship tự bỏ mã SHIP. Trả lượt một lần khi hủy hợp lệ trước giao và đã giải quyết nghĩa vụ tiền. Hoàn sau giao giữ USED. [VOUCHER-1–3](../reviews/VOUCHER-quyet-dinh-1-3.md) |
 | BR12 | Phí ship 25.000đ/đơn; miễn từ subtotal **sau voucher** đạt 500.000đ (quy tắc đề xuất được ghi trong Decisions) |
 | BR13 | Order state và Payment state độc lập; Customer tự hủy khi chưa PACKING và thoả điều kiện payment/fulfillment |
 | BR14 | Canceled Order trả tồn kho hoặc reserved/voucher đúng một lần; nếu đã thu tiền phải theo quy trình refund |

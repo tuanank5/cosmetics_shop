@@ -65,5 +65,28 @@ public class PhieuGiamGia_Form {
     public boolean isDangHoatDong() { return dangHoatDong; }
     public void setDangHoatDong(boolean dangHoatDong) { this.dangHoatDong = dangHoatDong; }
 
+    public enum Slot { HANG, VAN_CHUYEN }
+    @NotNull private Slot slot = Slot.HANG;
+    @PositiveOrZero private Integer gioiHanKhach;
+    public Slot getSlot() { return slot; }
+    public void setSlot(Slot slot) { this.slot = slot; }
+    public Integer getGioiHanKhach() { return gioiHanKhach; }
+    public void setGioiHanKhach(Integer gioiHanKhach) { this.gioiHanKhach = gioiHanKhach; }
+    @Size(max = 4000) private String sanPham = "";
+    public String getSanPham() { return sanPham; }
+    public void setSanPham(String ids) { this.sanPham = ids; }
+
+    @Size(max = 4000) private String danhMuc = "";
+    public String getDanhMuc() { return danhMuc; }
+    public void setDanhMuc(String ids) { this.danhMuc = ids; }
+
+    @Size(max = 4000) private String thuongHieu = "";
+    public String getThuongHieu() { return thuongHieu; }
+    public void setThuongHieu(String ids) { this.thuongHieu = ids; }
+
+    @Size(max = 4000) private String nguoiDung = "";
+    public String getNguoiDung() { return nguoiDung; }
+    public void setNguoiDung(String ids) { this.nguoiDung = ids; }
+
     public enum LoaiGiamGia { FIXED, PERCENT }
 }

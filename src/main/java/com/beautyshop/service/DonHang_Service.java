@@ -14,7 +14,6 @@ import com.beautyshop.repository.DonHang_Repository.DongDonAdmin;
 import com.beautyshop.repository.DonHang_Repository.TomTat;
 import com.beautyshop.repository.GioHang_Repository;
 import com.beautyshop.repository.ThanhToanMomo_Repository;
-import com.beautyshop.shipping.ShippingFee_Policy;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
@@ -61,16 +60,26 @@ public class DonHang_Service {
 
     @Transactional(isolation = Isolation.READ_COMMITTED)
     public long datCOD(long maNguoiDung, long maDiaChi, String maVoucher) {
-        return datDon(maNguoiDung, maDiaChi, maVoucher, null);
+        return datCOD(maNguoiDung, maDiaChi, maVoucher, null);
+    }
+
+    @Transactional(isolation = Isolation.READ_COMMITTED)
+    public long datCOD(long maNguoiDung, long maDiaChi, String maVoucher, String ship) {
+        return datDon(maNguoiDung, maDiaChi, maVoucher, ship, null);
     }
 
     @Transactional(isolation = Isolation.READ_COMMITTED)
     public long datMomo(long maNguoiDung, long maDiaChi, String maVoucher) {
-        String gateway = momo.gateway().orElseThrow(() -> new IllegalStateException("MoMo chưa khả dụng.")).maGateway();
-        return datDon(maNguoiDung, maDiaChi, maVoucher, gateway);
+        return datMomo(maNguoiDung, maDiaChi, maVoucher, null);
     }
 
-    private long datDon(long maNguoiDung, long maDiaChi, String maVoucher, String gateway) {
+    @Transactional(isolation = Isolation.READ_COMMITTED)
+    public long datMomo(long maNguoiDung, long maDiaChi, String maVoucher, String ship) {
+        String gateway = momo.gateway().orElseThrow(() -> new IllegalStateException("MoMo chưa khả dụng.")).maGateway();
+        return datDon(maNguoiDung, maDiaChi, maVoucher, ship, gateway);
+    }
+
+    private long datDon(long maNguoiDung, long maDiaChi, String maVoucher, String ship, String gateway) {
         boolean online = gateway != null;
         long maGio = gioHangRepository.khoaGio(maNguoiDung);
         var diaChi = diaChiRepository.findByMaDiaChiAndNguoiDungMaNguoiDung(maDiaChi, maNguoiDung)
@@ -80,6 +89,7 @@ public class DonHang_Service {
             throw new IllegalStateException("Giỏ hàng đang trống.");
         }
         List<ChiTiet> chiTiet = new ArrayList<>(gio.size());
+        var dongGia = new ArrayList<GioHang_Repository.MucGio>();
         BigDecimal tamTinh = BigDecimal.ZERO;
         for (var muc : gio) {
             var sku = gioHangRepository.timBienThe(muc.maBienThe(), true)
@@ -88,13 +98,14 @@ public class DonHang_Service {
                 throw new IllegalStateException("Không còn đủ số lượng đã chọn cho " + sku.tenSanPham() + " · " + sku.tenBienThe() + ".");
             }
             var snapshot = new ChiTiet(sku.maBienThe(), sku.sku(), sku.tenSanPham(), sku.tenBienThe(), sku.giaBan(), muc.soLuong(), null);
+            dongGia.add(sku.voiSoLuong(muc.soLuong()));
             chiTiet.add(snapshot);
             tamTinh = tamTinh.add(snapshot.thanhTien());
         }
-        var giam = online ? voucher.giuOnline(maVoucher, tamTinh) : voucher.apDungCOD(maVoucher, tamTinh);
-        var sauGiam = tamTinh.subtract(giam.soTien());
-        var phi = ShippingFee_Policy.calculate(sauGiam);
-        var tong = sauGiam.add(phi);
+        var gia = voucher.chotGio(maVoucher, ship, maNguoiDung, dongGia);
+        var giam = gia.hang();
+        var phi = gia.phiChuan().subtract(gia.ship().soTien());
+        var tong = gia.tong();
         if (tamTinh.compareTo(GIOI_HAN_TIEN) > 0 || tong.compareTo(GIOI_HAN_TIEN) > 0) {
             throw new IllegalArgumentException("Giá trị đơn vượt giới hạn thanh toán.");
         }
@@ -104,16 +115,17 @@ public class DonHang_Service {
 
         long maDon = donHangRepository.tao("BS-" + UUID.randomUUID(), maNguoiDung, giam.maVoucher(),
             diaChi.getTenNguoiNhan(), diaChi.getSoDienThoai(), diaChi.getDiaChiChiTiet(), tamTinh, giam.soTien(), phi, tong, online);
+        donHangRepository.ghiPhi(maDon, gia.phiChuan(), gia.ship().soTien());
+        voucher.ghiLuot(maDon, gia, online);
         for (var muc : chiTiet) {
             if (online) {
                 tonKho.reserveAtomically(maDon, muc.maBienThe(), muc.soLuong());
             } else {
                 tonKho.deductCOD(maDon, muc.maBienThe(), muc.soLuong());
             }
-            donHangRepository.themMuc(maDon, muc);
+            donHangRepository.themMuc(maDon, muc, gia.phanBo().getOrDefault(muc.maBienThe(),BigDecimal.ZERO));
         }
         if (online) {
-            voucher.ghiTamGiu(maDon, giam.maVoucher());
             thanhToanMomo.tao(maDon, UUID.randomUUID().toString(), tong, gateway);
         } else {
             donHangRepository.taoThanhToanCOD(maDon, tong);
@@ -154,9 +166,10 @@ public class DonHang_Service {
         boolean mock = online && thanhToanMomo.moiNhat(maDon)
             .map(lan -> com.beautyshop.payment.MomoGateway.MA_MOCK.equals(lan.gateway())).orElse(false);
         boolean doiSoat = online && momo.enabled() && don.trangThai() == OrderStatus.PENDING_PAYMENT;
+        long canHoan = online ? thanhToanMomo.soLanCanHoan(maDon) : 0;
         return new ChiTietDon(don, donHangRepository.chiTiet(maDon), thanhToan,
             coTheHuy(don, thanhToan), next(don, "PAID".equals(thanhToan)), mock, doiSoat,
-            doiSoat && thanhToanMomo.conHan(maDon), online ? thanhToanMomo.soLanCanHoan(maDon) : 0,
+            doiSoat && canHoan == 0 && thanhToanMomo.conHan(maDon), canHoan,
             thanhToanMomo.lichSu(maDon, quanTri));
     }
 
@@ -203,7 +216,7 @@ public class DonHang_Service {
         for (var muc : donHangRepository.chiTiet(don.maDonHang())) {
             tonKho.hoanCOD(don.maDonHang(), muc.maBienThe(), muc.soLuong());
         }
-        voucher.hoanCOD(don.maVoucher());
+        voucher.traLuotCOD(don.maDonHang());
         donHangRepository.doiTrangThai(don.maDonHang(), OrderStatus.CANCELLED);
     }
 

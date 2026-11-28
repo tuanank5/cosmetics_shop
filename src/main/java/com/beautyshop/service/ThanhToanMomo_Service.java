@@ -40,6 +40,9 @@ public class ThanhToanMomo_Service {
         if (don.trangThai() != OrderStatus.PENDING_PAYMENT || !thanhToan.conHan(maDon)) {
             throw new IllegalStateException("Đơn đã hết thời gian thử lại. Vui lòng chờ xác nhận kết quả thanh toán.");
         }
+        if (thanhToan.soLanCanHoan(maDon) > 0) {
+            throw new IllegalStateException("Đơn có giao dịch cần đối soát. Vui lòng chờ xác nhận.");
+        }
         if ("PENDING".equals(lan.trangThai())) {
             return lan.request();
         }
@@ -127,6 +130,8 @@ public class ThanhToanMomo_Service {
 
     private void ketThucDon(Don don) {
         long maDon = don.maDonHang();
+        // Giao dịch thành công đến muộn còn nghĩa vụ tiền. Giữ tài nguyên chờ kết quả cuối.
+        if (thanhToan.soLanCanHoan(maDon) > 0) return;
         thanhToan.dangGiu(maDon).forEach(sku -> tonKho.releaseReservation(maDon, sku));
         voucher.ketThucTamGiu(maDon, don.maVoucher(), false);
         donHang.doiTrangThai(maDon, OrderStatus.EXPIRED);

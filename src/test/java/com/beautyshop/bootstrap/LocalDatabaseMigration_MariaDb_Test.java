@@ -17,7 +17,7 @@ class LocalDatabaseMigration_MariaDb_Test {
     private static final String PASSWORD = System.getenv("DB_PASSWORD");
 
     @ParameterizedTest
-    @ValueSource(ints = {1, 2, 3, 4, 5, 6})
+    @ValueSource(ints = {1, 2, 3, 4, 5, 6, 7, 8})
     void nangCapVaGiuNguoiDungTuLichSuChinhThuc(int version) throws Exception {
         String url = fixtureUrl("v" + version);
         Flyway.configure().dataSource(url, USER, PASSWORD).target(Integer.toString(version)).load().migrate();
@@ -45,8 +45,31 @@ class LocalDatabaseMigration_MariaDb_Test {
             assertThat(users.next()).isFalse();
         }
         var info = Flyway.configure().dataSource(url, USER, PASSWORD).load().info();
-        assertThat(info.current().getVersion().toString()).isEqualTo("7");
-        assertThat(info.applied()).hasSize(7);
+        assertThat(info.current().getVersion().toString()).isEqualTo("9");
+        assertThat(info.applied()).hasSize(9);
+        if (version == 8) kiemTraRangBuocSlot(url);
+    }
+
+    private void kiemTraRangBuocSlot(String url) throws Exception {
+        try (var cn = DriverManager.getConnection(url, USER, PASSWORD); var st = cn.createStatement()) {
+            st.executeUpdate("""
+                INSERT INTO phieu_giam_gia(ma_phieu_giam_gia,ma_ap_dung,loai_giam_gia,gia_tri_giam,gioi_han_su_dung,bat_dau_luc,ket_thuc_luc)
+                VALUES (10,'A','FIXED',1000,5,'2020-01-01','2099-01-01'),(20,'B','FIXED',1000,5,'2020-01-01','2099-01-01')
+                """);
+            st.executeUpdate("""
+                INSERT INTO don_hang(ma_don_hang,ma_don_hang_hien_thi,ma_nguoi_dung,ten_nguoi_nhan,sdt_nguoi_nhan,
+                    dia_chi_khi_dat,tam_tinh,tong_thanh_toan,trang_thai,phuong_thuc_thanh_toan)
+                VALUES(1,'test',500,'Fixture','0','Fixture',5000,5000,'PENDING_PAYMENT','MOMO')
+                """);
+            String insert = "INSERT INTO tam_giu_phieu_giam_gia(ma_don_hang,ma_phieu_giam_gia,slot,trang_thai) VALUES ";
+            st.executeUpdate(insert + "(1,10,'HANG','HELD')");
+            assertThatThrownBy(() -> st.executeUpdate(insert + "(1,20,'HANG','HELD')"))
+                .isInstanceOf(java.sql.SQLException.class).hasMessageContaining("uq_don_slot");
+            assertThatThrownBy(() -> st.executeUpdate(insert + "(1,10,'VAN_CHUYEN','HELD')"))
+                .isInstanceOf(java.sql.SQLException.class).hasMessageContaining("uq_don_phieu");
+            assertThatThrownBy(() -> st.executeUpdate(insert + "(1,999,'VAN_CHUYEN','HELD')"))
+                .isInstanceOf(java.sql.SQLException.class).hasMessageContaining("foreign key");
+        }
     }
 
     @Test

@@ -43,6 +43,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WebMvcTest(GioHang_Controller.class)
 @Import(Security_Config.class)
 class GioHangPagesTest {
+    @MockitoBean com.beautyshop.service.PhieuGiamGia_Service voucher;
     @Autowired MockMvc mvc;
     @MockitoBean GioHang_Service gioHang;
     @MockitoBean LoginSuccess_Handler loginSuccess;
@@ -61,7 +62,7 @@ class GioHangPagesTest {
             synchronized (WebUtils.getSessionMutex(session)) {
                 pending = executor.submit(() -> {
                     started.countDown();
-                    return new GioHang_Controller(gioHang).them(11L, null, session, new RedirectAttributesModelMap());
+                    return new GioHang_Controller(gioHang,voucher).them(11L, null, session, new RedirectAttributesModelMap());
                 });
                 assertThat(started.await(5, TimeUnit.SECONDS)).isTrue();
                 session.setAttribute(HttpSessionSecurityContextRepository.SPRING_SECURITY_CONTEXT_KEY,

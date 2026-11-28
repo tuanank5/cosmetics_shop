@@ -12,7 +12,8 @@
   const status = document.querySelector('[data-quote-status]');
   const retry = document.querySelector('[data-quote-retry]');
   const errors = form.querySelector('[data-quote-errors]');
-  const fields = [address, voucher];
+  const ship = form.elements.ship;
+  const fields = [address, voucher, ship];
   let region = document.querySelector('[data-quote-region]');
   let version = 0;
   let timer;
@@ -22,6 +23,7 @@
   function current() {
     return region.dataset.quoteValid === 'true'
       && order.elements.addressId.value === address.value
+      && order.elements.ship.value.trim() === ship.value.trim()
       && order.elements.voucher.value === voucher.value.trim();
   }
 
@@ -36,6 +38,7 @@
   function showFieldErrors(source) {
     for (const field of fields) {
       const error = document.getElementById(field.id + '-error');
+      if (!error) continue;
       error.hidden = !source?.getElementById(error.id)?.textContent;
       error.textContent = source?.getElementById(error.id)?.textContent || '';
       if (source?.getElementById(field.id)?.getAttribute('aria-invalid') === 'true') {
@@ -74,6 +77,7 @@
       showFieldErrors(source);
       order.elements.addressId.value = nextOrder.elements.addressId.value;
       order.elements.voucher.value = nextOrder.elements.voucher.value;
+      order.elements.ship.value = nextOrder.elements.ship.value;
       place.disabled = !current();
       const total = region.querySelector('[data-checkout-total]');
       status.textContent = current()
@@ -127,6 +131,7 @@
     showSelectedAddress();
     schedule(0);
   });
+  ship.addEventListener('input', () => schedule(350));
   voucher.addEventListener('input', () => schedule(350));
   retry.addEventListener('click', () => {
     schedule(0);

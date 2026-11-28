@@ -11,6 +11,13 @@ import java.math.RoundingMode;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.HashMap;
+import java.util.Comparator;
+import com.beautyshop.repository.GioHang_Repository.MucGio;
+import com.beautyshop.repository.PhieuGiamGia_Repository.Chieu;
+import com.beautyshop.shipping.ShippingFee_Policy;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import com.beautyshop.dto.BoLocDanhSachAdmin;
@@ -61,6 +68,13 @@ public class PhieuGiamGia_Service {
         form.setBatDauLuc(cauHinh.batDauLuc().truncatedTo(ChronoUnit.MILLIS));
         form.setKetThucLuc(cauHinh.ketThucLuc().truncatedTo(ChronoUnit.MILLIS));
         form.setDangHoatDong(cauHinh.dangHoatDong());
+        var pv = repository.phamVi(ma);
+        form.setSlot(PhieuGiamGia_Form.Slot.valueOf(pv.slot()));
+        form.setGioiHanKhach(pv.gioiHanKhach());
+        form.setSanPham(hienIds(pv.dich().get(Chieu.SAN_PHAM)));
+        form.setDanhMuc(hienIds(pv.dich().get(Chieu.DANH_MUC)));
+        form.setThuongHieu(hienIds(pv.dich().get(Chieu.THUONG_HIEU)));
+        form.setNguoiDung(hienIds(pv.dich().get(Chieu.NGUOI_DUNG)));
         return form;
     }
 
@@ -86,12 +100,28 @@ public class PhieuGiamGia_Service {
         if (errors.hasErrors()) {
             return;
         }
+        var dich = new java.util.EnumMap<Chieu,java.util.Set<Long>>(Chieu.class);
+        try {
+            dich.put(Chieu.SAN_PHAM,docIds(form.getSanPham()));
+            dich.put(Chieu.DANH_MUC,docIds(form.getDanhMuc()));
+            dich.put(Chieu.THUONG_HIEU,docIds(form.getThuongHieu()));
+            dich.put(Chieu.NGUOI_DUNG,docIds(form.getNguoiDung()));
+        } catch (NumberFormatException e) {
+            errors.reject("voucher.scope","Nhập danh sách ID nguyên dương, cách nhau bằng dấu phẩy.");
+            return;
+        }
+        var pv = new PhieuGiamGia_Repository.PhamVi(form.getSlot().name(), form.getGioiHanKhach(), dich);
+        if (!repository.dichHopLe(pv) || (ma != null && !repository.quotaHopLe(ma,pv.gioiHanKhach()))) {
+            errors.reject("voucher.scope","Đối tượng không hợp lệ hoặc quota khách thấp hơn số lượt đã giữ và dùng.");
+            return;
+        }
         var cauHinh = new CauHinh(maApDung, form.getLoaiGiamGia().name(), form.getGiaTriGiam(),
             form.getMucGiamToiDa(), form.getDonToiThieu(), form.getGioiHanSuDung(),
             batDauLuc, ketThucLuc, form.isDangHoatDong());
         if (ma == null) {
             var event = audit.batDau(SuKienQuanTri_Service.HanhDong.VOUCHER_CREATE, "VOUCHER", null);
             long id = repository.tao(cauHinh);
+            repository.luuPhamVi(id,pv);
             audit.thanhCong(event, id, null, cauHinh.dangHoatDong());
             return;
         }
@@ -100,7 +130,8 @@ public class PhieuGiamGia_Service {
             return;
         }
         var event = audit.batDau(SuKienQuanTri_Service.HanhDong.VOUCHER_UPDATE, "VOUCHER", ma);
-        if (repository.sua(ma, cauHinh)) {
+        boolean doiPhamVi = repository.luuPhamVi(ma,pv);
+        if (repository.sua(ma, cauHinh) || doiPhamVi) {
             audit.thanhCong(event, ma, cauHinhCu.dangHoatDong(), cauHinh.dangHoatDong());
         }
     }
@@ -114,6 +145,21 @@ public class PhieuGiamGia_Service {
             throw new IllegalStateException("Mã giảm giá đã gắn với đơn hàng hoặc có lượt sử dụng. Hãy tắt mã này.");
         }
         audit.thanhCong(event, ma, truoc.dangHoatDong(), null);
+    }
+
+    private String hienIds(java.util.Set<Long> ids) {
+        return ids.stream().sorted().map(String::valueOf).collect(java.util.stream.Collectors.joining(", "));
+    }
+
+    private java.util.Set<Long> docIds(String text) {
+        if (text == null || text.isBlank()) return java.util.Set.of();
+        var ids = new java.util.TreeSet<Long>();
+        for (String value : text.split(",", -1)) {
+            long id = Long.parseLong(value.strip());
+            if (id <= 0) throw new NumberFormatException();
+            ids.add(id);
+        }
+        return ids;
     }
 
     private ThongTin timTheoMa(long ma, boolean khoa) {
@@ -138,69 +184,124 @@ public class PhieuGiamGia_Service {
         return ma.strip().toUpperCase(Locale.ROOT);
     }
 
-    public GiamGia apDungCOD(String ma, BigDecimal tamTinh) {
-        var giam = tinh(ma, tamTinh, true);
-        if (giam.maVoucher() != null) {
-            repository.ghiNhanSuDung(giam.maVoucher());
-        }
-        return giam;
+    public record GiamGia(Long maVoucher, BigDecimal soTien, String dieuKien) {
+        public GiamGia(Long maVoucher, BigDecimal soTien) { this(maVoucher,soTien,null); }
+    }
+    public record BaoGia(GiamGia hang, GiamGia ship, BigDecimal phiChuan, BigDecimal tong, Map<Long,BigDecimal> phanBo) {}
+    private static final GiamGia KHONG_GIAM = new GiamGia(null, BigDecimal.ZERO);
+
+    @Transactional(readOnly = true, isolation = Isolation.REPEATABLE_READ)
+    public BaoGia xemGio(String hang, String ship, Long khach, List<MucGio> muc) {
+        return tinhGio(hang, ship, khach, muc, null);
     }
 
-    @Transactional(readOnly = true)
-    public GiamGia xemTruoc(String ma, BigDecimal tamTinh) {
-        return tinh(ma, tamTinh, false);
+    public BaoGia chotGio(String hang, String ship, long khach, List<MucGio> muc) {
+        var daKhoa = coMa(hang) || coMa(ship)
+            ? repository.khoaMa(hang == null ? "" : chuanHoa(hang), ship == null ? "" : chuanHoa(ship)) : Set.<Long>of();
+        return tinhGio(hang, ship, khach, muc, daKhoa);
     }
 
-    private GiamGia tinh(String ma, BigDecimal tamTinh, boolean khoa) {
-        if (ma == null || ma.isBlank()) {
-            return new GiamGia(null, BigDecimal.ZERO);
+    private boolean coMa(String ma) { return ma != null && !ma.isBlank(); }
+
+    private BaoGia tinhGio(String hang, String ship, Long khach, List<MucGio> muc, Set<Long> daKhoa) {
+        var phanBo = new HashMap<Long,BigDecimal>();
+        var giamHang = tinhSlot(hang, "HANG", khach, muc, phanBo, null, daKhoa);
+        var sauGiam = muc.stream().map(MucGio::thanhTien).reduce(BigDecimal.ZERO, BigDecimal::add).subtract(giamHang.soTien());
+        var phi = ShippingFee_Policy.calculate(sauGiam);
+        var giamShip = KHONG_GIAM;
+        if (phi.signum() > 0 && coMa(ship)) {
+            if (coMa(hang) && chuanHoa(hang).equals(chuanHoa(ship))) {
+                throw new MaVanChuyenKhongHopLe("Mỗi mã chỉ được dùng ở một ô.");
+            }
+            try {
+                giamShip = tinhSlot(ship,"VAN_CHUYEN",khach,muc,phanBo,phi,daKhoa);
+            } catch (IllegalArgumentException e) {
+                throw new MaVanChuyenKhongHopLe(e.getMessage());
+            }
         }
-        String maApDung = chuanHoa(ma);
-        var phieu = repository.timPhieuHopLe(maApDung, khoa).orElseThrow(() -> {
-            String lyDo = khoa ? "Mã giảm giá không hợp lệ, đã hết hạn hoặc hết lượt sử dụng."
-                : repository.lyDoKhongTheXemTruoc(maApDung).orElse("Mã giảm giá không hợp lệ.");
-            return new IllegalArgumentException(lyDo);
-        });
-        if (tamTinh.compareTo(phieu.toiThieu()) < 0) {
+        return new BaoGia(giamHang, giamShip, phi, sauGiam.add(phi).subtract(giamShip.soTien()), Map.copyOf(phanBo));
+    }
+
+    public static final class MaVanChuyenKhongHopLe extends IllegalArgumentException {
+        MaVanChuyenKhongHopLe(String thongBao) { super(thongBao); }
+    }
+
+    private GiamGia tinhSlot(String code, String slot, Long khach, List<MucGio> muc, Map<Long,BigDecimal> phanBo,
+                             BigDecimal phi, Set<Long> daKhoa) {
+        if (!coMa(code)) return KHONG_GIAM;
+        var phieu = timHopLe(code);
+        if (daKhoa != null && !daKhoa.contains(phieu.ma()))
+            throw new IllegalStateException("Mã giảm giá vừa thay đổi. Vui lòng báo giá lại.");
+        var pv = repository.phamVi(phieu.ma());
+        if (!slot.equals(pv.slot()) || !pv.choPhep(Chieu.NGUOI_DUNG, khach))
+            throw new IllegalArgumentException("Mã không áp dụng cho khách hàng hoặc loại ưu đãi này.");
+        if (khach != null && pv.gioiHanKhach() != null && repository.luotKhach(phieu.ma(),khach) >= pv.gioiHanKhach())
+            throw new IllegalArgumentException("Đã hết lượt mã giảm giá dành cho bạn.");
+        var dong = muc.stream().filter(m -> pv.choPhep(Chieu.SAN_PHAM,m.sanPham())
+            && pv.choPhep(Chieu.DANH_MUC,m.danhMuc()) && pv.choPhep(Chieu.THUONG_HIEU,m.thuongHieu())).toList();
+        var duDieuKien = dong.stream().map(m -> m.thanhTien().subtract(phanBo.getOrDefault(m.maBienThe(),BigDecimal.ZERO)))
+            .reduce(BigDecimal.ZERO, BigDecimal::add);
+        if (dong.isEmpty() || duDieuKien.compareTo(phieu.toiThieu()) < 0)
             throw new IllegalArgumentException("Tiền hàng chưa đạt mức tối thiểu để dùng mã giảm giá này.");
+        var giam = soTien(phieu, phi == null ? duDieuKien : phi);
+        if (phi == null) phanBo.putAll(phanBo(dong, duDieuKien, giam));
+        String nhan = phi == null ? "Mã hàng" : "Mã vận chuyển";
+        String dieuKien = nhan + " áp dụng trên " + dong.size() + " dòng hàng đủ điều kiện. "
+            + "Tiền hàng hợp lệ " + duDieuKien.toPlainString() + " ₫, mức tối thiểu " + phieu.toiThieu().toPlainString() + " ₫.";
+        return new GiamGia(phieu.ma(), giam, dieuKien);
+    }
+
+    static Map<Long,BigDecimal> phanBo(List<MucGio> dong, BigDecimal tong, BigDecimal giam) {
+        var ketQua = new HashMap<Long,BigDecimal>();
+        if (giam.signum() == 0) return ketQua;
+        var phanDu = new HashMap<Long,BigDecimal>();
+        BigDecimal conLai = giam;
+        for (var m : dong) {
+            var chia = m.thanhTien().multiply(giam).divideAndRemainder(tong);
+            ketQua.put(m.maBienThe(),chia[0]);
+            phanDu.put(m.maBienThe(),chia[1]);
+            conLai = conLai.subtract(chia[0]);
         }
-        BigDecimal giam = switch (phieu.loai()) {
+        phanDu.keySet().stream().sorted(Comparator.<Long,BigDecimal>comparing(phanDu::get).reversed()
+            .thenComparingLong(Long::longValue)).limit(conLai.longValueExact())
+            .forEach(id -> ketQua.merge(id,BigDecimal.ONE,BigDecimal::add));
+        return ketQua;
+    }
+
+    private PhieuGiamGia_Repository.Phieu timHopLe(String ma) {
+        String code = chuanHoa(ma);
+        return repository.timPhieuHopLe(code).orElseThrow(() -> new IllegalArgumentException(
+            repository.lyDoKhongTheXemTruoc(code).orElse("Mã giảm giá không hợp lệ.")));
+    }
+
+    private BigDecimal soTien(PhieuGiamGia_Repository.Phieu phieu, BigDecimal coSo) {
+        var giam = switch (phieu.loai()) {
             case "FIXED" -> phieu.giaTri();
-            case "PERCENT" -> tamTinh.multiply(phieu.giaTri().min(BigDecimal.valueOf(100)))
-                .movePointLeft(2).setScale(0, RoundingMode.DOWN);
+            case "PERCENT" -> coSo.multiply(phieu.giaTri()).movePointLeft(2).setScale(0,RoundingMode.DOWN);
             default -> throw new IllegalArgumentException("Loại giảm giá không hợp lệ.");
         };
-        if (phieu.toiDa() != null) {
-            giam = giam.min(phieu.toiDa());
-        }
-        return new GiamGia(phieu.ma(), giam.min(tamTinh));
+        return giam.min(phieu.toiDa() == null ? coSo : phieu.toiDa()).min(coSo);
     }
 
-    public void hoanCOD(Long ma) {
-        if (ma != null && !repository.hoanLuot(ma)) {
-            throw new IllegalStateException("Không thể trả lại lượt dùng mã giảm giá của đơn hàng.");
+    public void ghiLuot(long maDon, BaoGia gia, boolean online) {
+        ghiSlot(maDon, gia.hang(), "HANG", online);
+        ghiSlot(maDon, gia.ship(), "VAN_CHUYEN", online);
+    }
+
+    private void ghiSlot(long don, GiamGia giam, String slot, boolean online) {
+        if (giam.maVoucher() != null && !repository.ghiSlot(don, giam.maVoucher(), slot, giam.soTien(), online)) {
+            throw new IllegalArgumentException("Đã hết lượt mã giảm giá dành cho bạn.");
         }
     }
 
-    public GiamGia giuOnline(String ma, BigDecimal tamTinh) {
-        var giam = tinh(ma, tamTinh, true);
-        if (giam.maVoucher() != null) {
-            repository.tamGiu(giam.maVoucher());
-        }
-        return giam;
-    }
-
-    public void ghiTamGiu(long maDon, Long maVoucher) {
-        if (maVoucher != null) {
-            repository.ghiTamGiu(maDon, maVoucher);
-        }
-    }
+    public void traLuotCOD(long maDon) { repository.traLuotCOD(maDon); }
 
     public void ketThucTamGiu(long maDon, Long maVoucher, boolean suDung) {
-        if (maVoucher != null && !repository.ketThucTamGiu(maDon, maVoucher, suDung)) {
-            throw new IllegalStateException("Không thể cập nhật lượt dùng mã giảm giá đã giữ.");
+        var ids = repository.cacPhieu(maDon);
+        if (maVoucher != null && !ids.contains(maVoucher)) throw new IllegalStateException("Thiếu chứng từ giữ mã hàng.");
+        for (long id : ids) {
+            repository.timTheoMa(id,true);
+            if (!repository.ketThucTamGiu(maDon,id,suDung)) throw new IllegalStateException("Không thể cập nhật lượt đã giữ.");
         }
     }
-
-    public record GiamGia(Long maVoucher, BigDecimal soTien) {}
 }

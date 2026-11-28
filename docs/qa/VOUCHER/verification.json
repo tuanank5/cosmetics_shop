@@ -1,0 +1,37 @@
+{
+  "parent": "5bdada6bb370b281319ff671fd8a9b62b5673560",
+  "sourceSha256": "96310599a6c2c5b19ed3d0aafce8a0bf1c568ff0a73cc87d0295983d559892df",
+  "jarSha256": "696462bedb1d13e3f9cf0b55eebd21d361666eaee9a2a37f24106b62e156eddd",
+  "maven": {
+    "pass": 244,
+    "skip": 101
+  },
+  "integration": {
+    "pass": 121,
+    "skip": 0
+  },
+  "webkitGroupsPass": 4,
+  "webkitSqlChecksPass": 1,
+  "fixtureDirectories": [
+    "target/voucher-it-final/target/auth-db-491983a25d7a442bb10bdf2bbd16da33",
+    "target/voucher-it-final/target/voucher-mongo-a9c6f830612f49789e2cfb1d6e47ddd9",
+    "target/voucher-local-final/target/cart-01-787e908dcd2c4129b673414f04c658eb"
+  ],
+  "harnessSha256": {
+    "browser.cjs": "2e42984b21ca2656aa9dde110c921b7e8bd7789bd0f498af704374e2f5f3af13",
+    "run-browser.ps1": "8d8ef0ed0f86828bdc3564432b5f6c75fef3361058eb4dc251478563f5546ac6",
+    "run-mariadb.ps1": "87ff9d6d679ac45956f609c583c6daa5757b76ea12169f5fea247ead5184f31a"
+  },
+  "flywayChecksumsUnchanged": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+  ],
+  "productionPurge": "BLOCKED_EXTERNAL",
+  "providerSandbox": "NOT RUN"
+}

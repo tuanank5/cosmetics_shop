@@ -246,6 +246,8 @@ class DonHangCOD_MariaDb_Test {
         long skuA = taoSku(1, 510000);
         long skuB = taoSku(1, 510000);
         String voucher = UUID.randomUUID().toString();
+        String ship = taoVoucher("FIXED",10000,null,1,false);
+        jdbc.sql("UPDATE phieu_giam_gia SET slot='VAN_CHUYEN' WHERE ma_ap_dung=?").param(ship).update();
         var now = LocalDateTime.now(ZoneOffset.UTC).withNano(0);
         mvc.perform(post("/admin/vouchers/new").session(phienAdmin).with(csrf())
                 .param("maApDung", voucher).param("loaiGiamGia", "PERCENT").param("giaTriGiam", "10")
@@ -258,27 +260,70 @@ class DonHangCOD_MariaDb_Test {
         var batDau = new CountDownLatch(1);
         var executor = Executors.newFixedThreadPool(2);
         try {
-            var ra = executor.submit(() -> tranhVoucher(a, voucher, batDau));
-            var rb = executor.submit(() -> tranhVoucher(b, voucher, batDau));
+            var ra = executor.submit(() -> tranhVoucher(a, voucher, ship, batDau));
+            var rb = executor.submit(() -> tranhVoucher(b, voucher, ship, batDau));
             batDau.countDown();
             var ketQua = List.of(ra.get(15, TimeUnit.SECONDS), rb.get(15, TimeUnit.SECONDS));
             assertThat(ketQua.stream().filter(ma -> ma > 0).count()).isEqualTo(1);
             long maDon = ketQua.stream().filter(ma -> ma > 0).findFirst().orElseThrow();
             assertThat(jdbc.sql("SELECT tong_thanh_toan FROM don_hang WHERE ma_don_hang = ?").param(maDon)
-                .query(java.math.BigDecimal.class).single()).isEqualByComparingTo("515000");
+                .query(java.math.BigDecimal.class).single()).isEqualByComparingTo("505000");
         } finally {
             executor.shutdownNow();
         }
         assertThat(ton(skuA) + ton(skuB)).isEqualTo(1);
+        assertThat(luot(ship)).isEqualTo(1);
         assertThat(luot(voucher)).isEqualTo(1);
     }
 
-    private long tranhVoucher(TaiKhoan taiKhoan, String voucher, CountDownLatch batDau) throws InterruptedException {
+    @Test
+    void quotaKhachVaRollbackHaiSlot() throws Exception {
+        var a = taiKhoan(false);
+        long sku = taoSku(5,520000);
+        String hang = taoVoucher("FIXED",30000,null,5,false);
+        String ship = taoVoucher("FIXED",10000,null,0,false);
+        jdbc.sql("UPDATE phieu_giam_gia SET slot='VAN_CHUYEN',gioi_han_khach=1 WHERE ma_ap_dung=?").param(ship).update();
+        gioHangService.themGioCustomer(a.id(),sku);
+        org.assertj.core.api.Assertions.assertThatThrownBy(() -> donHangService.datCOD(a.id(),a.maDiaChi(),hang,ship))
+            .isInstanceOf(IllegalArgumentException.class);
+        assertThat(luot(hang)).isZero();
+        jdbc.sql("UPDATE phieu_giam_gia SET gioi_han_su_dung=4 WHERE ma_ap_dung=?").param(ship).update();
+        long shipId = jdbc.sql("SELECT ma_phieu_giam_gia FROM phieu_giam_gia WHERE ma_ap_dung=?").param(ship).query(Long.class).single();
+        // Inject a fixture-only error precisely between the first and second durable slot.
+        String trigger = "qa_slot_" + shipId;
+        jdbc.sql("CREATE TRIGGER " + trigger + " BEFORE INSERT ON tam_giu_phieu_giam_gia FOR EACH ROW BEGIN "
+            + "IF NEW.ma_phieu_giam_gia=" + shipId + " THEN SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT='fixture'; END IF; END").update();
+        try {
+            org.assertj.core.api.Assertions.assertThatThrownBy(() -> donHangService.datCOD(a.id(),a.maDiaChi(),hang,ship))
+                .isInstanceOf(org.springframework.dao.DataAccessException.class);
+        } finally {
+            jdbc.sql("DROP TRIGGER " + trigger).update();
+        }
+        assertThat(luot(hang)).isZero();
+        assertThat(luot(ship)).isZero();
+        assertThat(ton(sku)).isEqualTo(5);
+        assertThat(donHangService.danhSachCustomer(a.id())).isEmpty();
+        long don = donHangService.datCOD(a.id(),a.maDiaChi(),hang,ship);
+        assertThat(jdbc.sql("SELECT giam_hang FROM chi_tiet_don_hang WHERE ma_don_hang=?").param(don)
+            .query(BigDecimal.class).single()).isEqualByComparingTo("30000");
+        gioHangService.themGioCustomer(a.id(),sku);
+        org.assertj.core.api.Assertions.assertThatThrownBy(() -> donHangService.datCOD(a.id(),a.maDiaChi(),hang,ship))
+            .hasMessageContaining("hết lượt");
+        var phien = login(a.email(),new MockHttpSession());
+        for (int lan=0; lan<2; lan++) mvc.perform(post("/orders/"+don+"/cancel").session(phien).with(csrf()))
+            .andExpect(flash().attributeExists("message"));
+        assertThat(luot(hang)).isZero();
+        assertThat(luot(ship)).isZero();
+        assertThat(ton(sku)).isEqualTo(5);
+        assertThat(donHangService.datCOD(a.id(),a.maDiaChi(),hang,ship)).isPositive();
+    }
+
+    private long tranhVoucher(TaiKhoan taiKhoan, String voucher, String ship, CountDownLatch batDau) throws InterruptedException {
         if (!batDau.await(10, TimeUnit.SECONDS)) {
             throw new AssertionError("Không bắt đầu được checkout.");
         }
         try {
-            return donHangService.datCOD(taiKhoan.id(), taiKhoan.maDiaChi(), voucher);
+            return donHangService.datCOD(taiKhoan.id(), taiKhoan.maDiaChi(), voucher, ship);
         } catch (IllegalArgumentException exception) {
             assertThat(exception.getMessage()).contains("Mã giảm giá");
             return 0;

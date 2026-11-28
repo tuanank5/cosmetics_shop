@@ -1,0 +1,32 @@
+{
+  "parent": "5bdada6bb370b281319ff671fd8a9b62b5673560",
+  "sourceSha256": "a19f783050d4ea073b2f1aedfab234e65de1bb330c5dcbdd85dd57ed9cc24c51",
+  "algorithm": "SHA-256 workspace bytes; aggregate sorted path, two spaces, hex digest, LF",
+  "files": {
+    "src/main/java/com/beautyshop/controller/Checkout_Controller.java": "4548ac79c30346d1be545544e370cb6675fbd2298d33b2013aa301a13f253f08",
+    "src/main/java/com/beautyshop/controller/GioHang_Controller.java": "17c2ed5309822a2b17b305744a65ca2ccd589f09e5db03ddbda473d893ac3ca7",
+    "src/main/java/com/beautyshop/dto/Checkout_Form.java": "ed2d485b75d9dc690a36d0b098ecac0af8669e6757877f4ef2687ac107e5f178",
+    "src/main/java/com/beautyshop/dto/PhieuGiamGia_Form.java": "edf7974e5e449b161e0a2df704ae049b3a15b253893457e60fefc4d6b46e41e2",
+    "src/main/java/com/beautyshop/repository/DonHang_Repository.java": "94c726edf6656d94185d8f02f23189390ee793fa41a63496528c15dad8e48e1d",
+    "src/main/java/com/beautyshop/repository/GioHang_Repository.java": "964084af46bbe311c6c4338018a469f59b368ad9922efe0d11003b5d851b3048",
+    "src/main/java/com/beautyshop/repository/PhieuGiamGia_Repository.java": "6ae4640adc12f1a6a09dca029252d4e88b8df995f3d6562f2d210497d73bbcd1",
+    "src/main/java/com/beautyshop/service/DonHang_Service.java": "3e1045c52890470e2ff836982d348bc7453d7c84825de992a71dc7a692573946",
+    "src/main/java/com/beautyshop/service/PhieuGiamGia_Service.java": "5907a3ef3ce0c92a79d40fdccdbcd6842032311eaa90de15d951988c319db13a",
+    "src/main/java/com/beautyshop/service/ThanhToanMomo_Service.java": "7686873c4f0a1c12c926569cb0219366bc1c3815592e0330b0a57286b3a17dfe",
+    "src/main/resources/db/migration/V9__phieu_giam_gia_hai_slot.sql": "3a8a3bcd5ec375d3ddfac76a7a524e514d697a06fd067adc2991cafd8186731b",
+    "src/main/resources/static/js/checkout.js": "42b966ee1e804a1cb861a2163b6d587cc70f12d8d6db47f06b63f632a21b08b7",
+    "src/main/resources/templates/admin/voucher/form.html": "caea54fb1e9c929bdbce5988346481007a75554c51f8c4616c3f7fe0e5d16269",
+    "src/main/resources/templates/admin/voucher/list.html": "3c675c57469ef5cd137236828cb57fcd6a2e5816d82f6cc775f326740369c3c6",
+    "src/main/resources/templates/cart/index.html": "fd3da83ff571ab2756d267090abe2ae93b6fef3cd8f9fcdf759b6436eb9c7e33",
+    "src/main/resources/templates/order/checkout.html": "87a26a8418fdb1ed12613dde1d16aa957427bfeb9440f5923776273ef847e7f5",
+    "src/main/resources/templates/order/detail.html": "4ce4ee88c0d45a1c4d7cd23f2d0c48cbc396c70c6a750153c633ffd03553d479",
+    "src/test/java/com/beautyshop/bootstrap/LocalDatabaseMigration_MariaDb_Test.java": "a5030623ae3e3fd26de4389084298b1b612aa3eced74c6f320d704a440cef5ac",
+    "src/test/java/com/beautyshop/controller/CheckoutPagesTest.java": "82f2679bd20b6eb19ca23ddfcefc9d0067421e9b61b6c4c7866f1b8bc4022038",
+    "src/test/java/com/beautyshop/controller/GioHangPagesTest.java": "e5e022699f8a37d4d45f2830e302c6a707a3d154e60e8a812e2fa6b02c0e8ae3",
+    "src/test/java/com/beautyshop/integration/DonHangCOD_MariaDb_Test.java": "d20370c2dd3e0f9bebade9973f349a7f15c73fb3aff161aa68709b40e8c4135f",
+    "src/test/java/com/beautyshop/integration/Momo_MariaDb_Test.java": "1566baeeb9ced36517f17f212ca18a073ba2b672793c6fc07eed477cb91aaafa",
+    "src/test/java/com/beautyshop/integration/PhieuGiamGia_MariaDb_Test.java": "7f56f931fb76c60960cd9fa4e916821676bed80419d3aef7657fa48527ce0125",
+    "src/test/java/com/beautyshop/integration/XacThucMigration_MariaDb_Test.java": "a743895279de49667d2316bb7a2168c0ab229a3668e72024321605bf01bee0c8",
+    "src/test/java/com/beautyshop/service/CheckoutIntegrityTest.java": "69d011e8b5e01bbb1b08ad440ba9b29527f543cff5902d19a1fddc171724b144"
+  }
+}
