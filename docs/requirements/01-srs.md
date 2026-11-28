@@ -65,3 +65,5 @@ Multi-seller, vận chuyển tự động, quản lý nhiều lô/FEFO (chỉ me
 Merchant Sandbox, endpoint HTTPS công khai phù hợp IPN, host free-tier thực tế và API AI free-tier **chưa được xác minh**. Không mô tả tính năng chưa có code là đã hoàn thành.
 
 **05-ACCOUNT (P0).** Tại danh sách và chi tiết tài khoản, Admin theo dõi lý do khóa/mở và kết quả SMTP. Khóa có hiệu lực với password, Google và GitHub kể cả khi gửi thư lỗi. Thư thật chờ owner xác nhận kênh hỗ trợ công khai. [Quyết định ACCOUNT](../DECISIONS.md#account--quyết-định-owner-ngày-28112026)
+
+**10-RETURN.** Customer xem tiến độ từng dòng trong hồ sơ của mình. Admin dùng mã kiện vật lý để tiếp nhận nhiều đợt, ghi kết luận từng dòng, xác nhận nhập phần đủ bán và đóng hồ sơ có chứng từ. Kết quả kiểm định đã xác nhận đọc được ngay khi hồ sơ còn mở chờ xử lý nghĩa vụ tiền. [BR17](02-business-rules.md)

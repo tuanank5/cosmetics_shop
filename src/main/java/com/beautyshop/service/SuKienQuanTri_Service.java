@@ -16,7 +16,8 @@ import org.springframework.transaction.support.TransactionTemplate;
 @Service
 public class SuKienQuanTri_Service {
     enum HanhDong { ORDER_STATUS, SKU_STOCK, CATALOG_CREATE, CATALOG_UPDATE, CATALOG_ACTIVE,
-                    VOUCHER_CREATE, VOUCHER_UPDATE, VOUCHER_DELETE, AUDIT_PREVIEW, AUDIT_PURGE, ACCOUNT_LOCK, ACCOUNT_UNLOCK }
+                    VOUCHER_CREATE, VOUCHER_UPDATE, VOUCHER_DELETE, AUDIT_PREVIEW, AUDIT_PURGE, ACCOUNT_LOCK, ACCOUNT_UNLOCK,
+                    RETURN_APPROVE, RETURN_REJECT, RETURN_RECEIVE, RETURN_INSPECT, RETURN_CONFIRM, RETURN_RECONCILE, RETURN_CLOSE }
 
     private final JdbcClient jdbc;
     private final TransactionTemplate sauRollback;
@@ -68,6 +69,7 @@ public class SuKienQuanTri_Service {
             case Boolean b -> b.toString();
             case Integer n -> n.toString();
             case Long n -> n.toString();
+            case com.beautyshop.order.ReturnStatus status -> status.name();
             case com.beautyshop.order.OrderStatus status -> status.name();
             default -> throw new IllegalArgumentException("Trường ngoài danh sách audit.");
         };

@@ -1,0 +1,9 @@
+﻿2026-11-28T22:46:36.814+07:00  INFO 12848 --- [BeautyShop] [           main] o.f.core.internal.command.DbMigrate      : Successfully applied 11 migrations to schema `return_fixture`, now at version v11 (execution time 00:00.170s)
+2026-11-28T22:46:38.457+07:00  INFO 12848 --- [BeautyShop] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+[ERROR] Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 35.78 s <<< FAILURE! -- in com.beautyshop.integration.KiemDinhDoiTra_MariaDb_Test
+  "RETURN WebKit failed at customer quantity (TimeoutError)
+  "[RETURN WebKit] PASS"
+  "RETURN WebKit failed at customer quantity (TimeoutError)
+  "[RETURN WebKit] PASS"
+[ERROR] Tests run: 1, Failures: 1, Errors: 0, Skipped: 0
+[INFO] BUILD FAILURE

@@ -1,0 +1,6 @@
+<th:block xmlns:th="http://www.thymeleaf.org" th:fragment="lenh">
+    <input type="hidden" name="thaoTac" th:value="${maThaoTac}">
+    <input type="hidden" name="phienBan" th:value="${trang.chiTiet.phienBan ?: 0}">
+    <th:block th:replace="~{fragments/nav-fields :: adminSource}"></th:block>
+    <th:block th:replace="~{fragments/admin-table :: listSource(${listSourceFields})}"></th:block>
+</th:block>

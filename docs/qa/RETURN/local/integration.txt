@@ -1,0 +1,19 @@
+﻿2026-11-28T22:43:08.203+07:00  INFO 17796 --- [BeautyShop] [           main] o.f.core.internal.command.DbMigrate      : Successfully applied 11 migrations to schema `return_fixture`, now at version v11 (execution time 00:00.368s)
+2026-11-28T22:43:12.298+07:00  INFO 17796 --- [BeautyShop] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 31.18 s -- in com.beautyshop.integration.Audit_MariaDb_Test
+2026-11-28T22:43:24.772+07:00  INFO 17796 --- [BeautyShop] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+[INFO] Tests run: 26, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 15.26 s -- in com.beautyshop.integration.CatalogDonHang_MariaDb_Test
+2026-11-28T22:43:41.417+07:00  INFO 17796 --- [BeautyShop] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+[INFO] Tests run: 10, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 14.16 s -- in com.beautyshop.integration.DonHangCOD_MariaDb_Test
+2026-11-28T22:43:54.763+07:00  INFO 17796 --- [BeautyShop] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+[ERROR] Tests run: 9, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 41.64 s <<< FAILURE! -- in com.beautyshop.integration.KiemDinhDoiTra_MariaDb_Test
+  "RETURN WebKit failed at customer request
+  "[RETURN WebKit] PASS"
+2026-11-28T22:44:35.157+07:00  INFO 17796 --- [BeautyShop] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+[INFO] Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 5.804 s -- in com.beautyshop.integration.Momo_MariaDb_Test
+2026-11-28T22:44:40.903+07:00  INFO 17796 --- [BeautyShop] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.340 s -- in com.beautyshop.integration.PhieuGiamGia_MariaDb_Test
+  "RETURN WebKit failed at customer request
+  "[RETURN WebKit] PASS"
+[ERROR] Tests run: 63, Failures: 1, Errors: 0, Skipped: 0
+[INFO] BUILD FAILURE

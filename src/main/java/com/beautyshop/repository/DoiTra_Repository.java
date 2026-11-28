@@ -38,8 +38,8 @@ public class DoiTra_Repository {
 
     public long tao(long maDon, long maNguoiDung, String lyDo) {
         return jdbc.sql("""
-            INSERT INTO yeu_cau_doi_tra (ma_don_hang, ma_nguoi_dung, trang_thai, ly_do, ngay_yeu_cau)
-            VALUES (?, ?, 'PENDING', ?, UTC_TIMESTAMP(6)) RETURNING ma_yeu_cau_doi_tra
+            INSERT INTO yeu_cau_doi_tra (ma_don_hang, ma_nguoi_dung, trang_thai, ly_do, ngay_yeu_cau, phien_ban_kiem)
+            VALUES (?, ?, 'PENDING', ?, UTC_TIMESTAMP(6), 0) RETURNING ma_yeu_cau_doi_tra
             """).params(maDon, maNguoiDung, lyDo).query(Long.class).single();
     }
 
@@ -87,7 +87,7 @@ public class DoiTra_Repository {
 
     public Optional<ChiTiet> chiTiet(long maYeuCau, Long maNguoiDung) {
         var query = jdbc.sql("""
-            SELECT yc.ma_yeu_cau_doi_tra, yc.ma_don_hang, d.ma_don_hang_hien_thi, yc.trang_thai, yc.ly_do
+            SELECT yc.ma_yeu_cau_doi_tra, yc.ma_don_hang, d.ma_don_hang_hien_thi, yc.trang_thai, yc.ly_do, yc.phien_ban_kiem
             FROM yeu_cau_doi_tra yc JOIN don_hang d ON d.ma_don_hang = yc.ma_don_hang
             WHERE yc.ma_yeu_cau_doi_tra = ?
             """ + (maNguoiDung == null ? "" : " AND yc.ma_nguoi_dung = ?")).param(maYeuCau);
@@ -95,15 +95,41 @@ public class DoiTra_Repository {
             query.param(maNguoiDung);
         }
         return query.query((rs, row) -> new ChiTiet(new YeuCau(rs.getLong(1), rs.getLong(2), rs.getString(3),
-            ReturnStatus.valueOf(rs.getString(4))), rs.getString(5))).optional();
+            ReturnStatus.valueOf(rs.getString(4))), rs.getString(5), rs.getObject(6, Long.class))).optional();
     }
 
     public List<MucTra> mucDaYeuCau(long maYeuCau) {
         return jdbc.sql("""
-            SELECT ct.ten_san_pham_khi_dat, ct.ten_bien_the_khi_dat, dt.so_luong
+            SELECT dt.ma_chi_tiet_doi_tra AS ma, ct.ten_san_pham_khi_dat AS tenSanPham,
+                   ct.ten_bien_the_khi_dat AS tenBienThe, dt.so_luong AS soLuong,
+                   COALESCE(SUM(n.thuc_nhan),0) AS thucNhan,
+                   COALESCE(SUM(IF(k.ma_xac_nhan IS NULL,0,q.du_ban)),0) AS duBan,
+                   COALESCE(SUM(IF(k.ma_xac_nhan IS NULL,0,n.thuc_nhan-q.du_ban)),0) AS khongDu
             FROM chi_tiet_doi_tra dt JOIN chi_tiet_don_hang ct ON ct.ma_chi_tiet_don_hang = dt.ma_chi_tiet_don_hang
-            WHERE dt.ma_yeu_cau_doi_tra = ? ORDER BY ct.ma_chi_tiet_don_hang
-            """).param(maYeuCau).query((rs, row) -> new MucTra(rs.getString(1), rs.getString(2), rs.getInt(3))).list();
+            LEFT JOIN dong_nhan_doi_tra n ON n.ma_dong_tra=dt.ma_chi_tiet_doi_tra
+            LEFT JOIN ket_qua_kiem_doi_tra q ON q.ma_kiem=n.ma_kiem
+            LEFT JOIN kien_doi_tra k ON k.ma_kien=n.ma_kien
+            WHERE dt.ma_yeu_cau_doi_tra = ?
+            GROUP BY dt.ma_chi_tiet_doi_tra,ct.ma_chi_tiet_don_hang,ct.ten_san_pham_khi_dat,ct.ten_bien_the_khi_dat,dt.so_luong
+            ORDER BY ct.ma_chi_tiet_don_hang
+            """).param(maYeuCau).query(MucTra.class).list();
+    }
+
+    public record DotNhan(java.time.LocalDateTime lucNhan, String bienThe, int soLuong,
+                          Integer duBan, Integer daMo, Integer hong, Integer cachLyKhac) {}
+
+    public List<DotNhan> dotNhanCuaKhach(long maYeuCau, long maNguoiDung) {
+        return jdbc.sql("""
+            SELECT t.luc_ghi AS lucNhan, c.ten_bien_the_khi_dat AS bienThe, n.thuc_nhan AS soLuong,
+                   q.du_ban AS duBan, q.da_mo AS daMo, q.hong, q.khac AS cachLyKhac
+            FROM yeu_cau_doi_tra y JOIN chi_tiet_doi_tra d USING(ma_yeu_cau_doi_tra)
+            JOIN chi_tiet_don_hang c USING(ma_chi_tiet_don_hang)
+            JOIN dong_nhan_doi_tra n ON n.ma_dong_tra=d.ma_chi_tiet_doi_tra
+            JOIN kien_doi_tra k USING(ma_kien)
+            JOIN thao_tac_doi_tra t ON t.ma_thao_tac=k.ma_nhan
+            LEFT JOIN ket_qua_kiem_doi_tra q ON q.ma_kiem=n.ma_kiem AND k.ma_xac_nhan IS NOT NULL
+            WHERE y.ma_yeu_cau_doi_tra=? AND y.ma_nguoi_dung=? ORDER BY k.ma_kien,n.ma_dong_nhan
+            """).params(maYeuCau,maNguoiDung).query(DotNhan.class).list();
     }
 
     public boolean chuyen(long maYeuCau, ReturnStatus hienTai, ReturnStatus dich) {
@@ -115,6 +141,9 @@ public class DoiTra_Repository {
     public record Don(long maDon, String maHienThi, boolean conHan) {}
     public record Muc(long maMuc, String tenSanPham, String tenBienThe, int daMua, int conLai) {}
     public record YeuCau(long ma, long maDon, String maHienThi, ReturnStatus trangThai) {}
-    public record ChiTiet(YeuCau yeuCau, String lyDo) {}
-    public record MucTra(String tenSanPham, String tenBienThe, int soLuong) {}
+    public record ChiTiet(YeuCau yeuCau, String lyDo, Long phienBan) {}
+    public record MucTra(long ma, String tenSanPham, String tenBienThe, int soLuong, int thucNhan, int duBan, int khongDu) {
+        public int chuaNhan() { return soLuong - thucNhan; }
+        public int choKiem() { return thucNhan - duBan - khongDu; }
+    }
 }

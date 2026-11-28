@@ -1,0 +1,16 @@
+﻿2026-11-28T22:49:38.683+07:00  INFO 4380 --- [BeautyShop] [           main] o.f.core.internal.command.DbMigrate      : Successfully applied 11 migrations to schema `return_fixture`, now at version v11 (execution time 00:00.279s)
+2026-11-28T22:49:41.487+07:00  INFO 4380 --- [BeautyShop] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 26.63 s -- in com.beautyshop.integration.Audit_MariaDb_Test
+2026-11-28T22:49:53.963+07:00  INFO 4380 --- [BeautyShop] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+[INFO] Tests run: 26, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 12.04 s -- in com.beautyshop.integration.CatalogDonHang_MariaDb_Test
+2026-11-28T22:50:06.250+07:00  INFO 4380 --- [BeautyShop] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+[INFO] Tests run: 10, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 11.78 s -- in com.beautyshop.integration.DonHangCOD_MariaDb_Test
+2026-11-28T22:50:17.566+07:00  INFO 4380 --- [BeautyShop] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+[RETURN WebKit] PASS desktop Admin and mobile Customer
+[INFO] Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 13.45 s -- in com.beautyshop.integration.KiemDinhDoiTra_MariaDb_Test
+2026-11-28T22:50:30.515+07:00  INFO 4380 --- [BeautyShop] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+[INFO] Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 5.698 s -- in com.beautyshop.integration.Momo_MariaDb_Test
+2026-11-28T22:50:36.027+07:00  INFO 4380 --- [BeautyShop] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.170 s -- in com.beautyshop.integration.PhieuGiamGia_MariaDb_Test
+[INFO] Tests run: 63, Failures: 0, Errors: 0, Skipped: 0
+[INFO] BUILD SUCCESS

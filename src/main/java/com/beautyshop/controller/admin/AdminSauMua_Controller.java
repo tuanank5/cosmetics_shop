@@ -6,6 +6,11 @@ import com.beautyshop.dto.PhanTrang;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import com.beautyshop.order.ReturnStatus;
+import com.beautyshop.dto.DoiTra_Form;
+import com.beautyshop.service.KiemDinhDoiTra_Service;
+import com.beautyshop.service.KiemDinhDoiTra_Service.Lenh;
+import com.beautyshop.service.KiemDinhDoiTra_Service.Kiem;
+import java.util.UUID;
 import com.beautyshop.repository.DanhGia_Store;
 import com.beautyshop.service.SauMua_Service;
 import org.springframework.stereotype.Controller;
@@ -20,7 +25,12 @@ class AdminSauMua_Controller {
 
     private final SauMua_Service sauMua;
 
-    AdminSauMua_Controller(SauMua_Service sauMua) { this.sauMua = sauMua; }
+    private final KiemDinhDoiTra_Service kiemDinh;
+
+    AdminSauMua_Controller(SauMua_Service sauMua, KiemDinhDoiTra_Service kiemDinh) {
+        this.sauMua = sauMua;
+        this.kiemDinh = kiemDinh;
+    }
 
     @GetMapping("/admin/reviews")
     String danhGia(@RequestParam(required = false) String status, @RequestParam(required = false) Integer stars,
@@ -113,6 +123,9 @@ class AdminSauMua_Controller {
     @GetMapping("/admin/returns/{id}")
     String chiTiet(@PathVariable long id, @RequestParam Map<String, String> thamSo, Model model) {
         model.addAttribute("trang", sauMua.chiTiet(id, null));
+        model.addAttribute("kienLech", kiemDinh.kienLech(id));
+        model.addAttribute("dongNhan", kiemDinh.dongNhan(id));
+        model.addAttribute("maThaoTac", UUID.randomUUID());
         model.addAttribute("base", "/admin/returns");
         var ky = NguonDieuHuong.kyDashboard(thamSo);
         model.addAttribute("navDashboard", ky);
@@ -124,11 +137,60 @@ class AdminSauMua_Controller {
     }
 
     @PostMapping("/admin/returns/{id}/status")
-    String trangThai(@PathVariable long id, @RequestParam ReturnStatus status,
-                     @RequestParam Map<String, String> thamSo, RedirectAttributes flash) {
+    String trangThai(@PathVariable long id, @RequestParam ReturnStatus status, @RequestParam UUID thaoTac,
+                     @RequestParam long phienBan, @RequestParam Map<String, String> thamSo, RedirectAttributes flash) {
+        return xuLy(id, thamSo, flash, () -> kiemDinh.duyet(new Lenh(id, thaoTac, phienBan), status));
+    }
+
+    @InitBinder("dongTra")
+    void bindDongTra(org.springframework.web.bind.WebDataBinder binder) {
+        binder.setAllowedFields("soLuong[*]");
+    }
+
+    @PostMapping("/admin/returns/{id}/receive")
+    String nhan(@PathVariable long id, @RequestParam UUID thaoTac, @RequestParam long phienBan,
+                @RequestParam String thamChieu, @RequestParam(defaultValue="0") int lech,
+                @RequestParam(required=false) KiemDinhDoiTra_Service.LyDoLech lyDoLech, @ModelAttribute("dongTra") DoiTra_Form form,
+                @RequestParam Map<String, String> thamSo, RedirectAttributes flash) {
+        return xuLy(id, thamSo, flash, () -> kiemDinh.nhan(new Lenh(id, thaoTac, phienBan), thamChieu, form.getSoLuong(), lech, lyDoLech));
+    }
+
+    @PostMapping("/admin/returns/{id}/reconcile-parcel")
+    String doiChieu(@PathVariable long id, @RequestParam UUID thaoTac, @RequestParam long phienBan,
+                    @RequestParam long kien, @RequestParam String chungTu, @ModelAttribute("dongTra") DoiTra_Form form,
+                    @RequestParam Map<String, String> thamSo, RedirectAttributes flash) {
+        return xuLy(id, thamSo, flash, () -> kiemDinh.doiChieu(new Lenh(id,thaoTac,phienBan),kien,chungTu,form.getSoLuong()));
+    }
+
+    @PostMapping("/admin/returns/{id}/inspect")
+    String kiem(@PathVariable long id, @RequestParam UUID thaoTac, @RequestParam long phienBan,
+                @RequestParam long dong, @RequestParam int duBan, @RequestParam int daMo,
+                @RequestParam int hong, @RequestParam int khac, @RequestParam(defaultValue="") String lyDo,
+                @RequestParam(defaultValue="false") boolean datChecklist,
+                @RequestParam Map<String, String> thamSo, RedirectAttributes flash) {
+        return xuLy(id, thamSo, flash, () -> kiemDinh.kiem(new Lenh(id, thaoTac, phienBan), dong,
+            new Kiem(duBan, daMo, hong, khac, lyDo.strip(), datChecklist)));
+    }
+
+    @PostMapping("/admin/returns/{id}/confirm")
+    String chot(@PathVariable long id, @RequestParam UUID thaoTac, @RequestParam long phienBan,
+                @RequestParam long kien, @RequestParam Map<String, String> thamSo, RedirectAttributes flash) {
+        return xuLy(id, thamSo, flash, () -> kiemDinh.xacNhan(new Lenh(id, thaoTac, phienBan), kien));
+    }
+
+    @PostMapping("/admin/returns/{id}/close")
+    String dong(@PathVariable long id, @RequestParam UUID thaoTac, @RequestParam long phienBan,
+                @RequestParam String nghiaVu, @RequestParam(defaultValue="") String thieu,
+                @RequestParam Map<String, String> thamSo, RedirectAttributes flash) {
+        return xuLy(id, thamSo, flash, () -> kiemDinh.dong(new Lenh(id, thaoTac, phienBan), nghiaVu, thieu));
+    }
+
+    private String xuLy(long id, Map<String, String> thamSo, RedirectAttributes flash, Runnable thaoTac) {
         try {
-            sauMua.chuyenDoiTra(id, status);
-            flash.addFlashAttribute("message", "Đã cập nhật yêu cầu đổi trả.");
+            thaoTac.run();
+            flash.addFlashAttribute("message", "Đã ghi nhận thao tác đổi trả.");
+        } catch (org.springframework.dao.DuplicateKeyException exception) {
+            flash.addFlashAttribute("error", "Mã kiện hoặc thao tác đã được ghi. Hãy đối chiếu hồ sơ.");
         } catch (IllegalStateException exception) {
             flash.addFlashAttribute("error", exception.getMessage());
         }

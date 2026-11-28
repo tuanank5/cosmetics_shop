@@ -143,3 +143,17 @@ Owner phê duyệt **05-ACCOUNT — DONE trong phạm vi fixture đã kiểm ch�
 | ACCOUNT-5 | Thu hồi phiên, kiểm soát đăng nhập bằng mật khẩu và fixture Google OIDC/GitHub OAuth. |
 
 SMTP production tiếp tục tắt. Gửi thật, xác minh thư đến inbox, OAuth provider thật, manual UAT, tải production và 41 phương thức ngoài gate ACCOUNT đều **NOT RUN**. Đối soát email thủ công giữ **BLOCKED_OWNER** đến khi owner phân công người vận hành. AUTH-LIVE, PAY-LIVE và AUDIT PURGE tiếp tục **BLOCKED_EXTERNAL**. [Đối chiếu closeout](qa/ACCOUNT/closeout/verification.json) · [Kết quả fixture FINAL](qa/ACCOUNT/final-review/review.md)
+
+## RETURN · Quyết định owner ngày 28/11/2026
+
+Baseline `e100a1e1edd32a26b36877572aa2eeac06801c41`. Owner giao 10-RETURN trên fixture. Tiến độ 9/19 DONE. [Hồ sơ đề xuất](reviews/RETURN-owner-decisions-proposal.md)
+
+| Quyết định | Hợp đồng đã duyệt |
+|---|---|
+| RETURN-1 | Kiểm đúng SKU, nguyên bảo vệ và đủ mọi điều kiện bán lại. Hàng mở, hỏng, chưa xác minh hoặc không đạt được cách ly và ghi lý do. Chờ kiểm chưa phải kết luận cuối. |
+| RETURN-2 | Một hồ sơ có nhiều kiện. Chỉ chuyển sang RECEIVED sau khi nhận thực tế lượng dương thuộc yêu cầu. Theo dõi lượng duyệt, nhận, đủ bán, không đủ bán, chờ kiểm, chưa nhận. Mốc bảy ngày áp dụng khi mở yêu cầu. |
+| RETURN-3 | ROLE_ADMIN nhận, kiểm và xác nhận, lưu riêng actor/UTC mỗi bước. Cùng Admin được xử lý ca thường. Audit SUCCESS cùng transaction, FAILED sau rollback. Customer đọc theo chủ sở hữu. |
+| RETURN-4 | Mỗi kiện có mã đối chiếu vật lý, mỗi thao tác có mã duy nhất. Xác nhận theo đợt, chống ghi trùng theo dòng nhận. Khóa hồ sơ và SKU, kiểm tổng dưới khóa. Chứng từ nhập, tăng tồn đủ bán và audit cùng commit. |
+| RETURN-5 | Mọi lượng và nghĩa vụ liên quan phải có kết luận cuối kèm chứng cứ trước đóng. Khi nghĩa vụ tiền còn chờ, giữ hồ sơ mở và cho đọc kết quả kiểm định. Không tự hoàn tiền, trả quota, sửa attempt hay snapshot. Không nhập bù từ trạng thái legacy. |
+
+RETURN chờ review source, regression, CI, merge và nghiệm thu riêng. FEFO, quản lý lô và REFUND ngoài phạm vi.

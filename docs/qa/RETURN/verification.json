@@ -1,0 +1,170 @@
+{
+  "workPackage": "10-RETURN",
+  "scope": "local fixture",
+  "status": "IN_PROGRESS",
+  "acceptedWorkPackages": "9/19",
+  "baseline": "e100a1e1edd32a26b36877572aa2eeac06801c41",
+  "testedInputsSHA256": "9d20ce70674ee9acdef67fadc39046e590844e4e25a60e841d15d2e05a278d3e",
+  "environment": {
+    "java": "Eclipse Adoptium 21.0.13",
+    "maven": "3.9.11 offline",
+    "mariaDB": "12.2.2, isolated loopback datadir",
+    "playwrightCore": "1.63.0",
+    "webkitBuild": 2359,
+    "profile": "dev",
+    "jpaSchemaMode": "validate"
+  },
+  "defaultMaven": {
+    "SKIP": 129,
+    "PASS": 258
+  },
+  "mariaDBIncludingMigration": {
+    "PASS": 75
+  },
+  "fixtureSuites": {
+    "com.beautyshop.bootstrap.LocalDatabaseMigration_MariaDb_Test": {
+      "PASS": 12
+    },
+    "com.beautyshop.integration.Audit_MariaDb_Test": {
+      "PASS": 6
+    },
+    "com.beautyshop.integration.CatalogDonHang_MariaDb_Test": {
+      "PASS": 26
+    },
+    "com.beautyshop.integration.DonHangCOD_MariaDb_Test": {
+      "PASS": 10
+    },
+    "com.beautyshop.integration.KiemDinhDoiTra_MariaDb_Test": {
+      "PASS": 9
+    },
+    "com.beautyshop.integration.Momo_MariaDb_Test": {
+      "PASS": 9
+    },
+    "com.beautyshop.integration.PhieuGiamGia_MariaDb_Test": {
+      "PASS": 3
+    }
+  },
+  "distinctPassedInvocations": 333,
+  "failedInvocations": 0,
+  "defaultSkippedMethodsCoveredByFixture": 43,
+  "defaultSkippedMethodsStillNotRun": [
+    "com.beautyshop.integration.AdminOrderList_MariaDb_Test#locHieuLucVaDemCungMotTapDon",
+    "com.beautyshop.integration.AdminOrderList_MariaDb_Test#locNgayTheoGioVietNamVaGiuKhoangNgayKhiQuayLai",
+    "com.beautyshop.integration.AdminOrderList_MariaDb_Test#phanTrangOnDinhVaGiuBoLocQuaPost",
+    "com.beautyshop.integration.BienTheSanPham_MariaDb_Test#checkoutDaDocSkuVanDungSoTonMoiNhatSauKhiKhoa",
+    "com.beautyshop.integration.BienTheSanPham_MariaDb_Test#crudSkuVaAnhKiemTraQuyenSoHuuBienTheVaTonDangGiu",
+    "com.beautyshop.integration.BienTheSanPham_MariaDb_Test#customerKhongDuocQuanTriSku",
+    "com.beautyshop.integration.BienTheSanPham_MariaDb_Test#giuChotVaTraHangCoIdempotencyVaKhongTuGiaiPhongKhiHetHan",
+    "com.beautyshop.integration.BienTheSanPham_MariaDb_Test#haiDonCanhTranhMotSkuVaRetryKhongCapLanHai(String)",
+    "com.beautyshop.integration.BienTheSanPham_MariaDb_Test#rollbackCheckoutHoanCaTonVaDauGhiNhan",
+    "com.beautyshop.integration.CuaHang_MariaDb_Test#chonSkuDocGiaTonVaAnhHienHanh",
+    "com.beautyshop.integration.CuaHang_MariaDb_Test#locTiengVietSapXepTheoSkuVaPhanTrang",
+    "com.beautyshop.integration.DanhMucSanPhamThuongHieu_MariaDb_Test#catalogCrudUsesV1ConstraintsAndPreservesProducts",
+    "com.beautyshop.integration.DanhMucSanPhamThuongHieu_MariaDb_Test#mucChuaCoSanPhamVanGiuBanGhiVaGanTrangThaiLap",
+    "com.beautyshop.integration.DanhMucSanPhamThuongHieu_MariaDb_Test#trangThaiChaChiDoiVisibilityVaGiuSkuFkCungSnapshotDon",
+    "com.beautyshop.integration.DocView_MariaDb_Test#doCotSoTruyVanVaHtmlCuaNhungDuongDoc",
+    "com.beautyshop.integration.DocView_MariaDb_Test#gioKhachDocNhieuSkuTrongMotTruyVan",
+    "com.beautyshop.integration.GoiYPhoBienDemoReport_Test#inBangDiemTop5",
+    "com.beautyshop.integration.GoiYSanPham_MariaDb_Test#demBanDanhGiaYeuThichDungDieuKien",
+    "com.beautyshop.integration.HttpLoi_MariaDb_Test#httpThucGiuStatusSoHuuRoleCsrfVaErrorDispatch",
+    "com.beautyshop.integration.MongoTat_MariaDb_Test#trangChinhVanChayKhiMongoTat",
+    "com.beautyshop.integration.OAuth2Callback_MariaDb_Test#baCachLoginCungIdVaMoiPhienGopGioDungMotLan",
+    "com.beautyshop.integration.OAuth2Callback_MariaDb_Test#callbackDenMuonVaThuHoiPhien(String)",
+    "com.beautyshop.integration.OAuth2Callback_MariaDb_Test#callbackDoiCodeKiemStateVaDangNhapBangUserId",
+    "com.beautyshop.integration.OAuth2Callback_MariaDb_Test#callbackLienKetGiuPhienVaChiGhiSauXacNhanPost(String)",
+    "com.beautyshop.integration.OAuth2Callback_MariaDb_Test#googleOidcKiemChuKyNonceVaEmailDaXacMinh",
+    "com.beautyshop.integration.OAuth2Callback_MariaDb_Test#haiPhienGoDongThoiVanConMotDuongDangNhap",
+    "com.beautyshop.integration.OAuth2Callback_MariaDb_Test#oauthChuaCoMatKhauCanCallbackDungDanhTinhVaOtpDeThietLap",
+    "com.beautyshop.integration.OAuth2Callback_MariaDb_Test#webKitKhoaMoBaPhuongThuc",
+    "com.beautyshop.integration.OAuth2Callback_MariaDb_Test#webkitDatLaiMatKhauVaXacThucLaiGoogleTrenHaiTab",
+    "com.beautyshop.integration.SauMua_MongoDanhGia_Test#danhGiaDaGiaoChiChuMucVaChiCongKhaiSauDuyet",
+    "com.beautyshop.integration.SauMua_MongoDanhGia_Test#doiTraNhieuMucChiNhapPhanDuBanVaGiuNguyenThanhToan",
+    "com.beautyshop.integration.SauMua_MongoDanhGia_Test#haiYeuCauDongThoiKhongVuotSoLuongDaMua",
+    "com.beautyshop.integration.SauMua_MongoDanhGia_Test#timTaiChoTheoChuVaChongThanhCongGiaKhiSkuDaTat",
+    "com.beautyshop.integration.SauMua_MongoDanhGia_Test#yeuThichYeuCauDangNhapIdempotentVaChiThayGioCuaMinh",
+    "com.beautyshop.integration.ThongKe_MariaDb_Test#doanhThuTheoNgayVietNamLoaiDonHuyVaCustomerBiChan",
+    "com.beautyshop.integration.ThongKe_MariaDb_Test#trangDashboardRenderTrenMariaDb",
+    "com.beautyshop.integration.TuVanFaq_MariaDb_Test#csrfGioiHanKyTuVaTanSuat",
+    "com.beautyshop.integration.TuVanFaq_MariaDb_Test#faqMauVeBienTheDungCungNoiDungTrongMariaDbVaTrangTuVan",
+    "com.beautyshop.integration.TuVanFaq_MariaDb_Test#faqTimTiengVietLocNguonVaEscapeHtml",
+    "com.beautyshop.integration.TuVanRag_MariaDb_Test#cauHoiChuaDuLieuCaNhanKhongGoiEmbeddingHayChat",
+    "com.beautyshop.integration.TuVanRag_MariaDb_Test#customerKhongDuocNapChiMuc",
+    "com.beautyshop.integration.TuVanRag_MariaDb_Test#ragCoNguonGiaTonMoiVaFallbackKhiModelSaiHoacLoi",
+    "com.beautyshop.integration.XacThucDaPhuongThuc_MariaDb_Test#adminGuiLinkKhachTuDatTokenChiMotLanVaPhienCuBiThuHoi",
+    "com.beautyshop.integration.XacThucDaPhuongThuc_MariaDb_Test#capLinkMoiVoHieuLinkCuVaChiChoDungTrongMuoiLamPhut",
+    "com.beautyshop.integration.XacThucDaPhuongThuc_MariaDb_Test#doiMatKhauTuChoiTrungVaChoThuLaiCungPhien",
+    "com.beautyshop.integration.XacThucDaPhuongThuc_MariaDb_Test#goCanPhuongThucConLaiVaHaiProviderDungCungNguoiDung",
+    "com.beautyshop.integration.XacThucDaPhuongThuc_MariaDb_Test#guestThayCungPhanHoiVaPostCanCsrf",
+    "com.beautyshop.integration.XacThucDaPhuongThuc_MariaDb_Test#haiCustomerTranhCungDanhTinhChiGhiNhanChoMotChu",
+    "com.beautyshop.integration.XacThucDaPhuongThuc_MariaDb_Test#oauthGiuaCacLanDangNhapNhanDungIdVaKhongGhiDeEmail",
+    "com.beautyshop.integration.XacThucDaPhuongThuc_MariaDb_Test#smtpThatBaiKhongDoiHashVaHetHanLink",
+    "com.beautyshop.integration.XacThucDaPhuongThuc_MariaDb_Test#taiKhoanChiCoOAuthDaXacMinhEmailVanCanQuyenTaiProvider",
+    "com.beautyshop.integration.XacThucMigration_MariaDb_Test#baoToanIdLichSuVaChiChuyenDanhTinhCoBangChung(int)",
+    "com.beautyshop.integration.XacThuc_MariaDb_Test#adminTimPhanTrangKhoaMoVaThuHoiPhienCu",
+    "com.beautyshop.integration.XacThuc_MariaDb_Test#customerVaAdminDangNhapDungQuyenVaLogoutCoCsrf",
+    "com.beautyshop.integration.XacThuc_MariaDb_Test#dangKyBcryptEmailDuyNhatVaKhongNhanVaiTroTuClient",
+    "com.beautyshop.integration.XacThuc_MariaDb_Test#gioGuestGopMotLanVaKiemTraTonLai",
+    "com.beautyshop.integration.XacThuc_MariaDb_Test#gioiHanMuoiDiaChiTuMayChuVanChoPhepSua",
+    "com.beautyshop.integration.XacThuc_MariaDb_Test#haiRequestGopCungSnapshotKhongCongHaiLan",
+    "com.beautyshop.integration.XacThuc_MariaDb_Test#haiThietBiCungTaiKhoanMoiSnapshotGopMotLanVaCoNoticeRieng",
+    "com.beautyshop.integration.XacThuc_MariaDb_Test#hoSoVaDiaChiChiChoPhepChuTaiKhoan",
+    "com.beautyshop.integration.XacThuc_MariaDb_Test#luuDiaChiSongSongChiCoMotMacDinh",
+    "com.beautyshop.integration.XacThuc_MariaDb_Test#noticeCheckoutChiDungMotLanQuaHaiTabVaChiTietTonDuong",
+    "com.beautyshop.integration.XacThuc_MariaDb_Test#rollbackGopKhongPhatNoticeVaThuLaiCungSnapshot",
+    "com.beautyshop.integration.XacThuc_MariaDb_Test#serviceChiChoPhepChuDon",
+    "com.beautyshop.repository.MongoDanhGia_Store_Test#aggregationTrungBinhPhanBoNhieuSanPhamVaToanCuaHang",
+    "com.beautyshop.repository.MongoDanhGia_Store_Test#findAndModifyTheoPhienBanVaTrangThaiLocAdmin",
+    "com.beautyshop.repository.MongoDanhGia_Store_Test#haiNguoiGhiCungMucChiMotLanThanhCong",
+    "com.beautyshop.repository.MongoDanhGia_Store_Test#indexDuocTaoVaKhoaDuyNhatChanTrungDongDon",
+    "com.beautyshop.repository.MongoDanhGia_Store_Test#indexSaiChanGhiVaKhongSuaDuLieu",
+    "com.beautyshop.repository.MongoDanhGia_Store_Test#khiTrungThoiDiemThiSapTheoIdVaDemDungBoLocQuaCacTrang",
+    "com.beautyshop.repository.MongoDanhGia_Store_Test#khoiDongKhiMongoTatRoiTaoIndexTruocGhiSauPhucHoi",
+    "com.beautyshop.repository.MongoDanhGia_Store_Test#phanTrangAdminVaCongKhaiMoiNhatTruoc",
+    "com.beautyshop.repository.MongoDanhGia_Store_Test#taoMauSaoLuu",
+    "com.beautyshop.repository.ReviewBsonCompatibilityTest#documentRoundTripAcrossPackageVersions",
+    "com.beautyshop.service.ThuTaiKhoan_MariaDb_Test#haiAdminVaRollback",
+    "com.beautyshop.service.ThuTaiKhoan_MariaDb_Test#hetLeaseKhongGuiLai",
+    "com.beautyshop.service.ThuTaiKhoan_MariaDb_Test#khoaAdminTrongKhiGhi",
+    "com.beautyshop.service.ThuTaiKhoan_MariaDb_Test#leaseNguoiNhanVaKetQuaGui",
+    "com.beautyshop.service.ThuTaiKhoan_MariaDb_Test#phanBietKhongDoiVaFormCuSauKhoaMo",
+    "com.beautyshop.service.ThuTaiKhoan_MariaDb_Test#replayDongThoiVaThuHoiQuyenAdmin",
+    "com.beautyshop.service.ThuTaiKhoan_MariaDb_Test#rollbackTheoTungDiemVaRetry(String)",
+    "com.beautyshop.service.ThuTaiKhoan_MariaDb_Test#sauSmtpMatKetNoiKhiGhiSent",
+    "com.beautyshop.service.ThuTaiKhoan_MariaDb_Test#thuLaiDungLichVaDungSauBonLan",
+    "com.beautyshop.service.ThuTaiKhoan_MariaDb_Test#workerChiThayEventSauCommitVaGiuThuTu",
+    "com.beautyshop.service.ThuTaiKhoan_MariaDb_Test#workerCuTraVeSauKhiPollerDaThuHoiLease",
+    "com.beautyshop.service.ThuTaiKhoan_MariaDb_Test#workerHetLeaseTruocKhiGhiKetQua"
+  ],
+  "parameterization": "Surefire suppresses parameter expansion in disabled classes. Count executed invocations separately from skipped method descriptors.",
+  "gates": {
+    "mavenTest": "PASS",
+    "mariaDB": "PASS",
+    "flywayFreshV1V11": "PASS",
+    "flywayV10LegacyV11": "PASS",
+    "jpaValidate": "PASS",
+    "webkitDesktopAdminMobileCustomer": "PASS (inside MariaDB suite)",
+    "mavenPackage": "PASS",
+    "diffCheck": "PASS"
+  },
+  "history": {
+    "handoff": "delivery 258 default passes + 63 fixture + 12 migration; earlier source",
+    "intermediateRuns": [
+      "local/integration.txt",
+      "probe/integration.txt",
+      "probe2/integration.txt"
+    ]
+  },
+  "notRun": [
+    "production data and load",
+    "merchant MoMo Sandbox/live refund",
+    "production SMTP",
+    "manual UAT",
+    "remote CI"
+  ],
+  "evidence": {
+    "test": "verified/test.txt",
+    "integration": "verified/integration.txt",
+    "migration": "verified/migration.txt",
+    "package": "verified/package.txt"
+  }
+}
