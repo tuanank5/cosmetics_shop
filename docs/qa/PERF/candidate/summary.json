@@ -1,0 +1,134 @@
+{
+  "catalog": {
+    "first_ms": 100.483,
+    "n": 100,
+    "p50_ms": 49.8405,
+    "p95_ms": 68.785,
+    "p99_ms": 72.034,
+    "rps": 38.41,
+    "error_pct": 0.0,
+    "mean_bytes": 46806,
+    "select_count": 4
+  },
+  "catalog-page": {
+    "first_ms": 41.476,
+    "n": 100,
+    "p50_ms": 43.5415,
+    "p95_ms": 60.418,
+    "p99_ms": 61.107,
+    "rps": 45.3,
+    "error_pct": 0.0,
+    "mean_bytes": 47627,
+    "select_count": 4
+  },
+  "search-filter": {
+    "first_ms": 17.267,
+    "n": 100,
+    "p50_ms": 22.9955,
+    "p95_ms": 39.349,
+    "p99_ms": 43.998,
+    "rps": 80.37,
+    "error_pct": 0.0,
+    "mean_bytes": 49095,
+    "select_count": 4
+  },
+  "pdp": {
+    "first_ms": 83.787,
+    "n": 100,
+    "p50_ms": 13.2185,
+    "p95_ms": 35.145,
+    "p99_ms": 36.854,
+    "rps": 112.33,
+    "error_pct": 0.0,
+    "mean_bytes": 15217,
+    "select_count": 2
+  },
+  "admin": {
+    "first_ms": 69.233,
+    "n": 100,
+    "p50_ms": 38.348,
+    "p95_ms": 58.185,
+    "p99_ms": 61.124,
+    "rps": 47.6,
+    "error_pct": 0.0,
+    "mean_bytes": 43571,
+    "select_count": 6
+  },
+  "cart-1": {
+    "first_ms": 20.138,
+    "n": 100,
+    "p50_ms": 4.552,
+    "p95_ms": 26.212,
+    "p99_ms": 29.074,
+    "rps": 199.43,
+    "error_pct": 0.0,
+    "mean_bytes": 15440,
+    "select_count": 2
+  },
+  "checkout-1": {
+    "first_ms": 34.748,
+    "n": 100,
+    "p50_ms": 6.855499999999999,
+    "p95_ms": 30.267,
+    "p99_ms": 31.717,
+    "rps": 153.47,
+    "error_pct": 0.0,
+    "mean_bytes": 24976,
+    "select_count": 3
+  },
+  "cart-10": {
+    "first_ms": 5.859,
+    "n": 100,
+    "p50_ms": 8.205,
+    "p95_ms": 29.662,
+    "p99_ms": 31.834,
+    "rps": 140.36,
+    "error_pct": 0.0,
+    "mean_bytes": 51018,
+    "select_count": 2
+  },
+  "checkout-10": {
+    "first_ms": 5.714,
+    "n": 100,
+    "p50_ms": 7.146,
+    "p95_ms": 27.028,
+    "p99_ms": 28.75,
+    "rps": 216.31,
+    "error_pct": 0.0,
+    "mean_bytes": 34310,
+    "select_count": 3
+  },
+  "cart-100": {
+    "first_ms": 23.128,
+    "n": 100,
+    "p50_ms": 23.016,
+    "p95_ms": 44.52,
+    "p99_ms": 49.122,
+    "rps": 70.72,
+    "error_pct": 0.0,
+    "mean_bytes": 409494,
+    "select_count": 2
+  },
+  "checkout-100": {
+    "first_ms": 10.647,
+    "n": 100,
+    "p50_ms": 10.6385,
+    "p95_ms": 33.038,
+    "p99_ms": 34.402,
+    "rps": 109.11,
+    "error_pct": 0.0,
+    "mean_bytes": 127886,
+    "select_count": 3
+  },
+  "quote-100": {
+    "first_ms": 48.161,
+    "n": 100,
+    "p50_ms": 11.971,
+    "p95_ms": 33.345,
+    "p99_ms": 35.019,
+    "rps": 101.63,
+    "error_pct": 0.0,
+    "mean_bytes": 127886,
+    "select_count": 3
+  }
+}

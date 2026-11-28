@@ -1,0 +1,10 @@
+{
+  "passed": [
+    "anonymous empty, add and checkout login",
+    "two concurrent adds from two tabs, same SKU, both refreshed",
+    "quantity edit, old tab snapshot and reload",
+    "valid voucher, total quantity four",
+    "remove last SKU, empty customer cart and checkout",
+    "out-of-stock line counted, checkout quote invalid"
+  ]
+}

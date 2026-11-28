@@ -1,0 +1,18 @@
+﻿[
+    {
+        "path":  "src/main/java/com/beautyshop/controller/Checkout_Controller.java",
+        "sha256":  "81F4DC4B615FFAA2DE553EC5E9127EE123A2574BAEBB5AB44AC9E92C6DA1BC6E"
+    },
+    {
+        "path":  "src/main/java/com/beautyshop/controller/GiaoDien_Advice.java",
+        "sha256":  "23CFEB2DAB70F0E3004E64F51F1C233F7E217596579DFAC57EDF8A314FB9FBB2"
+    },
+    {
+        "path":  "src/main/java/com/beautyshop/controller/GioHang_Controller.java",
+        "sha256":  "206595A9CDD80D09E24A071AA773B133577B00023A96BD842F9A6F63474EFBE1"
+    },
+    {
+        "path":  "src/test/java/com/beautyshop/controller/CheckoutPagesTest.java",
+        "sha256":  "F1ACE4B94446600A0C548244BF7ECE09598CA58831EE9764136BAFD7B28A70BE"
+    }
+]

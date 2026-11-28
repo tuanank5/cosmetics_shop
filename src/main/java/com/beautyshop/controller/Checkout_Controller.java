@@ -137,6 +137,7 @@ class Checkout_Controller {
         }
         model.addAttribute("diaChi", diaChi);
         model.addAttribute("muc", muc);
+        GiaoDien_Advice.hienSoLuongGio(model, muc);
         model.addAttribute("momoEnabled", momo.enabled());
         model.addAttribute("momoMock", momo.mock());
         BigDecimal tamTinh = muc.stream().map(MucGio::thanhTien)

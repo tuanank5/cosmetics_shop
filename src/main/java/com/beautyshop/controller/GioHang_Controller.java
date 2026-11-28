@@ -26,8 +26,10 @@ class GioHang_Controller {
     @GetMapping
     String gioHang(@AuthenticationPrincipal PhienNguoiDung nguoiDung, HttpSession session, Model model) {
         synchronized (WebUtils.getSessionMutex(session)) {
-            model.addAttribute("mucGio", nguoiDung == null ? gioHangService.docGioKhach(GioKhach.doc(session))
-                : gioHangService.docGioCustomer(nguoiDung.getMaNguoiDung()));
+            var muc = nguoiDung == null ? gioHangService.docGioKhach(GioKhach.doc(session))
+                : gioHangService.docGioCustomer(nguoiDung.getMaNguoiDung());
+            model.addAttribute("mucGio", muc);
+            if (GiaoDien_Advice.laCustomer(nguoiDung)) GiaoDien_Advice.hienSoLuongGio(model, muc);
         }
         return "cart/index";
     }

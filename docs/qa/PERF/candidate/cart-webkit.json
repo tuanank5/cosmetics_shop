@@ -1,0 +1,38 @@
+[
+  {
+    "route": "/cart",
+    "count": 1,
+    "badge": 1,
+    "status": 200
+  },
+  {
+    "route": "/checkout",
+    "count": 1,
+    "badge": 1,
+    "status": 200
+  },
+  {
+    "route": "/cart",
+    "count": 10,
+    "badge": 10,
+    "status": 200
+  },
+  {
+    "route": "/checkout",
+    "count": 10,
+    "badge": 10,
+    "status": 200
+  },
+  {
+    "route": "/cart",
+    "count": 100,
+    "badge": 100,
+    "status": 200
+  },
+  {
+    "route": "/checkout",
+    "count": 100,
+    "badge": 100,
+    "status": 200
+  }
+]
