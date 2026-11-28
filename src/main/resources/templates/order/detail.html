@@ -75,6 +75,8 @@
                 <dl class="admin-totals">
                     <div><dt>Tạm tính</dt><dd><span th:replace="~{fragments/ui :: money(${don.tamTinh})}"></span></dd></div>
                     <div><dt>Giảm giá</dt><dd><span th:replace="~{fragments/ui :: money(${don.giam.negate()})}"></span></dd></div>
+                    <div th:if="${don.phiChuan != null}"><dt>Phí chuẩn</dt><dd><span th:replace="~{fragments/ui :: money(${don.phiChuan})}"></span></dd></div>
+                    <div th:if="${don.giamShip != null}"><dt>Giảm vận chuyển</dt><dd><span th:replace="~{fragments/ui :: money(${don.giamShip})}"></span></dd></div>
                     <div><dt>Phí giao hàng</dt><dd><span th:replace="~{fragments/ui :: money(${don.phiVanChuyen})}"></span></dd></div>
                     <div class="admin-totals-final"><dt>Tổng cộng</dt><dd><span th:replace="~{fragments/ui :: money(${don.tong})}"></span></dd></div>
                 </dl>

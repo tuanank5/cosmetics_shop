@@ -54,8 +54,14 @@ class CheckoutPagesTest {
         var address = new DiaChiHienThi(1L, "Khách fixture", "000", "Địa chỉ fixture", true);
         when(addresses.danhSach(7L)).thenReturn(List.of(address));
         when(cart.docGioCustomer(7L)).thenReturn(List.of(new MucGio(22,"Kem dưỡng","4 oz",new BigDecimal("245000"),10,2,"QA-22",null,null,null)));
-        when(vouchers.xemTruoc(any(), any())).thenReturn(new PhieuGiamGia_Service.GiamGia(50L,new BigDecimal("50000")));
-        when(vouchers.xemTruoc(isNull(), any())).thenReturn(new PhieuGiamGia_Service.GiamGia(null, BigDecimal.ZERO));
+        when(vouchers.xemGio(any(),any(),eq(7L),anyList())).thenReturn(baoGia(50L,new BigDecimal("50000")));
+        when(vouchers.xemGio(isNull(),any(),eq(7L),anyList())).thenReturn(baoGia(null, BigDecimal.ZERO));
+    }
+
+    private PhieuGiamGia_Service.BaoGia baoGia(Long id, BigDecimal giam) {
+        var phi = new BigDecimal("25000");
+        return new PhieuGiamGia_Service.BaoGia(new PhieuGiamGia_Service.GiamGia(id,giam),
+            new PhieuGiamGia_Service.GiamGia(null,BigDecimal.ZERO), phi, new BigDecimal("515000").subtract(giam), java.util.Map.of());
     }
 
     String quote(String voucher) throws Exception {
@@ -90,7 +96,7 @@ class CheckoutPagesTest {
         assertThat(result.getResponse().getContentAsString()).contains("490.000 ₫", "515.000 ₫",
                 "name=\"_csrf\"", "action=\"/checkout/quote\"", "data-quote-fallback", "Giao đến Khách fixture")
             .doesNotContain("Tính lại tổng tiền", "gsap-", "home-motion.js", "value=\"MOMO\"");
-        verify(vouchers).xemTruoc(null, new BigDecimal("490000"));
+        verify(vouchers).xemGio(isNull(),isNull(),eq(7L),anyList());
         verifyNoInteractions(orders);
     }
 
@@ -100,20 +106,20 @@ class CheckoutPagesTest {
                 "Mã giảm giá hợp lệ: SAVE50", "Giao đến Khách fixture · Địa chỉ fixture")
             .contains("type=\"hidden\" name=\"addressId\" value=\"1\"", "type=\"hidden\" name=\"voucher\" value=\"SAVE50\"",
                 "action=\"/checkout\"");
-        verify(vouchers).xemTruoc("SAVE50",new BigDecimal("490000"));
+        verify(vouchers).xemGio(eq("SAVE50"),isNull(),eq(7L),anyList());
         verifyNoInteractions(orders);
     }
 
     @ParameterizedTest @ValueSource(strings={"", "ZERO"})
     void confirmedZeroDiscountIsNotAnErrorOrAnInventedPromotion(String voucher) throws Exception {
-        when(vouchers.xemTruoc(any(),any())).thenReturn(new PhieuGiamGia_Service.GiamGia(voucher.isEmpty()?null:1L,BigDecimal.ZERO));
+        when(vouchers.xemGio(any(),any(),eq(7L),anyList())).thenReturn(baoGia(voucher.isEmpty()?null:1L,BigDecimal.ZERO));
         assertThat(quote(voucher)).contains("data-quote-valid=\"true\"", "0 ₫", "515.000 ₫")
             .doesNotContain("đã áp dụng", "role=\"alert\"");
     }
 
     @ParameterizedTest @ValueSource(strings={"INVALID","EXPIRED","EXHAUSTED","MINIMUM"})
     void voucherErrorsKeepTheCodeWithoutClaimingAConfirmedTotal(String code) throws Exception {
-        when(vouchers.xemTruoc(eq(code),any())).thenThrow(new IllegalArgumentException("Voucher không hợp lệ hoặc chưa đủ điều kiện."));
+        when(vouchers.xemGio(eq(code),any(),eq(7L),anyList())).thenThrow(new IllegalArgumentException("Voucher không hợp lệ hoặc chưa đủ điều kiện."));
         String html=quote(code);unconfirmed(html);
         assertThat(html).contains("value=\""+code+"\"", "aria-invalid=\"true\"", "voucher-error", "role=\"alert\"");
         verifyNoInteractions(orders);
@@ -121,7 +127,7 @@ class CheckoutPagesTest {
 
     @ParameterizedTest @ValueSource(strings={"conflict","state"})
     void quoteFailuresRequireARefresh(String type) throws Exception {
-        when(vouchers.xemTruoc(any(),any())).thenThrow(type.equals("conflict")?new ConcurrencyFailureException("fixture"):new IllegalStateException("fixture"));
+        when(vouchers.xemGio(any(),any(),eq(7L),anyList())).thenThrow(type.equals("conflict")?new ConcurrencyFailureException("fixture"):new IllegalStateException("fixture"));
         String html=quote("SAVE50");unconfirmed(html);assertThat(html).contains("Chưa thể tính tổng tiền");
     }
 
@@ -157,7 +163,7 @@ class CheckoutPagesTest {
     void failedSubmitAfterValidQuoteKeepsCodeAndInvalidatesAllDerivedAmounts(String type) throws Exception {
         assertThat(quote("SAVE50")).contains("465.000 ₫");
         RuntimeException failure=switch(type){case "conflict"->new ConcurrencyFailureException("fixture");case "stock"->new IllegalStateException("Không đủ tồn.");default->new IllegalArgumentException("Voucher hết lượt.");};
-        when(orders.datCOD(7L,1L,"SAVE50")).thenThrow(failure);
+        when(orders.datCOD(7L,1L,"SAVE50",null)).thenThrow(failure);
         String html=mvc.perform(post("/checkout").with(user(customer)).with(csrf()).param("addressId","1").param("voucher","SAVE50"))
             .andExpect(status().isOk()).andReturn().getResponse().getContentAsString();
         unconfirmed(html);assertThat(html).contains("value=\"SAVE50\"", "role=\"alert\"").doesNotContain("515.000 ₫");
@@ -165,11 +171,11 @@ class CheckoutPagesTest {
     }
 
     @Test void codStillSubmitsDirectlyAndIgnoresClientPriceOrQuoteFlags() throws Exception {
-        when(orders.datCOD(7L,1L,"SAVE50")).thenReturn(901L);
+        when(orders.datCOD(7L,1L,"SAVE50",null)).thenReturn(901L);
         mvc.perform(post("/checkout").with(user(customer)).with(csrf()).param("addressId","1").param("voucher","SAVE50")
                 .param("price","1").param("tong","1").param("baoGiaHopLe","true"))
             .andExpect(redirectedUrl("/orders/901")).andExpect(flash().attribute("message","Đã đặt đơn COD."));
-        verify(orders).datCOD(7L,1L,"SAVE50");verifyNoInteractions(vouchers);
+        verify(orders).datCOD(7L,1L,"SAVE50",null);verifyNoInteractions(vouchers);
     }
 
     @ParameterizedTest @ValueSource(strings={"abc", "0", ""})
@@ -189,7 +195,7 @@ class CheckoutPagesTest {
     }
 
     @Test void momoOffDirectSubmitReliesOnExistingServiceGuard() throws Exception {
-        when(orders.datMomo(7L,1L,"")).thenThrow(new IllegalStateException("MoMo chưa khả dụng."));
+        when(orders.datMomo(7L,1L,"",null)).thenThrow(new IllegalStateException("MoMo chưa khả dụng."));
         String html=mvc.perform(post("/checkout").with(user(customer)).with(csrf()).param("addressId","1").param("voucher","").param("payment","MOMO"))
             .andExpect(status().isOk()).andReturn().getResponse().getContentAsString();
         unconfirmed(html);assertThat(html).contains("MoMo chưa khả dụng.").doesNotContain("value=\"MOMO\"");verify(momo,never()).batDau(anyLong());
@@ -199,16 +205,16 @@ class CheckoutPagesTest {
     void momoOnRendersCorrectLabelAndPreservesSubmitter(boolean mockMode) throws Exception {
         when(momo.enabled()).thenReturn(true);when(momo.mock()).thenReturn(mockMode);
         assertThat(quote("SAVE50")).contains("name=\"payment\" value=\"MOMO\"",mockMode?"MÔ PHỎNG - KHÔNG THU TIỀN":"MoMo (chế độ thử nghiệm)");
-        when(orders.datMomo(7L,1L,"SAVE50")).thenReturn(902L);
+        when(orders.datMomo(7L,1L,"SAVE50",null)).thenReturn(902L);
         when(momo.batDau(902L)).thenReturn(Optional.of(URI.create(mockMode?"/payment/momo/mock/902":"https://sandbox.example.invalid/fixture")));
         mvc.perform(post("/checkout").with(user(customer)).with(csrf()).param("addressId","1").param("voucher","SAVE50").param("payment","MOMO"))
             .andExpect(redirectedUrl(mockMode?"/payment/momo/mock/902":"https://sandbox.example.invalid/fixture"));
-        verify(orders).datMomo(7L,1L,"SAVE50");verify(orders,never()).datCOD(anyLong(),anyLong(),any());
+        verify(orders).datMomo(7L,1L,"SAVE50",null);verify(orders,never()).datCOD(anyLong(),anyLong(),any());
     }
 
     @ParameterizedTest @ValueSource(booleans={true,false})
     void momoCommittedButGatewayUnclearReturnsPendingOrder(boolean throwsError) throws Exception {
-        when(orders.datMomo(7L,1L,"SAVE50")).thenReturn(902L);
+        when(orders.datMomo(7L,1L,"SAVE50",null)).thenReturn(902L);
         if(throwsError)when(momo.batDau(902L)).thenThrow(new IllegalStateException("fixture gateway"));
         else when(momo.batDau(902L)).thenReturn(Optional.empty());
         mvc.perform(post("/checkout").with(user(customer)).with(csrf()).param("addressId","1").param("voucher","SAVE50").param("payment","MOMO"))

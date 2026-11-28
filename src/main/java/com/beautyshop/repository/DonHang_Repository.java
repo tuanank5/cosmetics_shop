@@ -38,11 +38,16 @@ public class DonHang_Repository {
             .param("phuongThuc", online ? "MOMO" : "COD").query(Long.class).single();
     }
 
-    public void themMuc(long maDon, ChiTiet muc) {
+    public void ghiPhi(long maDon, BigDecimal phiChuan, BigDecimal giamShip) {
+        jdbc.sql("UPDATE don_hang SET phi_chuan=?, giam_van_chuyen=? WHERE ma_don_hang=?")
+            .params(phiChuan, giamShip, maDon).update();
+    }
+
+    public void themMuc(long maDon, ChiTiet muc, BigDecimal giamHang) {
         jdbc.sql("""
             INSERT INTO chi_tiet_don_hang (ma_don_hang, ma_bien_the, sku_khi_dat, ten_san_pham_khi_dat,
-                ten_bien_the_khi_dat, don_gia, so_luong) VALUES (?, ?, ?, ?, ?, ?, ?)
-            """).params(maDon, muc.maBienThe(), muc.sku(), muc.tenSanPham(), muc.tenBienThe(), muc.donGia(), muc.soLuong()).update();
+                ten_bien_the_khi_dat, don_gia, so_luong, giam_hang) VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+            """).params(maDon, muc.maBienThe(), muc.sku(), muc.tenSanPham(), muc.tenBienThe(), muc.donGia(), muc.soLuong(), giamHang).update();
     }
 
     public List<ChiTiet> chiTiet(long maDon) {
@@ -154,14 +159,14 @@ public class DonHang_Repository {
             SELECT ma_don_hang, ma_don_hang_hien_thi, ma_phieu_giam_gia, ten_nguoi_nhan, sdt_nguoi_nhan,
                    dia_chi_khi_dat, tam_tinh, so_tien_giam, phi_van_chuyen, tong_thanh_toan, trang_thai,
                    phuong_thuc_thanh_toan, ngay_tao, ngay_giao_thanh_cong,
-                   (SELECT n.ho_ten FROM nguoi_dung n WHERE n.ma_nguoi_dung = don_hang.ma_nguoi_dung)
+                   (SELECT n.ho_ten FROM nguoi_dung n WHERE n.ma_nguoi_dung = don_hang.ma_nguoi_dung), phi_chuan, giam_van_chuyen
             FROM don_hang WHERE ma_don_hang = ?
             """ + (khoa ? " FOR UPDATE" : "")).param(maDon)
             .query((rs, row) -> new Don(rs.getLong(1), rs.getString(2), rs.getObject(3, Long.class),
                 rs.getString(4), rs.getString(5), rs.getString(6), rs.getBigDecimal(7), rs.getBigDecimal(8),
                 rs.getBigDecimal(9), rs.getBigDecimal(10), OrderStatus.valueOf(rs.getString(11)),
                 rs.getString(12), rs.getObject(13, LocalDateTime.class), rs.getObject(14, LocalDateTime.class),
-                rs.getString(15))).optional();
+                rs.getString(15), rs.getBigDecimal(16), rs.getBigDecimal(17))).optional();
     }
 
     public void doiTrangThai(long maDon, OrderStatus trangThai) {
@@ -235,12 +240,12 @@ public class DonHang_Repository {
     public record Don(long maDonHang, String maHienThi, Long maVoucher, String tenNguoiNhan, String soDienThoai,
                       String diaChi, BigDecimal tamTinh, BigDecimal giam, BigDecimal phiVanChuyen,
                       BigDecimal tong, OrderStatus trangThai, String phuongThuc, LocalDateTime ngayTao,
-                      LocalDateTime ngayGiaoThanhCong, String tenKhachHang) {
+                      LocalDateTime ngayGiaoThanhCong, String tenKhachHang, BigDecimal phiChuan, BigDecimal giamShip) {
         public Don(long maDonHang, String maHienThi, Long maVoucher, String tenNguoiNhan, String soDienThoai,
                    String diaChi, BigDecimal tamTinh, BigDecimal giam, BigDecimal phiVanChuyen, BigDecimal tong,
                    OrderStatus trangThai, String phuongThuc, LocalDateTime ngayTao) {
             this(maDonHang, maHienThi, maVoucher, tenNguoiNhan, soDienThoai, diaChi, tamTinh, giam, phiVanChuyen, tong,
-                trangThai, phuongThuc, ngayTao, null, null);
+                trangThai, phuongThuc, ngayTao, null, null, null, null);
         }
 
         public ZonedDateTime gioDat() { return gioVietNam(ngayTao); }

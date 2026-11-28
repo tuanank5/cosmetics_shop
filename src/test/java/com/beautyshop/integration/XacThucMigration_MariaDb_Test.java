@@ -41,12 +41,41 @@ class XacThucMigration_MariaDb_Test {
                 VALUES ('SYSTEM','SESSION_REVOKED','ACCOUNT',500,UTC_TIMESTAMP(),'SUCCESS',UUID())
                 """);
         }
+        Flyway.configure().dataSource(url,user,password).target("8").load().migrate();
+        try (var connection = DriverManager.getConnection(url,user,password); var st = connection.createStatement()) {
+            st.executeUpdate("""
+                INSERT INTO phieu_giam_gia(ma_ap_dung,loai_giam_gia,gia_tri_giam,gioi_han_su_dung,bat_dau_luc,ket_thuc_luc,so_luot_da_dung,so_luot_tam_giu)
+                VALUES ('LEGACY','FIXED',10000,5,'2020-01-01','2099-01-01',1,1)
+                """);
+            for (String method : java.util.List.of("COD","MOMO")) {
+                st.executeUpdate("""
+                    INSERT INTO don_hang(ma_nguoi_dung,ma_phieu_giam_gia,ma_don_hang_hien_thi,ten_nguoi_nhan,sdt_nguoi_nhan,dia_chi_khi_dat,tam_tinh,so_tien_giam,phi_van_chuyen,tong_thanh_toan,trang_thai,phuong_thuc_thanh_toan)
+                    SELECT 500,ma_phieu_giam_gia,'%s','Fixture','0','Fixture',50000,10000,25000,65000,'%s','%s'
+                    FROM phieu_giam_gia WHERE ma_ap_dung='LEGACY'
+                    """.formatted(method,method.equals("COD") ? "CONFIRMED" : "PENDING_PAYMENT",method));
+            }
+            st.executeUpdate("""
+                INSERT INTO tam_giu_phieu_giam_gia(ma_don_hang,ma_phieu_giam_gia,trang_thai)
+                SELECT ma_don_hang,ma_phieu_giam_gia,'HELD' FROM don_hang WHERE ma_don_hang_hien_thi='MOMO'
+                """);
+        }
         var flyway = Flyway.configure().dataSource(url, user, password).load();
         flyway.migrate();
         flyway.validate();
         assertThat(flyway.migrate().migrationsExecuted).isZero();
         try (var connection = DriverManager.getConnection(url, user, password);
              var statement = connection.createStatement()) {
+            try (var result = statement.executeQuery("""
+                SELECT COUNT(*),SUM(d.tong_thanh_toan),SUM(g.trang_thai='HELD'),SUM(g.trang_thai='CONSUMED')
+                FROM don_hang d JOIN tam_giu_phieu_giam_gia g USING(ma_don_hang)
+                WHERE g.slot='HANG' AND g.so_tien_giam=10000 AND d.phi_chuan IS NULL
+                """)) {
+                assertThat(result.next()).isTrue();
+                assertThat(result.getInt(1)).isEqualTo(2);
+                assertThat(result.getInt(2)).isEqualTo(130000);
+                assertThat(result.getInt(3)).isEqualTo(1);
+                assertThat(result.getInt(4)).isEqualTo(1);
+            }
             try (var index = statement.executeQuery("""
                 SELECT GROUP_CONCAT(column_name ORDER BY seq_in_index)
                 FROM information_schema.statistics WHERE table_schema=DATABASE()

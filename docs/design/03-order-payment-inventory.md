@@ -69,20 +69,13 @@ Checkout giữ khóa ghi mỗi SKU theo mã tăng dần và khóa đọc các h�
 
 ## 4. Voucher
 
-- Chỉ một mã/đơn, `FIXED` hoặc `PERCENT`, giới hạn `usage_limit`, khung thời gian, minSpend, maxDiscount.
-- Kiểm tra với subtotal trước chiết khấu, áp dụng giảm; phí ship dựa subtotal **sau** chiết khấu.
-- Trước khi khách thanh toán online: giữ 1 lượt; khi PAID mới consume, hủy/hết hạn release. Sử dụng index & transaction để không vượt lượt.
+Quote và checkout dùng cùng policy của PhieuGiamGia_Service. Đọc giá SKU, xét phạm vi và Customer, giảm HÀNG trên tập đủ điều kiện, phân bổ tỷ trọng theo đồng rồi chia dư theo phần lẻ và ID SKU (mỗi SKU một dòng giỏ). Áp D27 sau giảm. Xét minSpend SHIP trên tiền hàng đúng phạm vi sau phân bổ, giảm tối đa bằng phí chuẩn. Khi phí 0, bỏ slot SHIP. Quote chỉ đọc.
 
-### Contract P11 cho checkout và MoMo
+Checkout khóa giỏ, SKU theo ID rồi phiếu theo ID. Khóa phiếu bảo vệ phạm vi và bộ đếm tổng, đồng thời tuần tự hóa phép đếm lượt HELD/CONSUMED của từng Customer. COD ghi hai chứng từ CONSUMED, xuất kho và snapshot trong một transaction. MoMo ghi HELD và giữ SKU 15 phút. Đối soát khóa đơn, xử lý SKU trước khi chuyển lượt theo ID phiếu. IPN lặp hoặc attempt cũ không tiêu hai lần. Khi còn giao dịch REFUND_PENDING, giữ tài nguyên đang chờ và chặn thử lại để tránh thu thêm tiền. Hủy COD chỉ trả CONSUMED khi chưa giao và UNPAID. Không có chuyển trạng thái lượt từ luồng hoàn sau giao.
 
-| Phương thức của `PhieuGiamGia_Service` | Contract |
-|---|---|
-| `xemTruoc(ma, tamTinh)` | Báo giá từ dữ liệu hiện hành. Giá trị giảm dùng BigDecimal, làm tròn phần trăm xuống đồng và áp trần nếu có. |
-| `apDungCOD(ma, tamTinh)` | Khóa voucher hợp lệ và tăng lượt đã dùng trong transaction tạo đơn. Hủy COD hợp lệ gọi `hoanCOD` dưới khóa hàng đơn. |
-| `giuOnline(ma, tamTinh)`, `ghiTamGiu(maDon, maVoucher)` | Khóa voucher, tăng lượt giữ và ghi trạng thái `HELD` cùng transaction tạo đơn. |
-| `ketThucTamGiu(maDon, maVoucher, suDung)` | Khi có kết quả đã xác minh, chuyển sang `CONSUMED` hoặc `RELEASED` và cập nhật bộ đếm cùng transaction. Lặp lại cùng kết quả giữ nguyên số liệu. |
+Với ví dụ 520.000 ₫, giảm HÀNG 30.000 ₫, phí chuẩn 25.000 ₫, giảm SHIP 10.000 ₫, đơn và attempt cùng chốt 505.000 ₫. Tiền giao thực trả là 15.000 ₫. Xem snapshot lịch sử trực tiếp từ đơn. [Ví dụ đã duyệt](../reviews/VOUCHER-quyet-dinh-1-3.md)
 
-Trang `/admin/vouchers` dành cho Admin. Mã được bỏ khoảng trắng hai đầu và viết hoa khi lưu. Voucher có hiệu lực từ thời điểm bắt đầu đến trước thời điểm kết thúc, theo UTC. Trường giới hạn phải đủ cho tổng lượt đã dùng và đang giữ. Lượt đã đặt và số tiền snapshot trên đơn được giữ khi Admin sửa hoặc ngừng voucher. Nếu còn đơn hoặc lịch sử giữ lượt tham chiếu thì dùng ngừng hoạt động. P11 dùng schema V1.
+Trang `/admin/vouchers` dành cho Admin. Mã được bỏ khoảng trắng hai đầu và viết hoa khi lưu. Voucher có hiệu lực từ thời điểm bắt đầu đến trước thời điểm kết thúc, theo UTC. Trường giới hạn phải đủ cho tổng lượt đã dùng và đang giữ. Lượt đã đặt và số tiền snapshot trên đơn được giữ khi Admin sửa hoặc ngừng voucher. Nếu còn đơn hoặc lịch sử giữ lượt tham chiếu thì dùng ngừng hoạt động. V9 mở rộng chứng từ giữ lượt của V1 sang hai slot.
 
 ## 5. MoMo
 

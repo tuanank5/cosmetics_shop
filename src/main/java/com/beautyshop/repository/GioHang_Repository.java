@@ -14,7 +14,7 @@ import org.springframework.stereotype.Repository;
 public class GioHang_Repository {
     private static final String DANG_HIEN_THI = "b.dang_hoat_dong AND s.dang_hoat_dong AND t.dang_hoat_dong AND d.dang_hoat_dong";
     private static final String COT_SKU = """
-        b.ma_bien_the, s.ten_san_pham, b.ten_bien_the, b.gia_ban,
+        s.ma_san_pham, s.ma_danh_muc, s.ma_thuong_hieu, b.ma_bien_the, s.ten_san_pham, b.ten_bien_the, b.gia_ban,
                CASE WHEN %1$s THEN b.so_luong_trong_kho - b.so_luong_tam_giu ELSE 0 END AS kha_dung, b.sku,
                b.url_hinh_anh, t.ten_thuong_hieu, CASE WHEN %1$s THEN s.duong_dan END AS duong_dan
         """.formatted(DANG_HIEN_THI);
@@ -63,7 +63,8 @@ public class GioHang_Repository {
     private static MucGio docMucGio(ResultSet rs, int row) throws SQLException {
         return new MucGio(rs.getLong("ma_bien_the"), rs.getString("ten_san_pham"), rs.getString("ten_bien_the"),
             rs.getBigDecimal("gia_ban"), rs.getInt("kha_dung"), rs.getInt("so_luong"), rs.getString("sku"),
-            rs.getString("url_hinh_anh"), rs.getString("ten_thuong_hieu"), rs.getString("duong_dan"));
+            rs.getString("url_hinh_anh"), rs.getString("ten_thuong_hieu"), rs.getString("duong_dan"),
+            rs.getLong("ma_san_pham"), rs.getLong("ma_danh_muc"), rs.getLong("ma_thuong_hieu"));
     }
 
     public boolean ghiNhanGop(String maGop, long maNguoiDung) {
@@ -104,7 +105,11 @@ public class GioHang_Repository {
     }
 
     public record MucGio(long maBienThe, String tenSanPham, String tenBienThe, BigDecimal giaBan, int khaDung,
-                         int soLuong, String sku, String urlHinhAnh, String tenThuongHieu, String duongDan) {
+                         int soLuong, String sku, String urlHinhAnh, String tenThuongHieu, String duongDan, long sanPham, long danhMuc, long thuongHieu) {
+        public MucGio(long maBienThe, String tenSanPham, String tenBienThe, BigDecimal giaBan, int khaDung,
+                      int soLuong, String sku, String urlHinhAnh, String tenThuongHieu, String duongDan) {
+            this(maBienThe, tenSanPham, tenBienThe, giaBan, khaDung, soLuong, sku, urlHinhAnh, tenThuongHieu, duongDan, 0, 0, 0);
+        }
         public MucGio {
             urlHinhAnh = AnhBienTheHienThi.hopLe(urlHinhAnh);
         }
@@ -113,7 +118,7 @@ public class GioHang_Repository {
 
         public MucGio voiSoLuong(int soLuongMoi) {
             return new MucGio(maBienThe, tenSanPham, tenBienThe, giaBan, khaDung, soLuongMoi, sku,
-                urlHinhAnh, tenThuongHieu, duongDan);
+                urlHinhAnh, tenThuongHieu, duongDan, sanPham, danhMuc, thuongHieu);
         }
     }
 

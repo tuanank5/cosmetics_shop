@@ -12,6 +12,10 @@ public class Checkout_Form {
     @Size(max = 80, message = "Mã giảm giá tối đa 80 ký tự.")
     private String voucher;
 
+    @Size(max = 80, message = "Mã vận chuyển tối đa 80 ký tự.")
+    private String ship;
+    public String getShip() { return ship; }
+    public void setShip(String ship) { this.ship = ship; }
     public Long getAddressId() { return addressId; }
     public void setAddressId(Long addressId) { this.addressId = addressId; }
     public String getVoucher() { return voucher; }

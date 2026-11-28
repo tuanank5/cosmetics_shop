@@ -85,6 +85,13 @@
         <aside class="cart-summary" aria-labelledby="summary-title">
             <h2 id="summary-title">Tóm tắt giỏ hàng</h2>
             <dl><dt>Tiền hàng trước giảm giá và phí giao hàng</dt><dd><span th:replace="~{fragments/ui :: money(${#aggregates.sum(mucGio.![giaBan * soLuong])})}"></span></dd></dl>
+            <form method="get" th:action="@{/cart}">
+                <label>Mã hàng <input name="hang" maxlength="80" th:value="${param.hang}"></label>
+                <label>Mã vận chuyển <input name="ship" maxlength="80" th:value="${param.ship}"></label>
+                <button class="btn btn--secondary">Xem dự tính</button>
+            </form>
+            <p th:if="${duTinh != null}">Tổng dự tính <span th:replace="~{fragments/ui :: money(${duTinh.tong})}"></span></p>
+            <p th:if="${loiDuTinh}" th:text="${loiDuTinh}"></p>
             <p>Phí vận chuyển và mã giảm giá sẽ được xác nhận ở bước thanh toán.</p>
             <a class="btn btn--primary btn--lg" data-cart-checkout th:href="@{/checkout}" sec:authorize="isAnonymous()">Đăng nhập để thanh toán</a>
             <a class="btn btn--primary btn--lg" data-cart-checkout th:href="@{/checkout}" sec:authorize="hasRole('CUSTOMER')">Tiến hành thanh toán</a>

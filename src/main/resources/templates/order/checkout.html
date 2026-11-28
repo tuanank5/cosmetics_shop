@@ -29,6 +29,7 @@
                         <ul>
                             <li th:each="loi : ${#fields.globalErrors()}" th:text="${loi}"></li>
                             <li th:if="${#fields.hasErrors('addressId')}"><a href="#addressId">Chọn địa chỉ giao hàng hợp lệ của bạn.</a></li>
+                            <li th:if="${#fields.hasErrors('ship')}"><a href="#ship" th:errors="*{ship}"></a></li>
                             <li th:if="${#fields.hasErrors('voucher')}"><a href="#voucher" th:errors="*{voucher}"></a></li>
                         </ul>
                     </div>
@@ -71,13 +72,19 @@
                     </div>
                     <div class="checkout-voucher-control">
                         <div class="field">
-                            <label for="voucher" class="visually-hidden">Mã giảm giá (không bắt buộc)</label>
+                            <label for="voucher">Mã giảm giá hàng</label>
                             <div class="checkout-voucher-field">
                                 <div><svg th:replace="~{fragments/commerce :: icon('ticket')}"></svg><input th:field="*{voucher}" placeholder="Nhập mã giảm giá" maxlength="80" autocomplete="off"
                                      aria-describedby="voucher-error" th:attr="aria-invalid=${#fields.hasErrors('voucher') ? 'true' : null}"></div>
                                 <button type="submit" class="btn btn--secondary" th:disabled="${#lists.isEmpty(diaChi)}">Áp dụng</button>
                             </div>
                             <p id="voucher-error" class="field-error" th:hidden="${!#fields.hasErrors('voucher')}"><span th:errors="*{voucher}"></span></p>
+                        </div>
+                        <div class="field">
+                            <label for="ship">Mã vận chuyển</label>
+                            <input th:field="*{ship}" maxlength="80" autocomplete="off" aria-describedby="ship-error">
+                            <p id="ship-error" class="field-error" th:hidden="${!#fields.hasErrors('ship')}"><span th:errors="*{ship}"></span></p>
+                            <p class="hint">Mức tối thiểu tính trên hàng hợp lệ sau giảm. Đơn từ 500.000 ₫ sau giảm hàng tự miễn phí giao.</p>
                         </div>
                         <div class="checkout-quote-hint">
                             <svg th:replace="~{fragments/commerce :: icon('info')}"></svg>
@@ -136,6 +143,7 @@
                     <dt>Tạm tính</dt><dd data-checkout-subtotal><span th:replace="~{fragments/ui :: money(${tamTinh})}"></span></dd>
                     <dt>Phí giao hàng</dt><dd><span th:if="${baoGiaHopLe}" data-checkout-shipping><span th:replace="~{fragments/ui :: money(${phi})}"></span></span><span th:unless="${baoGiaHopLe}">—</span></dd>
                     <dt class="checkout-discount">Giảm giá</dt><dd class="checkout-discount"><span th:if="${baoGiaHopLe}" data-checkout-discount>− <span th:replace="~{fragments/ui :: money(${giam})}"></span></span><span th:unless="${baoGiaHopLe}">—</span></dd>
+                    <dt>Giảm phí giao hàng</dt><dd><span th:if="${baoGiaHopLe}" data-checkout-discount><span th:replace="~{fragments/ui :: money(${giamShip})}"></span></span><span th:unless="${baoGiaHopLe}">—</span></dd>
                     <dt class="checkout-total">Tổng tiền dự kiến</dt>
                     <dd class="checkout-total"><span th:if="${baoGiaHopLe}" data-checkout-total><span th:replace="~{fragments/ui :: money(${tong})}"></span></span><span th:unless="${baoGiaHopLe}" class="checkout-unconfirmed">Chưa xác nhận</span></dd>
                 </dl>
@@ -143,6 +151,8 @@
                     <svg th:replace="~{fragments/commerce :: icon('check')}"></svg>
                     <div>
                         <strong>Đã xác nhận báo giá</strong>
+                        <p th:each="dk : ${dieuKienMa}" th:text="${dk}"></p>
+                        <p th:if="${phi.signum() == 0}">Đã miễn phí vận chuyển tự động.</p>
                         <p th:if="${!#strings.isEmpty(voucherDaTinh)}" th:text="|Mã giảm giá hợp lệ: ${voucherDaTinh}|"></p>
                         <p th:each="dc : ${diaChi}" th:if="${dc.maDiaChi == form.addressId}"
                            th:text="|Giao đến ${dc.tenNguoiNhan} · ${dc.diaChiChiTiet}|"></p>
@@ -157,6 +167,7 @@
             <button type="button" class="btn btn--secondary" data-quote-retry hidden>Thử lại báo giá</button>
             <form id="checkout-order" method="post" th:action="@{/checkout}" class="checkout-actions">
                 <input type="hidden" name="addressId" th:value="${baoGiaHopLe ? form.addressId : ''}">
+                <input type="hidden" name="ship" th:value="${baoGiaHopLe ? form.ship : ''}">
                 <input type="hidden" name="voucher" th:value="${baoGiaHopLe ? voucherDaTinh : ''}">
                 <button type="submit" class="btn btn--primary btn--lg" data-place-order th:disabled="${!baoGiaHopLe}"><svg th:replace="~{fragments/commerce :: icon('bag')}"></svg> Đặt đơn hàng</button>
             </form>

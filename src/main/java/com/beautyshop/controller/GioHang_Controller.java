@@ -19,16 +19,27 @@ import org.springframework.web.util.WebUtils;
 class GioHang_Controller {
     private final GioHang_Service gioHangService;
 
-    GioHang_Controller(GioHang_Service gioHangService) {
+    private final com.beautyshop.service.PhieuGiamGia_Service voucher;
+
+    GioHang_Controller(GioHang_Service gioHangService, com.beautyshop.service.PhieuGiamGia_Service voucher) {
         this.gioHangService = gioHangService;
+        this.voucher = voucher;
     }
 
     @GetMapping
-    String gioHang(@AuthenticationPrincipal PhienNguoiDung nguoiDung, HttpSession session, Model model) {
+    String gioHang(@RequestParam(required=false) String hang, @RequestParam(required=false) String ship,
+                   @AuthenticationPrincipal PhienNguoiDung nguoiDung, HttpSession session, Model model) {
         synchronized (WebUtils.getSessionMutex(session)) {
             var muc = nguoiDung == null ? gioHangService.docGioKhach(GioKhach.doc(session))
                 : gioHangService.docGioCustomer(nguoiDung.getMaNguoiDung());
             model.addAttribute("mucGio", muc);
+            if ((hang != null || ship != null) && !muc.isEmpty()) {
+                try {
+                    model.addAttribute("duTinh",voucher.xemGio(hang,ship,nguoiDung == null ? null : nguoiDung.getMaNguoiDung(),muc));
+                } catch (IllegalArgumentException e) {
+                    model.addAttribute("loiDuTinh",e.getMessage());
+                }
+            }
             if (GiaoDien_Advice.laCustomer(nguoiDung)) GiaoDien_Advice.hienSoLuongGio(model, muc);
         }
         return "cart/index";

@@ -72,6 +72,8 @@ erDiagram
     int so_luong
   }
   phieu_giam_gia {
+    string slot
+    int gioi_han_khach
     bigint ma_phieu_giam_gia PK
     varchar ma_ap_dung
     varchar loai_giam_gia
@@ -86,6 +88,8 @@ erDiagram
     boolean dang_hoat_dong
   }
   don_hang {
+    decimal phi_chuan
+    decimal giam_van_chuyen
     bigint ma_don_hang PK
     varchar ma_don_hang_hien_thi
     bigint ma_nguoi_dung
@@ -103,6 +107,7 @@ erDiagram
     date ngay_giao_thanh_cong
   }
   chi_tiet_don_hang {
+    decimal giam_hang
     bigint ma_chi_tiet_don_hang PK
     bigint ma_don_hang
     bigint ma_bien_the
@@ -113,6 +118,8 @@ erDiagram
     int so_luong
   }
   tam_giu_phieu_giam_gia {
+    string slot
+    decimal so_tien_giam
     bigint ma_giu_phieu_giam_gia PK
     bigint ma_phieu_giam_gia
     bigint ma_don_hang
@@ -226,3 +233,5 @@ AUTH dùng hai khóa duy nhất của `danh_tinh_oauth` để gắn mỗi danh t
 BR21 dùng quan hệ hiện có từ danh mục/thương hiệu qua sản phẩm và SKU tới dòng đơn, đơn hàng, lượt giữ và đổi trả. Kho vẫn theo SKU. Audit metadata mã lô và mô hình FEFO đề xuất nằm trong [checkpoint ADMIN-UX-BIZ-01](../reviews/ADMIN-UX-BIZ-01-tiep-tuc.md).
 
 P23 không đổi schema MariaDB. Nội dung đánh giá (sao, bình luận, trạng thái duyệt, phiên bản) lưu ở MongoDB, collection `danh_gia`, khóa duy nhất `maChiTietDonHang` (mã dòng đơn MariaDB). Điều kiện đánh giá BR16 vẫn kiểm trên các bảng MariaDB `chi_tiet_don_hang`, `don_hang` trước khi ghi. Từ DATA-01, bảng MariaDB `danh_gia` chỉ giữ lịch sử và được đưa vào bản sao lưu SQL. Ứng dụng dùng duy nhất MongoDB cho nội dung đánh giá. Cấu trúc document và index xem [báo cáo P23](../reviews/P23-danh-gia-mongodb.md).
+
+V9 bổ sung bốn quan hệ giữa phiếu và sản phẩm, danh mục, thương hiệu, người dùng. Mỗi quan hệ dùng khóa chính ghép hai ID và FK về hai bảng nguồn. Chứng từ lượt có unique (đơn, slot) và (đơn, phiếu). Cột phiếu cũ của đơn tiếp tục trỏ tới mã HÀNG. V9 giữ bộ đếm và tiền đơn cũ, giữ trạng thái HELD/CONSUMED/RELEASED có sẵn, ánh xạ COD từ đơn có mã. Snapshot theo dòng và phí chuẩn chưa được ghi thời điểm cũ có giá trị NULL. [Migration V9](../../src/main/resources/db/migration/V9__phieu_giam_gia_hai_slot.sql)

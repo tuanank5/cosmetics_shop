@@ -18,6 +18,13 @@
         </ul>
         <label>Mã giảm giá <input th:field="*{maApDung}" maxlength="80" required></label>
         <small class="catalog-error" th:errors="*{maApDung}"></small>
+        <label>Phạm vi giảm <select th:field="*{slot}"><option value="HANG">Hàng</option><option value="VAN_CHUYEN">Vận chuyển</option></select></label>
+        <label>Số lượt tối đa mỗi khách <input type="number" th:field="*{gioiHanKhach}" min="0"></label>
+        <p>Nhập ID cách nhau bằng dấu phẩy. Để trống để áp dụng cho mọi đối tượng trong chiều đó.</p>
+        <label>Sản phẩm <input th:field="*{sanPham}" maxlength="4000"></label>
+        <label>Danh mục <input th:field="*{danhMuc}" maxlength="4000"></label>
+        <label>Thương hiệu <input th:field="*{thuongHieu}" maxlength="4000"></label>
+        <label>Khách hàng <input th:field="*{nguoiDung}" maxlength="4000"></label>
         <label>Loại giảm giá
             <select th:field="*{loaiGiamGia}" required>
                 <option value="">Chọn loại</option>

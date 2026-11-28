@@ -18,6 +18,8 @@
         <li th:each="phieu : ${danhSach}" th:id="|admin-row-${phieu.maPhieuGiamGia}|" tabindex="-1" th:with="cauHinh=${phieu.cauHinh}">
             <div>
                 <strong th:text="${cauHinh.maApDung}"></strong>
+                <span th:text="${phieu.slot == 'HANG' ? 'Hàng' : 'Vận chuyển'}"></span>
+                <span th:if="${phieu.gioiHanKhach != null}" th:text="|Tối đa ${phieu.gioiHanKhach} lượt/khách|"></span>
                 <span th:text="${cauHinh.dangHoatDong ? 'Đang bật' : 'Ngừng hoạt động'}"></span>
                 <p>
                     <span th:text="${#numbers.formatInteger(cauHinh.giaTriGiam, 1, 'POINT') + (cauHinh.loaiGiamGia == 'PERCENT' ? '%' : ' ₫')}"></span>
