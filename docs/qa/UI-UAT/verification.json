@@ -1,0 +1,427 @@
+{
+  "wp": "19-UI-UAT",
+  "state": "IN_PROGRESS",
+  "date": "2026-11-29",
+  "acceptance": "independent automated fixture only",
+  "projectDone": "9/19",
+  "source": "fb70c8b168dc6609b8d766d50421c4399a82df88",
+  "tree": "f20e144f8e54e1d6343df2812e10ca6aafae2cc2",
+  "branch": "qa/ui-uat-19",
+  "jarSHA256": "e96fe42fc435dc7d7cf99d7aae5985f9b7910071de05c95fb2329ce36cb7990f",
+  "environment": {
+    "jdk": "Temurin 21.0.13",
+    "maven": "3.9.11 offline",
+    "database": "MariaDB 12.2.2 private datadirs, V1-V11",
+    "webkit": "26.6",
+    "playwrightCore": "1.63.0",
+    "chrome": "Chrome/158.0.8127.37",
+    "providers": "loopback mocks, no production credentials"
+  },
+  "inventory": {
+    "total": 52,
+    "business": 44,
+    "errorViews": 8,
+    "renderedDistinct": 52,
+    "csv": "screens.csv"
+  },
+  "matrix": {
+    "rows": 938,
+    "coreWebkitByStatus": {
+      "PASS": 470,
+      "SKIP": 468
+    },
+    "webkitUnique": {
+      "PASS": 470
+    },
+    "nativeUnique": {
+      "PASS": 78
+    },
+    "repeatedNativeControl": 1,
+    "uniqueBrowserCombinations": 548,
+    "manualPass": 0
+  },
+  "scenarios": [
+    {
+      "status": "PASS",
+      "gate": "WebKit standard / error dispatch / local payment mock",
+      "evidence": "browser.jsonl, error-browser.jsonl, payment-screen.jsonl",
+      "classification": "AUTOMATED_PASS"
+    },
+    {
+      "status": "PASS",
+      "gate": "Chrome native 200%, desktop JS on, isolated profiles",
+      "evidence": "native.jsonl, native-payment.jsonl, native-error.jsonl",
+      "classification": "AUTOMATED_PASS"
+    },
+    {
+      "status": "PASS",
+      "gate": "PDP CSRF and session, cart merge, Back/Forward, keyboard, invalid form, two concurrent address submissions and snapshot",
+      "evidence": "journeys.txt, matrix-run.txt",
+      "classification": "AUTOMATED_PASS"
+    },
+    {
+      "status": "PASS",
+      "gate": "Two tabs, pager/filter/sort, row focus after Back and after deletion in isolated Audit fixture",
+      "evidence": "AUDIT.txt",
+      "classification": "AUTOMATED_PASS"
+    },
+    {
+      "status": "PASS",
+      "gate": "Checkout vouchers HANG/SHIP, COD, role, ORDER reorder, refresh and ownership; PAYMENT attempt visibility",
+      "evidence": "ORDER.txt, PAYMENT.txt",
+      "classification": "AUTOMATED_PASS"
+    },
+    {
+      "status": "PASS",
+      "gate": "AUTH and ACCOUNT OAuth mock, stale session and reauthentication; RETURN partial inspection, chat disabled and admin AI reindex",
+      "evidence": "integration.txt and listed Surefire cases",
+      "classification": "AUTOMATED_PASS"
+    },
+    {
+      "status": "PASS",
+      "gate": "HTTP ownership/CSRF/role, real error dispatch, MoMo mock; repeat of HttpLoi for the browser bridge excluded from unique count",
+      "evidence": "http/integration.txt, error-fixture/integration.txt",
+      "classification": "AUTOMATED_PASS"
+    },
+    {
+      "status": "NOT RUN",
+      "gate": "Physical devices, human keyboard traversal, assistive technology, real browser UI zoom with manual reading and sign-off",
+      "evidence": "Owner",
+      "classification": "MANUAL_NOT_RUN"
+    },
+    {
+      "status": "NOT RUN",
+      "gate": "All remaining cell-level gaps including long/empty/error for each applicable screen, every control and full Back/Forward path",
+      "evidence": "coverage.csv",
+      "classification": "AUTOMATED_NOT_RUN"
+    },
+    {
+      "status": "SKIP",
+      "gate": "AI-HISTORY, inbox notifications and backup administration have no release HTML view at this SHA",
+      "evidence": "GET mappings and template inventory",
+      "classification": "SKIP_NOT_APPLICABLE"
+    },
+    {
+      "status": "BLOCKED",
+      "gate": "Maps pin/location and contact verification require owner-provided pin and contact; submission-document comparison requires confirmed final copy",
+      "evidence": "Owner",
+      "classification": "BLOCKED"
+    },
+    {
+      "status": "BLOCKED",
+      "gate": "Live OAuth/merchant/mail and physical inspection require designated external environment and owner",
+      "evidence": "External environment",
+      "classification": "BLOCKED"
+    }
+  ],
+  "integration": {
+    "uniquePassed": 69,
+    "cases": [
+      "com.beautyshop.integration.Audit_MariaDb_Test#commitRollbackVaKetQuaRieng",
+      "com.beautyshop.integration.Audit_MariaDb_Test#adminKhongDuocPhanCong",
+      "com.beautyshop.integration.Audit_MariaDb_Test#batchBoundaryBaoLuuReplayVaRollback",
+      "com.beautyshop.integration.Audit_MariaDb_Test#dryRunKhongTinhHoSoChuaCoNguonDuyet",
+      "com.beautyshop.integration.Audit_MariaDb_Test#luuLaiDanhMucKhongSinhSuccess",
+      "com.beautyshop.integration.Audit_MariaDb_Test#rangBuocCorrelationActionVaBaoLuuDonChoDoiSoat",
+      "com.beautyshop.integration.DonHangCOD_MariaDb_Test#haiPostMuaLaiCungYeuCauChiGhiMotLan",
+      "com.beautyshop.integration.DonHangCOD_MariaDb_Test#checkoutHetHangGiuNguyenMucKhacVaAdminHuyHoanTonMotLan",
+      "com.beautyshop.integration.DonHangCOD_MariaDb_Test#haiCustomerTranhSkuVaRollbackKhoVoucherVaGio",
+      "com.beautyshop.integration.DonHangCOD_MariaDb_Test#formMuaLaiChiApDungChoDonVaPhienDaCap",
+      "com.beautyshop.integration.DonHangCOD_MariaDb_Test#locDonCustomerCungPredicateChoCountVaTrang",
+      "com.beautyshop.integration.DonHangCOD_MariaDb_Test#checkoutHuyVaGiaoCodEndToEnd",
+      "com.beautyshop.integration.DonHangCOD_MariaDb_Test#voucherConMotLuotChiChoMotDonKhiHaiSkuKhacNhau",
+      "com.beautyshop.integration.DonHangCOD_MariaDb_Test#rollbackRetryVaHaiYeuCauTranhDonViCuoi",
+      "com.beautyshop.integration.DonHangCOD_MariaDb_Test#khoaTrangThaiSanPhamDenKhiGhiGioHoanTat",
+      "com.beautyshop.integration.DonHangCOD_MariaDb_Test#quotaKhachVaRollbackHaiSlot",
+      "com.beautyshop.integration.HttpLoi_MariaDb_Test#httpThucGiuStatusSoHuuRoleCsrfVaErrorDispatch",
+      "com.beautyshop.integration.KiemDinhDoiTra_MariaDb_Test#doiTraNhieuMucChiNhapPhanDuBanVaGiuNguyenThanhToan",
+      "com.beautyshop.integration.KiemDinhDoiTra_MariaDb_Test#haiYeuCauDongThoiKhongVuotSoLuongDaMua",
+      "com.beautyshop.integration.KiemDinhDoiTra_MariaDb_Test#nhieuDotReplayVaChungTuNghiaVu",
+      "com.beautyshop.integration.KiemDinhDoiTra_MariaDb_Test#webKitKiemDinhVaXemTheoChu",
+      "com.beautyshop.integration.KiemDinhDoiTra_MariaDb_Test#bienBayNgayVaHoSoCu",
+      "com.beautyshop.integration.KiemDinhDoiTra_MariaDb_Test#giuChungTuHaiSlotVaAttempt(String)[1]",
+      "com.beautyshop.integration.KiemDinhDoiTra_MariaDb_Test#giuChungTuHaiSlotVaAttempt(String)[2]",
+      "com.beautyshop.integration.KiemDinhDoiTra_MariaDb_Test#haiAdminVaRollbackGiuaHaiDong",
+      "com.beautyshop.integration.KiemDinhDoiTra_MariaDb_Test#kienSaiChuaNhanVaHaiPostCungMa",
+      "com.beautyshop.integration.Momo_MariaDb_Test#callbackDongThoiVaAttemptCuSauKhiDaChot",
+      "com.beautyshop.integration.Momo_MariaDb_Test#haiRetrySauFailedChiTaoMotLanMoi",
+      "com.beautyshop.integration.Momo_MariaDb_Test#ipnKySaiSaiSoTienVaReplayKhongTruTonHaiLan",
+      "com.beautyshop.integration.Momo_MariaDb_Test#rollbackSauKhiGiuSlotDau",
+      "com.beautyshop.integration.Momo_MariaDb_Test#retryTransportGiuMaCuRetrySauTuChoiCoMaMoiVaDoiSoat",
+      "com.beautyshop.integration.Momo_MariaDb_Test#giuQuotaKhachVaChoDoiSoatKhoanDaThu",
+      "com.beautyshop.integration.Momo_MariaDb_Test#doiSoatHaiSlotDenGatewayVaRangBuocSql",
+      "com.beautyshop.integration.Momo_MariaDb_Test#huyVaCallbackChayDuaKhongTraQuaLuot",
+      "com.beautyshop.integration.Momo_MariaDb_Test#chiGiaiPhongKhiCongXacNhanHetHanVaDanhDauThanhCongMuon",
+      "com.beautyshop.integration.OAuth2Callback_MariaDb_Test#webKitKhoaMoBaPhuongThuc",
+      "com.beautyshop.integration.OAuth2Callback_MariaDb_Test#callbackDenMuonVaThuHoiPhien(String)[1]",
+      "com.beautyshop.integration.OAuth2Callback_MariaDb_Test#callbackDenMuonVaThuHoiPhien(String)[2]",
+      "com.beautyshop.integration.OAuth2Callback_MariaDb_Test#oauthChuaCoMatKhauCanCallbackDungDanhTinhVaOtpDeThietLap",
+      "com.beautyshop.integration.OAuth2Callback_MariaDb_Test#callbackLienKetGiuPhienVaChiGhiSauXacNhanPost(String)[1]",
+      "com.beautyshop.integration.OAuth2Callback_MariaDb_Test#callbackLienKetGiuPhienVaChiGhiSauXacNhanPost(String)[2]",
+      "com.beautyshop.integration.OAuth2Callback_MariaDb_Test#googleOidcKiemChuKyNonceVaEmailDaXacMinh",
+      "com.beautyshop.integration.OAuth2Callback_MariaDb_Test#baCachLoginCungIdVaMoiPhienGopGioDungMotLan",
+      "com.beautyshop.integration.OAuth2Callback_MariaDb_Test#callbackDoiCodeKiemStateVaDangNhapBangUserId",
+      "com.beautyshop.integration.OAuth2Callback_MariaDb_Test#webkitDatLaiMatKhauVaXacThucLaiGoogleTrenHaiTab",
+      "com.beautyshop.integration.OAuth2Callback_MariaDb_Test#haiPhienGoDongThoiVanConMotDuongDangNhap",
+      "com.beautyshop.integration.TuVanFaq_MariaDb_Test#duongDanTuVanCuDaGo",
+      "com.beautyshop.integration.TuVanFaq_MariaDb_Test#webKitFaqVaTrangThaiChuaKiem",
+      "com.beautyshop.integration.TuVanFaq_MariaDb_Test#faqTimTiengVietLocNguonVaEscapeHtml",
+      "com.beautyshop.integration.TuVanFaq_MariaDb_Test#csrfGioiHanKyTuVaTanSuat",
+      "com.beautyshop.integration.TuVanFaq_MariaDb_Test#faqMauVeBienTheDungCungNoiDungTrongMariaDbVaTrangTuVan",
+      "com.beautyshop.integration.TuVanRag_MariaDb_Test#ragCoNguonGiaTonMoiVaFallbackKhiModelSaiHoacLoi",
+      "com.beautyshop.integration.TuVanRag_MariaDb_Test#haiWorkerQuaHanVaYeuCauThuBaDungFaq",
+      "com.beautyshop.integration.TuVanRag_MariaDb_Test#webKitReindexAdmin",
+      "com.beautyshop.integration.TuVanRag_MariaDb_Test#customerKhongDuocNapChiMuc",
+      "com.beautyshop.integration.TuVanRag_MariaDb_Test#cauHoiChuaDuLieuCaNhanKhongGoiEmbeddingHayChat",
+      "com.beautyshop.integration.TuVanRag_MariaDb_Test#phanBietIndexQueryChatVaAuditKhiRollback",
+      "com.beautyshop.integration.XacThuc_MariaDb_Test#haiRequestGopCungSnapshotKhongCongHaiLan",
+      "com.beautyshop.integration.XacThuc_MariaDb_Test#gioiHanMuoiDiaChiTuMayChuVanChoPhepSua",
+      "com.beautyshop.integration.XacThuc_MariaDb_Test#hoSoVaDiaChiChiChoPhepChuTaiKhoan",
+      "com.beautyshop.integration.XacThuc_MariaDb_Test#haiThietBiCungTaiKhoanMoiSnapshotGopMotLanVaCoNoticeRieng",
+      "com.beautyshop.integration.XacThuc_MariaDb_Test#luuDiaChiSongSongChiCoMotMacDinh",
+      "com.beautyshop.integration.XacThuc_MariaDb_Test#gioGuestGopMotLanVaKiemTraTonLai",
+      "com.beautyshop.integration.XacThuc_MariaDb_Test#customerVaAdminDangNhapDungQuyenVaLogoutCoCsrf",
+      "com.beautyshop.integration.XacThuc_MariaDb_Test#dangKyBcryptEmailDuyNhatVaKhongNhanVaiTroTuClient",
+      "com.beautyshop.integration.XacThuc_MariaDb_Test#noticeCheckoutChiDungMotLanQuaHaiTabVaChiTietTonDuong",
+      "com.beautyshop.integration.XacThuc_MariaDb_Test#rollbackGopKhongPhatNoticeVaThuLaiCungSnapshot",
+      "com.beautyshop.integration.XacThuc_MariaDb_Test#adminTimPhanTrangKhoaMoVaThuHoiPhienCu",
+      "com.beautyshop.integration.XacThuc_MariaDb_Test#serviceChiChoPhepChuDon"
+    ],
+    "repeatedBrowserBridgeMethod": "HttpLoi_MariaDb_Test#httpThucGiuStatusSoHuuRoleCsrfVaErrorDispatch",
+    "additionalBrowserGroups": {
+      "ORDER": 2,
+      "VOUCHER": 4,
+      "PAYMENT": 8,
+      "AUDIT": 3
+    },
+    "counting": "Scenario groups, matrix cells and Surefire cases use separate units"
+  },
+  "priorEvidence": [
+    {
+      "wp": "AUTH",
+      "referenceIntegration": "0ed547b5d4c18eab46fb3a194fbbdd327c37d827",
+      "report": "docs/reviews/AUTH-ket-qua.md",
+      "identicalTree": false,
+      "acceptedPriorEvidence": "Historical reference only; current checks re-executed",
+      "freshLog": "integration.txt"
+    },
+    {
+      "wp": "ACCOUNT",
+      "referenceIntegration": "610c816b5bd7f7bf924f80a62cec4eba0f7c59bb",
+      "report": "docs/reviews/ACCOUNT-ket-qua.md",
+      "identicalTree": false,
+      "acceptedPriorEvidence": "Historical reference only; current checks re-executed",
+      "freshLog": "integration.txt"
+    },
+    {
+      "wp": "ORDER",
+      "referenceIntegration": "13c586ac0e5e9c637e071dedfa67dfb07dd0a6da",
+      "report": "docs/reviews/ORDER-ket-qua.md",
+      "identicalTree": false,
+      "acceptedPriorEvidence": "Historical reference only; current checks re-executed",
+      "freshLog": "ORDER.txt"
+    },
+    {
+      "wp": "RETURN",
+      "referenceIntegration": "16060628d4ed599ab6b4214b9a5a463f0c60352e",
+      "report": "docs/reviews/RETURN-ket-qua.md",
+      "identicalTree": false,
+      "acceptedPriorEvidence": "Historical reference only; current checks re-executed",
+      "freshLog": "integration.txt"
+    },
+    {
+      "wp": "VOUCHER",
+      "referenceIntegration": "e4c00c8dc977789eafec0a70a522f846a43898b4",
+      "report": "docs/reviews/VOUCHER-ket-qua.md",
+      "identicalTree": false,
+      "acceptedPriorEvidence": "Historical reference only; current checks re-executed",
+      "freshLog": "ORDER.txt"
+    },
+    {
+      "wp": "PAYMENT",
+      "referenceIntegration": "e4c00c8dc977789eafec0a70a522f846a43898b4",
+      "report": "docs/reviews/PAYMENT-ket-qua.md",
+      "identicalTree": false,
+      "acceptedPriorEvidence": "Historical reference only; current checks re-executed",
+      "freshLog": "PAYMENT.txt"
+    },
+    {
+      "wp": "AUDIT",
+      "referenceIntegration": "5bdada6bb370b281319ff671fd8a9b62b5673560",
+      "report": "docs/reviews/AUDIT-ket-qua.md",
+      "identicalTree": false,
+      "acceptedPriorEvidence": "Historical reference only; current checks re-executed",
+      "freshLog": "AUDIT.txt"
+    },
+    {
+      "wp": "AI-OPS",
+      "referenceIntegration": "5f759a67c66331d17de5d99e0bbb23073a2dd7c7",
+      "report": "docs/reviews/AI-OPS-ket-qua.md",
+      "identicalTree": true,
+      "acceptedPriorEvidence": "AI-OPS WebKit mobile FAQ/desktop reindex; counted separately from fresh matrix",
+      "freshLog": "integration.txt"
+    }
+  ],
+  "aiOpsInputHashesVerified": 364,
+  "findings": {
+    "openProduct": [],
+    "closedFixture": [
+      "Invalid initial RETURN seed REQUESTED replaced with valid PENDING; matrix rerun on fresh schema.",
+      "Screenshot masking passed as locator array; images captured after rerun."
+    ]
+  },
+  "evidenceSHA256": {
+    "docs/qa/UI-UAT/AUDIT.txt": "ce29b11d87fea1b50d2eaea03e548b62961703770febbdc751fa11e5ef97947a",
+    "docs/qa/UI-UAT/browser.jsonl": "43046884900a4a0907d6a7e6a40edb44b6781857f1181cd6efa6182b22af3485",
+    "docs/qa/UI-UAT/coverage.csv": "175eba9f3e55db48eed99285569dce038a7ececfb32e0b8f7424b83964470b85",
+    "docs/qa/UI-UAT/error-browser.jsonl": "66cb52bf4760bd7e153c211dd69173f20aab7ff8ff06e52dc8e24a8f19446f41",
+    "docs/qa/UI-UAT/error-fixture/integration.txt": "1739fbf5c3571bab68de183708424dc859e6ccd4d62c78f13a4d6add183c8794",
+    "docs/qa/UI-UAT/http/integration.txt": "e6efc34eea485fc5ce5ce9c63108673d4b15cec3ff5fab72cf6d727f3339f379",
+    "docs/qa/UI-UAT/integration.txt": "350d15c92cca869788bda84f593b83d19b9782862fa35832f7a52c4bf96db63a",
+    "docs/qa/UI-UAT/journeys.txt": "f6ffee552b9b77d586834e5feefd3555032db8ee1291c597861975d951e18a73",
+    "docs/qa/UI-UAT/matrix-run.txt": "b8d8da0430e378fad028b8eca4200b69817c3cc7b8931bbf5e81824faee68be9",
+    "docs/qa/UI-UAT/native-error.jsonl": "0f147e825a322376863342ee3104f9e4150cb4295b0b86299a6b79421e7410b0",
+    "docs/qa/UI-UAT/native-payment.jsonl": "ecfd051c67934ed43e3ddd997bda7531ce2df316a1106f342baef68c17662690",
+    "docs/qa/UI-UAT/native.jsonl": "7989f27eb9632da0ea9d7b4d5db0b4eddf00517e3f8c9afe306156a10d1e41bf",
+    "docs/qa/UI-UAT/ORDER.txt": "56c504a29689c504efec3c20cdc627eb5820bf07485a853fcda3085c61746fab",
+    "docs/qa/UI-UAT/package.txt": "73cedb2459ce2be58e935501aef5b1f8ccb01ea7067a6e9e3e7406ae4b52987f",
+    "docs/qa/UI-UAT/payment-screen.jsonl": "266c0556a39d4954ef46d1946f66bcf08e2cf83beddc11238b2ed60dd283732f",
+    "docs/qa/UI-UAT/PAYMENT.txt": "6f78d605ff5c999ccf22bdb797c2c63274a799d4d31d8ad906b6350d76f2cbac",
+    "docs/qa/UI-UAT/screens.csv": "b288478bab02b6f28cc3719e8a7f4b3dbd70cf711ec1f674a4cafead2fbc890d",
+    "docs/ui/screenshots/UI-UAT/guest-mobile-chat.png": "8783ff45184a62fa671143fef0eb3a9d04cda04bd51a947a7270bb1357486b50",
+    "docs/ui/screenshots/UI-UAT/native-200-chat.png": "ae7855b79ec177824a95491b3f51c1f53875e8309fa084c250a3bcdf1f0f1124"
+  },
+  "publicationStatus": "AUTOMATED_QA_PASS / MANUAL_UAT_PENDING",
+  "finalReview": {
+    "result": "PASS",
+    "scope": "Evidence-only PR, awaiting owner manual UAT.",
+    "disposition": {
+      "AUTOMATED_PASS": "Executed and supported by the specified fixture/log.",
+      "AUTOMATED_NOT_RUN": "Applicable automated assertion lacking evidence at this combination.",
+      "MANUAL_NOT_RUN": "Applicable row awaiting human inspection and owner sign-off.",
+      "SKIP_NOT_APPLICABLE": "Outside the role/workflow designated for this row. Separate authorization tests apply.",
+      "BLOCKED": "Gate requires an external input or authorized environment.",
+      "FAIL": "Assertion executed and failed."
+    },
+    "matrixByColumn": {
+      "webkit": {
+        "AUTOMATED_PASS": 470,
+        "SKIP_NOT_APPLICABLE": 468
+      },
+      "render": {
+        "AUTOMATED_PASS": 470,
+        "SKIP_NOT_APPLICABLE": 468
+      },
+      "reflow": {
+        "AUTOMATED_PASS": 470,
+        "SKIP_NOT_APPLICABLE": 468
+      },
+      "skip_link_enter_focus": {
+        "AUTOMATED_PASS": 470,
+        "SKIP_NOT_APPLICABLE": 468
+      },
+      "tab_shift_tab": {
+        "AUTOMATED_NOT_RUN": 469,
+        "AUTOMATED_PASS": 1,
+        "SKIP_NOT_APPLICABLE": 468
+      },
+      "back_forward": {
+        "AUTOMATED_NOT_RUN": 469,
+        "AUTOMATED_PASS": 1,
+        "SKIP_NOT_APPLICABLE": 468
+      },
+      "empty": {
+        "AUTOMATED_NOT_RUN": 464,
+        "SKIP_NOT_APPLICABLE": 468,
+        "AUTOMATED_PASS": 6
+      },
+      "long": {
+        "AUTOMATED_NOT_RUN": 452,
+        "AUTOMATED_PASS": 18,
+        "SKIP_NOT_APPLICABLE": 468
+      },
+      "error_view": {
+        "AUTOMATED_NOT_RUN": 338,
+        "SKIP_NOT_APPLICABLE": 468,
+        "AUTOMATED_PASS": 132
+      },
+      "chrome_native_200": {
+        "AUTOMATED_PASS": 78,
+        "AUTOMATED_NOT_RUN": 392,
+        "SKIP_NOT_APPLICABLE": 468
+      },
+      "manual": {
+        "MANUAL_NOT_RUN": 470,
+        "SKIP_NOT_APPLICABLE": 468
+      }
+    },
+    "rawLogRecords": {
+      "browser.jsonl": 354,
+      "error-browser.jsonl": 108,
+      "payment-screen.jsonl": 8,
+      "native.jsonl": 59,
+      "native-error.jsonl": 18,
+      "native-payment.jsonl": 2
+    },
+    "browserDeduplication": "Engine, route family, role, viewport group, JS setting and zoom mode. Guest /chat appears in native.jsonl#L5 and native-payment.jsonl#L1. Same measurements and screenshot name. Counted once.",
+    "surefire": {
+      "suites": 9,
+      "passedInvocations": 69,
+      "distinctJavaMethods": 66,
+      "parameterizedMethodsWithTwoInvocations": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "duplicateFixtureMethodExcluded": true
+    },
+    "sourceVerification": {
+      "baselineBlobBytesMatchedForSrcAndPom": 362,
+      "jarEntriesMatchedToBuildClasses": 450,
+      "historicalEvidenceDigestsVerifiedBeforeFinal": 19,
+      "applicationSourceChanged": false,
+      "testReexecutionAtFinal": false
+    },
+    "images": {
+      "native-200-chat.png": {
+        "role": "Guest",
+        "route": "/chat",
+        "js": true,
+        "bitmapPx": [
+          1654,
+          845
+        ],
+        "chromeWindowArgumentPx": [
+          1672,
+          941
+        ],
+        "observedOuterWidth": 1672,
+        "observedCssWidth": [
+          1654,
+          827
+        ],
+        "dpr": [
+          1,
+          2
+        ],
+        "visualViewportScale": [
+          1,
+          1
+        ],
+        "latestCapture": "native-payment.jsonl#L1",
+        "redaction": "Input fields hidden; visually checked."
+      },
+      "guest-mobile-chat.png": {
+        "role": "Guest",
+        "route": "/chat",
+        "js": false,
+        "bitmapPx": [
+          390,
+          844
+        ],
+        "log": "browser.jsonl#L300",
+        "redaction": "Masked form fields; visually checked."
+      }
+    },
+    "package": "Maven package with -DskipTests. Integration execution verified separately through XML and logs."
+  }
+}

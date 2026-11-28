@@ -1,0 +1,8 @@
+{"role":"Customer","route":"/payment/momo/mock/{id}","width":1672,"height":941,"js":true,"state":"default","http":200,"render":"PASS","layout":{"client":1672,"scroll":1672},"reflow":"PASS","skip":"PASS","status":"PASS"}
+{"role":"Customer","route":"/payment/momo/mock/{id}","width":1672,"height":941,"js":false,"state":"default","http":200,"render":"PASS","layout":{"client":1672,"scroll":1672},"reflow":"PASS","skip":"PASS","status":"PASS"}
+{"role":"Customer","route":"/payment/momo/mock/{id}","width":768,"height":1024,"js":true,"state":"default","http":200,"render":"PASS","layout":{"client":768,"scroll":768},"reflow":"PASS","skip":"PASS","status":"PASS"}
+{"role":"Customer","route":"/payment/momo/mock/{id}","width":768,"height":1024,"js":false,"state":"default","http":200,"render":"PASS","layout":{"client":768,"scroll":768},"reflow":"PASS","skip":"PASS","status":"PASS"}
+{"role":"Customer","route":"/payment/momo/mock/{id}","width":390,"height":844,"js":true,"state":"default","http":200,"render":"PASS","layout":{"client":390,"scroll":390},"reflow":"PASS","skip":"PASS","status":"PASS"}
+{"role":"Customer","route":"/payment/momo/mock/{id}","width":390,"height":844,"js":false,"state":"default","http":200,"render":"PASS","layout":{"client":390,"scroll":390},"reflow":"PASS","skip":"PASS","status":"PASS"}
+{"role":"Customer","route":"/payment/momo/mock/{id}","width":320,"height":640,"js":true,"state":"default","http":200,"render":"PASS","layout":{"client":320,"scroll":320},"reflow":"PASS","skip":"PASS","status":"PASS"}
+{"role":"Customer","route":"/payment/momo/mock/{id}","width":320,"height":640,"js":false,"state":"default","http":200,"render":"PASS","layout":{"client":320,"scroll":320},"reflow":"PASS","skip":"PASS","status":"PASS"}

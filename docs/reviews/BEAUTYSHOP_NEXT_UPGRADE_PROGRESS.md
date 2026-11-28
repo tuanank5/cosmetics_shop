@@ -26,7 +26,7 @@ Số thứ tự là số tệp. “Chờ BASE/phụ thuộc” xác định gate
 | 16 | 7 | [PERF](implementation-prompts/next-upgrade/16-PERF.md) | DONE | Tree merge trùng tree đã review, regression đạt. Owner xác nhận CI sau merge PASS. | `98d2fa3` · [PR #9](https://github.com/tuanank5/cosmetics_shop/pull/9) · [CI sau merge](https://github.com/tuanank5/cosmetics_shop/actions/runs/46117800147) · [Báo cáo](PERF-ket-qua.md) |
 | 17 | 7 | [QUALITY](implementation-prompts/next-upgrade/17-QUALITY.md) | DONE | Review local, tree merge khớp, CI sau merge PASS theo xác nhận owner. | `e33e4e3` · [PR #8](https://github.com/tuanank5/cosmetics_shop/pull/8) · [Nghiệm thu](QUALITY-ket-qua.md) |
 | 18 | 8 | [BACKUP](implementation-prompts/next-upgrade/18-BACKUP.md) | BLOCKED_OWNER / phụ thuộc | Duyệt quyền/quota, có fixture và hợp đồng audit. | — |
-| 19 | 9 | [UI-UAT](implementation-prompts/next-upgrade/19-UI-UAT.md) | Chờ phụ thuộc | Ghi coverage và revision bàn giao cho từng màn. | — |
+| 19 | 9 | [UI-UAT](implementation-prompts/next-upgrade/19-UI-UAT.md) | IN_PROGRESS | AUTOMATED_QA_PASS / MANUAL_UAT_PENDING. 548 tổ hợp trình duyệt đạt. Chờ owner kiểm thủ công trên thiết bị thật. | 29/11/2026 · `fb70c8b` · [Kết quả](UI-UAT-ket-qua.md) · [Ma trận](../qa/UI-UAT/coverage.csv) |
 
 ## Nhánh công việc có thể làm song song
 

@@ -1,0 +1,2 @@
+[INFO] Tests are skipped.
+[INFO] BUILD SUCCESS
