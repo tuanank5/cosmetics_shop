@@ -1,6 +1,6 @@
 # Sổ thực thi nâng cấp · 10 phase, 19 Work Package
 
-**8/19 DONE (BASE, AUTH, QUALITY, PERF, AUDIT, VOUCHER, PAYMENT, ORDER).** [Quyết định owner](../DECISIONS.md#nghiệm-thu-voucher-payment-và-order-ngày-28112026)
+**9/19 DONE (BASE, AUTH, QUALITY, PERF, AUDIT, VOUCHER, PAYMENT, ORDER, ACCOUNT).** [Quyết định owner](../DECISIONS.md#nghiệm-thu-account-ngày-28112026)
 
 ## Thứ tự thực thi và trạng thái
 
@@ -12,7 +12,7 @@ Số thứ tự là số tệp. “Chờ BASE/phụ thuộc” xác định gate
 | 2 | 1 | [AUTH](implementation-prompts/next-upgrade/02-AUTH.md) | DONE | Owner nghiệm thu sau merge. | `0ed547b` · [PR #7](https://github.com/tuanank5/cosmetics_shop/pull/7) · [CI main PASS](https://github.com/tuanank5/cosmetics_shop/actions/runs/46110439984) · [Báo cáo](AUTH-ket-qua.md) |
 | 3 | 1 | [AUTH-LIVE](implementation-prompts/next-upgrade/03-AUTH-LIVE.md) | BLOCKED_EXTERNAL | BASE và AUTH đã đạt. Owner cần xác nhận môi trường test, client Google/GitHub, callback, hai Customer, Redis và Mailpit/SMTP thử. | Revision đầu vào `0ed547b` · chưa chạy |
 | 4 | 2 | [AUDIT](implementation-prompts/next-upgrade/04-AUDIT.md) | DONE | Owner chọn AUDIT-A. AUDIT PURGE — BLOCKED_EXTERNAL. | `5bdada6` · [Quyết định AUDIT-A](../DECISIONS.md#nghiệm-thu-audit-ngày-28112026) |
-| 5 | 2 | [ACCOUNT](implementation-prompts/next-upgrade/05-ACCOUNT.md) | MERGED / READY_FOR_OWNER_ACCEPTANCE | Chờ owner nghiệm thu ACCOUNT-1–5 trên fixture. SMTP production tắt. Đối soát thủ công BLOCKED_OWNER. | `610c816` · [PR #17](https://github.com/tuanank5/cosmetics_shop/pull/17) · [CI main PASS](https://github.com/tuanank5/cosmetics_shop/actions/runs/46152490413) · [Closeout](ACCOUNT-ket-qua.md#closeout-sau-pr-17) |
+| 5 | 2 | [ACCOUNT](implementation-prompts/next-upgrade/05-ACCOUNT.md) | DONE | Owner nghiệm thu ACCOUNT-1–5 trên fixture ngày 28/11/2026. SMTP production tắt. Đối soát thủ công BLOCKED_OWNER. | `610c816` · [PR #17](https://github.com/tuanank5/cosmetics_shop/pull/17) · [CI main PASS](https://github.com/tuanank5/cosmetics_shop/actions/runs/46152490413) · [Closeout PR #18 · `d7bc6e0`](https://github.com/tuanank5/cosmetics_shop/pull/18) |
 | 6 | 3 | [VOUCHER](implementation-prompts/next-upgrade/06-VOUCHER.md) | DONE | Owner nghiệm thu 28/11/2026. Hai slot HÀNG/SHIP, quota, V9 và COD/MoMo mock. | PR #12 · `e4c00c8` · [Closeout](VOUCHER-ket-qua.md) |
 | 7 | 3 | [PAYMENT](implementation-prompts/next-upgrade/07-PAYMENT.md) | DONE | Owner nghiệm thu 28/11/2026. Lịch sử attempt và bốn gate sau VOUCHER trong phạm vi COD/MoMo mock. | `e4c00c8` · [Revalidation](PAYMENT-ket-qua.md#revalidation-pr-12) |
 | 8 | 3 | [PAY-LIVE](implementation-prompts/next-upgrade/08-PAY-LIVE.md) | Chờ phụ thuộc · BLOCKED_EXTERNAL | Xác nhận môi trường thật, revision và số đầu kỳ. | — |
@@ -52,6 +52,8 @@ Mục 15 (restore web) và 17 (tự sinh mã SKU) tiếp tục ngoài phạm vi.
 28/11/2026 · ACCOUNT-FINAL giữ IN_PROGRESS. Đã sửa hai finding và kiểm trên fixture. Maven 257 PASS/121 SKIP, integration 81/81, bootstrap 11/11 và package PASS. Chờ review PR, CI, merge và owner nghiệm thu. [Review cuối](../qa/ACCOUNT/final-review/review.md)
 
 Sau PR #17 · ACCOUNT MERGED / READY_FOR_OWNER_ACCEPTANCE trên `610c816`. Tree khớp candidate, 45/45 blob và 20/20 file trong manifest source đạt. Owner đã xác minh CI main PASS. Bằng chứng fixture FINAL được kế thừa, còn 41 phương thức NOT RUN. Tiến độ giữ 8/19 DONE đến khi owner quyết định. [Đối chiếu](../qa/ACCOUNT/closeout/verification.json)
+
+28/11/2026 · Owner nghiệm thu **ACCOUNT DONE** trong phạm vi fixture sau closeout PR #18. Tiến độ chính thức **9/19 DONE**. [Quyết định và giới hạn nghiệm thu](../DECISIONS.md#nghiệm-thu-account-ngày-28112026)
 
 ## Nhật ký ORDER
 

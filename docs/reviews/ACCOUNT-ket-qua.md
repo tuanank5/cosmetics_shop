@@ -1,6 +1,6 @@
 # 05-ACCOUNT · Khóa/mở tài khoản có lý do và thông báo
 
-**Trạng thái sau PR #17 · MERGED / READY_FOR_OWNER_ACCEPTANCE.**
+**DONE trong phạm vi fixture.** Ngày 28/11/2026, owner nghiệm thu ACCOUNT-1–5 trên source `610c816` và hồ sơ closeout `d7bc6e0`. Tiến độ dự án **9/19 DONE**. [Quyết định nghiệm thu](../DECISIONS.md#nghiệm-thu-account-ngày-28112026)
 
 **Mốc triển khai ngày 28/11/2026.** Baseline `5aa4932cc663de1115ff06ab7a8d7b837a673d93`. Owner duyệt ACCOUNT-1–5 để triển khai trên fixture. Tiến độ dự án 8/19 DONE. [Quyết định](../DECISIONS.md#account--quyết-định-owner-ngày-28112026) · [Hai mẫu thư đã duyệt](ACCOUNT-owner-decisions-proposal.md)
 
@@ -50,7 +50,7 @@ JDK 21 Maven 257 PASS/121 SKIP, integration 81/81 PASS (gồm hai WebKit), boots
 
 ## Closeout sau PR #17
 
-**Đề nghị owner nghiệm thu ACCOUNT-1 đến ACCOUNT-5 trên fixture.** Tiến độ chính thức vẫn là **8/19 DONE**. Merge `610c816b5bd7f7bf924f80a62cec4eba0f7c59bb` có hai parent là baseline `5aa4932cc663de1115ff06ab7a8d7b837a673d93` và candidate `a656e6e7f4480117873d89d6fab0fb1a2be9f435`. HEAD và tracking ref origin/main cùng trỏ đến merge. Owner đã xác minh PR merged và run push/main completed/success trên SHA này. Truy vấn GitHub trực tiếp từ môi trường closeout bị chặn. Workflow trên tree này chạy Maven test và package với JDK 21. [PR #17](https://github.com/tuanank5/cosmetics_shop/pull/17) · [CI main](https://github.com/tuanank5/cosmetics_shop/actions/runs/46152490413)
+**Tại thời điểm closeout**, ACCOUNT ở trạng thái MERGED / READY_FOR_OWNER_ACCEPTANCE và dự án đạt 8/19 DONE. Merge `610c816b5bd7f7bf924f80a62cec4eba0f7c59bb` có hai parent là baseline `5aa4932cc663de1115ff06ab7a8d7b837a673d93` và candidate `a656e6e7f4480117873d89d6fab0fb1a2be9f435`. HEAD và tracking ref origin/main cùng trỏ đến merge. Owner đã xác minh PR merged và run push/main completed/success trên SHA này. Truy vấn GitHub trực tiếp từ môi trường closeout bị chặn. Workflow trên tree này chạy Maven test và package với JDK 21. [PR #17](https://github.com/tuanank5/cosmetics_shop/pull/17) · [CI main](https://github.com/tuanank5/cosmetics_shop/actions/runs/46152490413)
 
 Candidate và merge có cùng tree `dfeca3f664dcd32bf8b53f8068fe6120ab987f32`. Đã đối chiếu tên, Git blob và SHA-256 của đủ 45 file thay đổi với manifest FINAL. Hash tổng hợp tính lại từ 20 blob source/test/migration/config theo Git LF là `8756d38832cd5a6da4e5332a199d89ea965ff7200ea7b0e00eead183b3c8dd84`. V1–V9 giữ nguyên từng blob. V10 tạo bảng outbox với hai FK, unique mã thao tác và năm CHECK. Fixture nâng V9 lên V10 giữ user cũ và không tạo thư hồi tố. Cả 45 file cũng khớp stash ACCOUNT tìm theo tên. Index gốc trống và 12 stash được bảo toàn. [Đối chiếu từng file](../qa/ACCOUNT/closeout/verification.json)
 
@@ -64,4 +64,4 @@ Candidate và merge có cùng tree `dfeca3f664dcd32bf8b53f8068fe6120ab987f32`. �
 
 Kế thừa lượt FINAL trên tree trùng khớp. Maven **257 PASS / 121 SKIP**, gồm **5/5 SMTP loopback**. MariaDB **81/81 PASS**, gồm WebKit ACCOUNT và AUTH. Flyway/bootstrap **11/11 PASS**. Package và kiểm tra diff đạt. Trong 121 phương thức SKIP mặc định, 80 có invocation PASS trên fixture và 41 còn NOT RUN. Closeout đối chiếu log và hash, không chạy lại các suite. [Log và phân loại từng phương thức](../qa/ACCOUNT/final-review/review.md)
 
-**Giới hạn nghiệm thu.** SMTP production tiếp tục tắt. Gửi thật chờ owner xác nhận kênh hỗ trợ ở footer hoạt động và người bị khóa truy cập được. Đối soát email thủ công **BLOCKED_OWNER** cho đến khi owner phân công người vận hành. OAuth provider thật, manual UAT và tải production **NOT RUN**. AUTH-LIVE, PAY-LIVE và AUDIT PURGE giữ **BLOCKED_EXTERNAL**. Quyết định chuyển ACCOUNT thành DONE thuộc owner.
+**Giới hạn nghiệm thu.** SMTP production tiếp tục tắt. Gửi thật chờ owner xác nhận kênh hỗ trợ ở footer hoạt động và người bị khóa truy cập được. Đối soát email thủ công **BLOCKED_OWNER** cho đến khi owner phân công người vận hành. OAuth provider thật, manual UAT và tải production **NOT RUN**. AUTH-LIVE, PAY-LIVE và AUDIT PURGE giữ **BLOCKED_EXTERNAL**. Owner giữ các giới hạn này khi nghiệm thu ACCOUNT.

@@ -176,3 +176,5 @@ PAYMENT giữ PARTIAL_ACCEPTED / BLOCKED_DEPENDENCY. Lịch sử từng lần th
 ## Nghiệm thu ngày 28/11/2026
 
 Owner chốt **8/19 DONE** gồm BASE, AUTH, QUALITY, PERF, AUDIT, VOUCHER, PAYMENT và ORDER. VOUCHER và PAYMENT được nghiệm thu với COD và MoMo mock tại `e4c00c8`. ORDER được nghiệm thu tại `13c586a`. AUTH-LIVE, PAY-LIVE và AUDIT PURGE tiếp tục BLOCKED_EXTERNAL. [Quyết định owner](DECISIONS.md#nghiệm-thu-voucher-payment-và-order-ngày-28112026)
+
+Sau closeout PR #18, owner nghiệm thu **ACCOUNT DONE** trong phạm vi fixture của source `610c816`. Tiến độ chính thức **9/19 DONE**. SMTP production tiếp tục tắt và đối soát email thủ công chờ phân công. [Quyết định nghiệm thu ACCOUNT](DECISIONS.md#nghiệm-thu-account-ngày-28112026)
