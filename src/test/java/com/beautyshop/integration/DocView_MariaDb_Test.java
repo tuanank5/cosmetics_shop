@@ -118,9 +118,9 @@ class DocView_MariaDb_Test {
             var checkout = doc("/checkout", phienKhach);
             assertThat(checkout.html()).contains("Fixture address " + soLuong, "name=\"addressId\"").doesNotContain("Other owner address");
             baoCao("checkout-" + soLuong, checkout, 2, "dia_chi_nguoi_dung");
-            var catalog = doc("/admin/catalog/products", phienAdmin);
+            var catalog = doc("/admin/catalog/products?category=" + danhMuc, phienAdmin);
             assertThat(catalog.html()).contains("DTO Product " + soLuong).doesNotContain("Fixture long description");
-            baoCao("catalog-" + soLuong, catalog, 2, "san_pham");
+            kiemTruyVanCatalog("catalog-" + soLuong, catalog, false);
             var pdp = doc("/products/dto-product-1?variant=" + sku, null);
             assertThat(pdp.html()).contains("DTO Product 1", "DTO SKU 1", "DTO SKU " + soLuong);
             baoCao("pdp-" + soLuong, pdp, 2, "san_pham", "bien_the_san_pham");
@@ -128,9 +128,25 @@ class DocView_MariaDb_Test {
             assertThat(skuAdmin.html()).contains(">Trong kho</th>", ">Đang giữ</th>", "DTO SKU " + soLuong);
             baoCao("sku-admin-" + soLuong, skuAdmin, 3, "san_pham", "bien_the_san_pham");
         }
+        for (int i = 8; i <= 16; i++) {
+            taoSanPham(danhMuc, thuongHieu, i);
+        }
+        var trangDay = doc("/admin/catalog/products?category=" + danhMuc, phienAdmin);
+        kiemTruyVanCatalog("catalog-16", trangDay, true);
         var form = doc("/admin/catalog/products/" + sanPham + "/edit", phienAdmin);
         assertThat(form.html()).contains("DTO Category (ngừng hoạt động)", "Fixture long description");
         baoCao("catalog-edit-options", form, 6, "danh_muc", "thuong_hieu");
+    }
+
+    private void kiemTruyVanCatalog(String ten, Trang trang, boolean canDem) throws Exception {
+        var sql = trang.sql();
+        assertThat(sql).filteredOn(s -> s.contains(" from nguoi_dung ")).hasSize(1);
+        assertThat(sql).filteredOn(s -> s.contains(" from danh_muc ")).hasSize(1);
+        assertThat(sql).filteredOn(s -> s.contains(" from thuong_hieu ")).hasSize(1);
+        assertThat(sql).filteredOn(s -> s.contains(" from san_pham ") && !s.startsWith("select count(")).hasSize(1);
+        assertThat(sql).filteredOn(s -> s.contains(" from san_pham ") && s.startsWith("select count("))
+            .hasSize(canDem ? 1 : 0);
+        baoCao(ten, trang, canDem ? 5 : 4, "san_pham");
     }
 
     private void doBaoMat(String ten, String url, MockHttpSession phien, String bam, String subject) throws Exception {

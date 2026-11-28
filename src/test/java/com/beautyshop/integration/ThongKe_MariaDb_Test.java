@@ -25,6 +25,7 @@ import org.springframework.validation.BeanPropertyBindingResult;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.hamcrest.Matchers.containsString;
+import static org.hamcrest.Matchers.not;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -154,7 +155,8 @@ class ThongKe_MariaDb_Test {
             .andExpect(content().string(containsString("<a href=\"/admin/orders\" aria-current=\"page\">")));
         mvc.perform(get("/admin/catalog/brands"))
             .andExpect(status().isOk())
-            .andExpect(content().string(containsString("<a href=\"/admin/catalog/categories\" aria-current=\"page\">")));
+            .andExpect(content().string(containsString("<a href=\"/admin/catalog/brands\" aria-current=\"page\">")))
+            .andExpect(content().string(not(containsString("<a href=\"/admin/catalog/categories\" aria-current=\"page\">"))));
     }
 
     @Test

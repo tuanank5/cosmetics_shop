@@ -71,9 +71,9 @@ class DanhMucSanPhamThuongHieu_MariaDb_Test {
         long product = idFor(products, productSlug);
         assertThat(products.findById(product).orElseThrow().getThanhPhan()).isEqualTo("Thành phần kiểm thử");
 
-        mvc.perform(get(ADMIN + "products"))
+        mvc.perform(get(ADMIN + "products").param("category", Long.toString(category)))
             .andExpect(status().isOk())
-            .andExpect(content().string(org.hamcrest.Matchers.containsString(productSlug)));
+            .andExpect(content().string(containsString(productSlug)));
         mvc.perform(get(ADMIN + "products/" + product + "/edit"))
             .andExpect(status().isOk());
         mvc.perform(post(ADMIN + "products/" + product + "/edit").with(csrf())
@@ -112,7 +112,7 @@ class DanhMucSanPhamThuongHieu_MariaDb_Test {
             var muc = repo.findById(id).orElseThrow();
             assertThat(muc.isDangHoatDong()).isFalse();
             assertThat(muc.getDuongDan()).isEqualTo(slug);
-            mvc.perform(get(ADMIN + section)).andExpect(status().isOk())
+            mvc.perform(get(ADMIN + section).param("q", slug)).andExpect(status().isOk())
                 .andExpect(content().string(containsString(ADMIN + section + "/" + id + "/status")))
                 .andExpect(content().string(containsString("Kích hoạt lại")))
                 .andExpect(content().string(not(containsString(ADMIN + section + "/" + id + "/delete"))));
