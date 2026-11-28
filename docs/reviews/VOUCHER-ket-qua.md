@@ -64,3 +64,11 @@ VOUCHER-FINAL cần so manifest với candidate, review khóa và dữ liệu l�
 ## VOUCHER-FINAL
 
 VOUCHER-FINAL · IN_PROGRESS. Đã review SQL, quota, số tiền gateway mock và migration V9. Maven 244 PASS/102 SKIP, MariaDB/MongoDB 127/127, bootstrap 10/10, WebKit 4/4, package PASS. Chờ PR, CI đúng revision và owner nghiệm thu. [Review, bằng chứng và 21 ca ban đầu chưa chạy](../qa/VOUCHER/final-review/review.md) · [Manifest nguồn cuối](../qa/VOUCHER/final-review/source.json)
+
+## Closeout PR #12 · 28/11/2026
+
+**MERGED / READY_FOR_OWNER_ACCEPTANCE.** HEAD và origin/main cùng `e4c00c8dc977789eafec0a70a522f846a43898b4`. Parent thứ hai là candidate `bd6f881d53943fbfeeb8489c37c33dfd8b64d839`. Cả hai tree cùng `f2f20430fb115c3f97401659ca8c6502de392028`. Đã so 55 blob và SHA-256 của 25 tệp source/test/migration. V1–V8 giữ nguyên, V9 và ba bản sửa cuối có trong tree đã review. [Manifest đối chiếu](../qa/VOUCHER/closeout/verification.json)
+
+Bằng chứng kế thừa trên cùng tree gồm Maven 244 PASS/102 SKIP, 127 integration, 10 bootstrap, 4 nhóm WebKit và package PASS. Có 89/102 phương thức SKIP được chạy trên fixture, 13 NOT RUN ngoài gate. Owner đã xác minh run 46131208224 trên GitHub: push lên main tại đúng merge SHA, completed/success. Hai bước Maven test và Maven package đều PASS. MariaDB và WebKit được kiểm trên fixture local. [PR #12](https://github.com/tuanank5/cosmetics_shop/pull/12) · [CI main](https://github.com/tuanank5/cosmetics_shop/actions/runs/46131208224)
+
+Stash theo tên có 53/55 blob trùng merge. Đã khôi phục riêng quyết định AUDIT-A và các mốc WP đã nghiệm thu. Source, test và migration trên main khớp candidate. Kết quả chạy lại trên merge được lưu trong [PAYMENT revalidation](../qa/PAYMENT/revalidation/).

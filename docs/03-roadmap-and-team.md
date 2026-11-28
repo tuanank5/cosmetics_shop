@@ -163,10 +163,12 @@ HTTP đạt 35 phép kiểm route, MariaDB/MongoDB đạt 38/38. Truy vấn DB s
 
 Revision ứng viên là `a9870e1`, trùng remote main và Maven CI đã đạt. Owner yêu cầu rà soát tài liệu trước khi giao việc. Đề xuất 10 phase, 19 WP, BASE đứng đầu. AUTH-LIVE, PAY-LIVE và UI-UAT giữ phạm vi nghiệm thu riêng. AI đợt này chỉ dùng mock. Toàn bộ hạng mục lô/FEFO và AI-LIVE ở backlog. [Sổ trạng thái mới](reviews/BEAUTYSHOP_NEXT_UPGRADE_PROGRESS.md) · [Kế hoạch và tiêu chí](reviews/BEAUTYSHOP_NEXT_UPGRADE_PLAN.md)
 
-### AUTH · 28/11/2026
+### Nghiệm thu các WP nâng cấp · 28/11/2026
 
-AUTH đã triển khai D1–D3, gồm bộ chọn khi bấm đăng nhập Google. AUTH-FINAL đạt 40/40 ca với fixture MariaDB/WebKit. Nhánh QA chờ CI và owner nghiệm thu đúng revision. [Checkpoint AUTH](reviews/AUTH-ket-qua.md) · [Sổ 19 WP](reviews/BEAUTYSHOP_NEXT_UPGRADE_PROGRESS.md)
+BASE đã nghiệm thu tại `f390c3a` (PR #6), AUTH tại `0ed547b` (PR #7), QUALITY tại `e33e4e3` (PR #8) và PERF tại `98d2fa3` (PR #9). Ứng viên BASE đạt 332 ca tích hợp, 5 ca bỏ qua. AUTH-FINAL đạt 40/40 trên fixture MariaDB/WebKit. Tiến độ tại mốc PERF là 4/19 DONE. [Sổ 19 WP](reviews/BEAUTYSHOP_NEXT_UPGRADE_PROGRESS.md)
 
-QUALITY đang IN_PROGRESS trên bản tích hợp AUTH. Đã kiểm bản sửa giảm một lần đọc trạng thái khi xem chi tiết đơn MoMo, chờ review, CI và nghiệm thu đúng revision. [Checkpoint QUALITY](reviews/QUALITY-ket-qua.md)
+PAYMENT giữ PARTIAL_ACCEPTED / BLOCKED_DEPENDENCY. Lịch sử từng lần thanh toán đã merge tại `4fa2262`, CI main PASS theo owner. Tổng tiền, snapshot hai slot, đối soát và regression sau VOUCHER còn mở. PAY-LIVE nghiệm thu riêng trên MoMo Sandbox. [PR #10](https://github.com/tuanank5/cosmetics_shop/pull/10) · [Báo cáo PAYMENT](reviews/PAYMENT-ket-qua.md)
 
-AUDIT đã chuyển IN_PROGRESS trên `4fa2262` sau khi owner duyệt AUDIT-D6 và AUDIT-D7. Nhật ký áp dụng cho nghiệp vụ đã có hợp đồng, các dòng còn chờ duyệt được ghi riêng. [Ma trận và kết quả](reviews/AUDIT-ket-qua.md)
+28/11/2026 · Owner chọn AUDIT-A. AUDIT DONE trên merge `5bdada6bb370b281319ff671fd8a9b62b5673560` (PR #11, CI main PASS theo owner). D7 và guard D6 đạt. AUDIT PURGE — BLOCKED_EXTERNAL. Giữ công tắc tắt cho đến khi nghiệm thu độ phủ, quyền cấp, thu hồi, thời hạn và retry của nguồn clearance. Tiến độ 5/19 DONE. Owner giao VOUCHER, đang IN_PROGRESS.
+
+28/11/2026 · Sau merge PR #12 tại `e4c00c8`. VOUCHER — MERGED / READY_FOR_OWNER_ACCEPTANCE. PAYMENT — PARTIAL_ACCEPTED, bốn gate tích hợp PASS local trên merge với MoMo mock. Chờ owner nghiệm thu VOUCHER và xác nhận phạm vi PAYMENT mock. Tổng 5/19 DONE. AUTH-LIVE và AUDIT PURGE tiếp tục BLOCKED_EXTERNAL. PAY-LIVE chưa nghiệm thu. [Kiểm chứng PAYMENT](reviews/PAYMENT-ket-qua.md#revalidation-pr-12)

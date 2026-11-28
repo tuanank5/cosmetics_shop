@@ -92,6 +92,10 @@ Khi một quyết định thay đổi: cập nhật bảng này, SRS, ERD, promp
 - **AUDIT-D6**. Retention mặc định 180 ngày, tối thiểu 180. Bảo lưu hồ sơ đối soát, tranh chấp và nghĩa vụ dài hơn. Admin do owner phân công được dry-run và dọn từng batch giới hạn, có số liệu và kết quả truy vết. Giữ mô hình role hiện hành.
 - **AUDIT-D7**. ROLE_ADMIN đọc list/detail. Chỉ ghi thao tác Admin quan trọng có hợp đồng rõ. Snapshot theo allowlist, tham chiếu ID chứng từ, correlation/action duy nhất. SUCCESS cùng transaction nghiệp vụ, FAILED sau rollback trong transaction riêng. Loại dữ liệu bí mật và riêng tư. Các dòng chưa rõ chờ owner. [Ma trận thực hiện](reviews/AUDIT-ket-qua.md)
 
+## Nghiệm thu AUDIT ngày 28/11/2026
+
+28/11/2026 · Owner chọn AUDIT-A. AUDIT DONE trên merge `5bdada6bb370b281319ff671fd8a9b62b5673560` (PR #11, CI main PASS theo owner). D7 và guard D6 đạt. AUDIT PURGE — BLOCKED_EXTERNAL. Giữ công tắc tắt cho đến khi nghiệm thu độ phủ, quyền cấp, thu hồi, thời hạn và retry của nguồn clearance.
+
 ## Quyết định VOUCHER ngày 28/11/2026
 
 | ID | Quyết định owner |

@@ -1,0 +1,27 @@
+{
+  "merge": "e4c00c8dc977789eafec0a70a522f846a43898b4",
+  "candidate": "bd6f881d53943fbfeeb8489c37c33dfd8b64d839",
+  "tree": "f2f20430fb115c3f97401659ca8c6502de392028",
+  "files": 55,
+  "source": 25,
+  "sourceSha256": "a19f783050d4ea073b2f1aedfab234e65de1bb330c5dcbdd85dd57ed9cc24c51",
+  "checkoutEolDifferences": [],
+  "stash": "ea09a0024b9e9c6d1fbc11b70de413ad1a95f954",
+  "stashDifferences": [
+    "docs/DECISIONS.md",
+    "docs/reviews/BEAUTYSHOP_NEXT_UPGRADE_PROGRESS.md"
+  ],
+  "ci": {
+    "run": 46131208224,
+    "event": "push",
+    "branch": "main",
+    "headSha": "e4c00c8dc977789eafec0a70a522f846a43898b4",
+    "status": "completed",
+    "conclusion": "success",
+    "steps": [
+      "Maven test",
+      "Maven package"
+    ],
+    "verifiedBy": "owner on GitHub"
+  }
+}
