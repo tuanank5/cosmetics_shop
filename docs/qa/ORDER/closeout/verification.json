@@ -1,0 +1,42 @@
+{
+  "baseline": "3da645dd76f22b8f83351d63ca419bd5646af6e8",
+  "candidate": "1292b7616203047a28217a0fe307a8fa0fb8321e",
+  "merge": "13c586ac0e5e9c637e071dedfa67dfb07dd0a6da",
+  "tree": "d8f347e95b1a5b29e1a1caf92741938f043d26e7",
+  "pr": 14,
+  "ci": {
+    "run": 46136054999,
+    "headSha": "13c586ac0e5e9c637e071dedfa67dfb07dd0a6da",
+    "status": "completed",
+    "conclusion": "success",
+    "verifiedBy": "owner on GitHub"
+  },
+  "reviewedBlobCount": 35,
+  "sourceCount": 13,
+  "testedSourceSha256": "a5a6f42ad7254159453ee59ae4e5dc547f528445c68c695f4850602809c5e3c2",
+  "checkoutRawByteDifferences": [],
+  "stash": {
+    "object": "f633f056da376d239e094507bc31b1ee03c35003",
+    "name": "ORDER local files before sync",
+    "matching": 34,
+    "different": [
+      "docs/reviews/BEAUTYSHOP_NEXT_UPGRADE_PROGRESS.md"
+    ]
+  },
+  "evidence": "ORDER-FINAL local fixtures on identical tree",
+  "defaultMaven": {
+    "passed": 252,
+    "skipped": 107
+  },
+  "skippedMethodsMatched": 91,
+  "matchedFixtureInvocations": 116,
+  "notRunMethods": 16,
+  "integrationPassed": 132,
+  "webkitPassed": {
+    "order": 2,
+    "voucher": 4,
+    "payment": 8
+  },
+  "package": "PASS",
+  "status": "MERGED / READY_FOR_OWNER_ACCEPTANCE"
+}

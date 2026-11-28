@@ -1,6 +1,6 @@
 # 09-ORDER · Danh sách đơn Customer và mua lại
 
-**IN_PROGRESS**, ngày 28/11/2026, baseline `3da645dd76f22b8f83351d63ca419bd5646af6e8`. Owner giao phần ORDER sau khi VOUCHER và PAYMENT đã tích hợp. Tiến độ 5/19 DONE. VOUCHER chờ nghiệm thu, PAYMENT chờ nghiệm thu phạm vi COD/MoMo mock. AUTH-LIVE, PAY-LIVE và AUDIT PURGE tiếp tục BLOCKED_EXTERNAL.
+**MERGED / READY_FOR_OWNER_ACCEPTANCE** tại `13c586a`. ORDER bắt đầu ngày 28/11/2026 trên baseline `3da645dd76f22b8f83351d63ca419bd5646af6e8`. Owner giao phần ORDER sau khi VOUCHER và PAYMENT đã tích hợp. Tiến độ 5/19 DONE. VOUCHER chờ nghiệm thu, PAYMENT chờ nghiệm thu phạm vi COD/MoMo mock. AUTH-LIVE, PAY-LIVE và AUDIT PURGE tiếp tục BLOCKED_EXTERNAL.
 
 ## Danh sách
 
@@ -60,3 +60,23 @@ SQL trên fixture COD xác nhận sau ba lần gửi (hai lần cùng request), 
 ## ORDER-FINAL
 
 Đã tái hiện và sửa lỗi chuyển form sang đơn khác cùng chủ. POST kiểm chữ ký gắn với phiên, chủ, đơn và UUID; biên nhận V3 cùng transaction giỏ tiếp tục chặn retry sau commit. Maven 252 PASS/107 SKIP, integration 132/132 PASS, WebKit ORDER 2/2, VOUCHER 4/4, PAYMENT 8/8 và package PASS. Bản FINAL chờ review PR, CI và quyết định owner. [Review cuối, manifest và log](../qa/ORDER/final-review/review.md)
+
+
+## Closeout sau PR #14 · 28/11/2026
+
+**ORDER đủ điều kiện trình owner nghiệm thu.** HEAD của main và origin/main cùng ở `13c586ac0e5e9c637e071dedfa67dfb07dd0a6da`. Merge có hai parent là baseline và candidate `1292b7616203047a28217a0fe307a8fa0fb8321e`. Candidate và merge cùng tree `d8f347e95b1a5b29e1a1caf92741938f043d26e7`. Đủ 35/35 blob đúng manifest, 13/13 file source/test khớp SHA-256 đã kiểm thử. Hash tổng hợp ORDER-FINAL là `a5a6f42ad7254159453ee59ae4e5dc547f528445c68c695f4850602809c5e3c2`. Owner đã xác minh CI Maven test/package completed/success tại đúng merge SHA. [PR #14](https://github.com/tuanank5/cosmetics_shop/pull/14) · [CI main](https://github.com/tuanank5/cosmetics_shop/actions/runs/46136054999) · [Kết quả đối chiếu](../qa/ORDER/closeout/verification.json)
+
+Bản đã merge chứa bản sửa form từ đơn A gửi sang đơn B cùng chủ. Máy chủ kiểm CSRF, principal và quyền sở hữu trước khi ghi. Chữ ký ràng buộc phiên, Customer, đơn và UUID. Hai POST cùng thao tác chỉ cộng giỏ một lần. Hai thao tác chủ đích mới được xử lý riêng. Biên nhận mua lại và cập nhật giỏ cùng rollback khi giao dịch lỗi. Khóa biên nhận mua lại và gộp giỏ thuộc hai không gian UUID riêng. Review và fixture ORDER-FINAL đã đóng finding này. [Review cuối](../qa/ORDER/final-review/review.md)
+
+| Bằng chứng kế thừa từ tree đã kiểm thử | Kết quả |
+|---|---|
+| Maven mặc định, package và diff check | 252 PASS, 107 SKIP. Package và diff check PASS. |
+| Integration trên fixture | 132/132 PASS. Trong 107 phương thức SKIP mặc định, 91 phương thức có invocation PASS, 16 phương thức ngoài gate ORDER vẫn NOT RUN. |
+| WebKit local | ORDER 2/2, VOUCHER 4/4 nhóm, PAYMENT 8/8 tổ hợp PASS. |
+| SQL trước/sau mua lại | Đơn và attempt 505.000 VND, giá snapshot 510.000 VND, giá hiện hành trong giỏ 490.000 VND. Hai voucher CONSUMED 30.000 và 10.000 VND, USED=1 từng mã. Toàn bộ hàng dữ liệu của đơn, địa chỉ snapshot, dòng hàng, attempt và chứng từ được đối chiếu. Kho ba SKU giữ mức 11, 2 và 0. |
+
+Các suite có giao nhau. Số liệu MariaDB và WebKit đến từ fixture local của ORDER-FINAL. Closeout kế thừa kết quả do tree trùng hoàn toàn. [Log fixture và WebKit](../qa/ORDER/final-review/review.md) · [Đối chiếu phương thức SKIP](../qa/ORDER/final-review/skip.json)
+
+Stash `ORDER local files before sync` có object `f633f056da376d239e094507bc31b1ee03c35003`. Có 34/35 file trùng merge. Dòng AI-OPS là phần duy nhất cần lấy lại từ sổ tiến độ. Cả chín stash được bảo toàn.
+
+**Gate còn mở.** Owner cần nghiệm thu ORDER tại merge SHA trên. Mỗi thao tác mua lại mới đã commit tạo một dòng biên nhận V3. Production chưa có retention và chưa đo tốc độ tăng, dung lượng hoặc tải. Việc dọn biên nhận cần chính sách về thời hạn retry để bảo toàn idempotency. Manual UAT và MoMo Sandbox thật vẫn NOT RUN. AUTH-LIVE, PAY-LIVE và AUDIT PURGE tiếp tục BLOCKED_EXTERNAL. Các giới hạn này thuộc nghiệm thu vận hành hoặc WP riêng. Tiến độ chính thức vẫn 5/19 DONE.
