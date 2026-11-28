@@ -50,22 +50,26 @@ public class PhieuGiamGia_Repository {
             .param(ma).query(ANH_XA_PHIEU).optional();
     }
 
-    public void tao(CauHinh phieu) {
-        ganCauHinh(jdbc.sql("""
+    public long tao(CauHinh phieu) {
+        return ganCauHinh(jdbc.sql("""
             INSERT INTO phieu_giam_gia (ma_ap_dung, loai_giam_gia, gia_tri_giam, muc_giam_toi_da,
                 don_toi_thieu, gioi_han_su_dung, bat_dau_luc, ket_thuc_luc, dang_hoat_dong)
             VALUES (:maApDung, :loai, :giaTri, :toiDa, :toiThieu, :gioiHan, :batDau, :ketThuc, :hoatDong)
-            """), phieu).update();
+            RETURNING ma_phieu_giam_gia
+            """), phieu).query(Long.class).single();
     }
 
-    public void sua(long ma, CauHinh phieu) {
-        ganCauHinh(jdbc.sql("""
+    public boolean sua(long ma, CauHinh phieu) {
+        return ganCauHinh(jdbc.sql("""
             UPDATE phieu_giam_gia
             SET ma_ap_dung = :maApDung, loai_giam_gia = :loai, gia_tri_giam = :giaTri,
                 muc_giam_toi_da = :toiDa, don_toi_thieu = :toiThieu, gioi_han_su_dung = :gioiHan,
                 bat_dau_luc = :batDau, ket_thuc_luc = :ketThuc, dang_hoat_dong = :hoatDong
             WHERE ma_phieu_giam_gia = :ma
-            """).param("ma", ma), phieu).update();
+              AND NOT (BINARY ma_ap_dung = BINARY :maApDung AND loai_giam_gia=:loai AND gia_tri_giam=:giaTri
+                AND muc_giam_toi_da <=> :toiDa AND don_toi_thieu=:toiThieu AND gioi_han_su_dung=:gioiHan
+                AND bat_dau_luc=:batDau AND ket_thuc_luc=:ketThuc AND dang_hoat_dong=:hoatDong)
+            """).param("ma", ma), phieu).update() == 1;
     }
 
     public boolean xoaChuaSuDung(long ma) {

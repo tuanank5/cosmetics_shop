@@ -1,0 +1,45 @@
+{
+  "source": "938173d57171d2dc0a24a0e905656c1c2cdea89f130b08b60db2fd167a6853ad",
+  "testcases": [
+    {
+      "suite": "integration.Audit_MariaDb_Test",
+      "case": "commitRollbackVaKetQuaRieng",
+      "result": "PASS"
+    },
+    {
+      "suite": "integration.Audit_MariaDb_Test",
+      "case": "adminKhongDuocPhanCong",
+      "result": "PASS"
+    },
+    {
+      "suite": "integration.Audit_MariaDb_Test",
+      "case": "batchBoundaryBaoLuuReplayVaRollback",
+      "result": "PASS"
+    },
+    {
+      "suite": "integration.Audit_MariaDb_Test",
+      "case": "rangBuocCorrelationActionVaBaoLuuDonChoDoiSoat",
+      "result": "PASS"
+    },
+    {
+      "suite": "integration.XacThucMigration_MariaDb_Test",
+      "case": "baoToanIdLichSuVaChiChuyenDanhTinhCoBangChung(int)[1]",
+      "result": "PASS"
+    },
+    {
+      "suite": "integration.XacThucMigration_MariaDb_Test",
+      "case": "baoToanIdLichSuVaChiChuyenDanhTinhCoBangChung(int)[2]",
+      "result": "PASS"
+    },
+    {
+      "suite": "service.SnapshotAuditTest",
+      "case": "chiChapNhanKieuNghiepVu",
+      "result": "PASS"
+    },
+    {
+      "suite": "repository.ThuTuNhatKyTest",
+      "case": "sortCoKhoaPhanXuVaMacDinhAnToan",
+      "result": "PASS"
+    }
+  ]
+}

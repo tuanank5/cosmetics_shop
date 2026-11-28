@@ -11,7 +11,7 @@ Số thứ tự là số tệp. “Chờ BASE/phụ thuộc” xác định gate
 | 1 | 0 | [BASE](implementation-prompts/next-upgrade/01-BASE.md) | DONE | Owner nghiệm thu 28/11. | `faec999` → `f390c3a` · [PR #6](https://github.com/tuanank5/cosmetics_shop/pull/6) · [CI main PASS](https://github.com/tuanank5/cosmetics_shop/actions/runs/46106902807) |
 | 2 | 1 | [AUTH](implementation-prompts/next-upgrade/02-AUTH.md) | IN_PROGRESS · review local đạt, chờ CI và owner nghiệm thu | D1–D3 đã duyệt. Nhánh QA đã stage trong clone riêng. | Gốc `f390c3a` · Maven 234 PASS, 88 SKIP · MariaDB/WebKit 40/40 · package PASS · [Checkpoint](AUTH-ket-qua.md) |
 | 3 | 1 | [AUTH-LIVE](implementation-prompts/next-upgrade/03-AUTH-LIVE.md) | Chờ phụ thuộc · BLOCKED_EXTERNAL | Cấp môi trường thật, ghi SHA được nghiệm thu. | — |
-| 4 | 2 | [AUDIT](implementation-prompts/next-upgrade/04-AUDIT.md) | BLOCKED_OWNER | Owner duyệt 6–7 và BASE đạt. | — |
+| 4 | 2 | [AUDIT](implementation-prompts/next-upgrade/04-AUDIT.md) | IN_PROGRESS | D6/D7 đã duyệt. Review local trên `4fa2262`; purge thực tế chờ nguồn bảo lưu có thẩm quyền. | [Phạm vi, kiểm chứng và gate](AUDIT-ket-qua.md) |
 | 5 | 2 | [ACCOUNT](implementation-prompts/next-upgrade/05-ACCOUNT.md) | BLOCKED_OWNER / phụ thuộc | Chốt nội dung mail, AUTH và AUDIT sẵn sàng. | — |
 | 6 | 3 | [VOUCHER](implementation-prompts/next-upgrade/06-VOUCHER.md) | BLOCKED_OWNER | Owner duyệt 1–3; phối hợp AUDIT. | — |
 | 7 | 3 | [PAYMENT](implementation-prompts/next-upgrade/07-PAYMENT.md) | PARTIAL_ACCEPTED / BLOCKED_DEPENDENCY | Owner giao phần lịch sử độc lập tại `98d2fa3`. Tổng tiền, snapshot và đối soát hai slot BLOCKED_DEPENDENCY (VOUCHER). | [Báo cáo PAYMENT](PAYMENT-ket-qua.md) |
@@ -44,6 +44,12 @@ Số thứ tự là số tệp. “Chờ BASE/phụ thuộc” xác định gate
 Trên mỗi dòng, điền owner, revision gốc/tích hợp, PR/CI và kết quả; nối biên bản theo mẫu `ngày | WP | trạng thái trước → sau | quyết định/phụ thuộc | môi trường/fixture | PASS/FAIL/SKIP/NOT RUN | log/ảnh | bước kế tiếp`. Khi bị chặn, ghi người có thể mở khóa, quyết định cụ thể và phạm vi còn làm độc lập. Chỉ ghi DONE khi checkpoint, regression ảnh hưởng và review/CI đúng revision đã được xác nhận. Giữ lịch sử các lần thử, không cộng gộp suite khác môi trường.
 
 Mục 15 (restore web) và 17 (tự sinh mã SKU) tiếp tục ngoài phạm vi. D48 đã chốt MongoDB cho lịch sử Customer. D49 giao AUTH/AUTH-LIVE phân biệt logout BeautyShop với phiên Google, chỉ sửa lỗi ứng dụng tái hiện được.
+
+## Nhật ký AUDIT
+
+28/11/2026 · Owner duyệt AUDIT-D6 và AUDIT-D7. Bắt đầu triển khai trên `4fa226210c95a4539ccb4279a2a78df54af7577f`. Local JDK 21 đạt 240 PASS/93 SKIP, MariaDB 102/102, WebKit 3/3 nhóm, package và diff check PASS. Đợi review, CI và nghiệm thu đúng revision. [Báo cáo và bằng chứng](AUDIT-ket-qua.md)
+
+28/11/2026 · AUDIT-FINAL vẫn IN_PROGRESS. Maven 240 PASS/95 SKIP, MariaDB 104/104, WebKit 3/3 nhóm, package PASS. Purge thật BLOCKED_EXTERNAL chờ nguồn xác nhận. Nhánh qa/audit chờ review, CI và owner. [Review cuối](../qa/AUDIT/final-review/review.md)
 
 ## Nhật ký PAYMENT
 

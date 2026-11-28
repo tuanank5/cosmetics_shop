@@ -26,8 +26,6 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.jdbc.core.simple.JdbcClient;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.authentication.TestingAuthenticationToken;
-import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.TransactionDefinition;
@@ -44,7 +42,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(properties = {"app.payment.momo.enabled=true", "app.payment.momo.mode=mock"})
 @AutoConfigureMockMvc
 @EnabledIfEnvironmentVariable(named = "P01_MARIADB_TEST", matches = "true")
-@WithMockUser(roles = "ADMIN")
+@QuanTriFixture
 class CatalogDonHang_MariaDb_Test {
     @Autowired JdbcClient jdbc;
     @Autowired MockMvc mvc;
@@ -181,8 +179,9 @@ class CatalogDonHang_MariaDb_Test {
                 if (checkoutTruoc) datDon(f, phuongThuc);
                 else tat(f, phamVi);
 
+                var admin = SecurityContextHolder.getContext().getAuthentication();
                 var future = executor.submit(() -> {
-                    SecurityContextHolder.getContext().setAuthentication(new TestingAuthenticationToken("fixture-admin", null, "ROLE_ADMIN"));
+                    SecurityContextHolder.getContext().setAuthentication(admin);
                     try {
                         batDau.countDown();
                         if (checkoutTruoc) {

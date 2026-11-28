@@ -1,0 +1,2 @@
+﻿buyer default retention gate PASS
+admin default retention gate PASS

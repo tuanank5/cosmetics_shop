@@ -34,6 +34,7 @@ import org.springframework.web.server.ResponseStatusException;
 public class DonHang_Service {
     private static final BigDecimal GIOI_HAN_TIEN = new BigDecimal("999999999999999");
 
+    private final SuKienQuanTri_Service audit;
     private final DonHang_Repository donHangRepository;
     private final GioHang_Repository gioHangRepository;
     private final DiaChiNguoiDung_Repository diaChiRepository;
@@ -46,7 +47,8 @@ public class DonHang_Service {
     DonHang_Service(DonHang_Repository donHangRepository, GioHang_Repository gioHangRepository,
                    DiaChiNguoiDung_Repository diaChiRepository, TonKho_Service tonKho,
                    PhieuGiamGia_Service voucher, QuyenDonHang_Service quyenDonHang,
-                   ThanhToanMomo_Repository thanhToanMomo, Momo_Settings momo) {
+                   ThanhToanMomo_Repository thanhToanMomo, Momo_Settings momo, SuKienQuanTri_Service audit) {
+        this.audit = audit;
         this.donHangRepository = donHangRepository;
         this.gioHangRepository = gioHangRepository;
         this.diaChiRepository = diaChiRepository;
@@ -168,8 +170,10 @@ public class DonHang_Service {
     @PreAuthorize("hasRole('ADMIN')")
     public void chuyenAdmin(long maDon, OrderStatus trangThaiMoi) {
         Don don = timDon(maDon, true);
+        var suKien = audit.batDau(SuKienQuanTri_Service.HanhDong.ORDER_STATUS, "ORDER", maDon);
         if (trangThaiMoi == OrderStatus.CANCELLED) {
             huyCOD(don);
+            if (don.trangThai() != trangThaiMoi) audit.thanhCong(suKien, maDon, don.trangThai(), trangThaiMoi);
             return;
         }
         boolean momoDaThu = "MOMO".equals(don.phuongThuc())
@@ -185,6 +189,7 @@ public class DonHang_Service {
             throw new IllegalStateException("Không thể xác nhận hoàn tất giao hàng.");
         }
         donHangRepository.doiTrangThai(maDon, trangThaiMoi);
+        audit.thanhCong(suKien, maDon, don.trangThai(), trangThaiMoi);
     }
 
     private void huyCOD(Don don) {
