@@ -1,0 +1,62 @@
+﻿[WARNING] Tests run: 3, Failures: 0, Errors: 0, Skipped: 3, Time elapsed: 0.017 s -- in com.beautyshop.bootstrap.LocalDatabaseMigration_MariaDb_Test
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.130 s -- in com.beautyshop.config.LienHeCuaHangTest
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 16.61 s -- in com.beautyshop.controller.admin.AdminCatalogSecurityTest
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.424 s -- in com.beautyshop.controller.admin.AdminDanhGiaPagesTest
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.128 s -- in com.beautyshop.controller.admin.AdminDashboardPagesTest
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.212 s -- in com.beautyshop.controller.AnhTaiLenAdviceTest
+[INFO] Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.834 s -- in com.beautyshop.controller.BootstrapPagesTest
+[INFO] Tests run: 30, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.173 s -- in com.beautyshop.controller.CheckoutPagesTest
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.777 s -- in com.beautyshop.controller.DanhGiaPagesTest
+[INFO] Tests run: 65, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.122 s -- in com.beautyshop.controller.GiaoDienPagesTest
+[INFO] Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.476 s -- in com.beautyshop.controller.GioHangPagesTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.072 s -- in com.beautyshop.controller.MomoHttpContractTest
+[INFO] Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.589 s -- in com.beautyshop.controller.TrangChuPagesTest
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.983 s -- in com.beautyshop.controller.TuVan_ControllerTest
+[WARNING] Tests run: 3, Failures: 0, Errors: 0, Skipped: 3, Time elapsed: 0.001 s -- in com.beautyshop.integration.AdminOrderList_MariaDb_Test
+[WARNING] Tests run: 6, Failures: 0, Errors: 0, Skipped: 6, Time elapsed: 0 s -- in com.beautyshop.integration.BienTheSanPham_MariaDb_Test
+[WARNING] Tests run: 4, Failures: 0, Errors: 0, Skipped: 4, Time elapsed: 0 s -- in com.beautyshop.integration.CatalogDonHang_MariaDb_Test
+[WARNING] Tests run: 2, Failures: 0, Errors: 0, Skipped: 2, Time elapsed: 0.001 s -- in com.beautyshop.integration.CuaHang_MariaDb_Test
+[WARNING] Tests run: 3, Failures: 0, Errors: 0, Skipped: 3, Time elapsed: 0 s -- in com.beautyshop.integration.DanhMucSanPhamThuongHieu_MariaDb_Test
+[WARNING] Tests run: 2, Failures: 0, Errors: 0, Skipped: 2, Time elapsed: 0 s -- in com.beautyshop.integration.DocView_MariaDb_Test
+[WARNING] Tests run: 4, Failures: 0, Errors: 0, Skipped: 4, Time elapsed: 0.001 s -- in com.beautyshop.integration.DonHangCOD_MariaDb_Test
+[WARNING] Tests run: 1, Failures: 0, Errors: 0, Skipped: 1, Time elapsed: 0 s -- in com.beautyshop.integration.GoiYPhoBienDemoReport_Test
+[WARNING] Tests run: 1, Failures: 0, Errors: 0, Skipped: 1, Time elapsed: 0 s -- in com.beautyshop.integration.GoiYSanPham_MariaDb_Test
+[WARNING] Tests run: 1, Failures: 0, Errors: 0, Skipped: 1, Time elapsed: 0 s -- in com.beautyshop.integration.HttpLoi_MariaDb_Test
+[WARNING] Tests run: 3, Failures: 0, Errors: 0, Skipped: 3, Time elapsed: 0 s -- in com.beautyshop.integration.Momo_MariaDb_Test
+[WARNING] Tests run: 1, Failures: 0, Errors: 0, Skipped: 1, Time elapsed: 0 s -- in com.beautyshop.integration.MongoTat_MariaDb_Test
+[WARNING] Tests run: 7, Failures: 0, Errors: 0, Skipped: 7, Time elapsed: 0.001 s -- in com.beautyshop.integration.OAuth2Callback_MariaDb_Test
+[WARNING] Tests run: 2, Failures: 0, Errors: 0, Skipped: 2, Time elapsed: 0 s -- in com.beautyshop.integration.PhieuGiamGia_MariaDb_Test
+[WARNING] Tests run: 5, Failures: 0, Errors: 0, Skipped: 5, Time elapsed: 0.001 s -- in com.beautyshop.integration.SauMua_MongoDanhGia_Test
+[WARNING] Tests run: 2, Failures: 0, Errors: 0, Skipped: 2, Time elapsed: 0.001 s -- in com.beautyshop.integration.ThongKe_MariaDb_Test
+[WARNING] Tests run: 3, Failures: 0, Errors: 0, Skipped: 3, Time elapsed: 0 s -- in com.beautyshop.integration.TuVanFaq_MariaDb_Test
+[WARNING] Tests run: 3, Failures: 0, Errors: 0, Skipped: 3, Time elapsed: 0 s -- in com.beautyshop.integration.TuVanRag_MariaDb_Test
+[WARNING] Tests run: 9, Failures: 0, Errors: 0, Skipped: 9, Time elapsed: 0.001 s -- in com.beautyshop.integration.XacThucDaPhuongThuc_MariaDb_Test
+[WARNING] Tests run: 1, Failures: 0, Errors: 0, Skipped: 1, Time elapsed: 0 s -- in com.beautyshop.integration.XacThucMigration_MariaDb_Test
+[WARNING] Tests run: 12, Failures: 0, Errors: 0, Skipped: 12, Time elapsed: 0.001 s -- in com.beautyshop.integration.XacThuc_MariaDb_Test
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.013 s -- in com.beautyshop.inventory.InventoryRulesTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.006 s -- in com.beautyshop.order.OrderStatePolicyTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.371 s -- in com.beautyshop.payment.MomoReconciliationJobTest
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.052 s -- in com.beautyshop.payment.MomoSignatureTest
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.030 s -- in com.beautyshop.recommendation.DiemPhoBienPolicyTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.065 s -- in com.beautyshop.repository.CuaHangNoiBatRepositoryTest
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.233 s -- in com.beautyshop.repository.CuaHangTimKiemThanhPhanTest
+[INFO] Tests run: 18, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.251 s -- in com.beautyshop.repository.GioHangRepositoryTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.884 s -- in com.beautyshop.repository.MongoDanhGiaStoreNghiTest
+[WARNING] Tests run: 9, Failures: 0, Errors: 0, Skipped: 9, Time elapsed: 0 s -- in com.beautyshop.repository.MongoDanhGia_Store_Test
+[WARNING] Tests run: 1, Failures: 0, Errors: 0, Skipped: 1, Time elapsed: 0 s -- in com.beautyshop.repository.ReviewBsonCompatibilityTest
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.020 s -- in com.beautyshop.security.LoginRedirectTest
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.051 s -- in com.beautyshop.security.OAuth2BaselineTest
+[ERROR] Tests run: 3, Failures: 0, Errors: 3, Skipped: 0, Time elapsed: 0.023 s <<< FAILURE! -- in com.beautyshop.security.OAuth2NguoiDungTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.008 s -- in com.beautyshop.security.OAuth2YeuCauTest
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.061 s -- in com.beautyshop.service.AdminServiceMethodSecurityTest
+[INFO] Tests run: 10, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.542 s -- in com.beautyshop.service.CheckoutIntegrityTest
+[ERROR] Tests run: 5, Failures: 0, Errors: 3, Skipped: 0, Time elapsed: 0.361 s <<< FAILURE! -- in com.beautyshop.service.EmailVerificationTest
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.189 s -- in com.beautyshop.service.GoiYPhoBienServiceTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.012 s -- in com.beautyshop.service.MatKhauMoiTest
+[INFO] Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.219 s -- in com.beautyshop.service.SauMuaDanhGiaServiceTest
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.305 s -- in com.beautyshop.service.ThongKeServiceTest
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.022 s -- in com.beautyshop.service.TrangChuServiceTest
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.012 s -- in com.beautyshop.shipping.ShippingFeePolicyTest
+[ERROR] Tests run: 332, Failures: 0, Errors: 6, Skipped: 88
+[INFO] BUILD FAILURE
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-surefire-plugin:3.5.6:test (default-test) on project beautyshop:

@@ -166,3 +166,5 @@ Revision ứng viên là `a9870e1`, trùng remote main và Maven CI đã đạt.
 ### AUTH · 28/11/2026
 
 AUTH đã triển khai D1–D3, gồm bộ chọn khi bấm đăng nhập Google. AUTH-FINAL đạt 40/40 ca với fixture MariaDB/WebKit. Nhánh QA chờ CI và owner nghiệm thu đúng revision. [Checkpoint AUTH](reviews/AUTH-ket-qua.md) · [Sổ 19 WP](reviews/BEAUTYSHOP_NEXT_UPGRADE_PROGRESS.md)
+
+QUALITY đang IN_PROGRESS trên bản tích hợp AUTH. Đã kiểm bản sửa giảm một lần đọc trạng thái khi xem chi tiết đơn MoMo, chờ review, CI và nghiệm thu đúng revision. [Checkpoint QUALITY](reviews/QUALITY-ket-qua.md)

@@ -24,7 +24,7 @@ Số thứ tự là số tệp. “Chờ BASE/phụ thuộc” xác định gate
 | 14 | 6 | [NOTIFY](implementation-prompts/next-upgrade/14-NOTIFY.md) | BLOCKED_OWNER | Duyệt 11; sẵn hợp đồng phân quyền và sự kiện gửi. | — |
 | 15 | 6 | [SHOP-12](implementation-prompts/next-upgrade/15-SHOP-12.md) | BLOCKED_OWNER | Owner duyệt nội dung từng trang; phối hợp AI-OPS về reindex. | — |
 | 16 | 7 | [PERF](implementation-prompts/next-upgrade/16-PERF.md) | Chờ BASE | BASE và fixture cho benchmark; số đo cho phép sửa. | — |
-| 17 | 7 | [QUALITY](implementation-prompts/next-upgrade/17-QUALITY.md) | Chờ BASE | BASE cho rà soát; finding có đối chứng cho code. | — |
+| 17 | 7 | [QUALITY](implementation-prompts/next-upgrade/17-QUALITY.md) | IN_PROGRESS | Owner giao rà độc lập các module ổn định, ưu tiên checkout, đơn, thanh toán, kho, voucher, OAuth và AI. | Gốc `0ed547b` · [Checkpoint](QUALITY-ket-qua.md) |
 | 18 | 8 | [BACKUP](implementation-prompts/next-upgrade/18-BACKUP.md) | BLOCKED_OWNER / phụ thuộc | Duyệt quyền/quota, có fixture và hợp đồng audit. | — |
 | 19 | 9 | [UI-UAT](implementation-prompts/next-upgrade/19-UI-UAT.md) | Chờ phụ thuộc | Ghi coverage và revision bàn giao cho từng màn. | — |
 
@@ -52,6 +52,8 @@ Mục 15 (restore web) và 17 (tự sinh mã SKU) tiếp tục ngoài phạm vi.
 | 28/11/2026 | AUTH · IN_PROGRESS · checkpoint local | Working diff trên `f390c3a`. Đã chặn dùng lại mật khẩu cho cả reset và đổi mật khẩu. WebKit xác nhận phiên cũ mất quyền và cần callback mới sau logout. [Maven](../qa/AUTH/test.txt) · [Tích hợp và E2E](../qa/AUTH/integration.txt) · [Package](../qa/AUTH/package.txt) · [Manifest](../qa/AUTH/source.json) | Owner review kết quả và quyết định các mục 4, 5 và UX bộ chọn Google. Chưa có PR/CI AUTH. AUTH-LIVE chờ nghiệm thu. |
 | 28/11/2026 | AUTH · owner duyệt D1–D3 · IN_PROGRESS | Working diff trên `f390c3a`. Đã triển khai bộ chọn khi bấm đăng nhập Google, chốt quyền khôi phục và kiểm đủ 14 mục trên fixture. Maven 233 PASS, 87 SKIP. Suite riêng 39 PASS. Package PASS. [Quyết định](../DECISIONS.md) · [Báo cáo](AUTH-ket-qua.md) · [Bằng chứng](../qa/AUTH/owner-d1-d3/) | Owner review bản sau D1–D3. Chờ phép xuất bản và CI đúng revision. Provider thật chưa chạy. |
 | 28/11/2026 | AUTH-FINAL · IN_PROGRESS | Review đã sửa luân chuyển ID phiên khi nhận link reset và tiêu thụ state dưới khóa phiên. Hai POST gỡ đồng thời chỉ ghi một lần. Maven 234 PASS, 88 SKIP và suite riêng 40/40 PASS. Package đạt. [Bằng chứng](../qa/AUTH/final-review/) | Nhánh local `qa/auth` từ `f390c3a`, chưa có commit ứng viên. Owner duyệt commit/push, kiểm CI push/PR rồi nghiệm thu. AUTH-LIVE chưa chạy. |
+| 28/11/2026 | QUALITY · IN_PROGRESS, checkpoint local | Owner giao phần rà độc lập trên `0ed547b5d4c18eab46fb3a194fbbdd327c37d827` cộng diff hai tệp. Đã kiểm một lần đọc dư ở chi tiết đơn MoMo. Maven 236 đạt, 88 skip. Regression 94/94, WebKit ba vai trò/kịch bản 3/3, package PASS. [Báo cáo](QUALITY-ket-qua.md) · [QA](../qa/QUALITY/verification/) | Chờ review, CI và nghiệm thu trên SHA ứng viên. AUTH-LIVE vẫn BLOCKED_EXTERNAL. |
+| 28/11/2026 | QUALITY-FINAL · IN_PROGRESS | Clone độc lập `target/qa-quality`, nhánh `qa/quality` từ `0ed547b`. Đã review các hunk, khóa đơn, kết quả PAID/PENDING và sáu lỗi bytecode tại root. [Review](../qa/QUALITY/final-review/review.md) | Chờ owner cho phép commit và push, review PR, CI và nghiệm thu đúng revision. |
 
 ## Backlog theo quyết định mới
 
