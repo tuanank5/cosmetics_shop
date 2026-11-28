@@ -16,7 +16,7 @@ Số thứ tự là số tệp. “Chờ BASE/phụ thuộc” xác định gate
 | 6 | 3 | [VOUCHER](implementation-prompts/next-upgrade/06-VOUCHER.md) | MERGED / READY_FOR_OWNER_ACCEPTANCE | Chờ owner nghiệm thu. | PR #12 · `e4c00c8` · [Closeout](VOUCHER-ket-qua.md) |
 | 7 | 3 | [PAYMENT](implementation-prompts/next-upgrade/07-PAYMENT.md) | PARTIAL_ACCEPTED · READY_FOR_OWNER_ACCEPTANCE (mock) | Bốn gate sau VOUCHER đã chạy trên merge. Chờ quyết định owner. | `e4c00c8` · [Revalidation](PAYMENT-ket-qua.md#revalidation-pr-12) |
 | 8 | 3 | [PAY-LIVE](implementation-prompts/next-upgrade/08-PAY-LIVE.md) | Chờ phụ thuộc · BLOCKED_EXTERNAL | Xác nhận môi trường thật, revision và số đầu kỳ. | — |
-| 9 | 4 | [ORDER](implementation-prompts/next-upgrade/09-ORDER.md) | Chờ phụ thuộc | Chốt đầu vào AUTH; đồng bộ hai view chi tiết. | — |
+| 9 | 4 | [ORDER](implementation-prompts/next-upgrade/09-ORDER.md) | IN_PROGRESS | Owner giao lọc danh sách Customer và mua lại vào giỏ trên main đã tích hợp PAYMENT/VOUCHER. | 28/11/2026 · `3da645dd76f22b8f83351d63ca419bd5646af6e8` · [Báo cáo](ORDER-ket-qua.md) |
 | 10 | 4 | [RETURN](implementation-prompts/next-upgrade/10-RETURN.md) | BLOCKED_OWNER | Duyệt 12 và hợp đồng audit. | — |
 | 11 | 4 | [REFUND](implementation-prompts/next-upgrade/11-REFUND.md) | BLOCKED_OWNER | Duyệt 3, 13–14 và nguồn bằng chứng chi tiền. | — |
 | 12 | 5 | [AI-OPS](implementation-prompts/next-upgrade/12-AI-OPS.md) | Chờ BASE | BASE cho guard/counter; AUDIT cho reindex. | — |
@@ -44,6 +44,12 @@ Số thứ tự là số tệp. “Chờ BASE/phụ thuộc” xác định gate
 Trên mỗi dòng, điền owner, revision gốc/tích hợp, PR/CI và kết quả; nối biên bản theo mẫu `ngày | WP | trạng thái trước → sau | quyết định/phụ thuộc | môi trường/fixture | PASS/FAIL/SKIP/NOT RUN | log/ảnh | bước kế tiếp`. Khi bị chặn, ghi người có thể mở khóa, quyết định cụ thể và phạm vi còn làm độc lập. Chỉ ghi DONE khi checkpoint, regression ảnh hưởng và review/CI đúng revision đã được xác nhận. Giữ lịch sử các lần thử, không cộng gộp suite khác môi trường.
 
 Mục 15 (restore web) và 17 (tự sinh mã SKU) tiếp tục ngoài phạm vi. D48 đã chốt MongoDB cho lịch sử Customer. D49 giao AUTH/AUTH-LIVE phân biệt logout BeautyShop với phiên Google, chỉ sửa lỗi ứng dụng tái hiện được.
+
+## Nhật ký ORDER
+
+28/11/2026 · ORDER IN_PROGRESS trên `3da645d`. Danh sách Customer và mua lại vào giỏ đạt regression local. Maven 251 PASS/105 SKIP, integration 130/130, WebKit ORDER desktop/mobile và package PASS. Chờ ORDER-FINAL, review, CI và nghiệm thu. [Báo cáo](ORDER-ket-qua.md)
+
+28/11/2026 · ORDER-FINAL · IN_PROGRESS. Đã sửa ràng buộc form với đơn và phiên, kiểm regression trên fixture. Chờ review PR, CI đúng SHA và nghiệm thu. [Review](../qa/ORDER/final-review/review.md)
 
 ## Nhật ký VOUCHER
 

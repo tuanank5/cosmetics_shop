@@ -13,6 +13,11 @@
         <p class="muted">Theo dõi trạng thái và thông tin chi tiết về đơn hàng của bạn tại BeautyShop.</p>
     </header>
     <div th:replace="~{fragments/ui :: notices(${message}, ${error})}"></div>
+    <form method="post" th:action="@{/orders/{id}/reorder(id=${don.maDonHang})}">
+        <input type="hidden" name="proof" th:value="${chuKyMuaLai}">
+        <input type="hidden" name="requestId" th:value="${maMuaLai}">
+        <button class="btn btn--secondary" type="submit">Mua lại</button>
+    </form>
     <p class="notice" th:if="${chiTiet.mock}">MÔ PHỎNG - KHÔNG THU TIỀN</p>
     <p class="notice" th:if="${chiTiet.canHoanTien > 0}">Giao dịch cần được kiểm tra để hoàn tiền.</p>
     <p class="notice" th:if="${chiTiet.thanhToan == 'FAILED' and chiTiet.coTheThuLai}">Thanh toán chưa thành công. Bạn có thể mở lại thanh toán khi đơn còn giữ hàng.</p>

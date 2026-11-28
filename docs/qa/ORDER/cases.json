@@ -1,0 +1,71 @@
+{
+  "build": [
+    {
+      "suite": "com.beautyshop.controller.BoLocDonKhachTest",
+      "case": "ngaySaiBiTuChoiVaSortLaChiNhanGiaTriDaDuyet",
+      "result": "PASS"
+    },
+    {
+      "suite": "com.beautyshop.controller.BoLocDonKhachTest",
+      "case": "duongVeGiuBoLocVaCoTrangCoDinh",
+      "result": "PASS"
+    },
+    {
+      "suite": "com.beautyshop.integration.DonHangCOD_MariaDb_Test",
+      "case": "haiPostMuaLaiCungYeuCauChiGhiMotLan",
+      "result": "SKIP"
+    },
+    {
+      "suite": "com.beautyshop.integration.DonHangCOD_MariaDb_Test",
+      "case": "locDonCustomerCungPredicateChoCountVaTrang",
+      "result": "SKIP"
+    },
+    {
+      "suite": "com.beautyshop.integration.DonHangCOD_MariaDb_Test",
+      "case": "khoaTrangThaiSanPhamDenKhiGhiGioHoanTat",
+      "result": "SKIP"
+    },
+    {
+      "suite": "com.beautyshop.service.MuaLaiTest",
+      "case": "dungTonVaSoLuongHienTai(boolean, int, int, int, String)[1]",
+      "result": "PASS"
+    },
+    {
+      "suite": "com.beautyshop.service.MuaLaiTest",
+      "case": "dungTonVaSoLuongHienTai(boolean, int, int, int, String)[2]",
+      "result": "PASS"
+    },
+    {
+      "suite": "com.beautyshop.service.MuaLaiTest",
+      "case": "dungTonVaSoLuongHienTai(boolean, int, int, int, String)[3]",
+      "result": "PASS"
+    },
+    {
+      "suite": "com.beautyshop.service.MuaLaiTest",
+      "case": "dungTonVaSoLuongHienTai(boolean, int, int, int, String)[4]",
+      "result": "PASS"
+    },
+    {
+      "suite": "com.beautyshop.service.MuaLaiTest",
+      "case": "dungTonVaSoLuongHienTai(boolean, int, int, int, String)[5]",
+      "result": "PASS"
+    }
+  ],
+  "it": [
+    {
+      "suite": "com.beautyshop.integration.DonHangCOD_MariaDb_Test",
+      "case": "haiPostMuaLaiCungYeuCauChiGhiMotLan",
+      "result": "PASS"
+    },
+    {
+      "suite": "com.beautyshop.integration.DonHangCOD_MariaDb_Test",
+      "case": "locDonCustomerCungPredicateChoCountVaTrang",
+      "result": "PASS"
+    },
+    {
+      "suite": "com.beautyshop.integration.DonHangCOD_MariaDb_Test",
+      "case": "khoaTrangThaiSanPhamDenKhiGhiGioHoanTat",
+      "result": "PASS"
+    }
+  ]
+}

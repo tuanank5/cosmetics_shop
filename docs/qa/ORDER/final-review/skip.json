@@ -1,0 +1,851 @@
+[
+  {
+    "suite": "com.beautyshop.bootstrap.LocalDatabaseMigration_MariaDb_Test",
+    "method": "nangCapVaGiuNguoiDungTuLichSuChinhThuc(int)",
+    "reason": "Environment variable [LOCAL_BOOTSTRAP_MIGRATION_FIXTURE] does not exist",
+    "fixturePassed": []
+  },
+  {
+    "suite": "com.beautyshop.bootstrap.LocalDatabaseMigration_MariaDb_Test",
+    "method": "tuChoiChecksumKhongKhopTruocKhiChayBanMoi",
+    "reason": "Environment variable [LOCAL_BOOTSTRAP_MIGRATION_FIXTURE] does not exist",
+    "fixturePassed": []
+  },
+  {
+    "suite": "com.beautyshop.bootstrap.LocalDatabaseMigration_MariaDb_Test",
+    "method": "tuChoiSchemaCuKhongCoLichSu",
+    "reason": "Environment variable [LOCAL_BOOTSTRAP_MIGRATION_FIXTURE] does not exist",
+    "fixturePassed": []
+  },
+  {
+    "suite": "com.beautyshop.integration.AdminOrderList_MariaDb_Test",
+    "method": "locNgayTheoGioVietNamVaGiuKhoangNgayKhiQuayLai",
+    "reason": "Environment variable [P01_MARIADB_TEST] does not exist",
+    "fixturePassed": [
+      "locNgayTheoGioVietNamVaGiuKhoangNgayKhiQuayLai"
+    ]
+  },
+  {
+    "suite": "com.beautyshop.integration.AdminOrderList_MariaDb_Test",
+    "method": "phanTrangOnDinhVaGiuBoLocQuaPost",
+    "reason": "Environment variable [P01_MARIADB_TEST] does not exist",
+    "fixturePassed": [
+      "phanTrangOnDinhVaGiuBoLocQuaPost"
+    ]
+  },
+  {
+    "suite": "com.beautyshop.integration.AdminOrderList_MariaDb_Test",
+    "method": "locHieuLucVaDemCungMotTapDon",
+    "reason": "Environment variable [P01_MARIADB_TEST] does not exist",
+    "fixturePassed": [
+      "locHieuLucVaDemCungMotTapDon"
+    ]
+  },
+  {
+    "suite": "com.beautyshop.integration.Audit_MariaDb_Test",
+    "method": "commitRollbackVaKetQuaRieng",
+    "reason": "Environment variable [P01_MARIADB_TEST] does not exist",
+    "fixturePassed": [
+      "commitRollbackVaKetQuaRieng"
+    ]
+  },
+  {
+    "suite": "com.beautyshop.integration.Audit_MariaDb_Test",
+    "method": "adminKhongDuocPhanCong",
+    "reason": "Environment variable [P01_MARIADB_TEST] does not exist",
+    "fixturePassed": [
+      "adminKhongDuocPhanCong"
+    ]
+  },
+  {
+    "suite": "com.beautyshop.integration.Audit_MariaDb_Test",
+    "method": "batchBoundaryBaoLuuReplayVaRollback",
+    "reason": "Environment variable [P01_MARIADB_TEST] does not exist",
+    "fixturePassed": [
+      "batchBoundaryBaoLuuReplayVaRollback"
+    ]
+  },
+  {
+    "suite": "com.beautyshop.integration.Audit_MariaDb_Test",
+    "method": "dryRunKhongTinhHoSoChuaCoNguonDuyet",
+    "reason": "Environment variable [P01_MARIADB_TEST] does not exist",
+    "fixturePassed": [
+      "dryRunKhongTinhHoSoChuaCoNguonDuyet"
+    ]
+  },
+  {
+    "suite": "com.beautyshop.integration.Audit_MariaDb_Test",
+    "method": "luuLaiDanhMucKhongSinhSuccess",
+    "reason": "Environment variable [P01_MARIADB_TEST] does not exist",
+    "fixturePassed": [
+      "luuLaiDanhMucKhongSinhSuccess"
+    ]
+  },
+  {
+    "suite": "com.beautyshop.integration.Audit_MariaDb_Test",
+    "method": "rangBuocCorrelationActionVaBaoLuuDonChoDoiSoat",
+    "reason": "Environment variable [P01_MARIADB_TEST] does not exist",
+    "fixturePassed": [
+      "rangBuocCorrelationActionVaBaoLuuDonChoDoiSoat"
+    ]
+  },
+  {
+    "suite": "com.beautyshop.integration.BienTheSanPham_MariaDb_Test",
+    "method": "rollbackCheckoutHoanCaTonVaDauGhiNhan",
+    "reason": "Environment variable [P01_MARIADB_TEST] does not exist",
+    "fixturePassed": [
+      "rollbackCheckoutHoanCaTonVaDauGhiNhan"
+    ]
+  },
+  {
+    "suite": "com.beautyshop.integration.BienTheSanPham_MariaDb_Test",
+    "method": "customerKhongDuocQuanTriSku",
+    "reason": "Environment variable [P01_MARIADB_TEST] does not exist",
+    "fixturePassed": [
+      "customerKhongDuocQuanTriSku"
+    ]
+  },
+  {
+    "suite": "com.beautyshop.integration.BienTheSanPham_MariaDb_Test",
+    "method": "giuChotVaTraHangCoIdempotencyVaKhongTuGiaiPhongKhiHetHan",
+    "reason": "Environment variable [P01_MARIADB_TEST] does not exist",
+    "fixturePassed": [
+      "giuChotVaTraHangCoIdempotencyVaKhongTuGiaiPhongKhiHetHan"
+    ]
+  },
+  {
+    "suite": "com.beautyshop.integration.BienTheSanPham_MariaDb_Test",
+    "method": "crudSkuVaAnhKiemTraQuyenSoHuuBienTheVaTonDangGiu",
+    "reason": "Environment variable [P01_MARIADB_TEST] does not exist",
+    "fixturePassed": [
+      "crudSkuVaAnhKiemTraQuyenSoHuuBienTheVaTonDangGiu"
+    ]
+  },
+  {
+    "suite": "com.beautyshop.integration.BienTheSanPham_MariaDb_Test",
+    "method": "haiDonCanhTranhMotSkuVaRetryKhongCapLanHai(String)",
+    "reason": "Environment variable [P01_MARIADB_TEST] does not exist",
+    "fixturePassed": [
+      "haiDonCanhTranhMotSkuVaRetryKhongCapLanHai(String)[1]",
+      "haiDonCanhTranhMotSkuVaRetryKhongCapLanHai(String)[2]"
+    ]
+  },
+  {
+    "suite": "com.beautyshop.integration.BienTheSanPham_MariaDb_Test",
+    "method": "checkoutDaDocSkuVanDungSoTonMoiNhatSauKhiKhoa",
+    "reason": "Environment variable [P01_MARIADB_TEST] does not exist",
+    "fixturePassed": [
+      "checkoutDaDocSkuVanDungSoTonMoiNhatSauKhiKhoa"
+    ]
+  },
+  {
+    "suite": "com.beautyshop.integration.CatalogDonHang_MariaDb_Test",
+    "method": "kiemTraToanBoSkuVaCacDuongLuuTrangThai",
+    "reason": "Environment variable [P01_MARIADB_TEST] does not exist",
+    "fixturePassed": [
+      "kiemTraToanBoSkuVaCacDuongLuuTrangThai"
+    ]
+  },
+  {
+    "suite": "com.beautyshop.integration.CatalogDonHang_MariaDb_Test",
+    "method": "trangThaiDonQuyetDinhCoDuocNgungSku(OrderStatus)",
+    "reason": "Environment variable [P01_MARIADB_TEST] does not exist",
+    "fixturePassed": [
+      "trangThaiDonQuyetDinhCoDuocNgungSku(OrderStatus)[1]",
+      "trangThaiDonQuyetDinhCoDuocNgungSku(OrderStatus)[2]",
+      "trangThaiDonQuyetDinhCoDuocNgungSku(OrderStatus)[3]",
+      "trangThaiDonQuyetDinhCoDuocNgungSku(OrderStatus)[4]",
+      "trangThaiDonQuyetDinhCoDuocNgungSku(OrderStatus)[5]",
+      "trangThaiDonQuyetDinhCoDuocNgungSku(OrderStatus)[6]",
+      "trangThaiDonQuyetDinhCoDuocNgungSku(OrderStatus)[7]",
+      "trangThaiDonQuyetDinhCoDuocNgungSku(OrderStatus)[8]"
+    ]
+  },
+  {
+    "suite": "com.beautyshop.integration.CatalogDonHang_MariaDb_Test",
+    "method": "checkoutVaNgungHoatDongTuanTu(PhamVi, String, boolean)",
+    "reason": "Environment variable [P01_MARIADB_TEST] does not exist",
+    "fixturePassed": [
+      "checkoutVaNgungHoatDongTuanTu(PhamVi, String, boolean)[1]",
+      "checkoutVaNgungHoatDongTuanTu(PhamVi, String, boolean)[2]",
+      "checkoutVaNgungHoatDongTuanTu(PhamVi, String, boolean)[3]",
+      "checkoutVaNgungHoatDongTuanTu(PhamVi, String, boolean)[4]",
+      "checkoutVaNgungHoatDongTuanTu(PhamVi, String, boolean)[5]",
+      "checkoutVaNgungHoatDongTuanTu(PhamVi, String, boolean)[6]",
+      "checkoutVaNgungHoatDongTuanTu(PhamVi, String, boolean)[7]",
+      "checkoutVaNgungHoatDongTuanTu(PhamVi, String, boolean)[8]",
+      "checkoutVaNgungHoatDongTuanTu(PhamVi, String, boolean)[9]",
+      "checkoutVaNgungHoatDongTuanTu(PhamVi, String, boolean)[10]",
+      "checkoutVaNgungHoatDongTuanTu(PhamVi, String, boolean)[11]",
+      "checkoutVaNgungHoatDongTuanTu(PhamVi, String, boolean)[12]",
+      "checkoutVaNgungHoatDongTuanTu(PhamVi, String, boolean)[13]",
+      "checkoutVaNgungHoatDongTuanTu(PhamVi, String, boolean)[14]",
+      "checkoutVaNgungHoatDongTuanTu(PhamVi, String, boolean)[15]",
+      "checkoutVaNgungHoatDongTuanTu(PhamVi, String, boolean)[16]"
+    ]
+  },
+  {
+    "suite": "com.beautyshop.integration.CatalogDonHang_MariaDb_Test",
+    "method": "donKetThucVanChanNeuTonThanhToanHoacDoiTraConTreo",
+    "reason": "Environment variable [P01_MARIADB_TEST] does not exist",
+    "fixturePassed": [
+      "donKetThucVanChanNeuTonThanhToanHoacDoiTraConTreo"
+    ]
+  },
+  {
+    "suite": "com.beautyshop.integration.CuaHang_MariaDb_Test",
+    "method": "locTiengVietSapXepTheoSkuVaPhanTrang",
+    "reason": "Environment variable [P01_MARIADB_TEST] does not exist",
+    "fixturePassed": [
+      "locTiengVietSapXepTheoSkuVaPhanTrang"
+    ]
+  },
+  {
+    "suite": "com.beautyshop.integration.CuaHang_MariaDb_Test",
+    "method": "chonSkuDocGiaTonVaAnhHienHanh",
+    "reason": "Environment variable [P01_MARIADB_TEST] does not exist",
+    "fixturePassed": [
+      "chonSkuDocGiaTonVaAnhHienHanh"
+    ]
+  },
+  {
+    "suite": "com.beautyshop.integration.DanhMucSanPhamThuongHieu_MariaDb_Test",
+    "method": "mucChuaCoSanPhamVanGiuBanGhiVaGanTrangThaiLap",
+    "reason": "Environment variable [P01_MARIADB_TEST] does not exist",
+    "fixturePassed": [
+      "mucChuaCoSanPhamVanGiuBanGhiVaGanTrangThaiLap"
+    ]
+  },
+  {
+    "suite": "com.beautyshop.integration.DanhMucSanPhamThuongHieu_MariaDb_Test",
+    "method": "catalogCrudUsesV1ConstraintsAndPreservesProducts",
+    "reason": "Environment variable [P01_MARIADB_TEST] does not exist",
+    "fixturePassed": [
+      "catalogCrudUsesV1ConstraintsAndPreservesProducts"
+    ]
+  },
+  {
+    "suite": "com.beautyshop.integration.DanhMucSanPhamThuongHieu_MariaDb_Test",
+    "method": "trangThaiChaChiDoiVisibilityVaGiuSkuFkCungSnapshotDon",
+    "reason": "Environment variable [P01_MARIADB_TEST] does not exist",
+    "fixturePassed": [
+      "trangThaiChaChiDoiVisibilityVaGiuSkuFkCungSnapshotDon"
+    ]
+  },
+  {
+    "suite": "com.beautyshop.integration.DocView_MariaDb_Test",
+    "method": "doCotSoTruyVanVaHtmlCuaNhungDuongDoc",
+    "reason": "Environment variable [P01_MARIADB_TEST] does not exist",
+    "fixturePassed": [
+      "doCotSoTruyVanVaHtmlCuaNhungDuongDoc"
+    ]
+  },
+  {
+    "suite": "com.beautyshop.integration.DocView_MariaDb_Test",
+    "method": "gioKhachDocNhieuSkuTrongMotTruyVan",
+    "reason": "Environment variable [P01_MARIADB_TEST] does not exist",
+    "fixturePassed": [
+      "gioKhachDocNhieuSkuTrongMotTruyVan"
+    ]
+  },
+  {
+    "suite": "com.beautyshop.integration.DonHangCOD_MariaDb_Test",
+    "method": "haiPostMuaLaiCungYeuCauChiGhiMotLan",
+    "reason": "Environment variable [P01_MARIADB_TEST] does not exist",
+    "fixturePassed": [
+      "haiPostMuaLaiCungYeuCauChiGhiMotLan"
+    ]
+  },
+  {
+    "suite": "com.beautyshop.integration.DonHangCOD_MariaDb_Test",
+    "method": "checkoutHetHangGiuNguyenMucKhacVaAdminHuyHoanTonMotLan",
+    "reason": "Environment variable [P01_MARIADB_TEST] does not exist",
+    "fixturePassed": [
+      "checkoutHetHangGiuNguyenMucKhacVaAdminHuyHoanTonMotLan"
+    ]
+  },
+  {
+    "suite": "com.beautyshop.integration.DonHangCOD_MariaDb_Test",
+    "method": "haiCustomerTranhSkuVaRollbackKhoVoucherVaGio",
+    "reason": "Environment variable [P01_MARIADB_TEST] does not exist",
+    "fixturePassed": [
+      "haiCustomerTranhSkuVaRollbackKhoVoucherVaGio"
+    ]
+  },
+  {
+    "suite": "com.beautyshop.integration.DonHangCOD_MariaDb_Test",
+    "method": "formMuaLaiChiApDungChoDonVaPhienDaCap",
+    "reason": "Environment variable [P01_MARIADB_TEST] does not exist",
+    "fixturePassed": [
+      "formMuaLaiChiApDungChoDonVaPhienDaCap"
+    ]
+  },
+  {
+    "suite": "com.beautyshop.integration.DonHangCOD_MariaDb_Test",
+    "method": "locDonCustomerCungPredicateChoCountVaTrang",
+    "reason": "Environment variable [P01_MARIADB_TEST] does not exist",
+    "fixturePassed": [
+      "locDonCustomerCungPredicateChoCountVaTrang"
+    ]
+  },
+  {
+    "suite": "com.beautyshop.integration.DonHangCOD_MariaDb_Test",
+    "method": "checkoutHuyVaGiaoCodEndToEnd",
+    "reason": "Environment variable [P01_MARIADB_TEST] does not exist",
+    "fixturePassed": [
+      "checkoutHuyVaGiaoCodEndToEnd"
+    ]
+  },
+  {
+    "suite": "com.beautyshop.integration.DonHangCOD_MariaDb_Test",
+    "method": "voucherConMotLuotChiChoMotDonKhiHaiSkuKhacNhau",
+    "reason": "Environment variable [P01_MARIADB_TEST] does not exist",
+    "fixturePassed": [
+      "voucherConMotLuotChiChoMotDonKhiHaiSkuKhacNhau"
+    ]
+  },
+  {
+    "suite": "com.beautyshop.integration.DonHangCOD_MariaDb_Test",
+    "method": "rollbackRetryVaHaiYeuCauTranhDonViCuoi",
+    "reason": "Environment variable [P01_MARIADB_TEST] does not exist",
+    "fixturePassed": [
+      "rollbackRetryVaHaiYeuCauTranhDonViCuoi"
+    ]
+  },
+  {
+    "suite": "com.beautyshop.integration.DonHangCOD_MariaDb_Test",
+    "method": "khoaTrangThaiSanPhamDenKhiGhiGioHoanTat",
+    "reason": "Environment variable [P01_MARIADB_TEST] does not exist",
+    "fixturePassed": [
+      "khoaTrangThaiSanPhamDenKhiGhiGioHoanTat"
+    ]
+  },
+  {
+    "suite": "com.beautyshop.integration.DonHangCOD_MariaDb_Test",
+    "method": "quotaKhachVaRollbackHaiSlot",
+    "reason": "Environment variable [P01_MARIADB_TEST] does not exist",
+    "fixturePassed": [
+      "quotaKhachVaRollbackHaiSlot"
+    ]
+  },
+  {
+    "suite": "com.beautyshop.integration.GoiYPhoBienDemoReport_Test",
+    "method": "inBangDiemTop5",
+    "reason": "Environment variable [P21_DEMO_REPORT] does not exist",
+    "fixturePassed": []
+  },
+  {
+    "suite": "com.beautyshop.integration.GoiYSanPham_MariaDb_Test",
+    "method": "demBanDanhGiaYeuThichDungDieuKien",
+    "reason": "Environment variable [P01_MARIADB_TEST] does not exist",
+    "fixturePassed": []
+  },
+  {
+    "suite": "com.beautyshop.integration.HttpLoi_MariaDb_Test",
+    "method": "httpThucGiuStatusSoHuuRoleCsrfVaErrorDispatch",
+    "reason": "Environment variable [P01_MARIADB_TEST] does not exist",
+    "fixturePassed": [
+      "httpThucGiuStatusSoHuuRoleCsrfVaErrorDispatch"
+    ]
+  },
+  {
+    "suite": "com.beautyshop.integration.Momo_MariaDb_Test",
+    "method": "callbackDongThoiVaAttemptCuSauKhiDaChot",
+    "reason": "Environment variable [P01_MARIADB_TEST] does not exist",
+    "fixturePassed": [
+      "callbackDongThoiVaAttemptCuSauKhiDaChot"
+    ]
+  },
+  {
+    "suite": "com.beautyshop.integration.Momo_MariaDb_Test",
+    "method": "haiRetrySauFailedChiTaoMotLanMoi",
+    "reason": "Environment variable [P01_MARIADB_TEST] does not exist",
+    "fixturePassed": [
+      "haiRetrySauFailedChiTaoMotLanMoi"
+    ]
+  },
+  {
+    "suite": "com.beautyshop.integration.Momo_MariaDb_Test",
+    "method": "ipnKySaiSaiSoTienVaReplayKhongTruTonHaiLan",
+    "reason": "Environment variable [P01_MARIADB_TEST] does not exist",
+    "fixturePassed": [
+      "ipnKySaiSaiSoTienVaReplayKhongTruTonHaiLan"
+    ]
+  },
+  {
+    "suite": "com.beautyshop.integration.Momo_MariaDb_Test",
+    "method": "rollbackSauKhiGiuSlotDau",
+    "reason": "Environment variable [P01_MARIADB_TEST] does not exist",
+    "fixturePassed": [
+      "rollbackSauKhiGiuSlotDau"
+    ]
+  },
+  {
+    "suite": "com.beautyshop.integration.Momo_MariaDb_Test",
+    "method": "retryTransportGiuMaCuRetrySauTuChoiCoMaMoiVaDoiSoat",
+    "reason": "Environment variable [P01_MARIADB_TEST] does not exist",
+    "fixturePassed": [
+      "retryTransportGiuMaCuRetrySauTuChoiCoMaMoiVaDoiSoat"
+    ]
+  },
+  {
+    "suite": "com.beautyshop.integration.Momo_MariaDb_Test",
+    "method": "giuQuotaKhachVaChoDoiSoatKhoanDaThu",
+    "reason": "Environment variable [P01_MARIADB_TEST] does not exist",
+    "fixturePassed": [
+      "giuQuotaKhachVaChoDoiSoatKhoanDaThu"
+    ]
+  },
+  {
+    "suite": "com.beautyshop.integration.Momo_MariaDb_Test",
+    "method": "doiSoatHaiSlotDenGatewayVaRangBuocSql",
+    "reason": "Environment variable [P01_MARIADB_TEST] does not exist",
+    "fixturePassed": [
+      "doiSoatHaiSlotDenGatewayVaRangBuocSql"
+    ]
+  },
+  {
+    "suite": "com.beautyshop.integration.Momo_MariaDb_Test",
+    "method": "huyVaCallbackChayDuaKhongTraQuaLuot",
+    "reason": "Environment variable [P01_MARIADB_TEST] does not exist",
+    "fixturePassed": [
+      "huyVaCallbackChayDuaKhongTraQuaLuot"
+    ]
+  },
+  {
+    "suite": "com.beautyshop.integration.Momo_MariaDb_Test",
+    "method": "chiGiaiPhongKhiCongXacNhanHetHanVaDanhDauThanhCongMuon",
+    "reason": "Environment variable [P01_MARIADB_TEST] does not exist",
+    "fixturePassed": [
+      "chiGiaiPhongKhiCongXacNhanHetHanVaDanhDauThanhCongMuon"
+    ]
+  },
+  {
+    "suite": "com.beautyshop.integration.MongoTat_MariaDb_Test",
+    "method": "trangChinhVanChayKhiMongoTat",
+    "reason": "Environment variable [P01_MARIADB_TEST] does not exist",
+    "fixturePassed": []
+  },
+  {
+    "suite": "com.beautyshop.integration.OAuth2Callback_MariaDb_Test",
+    "method": "oauthChuaCoMatKhauCanCallbackDungDanhTinhVaOtpDeThietLap",
+    "reason": "Environment variable [P01_MARIADB_TEST] does not exist",
+    "fixturePassed": [
+      "oauthChuaCoMatKhauCanCallbackDungDanhTinhVaOtpDeThietLap"
+    ]
+  },
+  {
+    "suite": "com.beautyshop.integration.OAuth2Callback_MariaDb_Test",
+    "method": "callbackLienKetGiuPhienVaChiGhiSauXacNhanPost(String)",
+    "reason": "Environment variable [P01_MARIADB_TEST] does not exist",
+    "fixturePassed": [
+      "callbackLienKetGiuPhienVaChiGhiSauXacNhanPost(String)[1]",
+      "callbackLienKetGiuPhienVaChiGhiSauXacNhanPost(String)[2]"
+    ]
+  },
+  {
+    "suite": "com.beautyshop.integration.OAuth2Callback_MariaDb_Test",
+    "method": "googleOidcKiemChuKyNonceVaEmailDaXacMinh",
+    "reason": "Environment variable [P01_MARIADB_TEST] does not exist",
+    "fixturePassed": [
+      "googleOidcKiemChuKyNonceVaEmailDaXacMinh"
+    ]
+  },
+  {
+    "suite": "com.beautyshop.integration.OAuth2Callback_MariaDb_Test",
+    "method": "baCachLoginCungIdVaMoiPhienGopGioDungMotLan",
+    "reason": "Environment variable [P01_MARIADB_TEST] does not exist",
+    "fixturePassed": [
+      "baCachLoginCungIdVaMoiPhienGopGioDungMotLan"
+    ]
+  },
+  {
+    "suite": "com.beautyshop.integration.OAuth2Callback_MariaDb_Test",
+    "method": "callbackDoiCodeKiemStateVaDangNhapBangUserId",
+    "reason": "Environment variable [P01_MARIADB_TEST] does not exist",
+    "fixturePassed": [
+      "callbackDoiCodeKiemStateVaDangNhapBangUserId"
+    ]
+  },
+  {
+    "suite": "com.beautyshop.integration.OAuth2Callback_MariaDb_Test",
+    "method": "webkitDatLaiMatKhauVaXacThucLaiGoogleTrenHaiTab",
+    "reason": "Environment variable [P01_MARIADB_TEST] does not exist",
+    "fixturePassed": [
+      "webkitDatLaiMatKhauVaXacThucLaiGoogleTrenHaiTab"
+    ]
+  },
+  {
+    "suite": "com.beautyshop.integration.OAuth2Callback_MariaDb_Test",
+    "method": "haiPhienGoDongThoiVanConMotDuongDangNhap",
+    "reason": "Environment variable [P01_MARIADB_TEST] does not exist",
+    "fixturePassed": [
+      "haiPhienGoDongThoiVanConMotDuongDangNhap"
+    ]
+  },
+  {
+    "suite": "com.beautyshop.integration.PhieuGiamGia_MariaDb_Test",
+    "method": "kiemTraThoiGianDieuKienDonVaTranGiam",
+    "reason": "Environment variable [P01_MARIADB_TEST] does not exist",
+    "fixturePassed": [
+      "kiemTraThoiGianDieuKienDonVaTranGiam"
+    ]
+  },
+  {
+    "suite": "com.beautyshop.integration.PhieuGiamGia_MariaDb_Test",
+    "method": "adminCrudChuanHoaMaVaKhoaQuyenGhi",
+    "reason": "Environment variable [P01_MARIADB_TEST] does not exist",
+    "fixturePassed": [
+      "adminCrudChuanHoaMaVaKhoaQuyenGhi"
+    ]
+  },
+  {
+    "suite": "com.beautyshop.integration.PhieuGiamGia_MariaDb_Test",
+    "method": "luuPhamViQuotaVaAuditChiGhiKhiThayDoi",
+    "reason": "Environment variable [P01_MARIADB_TEST] does not exist",
+    "fixturePassed": [
+      "luuPhamViQuotaVaAuditChiGhiKhiThayDoi"
+    ]
+  },
+  {
+    "suite": "com.beautyshop.integration.SauMua_MongoDanhGia_Test",
+    "method": "timTaiChoTheoChuVaChongThanhCongGiaKhiSkuDaTat",
+    "reason": "Environment variable [P01_MARIADB_TEST] does not exist",
+    "fixturePassed": [
+      "timTaiChoTheoChuVaChongThanhCongGiaKhiSkuDaTat"
+    ]
+  },
+  {
+    "suite": "com.beautyshop.integration.SauMua_MongoDanhGia_Test",
+    "method": "yeuThichYeuCauDangNhapIdempotentVaChiThayGioCuaMinh",
+    "reason": "Environment variable [P01_MARIADB_TEST] does not exist",
+    "fixturePassed": [
+      "yeuThichYeuCauDangNhapIdempotentVaChiThayGioCuaMinh"
+    ]
+  },
+  {
+    "suite": "com.beautyshop.integration.SauMua_MongoDanhGia_Test",
+    "method": "haiYeuCauDongThoiKhongVuotSoLuongDaMua",
+    "reason": "Environment variable [P01_MARIADB_TEST] does not exist",
+    "fixturePassed": [
+      "haiYeuCauDongThoiKhongVuotSoLuongDaMua"
+    ]
+  },
+  {
+    "suite": "com.beautyshop.integration.SauMua_MongoDanhGia_Test",
+    "method": "danhGiaDaGiaoChiChuMucVaChiCongKhaiSauDuyet",
+    "reason": "Environment variable [P01_MARIADB_TEST] does not exist",
+    "fixturePassed": [
+      "danhGiaDaGiaoChiChuMucVaChiCongKhaiSauDuyet"
+    ]
+  },
+  {
+    "suite": "com.beautyshop.integration.SauMua_MongoDanhGia_Test",
+    "method": "doiTraNhieuMucCoHanVaTrangThaiThuCongKhongDoiTonHayThanhToan",
+    "reason": "Environment variable [P01_MARIADB_TEST] does not exist",
+    "fixturePassed": [
+      "doiTraNhieuMucCoHanVaTrangThaiThuCongKhongDoiTonHayThanhToan"
+    ]
+  },
+  {
+    "suite": "com.beautyshop.integration.ThongKe_MariaDb_Test",
+    "method": "trangDashboardRenderTrenMariaDb",
+    "reason": "Environment variable [P01_MARIADB_TEST] does not exist",
+    "fixturePassed": [
+      "trangDashboardRenderTrenMariaDb"
+    ]
+  },
+  {
+    "suite": "com.beautyshop.integration.ThongKe_MariaDb_Test",
+    "method": "doanhThuTheoNgayVietNamLoaiDonHuyVaCustomerBiChan",
+    "reason": "Environment variable [P01_MARIADB_TEST] does not exist",
+    "fixturePassed": [
+      "doanhThuTheoNgayVietNamLoaiDonHuyVaCustomerBiChan"
+    ]
+  },
+  {
+    "suite": "com.beautyshop.integration.TuVanFaq_MariaDb_Test",
+    "method": "faqTimTiengVietLocNguonVaEscapeHtml",
+    "reason": "Environment variable [P01_MARIADB_TEST] does not exist",
+    "fixturePassed": [
+      "faqTimTiengVietLocNguonVaEscapeHtml"
+    ]
+  },
+  {
+    "suite": "com.beautyshop.integration.TuVanFaq_MariaDb_Test",
+    "method": "csrfGioiHanKyTuVaTanSuat",
+    "reason": "Environment variable [P01_MARIADB_TEST] does not exist",
+    "fixturePassed": [
+      "csrfGioiHanKyTuVaTanSuat"
+    ]
+  },
+  {
+    "suite": "com.beautyshop.integration.TuVanFaq_MariaDb_Test",
+    "method": "faqMauVeBienTheDungCungNoiDungTrongMariaDbVaTrangTuVan",
+    "reason": "Environment variable [P01_MARIADB_TEST] does not exist",
+    "fixturePassed": [
+      "faqMauVeBienTheDungCungNoiDungTrongMariaDbVaTrangTuVan"
+    ]
+  },
+  {
+    "suite": "com.beautyshop.integration.TuVanRag_MariaDb_Test",
+    "method": "ragCoNguonGiaTonMoiVaFallbackKhiModelSaiHoacLoi",
+    "reason": "Environment variable [P01_MARIADB_TEST] does not exist",
+    "fixturePassed": [
+      "ragCoNguonGiaTonMoiVaFallbackKhiModelSaiHoacLoi"
+    ]
+  },
+  {
+    "suite": "com.beautyshop.integration.TuVanRag_MariaDb_Test",
+    "method": "customerKhongDuocNapChiMuc",
+    "reason": "Environment variable [P01_MARIADB_TEST] does not exist",
+    "fixturePassed": [
+      "customerKhongDuocNapChiMuc"
+    ]
+  },
+  {
+    "suite": "com.beautyshop.integration.TuVanRag_MariaDb_Test",
+    "method": "cauHoiChuaDuLieuCaNhanKhongGoiEmbeddingHayChat",
+    "reason": "Environment variable [P01_MARIADB_TEST] does not exist",
+    "fixturePassed": [
+      "cauHoiChuaDuLieuCaNhanKhongGoiEmbeddingHayChat"
+    ]
+  },
+  {
+    "suite": "com.beautyshop.integration.XacThucDaPhuongThuc_MariaDb_Test",
+    "method": "adminGuiLinkKhachTuDatTokenChiMotLanVaPhienCuBiThuHoi",
+    "reason": "Environment variable [P01_MARIADB_TEST] does not exist",
+    "fixturePassed": [
+      "adminGuiLinkKhachTuDatTokenChiMotLanVaPhienCuBiThuHoi"
+    ]
+  },
+  {
+    "suite": "com.beautyshop.integration.XacThucDaPhuongThuc_MariaDb_Test",
+    "method": "goCanPhuongThucConLaiVaHaiProviderDungCungNguoiDung",
+    "reason": "Environment variable [P01_MARIADB_TEST] does not exist",
+    "fixturePassed": [
+      "goCanPhuongThucConLaiVaHaiProviderDungCungNguoiDung"
+    ]
+  },
+  {
+    "suite": "com.beautyshop.integration.XacThucDaPhuongThuc_MariaDb_Test",
+    "method": "taiKhoanChiCoOAuthDaXacMinhEmailVanCanQuyenTaiProvider",
+    "reason": "Environment variable [P01_MARIADB_TEST] does not exist",
+    "fixturePassed": [
+      "taiKhoanChiCoOAuthDaXacMinhEmailVanCanQuyenTaiProvider"
+    ]
+  },
+  {
+    "suite": "com.beautyshop.integration.XacThucDaPhuongThuc_MariaDb_Test",
+    "method": "doiMatKhauTuChoiTrungVaChoThuLaiCungPhien",
+    "reason": "Environment variable [P01_MARIADB_TEST] does not exist",
+    "fixturePassed": [
+      "doiMatKhauTuChoiTrungVaChoThuLaiCungPhien"
+    ]
+  },
+  {
+    "suite": "com.beautyshop.integration.XacThucDaPhuongThuc_MariaDb_Test",
+    "method": "haiCustomerTranhCungDanhTinhChiGhiNhanChoMotChu",
+    "reason": "Environment variable [P01_MARIADB_TEST] does not exist",
+    "fixturePassed": [
+      "haiCustomerTranhCungDanhTinhChiGhiNhanChoMotChu"
+    ]
+  },
+  {
+    "suite": "com.beautyshop.integration.XacThucDaPhuongThuc_MariaDb_Test",
+    "method": "smtpThatBaiKhongDoiHashVaHetHanLink",
+    "reason": "Environment variable [P01_MARIADB_TEST] does not exist",
+    "fixturePassed": [
+      "smtpThatBaiKhongDoiHashVaHetHanLink"
+    ]
+  },
+  {
+    "suite": "com.beautyshop.integration.XacThucDaPhuongThuc_MariaDb_Test",
+    "method": "guestThayCungPhanHoiVaPostCanCsrf",
+    "reason": "Environment variable [P01_MARIADB_TEST] does not exist",
+    "fixturePassed": [
+      "guestThayCungPhanHoiVaPostCanCsrf"
+    ]
+  },
+  {
+    "suite": "com.beautyshop.integration.XacThucDaPhuongThuc_MariaDb_Test",
+    "method": "oauthGiuaCacLanDangNhapNhanDungIdVaKhongGhiDeEmail",
+    "reason": "Environment variable [P01_MARIADB_TEST] does not exist",
+    "fixturePassed": [
+      "oauthGiuaCacLanDangNhapNhanDungIdVaKhongGhiDeEmail"
+    ]
+  },
+  {
+    "suite": "com.beautyshop.integration.XacThucDaPhuongThuc_MariaDb_Test",
+    "method": "capLinkMoiVoHieuLinkCuVaChiChoDungTrongMuoiLamPhut",
+    "reason": "Environment variable [P01_MARIADB_TEST] does not exist",
+    "fixturePassed": [
+      "capLinkMoiVoHieuLinkCuVaChiChoDungTrongMuoiLamPhut"
+    ]
+  },
+  {
+    "suite": "com.beautyshop.integration.XacThucMigration_MariaDb_Test",
+    "method": "baoToanIdLichSuVaChiChuyenDanhTinhCoBangChung(int)",
+    "reason": "Environment variable [AUTH_02_MIGRATION_FIXTURE] does not exist",
+    "fixturePassed": [
+      "baoToanIdLichSuVaChiChuyenDanhTinhCoBangChung(int)[1]",
+      "baoToanIdLichSuVaChiChuyenDanhTinhCoBangChung(int)[2]"
+    ]
+  },
+  {
+    "suite": "com.beautyshop.integration.XacThuc_MariaDb_Test",
+    "method": "haiRequestGopCungSnapshotKhongCongHaiLan",
+    "reason": "Environment variable [P01_MARIADB_TEST] does not exist",
+    "fixturePassed": [
+      "haiRequestGopCungSnapshotKhongCongHaiLan"
+    ]
+  },
+  {
+    "suite": "com.beautyshop.integration.XacThuc_MariaDb_Test",
+    "method": "gioiHanMuoiDiaChiTuMayChuVanChoPhepSua",
+    "reason": "Environment variable [P01_MARIADB_TEST] does not exist",
+    "fixturePassed": [
+      "gioiHanMuoiDiaChiTuMayChuVanChoPhepSua"
+    ]
+  },
+  {
+    "suite": "com.beautyshop.integration.XacThuc_MariaDb_Test",
+    "method": "hoSoVaDiaChiChiChoPhepChuTaiKhoan",
+    "reason": "Environment variable [P01_MARIADB_TEST] does not exist",
+    "fixturePassed": [
+      "hoSoVaDiaChiChiChoPhepChuTaiKhoan"
+    ]
+  },
+  {
+    "suite": "com.beautyshop.integration.XacThuc_MariaDb_Test",
+    "method": "haiThietBiCungTaiKhoanMoiSnapshotGopMotLanVaCoNoticeRieng",
+    "reason": "Environment variable [P01_MARIADB_TEST] does not exist",
+    "fixturePassed": [
+      "haiThietBiCungTaiKhoanMoiSnapshotGopMotLanVaCoNoticeRieng"
+    ]
+  },
+  {
+    "suite": "com.beautyshop.integration.XacThuc_MariaDb_Test",
+    "method": "luuDiaChiSongSongChiCoMotMacDinh",
+    "reason": "Environment variable [P01_MARIADB_TEST] does not exist",
+    "fixturePassed": [
+      "luuDiaChiSongSongChiCoMotMacDinh"
+    ]
+  },
+  {
+    "suite": "com.beautyshop.integration.XacThuc_MariaDb_Test",
+    "method": "gioGuestGopMotLanVaKiemTraTonLai",
+    "reason": "Environment variable [P01_MARIADB_TEST] does not exist",
+    "fixturePassed": [
+      "gioGuestGopMotLanVaKiemTraTonLai"
+    ]
+  },
+  {
+    "suite": "com.beautyshop.integration.XacThuc_MariaDb_Test",
+    "method": "customerVaAdminDangNhapDungQuyenVaLogoutCoCsrf",
+    "reason": "Environment variable [P01_MARIADB_TEST] does not exist",
+    "fixturePassed": [
+      "customerVaAdminDangNhapDungQuyenVaLogoutCoCsrf"
+    ]
+  },
+  {
+    "suite": "com.beautyshop.integration.XacThuc_MariaDb_Test",
+    "method": "dangKyBcryptEmailDuyNhatVaKhongNhanVaiTroTuClient",
+    "reason": "Environment variable [P01_MARIADB_TEST] does not exist",
+    "fixturePassed": [
+      "dangKyBcryptEmailDuyNhatVaKhongNhanVaiTroTuClient"
+    ]
+  },
+  {
+    "suite": "com.beautyshop.integration.XacThuc_MariaDb_Test",
+    "method": "noticeCheckoutChiDungMotLanQuaHaiTabVaChiTietTonDuong",
+    "reason": "Environment variable [P01_MARIADB_TEST] does not exist",
+    "fixturePassed": [
+      "noticeCheckoutChiDungMotLanQuaHaiTabVaChiTietTonDuong"
+    ]
+  },
+  {
+    "suite": "com.beautyshop.integration.XacThuc_MariaDb_Test",
+    "method": "rollbackGopKhongPhatNoticeVaThuLaiCungSnapshot",
+    "reason": "Environment variable [P01_MARIADB_TEST] does not exist",
+    "fixturePassed": [
+      "rollbackGopKhongPhatNoticeVaThuLaiCungSnapshot"
+    ]
+  },
+  {
+    "suite": "com.beautyshop.integration.XacThuc_MariaDb_Test",
+    "method": "adminTimPhanTrangKhoaMoVaThuHoiPhienCu",
+    "reason": "Environment variable [P01_MARIADB_TEST] does not exist",
+    "fixturePassed": [
+      "adminTimPhanTrangKhoaMoVaThuHoiPhienCu"
+    ]
+  },
+  {
+    "suite": "com.beautyshop.integration.XacThuc_MariaDb_Test",
+    "method": "serviceChiChoPhepChuDon",
+    "reason": "Environment variable [P01_MARIADB_TEST] does not exist",
+    "fixturePassed": [
+      "serviceChiChoPhepChuDon"
+    ]
+  },
+  {
+    "suite": "com.beautyshop.repository.MongoDanhGia_Store_Test",
+    "method": "phanTrangAdminVaCongKhaiMoiNhatTruoc",
+    "reason": "Environment variable [P23_MONGO_TEST] does not exist",
+    "fixturePassed": []
+  },
+  {
+    "suite": "com.beautyshop.repository.MongoDanhGia_Store_Test",
+    "method": "taoMauSaoLuu",
+    "reason": "Environment variable [P23_MONGO_TEST] does not exist",
+    "fixturePassed": []
+  },
+  {
+    "suite": "com.beautyshop.repository.MongoDanhGia_Store_Test",
+    "method": "findAndModifyTheoPhienBanVaTrangThaiLocAdmin",
+    "reason": "Environment variable [P23_MONGO_TEST] does not exist",
+    "fixturePassed": []
+  },
+  {
+    "suite": "com.beautyshop.repository.MongoDanhGia_Store_Test",
+    "method": "indexSaiChanGhiVaKhongSuaDuLieu",
+    "reason": "Environment variable [P23_MONGO_TEST] does not exist",
+    "fixturePassed": []
+  },
+  {
+    "suite": "com.beautyshop.repository.MongoDanhGia_Store_Test",
+    "method": "khiTrungThoiDiemThiSapTheoIdVaDemDungBoLocQuaCacTrang",
+    "reason": "Environment variable [P23_MONGO_TEST] does not exist",
+    "fixturePassed": []
+  },
+  {
+    "suite": "com.beautyshop.repository.MongoDanhGia_Store_Test",
+    "method": "aggregationTrungBinhPhanBoNhieuSanPhamVaToanCuaHang",
+    "reason": "Environment variable [P23_MONGO_TEST] does not exist",
+    "fixturePassed": []
+  },
+  {
+    "suite": "com.beautyshop.repository.MongoDanhGia_Store_Test",
+    "method": "haiNguoiGhiCungMucChiMotLanThanhCong",
+    "reason": "Environment variable [P23_MONGO_TEST] does not exist",
+    "fixturePassed": []
+  },
+  {
+    "suite": "com.beautyshop.repository.MongoDanhGia_Store_Test",
+    "method": "indexDuocTaoVaKhoaDuyNhatChanTrungDongDon",
+    "reason": "Environment variable [P23_MONGO_TEST] does not exist",
+    "fixturePassed": []
+  },
+  {
+    "suite": "com.beautyshop.repository.MongoDanhGia_Store_Test",
+    "method": "khoiDongKhiMongoTatRoiTaoIndexTruocGhiSauPhucHoi",
+    "reason": "Environment variable [P23_MONGO_TEST] does not exist",
+    "fixturePassed": []
+  },
+  {
+    "suite": "com.beautyshop.repository.ReviewBsonCompatibilityTest",
+    "method": "documentRoundTripAcrossPackageVersions",
+    "reason": "Environment variable [ARCH_01_BSON_PHASE] does not exist",
+    "fixturePassed": []
+  }
+]

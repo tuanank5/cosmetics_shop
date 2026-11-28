@@ -1,12 +1,15 @@
 package com.beautyshop.service;
 
 import com.beautyshop.cart.GioKhach;
-import com.beautyshop.repository.GioHang_Repository;
+import com.beautyshop.repository.DonHang_Repository;
 import com.beautyshop.repository.GioHang_Repository.MucGio;
+import com.beautyshop.repository.GioHang_Repository;
 import java.io.Serializable;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,7 +18,13 @@ import org.springframework.transaction.annotation.Transactional;
 public class GioHang_Service {
     private final GioHang_Repository repository;
 
-    GioHang_Service(GioHang_Repository repository) {
+    private final DonHang_Repository donHang;
+    private final QuyenDonHang_Service quyenDonHang;
+
+    GioHang_Service(GioHang_Repository repository, DonHang_Repository donHang,
+                   QuyenDonHang_Service quyenDonHang) {
+        this.donHang = donHang;
+        this.quyenDonHang = quyenDonHang;
         this.repository = repository;
     }
 
@@ -94,6 +103,34 @@ public class GioHang_Service {
             }
         }
         return new KetQuaGop(daGioiHan, cacDongGiam);
+    }
+
+    @Transactional(isolation = Isolation.READ_COMMITTED)
+    public List<String> muaLai(long maDon, UUID requestId) {
+        long maNguoiDung = quyenDonHang.kiemTraSoHuu(maDon);
+        // A namespaced v3 UUID keeps reorder receipts separate from the v4 guest-cart merge keys.
+        var khoa = UUID.nameUUIDFromBytes(("reorder:" + maNguoiDung + ":" + maDon + ":" + requestId)
+            .getBytes(StandardCharsets.UTF_8));
+        if (!repository.ghiNhanGop(khoa.toString(), maNguoiDung)) return List.of();
+        long gio = repository.khoaGio(maNguoiDung);
+        var ketQua = new ArrayList<String>();
+        for (var dong : donHang.chiTiet(maDon)) {
+            var sku = repository.timBienThe(dong.maBienThe(), true).orElse(null);
+            String ten = dong.tenSanPham() + " · " + dong.sku() + ": ";
+            if (sku == null || sku.duongDan() == null) {
+                ketQua.add(ten + "Bỏ qua vì biến thể không còn bán.");
+                continue;
+            }
+            int hienTai = repository.soLuong(gio, dong.maBienThe());
+            int them = Math.min(dong.soLuong(), Math.max(0, sku.khaDung() - hienTai));
+            if (them == 0) {
+                ketQua.add(ten + (sku.khaDung() == 0 ? "Bỏ qua vì hết hàng." : "Bỏ qua vì giỏ đã đủ số lượng còn bán."));
+            } else {
+                repository.luuSoLuong(gio, dong.maBienThe(), hienTai + them);
+                ketQua.add(ten + (them == dong.soLuong() ? "Đã thêm đủ " + them : "Chỉ thêm được " + them + "/" + dong.soLuong()) + ".");
+            }
+        }
+        return ketQua;
     }
 
     public record KetQuaGop(boolean daGioiHan, List<DongGiam> cacDongGiam) implements Serializable {

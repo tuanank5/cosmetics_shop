@@ -1,0 +1,7 @@
+﻿Customer two slots, expiry, free shipping, role JS=false PASS
+Customer two slots, expiry, free shipping, role JS=true PASS
+Guest estimate and cart merge PASS
+Admin create scoped shipping voucher PASS
+PASS 1280 filters, Back, ownership, mixed reorder, double click and fresh checkout
+PASS 390 filters, Back, ownership, mixed reorder, double click and fresh checkout
+COD orders and attempts 505000/505000/860000 VND, slot counts 2/2/1 PASS
