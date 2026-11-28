@@ -16,7 +16,7 @@ import org.springframework.transaction.support.TransactionTemplate;
 @Service
 public class SuKienQuanTri_Service {
     enum HanhDong { ORDER_STATUS, SKU_STOCK, CATALOG_CREATE, CATALOG_UPDATE, CATALOG_ACTIVE,
-                    VOUCHER_CREATE, VOUCHER_UPDATE, VOUCHER_DELETE, AUDIT_PREVIEW, AUDIT_PURGE }
+                    VOUCHER_CREATE, VOUCHER_UPDATE, VOUCHER_DELETE, AUDIT_PREVIEW, AUDIT_PURGE, ACCOUNT_LOCK, ACCOUNT_UNLOCK }
 
     private final JdbcClient jdbc;
     private final TransactionTemplate sauRollback;
@@ -47,7 +47,7 @@ public class SuKienQuanTri_Service {
         TransactionSynchronizationManager.registerSynchronization(new TransactionSynchronization() {
             @Override public void afterCompletion(int status) {
                 if (status == STATUS_ROLLED_BACK) {
-                    sauRollback.executeWithoutResult(tx -> ghi(e, ma, "FAILED", null, null));
+                    sauRollback.executeWithoutResult(tx -> ghi(e, ma, "FAILED", null, null, "ROLLBACK"));
                 }
             }
         });
@@ -55,7 +55,11 @@ public class SuKienQuanTri_Service {
     }
 
     void thanhCong(SuKien e, long ma, Object truoc, Object sau) {
-        ghi(e, ma, "SUCCESS", snapshot(truoc), snapshot(sau));
+        ghi(e, ma, "SUCCESS", snapshot(truoc), snapshot(sau), null);
+    }
+
+    void thanhCongTaiKhoan(SuKien e, long ma, boolean moKhoa, LyDoTaiKhoan lyDo) {
+        ghi(e, ma, "SUCCESS", snapshot(!moKhoa), snapshot(moKhoa), lyDo.name());
     }
 
     static String snapshot(Object v) {
@@ -69,7 +73,7 @@ public class SuKienQuanTri_Service {
         };
     }
 
-    private void ghi(SuKien e, Long ma, String result, String truoc, String sau) {
+    private void ghi(SuKien e, Long ma, String result, String truoc, String sau, String lyDo) {
         // A rolled-back create has no durable document. Reference the acting account.
         jdbc.sql("""
             INSERT INTO nhat_ky_quan_tri (ma_nguoi_thuc_hien,vai_tro_nguoi_thuc_hien,hanh_dong,
@@ -77,7 +81,7 @@ public class SuKienQuanTri_Service {
             VALUES (:actor,'ADMIN',:action,:loai,:ma,UTC_TIMESTAMP(6),:result,:lyDo,:corr,:truoc,:sau)
             """).param("actor", e.actor()).param("action", e.action().name())
             .param("loai", ma == null ? "ADMIN" : e.loai()).param("ma", ma == null ? e.actor() : ma)
-            .param("result", result).param("lyDo", "FAILED".equals(result) ? "ROLLBACK" : null, Types.VARCHAR)
+            .param("result", result).param("lyDo", lyDo, Types.VARCHAR)
             .param("corr", e.correlation().toString()).param("truoc", truoc, Types.VARCHAR)
             .param("sau", sau, Types.VARCHAR).update();
     }

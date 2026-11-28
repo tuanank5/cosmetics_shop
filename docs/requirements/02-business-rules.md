@@ -40,3 +40,5 @@ VND sử dụng BigDecimal/DECIMAL(15,0). Không suy đoán fee do gateway hoặ
 - Nếu chưa có merchant, mock gateway CHỈ mô phỏng kết quả theo môi trường dev/test, phải gắn nhãn `MOCK / KHÔNG THANH TOÁN THẬT`; không mở công khai như một cổng thu tiền.
 - Không được đánh dấu đã thanh toán từ tham số `GET /payment/momo/return`, kể cả khi chữ ký hợp lệ; kiểm chứng IPN, truy vấn giao dịch và trạng thái quyết toán theo đặc tả API đang dùng.
 - Trễ IPN sau khi giữ hàng hết hạn phải qua đối soát; reservation chưa xác minh không được tự release chỉ do timer.
+
+**Khóa/mở tài khoản.** Admin chọn mã lý do theo chiều thao tác. Một form gắn với phiên, Admin, đích, trạng thái và phiên bản lúc đọc. Request lặp lại thao tác đã commit chỉ trả biên nhận. Giao dịch ghi thay đổi, audit SUCCESS và một event thư. Chỉ gửi sau commit đến địa chỉ đã xác minh tại thời điểm đổi. UNKNOWN dừng retry tự động. Mở khóa yêu cầu đăng nhập mới. [ACCOUNT-1–5](../DECISIONS.md#account--quyết-định-owner-ngày-28112026)

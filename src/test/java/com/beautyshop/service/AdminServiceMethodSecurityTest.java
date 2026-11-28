@@ -39,7 +39,7 @@ class AdminServiceMethodSecurityTest {
         @Bean ThongKe_Repository thongKeRepository() { return mock(ThongKe_Repository.class); }
         @Bean ThongKe_Service thongKeService(ThongKe_Repository repository) { return new ThongKe_Service(repository, org.mockito.Mockito.mock(com.beautyshop.repository.DanhGia_Store.class)); }
         @Bean NguoiDung_Service nguoiDungService(NguoiDung_Repository repository) {
-            return new NguoiDung_Service(repository, NoOpPasswordEncoder.getInstance());
+            return new NguoiDung_Service(repository, NoOpPasswordEncoder.getInstance(), mock(SuKienQuanTri_Service.class), mock(ThuTrangThaiTaiKhoan.class));
         }
     }
 
@@ -51,7 +51,7 @@ class AdminServiceMethodSecurityTest {
     void customerBiTuChoiKhiGoiServiceAdmin() {
         assertThatThrownBy(() -> thongKeService.homNay()).isInstanceOf(AccessDeniedException.class);
         assertThatThrownBy(() -> nguoiDungService.timNguoiDung("", false, null, PageRequest.of(0, 10))).isInstanceOf(AccessDeniedException.class);
-        assertThatThrownBy(() -> nguoiDungService.datTrangThai(1, 0, 2, false)).isInstanceOf(AccessDeniedException.class);
+        assertThatThrownBy(() -> nguoiDungService.datTrangThai(2, false, 0, java.util.UUID.randomUUID(), LyDoTaiKhoan.BAO_VE_TAI_KHOAN)).isInstanceOf(AccessDeniedException.class);
     }
 
     @Test

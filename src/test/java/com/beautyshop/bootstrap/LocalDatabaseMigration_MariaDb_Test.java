@@ -17,7 +17,7 @@ class LocalDatabaseMigration_MariaDb_Test {
     private static final String PASSWORD = System.getenv("DB_PASSWORD");
 
     @ParameterizedTest
-    @ValueSource(ints = {1, 2, 3, 4, 5, 6, 7, 8})
+    @ValueSource(ints = {1, 2, 3, 4, 5, 6, 7, 8, 9})
     void nangCapVaGiuNguoiDungTuLichSuChinhThuc(int version) throws Exception {
         String url = fixtureUrl("v" + version);
         Flyway.configure().dataSource(url, USER, PASSWORD).target(Integer.toString(version)).load().migrate();
@@ -45,8 +45,13 @@ class LocalDatabaseMigration_MariaDb_Test {
             assertThat(users.next()).isFalse();
         }
         var info = Flyway.configure().dataSource(url, USER, PASSWORD).load().info();
-        assertThat(info.current().getVersion().toString()).isEqualTo("9");
-        assertThat(info.applied()).hasSize(9);
+        assertThat(info.current().getVersion().toString()).isEqualTo("10");
+        assertThat(info.applied()).hasSize(10);
+        try (var c = DriverManager.getConnection(url, USER, PASSWORD); var st = c.createStatement();
+             var rows = st.executeQuery("SELECT COUNT(*) FROM thu_trang_thai_tai_khoan")) {
+            assertThat(rows.next()).isTrue();
+            assertThat(rows.getLong(1)).isZero();
+        }
         if (version == 8) kiemTraRangBuocSlot(url);
     }
 

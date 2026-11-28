@@ -421,19 +421,37 @@ class XacThuc_MariaDb_Test {
         mvc.perform(post(url).session(phienCustomer).with(csrf()).param("enabled", "false"))
             .andExpect(status().isForbidden());
         mvc.perform(post(url).session(phienAdmin).param("enabled", "false")).andExpect(status().isForbidden());
-        mvc.perform(post(url).session(phienAdmin).with(csrf()).param("enabled", "false").param("vaiTro", "ADMIN"))
+        String khoa = lenh(phienAdmin, customer, mucTieu.getMaNguoiDung());
+        String cu = lenh(phienAdmin, customer, mucTieu.getMaNguoiDung());
+        for (String lyDo : List.of("", " ", "NEEDS_APPROVAL", "X".repeat(41), "DA_XU_LY_RUI_RO")) {
+            mvc.perform(post(url).session(phienAdmin).with(csrf()).param("operation", khoa).param("reason", lyDo))
+                .andExpect(status().isBadRequest());
+        }
+        mvc.perform(post(url).session(phienAdmin).with(csrf()).param("operation", khoa).param("reason", "BAO_VE_TAI_KHOAN"))
             .andExpect(status().is3xxRedirection()).andExpect(flash().attributeExists("message"));
         mvc.perform(get("/account").session(phienCustomer)).andExpect(redirectedUrl("/login?inactive"));
         assertThat(phienCustomer.isInvalid()).isTrue();
         mvc.perform(post("/login").with(csrf()).param("username", customer).param("password", matKhau))
             .andExpect(redirectedUrl("/login?error")).andExpect(unauthenticated());
-        mvc.perform(post("/admin/users/" + maAdmin + "/status").session(phienAdmin).with(csrf()).param("enabled", "false"))
+        mvc.perform(post(url).session(phienAdmin).with(csrf()).param("operation", khoa).param("reason", "BAO_VE_TAI_KHOAN"))
+            .andExpect(flash().attribute("message", "Thao tác này đã được ghi nhận."));
+        mvc.perform(post(url).session(phienAdmin).with(csrf()).param("operation", cu).param("reason", "BAO_VE_TAI_KHOAN"))
+            .andExpect(flash().attributeExists("error"));
+        String tuKhoa = lenh(phienAdmin, admin, maAdmin);
+        mvc.perform(post("/admin/users/" + maAdmin + "/status").session(phienAdmin).with(csrf())
+            .param("operation", tuKhoa).param("reason", "BAO_VE_TAI_KHOAN"))
             .andExpect(status().is3xxRedirection()).andExpect(flash().attributeExists("error"));
-        mvc.perform(post(url).session(phienAdmin).with(csrf()).param("enabled", "true"))
+        mvc.perform(post(url).session(phienAdmin).with(csrf()).param("operation", lenh(phienAdmin, customer, mucTieu.getMaNguoiDung())).param("reason", "DA_XU_LY_RUI_RO"))
             .andExpect(status().is3xxRedirection()).andExpect(flash().attributeExists("message"));
         mvc.perform(get("/account").session(phienChuaDung)).andExpect(redirectedUrl("/login?inactive"));
         assertThat(phienChuaDung.isInvalid()).isTrue();
         dangNhap(customer, new MockHttpSession(), "CUSTOMER", "/");
+    }
+
+    private String lenh(MockHttpSession admin, String email, long id) throws Exception {
+        var model = mvc.perform(get("/admin/users").session(admin).param("q", email))
+            .andExpect(status().isOk()).andReturn().getModelAndView().getModel();
+        return ((java.util.Map<?, ?>) model.get("lenh")).get(id).toString();
     }
 
     @Test

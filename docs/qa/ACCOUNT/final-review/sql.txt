@@ -1,0 +1,31 @@
+﻿version	success
+10	1
+constraint_type	constraints_found
+CHECK	5
+FOREIGN KEY	2
+PRIMARY KEY	1
+UNIQUE	1
+index_name	non_unique	columns_in_order
+ix_thu_den_han	1	trang_thai,gui_tu,ma_thu
+ix_thu_nguoi_dung	1	ma_nguoi_dung,ma_thu
+ma_admin	1	ma_admin
+ma_thao_tac	0	ma_thao_tac
+PRIMARY	0	ma_thu
+column_name	referenced_table_name	referenced_column_name
+ma_admin	nguoi_dung	ma_nguoi_dung
+ma_nguoi_dung	nguoi_dung	ma_nguoi_dung
+hanh_dong	ket_qua	ly_do	truoc	sau	records_found
+ACCOUNT_LOCK	FAILED	ROLLBACK	NULL	NULL	3
+ACCOUNT_LOCK	SUCCESS	BAO_VE_TAI_KHOAN	true	false	14
+ACCOUNT_UNLOCK	FAILED	ROLLBACK	NULL	NULL	1
+ACCOUNT_UNLOCK	SUCCESS	DA_XU_LY_RUI_RO	false	true	3
+trang_thai	so_lan_gui	events_found
+FAILED	4	1
+PENDING	0	1
+SENT	1	6
+UNKNOWN	1	5
+UNVERIFIED	0	4
+success_without_event
+0
+failed_with_event
+0

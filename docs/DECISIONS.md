@@ -115,3 +115,17 @@ Owner phê duyệt ba Work Package sau. Tiến độ chính thức tăng từ 5/
 | ORDER · DONE | `13c586ac0e5e9c637e071dedfa67dfb07dd0a6da` | Danh sách đơn Customer, bộ lọc, điều hướng và mua lại vào giỏ. Owner nghiệm thu kết quả kiểm thử phân quyền, idempotency và regression. | [PR #14](https://github.com/tuanank5/cosmetics_shop/pull/14) · [Đối chiếu](qa/ORDER/closeout/verification.json) |
 
 MoMo Sandbox thật và manual UAT vẫn NOT RUN. Các phương thức ngoài gate chưa chạy giữ nguyên NOT RUN theo từng hồ sơ. Tải production chưa được kiểm chứng. Chính sách retention biên nhận V3 chưa được nghiệm thu. AUTH-LIVE, PAY-LIVE và AUDIT PURGE tiếp tục BLOCKED_EXTERNAL.
+
+## ACCOUNT · Quyết định owner ngày 28/11/2026
+
+Baseline `5aa4932cc663de1115ff06ab7a8d7b837a673d93`. Owner duyệt triển khai trên fixture.
+
+| Quyết định | Phạm vi đã duyệt |
+|---|---|
+| ACCOUNT-1 | Một trạng thái khóa. Khóa dùng KHACH_YEU_CAU_KHOA hoặc BAO_VE_TAI_KHOAN. Mở dùng KHACH_XAC_NHAN_MO hoặc DA_XU_LY_RUI_RO. Cấm tự khóa, chặn form cũ, replay theo mã thao tác duy nhất. Lý do khác cần quyết định riêng. |
+| ACCOUNT-2 | ACCOUNT_LOCK và ACCOUNT_UNLOCK ghi SUCCESS cùng giao dịch, FAILED riêng sau rollback theo D7. Actor, target, UTC, mã lý do, cờ trước/sau và correlation thuộc allowlist. |
+| ACCOUNT-3 | Duyệt nguyên văn hai mẫu ở đề xuất. Chỉ gửi đến email đã xác minh của sự kiện. Gửi thật chờ owner xác nhận kênh liên hệ footer công khai hoạt động cho người bị khóa. |
+| ACCOUNT-4 | Outbox nguyên tử, claim bằng lease sau commit, giữ nguyên người nhận và giới hạn quyền đọc. Tối đa bốn lần tự động, retry sau 1/5/30 phút chỉ khi chắc chắn SMTP chưa nhận. UNKNOWN chờ đối soát, SENT là relay tiếp nhận. Đối soát thủ công chờ phân công. SMTP lỗi không đảo trạng thái tài khoản. |
+| ACCOUNT-5 | Password, Google, GitHub cùng kiểm active/version. Request động tiếp theo thu hồi phiên, mở khóa cần đăng nhập mới. Kiểm quyền lại trong giao dịch ghi nhạy cảm. OAuth fixture cho ACCOUNT, provider thật thuộc AUTH-LIVE. |
+
+[Hai mẫu thư và hồ sơ đề xuất](reviews/ACCOUNT-owner-decisions-proposal.md). ACCOUNT chờ review, regression, CI, merge và nghiệm thu riêng. AUTH-LIVE, PAY-LIVE và AUDIT PURGE tiếp tục BLOCKED_EXTERNAL.

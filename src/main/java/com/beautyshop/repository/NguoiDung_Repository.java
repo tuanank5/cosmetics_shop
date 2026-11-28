@@ -28,7 +28,7 @@ public interface NguoiDung_Repository extends JpaRepository<NguoiDung, Long> {
 
     @Query(value = """
         select n.maNguoiDung as maNguoiDung, n.hoTen as hoTen, n.email as email,
-               n.kichHoat as kichHoat, n.vaiTro as vaiTro
+               n.kichHoat as kichHoat, n.vaiTro as vaiTro, n.phienBanXacThuc as phienBanXacThuc
         from NguoiDung n
         where (:q = '' or lower(n.hoTen) like :q escape '!' or lower(n.email) like :q escape '!')
           and (:kichHoat is null or n.kichHoat = :kichHoat)
@@ -77,7 +77,7 @@ public interface NguoiDung_Repository extends JpaRepository<NguoiDung, Long> {
         long getPhienBanXacThuc();
     }
 
-    interface TomTat extends TrangThai {
+    interface TomTat extends TrangThaiPhien {
         long getMaNguoiDung();
         String getHoTen();
         String getEmail();

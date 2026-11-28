@@ -1,0 +1,7 @@
+Tests run: 7, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 23.06 s <<< FAILURE! -- in com.beautyshop.service.ThuTaiKhoan_MariaDb_Test
+com.beautyshop.service.ThuTaiKhoan_MariaDb_Test.workerHetLeaseTruocKhiGhiKetQua -- Time elapsed: 0.098 s <<< FAILURE!
+expected: "UNKNOWN"
+ but was: "SENT"
+com.beautyshop.service.ThuTaiKhoan_MariaDb_Test.phanBietKhongDoiVaFormCuSauKhoaMo -- Time elapsed: 0.039 s <<< FAILURE!
+expected: "KHONG_DOI"
+ but was: "FORM_CU"

@@ -14,6 +14,14 @@
     <p th:text="${daXacMinhEmail ? 'Email đã xác minh' : 'Email chưa xác minh'}"></p>
     <p th:text="${coMatKhau ? 'Đã thiết lập mật khẩu' : 'Chưa thiết lập mật khẩu'}"></p>
     <p th:each="provider : ${providers}" th:text="${provider == 'google' ? 'Google đã liên kết' : 'GitHub đã liên kết'}"></p>
+    <section aria-label="Lịch sử khóa và mở tài khoản">
+        <h2>Khóa và mở tài khoản</h2>
+        <p th:if="${#lists.isEmpty(lichSuTrangThai)}">Chưa ghi nhận thao tác.</p>
+        <ul th:unless="${#lists.isEmpty(lichSuTrangThai)}">
+            <li th:each="muc : ${lichSuTrangThai}"
+                th:text="|${#temporals.format(muc.utc, 'dd/MM/yyyy HH:mm')} UTC · Admin #${muc.admin} · ${muc.lyDo.nhan} · ${muc.trangThai.nhan} · ${muc.soLanGui} lần thử · ${muc.correlation}|"></li>
+        </ul>
+    </section>
     <details class="disclosure" th:if="${duDieuKien}">
         <summary>Gửi yêu cầu đặt lại mật khẩu</summary>
         <form class="login-card" th:action="@{/admin/users/{id}/password-reset(id=${id})}" method="post">
