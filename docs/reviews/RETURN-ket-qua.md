@@ -94,3 +94,36 @@ try {
     if ($LASTEXITCODE) { throw 'MariaDB or migration gate failed' }
 } finally { Pop-Location }
 ```
+
+## Closeout sau merge PR #20 · 28/11/2026
+
+**PASS · MERGED / READY_FOR_OWNER_ACCEPTANCE** trong phạm vi fixture đã duyệt. RETURN giữ **IN_PROGRESS**, tiến độ chính thức **9/19 DONE** đến quyết định nghiệm thu của owner. Ba run CI dưới đây cập nhật mục “remote CI chưa chạy” trong bằng chứng lịch sử RETURN-FINAL. [PR #20](https://github.com/tuanank5/cosmetics_shop/pull/20) · [Dữ liệu đối chiếu closeout](../qa/RETURN/closeout/verification.json)
+
+| Đối tượng Git | SHA |
+|---|---|
+| Baseline, parent của candidate và parent thứ nhất của merge | `e100a1e1edd32a26b36877572aa2eeac06801c41` |
+| Candidate, parent thứ hai của merge | `0de31f7fa470404a510c6540915ac3ccc5b1c91d` |
+| Merge, HEAD và origin/main khi kiểm | `16060628d4ed599ab6b4214b9a5a463f0c60352e` |
+| Tree chung của candidate và merge | `6ac6f4166bdb4926524417b039b1e3b8954e7cd0` |
+
+Đối chiếu toàn tree và 39 đường dẫn thay đổi so với baseline bằng `git ls-tree`, `git diff` và `git cat-file --batch`. Cả 39 blob giống nhau ở candidate và merge. Manifest kê 38 tệp, còn chính manifest được băm độc lập. Đã khớp từng byte của 358 đầu vào ở **cả hai** checkout đã chạy test với blob đã merge. SHA-256 tổng hợp là `9d20ce70674ee9acdef67fadc39046e590844e4e25a60e841d15d2e05a278d3e`. Trong working tree Windows, 294 tệp khác byte do CRLF, 64 tệp giống nguyên byte. V1–V10 trùng blob baseline, V11 khớp SHA-256 `c8c1db70a845d78a94d385f1fc14b2ae873a7c19049297d425efc9142ca44a1f`. Chi tiết SHA-256 từng migration và từng file thay đổi nằm trong [verification.json](../qa/RETURN/closeout/verification.json).
+
+| GitHub Actions | SHA thực tế checkout | Kết quả |
+|---|---|---|
+| [Push candidate · 46163547694](https://github.com/tuanank5/cosmetics_shop/actions/runs/46163547694) | `0de31f7` | completed/success |
+| [Pull request · 46163569792](https://github.com/tuanank5/cosmetics_shop/actions/runs/46163569792) | `6b772dfed59bd129466c71ca2ee55b16b7072048` từ pull/20/merge. Head của run là `0de31f7`, tree merge thử là `6ac6f41`. | completed/success |
+| [Push main · 46163687590](https://github.com/tuanank5/cosmetics_shop/actions/runs/46163687590) | `1606062` | completed/success |
+
+GitHub chạy Temurin 21, `mvn -B test` và `mvn -B -DskipTests package`. MariaDB, WebKit, fresh Flyway/JPA validate và upgrade V10 được kế thừa từ fixture local trên đúng source. Closeout đọc lại 67 XML mặc định và 7 XML fixture cùng các log BUILD SUCCESS. Theo khóa lớp và tên ca thực thi, 258 PASS mặc định và 75 PASS fixture có giao rỗng. Trong 75 lượt có 63 integration (gồm WebKit) và 12 migration. Khi gộp các lần chạy có tham số theo phương thức, 43 trong 129 phương thức skip mặc định đã chạy trên fixture. Kết quả cuối là **333 PASS, 0 FAIL và 86 phương thức vẫn NOT RUN**. [Log đã kiểm chứng](../qa/RETURN/verified/) · [Danh sách và đối chiếu khoảng trống](../qa/RETURN/closeout/verification.json)
+
+### Những ca NOT RUN có giao với RETURN
+
+| Điểm cần phân biệt | Assertion đã chạy | Giới hạn bằng chứng |
+|---|---|---|
+| Hai phương thức đổi trả trong SauMua_MongoDanhGia_Test | KiemDinhDoiTra_MariaDb_Test kế thừa đúng hai thân test từ DoiTraFixture. Một ca kiểm nhiều dòng, lượng đủ bán và quyền chủ sở hữu. Ca kia tranh lượng cuối, đúng một request thành công và còn đúng một hồ sơ. | Hai định danh thuộc lớp Mongo và phần khởi tạo Mongo vẫn NOT RUN. |
+| SKU, tranh tồn, retry và rollback tại checkout | Hai Admin tranh một kiện hai dòng cho đúng một xác nhận, hai bút toán theo hai dòng, tồn 11/11. Hai kiện hợp lệ cùng SKU cho tồn 10→12 dù POST xác nhận lại. Ca giới hạn INT, lỗi lúc ghi audit và rollback sau khi đã đọc thấy SUCCESS đều đối chiếu được tồn và bút toán. Suite COD còn chạy ca hai khách tranh SKU. | Các ca riêng của BienTheSanPham về đọc lại sau khi khóa, hai checkout COD/MoMo, reserve/consume/release và retry sau rollback vẫn NOT RUN. Lịch RETURN tranh cùng SKU với checkout chưa được mô phỏng trực tiếp. |
+| Điều kiện bán, kho cũ, số liệu tài chính | SKU ngừng bán làm rollback toàn kiện. Trên cả COD và MoMo mock, so từng hàng đơn/dòng/attempt/voucher/chứng từ cũ trước và sau, giữ 2 đơn vị tạm giữ. Mỗi chứng từ nhập đủ bán tăng 1. REFUND_PENDING chặn đóng, trạng thái RECEIVED và BR21 tiếp tục đếm đơn. | CRUD ảnh/SKU, giao diện tồn storefront và KPI dashboard có phương thức riêng chưa chạy. |
+| Login, owner, ROLE_ADMIN và CSRF | WebKit đăng nhập form thật bằng hai vai trò. MockMvc kiểm chủ đọc được, khác chủ đọc/gửi trả 404, Customer gửi POST duyệt dù có CSRF nhận 403, Admin thiếu CSRF cũng nhận 403. Service ghi kiểm lại ADMIN còn hiệu lực và phiên bản xác thực dưới khóa. | Chưa thử thu hồi quyền đúng giữa giao dịch RETURN. Các ca logout, OAuth/khóa mở tài khoản, bộ trang lỗi HTTP và ma trận quyền của các WP khác giữ NOT RUN. |
+| Nhận 0, hàng mở, thời hạn và legacy | Kiện sai khớp 0 giữ APPROVED và tồn 10. Đối chiếu có 1 hàng khớp mới sang RECEIVED. Test nhiều đợt nhận kiện sau hạn gửi yêu cầu, chặn nhận vượt. WebKit kiểm hàng mở bị cách ly. Migration V10 đủ năm trạng thái, sau migrate hai lần vẫn còn 5 đơn vị đã yêu cầu, tồn 8 và 0 bút toán nhập. | Xác minh mã kiện là cùng một kiện vật lý, niêm phong, chất lượng mỹ phẩm và chứng từ giải quyết tiền thuộc quy trình đối chiếu thực tế. |
+
+Các finding về audit form cũ, rollback sau SUCCESS, đối chiếu hai kiện/chứng từ cũ và chờ điều hướng đăng nhập WebKit đã đóng trên source merge. Manual UAT, tải và dữ liệu production, SMTP và provider thanh toán thật vẫn NOT RUN. Chi tiền thật và đối soát khoản hoàn thuộc REFUND. Không có blocker kỹ thuật trong phạm vi trình nghiệm thu fixture. [Assertion MariaDB](../../src/test/java/com/beautyshop/integration/KiemDinhDoiTra_MariaDb_Test.java) · [Assertion dùng chung](../../src/test/java/com/beautyshop/integration/DoiTraFixture.java)

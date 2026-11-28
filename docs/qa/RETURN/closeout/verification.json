@@ -1,0 +1,708 @@
+{
+  "workPackage": "10-RETURN",
+  "review": "RETURN-CLOSEOUT",
+  "result": "PASS",
+  "delivery": "MERGED / READY_FOR_OWNER_ACCEPTANCE",
+  "officialStatus": "IN_PROGRESS",
+  "officialDone": "9/19",
+  "ownerAcceptance": "PENDING",
+  "pr": "https://github.com/tuanank5/cosmetics_shop/pull/20",
+  "git": {
+    "candidateParent": "e100a1e1edd32a26b36877572aa2eeac06801c41",
+    "candidate": "0de31f7fa470404a510c6540915ac3ccc5b1c91d",
+    "merge": "16060628d4ed599ab6b4214b9a5a463f0c60352e",
+    "mergeParents": [
+      "e100a1e1edd32a26b36877572aa2eeac06801c41",
+      "0de31f7fa470404a510c6540915ac3ccc5b1c91d"
+    ],
+    "candidateAndMergeTree": "6ac6f4166bdb4926524417b039b1e3b8954e7cd0",
+    "rootHeadAndOriginMain": "16060628d4ed599ab6b4214b9a5a463f0c60352e",
+    "rootIndex": "empty",
+    "stashCount": 15,
+    "baselineToCandidateAndMergeFiles": [
+      {
+        "path": "docs/DECISIONS.md",
+        "gitBlob": "e920d11ef13a4dc9041a36003eda4475eefb9b15",
+        "sha256": "8b099bbf688bfc152a23da52d5537f34bb239346b3328dcf5506accb9699a804"
+      },
+      {
+        "path": "docs/design/02-erd.md",
+        "gitBlob": "8d92991d11f5bb160004b1c664a859b54804668c",
+        "sha256": "642af8801a8efd46ced66218d764673d07ddbf0b22ad35be8343fc7eb7cca8ad"
+      },
+      {
+        "path": "docs/design/03-order-payment-inventory.md",
+        "gitBlob": "ddd4a2e52fd2eb31d2004226ff601af9ca1cdc64",
+        "sha256": "2e4c7691dc3b35300c7f228d1799da595e4b90851411e3c7c50a27b3167f99ef"
+      },
+      {
+        "path": "docs/qa/RETURN/browser.cjs",
+        "gitBlob": "c478677bf345834aaf083911b2463046ae2ccc8d",
+        "sha256": "02d830bfafe588431e906c4ad3bba28c174d10199562cec4dd6d4c883929cdb7"
+      },
+      {
+        "path": "docs/qa/RETURN/check-staged.py",
+        "gitBlob": "8084e04a3ac509baa2bc85377129116a0b6314e7",
+        "sha256": "d9d62b2389b5a8eedf84ab81584f28a18d8001443eb3a56af2db041b0f4331b3"
+      },
+      {
+        "path": "docs/qa/RETURN/integration.txt",
+        "gitBlob": "4b4d0ac84d8afab4ce603a8cc40bca329e78280d",
+        "sha256": "c38a2b32b7ab1fb637011c3a15578c91ea725ca01c10586dfbbce66f5e124ba9"
+      },
+      {
+        "path": "docs/qa/RETURN/local/integration.txt",
+        "gitBlob": "495114cfd0c4c5685630fc48e3961ac081237a6e",
+        "sha256": "0178b1bfb4535eeeccb159cc8427e1dfdab31af7f80a0ee9d2bc18b6c91a59d2"
+      },
+      {
+        "path": "docs/qa/RETURN/local/package.txt",
+        "gitBlob": "84bb40a09cc7038cf837ebdb0ad2eb5d18601db2",
+        "sha256": "ab47818d28fb86a222e8667e4a8dcdca8b4794cfb4d6c995b4f7ebd4d1e3538c"
+      },
+      {
+        "path": "docs/qa/RETURN/local/test.txt",
+        "gitBlob": "7e4290e30a19faaa5c6069290a307853ff0ea36c",
+        "sha256": "5243be55373e93c6dc22eb4a90e5be23597f4aea0d47cb3504b3ce5c3f2c8216"
+      },
+      {
+        "path": "docs/qa/RETURN/manifest.sha256",
+        "gitBlob": "1599c81ef76b7b55e70b59b316cc178517655915",
+        "sha256": "515f38a12d753a2f608021832d9ca8081f9f1a90a10505d1da5c12d13859d0a2"
+      },
+      {
+        "path": "docs/qa/RETURN/migration.txt",
+        "gitBlob": "71367609f7b0bfa62cbe68dd7615d53cfad33dd5",
+        "sha256": "3c82577b913d3614925f46a933ef1840e4dc4c1d5387553fe1cf98b224b8de38"
+      },
+      {
+        "path": "docs/qa/RETURN/probe/integration.txt",
+        "gitBlob": "ab920797917eb6b961bf479bfc3bdd2adcfb2efe",
+        "sha256": "d017e0d7f8b51f02687c383381c049abc4488497d986ff44b2b7c784c98ce841"
+      },
+      {
+        "path": "docs/qa/RETURN/probe2/integration.txt",
+        "gitBlob": "0302c1f6f593be3bf6211a248c12273e3645b4a4",
+        "sha256": "a3229035a4fc37b069431a228ac06568ae850fd1aafb344b064fd0b2e0a37bac"
+      },
+      {
+        "path": "docs/qa/RETURN/run-fixture.ps1",
+        "gitBlob": "33b21b7460c7f708f66686e30e25260400e4d0ff",
+        "sha256": "680bf90ea9a582ab7452aa2f4121ac38931ef8a00019f16e4e2d84bd5e315bbb"
+      },
+      {
+        "path": "docs/qa/RETURN/source.json",
+        "gitBlob": "afc84c6db36a9ff8c560a8aef0a34a6eb077ab4a",
+        "sha256": "8c8ace9b3497e34c5941c6b34aa410e1dee877b8fd77a8d5c640d4ce14ffe646"
+      },
+      {
+        "path": "docs/qa/RETURN/verification.json",
+        "gitBlob": "c5849f985b617f9f511f0ffff4357697384d7f92",
+        "sha256": "50b34391210b0137adca9236c1f51a7ea7650a069629b24e6ca04be05d1f7f37"
+      },
+      {
+        "path": "docs/qa/RETURN/verified/integration.txt",
+        "gitBlob": "ab7cd6ee3f2794597a6972e4ba3431a6242fd54c",
+        "sha256": "0ccf912fe60de043c618bacc363007b1c2ad030b6c3316d3359fcccd2343b69f"
+      },
+      {
+        "path": "docs/qa/RETURN/verified/migration.txt",
+        "gitBlob": "7b76340e36c0d6ac8b6d4980e4d15d23419d915b",
+        "sha256": "d2c5f573585c8ee7c1cd001a7ef75bdf54e36e5271a8c305f7f0c41c4a2c370f"
+      },
+      {
+        "path": "docs/qa/RETURN/verified/package.txt",
+        "gitBlob": "704aaafed38ed7d4adfabd55a5f0b5140f56edde",
+        "sha256": "1218fb5e184fd1e34b3ee98fe378cec52b78cc462b6bfaadd94bc74d512e67de"
+      },
+      {
+        "path": "docs/qa/RETURN/verified/test.txt",
+        "gitBlob": "6f7fa198bc764e074c59d8d1f597a100d7179a4a",
+        "sha256": "b2343471008b20cf49dc2e04c2357ddc67c43cc131408338d767ba375d4bbbf0"
+      },
+      {
+        "path": "docs/requirements/01-srs.md",
+        "gitBlob": "1baead6a33876db760b33665896cc4b425e8c221",
+        "sha256": "43db2dfb999b3c64070912a7483eea34885be6f579dc696cae2a94cb93e10f48"
+      },
+      {
+        "path": "docs/requirements/02-business-rules.md",
+        "gitBlob": "c0e9a47eebe31debfe5daa4482c2d292d8aefe77",
+        "sha256": "92e4cb6f9d0adc8ce2f5074bacc4d09e8f5f11e378aa9588570e8585babf764c"
+      },
+      {
+        "path": "docs/reviews/BEAUTYSHOP_NEXT_UPGRADE_PROGRESS.md",
+        "gitBlob": "7b2dd356c1bf6bb6e629c47c2c6fc5c7e37602cc",
+        "sha256": "f38567ab612c764e16621ebc0c0b4b829fe6093a3dff3157695ab909aaa4ff03"
+      },
+      {
+        "path": "docs/reviews/RETURN-ket-qua.md",
+        "gitBlob": "8648cf5afd3779dffa3e66f8748b467cd767e81d",
+        "sha256": "a87c5dec75f8d2e75e867f22e2b2bfb871e189bbeaf452dd76b6958cc74dd222"
+      },
+      {
+        "path": "docs/reviews/RETURN-owner-decisions-proposal.md",
+        "gitBlob": "da3b361970a721dc3f3dfb3d0926b2b32bf0e3d8",
+        "sha256": "9f5a0eeac90d4aad0d2564cb05735702316325ead98cc92886583c5d570e9df6"
+      },
+      {
+        "path": "src/main/java/com/beautyshop/controller/admin/AdminSauMua_Controller.java",
+        "gitBlob": "2cdba01c342ee147c44257e98349bb2e258f8cce",
+        "sha256": "372836550398d9a58df84c1df35646b2857f568ffe96f2504c72de2228e19393"
+      },
+      {
+        "path": "src/main/java/com/beautyshop/repository/DoiTra_Repository.java",
+        "gitBlob": "8f630d9f3a07e329cb30a56ba461ad151692264f",
+        "sha256": "eb46c2152f961a31f51279c3e4ceefcacd2f6a057f51504f5f7721b18236ae85"
+      },
+      {
+        "path": "src/main/java/com/beautyshop/service/KiemDinhDoiTra_Service.java",
+        "gitBlob": "065e4b724a5574368ecab8e2bf4a2c549c535520",
+        "sha256": "fb16b7f235479853bb52a8cf920950a0ac4500e14a3ca88c99ac4548fc83b5b2"
+      },
+      {
+        "path": "src/main/java/com/beautyshop/service/SauMua_Service.java",
+        "gitBlob": "3009a5887a0faff1307786e0575921c624bace09",
+        "sha256": "c9bfdd55429d8f60ad0e9c735d05dff45eee4ec1ed709bdfc733157acb310495"
+      },
+      {
+        "path": "src/main/java/com/beautyshop/service/SuKienQuanTri_Service.java",
+        "gitBlob": "9d97710a468209367062cc1dc4291f9512760c37",
+        "sha256": "2ecb157dbe619f441b22bcda132be6d4e51e740980162440054141055f560642"
+      },
+      {
+        "path": "src/main/resources/db/migration/V11__kiem_dinh_hang_tra.sql",
+        "gitBlob": "ae40f0d563df6f4dd39e4056572dc5d972f40b87",
+        "sha256": "c8c1db70a845d78a94d385f1fc14b2ae873a7c19049297d425efc9142ca44a1f"
+      },
+      {
+        "path": "src/main/resources/templates/return/detail.html",
+        "gitBlob": "3b9c505a9538aec75b713f2f9fe2cdc1a0857b55",
+        "sha256": "f8ed8fa1a07fa91705a1e17bbfafb21f1789ecc28ea6ce2e5930feeacd1545d8"
+      },
+      {
+        "path": "src/main/resources/templates/return/fields.html",
+        "gitBlob": "1b1eb68c3d8aba7a01afa791c84079d1d917cfe7",
+        "sha256": "fed8d21f26dc8c1b84b082e80147109ec0c37e8fa95254443ad1e5d0a1170409"
+      },
+      {
+        "path": "src/test/java/com/beautyshop/bootstrap/LocalDatabaseMigration_MariaDb_Test.java",
+        "gitBlob": "2bbf7b47dc7cd8f62bdb9bdd0e491c5eecf87347",
+        "sha256": "bac3e03de7027006916981d0ae3aacf3246a5fec93107f5ffc53c7009c08b347"
+      },
+      {
+        "path": "src/test/java/com/beautyshop/controller/admin/AdminDanhGiaPagesTest.java",
+        "gitBlob": "ecb1f61fbcc4bb422b95e0ff16c3d7de3aacf99c",
+        "sha256": "62b0e128cde90f59d113e92462e71800bdfb567ce39ccb6e32674d08dae26bd3"
+      },
+      {
+        "path": "src/test/java/com/beautyshop/integration/DoiTraFixture.java",
+        "gitBlob": "bda1ca218832c6eee7223ed0d0ea5e3c4c8676b7",
+        "sha256": "dee9214d0040f7f6fa95c1f519407c3b2f84b0e2a085998c4e3976846d06d42f"
+      },
+      {
+        "path": "src/test/java/com/beautyshop/integration/KiemDinhDoiTra_MariaDb_Test.java",
+        "gitBlob": "be8f6238a3fc59f9b7619e535518da7d8ba39533",
+        "sha256": "37b56430bfec9c9109247c4e1943ac810ecc1e70574744d2fb29d600b696fd5f"
+      },
+      {
+        "path": "src/test/java/com/beautyshop/integration/SauMua_MariaDb_Test.java",
+        "gitBlob": "28426a51c490ae8aff373f60a94d48da78045f32",
+        "sha256": "9fe22e5a8fd3cc54959eb0b5804a0216c98623f966de5cbec906d5e712cc8139"
+      },
+      {
+        "path": "src/test/java/com/beautyshop/service/KiemDinhDoiTraTest.java",
+        "gitBlob": "bfc34902c499472c13f43b1452972a4abfaf3ce8",
+        "sha256": "6f58636c53bd5e8dd6cd193b5f01d43153cfb34dc20ddd0fb4ea1da8f37adf61"
+      }
+    ],
+    "manifestEntriesChecked": 38,
+    "manifestSelfSha256": "515f38a12d753a2f608021832d9ca8081f9f1a90a10505d1da5c12d13859d0a2",
+    "manifestScope": "38 entries plus manifest.sha256 itself. Its digest is computed independently and its blob is identical at both commits."
+  },
+  "source": {
+    "scope": "pom.xml, complete src tree, browser.cjs, run-fixture.ps1",
+    "inputCount": 358,
+    "testedInputsSHA256": "9d20ce70674ee9acdef67fadc39046e590844e4e25a60e841d15d2e05a278d3e",
+    "method": "Read Git objects with ls-tree and cat-file --batch. Verify each SHA-256 against source.json, then hash sorted path + TAB + lowercase SHA-256 + LF (UTF-8). Compare both retained rr-verified-{build,it} input files byte for byte against merged blobs.",
+    "workingTree": {
+      "rawBytesDifferOnlyByCRLF": 294,
+      "rawBytesEqual": 64,
+      "normalizedMismatches": 0
+    },
+    "testedSourceDifferences": [],
+    "migrationChecks": [
+      {
+        "file": "V1__khoi_tao_co_so_du_lieu.sql",
+        "sha256": "7101ca9d2bb15df3b603fdf311314d30a86a222aff0471d30f682ce7cb75282f",
+        "baselineBlob": "c8a24bd992e13f34b278e8e6787711729247662a",
+        "mergeBlob": "c8a24bd992e13f34b278e8e6787711729247662a"
+      },
+      {
+        "file": "V2__ghi_nhan_tru_kho_cod.sql",
+        "sha256": "3e27d41a8c48c54a6cd6af5da2cfd3c2c8cb49d08184461d3ded03cbf145faa1",
+        "baselineBlob": "755be1ddad3e2483668bca952b208cfe0f141ae7",
+        "mergeBlob": "755be1ddad3e2483668bca952b208cfe0f141ae7"
+      },
+      {
+        "file": "V3__ghi_nhan_gop_gio_hang.sql",
+        "sha256": "ccdf93bf3fe8ce7fb7ebd7b41f9550a6a785e253a41e65a451c9c7027600a409",
+        "baselineBlob": "57d414f55215197dfa11d2b8fed1ea186821e4fc",
+        "mergeBlob": "57d414f55215197dfa11d2b8fed1ea186821e4fc"
+      },
+      {
+        "file": "V4__them_phien_ban_xac_thuc.sql",
+        "sha256": "f6083e69695d43b7edab0e9d0c1d610a120eed180c9e8afef68ac38d64a64f7e",
+        "baselineBlob": "89a12848138b3562afb49d1b429f84bcac123808",
+        "mergeBlob": "89a12848138b3562afb49d1b429f84bcac123808"
+      },
+      {
+        "file": "V5__nap_faq_beautyshop.sql",
+        "sha256": "115eda050be0a9b10e87f364b369ca7d661cf2bad608f4b1d37596cc8c0de13a",
+        "baselineBlob": "c4a8cd1451f08daedac685f3bf40d20b9f64dc55",
+        "mergeBlob": "c4a8cd1451f08daedac685f3bf40d20b9f64dc55"
+      },
+      {
+        "file": "V6__them_danh_tinh_oauth.sql",
+        "sha256": "2a1683307e264c31035ad7151b83df4c5ef3b90b9ff36ca04281fa86349c9b5a",
+        "baselineBlob": "1f853fd28da6cef09902f444cc33a427f7646175",
+        "mergeBlob": "1f853fd28da6cef09902f444cc33a427f7646175"
+      },
+      {
+        "file": "V7__xac_thuc_da_phuong_thuc.sql",
+        "sha256": "cf4fb97f1e2880b2dd853e36708e87350a7a4fe3ae7ead912caca7f15e354f9a",
+        "baselineBlob": "1283bbfbbaec5621ac24d30f39efcc8b3d2d9700",
+        "mergeBlob": "1283bbfbbaec5621ac24d30f39efcc8b3d2d9700"
+      },
+      {
+        "file": "V8__nhat_ky_nghiep_vu.sql",
+        "sha256": "53c2c31fbc1f37e053a71df953efea30906f27ad99cbe063398e1e7d3c4270bd",
+        "baselineBlob": "4a5a5c494d35ade997ccdf48e966986e8c1f764d",
+        "mergeBlob": "4a5a5c494d35ade997ccdf48e966986e8c1f764d"
+      },
+      {
+        "file": "V9__phieu_giam_gia_hai_slot.sql",
+        "sha256": "a3ab217c243a4504ccccbf50e2d7ced09207d90aac40fbb252675f8e0f3882e5",
+        "baselineBlob": "dcdb41b7dc1c8ee7f773e142b29ee0d0a894c91a",
+        "mergeBlob": "dcdb41b7dc1c8ee7f773e142b29ee0d0a894c91a"
+      },
+      {
+        "file": "V10__thu_trang_thai_tai_khoan.sql",
+        "sha256": "925e170b9d2849f3b9aac456a1b4aafcbe4dc697186620450ec0fbff5ef9fec3",
+        "baselineBlob": "d0d3f2734094abb5f6ea73ee662cb2938e859a65",
+        "mergeBlob": "d0d3f2734094abb5f6ea73ee662cb2938e859a65"
+      },
+      {
+        "file": "V11__kiem_dinh_hang_tra.sql",
+        "sha256": "c8c1db70a845d78a94d385f1fc14b2ae873a7c19049297d425efc9142ca44a1f",
+        "baselineBlob": null,
+        "mergeBlob": "ae40f0d563df6f4dd39e4056572dc5d972f40b87"
+      }
+    ]
+  },
+  "ci": {
+    "source": "GitHub REST run metadata, build jobs, checkout logs and PR #20 metadata",
+    "workflow": ".github/workflows/ci.yml",
+    "java": 21,
+    "runs": [
+      {
+        "id": 46163547694,
+        "name": "Maven CI",
+        "event": "push",
+        "path": ".github/workflows/ci.yml",
+        "head_branch": "feat/return-inspection",
+        "head_sha": "0de31f7fa470404a510c6540915ac3ccc5b1c91d",
+        "status": "completed",
+        "conclusion": "success",
+        "html_url": "https://github.com/tuanank5/cosmetics_shop/actions/runs/46163547694",
+        "run_attempt": 1,
+        "updated_at": "2026-11-28T16:09:22Z",
+        "jobId": 141035973064,
+        "steps": [
+          [
+            "Run mvn -B test",
+            "success"
+          ],
+          [
+            "Run mvn -B -DskipTests package",
+            "success"
+          ]
+        ],
+        "checkoutSha": "0de31f7fa470404a510c6540915ac3ccc5b1c91d",
+        "checkoutTree": "6ac6f4166bdb4926524417b039b1e3b8954e7cd0"
+      },
+      {
+        "id": 46163569792,
+        "name": "Maven CI",
+        "event": "pull_request",
+        "path": ".github/workflows/ci.yml",
+        "head_branch": "feat/return-inspection",
+        "head_sha": "0de31f7fa470404a510c6540915ac3ccc5b1c91d",
+        "status": "completed",
+        "conclusion": "success",
+        "html_url": "https://github.com/tuanank5/cosmetics_shop/actions/runs/46163569792",
+        "run_attempt": 1,
+        "updated_at": "2026-11-28T16:09:51Z",
+        "jobId": 141036040859,
+        "steps": [
+          [
+            "Run mvn -B test",
+            "success"
+          ],
+          [
+            "Run mvn -B -DskipTests package",
+            "success"
+          ]
+        ],
+        "checkoutSha": "6b772dfed59bd129466c71ca2ee55b16b7072048",
+        "checkoutTree": "6ac6f4166bdb4926524417b039b1e3b8954e7cd0"
+      },
+      {
+        "id": 46163687590,
+        "name": "Maven CI",
+        "event": "push",
+        "path": ".github/workflows/ci.yml",
+        "head_branch": "main",
+        "head_sha": "16060628d4ed599ab6b4214b9a5a463f0c60352e",
+        "status": "completed",
+        "conclusion": "success",
+        "html_url": "https://github.com/tuanank5/cosmetics_shop/actions/runs/46163687590",
+        "run_attempt": 1,
+        "updated_at": "2026-11-28T16:11:03Z",
+        "jobId": 141036403426,
+        "steps": [
+          [
+            "Run mvn -B test",
+            "success"
+          ],
+          [
+            "Run mvn -B -DskipTests package",
+            "success"
+          ]
+        ],
+        "checkoutSha": "16060628d4ed599ab6b4214b9a5a463f0c60352e",
+        "checkoutTree": "6ac6f4166bdb4926524417b039b1e3b8954e7cd0"
+      }
+    ],
+    "scope": "Default Maven test and package with tests skipped at packaging. No isolated MariaDB, Flyway legacy or WebKit run in CI."
+  },
+  "inheritedQA": {
+    "source": "docs/qa/RETURN/verified and target/rr-verified-{build,it}/target/surefire-reports",
+    "reexecutedForCloseout": false,
+    "defaultXmlSuites": 67,
+    "default": {
+      "pass": 258,
+      "skip": 129,
+      "fail": 0,
+      "error": 0
+    },
+    "integration": 63,
+    "migration": 12,
+    "fixtureSuites": {
+      "com.beautyshop.bootstrap.LocalDatabaseMigration_MariaDb_Test": 12,
+      "com.beautyshop.integration.Audit_MariaDb_Test": 6,
+      "com.beautyshop.integration.CatalogDonHang_MariaDb_Test": 26,
+      "com.beautyshop.integration.DonHangCOD_MariaDb_Test": 10,
+      "com.beautyshop.integration.KiemDinhDoiTra_MariaDb_Test": 9,
+      "com.beautyshop.integration.Momo_MariaDb_Test": 9,
+      "com.beautyshop.integration.PhieuGiamGia_MariaDb_Test": 3
+    },
+    "distinctPassedInvocations": 333,
+    "duplicatePassedKeys": 0,
+    "countingMethod": "Compare classname#testcase in default/fixture XML. Strip final [n] only to compare fixture invocations to disabled method descriptors. Check set equality with the prior NOT RUN list.",
+    "defaultSkippedMethodsCoveredByFixture": [
+      "com.beautyshop.bootstrap.LocalDatabaseMigration_MariaDb_Test#nangCapVaGiuNguoiDungTuLichSuChinhThuc(int)",
+      "com.beautyshop.bootstrap.LocalDatabaseMigration_MariaDb_Test#tuChoiChecksumKhongKhopTruocKhiChayBanMoi",
+      "com.beautyshop.bootstrap.LocalDatabaseMigration_MariaDb_Test#tuChoiSchemaCuKhongCoLichSu",
+      "com.beautyshop.integration.Audit_MariaDb_Test#adminKhongDuocPhanCong",
+      "com.beautyshop.integration.Audit_MariaDb_Test#batchBoundaryBaoLuuReplayVaRollback",
+      "com.beautyshop.integration.Audit_MariaDb_Test#commitRollbackVaKetQuaRieng",
+      "com.beautyshop.integration.Audit_MariaDb_Test#dryRunKhongTinhHoSoChuaCoNguonDuyet",
+      "com.beautyshop.integration.Audit_MariaDb_Test#luuLaiDanhMucKhongSinhSuccess",
+      "com.beautyshop.integration.Audit_MariaDb_Test#rangBuocCorrelationActionVaBaoLuuDonChoDoiSoat",
+      "com.beautyshop.integration.CatalogDonHang_MariaDb_Test#checkoutVaNgungHoatDongTuanTu(PhamVi, String, boolean)",
+      "com.beautyshop.integration.CatalogDonHang_MariaDb_Test#donKetThucVanChanNeuTonThanhToanHoacDoiTraConTreo",
+      "com.beautyshop.integration.CatalogDonHang_MariaDb_Test#kiemTraToanBoSkuVaCacDuongLuuTrangThai",
+      "com.beautyshop.integration.CatalogDonHang_MariaDb_Test#trangThaiDonQuyetDinhCoDuocNgungSku(OrderStatus)",
+      "com.beautyshop.integration.DonHangCOD_MariaDb_Test#checkoutHetHangGiuNguyenMucKhacVaAdminHuyHoanTonMotLan",
+      "com.beautyshop.integration.DonHangCOD_MariaDb_Test#checkoutHuyVaGiaoCodEndToEnd",
+      "com.beautyshop.integration.DonHangCOD_MariaDb_Test#formMuaLaiChiApDungChoDonVaPhienDaCap",
+      "com.beautyshop.integration.DonHangCOD_MariaDb_Test#haiCustomerTranhSkuVaRollbackKhoVoucherVaGio",
+      "com.beautyshop.integration.DonHangCOD_MariaDb_Test#haiPostMuaLaiCungYeuCauChiGhiMotLan",
+      "com.beautyshop.integration.DonHangCOD_MariaDb_Test#khoaTrangThaiSanPhamDenKhiGhiGioHoanTat",
+      "com.beautyshop.integration.DonHangCOD_MariaDb_Test#locDonCustomerCungPredicateChoCountVaTrang",
+      "com.beautyshop.integration.DonHangCOD_MariaDb_Test#quotaKhachVaRollbackHaiSlot",
+      "com.beautyshop.integration.DonHangCOD_MariaDb_Test#rollbackRetryVaHaiYeuCauTranhDonViCuoi",
+      "com.beautyshop.integration.DonHangCOD_MariaDb_Test#voucherConMotLuotChiChoMotDonKhiHaiSkuKhacNhau",
+      "com.beautyshop.integration.KiemDinhDoiTra_MariaDb_Test#bienBayNgayVaHoSoCu",
+      "com.beautyshop.integration.KiemDinhDoiTra_MariaDb_Test#doiTraNhieuMucChiNhapPhanDuBanVaGiuNguyenThanhToan",
+      "com.beautyshop.integration.KiemDinhDoiTra_MariaDb_Test#giuChungTuHaiSlotVaAttempt(String)",
+      "com.beautyshop.integration.KiemDinhDoiTra_MariaDb_Test#haiAdminVaRollbackGiuaHaiDong",
+      "com.beautyshop.integration.KiemDinhDoiTra_MariaDb_Test#haiYeuCauDongThoiKhongVuotSoLuongDaMua",
+      "com.beautyshop.integration.KiemDinhDoiTra_MariaDb_Test#kienSaiChuaNhanVaHaiPostCungMa",
+      "com.beautyshop.integration.KiemDinhDoiTra_MariaDb_Test#nhieuDotReplayVaChungTuNghiaVu",
+      "com.beautyshop.integration.KiemDinhDoiTra_MariaDb_Test#webKitKiemDinhVaXemTheoChu",
+      "com.beautyshop.integration.Momo_MariaDb_Test#callbackDongThoiVaAttemptCuSauKhiDaChot",
+      "com.beautyshop.integration.Momo_MariaDb_Test#chiGiaiPhongKhiCongXacNhanHetHanVaDanhDauThanhCongMuon",
+      "com.beautyshop.integration.Momo_MariaDb_Test#doiSoatHaiSlotDenGatewayVaRangBuocSql",
+      "com.beautyshop.integration.Momo_MariaDb_Test#giuQuotaKhachVaChoDoiSoatKhoanDaThu",
+      "com.beautyshop.integration.Momo_MariaDb_Test#haiRetrySauFailedChiTaoMotLanMoi",
+      "com.beautyshop.integration.Momo_MariaDb_Test#huyVaCallbackChayDuaKhongTraQuaLuot",
+      "com.beautyshop.integration.Momo_MariaDb_Test#ipnKySaiSaiSoTienVaReplayKhongTruTonHaiLan",
+      "com.beautyshop.integration.Momo_MariaDb_Test#retryTransportGiuMaCuRetrySauTuChoiCoMaMoiVaDoiSoat",
+      "com.beautyshop.integration.Momo_MariaDb_Test#rollbackSauKhiGiuSlotDau",
+      "com.beautyshop.integration.PhieuGiamGia_MariaDb_Test#adminCrudChuanHoaMaVaKhoaQuyenGhi",
+      "com.beautyshop.integration.PhieuGiamGia_MariaDb_Test#kiemTraThoiGianDieuKienDonVaTranGiam",
+      "com.beautyshop.integration.PhieuGiamGia_MariaDb_Test#luuPhamViQuotaVaAuditChiGhiKhiThayDoi"
+    ],
+    "notRunCount": 86,
+    "notRunMethods": [
+      "com.beautyshop.integration.AdminOrderList_MariaDb_Test#locHieuLucVaDemCungMotTapDon",
+      "com.beautyshop.integration.AdminOrderList_MariaDb_Test#locNgayTheoGioVietNamVaGiuKhoangNgayKhiQuayLai",
+      "com.beautyshop.integration.AdminOrderList_MariaDb_Test#phanTrangOnDinhVaGiuBoLocQuaPost",
+      "com.beautyshop.integration.BienTheSanPham_MariaDb_Test#checkoutDaDocSkuVanDungSoTonMoiNhatSauKhiKhoa",
+      "com.beautyshop.integration.BienTheSanPham_MariaDb_Test#crudSkuVaAnhKiemTraQuyenSoHuuBienTheVaTonDangGiu",
+      "com.beautyshop.integration.BienTheSanPham_MariaDb_Test#customerKhongDuocQuanTriSku",
+      "com.beautyshop.integration.BienTheSanPham_MariaDb_Test#giuChotVaTraHangCoIdempotencyVaKhongTuGiaiPhongKhiHetHan",
+      "com.beautyshop.integration.BienTheSanPham_MariaDb_Test#haiDonCanhTranhMotSkuVaRetryKhongCapLanHai(String)",
+      "com.beautyshop.integration.BienTheSanPham_MariaDb_Test#rollbackCheckoutHoanCaTonVaDauGhiNhan",
+      "com.beautyshop.integration.CuaHang_MariaDb_Test#chonSkuDocGiaTonVaAnhHienHanh",
+      "com.beautyshop.integration.CuaHang_MariaDb_Test#locTiengVietSapXepTheoSkuVaPhanTrang",
+      "com.beautyshop.integration.DanhMucSanPhamThuongHieu_MariaDb_Test#catalogCrudUsesV1ConstraintsAndPreservesProducts",
+      "com.beautyshop.integration.DanhMucSanPhamThuongHieu_MariaDb_Test#mucChuaCoSanPhamVanGiuBanGhiVaGanTrangThaiLap",
+      "com.beautyshop.integration.DanhMucSanPhamThuongHieu_MariaDb_Test#trangThaiChaChiDoiVisibilityVaGiuSkuFkCungSnapshotDon",
+      "com.beautyshop.integration.DocView_MariaDb_Test#doCotSoTruyVanVaHtmlCuaNhungDuongDoc",
+      "com.beautyshop.integration.DocView_MariaDb_Test#gioKhachDocNhieuSkuTrongMotTruyVan",
+      "com.beautyshop.integration.GoiYPhoBienDemoReport_Test#inBangDiemTop5",
+      "com.beautyshop.integration.GoiYSanPham_MariaDb_Test#demBanDanhGiaYeuThichDungDieuKien",
+      "com.beautyshop.integration.HttpLoi_MariaDb_Test#httpThucGiuStatusSoHuuRoleCsrfVaErrorDispatch",
+      "com.beautyshop.integration.MongoTat_MariaDb_Test#trangChinhVanChayKhiMongoTat",
+      "com.beautyshop.integration.OAuth2Callback_MariaDb_Test#baCachLoginCungIdVaMoiPhienGopGioDungMotLan",
+      "com.beautyshop.integration.OAuth2Callback_MariaDb_Test#callbackDenMuonVaThuHoiPhien(String)",
+      "com.beautyshop.integration.OAuth2Callback_MariaDb_Test#callbackDoiCodeKiemStateVaDangNhapBangUserId",
+      "com.beautyshop.integration.OAuth2Callback_MariaDb_Test#callbackLienKetGiuPhienVaChiGhiSauXacNhanPost(String)",
+      "com.beautyshop.integration.OAuth2Callback_MariaDb_Test#googleOidcKiemChuKyNonceVaEmailDaXacMinh",
+      "com.beautyshop.integration.OAuth2Callback_MariaDb_Test#haiPhienGoDongThoiVanConMotDuongDangNhap",
+      "com.beautyshop.integration.OAuth2Callback_MariaDb_Test#oauthChuaCoMatKhauCanCallbackDungDanhTinhVaOtpDeThietLap",
+      "com.beautyshop.integration.OAuth2Callback_MariaDb_Test#webKitKhoaMoBaPhuongThuc",
+      "com.beautyshop.integration.OAuth2Callback_MariaDb_Test#webkitDatLaiMatKhauVaXacThucLaiGoogleTrenHaiTab",
+      "com.beautyshop.integration.SauMua_MongoDanhGia_Test#danhGiaDaGiaoChiChuMucVaChiCongKhaiSauDuyet",
+      "com.beautyshop.integration.SauMua_MongoDanhGia_Test#doiTraNhieuMucChiNhapPhanDuBanVaGiuNguyenThanhToan",
+      "com.beautyshop.integration.SauMua_MongoDanhGia_Test#haiYeuCauDongThoiKhongVuotSoLuongDaMua",
+      "com.beautyshop.integration.SauMua_MongoDanhGia_Test#timTaiChoTheoChuVaChongThanhCongGiaKhiSkuDaTat",
+      "com.beautyshop.integration.SauMua_MongoDanhGia_Test#yeuThichYeuCauDangNhapIdempotentVaChiThayGioCuaMinh",
+      "com.beautyshop.integration.ThongKe_MariaDb_Test#doanhThuTheoNgayVietNamLoaiDonHuyVaCustomerBiChan",
+      "com.beautyshop.integration.ThongKe_MariaDb_Test#trangDashboardRenderTrenMariaDb",
+      "com.beautyshop.integration.TuVanFaq_MariaDb_Test#csrfGioiHanKyTuVaTanSuat",
+      "com.beautyshop.integration.TuVanFaq_MariaDb_Test#faqMauVeBienTheDungCungNoiDungTrongMariaDbVaTrangTuVan",
+      "com.beautyshop.integration.TuVanFaq_MariaDb_Test#faqTimTiengVietLocNguonVaEscapeHtml",
+      "com.beautyshop.integration.TuVanRag_MariaDb_Test#cauHoiChuaDuLieuCaNhanKhongGoiEmbeddingHayChat",
+      "com.beautyshop.integration.TuVanRag_MariaDb_Test#customerKhongDuocNapChiMuc",
+      "com.beautyshop.integration.TuVanRag_MariaDb_Test#ragCoNguonGiaTonMoiVaFallbackKhiModelSaiHoacLoi",
+      "com.beautyshop.integration.XacThucDaPhuongThuc_MariaDb_Test#adminGuiLinkKhachTuDatTokenChiMotLanVaPhienCuBiThuHoi",
+      "com.beautyshop.integration.XacThucDaPhuongThuc_MariaDb_Test#capLinkMoiVoHieuLinkCuVaChiChoDungTrongMuoiLamPhut",
+      "com.beautyshop.integration.XacThucDaPhuongThuc_MariaDb_Test#doiMatKhauTuChoiTrungVaChoThuLaiCungPhien",
+      "com.beautyshop.integration.XacThucDaPhuongThuc_MariaDb_Test#goCanPhuongThucConLaiVaHaiProviderDungCungNguoiDung",
+      "com.beautyshop.integration.XacThucDaPhuongThuc_MariaDb_Test#guestThayCungPhanHoiVaPostCanCsrf",
+      "com.beautyshop.integration.XacThucDaPhuongThuc_MariaDb_Test#haiCustomerTranhCungDanhTinhChiGhiNhanChoMotChu",
+      "com.beautyshop.integration.XacThucDaPhuongThuc_MariaDb_Test#oauthGiuaCacLanDangNhapNhanDungIdVaKhongGhiDeEmail",
+      "com.beautyshop.integration.XacThucDaPhuongThuc_MariaDb_Test#smtpThatBaiKhongDoiHashVaHetHanLink",
+      "com.beautyshop.integration.XacThucDaPhuongThuc_MariaDb_Test#taiKhoanChiCoOAuthDaXacMinhEmailVanCanQuyenTaiProvider",
+      "com.beautyshop.integration.XacThucMigration_MariaDb_Test#baoToanIdLichSuVaChiChuyenDanhTinhCoBangChung(int)",
+      "com.beautyshop.integration.XacThuc_MariaDb_Test#adminTimPhanTrangKhoaMoVaThuHoiPhienCu",
+      "com.beautyshop.integration.XacThuc_MariaDb_Test#customerVaAdminDangNhapDungQuyenVaLogoutCoCsrf",
+      "com.beautyshop.integration.XacThuc_MariaDb_Test#dangKyBcryptEmailDuyNhatVaKhongNhanVaiTroTuClient",
+      "com.beautyshop.integration.XacThuc_MariaDb_Test#gioGuestGopMotLanVaKiemTraTonLai",
+      "com.beautyshop.integration.XacThuc_MariaDb_Test#gioiHanMuoiDiaChiTuMayChuVanChoPhepSua",
+      "com.beautyshop.integration.XacThuc_MariaDb_Test#haiRequestGopCungSnapshotKhongCongHaiLan",
+      "com.beautyshop.integration.XacThuc_MariaDb_Test#haiThietBiCungTaiKhoanMoiSnapshotGopMotLanVaCoNoticeRieng",
+      "com.beautyshop.integration.XacThuc_MariaDb_Test#hoSoVaDiaChiChiChoPhepChuTaiKhoan",
+      "com.beautyshop.integration.XacThuc_MariaDb_Test#luuDiaChiSongSongChiCoMotMacDinh",
+      "com.beautyshop.integration.XacThuc_MariaDb_Test#noticeCheckoutChiDungMotLanQuaHaiTabVaChiTietTonDuong",
+      "com.beautyshop.integration.XacThuc_MariaDb_Test#rollbackGopKhongPhatNoticeVaThuLaiCungSnapshot",
+      "com.beautyshop.integration.XacThuc_MariaDb_Test#serviceChiChoPhepChuDon",
+      "com.beautyshop.repository.MongoDanhGia_Store_Test#aggregationTrungBinhPhanBoNhieuSanPhamVaToanCuaHang",
+      "com.beautyshop.repository.MongoDanhGia_Store_Test#findAndModifyTheoPhienBanVaTrangThaiLocAdmin",
+      "com.beautyshop.repository.MongoDanhGia_Store_Test#haiNguoiGhiCungMucChiMotLanThanhCong",
+      "com.beautyshop.repository.MongoDanhGia_Store_Test#indexDuocTaoVaKhoaDuyNhatChanTrungDongDon",
+      "com.beautyshop.repository.MongoDanhGia_Store_Test#indexSaiChanGhiVaKhongSuaDuLieu",
+      "com.beautyshop.repository.MongoDanhGia_Store_Test#khiTrungThoiDiemThiSapTheoIdVaDemDungBoLocQuaCacTrang",
+      "com.beautyshop.repository.MongoDanhGia_Store_Test#khoiDongKhiMongoTatRoiTaoIndexTruocGhiSauPhucHoi",
+      "com.beautyshop.repository.MongoDanhGia_Store_Test#phanTrangAdminVaCongKhaiMoiNhatTruoc",
+      "com.beautyshop.repository.MongoDanhGia_Store_Test#taoMauSaoLuu",
+      "com.beautyshop.repository.ReviewBsonCompatibilityTest#documentRoundTripAcrossPackageVersions",
+      "com.beautyshop.service.ThuTaiKhoan_MariaDb_Test#haiAdminVaRollback",
+      "com.beautyshop.service.ThuTaiKhoan_MariaDb_Test#hetLeaseKhongGuiLai",
+      "com.beautyshop.service.ThuTaiKhoan_MariaDb_Test#khoaAdminTrongKhiGhi",
+      "com.beautyshop.service.ThuTaiKhoan_MariaDb_Test#leaseNguoiNhanVaKetQuaGui",
+      "com.beautyshop.service.ThuTaiKhoan_MariaDb_Test#phanBietKhongDoiVaFormCuSauKhoaMo",
+      "com.beautyshop.service.ThuTaiKhoan_MariaDb_Test#replayDongThoiVaThuHoiQuyenAdmin",
+      "com.beautyshop.service.ThuTaiKhoan_MariaDb_Test#rollbackTheoTungDiemVaRetry(String)",
+      "com.beautyshop.service.ThuTaiKhoan_MariaDb_Test#sauSmtpMatKetNoiKhiGhiSent",
+      "com.beautyshop.service.ThuTaiKhoan_MariaDb_Test#thuLaiDungLichVaDungSauBonLan",
+      "com.beautyshop.service.ThuTaiKhoan_MariaDb_Test#workerChiThayEventSauCommitVaGiuThuTu",
+      "com.beautyshop.service.ThuTaiKhoan_MariaDb_Test#workerCuTraVeSauKhiPollerDaThuHoiLease",
+      "com.beautyshop.service.ThuTaiKhoan_MariaDb_Test#workerHetLeaseTruocKhiGhiKetQua"
+    ]
+  },
+  "findingsClosed": [
+    "Stale new operation receives FAILED on rollback. A successful replay does not perform the movement again.",
+    "Rollback after ledger, stock and visible audit SUCCESS checked on real transactions. Two authorized Admin sessions compete for one parcel.",
+    "Two positive parcels for the same SKU and a duplicate physical reference on a different case checked separately.",
+    "Browser waits for login navigation. Intermediate timeout, successful isolated probe and successful final full run are preserved."
+  ],
+  "limitations": [
+    "Admin verifies parcel identity, cosmetic condition and external settlement documents manually.",
+    "Actual goods, production database and load, manual UAT, production SMTP, live payment provider and disbursement: NOT RUN.",
+    "REFUND remains a separate work package. Pending obligations keep a case open under BR21."
+  ],
+  "notRunImpact": {
+    "directAndAdjacent": [
+      {
+        "notRunMethods": [
+          "com.beautyshop.integration.SauMua_MongoDanhGia_Test#doiTraNhieuMucChiNhapPhanDuBanVaGiuNguyenThanhToan",
+          "com.beautyshop.integration.SauMua_MongoDanhGia_Test#haiYeuCauDongThoiKhongVuotSoLuongDaMua"
+        ],
+        "executedEvidence": [
+          "KiemDinhDoiTra_MariaDb_Test executes both inherited DoiTraFixture methods of the same names. Customer A sees own return, B receives 404, customer POST to Admin receives 403. Two competing requests for the final quantity yield one success and one record."
+        ],
+        "remainingScope": "The Mongo-enabled subclass and its Mongo setup were skipped."
+      },
+      {
+        "notRunMethods": [
+          "com.beautyshop.integration.BienTheSanPham_MariaDb_Test#checkoutDaDocSkuVanDungSoTonMoiNhatSauKhiKhoa",
+          "com.beautyshop.integration.BienTheSanPham_MariaDb_Test#haiDonCanhTranhMotSkuVaRetryKhongCapLanHai(String)"
+        ],
+        "executedEvidence": [
+          "KiemDinhDoiTra_MariaDb_Test#haiAdminVaRollbackGiuaHaiDong: exactly one future succeeds, 2 ledger rows for 2 distinct receipt lines, stocks 11/11. DonHangCOD_MariaDb_Test#haiCustomerTranhSkuVaRollbackKhoVoucherVaGio; CatalogDonHang_MariaDb_Test#checkoutVaNgungHoatDongTuanTu."
+        ],
+        "remainingScope": "Two checkout transactions re-reading one SKU, and RETURN confirming concurrently with checkout on that same SKU, are distinct schedules. The exact skipped schedules remain unexecuted here."
+      },
+      {
+        "notRunMethods": [
+          "com.beautyshop.integration.BienTheSanPham_MariaDb_Test#giuChotVaTraHangCoIdempotencyVaKhongTuGiaiPhongKhiHetHan",
+          "com.beautyshop.integration.BienTheSanPham_MariaDb_Test#rollbackCheckoutHoanCaTonVaDauGhiNhan"
+        ],
+        "executedEvidence": [
+          "KiemDinhDoiTra_MariaDb_Test#giuChungTuHaiSlotVaAttempt(String): COD ledger or consumed MoMo reservation, other order's hold and two voucher rows unchanged. #haiAdminVaRollbackGiuaHaiDong: rollback at three write boundaries. Momo_MariaDb_Test#chiGiaiPhongKhiCongXacNhanHetHanVaDanhDauThanhCongMuon."
+        ],
+        "remainingScope": "The standalone COD deduction retry and reserve/consume/release sequence use different operations from RETURN confirmation."
+      },
+      {
+        "notRunMethods": [
+          "com.beautyshop.integration.BienTheSanPham_MariaDb_Test#crudSkuVaAnhKiemTraQuyenSoHuuBienTheVaTonDangGiu",
+          "com.beautyshop.integration.BienTheSanPham_MariaDb_Test#customerKhongDuocQuanTriSku",
+          "com.beautyshop.integration.DanhMucSanPhamThuongHieu_MariaDb_Test#trangThaiChaChiDoiVisibilityVaGiuSkuFkCungSnapshotDon"
+        ],
+        "executedEvidence": [
+          "A disabled SKU blocks the parcel and rolls back the other line; CatalogDonHang_MariaDb_Test checks catalog closure/BR21. DoiTraFixture rejects Customer on Admin status POST even with CSRF."
+        ],
+        "remainingScope": "Editing images/variants, catalog-admin authorization, and each parent visibility change during RETURN confirmation were not exercised by those RETURN tests."
+      },
+      {
+        "notRunMethods": [
+          "com.beautyshop.integration.HttpLoi_MariaDb_Test#httpThucGiuStatusSoHuuRoleCsrfVaErrorDispatch",
+          "com.beautyshop.integration.XacThuc_MariaDb_Test#adminTimPhanTrangKhoaMoVaThuHoiPhienCu",
+          "com.beautyshop.integration.XacThuc_MariaDb_Test#customerVaAdminDangNhapDungQuyenVaLogoutCoCsrf",
+          "com.beautyshop.integration.XacThuc_MariaDb_Test#serviceChiChoPhepChuDon"
+        ],
+        "executedEvidence": [
+          "DoiTraFixture#doiTraNhieuMucChiNhapPhanDuBanVaGiuNguyenThanhToan verifies cross-owner read/write 404 and Customer on Admin status 403. KiemDinhDoiTra_MariaDb_Test#kienSaiChuaNhanVaHaiPostCungMa verifies Admin status without CSRF returns 403. WebKit uses real session form login for Admin and Customer."
+        ],
+        "remainingScope": "Separate full HTTP error dispatch, logout CSRF, revocation and order-service entry points stay NOT RUN. Negative HTTP tests cover the status endpoint; other RETURN write endpoints share the backend rules."
+      },
+      {
+        "notRunMethods": [
+          "com.beautyshop.service.ThuTaiKhoan_MariaDb_Test#haiAdminVaRollback",
+          "com.beautyshop.service.ThuTaiKhoan_MariaDb_Test#khoaAdminTrongKhiGhi",
+          "com.beautyshop.service.ThuTaiKhoan_MariaDb_Test#phanBietKhongDoiVaFormCuSauKhoaMo",
+          "com.beautyshop.service.ThuTaiKhoan_MariaDb_Test#replayDongThoiVaThuHoiQuyenAdmin",
+          "com.beautyshop.service.ThuTaiKhoan_MariaDb_Test#rollbackTheoTungDiemVaRetry(String)",
+          "com.beautyshop.integration.OAuth2Callback_MariaDb_Test#callbackDenMuonVaThuHoiPhien(String)",
+          "com.beautyshop.integration.OAuth2Callback_MariaDb_Test#webKitKhoaMoBaPhuongThuc",
+          "com.beautyshop.integration.XacThucDaPhuongThuc_MariaDb_Test#adminGuiLinkKhachTuDatTokenChiMotLanVaPhienCuBiThuHoi"
+        ],
+        "executedEvidence": [
+          "KiemDinhDoiTra_Service#ghi checks active ADMIN and authentication version under lock. RETURN real-DB race and replay use authorized sessions. No inference of a passing account lock/unlock test."
+        ],
+        "remainingScope": "Revoking the actor mid-RETURN, OAuth callbacks, reset-link issuance, outbox and worker interleavings are not directly exercised by this gate."
+      },
+      {
+        "notRunMethods": [
+          "com.beautyshop.integration.ThongKe_MariaDb_Test#doanhThuTheoNgayVietNamLoaiDonHuyVaCustomerBiChan",
+          "com.beautyshop.integration.ThongKe_MariaDb_Test#trangDashboardRenderTrenMariaDb",
+          "com.beautyshop.integration.CuaHang_MariaDb_Test#chonSkuDocGiaTonVaAnhHienHanh"
+        ],
+        "executedEvidence": [
+          "KiemDinhDoiTra_MariaDb_Test#giuChungTuHaiSlotVaAttempt(String) checks unchanged financial rows and held quantity; #nhieuDotReplayVaChungTuNghiaVu checks REFUND_PENDING, RECEIVED, BR21 count and stock 12."
+        ],
+        "remainingScope": "Storefront stock display, dashboard rendering and aggregate KPI outputs were not asserted by these SQL comparisons."
+      }
+    ],
+    "otherMethods": [
+      "com.beautyshop.integration.AdminOrderList_MariaDb_Test#locHieuLucVaDemCungMotTapDon",
+      "com.beautyshop.integration.AdminOrderList_MariaDb_Test#locNgayTheoGioVietNamVaGiuKhoangNgayKhiQuayLai",
+      "com.beautyshop.integration.AdminOrderList_MariaDb_Test#phanTrangOnDinhVaGiuBoLocQuaPost",
+      "com.beautyshop.integration.CuaHang_MariaDb_Test#locTiengVietSapXepTheoSkuVaPhanTrang",
+      "com.beautyshop.integration.DanhMucSanPhamThuongHieu_MariaDb_Test#catalogCrudUsesV1ConstraintsAndPreservesProducts",
+      "com.beautyshop.integration.DanhMucSanPhamThuongHieu_MariaDb_Test#mucChuaCoSanPhamVanGiuBanGhiVaGanTrangThaiLap",
+      "com.beautyshop.integration.DocView_MariaDb_Test#doCotSoTruyVanVaHtmlCuaNhungDuongDoc",
+      "com.beautyshop.integration.DocView_MariaDb_Test#gioKhachDocNhieuSkuTrongMotTruyVan",
+      "com.beautyshop.integration.GoiYPhoBienDemoReport_Test#inBangDiemTop5",
+      "com.beautyshop.integration.GoiYSanPham_MariaDb_Test#demBanDanhGiaYeuThichDungDieuKien",
+      "com.beautyshop.integration.MongoTat_MariaDb_Test#trangChinhVanChayKhiMongoTat",
+      "com.beautyshop.integration.OAuth2Callback_MariaDb_Test#baCachLoginCungIdVaMoiPhienGopGioDungMotLan",
+      "com.beautyshop.integration.OAuth2Callback_MariaDb_Test#callbackDoiCodeKiemStateVaDangNhapBangUserId",
+      "com.beautyshop.integration.OAuth2Callback_MariaDb_Test#callbackLienKetGiuPhienVaChiGhiSauXacNhanPost(String)",
+      "com.beautyshop.integration.OAuth2Callback_MariaDb_Test#googleOidcKiemChuKyNonceVaEmailDaXacMinh",
+      "com.beautyshop.integration.OAuth2Callback_MariaDb_Test#haiPhienGoDongThoiVanConMotDuongDangNhap",
+      "com.beautyshop.integration.OAuth2Callback_MariaDb_Test#oauthChuaCoMatKhauCanCallbackDungDanhTinhVaOtpDeThietLap",
+      "com.beautyshop.integration.OAuth2Callback_MariaDb_Test#webkitDatLaiMatKhauVaXacThucLaiGoogleTrenHaiTab",
+      "com.beautyshop.integration.SauMua_MongoDanhGia_Test#danhGiaDaGiaoChiChuMucVaChiCongKhaiSauDuyet",
+      "com.beautyshop.integration.SauMua_MongoDanhGia_Test#timTaiChoTheoChuVaChongThanhCongGiaKhiSkuDaTat",
+      "com.beautyshop.integration.SauMua_MongoDanhGia_Test#yeuThichYeuCauDangNhapIdempotentVaChiThayGioCuaMinh",
+      "com.beautyshop.integration.TuVanFaq_MariaDb_Test#csrfGioiHanKyTuVaTanSuat",
+      "com.beautyshop.integration.TuVanFaq_MariaDb_Test#faqMauVeBienTheDungCungNoiDungTrongMariaDbVaTrangTuVan",
+      "com.beautyshop.integration.TuVanFaq_MariaDb_Test#faqTimTiengVietLocNguonVaEscapeHtml",
+      "com.beautyshop.integration.TuVanRag_MariaDb_Test#cauHoiChuaDuLieuCaNhanKhongGoiEmbeddingHayChat",
+      "com.beautyshop.integration.TuVanRag_MariaDb_Test#customerKhongDuocNapChiMuc",
+      "com.beautyshop.integration.TuVanRag_MariaDb_Test#ragCoNguonGiaTonMoiVaFallbackKhiModelSaiHoacLoi",
+      "com.beautyshop.integration.XacThucDaPhuongThuc_MariaDb_Test#capLinkMoiVoHieuLinkCuVaChiChoDungTrongMuoiLamPhut",
+      "com.beautyshop.integration.XacThucDaPhuongThuc_MariaDb_Test#doiMatKhauTuChoiTrungVaChoThuLaiCungPhien",
+      "com.beautyshop.integration.XacThucDaPhuongThuc_MariaDb_Test#goCanPhuongThucConLaiVaHaiProviderDungCungNguoiDung",
+      "com.beautyshop.integration.XacThucDaPhuongThuc_MariaDb_Test#guestThayCungPhanHoiVaPostCanCsrf",
+      "com.beautyshop.integration.XacThucDaPhuongThuc_MariaDb_Test#haiCustomerTranhCungDanhTinhChiGhiNhanChoMotChu",
+      "com.beautyshop.integration.XacThucDaPhuongThuc_MariaDb_Test#oauthGiuaCacLanDangNhapNhanDungIdVaKhongGhiDeEmail",
+      "com.beautyshop.integration.XacThucDaPhuongThuc_MariaDb_Test#smtpThatBaiKhongDoiHashVaHetHanLink",
+      "com.beautyshop.integration.XacThucDaPhuongThuc_MariaDb_Test#taiKhoanChiCoOAuthDaXacMinhEmailVanCanQuyenTaiProvider",
+      "com.beautyshop.integration.XacThucMigration_MariaDb_Test#baoToanIdLichSuVaChiChuyenDanhTinhCoBangChung(int)",
+      "com.beautyshop.integration.XacThuc_MariaDb_Test#dangKyBcryptEmailDuyNhatVaKhongNhanVaiTroTuClient",
+      "com.beautyshop.integration.XacThuc_MariaDb_Test#gioGuestGopMotLanVaKiemTraTonLai",
+      "com.beautyshop.integration.XacThuc_MariaDb_Test#gioiHanMuoiDiaChiTuMayChuVanChoPhepSua",
+      "com.beautyshop.integration.XacThuc_MariaDb_Test#haiRequestGopCungSnapshotKhongCongHaiLan",
+      "com.beautyshop.integration.XacThuc_MariaDb_Test#haiThietBiCungTaiKhoanMoiSnapshotGopMotLanVaCoNoticeRieng",
+      "com.beautyshop.integration.XacThuc_MariaDb_Test#hoSoVaDiaChiChiChoPhepChuTaiKhoan",
+      "com.beautyshop.integration.XacThuc_MariaDb_Test#luuDiaChiSongSongChiCoMotMacDinh",
+      "com.beautyshop.integration.XacThuc_MariaDb_Test#noticeCheckoutChiDungMotLanQuaHaiTabVaChiTietTonDuong",
+      "com.beautyshop.integration.XacThuc_MariaDb_Test#rollbackGopKhongPhatNoticeVaThuLaiCungSnapshot",
+      "com.beautyshop.repository.MongoDanhGia_Store_Test#aggregationTrungBinhPhanBoNhieuSanPhamVaToanCuaHang",
+      "com.beautyshop.repository.MongoDanhGia_Store_Test#findAndModifyTheoPhienBanVaTrangThaiLocAdmin",
+      "com.beautyshop.repository.MongoDanhGia_Store_Test#haiNguoiGhiCungMucChiMotLanThanhCong",
+      "com.beautyshop.repository.MongoDanhGia_Store_Test#indexDuocTaoVaKhoaDuyNhatChanTrungDongDon",
+      "com.beautyshop.repository.MongoDanhGia_Store_Test#indexSaiChanGhiVaKhongSuaDuLieu",
+      "com.beautyshop.repository.MongoDanhGia_Store_Test#khiTrungThoiDiemThiSapTheoIdVaDemDungBoLocQuaCacTrang",
+      "com.beautyshop.repository.MongoDanhGia_Store_Test#khoiDongKhiMongoTatRoiTaoIndexTruocGhiSauPhucHoi",
+      "com.beautyshop.repository.MongoDanhGia_Store_Test#phanTrangAdminVaCongKhaiMoiNhatTruoc",
+      "com.beautyshop.repository.MongoDanhGia_Store_Test#taoMauSaoLuu",
+      "com.beautyshop.repository.ReviewBsonCompatibilityTest#documentRoundTripAcrossPackageVersions",
+      "com.beautyshop.service.ThuTaiKhoan_MariaDb_Test#hetLeaseKhongGuiLai",
+      "com.beautyshop.service.ThuTaiKhoan_MariaDb_Test#leaseNguoiNhanVaKetQuaGui",
+      "com.beautyshop.service.ThuTaiKhoan_MariaDb_Test#sauSmtpMatKetNoiKhiGhiSent",
+      "com.beautyshop.service.ThuTaiKhoan_MariaDb_Test#thuLaiDungLichVaDungSauBonLan",
+      "com.beautyshop.service.ThuTaiKhoan_MariaDb_Test#workerChiThayEventSauCommitVaGiuThuTu",
+      "com.beautyshop.service.ThuTaiKhoan_MariaDb_Test#workerCuTraVeSauKhiPollerDaThuHoiLease",
+      "com.beautyshop.service.ThuTaiKhoan_MariaDb_Test#workerHetLeaseTruocKhiGhiKetQua"
+    ],
+    "otherScope": "Other disabled descriptors cover order lists, cart and account workflows, other authentication methods, catalog/report queries, mail, reviews, Mongo, FAQ or RAG. They retain NOT RUN. Assertions in a different work package do not change their status."
+  }
+}
