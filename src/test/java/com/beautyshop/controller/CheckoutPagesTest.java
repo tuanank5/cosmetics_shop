@@ -63,6 +63,12 @@ class CheckoutPagesTest {
             .andExpect(status().isOk()).andReturn().getResponse().getContentAsString();
     }
 
+    @Test void baoGiaDemSoLuongTuCungDanhSachGio() throws Exception {
+        mvc.perform(post("/checkout/quote").with(user(customer)).with(csrf()).param("addressId","1"))
+            .andExpect(status().isOk()).andExpect(model().attribute("uiCartCount", 2L));
+        verify(cart).docGioCustomer(7L);
+    }
+
     void unconfirmed(String html) {
         assertThat(html).contains("Chưa xác nhận", "data-quote-valid=\"false\"")
             .doesNotContain("data-checkout-discount", "data-checkout-shipping", "data-checkout-total");

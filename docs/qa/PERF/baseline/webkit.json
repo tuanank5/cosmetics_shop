@@ -1,0 +1,4180 @@
+[
+  {
+    "name": "webkit",
+    "width": 390,
+    "route": "/",
+    "visit": "cold",
+    "lcp": 948.0000000000001,
+    "cls": null,
+    "images": [
+      {
+        "src": "/img/brand/beautyshop-lockup.svg",
+        "loading": "eager",
+        "priority": "auto",
+        "width": 164,
+        "height": 22,
+        "below": false
+      },
+      {
+        "src": "/img/editorial/nocturne.svg",
+        "loading": "eager",
+        "priority": "high",
+        "width": 390,
+        "height": 791,
+        "below": false
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "eager",
+        "priority": "auto",
+        "width": 30,
+        "height": 40,
+        "below": false
+      },
+      {
+        "src": "/img/editorial/form.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 390,
+        "height": 900,
+        "below": true
+      },
+      {
+        "src": "/img/editorial/light.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 390,
+        "height": 900,
+        "below": true
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000001197.png",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 163,
+        "height": 204,
+        "below": true
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000001195.png",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 163,
+        "height": 204,
+        "below": true
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000001194.png",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 163,
+        "height": 204,
+        "below": true
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000001193.png",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 163,
+        "height": 204,
+        "below": true
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000000159.png",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 168,
+        "height": 208,
+        "below": true
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000000158.png",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 168,
+        "height": 208,
+        "below": true
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000000157.png",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 168,
+        "height": 208,
+        "below": true
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000000156.png",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 168,
+        "height": 208,
+        "below": true
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000000155.png",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 168,
+        "height": 208,
+        "below": true
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000001197.png",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 168,
+        "height": 208,
+        "below": true
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000001195.png",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 168,
+        "height": 208,
+        "below": true
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000001194.png",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 168,
+        "height": 208,
+        "below": true
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000001193.png",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 168,
+        "height": 208,
+        "below": true
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000001192.png",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 168,
+        "height": 208,
+        "below": true
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000001191.png",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 168,
+        "height": 208,
+        "below": true
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000001189.png",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 168,
+        "height": 208,
+        "below": true
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000001188.png",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 168,
+        "height": 208,
+        "below": true
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000001187.png",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 168,
+        "height": 208,
+        "below": true
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000001185.png",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 168,
+        "height": 208,
+        "below": true
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000001184.png",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 168,
+        "height": 208,
+        "below": true
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000001183.png",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 168,
+        "height": 208,
+        "below": true
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/img/brand/beautyshop-wordmark.svg",
+        "loading": "eager",
+        "priority": "auto",
+        "width": 240,
+        "height": 23,
+        "below": true
+      }
+    ],
+    "waterfall": [
+      {
+        "path": "/css/tokens.css",
+        "transfer": 1236,
+        "body": 936,
+        "start": 160,
+        "ms": 25
+      },
+      {
+        "path": "/css/base.css",
+        "transfer": 2482,
+        "body": 2182,
+        "start": 160,
+        "ms": 25
+      },
+      {
+        "path": "/css/reference-pages.css",
+        "transfer": 31113,
+        "body": 30813,
+        "start": 161,
+        "ms": 23
+      },
+      {
+        "path": "/css/components.css",
+        "transfer": 8003,
+        "body": 7703,
+        "start": 161,
+        "ms": 24
+      },
+      {
+        "path": "/css/vendor/swiper-14.4.0.min.css",
+        "transfer": 14925,
+        "body": 14625,
+        "start": 161,
+        "ms": 24
+      },
+      {
+        "path": "/css/storefront.css",
+        "transfer": 74621,
+        "body": 74321,
+        "start": 161,
+        "ms": 25
+      },
+      {
+        "path": "/css/brand-hero.css",
+        "transfer": 3129,
+        "body": 2829,
+        "start": 161,
+        "ms": 27
+      },
+      {
+        "path": "/css/admin.css",
+        "transfer": 22022,
+        "body": 21722,
+        "start": 161,
+        "ms": 27
+      },
+      {
+        "path": "/js/app.js",
+        "transfer": 12420,
+        "body": 12120,
+        "start": 164,
+        "ms": 24
+      },
+      {
+        "path": "/img/editorial/nocturne.svg",
+        "transfer": 1289,
+        "body": 989,
+        "start": 164,
+        "ms": 36
+      },
+      {
+        "path": "/js/vendor/gsap-3.15.1.min.js",
+        "transfer": 73668,
+        "body": 73368,
+        "start": 176,
+        "ms": 14
+      },
+      {
+        "path": "/js/home-motion.js",
+        "transfer": 1830,
+        "body": 1530,
+        "start": 177,
+        "ms": 14
+      },
+      {
+        "path": "/js/home-story.js",
+        "transfer": 4610,
+        "body": 4310,
+        "start": 177,
+        "ms": 17
+      },
+      {
+        "path": "/js/home-carousel.js",
+        "transfer": 11514,
+        "body": 11214,
+        "start": 177,
+        "ms": 17
+      },
+      {
+        "path": "/js/wishlist.js",
+        "transfer": 7768,
+        "body": 7468,
+        "start": 177,
+        "ms": 17
+      },
+      {
+        "path": "/js/vendor/swiper-14.4.0.min.js",
+        "transfer": 155139,
+        "body": 154839,
+        "start": 177,
+        "ms": 19
+      },
+      {
+        "path": "/img/brand/beautyshop-lockup.svg",
+        "transfer": 9212,
+        "body": 8912,
+        "start": 196,
+        "ms": 8
+      },
+      {
+        "path": "/img/brand/beautyshop-mark.svg",
+        "transfer": 1711,
+        "body": 1411,
+        "start": 201,
+        "ms": 4
+      },
+      {
+        "path": "/img/brand/beautyshop-wordmark.svg",
+        "transfer": 9174,
+        "body": 8874,
+        "start": 204,
+        "ms": 5
+      },
+      {
+        "path": "/img/editorial/form.svg",
+        "transfer": 0,
+        "body": 0,
+        "start": 433,
+        "ms": 1
+      }
+    ]
+  },
+  {
+    "name": "webkit",
+    "width": 390,
+    "route": "/",
+    "visit": "warm",
+    "lcp": 432,
+    "cls": null,
+    "images": [
+      {
+        "src": "/img/brand/beautyshop-lockup.svg",
+        "loading": "eager",
+        "priority": "auto",
+        "width": 164,
+        "height": 22,
+        "below": false
+      },
+      {
+        "src": "/img/editorial/nocturne.svg",
+        "loading": "eager",
+        "priority": "high",
+        "width": 390,
+        "height": 791,
+        "below": false
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "eager",
+        "priority": "auto",
+        "width": 30,
+        "height": 40,
+        "below": false
+      },
+      {
+        "src": "/img/editorial/form.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 390,
+        "height": 900,
+        "below": true
+      },
+      {
+        "src": "/img/editorial/light.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 390,
+        "height": 900,
+        "below": true
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000001197.png",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 163,
+        "height": 204,
+        "below": true
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000001195.png",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 163,
+        "height": 204,
+        "below": true
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000001194.png",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 163,
+        "height": 204,
+        "below": true
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000001193.png",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 163,
+        "height": 204,
+        "below": true
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000000159.png",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 168,
+        "height": 208,
+        "below": true
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000000158.png",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 168,
+        "height": 208,
+        "below": true
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000000157.png",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 168,
+        "height": 208,
+        "below": true
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000000156.png",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 168,
+        "height": 208,
+        "below": true
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000000155.png",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 168,
+        "height": 208,
+        "below": true
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000001197.png",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 168,
+        "height": 208,
+        "below": true
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000001195.png",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 168,
+        "height": 208,
+        "below": true
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000001194.png",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 168,
+        "height": 208,
+        "below": true
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000001193.png",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 168,
+        "height": 208,
+        "below": true
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000001192.png",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 168,
+        "height": 208,
+        "below": true
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000001191.png",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 168,
+        "height": 208,
+        "below": true
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000001189.png",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 168,
+        "height": 208,
+        "below": true
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000001188.png",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 168,
+        "height": 208,
+        "below": true
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000001187.png",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 168,
+        "height": 208,
+        "below": true
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000001185.png",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 168,
+        "height": 208,
+        "below": true
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000001184.png",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 168,
+        "height": 208,
+        "below": true
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000001183.png",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 168,
+        "height": 208,
+        "below": true
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/img/brand/beautyshop-wordmark.svg",
+        "loading": "eager",
+        "priority": "auto",
+        "width": 240,
+        "height": 23,
+        "below": true
+      }
+    ],
+    "waterfall": [
+      {
+        "path": "/css/tokens.css",
+        "transfer": 1236,
+        "body": 936,
+        "start": 264,
+        "ms": 23
+      },
+      {
+        "path": "/css/base.css",
+        "transfer": 2482,
+        "body": 2182,
+        "start": 277,
+        "ms": 11
+      },
+      {
+        "path": "/css/components.css",
+        "transfer": 8003,
+        "body": 7703,
+        "start": 277,
+        "ms": 11
+      },
+      {
+        "path": "/css/vendor/swiper-14.4.0.min.css",
+        "transfer": 14925,
+        "body": 14625,
+        "start": 278,
+        "ms": 10
+      },
+      {
+        "path": "/css/storefront.css",
+        "transfer": 74621,
+        "body": 74321,
+        "start": 278,
+        "ms": 11
+      },
+      {
+        "path": "/css/reference-pages.css",
+        "transfer": 31113,
+        "body": 30813,
+        "start": 282,
+        "ms": 8
+      },
+      {
+        "path": "/css/brand-hero.css",
+        "transfer": 3129,
+        "body": 2829,
+        "start": 283,
+        "ms": 7
+      },
+      {
+        "path": "/css/admin.css",
+        "transfer": 22022,
+        "body": 21722,
+        "start": 283,
+        "ms": 10
+      },
+      {
+        "path": "/js/app.js",
+        "transfer": 12420,
+        "body": 12120,
+        "start": 283,
+        "ms": 10
+      },
+      {
+        "path": "/img/editorial/nocturne.svg",
+        "transfer": 1289,
+        "body": 989,
+        "start": 283,
+        "ms": 10
+      },
+      {
+        "path": "/js/home-motion.js",
+        "transfer": 1830,
+        "body": 1530,
+        "start": 284,
+        "ms": 10
+      },
+      {
+        "path": "/js/vendor/gsap-3.15.1.min.js",
+        "transfer": 73668,
+        "body": 73368,
+        "start": 284,
+        "ms": 14
+      },
+      {
+        "path": "/js/home-story.js",
+        "transfer": 4610,
+        "body": 4310,
+        "start": 285,
+        "ms": 9
+      },
+      {
+        "path": "/js/home-carousel.js",
+        "transfer": 11514,
+        "body": 11214,
+        "start": 285,
+        "ms": 11
+      },
+      {
+        "path": "/js/vendor/swiper-14.4.0.min.js",
+        "transfer": 155139,
+        "body": 154839,
+        "start": 285,
+        "ms": 12
+      },
+      {
+        "path": "/js/wishlist.js",
+        "transfer": 7768,
+        "body": 7468,
+        "start": 285,
+        "ms": 14
+      },
+      {
+        "path": "/img/brand/beautyshop-lockup.svg",
+        "transfer": 9212,
+        "body": 8912,
+        "start": 298,
+        "ms": 5
+      },
+      {
+        "path": "/img/brand/beautyshop-mark.svg",
+        "transfer": 1711,
+        "body": 1411,
+        "start": 299,
+        "ms": 4
+      },
+      {
+        "path": "/img/editorial/form.svg",
+        "transfer": 1075,
+        "body": 775,
+        "start": 303,
+        "ms": 4
+      },
+      {
+        "path": "/img/brand/beautyshop-wordmark.svg",
+        "transfer": 9174,
+        "body": 8874,
+        "start": 303,
+        "ms": 5
+      }
+    ]
+  },
+  {
+    "name": "webkit",
+    "width": 390,
+    "route": "/products",
+    "visit": "cold",
+    "lcp": 184,
+    "cls": null,
+    "images": [
+      {
+        "src": "/img/brand/beautyshop-lockup.svg",
+        "loading": "eager",
+        "priority": "auto",
+        "width": 164,
+        "height": 22,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000001197.png",
+        "loading": "eager",
+        "priority": "auto",
+        "width": 171,
+        "height": 214,
+        "below": false
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000001195.png",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 171,
+        "height": 214,
+        "below": false
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000001194.png",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 171,
+        "height": 214,
+        "below": true
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000001193.png",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 171,
+        "height": 214,
+        "below": true
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000001192.png",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 171,
+        "height": 214,
+        "below": true
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000001191.png",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 171,
+        "height": 214,
+        "below": true
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000001189.png",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 171,
+        "height": 214,
+        "below": true
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000001188.png",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 171,
+        "height": 214,
+        "below": true
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000001187.png",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 171,
+        "height": 214,
+        "below": true
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000001185.png",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 171,
+        "height": 214,
+        "below": true
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000001184.png",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 171,
+        "height": 214,
+        "below": true
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000001183.png",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 171,
+        "height": 214,
+        "below": true
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/img/brand/beautyshop-wordmark.svg",
+        "loading": "eager",
+        "priority": "auto",
+        "width": 240,
+        "height": 23,
+        "below": true
+      }
+    ],
+    "waterfall": [
+      {
+        "path": "/css/tokens.css",
+        "transfer": 1236,
+        "body": 936,
+        "start": 38,
+        "ms": 4
+      },
+      {
+        "path": "/css/base.css",
+        "transfer": 2482,
+        "body": 2182,
+        "start": 38,
+        "ms": 4
+      },
+      {
+        "path": "/css/components.css",
+        "transfer": 8003,
+        "body": 7703,
+        "start": 38,
+        "ms": 4
+      },
+      {
+        "path": "/css/storefront.css",
+        "transfer": 74621,
+        "body": 74321,
+        "start": 39,
+        "ms": 3
+      },
+      {
+        "path": "/css/reference-pages.css",
+        "transfer": 31113,
+        "body": 30813,
+        "start": 39,
+        "ms": 5
+      },
+      {
+        "path": "/css/admin.css",
+        "transfer": 22022,
+        "body": 21722,
+        "start": 40,
+        "ms": 4
+      },
+      {
+        "path": "/js/app.js",
+        "transfer": 12420,
+        "body": 12120,
+        "start": 40,
+        "ms": 5
+      },
+      {
+        "path": "/img/brand/beautyshop-lockup.svg",
+        "transfer": 9212,
+        "body": 8912,
+        "start": 44,
+        "ms": 4
+      },
+      {
+        "path": "/uploads/sku/00000000-0000-4000-8000-000000001197.png",
+        "transfer": 1675,
+        "body": 1375,
+        "start": 45,
+        "ms": 18
+      },
+      {
+        "path": "/img/brand/beautyshop-wordmark.svg",
+        "transfer": 9174,
+        "body": 8874,
+        "start": 49,
+        "ms": 4
+      },
+      {
+        "path": "/js/catalog-preview.js",
+        "transfer": 3873,
+        "body": 3573,
+        "start": 50,
+        "ms": 3
+      },
+      {
+        "path": "/js/wishlist.js",
+        "transfer": 7768,
+        "body": 7468,
+        "start": 51,
+        "ms": 2
+      },
+      {
+        "path": "/uploads/sku/00000000-0000-4000-8000-000000001195.png",
+        "transfer": 0,
+        "body": 0,
+        "start": 133,
+        "ms": 0
+      },
+      {
+        "path": "/uploads/sku/00000000-0000-4000-8000-000000001194.png",
+        "transfer": 0,
+        "body": 0,
+        "start": 133,
+        "ms": 0
+      },
+      {
+        "path": "/uploads/sku/00000000-0000-4000-8000-000000001193.png",
+        "transfer": 0,
+        "body": 0,
+        "start": 134,
+        "ms": 0
+      },
+      {
+        "path": "/uploads/sku/00000000-0000-4000-8000-000000001192.png",
+        "transfer": 0,
+        "body": 0,
+        "start": 134,
+        "ms": 0
+      },
+      {
+        "path": "/uploads/sku/00000000-0000-4000-8000-000000001191.png",
+        "transfer": 0,
+        "body": 0,
+        "start": 134,
+        "ms": 0
+      },
+      {
+        "path": "/uploads/sku/00000000-0000-4000-8000-000000001189.png",
+        "transfer": 0,
+        "body": 0,
+        "start": 134,
+        "ms": 0
+      },
+      {
+        "path": "/uploads/sku/00000000-0000-4000-8000-000000001188.png",
+        "transfer": 0,
+        "body": 0,
+        "start": 134,
+        "ms": 0
+      }
+    ]
+  },
+  {
+    "name": "webkit",
+    "width": 390,
+    "route": "/products",
+    "visit": "warm",
+    "lcp": 124,
+    "cls": null,
+    "images": [
+      {
+        "src": "/img/brand/beautyshop-lockup.svg",
+        "loading": "eager",
+        "priority": "auto",
+        "width": 164,
+        "height": 22,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000001197.png",
+        "loading": "eager",
+        "priority": "auto",
+        "width": 171,
+        "height": 214,
+        "below": false
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000001195.png",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 171,
+        "height": 214,
+        "below": false
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000001194.png",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 171,
+        "height": 214,
+        "below": true
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000001193.png",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 171,
+        "height": 214,
+        "below": true
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000001192.png",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 171,
+        "height": 214,
+        "below": true
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000001191.png",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 171,
+        "height": 214,
+        "below": true
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000001189.png",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 171,
+        "height": 214,
+        "below": true
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000001188.png",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 171,
+        "height": 214,
+        "below": true
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000001187.png",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 171,
+        "height": 214,
+        "below": true
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000001185.png",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 171,
+        "height": 214,
+        "below": true
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000001184.png",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 171,
+        "height": 214,
+        "below": true
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000001183.png",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 171,
+        "height": 214,
+        "below": true
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/img/brand/beautyshop-wordmark.svg",
+        "loading": "eager",
+        "priority": "auto",
+        "width": 240,
+        "height": 23,
+        "below": true
+      }
+    ],
+    "waterfall": [
+      {
+        "path": "/css/base.css",
+        "transfer": 2482,
+        "body": 2182,
+        "start": 47,
+        "ms": 4
+      },
+      {
+        "path": "/css/tokens.css",
+        "transfer": 1236,
+        "body": 936,
+        "start": 47,
+        "ms": 5
+      },
+      {
+        "path": "/css/components.css",
+        "transfer": 8003,
+        "body": 7703,
+        "start": 47,
+        "ms": 6
+      },
+      {
+        "path": "/css/storefront.css",
+        "transfer": 74621,
+        "body": 74321,
+        "start": 47,
+        "ms": 7
+      },
+      {
+        "path": "/css/reference-pages.css",
+        "transfer": 31113,
+        "body": 30813,
+        "start": 47,
+        "ms": 8
+      },
+      {
+        "path": "/js/app.js",
+        "transfer": 12420,
+        "body": 12120,
+        "start": 48,
+        "ms": 7
+      },
+      {
+        "path": "/css/admin.css",
+        "transfer": 22022,
+        "body": 21722,
+        "start": 48,
+        "ms": 8
+      },
+      {
+        "path": "/img/brand/beautyshop-lockup.svg",
+        "transfer": 9212,
+        "body": 8912,
+        "start": 55,
+        "ms": 5
+      },
+      {
+        "path": "/uploads/sku/00000000-0000-4000-8000-000000001197.png",
+        "transfer": 1675,
+        "body": 1375,
+        "start": 56,
+        "ms": 9
+      },
+      {
+        "path": "/js/catalog-preview.js",
+        "transfer": 3873,
+        "body": 3573,
+        "start": 59,
+        "ms": 3
+      },
+      {
+        "path": "/js/wishlist.js",
+        "transfer": 7768,
+        "body": 7468,
+        "start": 59,
+        "ms": 3
+      },
+      {
+        "path": "/uploads/sku/00000000-0000-4000-8000-000000001195.png",
+        "transfer": 1675,
+        "body": 1375,
+        "start": 62,
+        "ms": 8
+      },
+      {
+        "path": "/uploads/sku/00000000-0000-4000-8000-000000001194.png",
+        "transfer": 1675,
+        "body": 1375,
+        "start": 65,
+        "ms": 8
+      },
+      {
+        "path": "/uploads/sku/00000000-0000-4000-8000-000000001193.png",
+        "transfer": 1675,
+        "body": 1375,
+        "start": 70,
+        "ms": 6
+      },
+      {
+        "path": "/uploads/sku/00000000-0000-4000-8000-000000001192.png",
+        "transfer": 1675,
+        "body": 1375,
+        "start": 73,
+        "ms": 7
+      },
+      {
+        "path": "/uploads/sku/00000000-0000-4000-8000-000000001191.png",
+        "transfer": 1675,
+        "body": 1375,
+        "start": 77,
+        "ms": 7
+      },
+      {
+        "path": "/uploads/sku/00000000-0000-4000-8000-000000001189.png",
+        "transfer": 1675,
+        "body": 1375,
+        "start": 80,
+        "ms": 10
+      },
+      {
+        "path": "/uploads/sku/00000000-0000-4000-8000-000000001188.png",
+        "transfer": 1675,
+        "body": 1375,
+        "start": 84,
+        "ms": 9
+      },
+      {
+        "path": "/img/brand/beautyshop-wordmark.svg",
+        "transfer": 9174,
+        "body": 8874,
+        "start": 90,
+        "ms": 3
+      }
+    ]
+  },
+  {
+    "name": "webkit",
+    "width": 390,
+    "route": "/products/perf-1",
+    "visit": "cold",
+    "lcp": 120,
+    "cls": null,
+    "images": [
+      {
+        "src": "/img/brand/beautyshop-lockup.svg",
+        "loading": "eager",
+        "priority": "auto",
+        "width": 164,
+        "height": 22,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000000001.png",
+        "loading": "eager",
+        "priority": "auto",
+        "width": 358,
+        "height": 358,
+        "below": false
+      },
+      {
+        "src": "/img/brand/beautyshop-wordmark.svg",
+        "loading": "eager",
+        "priority": "auto",
+        "width": 240,
+        "height": 23,
+        "below": true
+      }
+    ],
+    "waterfall": [
+      {
+        "path": "/css/tokens.css",
+        "transfer": 1236,
+        "body": 936,
+        "start": 18,
+        "ms": 4
+      },
+      {
+        "path": "/css/base.css",
+        "transfer": 2482,
+        "body": 2182,
+        "start": 18,
+        "ms": 4
+      },
+      {
+        "path": "/css/components.css",
+        "transfer": 8003,
+        "body": 7703,
+        "start": 18,
+        "ms": 4
+      },
+      {
+        "path": "/css/storefront.css",
+        "transfer": 74621,
+        "body": 74321,
+        "start": 18,
+        "ms": 4
+      },
+      {
+        "path": "/css/reference-pages.css",
+        "transfer": 31113,
+        "body": 30813,
+        "start": 19,
+        "ms": 5
+      },
+      {
+        "path": "/css/admin.css",
+        "transfer": 22022,
+        "body": 21722,
+        "start": 20,
+        "ms": 4
+      },
+      {
+        "path": "/js/app.js",
+        "transfer": 12420,
+        "body": 12120,
+        "start": 20,
+        "ms": 4
+      },
+      {
+        "path": "/js/wishlist.js",
+        "transfer": 7768,
+        "body": 7468,
+        "start": 23,
+        "ms": 3
+      },
+      {
+        "path": "/img/brand/beautyshop-lockup.svg",
+        "transfer": 9212,
+        "body": 8912,
+        "start": 24,
+        "ms": 2
+      },
+      {
+        "path": "/img/brand/beautyshop-wordmark.svg",
+        "transfer": 9174,
+        "body": 8874,
+        "start": 26,
+        "ms": 3
+      },
+      {
+        "path": "/uploads/sku/00000000-0000-4000-8000-000000000001.png",
+        "transfer": 1675,
+        "body": 1375,
+        "start": 26,
+        "ms": 6
+      }
+    ]
+  },
+  {
+    "name": "webkit",
+    "width": 390,
+    "route": "/products/perf-1",
+    "visit": "warm",
+    "lcp": 88,
+    "cls": null,
+    "images": [
+      {
+        "src": "/img/brand/beautyshop-lockup.svg",
+        "loading": "eager",
+        "priority": "auto",
+        "width": 164,
+        "height": 22,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000000001.png",
+        "loading": "eager",
+        "priority": "auto",
+        "width": 358,
+        "height": 358,
+        "below": false
+      },
+      {
+        "src": "/img/brand/beautyshop-wordmark.svg",
+        "loading": "eager",
+        "priority": "auto",
+        "width": 240,
+        "height": 23,
+        "below": true
+      }
+    ],
+    "waterfall": [
+      {
+        "path": "/css/tokens.css",
+        "transfer": 1236,
+        "body": 936,
+        "start": 20,
+        "ms": 9
+      },
+      {
+        "path": "/css/base.css",
+        "transfer": 2482,
+        "body": 2182,
+        "start": 20,
+        "ms": 10
+      },
+      {
+        "path": "/css/components.css",
+        "transfer": 8003,
+        "body": 7703,
+        "start": 20,
+        "ms": 10
+      },
+      {
+        "path": "/css/reference-pages.css",
+        "transfer": 31113,
+        "body": 30813,
+        "start": 21,
+        "ms": 9
+      },
+      {
+        "path": "/css/admin.css",
+        "transfer": 22022,
+        "body": 21722,
+        "start": 21,
+        "ms": 9
+      },
+      {
+        "path": "/css/storefront.css",
+        "transfer": 74621,
+        "body": 74321,
+        "start": 21,
+        "ms": 9
+      },
+      {
+        "path": "/js/app.js",
+        "transfer": 12420,
+        "body": 12120,
+        "start": 21,
+        "ms": 13
+      },
+      {
+        "path": "/js/wishlist.js",
+        "transfer": 7768,
+        "body": 7468,
+        "start": 26,
+        "ms": 8
+      },
+      {
+        "path": "/img/brand/beautyshop-lockup.svg",
+        "transfer": 9212,
+        "body": 8912,
+        "start": 34,
+        "ms": 3
+      },
+      {
+        "path": "/uploads/sku/00000000-0000-4000-8000-000000000001.png",
+        "transfer": 1675,
+        "body": 1375,
+        "start": 34,
+        "ms": 5
+      },
+      {
+        "path": "/img/brand/beautyshop-wordmark.svg",
+        "transfer": 9174,
+        "body": 8874,
+        "start": 37,
+        "ms": 4
+      }
+    ],
+    "skuCache": {
+      "url": "/uploads/sku/00000000-0000-4000-8000-000000000001.png",
+      "first": 200,
+      "conditional": 200,
+      "bytes": 1375,
+      "cacheControl": "no-cache, no-store, max-age=0, must-revalidate",
+      "etag": null
+    }
+  },
+  {
+    "name": "webkit",
+    "width": 1440,
+    "route": "/",
+    "visit": "cold",
+    "lcp": 384,
+    "cls": null,
+    "images": [
+      {
+        "src": "/img/brand/beautyshop-lockup.svg",
+        "loading": "eager",
+        "priority": "auto",
+        "width": 257,
+        "height": 35,
+        "below": false
+      },
+      {
+        "src": "/img/editorial/nocturne.svg",
+        "loading": "eager",
+        "priority": "high",
+        "width": 1440,
+        "height": 900,
+        "below": false
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "eager",
+        "priority": "auto",
+        "width": 30,
+        "height": 40,
+        "below": false
+      },
+      {
+        "src": "/img/editorial/form.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 1440,
+        "height": 900,
+        "below": true
+      },
+      {
+        "src": "/img/editorial/light.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 1440,
+        "height": 900,
+        "below": true
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000001197.png",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 215,
+        "height": 269,
+        "below": true
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000001195.png",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 215,
+        "height": 269,
+        "below": true
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000001194.png",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 215,
+        "height": 269,
+        "below": true
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000001193.png",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 215,
+        "height": 269,
+        "below": true
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000000159.png",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 214,
+        "height": 267,
+        "below": true
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000000158.png",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 214,
+        "height": 267,
+        "below": true
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000000157.png",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 214,
+        "height": 267,
+        "below": true
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000000156.png",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 214,
+        "height": 267,
+        "below": true
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000000155.png",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 214,
+        "height": 267,
+        "below": true
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000001197.png",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 274,
+        "height": 342,
+        "below": true
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000001195.png",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 274,
+        "height": 342,
+        "below": true
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000001194.png",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 274,
+        "height": 342,
+        "below": true
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000001193.png",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 274,
+        "height": 342,
+        "below": true
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000001192.png",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 274,
+        "height": 342,
+        "below": true
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000001191.png",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 274,
+        "height": 342,
+        "below": true
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000001189.png",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 274,
+        "height": 342,
+        "below": true
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000001188.png",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 274,
+        "height": 342,
+        "below": true
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000001187.png",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 274,
+        "height": 342,
+        "below": true
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000001185.png",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 274,
+        "height": 342,
+        "below": true
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000001184.png",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 274,
+        "height": 342,
+        "below": true
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000001183.png",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 274,
+        "height": 342,
+        "below": true
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/img/brand/beautyshop-wordmark.svg",
+        "loading": "eager",
+        "priority": "auto",
+        "width": 240,
+        "height": 23,
+        "below": true
+      }
+    ],
+    "waterfall": [
+      {
+        "path": "/css/tokens.css",
+        "transfer": 1236,
+        "body": 936,
+        "start": 106,
+        "ms": 4
+      },
+      {
+        "path": "/css/vendor/swiper-14.4.0.min.css",
+        "transfer": 14925,
+        "body": 14625,
+        "start": 107,
+        "ms": 3
+      },
+      {
+        "path": "/css/components.css",
+        "transfer": 8003,
+        "body": 7703,
+        "start": 107,
+        "ms": 4
+      },
+      {
+        "path": "/css/base.css",
+        "transfer": 2482,
+        "body": 2182,
+        "start": 107,
+        "ms": 4
+      },
+      {
+        "path": "/css/storefront.css",
+        "transfer": 74621,
+        "body": 74321,
+        "start": 107,
+        "ms": 5
+      },
+      {
+        "path": "/css/reference-pages.css",
+        "transfer": 31113,
+        "body": 30813,
+        "start": 108,
+        "ms": 4
+      },
+      {
+        "path": "/css/brand-hero.css",
+        "transfer": 3129,
+        "body": 2829,
+        "start": 108,
+        "ms": 4
+      },
+      {
+        "path": "/css/admin.css",
+        "transfer": 22022,
+        "body": 21722,
+        "start": 108,
+        "ms": 5
+      },
+      {
+        "path": "/js/app.js",
+        "transfer": 12420,
+        "body": 12120,
+        "start": 108,
+        "ms": 5
+      },
+      {
+        "path": "/img/editorial/nocturne.svg",
+        "transfer": 1289,
+        "body": 989,
+        "start": 110,
+        "ms": 3
+      },
+      {
+        "path": "/img/brand/beautyshop-mark.svg",
+        "transfer": 1711,
+        "body": 1411,
+        "start": 113,
+        "ms": 2
+      },
+      {
+        "path": "/img/brand/beautyshop-lockup.svg",
+        "transfer": 9212,
+        "body": 8912,
+        "start": 113,
+        "ms": 3
+      },
+      {
+        "path": "/img/brand/beautyshop-wordmark.svg",
+        "transfer": 9174,
+        "body": 8874,
+        "start": 118,
+        "ms": 5
+      },
+      {
+        "path": "/js/vendor/gsap-3.15.1.min.js",
+        "transfer": 73668,
+        "body": 73368,
+        "start": 119,
+        "ms": 5
+      },
+      {
+        "path": "/js/home-motion.js",
+        "transfer": 1830,
+        "body": 1530,
+        "start": 120,
+        "ms": 4
+      },
+      {
+        "path": "/js/home-story.js",
+        "transfer": 4610,
+        "body": 4310,
+        "start": 120,
+        "ms": 4
+      },
+      {
+        "path": "/js/vendor/swiper-14.4.0.min.js",
+        "transfer": 155139,
+        "body": 154839,
+        "start": 120,
+        "ms": 5
+      },
+      {
+        "path": "/js/home-carousel.js",
+        "transfer": 11514,
+        "body": 11214,
+        "start": 121,
+        "ms": 4
+      },
+      {
+        "path": "/js/wishlist.js",
+        "transfer": 7768,
+        "body": 7468,
+        "start": 121,
+        "ms": 5
+      },
+      {
+        "path": "/img/editorial/form.svg",
+        "transfer": 0,
+        "body": 0,
+        "start": 189,
+        "ms": 0
+      },
+      {
+        "path": "/uploads/sku/00000000-0000-4000-8000-000000000159.png",
+        "transfer": 0,
+        "body": 0,
+        "start": 318,
+        "ms": 0
+      },
+      {
+        "path": "/uploads/sku/00000000-0000-4000-8000-000000000158.png",
+        "transfer": 0,
+        "body": 0,
+        "start": 318,
+        "ms": 0
+      },
+      {
+        "path": "/uploads/sku/00000000-0000-4000-8000-000000000157.png",
+        "transfer": 0,
+        "body": 0,
+        "start": 318,
+        "ms": 0
+      },
+      {
+        "path": "/uploads/sku/00000000-0000-4000-8000-000000000156.png",
+        "transfer": 0,
+        "body": 0,
+        "start": 318,
+        "ms": 0
+      },
+      {
+        "path": "/uploads/sku/00000000-0000-4000-8000-000000000155.png",
+        "transfer": 0,
+        "body": 0,
+        "start": 318,
+        "ms": 0
+      }
+    ]
+  },
+  {
+    "name": "webkit",
+    "width": 1440,
+    "route": "/",
+    "visit": "warm",
+    "lcp": 315,
+    "cls": null,
+    "images": [
+      {
+        "src": "/img/brand/beautyshop-lockup.svg",
+        "loading": "eager",
+        "priority": "auto",
+        "width": 257,
+        "height": 35,
+        "below": false
+      },
+      {
+        "src": "/img/editorial/nocturne.svg",
+        "loading": "eager",
+        "priority": "high",
+        "width": 1440,
+        "height": 900,
+        "below": false
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "eager",
+        "priority": "auto",
+        "width": 30,
+        "height": 40,
+        "below": false
+      },
+      {
+        "src": "/img/editorial/form.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 1440,
+        "height": 900,
+        "below": true
+      },
+      {
+        "src": "/img/editorial/light.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 1440,
+        "height": 900,
+        "below": true
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000001197.png",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 215,
+        "height": 269,
+        "below": true
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000001195.png",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 215,
+        "height": 269,
+        "below": true
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000001194.png",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 215,
+        "height": 269,
+        "below": true
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000001193.png",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 215,
+        "height": 269,
+        "below": true
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000000159.png",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 214,
+        "height": 267,
+        "below": true
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000000158.png",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 214,
+        "height": 267,
+        "below": true
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000000157.png",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 214,
+        "height": 267,
+        "below": true
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000000156.png",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 214,
+        "height": 267,
+        "below": true
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000000155.png",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 214,
+        "height": 267,
+        "below": true
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000001197.png",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 274,
+        "height": 342,
+        "below": true
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000001195.png",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 274,
+        "height": 342,
+        "below": true
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000001194.png",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 274,
+        "height": 342,
+        "below": true
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000001193.png",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 274,
+        "height": 342,
+        "below": true
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000001192.png",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 274,
+        "height": 342,
+        "below": true
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000001191.png",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 274,
+        "height": 342,
+        "below": true
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000001189.png",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 274,
+        "height": 342,
+        "below": true
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000001188.png",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 274,
+        "height": 342,
+        "below": true
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000001187.png",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 274,
+        "height": 342,
+        "below": true
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000001185.png",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 274,
+        "height": 342,
+        "below": true
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000001184.png",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 274,
+        "height": 342,
+        "below": true
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000001183.png",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 274,
+        "height": 342,
+        "below": true
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/img/brand/beautyshop-wordmark.svg",
+        "loading": "eager",
+        "priority": "auto",
+        "width": 240,
+        "height": 23,
+        "below": true
+      }
+    ],
+    "waterfall": [
+      {
+        "path": "/css/base.css",
+        "transfer": 2482,
+        "body": 2182,
+        "start": 133,
+        "ms": 6
+      },
+      {
+        "path": "/css/tokens.css",
+        "transfer": 1236,
+        "body": 936,
+        "start": 133,
+        "ms": 7
+      },
+      {
+        "path": "/css/vendor/swiper-14.4.0.min.css",
+        "transfer": 14925,
+        "body": 14625,
+        "start": 134,
+        "ms": 4
+      },
+      {
+        "path": "/css/components.css",
+        "transfer": 8003,
+        "body": 7703,
+        "start": 134,
+        "ms": 5
+      },
+      {
+        "path": "/css/storefront.css",
+        "transfer": 74621,
+        "body": 74321,
+        "start": 134,
+        "ms": 7
+      },
+      {
+        "path": "/css/reference-pages.css",
+        "transfer": 31113,
+        "body": 30813,
+        "start": 135,
+        "ms": 5
+      },
+      {
+        "path": "/css/brand-hero.css",
+        "transfer": 3129,
+        "body": 2829,
+        "start": 135,
+        "ms": 5
+      },
+      {
+        "path": "/js/app.js",
+        "transfer": 12420,
+        "body": 12120,
+        "start": 135,
+        "ms": 7
+      },
+      {
+        "path": "/css/admin.css",
+        "transfer": 22022,
+        "body": 21722,
+        "start": 135,
+        "ms": 8
+      },
+      {
+        "path": "/img/editorial/nocturne.svg",
+        "transfer": 1289,
+        "body": 989,
+        "start": 136,
+        "ms": 10
+      },
+      {
+        "path": "/img/brand/beautyshop-lockup.svg",
+        "transfer": 9212,
+        "body": 8912,
+        "start": 143,
+        "ms": 3
+      },
+      {
+        "path": "/img/brand/beautyshop-mark.svg",
+        "transfer": 1711,
+        "body": 1411,
+        "start": 146,
+        "ms": 3
+      },
+      {
+        "path": "/img/editorial/form.svg",
+        "transfer": 1075,
+        "body": 775,
+        "start": 146,
+        "ms": 4
+      },
+      {
+        "path": "/uploads/sku/00000000-0000-4000-8000-000000000159.png",
+        "transfer": 1675,
+        "body": 1375,
+        "start": 150,
+        "ms": 7
+      },
+      {
+        "path": "/uploads/sku/00000000-0000-4000-8000-000000000158.png",
+        "transfer": 1675,
+        "body": 1375,
+        "start": 150,
+        "ms": 7
+      },
+      {
+        "path": "/js/vendor/gsap-3.15.1.min.js",
+        "transfer": 73668,
+        "body": 73368,
+        "start": 152,
+        "ms": 5
+      },
+      {
+        "path": "/js/home-motion.js",
+        "transfer": 1830,
+        "body": 1530,
+        "start": 152,
+        "ms": 5
+      },
+      {
+        "path": "/js/home-story.js",
+        "transfer": 4610,
+        "body": 4310,
+        "start": 152,
+        "ms": 5
+      },
+      {
+        "path": "/js/vendor/swiper-14.4.0.min.js",
+        "transfer": 155139,
+        "body": 154839,
+        "start": 153,
+        "ms": 8
+      },
+      {
+        "path": "/js/home-carousel.js",
+        "transfer": 11514,
+        "body": 11214,
+        "start": 154,
+        "ms": 6
+      },
+      {
+        "path": "/js/wishlist.js",
+        "transfer": 7768,
+        "body": 7468,
+        "start": 154,
+        "ms": 6
+      },
+      {
+        "path": "/uploads/sku/00000000-0000-4000-8000-000000000157.png",
+        "transfer": 1675,
+        "body": 1375,
+        "start": 160,
+        "ms": 6
+      },
+      {
+        "path": "/uploads/sku/00000000-0000-4000-8000-000000000156.png",
+        "transfer": 1675,
+        "body": 1375,
+        "start": 161,
+        "ms": 5
+      },
+      {
+        "path": "/img/brand/beautyshop-wordmark.svg",
+        "transfer": 9174,
+        "body": 8874,
+        "start": 166,
+        "ms": 4
+      },
+      {
+        "path": "/uploads/sku/00000000-0000-4000-8000-000000000155.png",
+        "transfer": 1675,
+        "body": 1375,
+        "start": 166,
+        "ms": 6
+      }
+    ]
+  },
+  {
+    "name": "webkit",
+    "width": 1440,
+    "route": "/products",
+    "visit": "cold",
+    "lcp": 192,
+    "cls": null,
+    "images": [
+      {
+        "src": "/img/brand/beautyshop-lockup.svg",
+        "loading": "eager",
+        "priority": "auto",
+        "width": 257,
+        "height": 35,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000001197.png",
+        "loading": "eager",
+        "priority": "auto",
+        "width": 317,
+        "height": 396,
+        "below": false
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000001195.png",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 317,
+        "height": 396,
+        "below": false
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000001194.png",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 317,
+        "height": 396,
+        "below": false
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000001193.png",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 317,
+        "height": 396,
+        "below": false
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000001192.png",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 317,
+        "height": 396,
+        "below": true
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000001191.png",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 317,
+        "height": 396,
+        "below": true
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000001189.png",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 317,
+        "height": 396,
+        "below": true
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000001188.png",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 317,
+        "height": 396,
+        "below": true
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000001187.png",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 317,
+        "height": 396,
+        "below": true
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000001185.png",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 317,
+        "height": 396,
+        "below": true
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000001184.png",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 317,
+        "height": 396,
+        "below": true
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000001183.png",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 317,
+        "height": 396,
+        "below": true
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/img/brand/beautyshop-wordmark.svg",
+        "loading": "eager",
+        "priority": "auto",
+        "width": 240,
+        "height": 23,
+        "below": true
+      }
+    ],
+    "waterfall": [
+      {
+        "path": "/css/base.css",
+        "transfer": 2482,
+        "body": 2182,
+        "start": 38,
+        "ms": 4
+      },
+      {
+        "path": "/css/components.css",
+        "transfer": 8003,
+        "body": 7703,
+        "start": 38,
+        "ms": 5
+      },
+      {
+        "path": "/css/tokens.css",
+        "transfer": 1236,
+        "body": 936,
+        "start": 38,
+        "ms": 5
+      },
+      {
+        "path": "/css/storefront.css",
+        "transfer": 74621,
+        "body": 74321,
+        "start": 39,
+        "ms": 4
+      },
+      {
+        "path": "/css/reference-pages.css",
+        "transfer": 31113,
+        "body": 30813,
+        "start": 39,
+        "ms": 4
+      },
+      {
+        "path": "/js/app.js",
+        "transfer": 12420,
+        "body": 12120,
+        "start": 40,
+        "ms": 4
+      },
+      {
+        "path": "/css/admin.css",
+        "transfer": 22022,
+        "body": 21722,
+        "start": 40,
+        "ms": 5
+      },
+      {
+        "path": "/img/brand/beautyshop-lockup.svg",
+        "transfer": 9212,
+        "body": 8912,
+        "start": 45,
+        "ms": 3
+      },
+      {
+        "path": "/uploads/sku/00000000-0000-4000-8000-000000001197.png",
+        "transfer": 1675,
+        "body": 1375,
+        "start": 45,
+        "ms": 8
+      },
+      {
+        "path": "/img/brand/beautyshop-wordmark.svg",
+        "transfer": 9174,
+        "body": 8874,
+        "start": 48,
+        "ms": 3
+      },
+      {
+        "path": "/js/catalog-preview.js",
+        "transfer": 3873,
+        "body": 3573,
+        "start": 48,
+        "ms": 3
+      },
+      {
+        "path": "/js/wishlist.js",
+        "transfer": 7768,
+        "body": 7468,
+        "start": 49,
+        "ms": 2
+      },
+      {
+        "path": "/img/editorial/form.svg",
+        "transfer": 1075,
+        "body": 775,
+        "start": 95,
+        "ms": 2
+      },
+      {
+        "path": "/uploads/sku/00000000-0000-4000-8000-000000001195.png",
+        "transfer": 0,
+        "body": 0,
+        "start": 152,
+        "ms": 0
+      },
+      {
+        "path": "/uploads/sku/00000000-0000-4000-8000-000000001194.png",
+        "transfer": 0,
+        "body": 0,
+        "start": 152,
+        "ms": 0
+      },
+      {
+        "path": "/uploads/sku/00000000-0000-4000-8000-000000001193.png",
+        "transfer": 0,
+        "body": 0,
+        "start": 152,
+        "ms": 0
+      },
+      {
+        "path": "/uploads/sku/00000000-0000-4000-8000-000000001192.png",
+        "transfer": 0,
+        "body": 0,
+        "start": 152,
+        "ms": 0
+      },
+      {
+        "path": "/uploads/sku/00000000-0000-4000-8000-000000001191.png",
+        "transfer": 0,
+        "body": 0,
+        "start": 152,
+        "ms": 0
+      },
+      {
+        "path": "/uploads/sku/00000000-0000-4000-8000-000000001189.png",
+        "transfer": 0,
+        "body": 0,
+        "start": 152,
+        "ms": 0
+      },
+      {
+        "path": "/uploads/sku/00000000-0000-4000-8000-000000001188.png",
+        "transfer": 0,
+        "body": 0,
+        "start": 152,
+        "ms": 1
+      },
+      {
+        "path": "/uploads/sku/00000000-0000-4000-8000-000000001187.png",
+        "transfer": 0,
+        "body": 0,
+        "start": 153,
+        "ms": 0
+      },
+      {
+        "path": "/uploads/sku/00000000-0000-4000-8000-000000001185.png",
+        "transfer": 0,
+        "body": 0,
+        "start": 153,
+        "ms": 0
+      },
+      {
+        "path": "/uploads/sku/00000000-0000-4000-8000-000000001184.png",
+        "transfer": 0,
+        "body": 0,
+        "start": 153,
+        "ms": 0
+      },
+      {
+        "path": "/uploads/sku/00000000-0000-4000-8000-000000001183.png",
+        "transfer": 0,
+        "body": 0,
+        "start": 153,
+        "ms": 0
+      }
+    ]
+  },
+  {
+    "name": "webkit",
+    "width": 1440,
+    "route": "/products",
+    "visit": "warm",
+    "lcp": 112,
+    "cls": null,
+    "images": [
+      {
+        "src": "/img/brand/beautyshop-lockup.svg",
+        "loading": "eager",
+        "priority": "auto",
+        "width": 257,
+        "height": 35,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000001197.png",
+        "loading": "eager",
+        "priority": "auto",
+        "width": 317,
+        "height": 396,
+        "below": false
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000001195.png",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 317,
+        "height": 396,
+        "below": false
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000001194.png",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 317,
+        "height": 396,
+        "below": false
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000001193.png",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 317,
+        "height": 396,
+        "below": false
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000001192.png",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 317,
+        "height": 396,
+        "below": true
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000001191.png",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 317,
+        "height": 396,
+        "below": true
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000001189.png",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 317,
+        "height": 396,
+        "below": true
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000001188.png",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 317,
+        "height": 396,
+        "below": true
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000001187.png",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 317,
+        "height": 396,
+        "below": true
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000001185.png",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 317,
+        "height": 396,
+        "below": true
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000001184.png",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 317,
+        "height": 396,
+        "below": true
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000001183.png",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 317,
+        "height": 396,
+        "below": true
+      },
+      {
+        "src": "/img/brand/beautyshop-mark.svg",
+        "loading": "lazy",
+        "priority": "auto",
+        "width": 120,
+        "height": 160,
+        "below": false
+      },
+      {
+        "src": "/img/brand/beautyshop-wordmark.svg",
+        "loading": "eager",
+        "priority": "auto",
+        "width": 240,
+        "height": 23,
+        "below": true
+      }
+    ],
+    "waterfall": [
+      {
+        "path": "/css/tokens.css",
+        "transfer": 1236,
+        "body": 936,
+        "start": 35,
+        "ms": 5
+      },
+      {
+        "path": "/css/storefront.css",
+        "transfer": 74621,
+        "body": 74321,
+        "start": 36,
+        "ms": 4
+      },
+      {
+        "path": "/css/base.css",
+        "transfer": 2482,
+        "body": 2182,
+        "start": 36,
+        "ms": 4
+      },
+      {
+        "path": "/css/components.css",
+        "transfer": 8003,
+        "body": 7703,
+        "start": 36,
+        "ms": 4
+      },
+      {
+        "path": "/css/reference-pages.css",
+        "transfer": 31113,
+        "body": 30813,
+        "start": 36,
+        "ms": 5
+      },
+      {
+        "path": "/css/admin.css",
+        "transfer": 22022,
+        "body": 21722,
+        "start": 37,
+        "ms": 4
+      },
+      {
+        "path": "/js/app.js",
+        "transfer": 12420,
+        "body": 12120,
+        "start": 37,
+        "ms": 5
+      },
+      {
+        "path": "/img/brand/beautyshop-lockup.svg",
+        "transfer": 9212,
+        "body": 8912,
+        "start": 41,
+        "ms": 3
+      },
+      {
+        "path": "/uploads/sku/00000000-0000-4000-8000-000000001197.png",
+        "transfer": 1675,
+        "body": 1375,
+        "start": 42,
+        "ms": 8
+      },
+      {
+        "path": "/uploads/sku/00000000-0000-4000-8000-000000001195.png",
+        "transfer": 1675,
+        "body": 1375,
+        "start": 44,
+        "ms": 7
+      },
+      {
+        "path": "/js/catalog-preview.js",
+        "transfer": 3873,
+        "body": 3573,
+        "start": 45,
+        "ms": 3
+      },
+      {
+        "path": "/js/wishlist.js",
+        "transfer": 7768,
+        "body": 7468,
+        "start": 46,
+        "ms": 2
+      },
+      {
+        "path": "/uploads/sku/00000000-0000-4000-8000-000000001194.png",
+        "transfer": 1675,
+        "body": 1375,
+        "start": 50,
+        "ms": 5
+      },
+      {
+        "path": "/uploads/sku/00000000-0000-4000-8000-000000001193.png",
+        "transfer": 1675,
+        "body": 1375,
+        "start": 51,
+        "ms": 5
+      },
+      {
+        "path": "/uploads/sku/00000000-0000-4000-8000-000000001192.png",
+        "transfer": 1675,
+        "body": 1375,
+        "start": 55,
+        "ms": 7
+      },
+      {
+        "path": "/uploads/sku/00000000-0000-4000-8000-000000001191.png",
+        "transfer": 1675,
+        "body": 1375,
+        "start": 56,
+        "ms": 6
+      },
+      {
+        "path": "/uploads/sku/00000000-0000-4000-8000-000000001189.png",
+        "transfer": 1675,
+        "body": 1375,
+        "start": 62,
+        "ms": 5
+      },
+      {
+        "path": "/uploads/sku/00000000-0000-4000-8000-000000001188.png",
+        "transfer": 1675,
+        "body": 1375,
+        "start": 62,
+        "ms": 5
+      },
+      {
+        "path": "/uploads/sku/00000000-0000-4000-8000-000000001187.png",
+        "transfer": 1675,
+        "body": 1375,
+        "start": 67,
+        "ms": 6
+      },
+      {
+        "path": "/uploads/sku/00000000-0000-4000-8000-000000001185.png",
+        "transfer": 1675,
+        "body": 1375,
+        "start": 67,
+        "ms": 6
+      },
+      {
+        "path": "/uploads/sku/00000000-0000-4000-8000-000000001184.png",
+        "transfer": 1675,
+        "body": 1375,
+        "start": 73,
+        "ms": 5
+      },
+      {
+        "path": "/uploads/sku/00000000-0000-4000-8000-000000001183.png",
+        "transfer": 1675,
+        "body": 1375,
+        "start": 74,
+        "ms": 5
+      },
+      {
+        "path": "/img/brand/beautyshop-wordmark.svg",
+        "transfer": 9174,
+        "body": 8874,
+        "start": 78,
+        "ms": 2
+      },
+      {
+        "path": "/img/editorial/form.svg",
+        "transfer": 1075,
+        "body": 775,
+        "start": 82,
+        "ms": 2
+      }
+    ]
+  },
+  {
+    "name": "webkit",
+    "width": 1440,
+    "route": "/products/perf-1",
+    "visit": "cold",
+    "lcp": 116,
+    "cls": null,
+    "images": [
+      {
+        "src": "/img/brand/beautyshop-lockup.svg",
+        "loading": "eager",
+        "priority": "auto",
+        "width": 257,
+        "height": 35,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000000001.png",
+        "loading": "eager",
+        "priority": "auto",
+        "width": 539,
+        "height": 539,
+        "below": false
+      },
+      {
+        "src": "/img/brand/beautyshop-wordmark.svg",
+        "loading": "eager",
+        "priority": "auto",
+        "width": 240,
+        "height": 23,
+        "below": true
+      }
+    ],
+    "waterfall": [
+      {
+        "path": "/css/tokens.css",
+        "transfer": 1236,
+        "body": 936,
+        "start": 18,
+        "ms": 4
+      },
+      {
+        "path": "/css/base.css",
+        "transfer": 2482,
+        "body": 2182,
+        "start": 18,
+        "ms": 4
+      },
+      {
+        "path": "/css/components.css",
+        "transfer": 8003,
+        "body": 7703,
+        "start": 18,
+        "ms": 4
+      },
+      {
+        "path": "/css/storefront.css",
+        "transfer": 74621,
+        "body": 74321,
+        "start": 19,
+        "ms": 3
+      },
+      {
+        "path": "/css/reference-pages.css",
+        "transfer": 31113,
+        "body": 30813,
+        "start": 19,
+        "ms": 3
+      },
+      {
+        "path": "/css/admin.css",
+        "transfer": 22022,
+        "body": 21722,
+        "start": 19,
+        "ms": 4
+      },
+      {
+        "path": "/js/app.js",
+        "transfer": 12420,
+        "body": 12120,
+        "start": 19,
+        "ms": 5
+      },
+      {
+        "path": "/img/brand/beautyshop-lockup.svg",
+        "transfer": 9212,
+        "body": 8912,
+        "start": 23,
+        "ms": 2
+      },
+      {
+        "path": "/js/wishlist.js",
+        "transfer": 7768,
+        "body": 7468,
+        "start": 24,
+        "ms": 1
+      },
+      {
+        "path": "/img/brand/beautyshop-wordmark.svg",
+        "transfer": 9174,
+        "body": 8874,
+        "start": 25,
+        "ms": 3
+      },
+      {
+        "path": "/uploads/sku/00000000-0000-4000-8000-000000000001.png",
+        "transfer": 1675,
+        "body": 1375,
+        "start": 25,
+        "ms": 4
+      },
+      {
+        "path": "/img/editorial/form.svg",
+        "transfer": 1075,
+        "body": 775,
+        "start": 54,
+        "ms": 2
+      }
+    ]
+  },
+  {
+    "name": "webkit",
+    "width": 1440,
+    "route": "/products/perf-1",
+    "visit": "warm",
+    "lcp": 72.00000000000001,
+    "cls": null,
+    "images": [
+      {
+        "src": "/img/brand/beautyshop-lockup.svg",
+        "loading": "eager",
+        "priority": "auto",
+        "width": 257,
+        "height": 35,
+        "below": false
+      },
+      {
+        "src": "/uploads/sku/00000000-0000-4000-8000-000000000001.png",
+        "loading": "eager",
+        "priority": "auto",
+        "width": 539,
+        "height": 539,
+        "below": false
+      },
+      {
+        "src": "/img/brand/beautyshop-wordmark.svg",
+        "loading": "eager",
+        "priority": "auto",
+        "width": 240,
+        "height": 23,
+        "below": true
+      }
+    ],
+    "waterfall": [
+      {
+        "path": "/css/tokens.css",
+        "transfer": 1236,
+        "body": 936,
+        "start": 18,
+        "ms": 3
+      },
+      {
+        "path": "/css/components.css",
+        "transfer": 8003,
+        "body": 7703,
+        "start": 18,
+        "ms": 4
+      },
+      {
+        "path": "/css/storefront.css",
+        "transfer": 74621,
+        "body": 74321,
+        "start": 18,
+        "ms": 4
+      },
+      {
+        "path": "/css/base.css",
+        "transfer": 2482,
+        "body": 2182,
+        "start": 18,
+        "ms": 5
+      },
+      {
+        "path": "/css/reference-pages.css",
+        "transfer": 31113,
+        "body": 30813,
+        "start": 19,
+        "ms": 4
+      },
+      {
+        "path": "/css/admin.css",
+        "transfer": 22022,
+        "body": 21722,
+        "start": 19,
+        "ms": 4
+      },
+      {
+        "path": "/js/app.js",
+        "transfer": 12420,
+        "body": 12120,
+        "start": 19,
+        "ms": 4
+      },
+      {
+        "path": "/js/wishlist.js",
+        "transfer": 7768,
+        "body": 7468,
+        "start": 22,
+        "ms": 2
+      },
+      {
+        "path": "/img/brand/beautyshop-lockup.svg",
+        "transfer": 9212,
+        "body": 8912,
+        "start": 23,
+        "ms": 3
+      },
+      {
+        "path": "/uploads/sku/00000000-0000-4000-8000-000000000001.png",
+        "transfer": 1675,
+        "body": 1375,
+        "start": 24,
+        "ms": 4
+      },
+      {
+        "path": "/img/brand/beautyshop-wordmark.svg",
+        "transfer": 9174,
+        "body": 8874,
+        "start": 26,
+        "ms": 3
+      },
+      {
+        "path": "/img/editorial/form.svg",
+        "transfer": 1075,
+        "body": 775,
+        "start": 44,
+        "ms": 3
+      }
+    ],
+    "skuCache": {
+      "url": "/uploads/sku/00000000-0000-4000-8000-000000000001.png",
+      "first": 200,
+      "conditional": 200,
+      "bytes": 1375,
+      "cacheControl": "no-cache, no-store, max-age=0, must-revalidate",
+      "etag": null
+    }
+  }
+]

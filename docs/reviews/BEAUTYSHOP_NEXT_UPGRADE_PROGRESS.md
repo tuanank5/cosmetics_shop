@@ -23,7 +23,7 @@ Số thứ tự là số tệp. “Chờ BASE/phụ thuộc” xác định gate
 | 13 | 5 | [AI-HISTORY](implementation-prompts/next-upgrade/13-AI-HISTORY.md) | BLOCKED_OWNER | Duyệt 8–9; AUTH và guard đạt; kiểm Mongo fixture. | — |
 | 14 | 6 | [NOTIFY](implementation-prompts/next-upgrade/14-NOTIFY.md) | BLOCKED_OWNER | Duyệt 11; sẵn hợp đồng phân quyền và sự kiện gửi. | — |
 | 15 | 6 | [SHOP-12](implementation-prompts/next-upgrade/15-SHOP-12.md) | BLOCKED_OWNER | Owner duyệt nội dung từng trang; phối hợp AI-OPS về reindex. | — |
-| 16 | 7 | [PERF](implementation-prompts/next-upgrade/16-PERF.md) | Chờ BASE | BASE và fixture cho benchmark; số đo cho phép sửa. | — |
+| 16 | 7 | [PERF](implementation-prompts/next-upgrade/16-PERF.md) | IN_PROGRESS | Owner giao phần độc lập tại `e33e4e3`. Fixture MariaDB riêng, catalog/giỏ/checkout/Admin và ảnh. | [Giao thức baseline](../qa/PERF/protocol.md) |
 | 17 | 7 | [QUALITY](implementation-prompts/next-upgrade/17-QUALITY.md) | IN_PROGRESS | Owner giao rà độc lập các module ổn định, ưu tiên checkout, đơn, thanh toán, kho, voucher, OAuth và AI. | Gốc `0ed547b` · [Checkpoint](QUALITY-ket-qua.md) |
 | 18 | 8 | [BACKUP](implementation-prompts/next-upgrade/18-BACKUP.md) | BLOCKED_OWNER / phụ thuộc | Duyệt quyền/quota, có fixture và hợp đồng audit. | — |
 | 19 | 9 | [UI-UAT](implementation-prompts/next-upgrade/19-UI-UAT.md) | Chờ phụ thuộc | Ghi coverage và revision bàn giao cho từng màn. | — |
@@ -54,6 +54,8 @@ Mục 15 (restore web) và 17 (tự sinh mã SKU) tiếp tục ngoài phạm vi.
 | 28/11/2026 | AUTH-FINAL · IN_PROGRESS | Review đã sửa luân chuyển ID phiên khi nhận link reset và tiêu thụ state dưới khóa phiên. Hai POST gỡ đồng thời chỉ ghi một lần. Maven 234 PASS, 88 SKIP và suite riêng 40/40 PASS. Package đạt. [Bằng chứng](../qa/AUTH/final-review/) | Nhánh local `qa/auth` từ `f390c3a`, chưa có commit ứng viên. Owner duyệt commit/push, kiểm CI push/PR rồi nghiệm thu. AUTH-LIVE chưa chạy. |
 | 28/11/2026 | QUALITY · IN_PROGRESS, checkpoint local | Owner giao phần rà độc lập trên `0ed547b5d4c18eab46fb3a194fbbdd327c37d827` cộng diff hai tệp. Đã kiểm một lần đọc dư ở chi tiết đơn MoMo. Maven 236 đạt, 88 skip. Regression 94/94, WebKit ba vai trò/kịch bản 3/3, package PASS. [Báo cáo](QUALITY-ket-qua.md) · [QA](../qa/QUALITY/verification/) | Chờ review, CI và nghiệm thu trên SHA ứng viên. AUTH-LIVE vẫn BLOCKED_EXTERNAL. |
 | 28/11/2026 | QUALITY-FINAL · IN_PROGRESS | Clone độc lập `target/qa-quality`, nhánh `qa/quality` từ `0ed547b`. Đã review các hunk, khóa đơn, kết quả PAID/PENDING và sáu lỗi bytecode tại root. [Review](../qa/QUALITY/final-review/review.md) | Chờ owner cho phép commit và push, review PR, CI và nghiệm thu đúng revision. |
+| 28/11/2026 | PERF · IN_PROGRESS | Owner giao phần độc lập trên e33e4e3. Hai lượt 1.200 request, 0% lỗi. Giỏ/checkout/quote giảm một SELECT. Maven 237 PASS/88 SKIP, regression 94/94, package và WebKit đạt. [Báo cáo PERF](PERF-ket-qua.md) | Chờ review, CI và nghiệm thu đúng revision. |
+| 28/11/2026 | PERF-FINAL · IN_PROGRESS | Clone qa/perf từ e33e4e3, source khớp bản đo. Kiểm lại benchmark và regression badge, hai tab ghi đồng thời, voucher và hết hàng. [Review](../qa/PERF/final-review/review.md) | Chờ owner cho phép commit/push, review PR, CI và nghiệm thu đúng revision. AUTH-LIVE vẫn BLOCKED_EXTERNAL. |
 
 ## Backlog theo quyết định mới
 

@@ -1,0 +1,363 @@
+{
+  "catalog": {
+    "select_count": 4,
+    "queries": [
+      {
+        "shape": "select sp1_0.ma_san_pham,sp1_0.duong_dan,sp1_0.ten_san_pham,th1_0.ten_thuong_hieu,min(btsp1_0.gia_ban),min(btsp1_0.url_hinh_anh),max((btsp1_0.so_luong_trong_kho-btsp1_0.so_luong_tam_giu)) from bien_the_san_pham btsp1_0 join san_pham sp1_0 on sp1_0.ma_san_pham=btsp1_0.ma_san_pham join thuong_hieu th1_0 on th1_0.ma_thuong_hieu=sp1_0.ma_thuong_hieu join danh_muc dm1_0 on dm1_0.ma_danh_muc=sp1_0.ma_danh_muc where sp1_0.dang_hoat_dong=? and btsp1_0.dang_hoat_dong=? and th1_0.dang_hoat_dong=? and dm1_0.dang_hoat_dong=? and (?=? or th1_0.duong_dan=?) and (?=? or dm1_0.duong_dan=?) and (?=? or lower(sp1_0.loai_da_phu_hop) like ? escape ?) and (?=? or lower(sp1_0.ten_san_pham) like ? escape ? or lower(sp1_0.mo_ta) like ? escape ? or lower(th1_0.ten_thuong_hieu) like ? escape ? or lower(btsp1_0.sku) like ? escape ? or lower(sp1_0.thanh_phan) like ? escape ?) group by sp1_0.ma_san_pham,sp1_0.duong_dan,sp1_0.ten_san_pham,th1_0.ten_thuong_hieu,sp1_0.ngay_tao order by case when ?=? then min(btsp1_0.gia_ban) end,case when ?=? then min(btsp1_0.gia_ban) end desc,sp1_0.ngay_tao desc,sp1_0.ma_san_pham desc limit ?",
+        "explain": [
+          "1\tSIMPLE\tdm1_0\tALL\tPRIMARY\tNULL\tNULL\tNULL\t24\tUsing where; Using temporary; Using filesort",
+          "1\tSIMPLE\tsp1_0\tref\tPRIMARY,idx_san_pham_01,idx_san_pham_02\tidx_san_pham_01\t8\tperf_test.dm1_0.ma_danh_muc\t50\tUsing where",
+          "1\tSIMPLE\tth1_0\teq_ref\tPRIMARY\tPRIMARY\t8\tperf_test.sp1_0.ma_thuong_hieu\t1\tUsing where",
+          "1\tSIMPLE\tbtsp1_0\tref\tidx_bien_the_san_pham_01\tidx_bien_the_san_pham_01\t8\tperf_test.sp1_0.ma_san_pham\t3\tUsing where"
+        ]
+      },
+      {
+        "shape": "select count(distinct sp1_0.ma_san_pham) from bien_the_san_pham btsp1_0 join san_pham sp1_0 on sp1_0.ma_san_pham=btsp1_0.ma_san_pham join thuong_hieu th1_0 on th1_0.ma_thuong_hieu=sp1_0.ma_thuong_hieu join danh_muc dm1_0 on dm1_0.ma_danh_muc=sp1_0.ma_danh_muc where sp1_0.dang_hoat_dong=? and btsp1_0.dang_hoat_dong=? and th1_0.dang_hoat_dong=? and dm1_0.dang_hoat_dong=? and (?=? or th1_0.duong_dan=?) and (?=? or dm1_0.duong_dan=?) and (?=? or lower(sp1_0.loai_da_phu_hop) like ? escape ?) and (?=? or lower(sp1_0.ten_san_pham) like ? escape ? or lower(sp1_0.mo_ta) like ? escape ? or lower(th1_0.ten_thuong_hieu) like ? escape ? or lower(btsp1_0.sku) like ? escape ? or lower(sp1_0.thanh_phan) like ? escape ?)",
+        "explain": [
+          "1\tSIMPLE\tdm1_0\tALL\tPRIMARY\tNULL\tNULL\tNULL\t24\tUsing where",
+          "1\tSIMPLE\tsp1_0\tref\tPRIMARY,idx_san_pham_01,idx_san_pham_02\tidx_san_pham_01\t8\tperf_test.dm1_0.ma_danh_muc\t50\tUsing where",
+          "1\tSIMPLE\tth1_0\teq_ref\tPRIMARY\tPRIMARY\t8\tperf_test.sp1_0.ma_thuong_hieu\t1\tUsing where",
+          "1\tSIMPLE\tbtsp1_0\tref\tidx_bien_the_san_pham_01\tidx_bien_the_san_pham_01\t8\tperf_test.sp1_0.ma_san_pham\t3\tUsing where"
+        ]
+      },
+      {
+        "shape": "select th1_0.ma_thuong_hieu,th1_0.dang_hoat_dong,th1_0.duong_dan,th1_0.ten_thuong_hieu from thuong_hieu th1_0 where th1_0.dang_hoat_dong order by th1_0.ten_thuong_hieu",
+        "explain": [
+          "1\tSIMPLE\tth1_0\tALL\tNULL\tNULL\tNULL\tNULL\t40\tUsing where; Using filesort"
+        ]
+      },
+      {
+        "shape": "select dm1_0.ma_danh_muc,dm1_0.dang_hoat_dong,dm1_0.duong_dan,dm1_0.ten_danh_muc from danh_muc dm1_0 where dm1_0.dang_hoat_dong order by dm1_0.ten_danh_muc",
+        "explain": [
+          "1\tSIMPLE\tdm1_0\tALL\tNULL\tNULL\tNULL\tNULL\t24\tUsing where; Using filesort"
+        ]
+      }
+    ]
+  },
+  "catalog-page": {
+    "select_count": 4,
+    "queries": [
+      {
+        "shape": "select sp1_0.ma_san_pham,sp1_0.duong_dan,sp1_0.ten_san_pham,th1_0.ten_thuong_hieu,min(btsp1_0.gia_ban),min(btsp1_0.url_hinh_anh),max((btsp1_0.so_luong_trong_kho-btsp1_0.so_luong_tam_giu)) from bien_the_san_pham btsp1_0 join san_pham sp1_0 on sp1_0.ma_san_pham=btsp1_0.ma_san_pham join thuong_hieu th1_0 on th1_0.ma_thuong_hieu=sp1_0.ma_thuong_hieu join danh_muc dm1_0 on dm1_0.ma_danh_muc=sp1_0.ma_danh_muc where sp1_0.dang_hoat_dong=? and btsp1_0.dang_hoat_dong=? and th1_0.dang_hoat_dong=? and dm1_0.dang_hoat_dong=? and (?=? or th1_0.duong_dan=?) and (?=? or dm1_0.duong_dan=?) and (?=? or lower(sp1_0.loai_da_phu_hop) like ? escape ?) and (?=? or lower(sp1_0.ten_san_pham) like ? escape ? or lower(sp1_0.mo_ta) like ? escape ? or lower(th1_0.ten_thuong_hieu) like ? escape ? or lower(btsp1_0.sku) like ? escape ? or lower(sp1_0.thanh_phan) like ? escape ?) group by sp1_0.ma_san_pham,sp1_0.duong_dan,sp1_0.ten_san_pham,th1_0.ten_thuong_hieu,sp1_0.ngay_tao order by case when ?=? then min(btsp1_0.gia_ban) end,case when ?=? then min(btsp1_0.gia_ban) end desc,sp1_0.ngay_tao desc,sp1_0.ma_san_pham desc limit ?,?",
+        "explain": [
+          "1\tSIMPLE\tdm1_0\tALL\tPRIMARY\tNULL\tNULL\tNULL\t24\tUsing where; Using temporary; Using filesort",
+          "1\tSIMPLE\tsp1_0\tref\tPRIMARY,idx_san_pham_01,idx_san_pham_02\tidx_san_pham_01\t8\tperf_test.dm1_0.ma_danh_muc\t50\tUsing where",
+          "1\tSIMPLE\tth1_0\teq_ref\tPRIMARY\tPRIMARY\t8\tperf_test.sp1_0.ma_thuong_hieu\t1\tUsing where",
+          "1\tSIMPLE\tbtsp1_0\tref\tidx_bien_the_san_pham_01\tidx_bien_the_san_pham_01\t8\tperf_test.sp1_0.ma_san_pham\t3\tUsing where"
+        ]
+      },
+      {
+        "shape": "select count(distinct sp1_0.ma_san_pham) from bien_the_san_pham btsp1_0 join san_pham sp1_0 on sp1_0.ma_san_pham=btsp1_0.ma_san_pham join thuong_hieu th1_0 on th1_0.ma_thuong_hieu=sp1_0.ma_thuong_hieu join danh_muc dm1_0 on dm1_0.ma_danh_muc=sp1_0.ma_danh_muc where sp1_0.dang_hoat_dong=? and btsp1_0.dang_hoat_dong=? and th1_0.dang_hoat_dong=? and dm1_0.dang_hoat_dong=? and (?=? or th1_0.duong_dan=?) and (?=? or dm1_0.duong_dan=?) and (?=? or lower(sp1_0.loai_da_phu_hop) like ? escape ?) and (?=? or lower(sp1_0.ten_san_pham) like ? escape ? or lower(sp1_0.mo_ta) like ? escape ? or lower(th1_0.ten_thuong_hieu) like ? escape ? or lower(btsp1_0.sku) like ? escape ? or lower(sp1_0.thanh_phan) like ? escape ?)",
+        "explain": [
+          "1\tSIMPLE\tdm1_0\tALL\tPRIMARY\tNULL\tNULL\tNULL\t24\tUsing where",
+          "1\tSIMPLE\tsp1_0\tref\tPRIMARY,idx_san_pham_01,idx_san_pham_02\tidx_san_pham_01\t8\tperf_test.dm1_0.ma_danh_muc\t50\tUsing where",
+          "1\tSIMPLE\tth1_0\teq_ref\tPRIMARY\tPRIMARY\t8\tperf_test.sp1_0.ma_thuong_hieu\t1\tUsing where",
+          "1\tSIMPLE\tbtsp1_0\tref\tidx_bien_the_san_pham_01\tidx_bien_the_san_pham_01\t8\tperf_test.sp1_0.ma_san_pham\t3\tUsing where"
+        ]
+      },
+      {
+        "shape": "select th1_0.ma_thuong_hieu,th1_0.dang_hoat_dong,th1_0.duong_dan,th1_0.ten_thuong_hieu from thuong_hieu th1_0 where th1_0.dang_hoat_dong order by th1_0.ten_thuong_hieu",
+        "explain": [
+          "1\tSIMPLE\tth1_0\tALL\tNULL\tNULL\tNULL\tNULL\t40\tUsing where; Using filesort"
+        ]
+      },
+      {
+        "shape": "select dm1_0.ma_danh_muc,dm1_0.dang_hoat_dong,dm1_0.duong_dan,dm1_0.ten_danh_muc from danh_muc dm1_0 where dm1_0.dang_hoat_dong order by dm1_0.ten_danh_muc",
+        "explain": [
+          "1\tSIMPLE\tdm1_0\tALL\tNULL\tNULL\tNULL\tNULL\t24\tUsing where; Using filesort"
+        ]
+      }
+    ]
+  },
+  "search-filter": {
+    "select_count": 4,
+    "queries": [
+      {
+        "shape": "select sp1_0.ma_san_pham,sp1_0.duong_dan,sp1_0.ten_san_pham,th1_0.ten_thuong_hieu,min(btsp1_0.gia_ban),min(btsp1_0.url_hinh_anh),max((btsp1_0.so_luong_trong_kho-btsp1_0.so_luong_tam_giu)) from bien_the_san_pham btsp1_0 join san_pham sp1_0 on sp1_0.ma_san_pham=btsp1_0.ma_san_pham join thuong_hieu th1_0 on th1_0.ma_thuong_hieu=sp1_0.ma_thuong_hieu join danh_muc dm1_0 on dm1_0.ma_danh_muc=sp1_0.ma_danh_muc where sp1_0.dang_hoat_dong=? and btsp1_0.dang_hoat_dong=? and th1_0.dang_hoat_dong=? and dm1_0.dang_hoat_dong=? and (?=? or th1_0.duong_dan=?) and (?=? or dm1_0.duong_dan=?) and (?=? or lower(sp1_0.loai_da_phu_hop) like ? escape ?) and (?=? or lower(sp1_0.ten_san_pham) like ? escape ? or lower(sp1_0.mo_ta) like ? escape ? or lower(th1_0.ten_thuong_hieu) like ? escape ? or lower(btsp1_0.sku) like ? escape ? or lower(sp1_0.thanh_phan) like ? escape ?) group by sp1_0.ma_san_pham,sp1_0.duong_dan,sp1_0.ten_san_pham,th1_0.ten_thuong_hieu,sp1_0.ngay_tao order by case when ?=? then min(btsp1_0.gia_ban) end,case when ?=? then min(btsp1_0.gia_ban) end desc,sp1_0.ngay_tao desc,sp1_0.ma_san_pham desc limit ?,?",
+        "explain": [
+          "1\tSIMPLE\tdm1_0\tconst\tPRIMARY,uq_danh_muc_01\tuq_danh_muc_01\t762\tconst\t1\tUsing temporary; Using filesort",
+          "1\tSIMPLE\tsp1_0\tref\tPRIMARY,idx_san_pham_01,idx_san_pham_02\tidx_san_pham_01\t8\tconst\t50\tUsing where",
+          "1\tSIMPLE\tth1_0\teq_ref\tPRIMARY\tPRIMARY\t8\tperf_test.sp1_0.ma_thuong_hieu\t1\tUsing where",
+          "1\tSIMPLE\tbtsp1_0\tref\tidx_bien_the_san_pham_01\tidx_bien_the_san_pham_01\t8\tperf_test.sp1_0.ma_san_pham\t3\tUsing where"
+        ]
+      },
+      {
+        "shape": "select count(distinct sp1_0.ma_san_pham) from bien_the_san_pham btsp1_0 join san_pham sp1_0 on sp1_0.ma_san_pham=btsp1_0.ma_san_pham join thuong_hieu th1_0 on th1_0.ma_thuong_hieu=sp1_0.ma_thuong_hieu join danh_muc dm1_0 on dm1_0.ma_danh_muc=sp1_0.ma_danh_muc where sp1_0.dang_hoat_dong=? and btsp1_0.dang_hoat_dong=? and th1_0.dang_hoat_dong=? and dm1_0.dang_hoat_dong=? and (?=? or th1_0.duong_dan=?) and (?=? or dm1_0.duong_dan=?) and (?=? or lower(sp1_0.loai_da_phu_hop) like ? escape ?) and (?=? or lower(sp1_0.ten_san_pham) like ? escape ? or lower(sp1_0.mo_ta) like ? escape ? or lower(th1_0.ten_thuong_hieu) like ? escape ? or lower(btsp1_0.sku) like ? escape ? or lower(sp1_0.thanh_phan) like ? escape ?)",
+        "explain": [
+          "1\tSIMPLE\tdm1_0\tconst\tPRIMARY,uq_danh_muc_01\tuq_danh_muc_01\t762\tconst\t1\t",
+          "1\tSIMPLE\tsp1_0\tref\tPRIMARY,idx_san_pham_01,idx_san_pham_02\tidx_san_pham_01\t8\tconst\t50\tUsing where",
+          "1\tSIMPLE\tth1_0\teq_ref\tPRIMARY\tPRIMARY\t8\tperf_test.sp1_0.ma_thuong_hieu\t1\tUsing where",
+          "1\tSIMPLE\tbtsp1_0\tref\tidx_bien_the_san_pham_01\tidx_bien_the_san_pham_01\t8\tperf_test.sp1_0.ma_san_pham\t3\tUsing where"
+        ]
+      },
+      {
+        "shape": "select th1_0.ma_thuong_hieu,th1_0.dang_hoat_dong,th1_0.duong_dan,th1_0.ten_thuong_hieu from thuong_hieu th1_0 where th1_0.dang_hoat_dong order by th1_0.ten_thuong_hieu",
+        "explain": [
+          "1\tSIMPLE\tth1_0\tALL\tNULL\tNULL\tNULL\tNULL\t40\tUsing where; Using filesort"
+        ]
+      },
+      {
+        "shape": "select dm1_0.ma_danh_muc,dm1_0.dang_hoat_dong,dm1_0.duong_dan,dm1_0.ten_danh_muc from danh_muc dm1_0 where dm1_0.dang_hoat_dong order by dm1_0.ten_danh_muc",
+        "explain": [
+          "1\tSIMPLE\tdm1_0\tALL\tNULL\tNULL\tNULL\tNULL\t24\tUsing where; Using filesort"
+        ]
+      }
+    ]
+  },
+  "pdp": {
+    "select_count": 2,
+    "queries": [
+      {
+        "shape": "select sp1_0.ma_san_pham,sp1_0.dang_hoat_dong,sp1_0.ma_danh_muc,dm1_0.ma_danh_muc,dm1_0.dang_hoat_dong,dm1_0.duong_dan,dm1_0.ten_danh_muc,sp1_0.duong_dan,sp1_0.huong_dan_su_dung,sp1_0.loai_da_phu_hop,sp1_0.mo_ta,sp1_0.ngay_tao,sp1_0.ten_san_pham,sp1_0.thanh_phan,sp1_0.ma_thuong_hieu,th1_0.ma_thuong_hieu,th1_0.dang_hoat_dong,th1_0.duong_dan,th1_0.ten_thuong_hieu from san_pham sp1_0 join danh_muc dm1_0 on dm1_0.ma_danh_muc=sp1_0.ma_danh_muc join thuong_hieu th1_0 on th1_0.ma_thuong_hieu=sp1_0.ma_thuong_hieu where sp1_0.duong_dan=? and sp1_0.dang_hoat_dong=? and th1_0.dang_hoat_dong=? and dm1_0.dang_hoat_dong=?",
+        "explain": [
+          "1\tSIMPLE\tsp1_0\tconst\tuq_san_pham_01,idx_san_pham_01,idx_san_pham_02\tuq_san_pham_01\t762\tconst\t1\t",
+          "1\tSIMPLE\tdm1_0\tconst\tPRIMARY\tPRIMARY\t8\tconst\t1\t",
+          "1\tSIMPLE\tth1_0\tconst\tPRIMARY\tPRIMARY\t8\tconst\t1"
+        ]
+      },
+      {
+        "shape": "select btsp1_0.ma_bien_the,btsp1_0.dang_hoat_dong,btsp1_0.gia_ban,btsp1_0.han_su_dung_minh_hoa,btsp1_0.ma_lo_minh_hoa,btsp1_0.ma_san_pham,btsp1_0.sku,btsp1_0.so_luong_tam_giu,btsp1_0.so_luong_trong_kho,btsp1_0.ten_bien_the,btsp1_0.url_hinh_anh from bien_the_san_pham btsp1_0 join san_pham sp1_0 on sp1_0.ma_san_pham=btsp1_0.ma_san_pham where sp1_0.ma_san_pham=? and btsp1_0.dang_hoat_dong order by btsp1_0.gia_ban,btsp1_0.ma_bien_the",
+        "explain": [
+          "1\tSIMPLE\tsp1_0\tconst\tPRIMARY\tPRIMARY\t8\tconst\t1\t",
+          "1\tSIMPLE\tbtsp1_0\tref\tidx_bien_the_san_pham_01\tidx_bien_the_san_pham_01\t8\tconst\t3\tUsing where; Using filesort"
+        ]
+      }
+    ]
+  },
+  "admin": {
+    "select_count": 6,
+    "queries": [
+      {
+        "shape": "select nd1_0.kich_hoat,nd1_0.vai_tro,nd1_0.phien_ban_xac_thuc from nguoi_dung nd1_0 where nd1_0.ma_nguoi_dung=?",
+        "explain": [
+          "1\tSIMPLE\tnd1_0\tconst\tPRIMARY\tPRIMARY\t8\tconst\t1"
+        ]
+      },
+      {
+        "shape": "select sp1_0.ma_san_pham,sp1_0.ten_san_pham,sp1_0.duong_dan,sp1_0.dang_hoat_dong,dm1_0.ten_danh_muc,th1_0.ten_thuong_hieu,count(btsp1_0.ma_bien_the),min(btsp1_0.url_hinh_anh) from san_pham sp1_0 join danh_muc dm1_0 on dm1_0.ma_danh_muc=sp1_0.ma_danh_muc join thuong_hieu th1_0 on th1_0.ma_thuong_hieu=sp1_0.ma_thuong_hieu left join bien_the_san_pham btsp1_0 on btsp1_0.ma_san_pham=sp1_0.ma_san_pham where (?=? or lower(sp1_0.ten_san_pham) like ? escape ? or lower(sp1_0.duong_dan) like ? escape ?) and (null is null or sp1_0.dang_hoat_dong=null) and (null is null or dm1_0.ma_danh_muc=null) and (null is null or th1_0.ma_thuong_hieu=null) group by sp1_0.ma_san_pham,sp1_0.ten_san_pham,sp1_0.duong_dan,sp1_0.dang_hoat_dong,dm1_0.ten_danh_muc,th1_0.ten_thuong_hieu order by sp1_0.ten_san_pham,sp1_0.ma_san_pham limit ?,?",
+        "explain": [
+          "1\tSIMPLE\tdm1_0\tALL\tPRIMARY\tNULL\tNULL\tNULL\t24\tUsing temporary; Using filesort",
+          "1\tSIMPLE\tsp1_0\tref\tidx_san_pham_01,idx_san_pham_02\tidx_san_pham_01\t8\tperf_test.dm1_0.ma_danh_muc\t50\t",
+          "1\tSIMPLE\tth1_0\teq_ref\tPRIMARY\tPRIMARY\t8\tperf_test.sp1_0.ma_thuong_hieu\t1\t",
+          "1\tSIMPLE\tbtsp1_0\tref\tidx_bien_the_san_pham_01\tidx_bien_the_san_pham_01\t8\tperf_test.sp1_0.ma_san_pham\t3"
+        ]
+      },
+      {
+        "shape": "select count(sp1_0.ma_san_pham) from san_pham sp1_0 join danh_muc dm1_0 on dm1_0.ma_danh_muc=sp1_0.ma_danh_muc join thuong_hieu th1_0 on th1_0.ma_thuong_hieu=sp1_0.ma_thuong_hieu where (?=? or lower(sp1_0.ten_san_pham) like ? escape ? or lower(sp1_0.duong_dan) like ? escape ?) and (null is null or sp1_0.dang_hoat_dong=null) and (null is null or dm1_0.ma_danh_muc=null) and (null is null or th1_0.ma_thuong_hieu=null)",
+        "explain": [
+          "1\tSIMPLE\tdm1_0\tindex\tPRIMARY\tuq_danh_muc_01\t762\tNULL\t24\tUsing index",
+          "1\tSIMPLE\tsp1_0\tref\tidx_san_pham_01,idx_san_pham_02\tidx_san_pham_01\t8\tperf_test.dm1_0.ma_danh_muc\t50\t",
+          "1\tSIMPLE\tth1_0\teq_ref\tPRIMARY\tPRIMARY\t8\tperf_test.sp1_0.ma_thuong_hieu\t1"
+        ]
+      },
+      {
+        "shape": "select dm1_0.ma_danh_muc,dm1_0.ten_danh_muc,dm1_0.duong_dan,dm1_0.dang_hoat_dong from danh_muc dm1_0 order by dm1_0.ten_danh_muc,dm1_0.ma_danh_muc",
+        "explain": [
+          "1\tSIMPLE\tdm1_0\tALL\tNULL\tNULL\tNULL\tNULL\t24\tUsing filesort"
+        ]
+      },
+      {
+        "shape": "select th1_0.ma_thuong_hieu,th1_0.ten_thuong_hieu,th1_0.duong_dan,th1_0.dang_hoat_dong from thuong_hieu th1_0 order by th1_0.ten_thuong_hieu,th1_0.ma_thuong_hieu",
+        "explain": [
+          "1\tSIMPLE\tth1_0\tALL\tNULL\tNULL\tNULL\tNULL\t40\tUsing filesort"
+        ]
+      },
+      {
+        "shape": "SELECT ma_muc, COUNT(DISTINCT ma_don) AS so_don FROM ( SELECT b.ma_san_pham AS ma_muc, d.ma_don_hang AS ma_don FROM bien_the_san_pham b JOIN san_pham s ON s.ma_san_pham = b.ma_san_pham JOIN chi_tiet_don_hang c ON c.ma_bien_the = b.ma_bien_the JOIN don_hang d ON d.ma_don_hang = c.ma_don_hang WHERE ( d.trang_thai NOT IN (?, ?, ?) OR EXISTS ( SELECT ? FROM tam_giu_phieu_giam_gia g WHERE g.ma_don_hang = d.ma_don_hang AND g.trang_thai = ? ) OR EXISTS ( SELECT ? FROM lan_thanh_toan t WHERE t.ma_don_hang = d.ma_don_hang AND ( t.trang_thai IN (?, ?) OR (d.trang_thai IN (?, ?) AND t.trang_thai = ?) ) ) OR (d.trang_thai = ? AND NOT EXISTS ( SELECT ? FROM lan_thanh_toan t WHERE t.ma_don_hang = d.ma_don_hang AND t.trang_thai = ? AND t.so_tien = d.tong_thanh_toan AND ((d.phuong_thuc_thanh_toan = ? AND t.cong_thanh_toan = ?) OR (d.phuong_thuc_thanh_toan = ? AND t.cong_thanh_toan IN (?, ?))) )) OR EXISTS ( SELECT ? FROM chi_tiet_doi_tra ct JOIN yeu_cau_doi_tra dt ON dt.ma_yeu_cau_doi_tra = ct.ma_yeu_cau_doi_tra WHERE ct.ma_chi_tiet_don_hang = c.ma_chi_tiet_don_hang AND dt.trang_thai IN (?, ?, ?) ) ) UNION ALL SELECT b.ma_san_pham, g.ma_don_hang FROM tam_giu_ton_kho g JOIN bien_the_san_pham b ON b.ma_bien_the = g.ma_bien_the JOIN san_pham s ON s.ma_san_pham = b.ma_san_pham WHERE g.trang_thai = ? ) don_lien_quan GROUP BY ma_muc",
+        "explain": [
+          "1\tPRIMARY\t<derived2>\tALL\tNULL\tNULL\tNULL\tNULL\t481\tUsing filesort",
+          "2\tDERIVED\tc\tALL\tidx_chi_tiet_don_hang_01,idx_chi_tiet_don_hang_02\tNULL\tNULL\tNULL\t480\t",
+          "2\tDERIVED\tb\teq_ref\tPRIMARY,idx_bien_the_san_pham_01\tPRIMARY\t8\tperf_test.c.ma_bien_the\t1\t",
+          "2\tDERIVED\ts\teq_ref\tPRIMARY\tPRIMARY\t8\tperf_test.b.ma_san_pham\t1\t",
+          "2\tDERIVED\td\teq_ref\tPRIMARY\tPRIMARY\t8\tperf_test.c.ma_don_hang\t1\tUsing where",
+          "6\tMATERIALIZED\tct\tindex\tuq_chi_tiet_doi_tra_01,idx_chi_tiet_doi_tra_01\tuq_chi_tiet_doi_tra_01\t16\tNULL\t1\tUsing index",
+          "6\tMATERIALIZED\tdt\teq_ref\tPRIMARY,idx_yeu_cau_doi_tra_01,idx_yeu_cau_doi_tra_02\tPRIMARY\t8\tperf_test.ct.ma_yeu_cau_doi_tra\t1\tUsing where",
+          "5\tDEPENDENT SUBQUERY\tt\tref\tuq_lan_thanh_toan_02,idx_lan_thanh_toan_01\tidx_lan_thanh_toan_01\t8\tperf_test.d.ma_don_hang\t1\tUsing index condition; Using where",
+          "4\tDEPENDENT SUBQUERY\tt\tindex_subquery\tidx_lan_thanh_toan_01\tidx_lan_thanh_toan_01\t8\tfunc\t1\tUsing where",
+          "3\tMATERIALIZED\tg\tALL\tuq_tam_giu_phieu_giam_gia_01\tNULL\tNULL\tNULL\t1\tUsing where",
+          "7\tUNION\tg\tref\tidx_tam_giu_ton_kho_01,idx_tam_giu_ton_kho_02\tidx_tam_giu_ton_kho_02\t82\tconst\t1\tUsing index condition",
+          "7\tUNION\tb\teq_ref\tPRIMARY,idx_bien_the_san_pham_01\tPRIMARY\t8\tperf_test.g.ma_bien_the\t1\t",
+          "7\tUNION\ts\teq_ref\tPRIMARY\tPRIMARY\t8\tperf_test.b.ma_san_pham\t1"
+        ]
+      }
+    ]
+  },
+  "cart-1": {
+    "select_count": 2,
+    "queries": [
+      {
+        "shape": "select nd1_0.kich_hoat,nd1_0.vai_tro,nd1_0.phien_ban_xac_thuc from nguoi_dung nd1_0 where nd1_0.ma_nguoi_dung=?",
+        "explain": [
+          "1\tSIMPLE\tnd1_0\tconst\tPRIMARY\tPRIMARY\t8\tconst\t1"
+        ]
+      },
+      {
+        "shape": "SELECT b.ma_bien_the, s.ten_san_pham, b.ten_bien_the, b.gia_ban, CASE WHEN b.dang_hoat_dong AND s.dang_hoat_dong AND t.dang_hoat_dong AND d.dang_hoat_dong THEN b.so_luong_trong_kho - b.so_luong_tam_giu ELSE ? END AS kha_dung, b.sku, b.url_hinh_anh, t.ten_thuong_hieu, CASE WHEN b.dang_hoat_dong AND s.dang_hoat_dong AND t.dang_hoat_dong AND d.dang_hoat_dong THEN s.duong_dan END AS duong_dan , ct.so_luong FROM bien_the_san_pham b JOIN san_pham s ON s.ma_san_pham = b.ma_san_pham JOIN thuong_hieu t ON t.ma_thuong_hieu = s.ma_thuong_hieu JOIN danh_muc d ON d.ma_danh_muc = s.ma_danh_muc JOIN chi_tiet_gio_hang ct ON ct.ma_bien_the = b.ma_bien_the JOIN gio_hang g ON g.ma_gio_hang = ct.ma_gio_hang WHERE g.ma_nguoi_dung = ? ORDER BY b.ma_bien_the",
+        "explain": [
+          "1\tSIMPLE\tg\tconst\tPRIMARY,uq_gio_hang_01\tuq_gio_hang_01\t8\tconst\t1\tUsing index",
+          "1\tSIMPLE\tct\tref\tuq_chi_tiet_gio_hang_01,idx_chi_tiet_gio_hang_01\tuq_chi_tiet_gio_hang_01\t8\tconst\t1\tUsing where",
+          "1\tSIMPLE\tb\teq_ref\tPRIMARY,idx_bien_the_san_pham_01\tPRIMARY\t8\tperf_test.ct.ma_bien_the\t1\t",
+          "1\tSIMPLE\ts\teq_ref\tPRIMARY,idx_san_pham_01,idx_san_pham_02\tPRIMARY\t8\tperf_test.b.ma_san_pham\t1\t",
+          "1\tSIMPLE\tt\teq_ref\tPRIMARY\tPRIMARY\t8\tperf_test.s.ma_thuong_hieu\t1\t",
+          "1\tSIMPLE\td\teq_ref\tPRIMARY\tPRIMARY\t8\tperf_test.s.ma_danh_muc\t1"
+        ]
+      }
+    ]
+  },
+  "checkout-1": {
+    "select_count": 3,
+    "queries": [
+      {
+        "shape": "select nd1_0.kich_hoat,nd1_0.vai_tro,nd1_0.phien_ban_xac_thuc from nguoi_dung nd1_0 where nd1_0.ma_nguoi_dung=?",
+        "explain": [
+          "1\tSIMPLE\tnd1_0\tconst\tPRIMARY\tPRIMARY\t8\tconst\t1"
+        ]
+      },
+      {
+        "shape": "select dcnd1_0.ma_dia_chi,dcnd1_0.ten_nguoi_nhan,dcnd1_0.so_dien_thoai,dcnd1_0.dia_chi_chi_tiet,dcnd1_0.la_mac_dinh from dia_chi_nguoi_dung dcnd1_0 where dcnd1_0.ma_nguoi_dung=? order by dcnd1_0.ma_dia_chi",
+        "explain": [
+          "1\tSIMPLE\tdcnd1_0\tref\tidx_dia_chi_nguoi_dung_01\tidx_dia_chi_nguoi_dung_01\t8\tconst\t1\tUsing where"
+        ]
+      },
+      {
+        "shape": "SELECT b.ma_bien_the, s.ten_san_pham, b.ten_bien_the, b.gia_ban, CASE WHEN b.dang_hoat_dong AND s.dang_hoat_dong AND t.dang_hoat_dong AND d.dang_hoat_dong THEN b.so_luong_trong_kho - b.so_luong_tam_giu ELSE ? END AS kha_dung, b.sku, b.url_hinh_anh, t.ten_thuong_hieu, CASE WHEN b.dang_hoat_dong AND s.dang_hoat_dong AND t.dang_hoat_dong AND d.dang_hoat_dong THEN s.duong_dan END AS duong_dan , ct.so_luong FROM bien_the_san_pham b JOIN san_pham s ON s.ma_san_pham = b.ma_san_pham JOIN thuong_hieu t ON t.ma_thuong_hieu = s.ma_thuong_hieu JOIN danh_muc d ON d.ma_danh_muc = s.ma_danh_muc JOIN chi_tiet_gio_hang ct ON ct.ma_bien_the = b.ma_bien_the JOIN gio_hang g ON g.ma_gio_hang = ct.ma_gio_hang WHERE g.ma_nguoi_dung = ? ORDER BY b.ma_bien_the",
+        "explain": [
+          "1\tSIMPLE\tg\tconst\tPRIMARY,uq_gio_hang_01\tuq_gio_hang_01\t8\tconst\t1\tUsing index",
+          "1\tSIMPLE\tct\tref\tuq_chi_tiet_gio_hang_01,idx_chi_tiet_gio_hang_01\tuq_chi_tiet_gio_hang_01\t8\tconst\t1\tUsing where",
+          "1\tSIMPLE\tb\teq_ref\tPRIMARY,idx_bien_the_san_pham_01\tPRIMARY\t8\tperf_test.ct.ma_bien_the\t1\t",
+          "1\tSIMPLE\ts\teq_ref\tPRIMARY,idx_san_pham_01,idx_san_pham_02\tPRIMARY\t8\tperf_test.b.ma_san_pham\t1\t",
+          "1\tSIMPLE\tt\teq_ref\tPRIMARY\tPRIMARY\t8\tperf_test.s.ma_thuong_hieu\t1\t",
+          "1\tSIMPLE\td\teq_ref\tPRIMARY\tPRIMARY\t8\tperf_test.s.ma_danh_muc\t1"
+        ]
+      }
+    ]
+  },
+  "cart-10": {
+    "select_count": 2,
+    "queries": [
+      {
+        "shape": "select nd1_0.kich_hoat,nd1_0.vai_tro,nd1_0.phien_ban_xac_thuc from nguoi_dung nd1_0 where nd1_0.ma_nguoi_dung=?",
+        "explain": [
+          "1\tSIMPLE\tnd1_0\tconst\tPRIMARY\tPRIMARY\t8\tconst\t1"
+        ]
+      },
+      {
+        "shape": "SELECT b.ma_bien_the, s.ten_san_pham, b.ten_bien_the, b.gia_ban, CASE WHEN b.dang_hoat_dong AND s.dang_hoat_dong AND t.dang_hoat_dong AND d.dang_hoat_dong THEN b.so_luong_trong_kho - b.so_luong_tam_giu ELSE ? END AS kha_dung, b.sku, b.url_hinh_anh, t.ten_thuong_hieu, CASE WHEN b.dang_hoat_dong AND s.dang_hoat_dong AND t.dang_hoat_dong AND d.dang_hoat_dong THEN s.duong_dan END AS duong_dan , ct.so_luong FROM bien_the_san_pham b JOIN san_pham s ON s.ma_san_pham = b.ma_san_pham JOIN thuong_hieu t ON t.ma_thuong_hieu = s.ma_thuong_hieu JOIN danh_muc d ON d.ma_danh_muc = s.ma_danh_muc JOIN chi_tiet_gio_hang ct ON ct.ma_bien_the = b.ma_bien_the JOIN gio_hang g ON g.ma_gio_hang = ct.ma_gio_hang WHERE g.ma_nguoi_dung = ? ORDER BY b.ma_bien_the",
+        "explain": [
+          "1\tSIMPLE\tg\tconst\tPRIMARY,uq_gio_hang_01\tuq_gio_hang_01\t8\tconst\t1\tUsing index",
+          "1\tSIMPLE\tct\tref\tuq_chi_tiet_gio_hang_01,idx_chi_tiet_gio_hang_01\tuq_chi_tiet_gio_hang_01\t8\tconst\t10\tUsing where",
+          "1\tSIMPLE\tb\teq_ref\tPRIMARY,idx_bien_the_san_pham_01\tPRIMARY\t8\tperf_test.ct.ma_bien_the\t1\t",
+          "1\tSIMPLE\ts\teq_ref\tPRIMARY,idx_san_pham_01,idx_san_pham_02\tPRIMARY\t8\tperf_test.b.ma_san_pham\t1\t",
+          "1\tSIMPLE\tt\teq_ref\tPRIMARY\tPRIMARY\t8\tperf_test.s.ma_thuong_hieu\t1\t",
+          "1\tSIMPLE\td\teq_ref\tPRIMARY\tPRIMARY\t8\tperf_test.s.ma_danh_muc\t1"
+        ]
+      }
+    ]
+  },
+  "checkout-10": {
+    "select_count": 3,
+    "queries": [
+      {
+        "shape": "select nd1_0.kich_hoat,nd1_0.vai_tro,nd1_0.phien_ban_xac_thuc from nguoi_dung nd1_0 where nd1_0.ma_nguoi_dung=?",
+        "explain": [
+          "1\tSIMPLE\tnd1_0\tconst\tPRIMARY\tPRIMARY\t8\tconst\t1"
+        ]
+      },
+      {
+        "shape": "select dcnd1_0.ma_dia_chi,dcnd1_0.ten_nguoi_nhan,dcnd1_0.so_dien_thoai,dcnd1_0.dia_chi_chi_tiet,dcnd1_0.la_mac_dinh from dia_chi_nguoi_dung dcnd1_0 where dcnd1_0.ma_nguoi_dung=? order by dcnd1_0.ma_dia_chi",
+        "explain": [
+          "1\tSIMPLE\tdcnd1_0\tref\tidx_dia_chi_nguoi_dung_01\tidx_dia_chi_nguoi_dung_01\t8\tconst\t1\tUsing where"
+        ]
+      },
+      {
+        "shape": "SELECT b.ma_bien_the, s.ten_san_pham, b.ten_bien_the, b.gia_ban, CASE WHEN b.dang_hoat_dong AND s.dang_hoat_dong AND t.dang_hoat_dong AND d.dang_hoat_dong THEN b.so_luong_trong_kho - b.so_luong_tam_giu ELSE ? END AS kha_dung, b.sku, b.url_hinh_anh, t.ten_thuong_hieu, CASE WHEN b.dang_hoat_dong AND s.dang_hoat_dong AND t.dang_hoat_dong AND d.dang_hoat_dong THEN s.duong_dan END AS duong_dan , ct.so_luong FROM bien_the_san_pham b JOIN san_pham s ON s.ma_san_pham = b.ma_san_pham JOIN thuong_hieu t ON t.ma_thuong_hieu = s.ma_thuong_hieu JOIN danh_muc d ON d.ma_danh_muc = s.ma_danh_muc JOIN chi_tiet_gio_hang ct ON ct.ma_bien_the = b.ma_bien_the JOIN gio_hang g ON g.ma_gio_hang = ct.ma_gio_hang WHERE g.ma_nguoi_dung = ? ORDER BY b.ma_bien_the",
+        "explain": [
+          "1\tSIMPLE\tg\tconst\tPRIMARY,uq_gio_hang_01\tuq_gio_hang_01\t8\tconst\t1\tUsing index",
+          "1\tSIMPLE\tct\tref\tuq_chi_tiet_gio_hang_01,idx_chi_tiet_gio_hang_01\tuq_chi_tiet_gio_hang_01\t8\tconst\t10\tUsing where",
+          "1\tSIMPLE\tb\teq_ref\tPRIMARY,idx_bien_the_san_pham_01\tPRIMARY\t8\tperf_test.ct.ma_bien_the\t1\t",
+          "1\tSIMPLE\ts\teq_ref\tPRIMARY,idx_san_pham_01,idx_san_pham_02\tPRIMARY\t8\tperf_test.b.ma_san_pham\t1\t",
+          "1\tSIMPLE\tt\teq_ref\tPRIMARY\tPRIMARY\t8\tperf_test.s.ma_thuong_hieu\t1\t",
+          "1\tSIMPLE\td\teq_ref\tPRIMARY\tPRIMARY\t8\tperf_test.s.ma_danh_muc\t1"
+        ]
+      }
+    ]
+  },
+  "cart-100": {
+    "select_count": 2,
+    "queries": [
+      {
+        "shape": "select nd1_0.kich_hoat,nd1_0.vai_tro,nd1_0.phien_ban_xac_thuc from nguoi_dung nd1_0 where nd1_0.ma_nguoi_dung=?",
+        "explain": [
+          "1\tSIMPLE\tnd1_0\tconst\tPRIMARY\tPRIMARY\t8\tconst\t1"
+        ]
+      },
+      {
+        "shape": "SELECT b.ma_bien_the, s.ten_san_pham, b.ten_bien_the, b.gia_ban, CASE WHEN b.dang_hoat_dong AND s.dang_hoat_dong AND t.dang_hoat_dong AND d.dang_hoat_dong THEN b.so_luong_trong_kho - b.so_luong_tam_giu ELSE ? END AS kha_dung, b.sku, b.url_hinh_anh, t.ten_thuong_hieu, CASE WHEN b.dang_hoat_dong AND s.dang_hoat_dong AND t.dang_hoat_dong AND d.dang_hoat_dong THEN s.duong_dan END AS duong_dan , ct.so_luong FROM bien_the_san_pham b JOIN san_pham s ON s.ma_san_pham = b.ma_san_pham JOIN thuong_hieu t ON t.ma_thuong_hieu = s.ma_thuong_hieu JOIN danh_muc d ON d.ma_danh_muc = s.ma_danh_muc JOIN chi_tiet_gio_hang ct ON ct.ma_bien_the = b.ma_bien_the JOIN gio_hang g ON g.ma_gio_hang = ct.ma_gio_hang WHERE g.ma_nguoi_dung = ? ORDER BY b.ma_bien_the",
+        "explain": [
+          "1\tSIMPLE\tg\tconst\tPRIMARY,uq_gio_hang_01\tuq_gio_hang_01\t8\tconst\t1\tUsing index",
+          "1\tSIMPLE\tct\tALL\tuq_chi_tiet_gio_hang_01,idx_chi_tiet_gio_hang_01\tNULL\tNULL\tNULL\t222\tUsing where; Using filesort",
+          "1\tSIMPLE\tb\teq_ref\tPRIMARY,idx_bien_the_san_pham_01\tPRIMARY\t8\tperf_test.ct.ma_bien_the\t1\t",
+          "1\tSIMPLE\ts\teq_ref\tPRIMARY,idx_san_pham_01,idx_san_pham_02\tPRIMARY\t8\tperf_test.b.ma_san_pham\t1\t",
+          "1\tSIMPLE\td\teq_ref\tPRIMARY\tPRIMARY\t8\tperf_test.s.ma_danh_muc\t1\t",
+          "1\tSIMPLE\tt\teq_ref\tPRIMARY\tPRIMARY\t8\tperf_test.s.ma_thuong_hieu\t1"
+        ]
+      }
+    ]
+  },
+  "checkout-100": {
+    "select_count": 3,
+    "queries": [
+      {
+        "shape": "select nd1_0.kich_hoat,nd1_0.vai_tro,nd1_0.phien_ban_xac_thuc from nguoi_dung nd1_0 where nd1_0.ma_nguoi_dung=?",
+        "explain": [
+          "1\tSIMPLE\tnd1_0\tconst\tPRIMARY\tPRIMARY\t8\tconst\t1"
+        ]
+      },
+      {
+        "shape": "select dcnd1_0.ma_dia_chi,dcnd1_0.ten_nguoi_nhan,dcnd1_0.so_dien_thoai,dcnd1_0.dia_chi_chi_tiet,dcnd1_0.la_mac_dinh from dia_chi_nguoi_dung dcnd1_0 where dcnd1_0.ma_nguoi_dung=? order by dcnd1_0.ma_dia_chi",
+        "explain": [
+          "1\tSIMPLE\tdcnd1_0\tref\tidx_dia_chi_nguoi_dung_01\tidx_dia_chi_nguoi_dung_01\t8\tconst\t1\tUsing where"
+        ]
+      },
+      {
+        "shape": "SELECT b.ma_bien_the, s.ten_san_pham, b.ten_bien_the, b.gia_ban, CASE WHEN b.dang_hoat_dong AND s.dang_hoat_dong AND t.dang_hoat_dong AND d.dang_hoat_dong THEN b.so_luong_trong_kho - b.so_luong_tam_giu ELSE ? END AS kha_dung, b.sku, b.url_hinh_anh, t.ten_thuong_hieu, CASE WHEN b.dang_hoat_dong AND s.dang_hoat_dong AND t.dang_hoat_dong AND d.dang_hoat_dong THEN s.duong_dan END AS duong_dan , ct.so_luong FROM bien_the_san_pham b JOIN san_pham s ON s.ma_san_pham = b.ma_san_pham JOIN thuong_hieu t ON t.ma_thuong_hieu = s.ma_thuong_hieu JOIN danh_muc d ON d.ma_danh_muc = s.ma_danh_muc JOIN chi_tiet_gio_hang ct ON ct.ma_bien_the = b.ma_bien_the JOIN gio_hang g ON g.ma_gio_hang = ct.ma_gio_hang WHERE g.ma_nguoi_dung = ? ORDER BY b.ma_bien_the",
+        "explain": [
+          "1\tSIMPLE\tg\tconst\tPRIMARY,uq_gio_hang_01\tuq_gio_hang_01\t8\tconst\t1\tUsing index",
+          "1\tSIMPLE\tct\tALL\tuq_chi_tiet_gio_hang_01,idx_chi_tiet_gio_hang_01\tNULL\tNULL\tNULL\t222\tUsing where; Using filesort",
+          "1\tSIMPLE\tb\teq_ref\tPRIMARY,idx_bien_the_san_pham_01\tPRIMARY\t8\tperf_test.ct.ma_bien_the\t1\t",
+          "1\tSIMPLE\ts\teq_ref\tPRIMARY,idx_san_pham_01,idx_san_pham_02\tPRIMARY\t8\tperf_test.b.ma_san_pham\t1\t",
+          "1\tSIMPLE\td\teq_ref\tPRIMARY\tPRIMARY\t8\tperf_test.s.ma_danh_muc\t1\t",
+          "1\tSIMPLE\tt\teq_ref\tPRIMARY\tPRIMARY\t8\tperf_test.s.ma_thuong_hieu\t1"
+        ]
+      }
+    ]
+  },
+  "quote-100": {
+    "select_count": 3,
+    "queries": [
+      {
+        "shape": "select nd1_0.kich_hoat,nd1_0.vai_tro,nd1_0.phien_ban_xac_thuc from nguoi_dung nd1_0 where nd1_0.ma_nguoi_dung=?",
+        "explain": [
+          "1\tSIMPLE\tnd1_0\tconst\tPRIMARY\tPRIMARY\t8\tconst\t1"
+        ]
+      },
+      {
+        "shape": "select dcnd1_0.ma_dia_chi,dcnd1_0.ten_nguoi_nhan,dcnd1_0.so_dien_thoai,dcnd1_0.dia_chi_chi_tiet,dcnd1_0.la_mac_dinh from dia_chi_nguoi_dung dcnd1_0 where dcnd1_0.ma_nguoi_dung=? order by dcnd1_0.ma_dia_chi",
+        "explain": [
+          "1\tSIMPLE\tdcnd1_0\tref\tidx_dia_chi_nguoi_dung_01\tidx_dia_chi_nguoi_dung_01\t8\tconst\t1\tUsing where"
+        ]
+      },
+      {
+        "shape": "SELECT b.ma_bien_the, s.ten_san_pham, b.ten_bien_the, b.gia_ban, CASE WHEN b.dang_hoat_dong AND s.dang_hoat_dong AND t.dang_hoat_dong AND d.dang_hoat_dong THEN b.so_luong_trong_kho - b.so_luong_tam_giu ELSE ? END AS kha_dung, b.sku, b.url_hinh_anh, t.ten_thuong_hieu, CASE WHEN b.dang_hoat_dong AND s.dang_hoat_dong AND t.dang_hoat_dong AND d.dang_hoat_dong THEN s.duong_dan END AS duong_dan , ct.so_luong FROM bien_the_san_pham b JOIN san_pham s ON s.ma_san_pham = b.ma_san_pham JOIN thuong_hieu t ON t.ma_thuong_hieu = s.ma_thuong_hieu JOIN danh_muc d ON d.ma_danh_muc = s.ma_danh_muc JOIN chi_tiet_gio_hang ct ON ct.ma_bien_the = b.ma_bien_the JOIN gio_hang g ON g.ma_gio_hang = ct.ma_gio_hang WHERE g.ma_nguoi_dung = ? ORDER BY b.ma_bien_the",
+        "explain": [
+          "1\tSIMPLE\tg\tconst\tPRIMARY,uq_gio_hang_01\tuq_gio_hang_01\t8\tconst\t1\tUsing index",
+          "1\tSIMPLE\tct\tALL\tuq_chi_tiet_gio_hang_01,idx_chi_tiet_gio_hang_01\tNULL\tNULL\tNULL\t222\tUsing where; Using filesort",
+          "1\tSIMPLE\tb\teq_ref\tPRIMARY,idx_bien_the_san_pham_01\tPRIMARY\t8\tperf_test.ct.ma_bien_the\t1\t",
+          "1\tSIMPLE\ts\teq_ref\tPRIMARY,idx_san_pham_01,idx_san_pham_02\tPRIMARY\t8\tperf_test.b.ma_san_pham\t1\t",
+          "1\tSIMPLE\td\teq_ref\tPRIMARY\tPRIMARY\t8\tperf_test.s.ma_danh_muc\t1\t",
+          "1\tSIMPLE\tt\teq_ref\tPRIMARY\tPRIMARY\t8\tperf_test.s.ma_thuong_hieu\t1"
+        ]
+      }
+    ]
+  }
+}
