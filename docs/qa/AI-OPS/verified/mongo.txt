@@ -1,0 +1,3 @@
+2026-11-29T00:05:42.400+07:00 Build Info version=6.0.8
+2026-11-29T00:05:42.821+07:00 Waiting for connections port=28143
+2026-11-29T00:05:42.979+07:00 Connection accepted
