@@ -18,12 +18,13 @@ public class QuyenDonHang_Service {
     }
 
     @PreAuthorize("hasRole('CUSTOMER')")
-    public void kiemTraSoHuu(long maDonHang) {
+    public long kiemTraSoHuu(long maDonHang) {
         if (!(SecurityContextHolder.getContext().getAuthentication().getPrincipal() instanceof PhienNguoiDung nguoiDung)) {
             throw new AccessDeniedException("Không xác định được chủ tài khoản.");
         }
         jdbc.sql("SELECT ma_don_hang FROM don_hang WHERE ma_don_hang = ? AND ma_nguoi_dung = ?")
             .params(maDonHang, nguoiDung.getMaNguoiDung()).query(Long.class).optional()
             .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+        return nguoiDung.getMaNguoiDung();
     }
 }

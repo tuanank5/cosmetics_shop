@@ -3,7 +3,7 @@
 | ID | Quy tắc / bất biến |
 |---|---|
 | BR01 | Guest đọc catalog và giỏ Session; muốn checkout phải login |
-| BR02 | CartItem nhận diện bởi variantId; merge Session->DB đúng một lần, kiểm tra lại giá & available |
+| BR02 | CartItem nhận diện bởi variantId; merge Session->DB đúng một lần, kiểm tra lại giá & available. Khi mua lại, mỗi thao tác cộng tối đa lượng đặt cũ còn mua được sau khi trừ lượng trong giỏ. Báo kết quả từng SKU, bỏ qua hàng ngừng bán. Giá theo SKU hiện tại. Retry cùng thao tác chỉ ghi một lần. Mua lại giữ nguyên đơn cũ, attempt, lượt voucher và kho. Muốn đặt đơn mới, Customer phải xác nhận checkout riêng. |
 | BR03 | Product là cha; variant SKU có giá/ảnh/on_hand/reserved riêng, `0 <= reserved <= on_hand` |
 | BR04 | Available = on_hand - reserved; không cho bán vượt available, phải dùng khóa/version/SQL update có điều kiện |
 | BR05 | Giá/order total do server tính, chốt snapshot item/address/discount/ship; không lấy giá/thành tiền từ request |

@@ -31,7 +31,7 @@ Website thương mại điện tử **single-store B2C** hỗ trợ khách tìm 
 | FR-10 | Giữ SKU 15 phút online, hết hạn & đối soát | P1 gắn MoMo | Không oversell khi đồng thời |
 | FR-11 | Admin cập nhật đơn và giao thủ công | P0 | Chặn chuyển trạng thái sai |
 | FR-12 | Phí ship 25k, miễn >=500k; quản lý voucher FIXED/PERCENT | P0 | Phí và voucher tính đúng trên server |
-| FR-13 | Đơn hàng và chi tiết của chính Customer | P0 | Chống IDOR |
+| FR-13 | Danh sách và chi tiết đơn của chính Customer | P0 | Chống IDOR. Mở rộng P1 theo 09-ORDER: lọc mã, trạng thái, ngày Việt Nam, sắp xếp, giữ trang khi quay lại và mua lại vào giỏ theo BR02. |
 | FR-14 | Dashboard cơ bản (đơn/doanh thu đã xác nhận thu tiền) | P0 | Không trộn đơn chưa thanh toán vào doanh thu |
 | FR-15 | Customer tự hủy trước PACKING; hoàn kho/lượt voucher một lần | P0 | Giao dịch PAID đưa refund pending nếu cần |
 | FR-16 | Wishlist, review với order_item DELIVERED | P1 | Không đánh giá hàng chưa nhận |

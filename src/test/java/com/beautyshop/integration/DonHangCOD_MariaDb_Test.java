@@ -318,6 +318,220 @@ class DonHangCOD_MariaDb_Test {
         assertThat(donHangService.datCOD(a.id(),a.maDiaChi(),hang,ship)).isPositive();
     }
 
+    @Test
+    void haiPostMuaLaiCungYeuCauChiGhiMotLan() throws Exception {
+        var chu = taiKhoan(false);
+        var khac = taiKhoan(false);
+        var phien = login(chu.email(), new MockHttpSession());
+        long sku = taoSku(12, 510000);
+        long ngung = taoSku(3, 9000);
+        long het = taoSku(1, 1000);
+        String hang = taoVoucher("FIXED", 30000, null, 4, false);
+        String ship = taoVoucher("FIXED", 10000, null, 4, false);
+        jdbc.sql("UPDATE phieu_giam_gia SET slot='VAN_CHUYEN' WHERE ma_ap_dung=?").param(ship).update();
+        gioHangService.themGioCustomer(chu.id(), sku);
+        gioHangService.themGioCustomer(chu.id(), ngung);
+        gioHangService.themGioCustomer(chu.id(), het);
+        long don = donHangService.datCOD(chu.id(), chu.maDiaChi(), hang, ship);
+        gioHangService.themGioCustomer(chu.id(), sku);
+        jdbc.sql("UPDATE bien_the_san_pham SET gia_ban=490000 WHERE ma_bien_the=?").param(sku).update();
+        jdbc.sql("UPDATE thuong_hieu t JOIN san_pham s USING(ma_thuong_hieu) JOIN bien_the_san_pham b USING(ma_san_pham) SET t.dang_hoat_dong=false WHERE b.ma_bien_the=?").param(ngung).update();
+        String url = "/orders/" + don + "/reorder";
+        var form = formMuaLai(phien,don);
+        mvc.perform(post(url).with(csrf()).session(login(khac.email(), new MockHttpSession())).params(form))
+            .andExpect(status().isNotFound());
+        mvc.perform(post(url).session(phien).params(form)).andExpect(status().isForbidden());
+        mvc.perform(post(url).with(csrf()).params(form)).andExpect(status().is3xxRedirection());
+        mvc.perform(post(url).with(csrf()).session(login(taiKhoan(true).email(), new MockHttpSession())).params(form))
+            .andExpect(status().isForbidden());
+        String truoc = chungTu(don);
+        var batDau = new java.util.concurrent.CyclicBarrier(2);
+        java.util.concurrent.Callable<Void> gui = () -> {
+            batDau.await(10, TimeUnit.SECONDS);
+            mvc.perform(post(url).with(csrf()).session(phien).params(form))
+                .andExpect(redirectedUrl("/cart"));
+            return null;
+        };
+        try (var pool = Executors.newFixedThreadPool(2)) {
+            var a = pool.submit(gui);
+            var b = pool.submit(gui);
+            a.get(15, TimeUnit.SECONDS);
+            b.get(15, TimeUnit.SECONDS);
+        }
+        var gio = gioHangService.docGioCustomer(chu.id());
+        assertThat(gio).hasSize(1);
+        assertThat(gio.getFirst().soLuong()).isEqualTo(2);
+        assertThat(gio.getFirst().giaBan()).isEqualByComparingTo("490000");
+        mvc.perform(post(url).with(csrf()).session(phien).params(formMuaLai(phien,don)))
+            .andExpect(redirectedUrl("/cart"));
+        assertThat(gioHangService.docGioCustomer(chu.id()).getFirst().soLuong()).isEqualTo(3);
+        assertThat(chungTu(don)).isEqualTo(truoc);
+        assertThat(ton(sku)).isEqualTo(11);
+        assertThat(ton(ngung)).isEqualTo(2);
+        assertThat(luot(hang)).isOne();
+        assertThat(luot(ship)).isOne();
+        assertThat(ton(het)).isZero();
+        assertThat(donHangService.danhSachCustomer(chu.id())).hasSize(1);
+        assertThat(jdbc.sql("SELECT so_tien FROM lan_thanh_toan WHERE ma_don_hang=?").param(don)
+            .query(BigDecimal.class).single()).isEqualByComparingTo("505000");
+        assertThat(jdbc.sql("SELECT CONCAT(slot, ':', so_tien_giam, ':', trang_thai) FROM tam_giu_phieu_giam_gia WHERE ma_don_hang=? ORDER BY slot")
+            .param(don).query(String.class).list()).containsExactly("HANG:30000:CONSUMED", "VAN_CHUYEN:10000:CONSUMED");
+        assertThat(jdbc.sql("SELECT tong_thanh_toan FROM don_hang WHERE ma_don_hang=?")
+            .param(don).query(BigDecimal.class).single()).isEqualByComparingTo("505000");
+        assertThat(jdbc.sql("SELECT don_gia FROM chi_tiet_don_hang WHERE ma_don_hang=? AND ma_bien_the=?")
+            .params(don,sku).query(BigDecimal.class).single()).isEqualByComparingTo("510000");
+    }
+
+    @Test
+    void locDonCustomerCungPredicateChoCountVaTrang() throws Exception {
+        var chu = taiKhoan(false);
+        var khac = taiKhoan(false);
+        var loc = new com.beautyshop.dto.BoLocDonHangAdmin(List.of(com.beautyshop.order.OrderStatus.PENDING_CONFIRMATION),
+            null, null, "QA_", com.beautyshop.dto.BoLocDonHangAdmin.SapXep.totalAsc, 10,
+            java.time.LocalDate.of(2026,11,28), java.time.LocalDate.of(2026,11,28));
+        String insert = """
+            INSERT INTO don_hang(ma_don_hang_hien_thi,ma_nguoi_dung,ten_nguoi_nhan,sdt_nguoi_nhan,dia_chi_khi_dat,
+                tam_tinh,so_tien_giam,phi_van_chuyen,tong_thanh_toan,trang_thai,phuong_thuc_thanh_toan,ngay_tao)
+            VALUES(?,?,'Fixture','0','Fixture',1000,0,0,1000,'PENDING_CONFIRMATION','COD',?) RETURNING ma_don_hang
+            """;
+        var ids = new java.util.ArrayList<Long>();
+        for (int i=0; i<11; i++) {
+            ids.add(jdbc.sql(insert).params("QA_"+UUID.randomUUID(),chu.id(),"2026-11-27 17:00:00").query(Long.class).single());
+        }
+        jdbc.sql(insert).params("QA_"+UUID.randomUUID(),khac.id(),"2026-11-27 17:00:00").query(Long.class).single();
+        jdbc.sql(insert).params("QA_"+UUID.randomUUID(),chu.id(),"2026-11-28 17:00:00").query(Long.class).single();
+        jdbc.sql(insert).params("QA-"+UUID.randomUUID(),chu.id(),"2026-11-27 17:00:00").query(Long.class).single();
+        var trang = donHangService.danhSachCustomer(chu.id(),loc,org.springframework.data.domain.PageRequest.of(1,10));
+        assertThat(trang.getTotalElements()).isEqualTo(11);
+        assertThat(trang.getContent()).extracting("maDonHang").containsExactly(ids.getFirst());
+    }
+
+    @Test
+    void khoaTrangThaiSanPhamDenKhiGhiGioHoanTat() throws Exception {
+        var chu = taiKhoan(false);
+        long sku = taoSku(3, 100000);
+        var sanPham = jdbc.sql("SELECT ma_san_pham FROM bien_the_san_pham WHERE ma_bien_the=?")
+            .param(sku).query(Long.class).single();
+        var daDoc = new CountDownLatch(1);
+        var choGhi = new CountDownLatch(1);
+        try (var pool = Executors.newFixedThreadPool(2)) {
+            var ghiGio = pool.submit(() -> new TransactionTemplate(transactionManager).executeWithoutResult(tx -> {
+                long gio = gioHangRepository.khoaGio(chu.id());
+                assertThat(gioHangRepository.timBienThe(sku,true)).isPresent();
+                daDoc.countDown();
+                try {
+                    if (!choGhi.await(10,TimeUnit.SECONDS)) throw new AssertionError("Chờ ghi giỏ quá hạn");
+                } catch (InterruptedException err) {
+                    Thread.currentThread().interrupt();
+                    throw new AssertionError(err);
+                }
+                gioHangRepository.luuSoLuong(gio,sku,1);
+            }));
+            assertThat(daDoc.await(10,TimeUnit.SECONDS)).isTrue();
+            try {
+                var sua = pool.submit(() -> new TransactionTemplate(transactionManager).executeWithoutResult(tx -> {
+                    // NOWAIT makes a conflicting admin write observable without timing assumptions.
+                    jdbc.sql("SELECT ma_san_pham FROM san_pham WHERE ma_san_pham=? FOR UPDATE NOWAIT")
+                        .param(sanPham).query(Long.class).single();
+                }));
+                org.assertj.core.api.Assertions.assertThatThrownBy(() -> sua.get(5,TimeUnit.SECONDS))
+                    .isInstanceOf(java.util.concurrent.ExecutionException.class)
+                    .rootCause().isInstanceOfSatisfying(java.sql.SQLException.class,
+                        loi -> assertThat(loi.getErrorCode()).isEqualTo(1205));
+            } finally {
+                choGhi.countDown();
+            }
+            ghiGio.get(5,TimeUnit.SECONDS);
+        }
+        jdbc.sql("UPDATE san_pham SET dang_hoat_dong=false WHERE ma_san_pham=?").param(sanPham).update();
+        assertThat(gioHangService.docGioCustomer(chu.id()).getFirst().khaDung()).isZero();
+    }
+
+    private org.springframework.util.MultiValueMap<String,String> formMuaLai(MockHttpSession phien, long don) throws Exception {
+        var model = mvc.perform(get("/orders/" + don).session(phien)).andExpect(status().isOk())
+            .andReturn().getModelAndView().getModel();
+        var form = new org.springframework.util.LinkedMultiValueMap<String,String>();
+        form.add("requestId", model.get("maMuaLai").toString());
+        form.add("proof", String.valueOf(model.get("chuKyMuaLai")));
+        return form;
+    }
+
+    private String chungTu(long don) {
+        // Compare complete fixture rows in memory. Only the test verdict is exported.
+        var bang = List.of("don_hang", "chi_tiet_don_hang", "lan_thanh_toan", "tam_giu_phieu_giam_gia",
+            "tam_giu_ton_kho", "ghi_nhan_tru_kho_cod", "van_chuyen");
+        var snapshot = new StringBuilder();
+        for (String ten : bang) {
+            jdbc.sql("SELECT * FROM " + ten + " WHERE ma_don_hang=? ORDER BY 1,2")
+                .param(don).query().listOfRows().forEach(snapshot::append);
+        }
+        return snapshot.toString();
+    }
+
+    @Test
+    void formMuaLaiChiApDungChoDonVaPhienDaCap() throws Exception {
+        var chu = taiKhoan(false);
+        var phien = login(chu.email(), new MockHttpSession());
+        long sku = taoSku(8, 100000);
+        gioHangService.themGioCustomer(chu.id(),sku);
+        long a = donHangService.datCOD(chu.id(),chu.maDiaChi(),null);
+        gioHangService.themGioCustomer(chu.id(),sku);
+        long b = donHangService.datCOD(chu.id(),chu.maDiaChi(),null);
+        var form = formMuaLai(phien,a);
+        mvc.perform(post("/orders/"+b+"/reorder").session(phien).with(csrf()).params(form))
+            .andExpect(status().isNotFound());
+        mvc.perform(post("/orders/"+a+"/reorder").session(login(chu.email(),new MockHttpSession())).with(csrf()).params(form))
+            .andExpect(status().isNotFound());
+        assertThat(gioHangService.docGioCustomer(chu.id())).isEmpty();
+    }
+
+    @Test
+    void rollbackRetryVaHaiYeuCauTranhDonViCuoi() throws Exception {
+        var chu = taiKhoan(false);
+        var phien = login(chu.email(), new MockHttpSession());
+        long sku = taoSku(2, 100000);
+        gioHangService.themGioCustomer(chu.id(),sku);
+        long don = donHangService.datCOD(chu.id(),chu.maDiaChi(),null);
+        var form = formMuaLai(phien,don);
+        String url = "/orders/"+don+"/reorder";
+        String trigger = "qa_mua_lai_" + sku;
+        jdbc.sql("CREATE TRIGGER " + trigger + " AFTER INSERT ON chi_tiet_gio_hang FOR EACH ROW BEGIN "
+            + "IF NEW.ma_bien_the=" + sku + " THEN SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT='ORDER fixture rollback'; END IF; END").update();
+        try {
+            org.assertj.core.api.Assertions.assertThatThrownBy(() -> mvc.perform(
+                post(url).session(phien).with(csrf()).params(form)))
+                .rootCause().hasMessageContaining("ORDER fixture rollback");
+        } finally {
+            jdbc.sql("DROP TRIGGER " + trigger).update();
+        }
+        assertThat(gioHangService.docGioCustomer(chu.id())).isEmpty();
+        assertThat(jdbc.sql("SELECT COUNT(*) FROM ghi_nhan_gop_gio_hang WHERE ma_nguoi_dung=?")
+            .param(chu.id()).query(Long.class).single()).isZero();
+        var id = UUID.fromString(form.getFirst("requestId"));
+        // Pre-existing v4 merge receipt with exactly the same raw UUID as the reorder form.
+        assertThat(gioHangRepository.ghiNhanGop(id.toString(),chu.id())).isTrue();
+        mvc.perform(post(url).session(phien).with(csrf()).params(form)).andExpect(redirectedUrl("/cart"));
+        assertThat(gioHangService.docGioCustomer(chu.id()).getFirst().soLuong()).isOne();
+        gioHangService.datSoLuongCustomer(chu.id(),sku,0);
+        mvc.perform(post(url).session(phien).with(csrf()).params(form)).andExpect(redirectedUrl("/cart"));
+        assertThat(gioHangService.docGioCustomer(chu.id())).isEmpty();
+        var start = new java.util.concurrent.CyclicBarrier(2);
+        try (var pool = Executors.newFixedThreadPool(2)) {
+            var futures = new java.util.ArrayList<java.util.concurrent.Future<Void>>();
+            for (int i=0; i<2; i++) {
+                var moi = formMuaLai(phien,don);
+                futures.add(pool.submit(() -> {
+                    start.await(10,TimeUnit.SECONDS);
+                    mvc.perform(post(url).session(phien).with(csrf()).params(moi)).andExpect(redirectedUrl("/cart"));
+                    return null;
+                }));
+            }
+            for (var future : futures) future.get(15,TimeUnit.SECONDS);
+        }
+        assertThat(gioHangService.docGioCustomer(chu.id()).getFirst().soLuong()).isOne();
+        assertThat(ton(sku)).isOne();
+    }
+
     private long tranhVoucher(TaiKhoan taiKhoan, String voucher, String ship, CountDownLatch batDau) throws InterruptedException {
         if (!batDau.await(10, TimeUnit.SECONDS)) {
             throw new AssertionError("Không bắt đầu được checkout.");

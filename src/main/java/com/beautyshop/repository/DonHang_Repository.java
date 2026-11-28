@@ -89,6 +89,40 @@ public class DonHang_Repository {
     public Page<DongDonAdmin> danhSachAdmin(BoLocDonHangAdmin loc, Pageable pageable) {
         var thamSo = new LinkedHashMap<String, Object>();
         var dieuKien = new StringBuilder(" WHERE 1 = 1");
+        themBoLoc(loc, thamSo, dieuKien);
+        long tong = jdbc.sql("SELECT COUNT(*) FROM don_hang d" + dieuKien).params(thamSo).query(Long.class).single();
+        if (pageable.getOffset() >= tong) return new PageImpl<>(List.of(), pageable, tong);
+
+        var danhSach = jdbc.sql("""
+            SELECT d.ma_don_hang, d.ma_don_hang_hien_thi, d.trang_thai, d.tong_thanh_toan,
+                   d.phuong_thuc_thanh_toan, d.ngay_tao, n.ho_ten,
+                   COALESCE((SELECT SUM(c.so_luong) FROM chi_tiet_don_hang c WHERE c.ma_don_hang = d.ma_don_hang), 0),
+            """ + TRANG_THAI_HIEU_LUC + """
+             FROM don_hang d JOIN nguoi_dung n ON n.ma_nguoi_dung = d.ma_nguoi_dung
+            """ + dieuKien + " ORDER BY " + thuTu(loc) + " LIMIT :size OFFSET :offset")
+            .params(thamSo).param("size", pageable.getPageSize()).param("offset", pageable.getOffset())
+            .query((rs, row) -> new DongDonAdmin(rs.getLong(1), rs.getString(2), OrderStatus.valueOf(rs.getString(3)),
+                rs.getBigDecimal(4), rs.getString(5), rs.getString(9), rs.getString(7), rs.getLong(8),
+                rs.getObject(6, LocalDateTime.class))).list();
+        return new PageImpl<>(danhSach, pageable, tong);
+    }
+
+    public Page<TomTat> danhSach(long maNguoiDung, BoLocDonHangAdmin loc, Pageable trang) {
+        var thamSo = new LinkedHashMap<String, Object>();
+        var dieuKien = new StringBuilder(" WHERE d.ma_nguoi_dung = :chu");
+        thamSo.put("chu", maNguoiDung);
+        themBoLoc(loc, thamSo, dieuKien);
+        long tong = jdbc.sql("SELECT COUNT(*) FROM don_hang d" + dieuKien).params(thamSo).query(Long.class).single();
+        var ds = jdbc.sql("""
+            SELECT d.ma_don_hang, d.ma_don_hang_hien_thi, d.trang_thai, d.tong_thanh_toan, d.ngay_tao FROM don_hang d
+            """ + dieuKien + " ORDER BY " + thuTu(loc) + " LIMIT :size OFFSET :offset")
+            .params(thamSo).param("size", trang.getPageSize()).param("offset", trang.getOffset())
+            .query((rs, row) -> new TomTat(rs.getLong(1), rs.getString(2), OrderStatus.valueOf(rs.getString(3)),
+                rs.getBigDecimal(4), rs.getObject(5, LocalDateTime.class))).list();
+        return new PageImpl<>(ds, trang, tong);
+    }
+
+    private static void themBoLoc(BoLocDonHangAdmin loc, java.util.Map<String, Object> thamSo, StringBuilder dieuKien) {
         if (!loc.trangThai().isEmpty()) {
             dieuKien.append(" AND d.trang_thai IN (:trangThai)");
             thamSo.put("trangThai", loc.trangThai().stream().map(Enum::name).toList());
@@ -113,27 +147,15 @@ public class DonHang_Repository {
             dieuKien.append(" AND d.ngay_tao < :denLuc");
             thamSo.put("denLuc", loc.denNgay().plusDays(1).atStartOfDay(GIO_VIET_NAM).withZoneSameInstant(ZoneOffset.UTC).toLocalDateTime());
         }
-        long tong = jdbc.sql("SELECT COUNT(*) FROM don_hang d" + dieuKien).params(thamSo).query(Long.class).single();
-        if (pageable.getOffset() >= tong) return new PageImpl<>(List.of(), pageable, tong);
+    }
 
-        String thuTu = switch (loc.sapXep()) {
+    private static String thuTu(BoLocDonHangAdmin loc) {
+        return switch (loc.sapXep()) {
             case newest -> "d.ngay_tao DESC, d.ma_don_hang DESC";
             case oldest -> "d.ngay_tao ASC, d.ma_don_hang ASC";
             case totalDesc -> "d.tong_thanh_toan DESC, d.ma_don_hang DESC";
             case totalAsc -> "d.tong_thanh_toan ASC, d.ma_don_hang DESC";
         };
-        var danhSach = jdbc.sql("""
-            SELECT d.ma_don_hang, d.ma_don_hang_hien_thi, d.trang_thai, d.tong_thanh_toan,
-                   d.phuong_thuc_thanh_toan, d.ngay_tao, n.ho_ten,
-                   COALESCE((SELECT SUM(c.so_luong) FROM chi_tiet_don_hang c WHERE c.ma_don_hang = d.ma_don_hang), 0),
-            """ + TRANG_THAI_HIEU_LUC + """
-             FROM don_hang d JOIN nguoi_dung n ON n.ma_nguoi_dung = d.ma_nguoi_dung
-            """ + dieuKien + " ORDER BY " + thuTu + " LIMIT :size OFFSET :offset")
-            .params(thamSo).param("size", pageable.getPageSize()).param("offset", pageable.getOffset())
-            .query((rs, row) -> new DongDonAdmin(rs.getLong(1), rs.getString(2), OrderStatus.valueOf(rs.getString(3)),
-                rs.getBigDecimal(4), rs.getString(5), rs.getString(9), rs.getString(7), rs.getLong(8),
-                rs.getObject(6, LocalDateTime.class))).list();
-        return new PageImpl<>(danhSach, pageable, tong);
     }
 
     public TongQuan tongQuan() {

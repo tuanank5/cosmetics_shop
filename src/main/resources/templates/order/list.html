@@ -2,14 +2,14 @@
 <html lang="vi" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="~{fragments/head :: head('Đơn hàng · BeautyShop')}"></head>
 <body><div th:replace="~{fragments/header :: siteHeader}"></div>
-<main id="main" tabindex="-1" class="page-content" th:classappend="${boLoc != null ? 'admin-workspace' : null}">
+<main id="main" tabindex="-1" class="page-content" th:classappend="${orderOrigin != null ? 'admin-workspace' : null}">
     <th:block th:if="${base == '/orders'}">
         <nav th:replace="~{fragments/ui :: breadcrumb('Đơn hàng của bạn', ~{:: .crumb-parent})}">
             <li class="crumb-parent"><a th:href="@{/account}">Tài khoản</a></li>
         </nav>
     </th:block>
     <h1 th:text="${base == '/admin/orders' ? 'Quản lý đơn hàng' : 'Đơn hàng của bạn'}">Đơn hàng</h1>
-    <p class="admin-subtitle" th:if="${boLoc != null}">Theo dõi đơn hàng, thanh toán và các bước giao hàng.</p>
+    <p class="admin-subtitle" th:if="${orderOrigin != null}">Theo dõi đơn hàng, thanh toán và các bước giao hàng.</p>
     <dl class="order-summary" th:if="${tongQuan}" aria-label="Tổng quan đơn hàng toàn hệ thống">
         <div><dt>Tổng số đơn</dt><dd th:text="${tongQuan.tongSoDon}"></dd></div>
         <div><dt>Chờ xác nhận</dt><dd th:text="${tongQuan.choXacNhan}"></dd></div>
@@ -20,7 +20,7 @@
         <div><dt>Đơn đã thu tiền</dt><dd th:text="${tongQuan.soDonDaThu}"></dd></div>
         <div><dt>Doanh thu đã xác nhận</dt><dd><span th:replace="~{fragments/ui :: money(${tongQuan.doanhThuDaThu})}"></span></dd></div>
     </dl>
-    <form th:if="${boLoc != null}" class="order-filter admin-panel" method="get" th:action="@{/admin/orders}" aria-label="Lọc đơn hàng">
+    <form th:if="${boLoc != null}" class="order-filter admin-panel" method="get" th:action="@{${base}}" aria-label="Lọc đơn hàng">
         <fieldset>
             <legend>Trạng thái đơn</legend>
             <div class="order-filter__status">
@@ -34,13 +34,13 @@
             <label>Mã đơn
                 <input type="search" name="q" maxlength="80" pattern="[A-Za-z0-9_\-]*" th:value="${boLoc.maDon}" placeholder="Phần đầu mã đơn">
             </label>
-            <label>Phương thức thanh toán
+            <label th:if="${orderOrigin != null}">Phương thức thanh toán
                 <select name="method">
                     <option value="">Tất cả</option>
                     <option th:each="p : ${phuongThucThanhToan}" th:value="${p.name()}" th:text="${p.nhan}" th:selected="${boLoc.phuongThuc == p}"></option>
                 </select>
             </label>
-            <label>Trạng thái thanh toán
+            <label th:if="${orderOrigin != null}">Trạng thái thanh toán
                 <select name="paymentStatus">
                     <option value="">Tất cả</option>
                     <option th:each="s : ${trangThaiThanhToan}" th:value="${s.name()}" th:text="${s.nhan}" th:selected="${boLoc.thanhToan == s}"></option>
@@ -51,7 +51,7 @@
                     <option th:each="s : ${sapXep}" th:value="${s.name()}" th:text="${s.nhan}" th:selected="${boLoc.sapXep == s}"></option>
                 </select>
             </label>
-            <label>Số đơn mỗi trang
+            <label th:if="${orderOrigin != null}">Số đơn mỗi trang
                 <select name="size">
                     <option th:each="s : ${kichThuocTrang}" th:value="${s}" th:text="${s}" th:selected="${boLoc.kichThuoc == s}"></option>
                 </select>
@@ -65,15 +65,15 @@
         </div>
         <div class="catalog-actions admin-filter-actions">
             <button type="submit" class="btn btn--primary">Áp dụng</button>
-            <a class="btn btn--secondary" th:href="@{/admin/orders}">Xóa lọc, xem tất cả đơn</a>
+            <a class="btn btn--secondary" th:href="@{${base}}">Xóa lọc, xem tất cả đơn</a>
         </div>
     </form>
     <p class="list-result-count" th:classappend="${boLoc == null ? 'list-result-count--end' : null}"
        role="status" id="order-result-count" tabindex="-1" th:if="${pager != null}"
        th:attr="data-scroll-list-start=${orderOrigin == null ? 'customer-order' : 'admin-order'}"
-       th:text="${boLoc == null ? pager.moTa('đơn hàng') : ((pager.tongTrang > 1 ? 'Đang hiển thị ' : '') + pager.moTa('đơn phù hợp'))}"></p>
+       th:text="${customerOrigin != null and !dangLoc ? pager.moTa('đơn hàng') : ((pager.tongTrang > 1 ? 'Đang hiển thị ' : '') + pager.moTa('đơn phù hợp'))}"></p>
     <p class="notice" th:if="${#lists.isEmpty(donHang)}"
-       th:text="${boLoc == null ? 'Chưa có đơn hàng.' : 'Chưa có đơn hàng phù hợp.'}"></p>
+       th:text="${customerOrigin != null and !dangLoc ? 'Chưa có đơn hàng.' : 'Chưa có đơn hàng phù hợp.'}"></p>
     <div th:if="${orderOrigin != null and !#lists.isEmpty(donHang)}" class="admin-table-scroll" tabindex="0" role="region" aria-label="Bảng đơn hàng">
         <table class="admin-table">
             <thead><tr>
@@ -115,7 +115,7 @@
                     <td th:text="${muc.trangThai.label}"></td>
                     <td class="num"><span th:replace="~{fragments/ui :: money(${muc.tong})}"></span></td>
                     <td><a class="btn btn--secondary admin-button" data-scroll-entry
-                           th:href="@{/orders/{id}(id=${muc.maDonHang},listPage=${pager.trang})}"
+                           th:href="@{${customerOrigin.chiTietKhach(muc.maDonHang,pager.trang)}}"
                            th:aria-label="|Xem đơn ${muc.maHienThi}|">Xem đơn</a></td>
                 </tr>
             </tbody>

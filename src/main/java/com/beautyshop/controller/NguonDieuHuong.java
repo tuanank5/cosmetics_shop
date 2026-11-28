@@ -78,6 +78,14 @@ public final class NguonDieuHuong {
         return new NguonDonAdmin(loc, page);
     }
 
+    static NguonDonAdmin donKhach(Map<String, String> request, List<OrderStatus> trangThai, boolean chiTiet) {
+        var loc = new BoLocDonHangAdmin(trangThai, null, null, request.get(chiTiet ? "listQ" : "q"),
+            giaTri(SapXep.class, request.get(chiTiet ? "listSort" : "sort")), 10,
+            ngayLoc(request.get(chiTiet ? "listFromDate" : "fromDate")),
+            ngayLoc(request.get(chiTiet ? "listToDate" : "toDate")));
+        return new NguonDonAdmin(loc, soNguyen(request.get(chiTiet ? "listPage" : "page"), -1));
+    }
+
     private static LocalDate ngayLoc(String value) {
         if (value == null || value.isBlank()) return null;
         try {
@@ -109,6 +117,18 @@ public final class NguonDieuHuong {
     }
 
     public record NguonDonAdmin(BoLocDonHangAdmin loc, int page) {
+        public String danhSachKhach(int soTrang) {
+            var query = thamSo(false, soTrang);
+            query.remove("size");
+            return url("/orders", query, "status");
+        }
+
+        public String chiTietKhach(long maDon, int soTrang) {
+            var query = thamSo(true, soTrang);
+            query.remove("listSize");
+            return url("/orders/" + maDon, query, "listStatus");
+        }
+
         public String danhSach(int soTrang) {
             return url(DON_ADMIN, thamSo(false, soTrang), "status");
         }

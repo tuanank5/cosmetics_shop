@@ -8,6 +8,9 @@
         <h1 data-scroll-list-start="cart-variant" tabindex="-1">Giỏ hàng</h1>
         <a th:unless="${#lists.isEmpty(mucGio)}" class="text-link" th:href="@{/products}">Tiếp tục mua sắm</a>
     </header>
+    <ul th:if="${ketQuaMuaLai}" class="notice" aria-label="Kết quả mua lại">
+        <li th:each="dong : ${ketQuaMuaLai}" th:text="${dong}"></li>
+    </ul>
     <div th:replace="~{fragments/ui :: notices(${message}, ${error})}"></div>
     <p class="visually-hidden" aria-live="polite" data-cart-live></p>
     <div class="alert alert--error cart-recovery" data-cart-recovery hidden>

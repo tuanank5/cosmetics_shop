@@ -140,6 +140,11 @@ public class DonHang_Service {
     public Page<TomTat> danhSachCustomer(long maNguoiDung, Pageable pageable) {
         return PhanTrang.doc(pageable, trang -> donHangRepository.danhSach(maNguoiDung, trang));
     }
+    @Transactional(readOnly = true, isolation = Isolation.REPEATABLE_READ)
+    public Page<TomTat> danhSachCustomer(long maNguoiDung, BoLocDonHangAdmin loc, Pageable trang) {
+        return PhanTrang.doc(trang, yeuCau -> donHangRepository.danhSach(maNguoiDung, loc, yeuCau));
+    }
+
     @PreAuthorize("hasRole('ADMIN')")
     @Transactional(readOnly = true, isolation = Isolation.REPEATABLE_READ)
     public Page<DongDonAdmin> danhSachAdmin(BoLocDonHangAdmin loc, int page) {
