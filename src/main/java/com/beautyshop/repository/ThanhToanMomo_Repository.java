@@ -1,5 +1,6 @@
 package com.beautyshop.repository;
 
+import com.beautyshop.dto.LanThanhToan_Dto;
 import com.beautyshop.payment.MomoGateway;
 import java.math.BigDecimal;
 import java.util.List;
@@ -43,6 +44,23 @@ public class ThanhToanMomo_Repository {
         return jdbc.sql(sql).param(giaTri).query((rs, row) -> new LanThanhToan(
             new MomoGateway.Request(rs.getLong(1), rs.getString(2), rs.getString(3), rs.getBigDecimal(4).longValueExact()),
             rs.getString(5), rs.getString(6), rs.getString(7))).optional();
+    }
+
+    public List<LanThanhToan_Dto> lichSu(long maDon, boolean quanTri) {
+        String thamChieu = quanTri ? "ma_lan_thanh_toan, ma_yeu_cau, ma_giao_dich_cong" : "NULL, NULL, NULL";
+        return jdbc.sql("""
+            SELECT cong_thanh_toan, so_tien, trang_thai, ngay_tao, ngay_thanh_toan, %s
+            FROM lan_thanh_toan WHERE ma_don_hang = ?
+            ORDER BY ngay_tao, lan_thanh_toan.ma_lan_thanh_toan
+            """.formatted(thamChieu)).param(maDon).query((rs, row) -> new LanThanhToan_Dto(
+                rs.getObject(6, Long.class), rs.getString(1), rs.getBigDecimal(2), rs.getString(3),
+                rs.getObject(4, java.time.LocalDateTime.class), rs.getObject(5, java.time.LocalDateTime.class),
+                thamChieuHopLe(rs.getString(7), "(?:[0-9a-fA-F]{8}(?:-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}|COD-[0-9]{1,19})"),
+                thamChieuHopLe(rs.getString(8), "[0-9]{1,20}"))).list();
+    }
+
+    private static String thamChieuHopLe(String giaTri, String mau) {
+        return giaTri != null && giaTri.matches(mau) ? giaTri : null;
     }
 
     public boolean conHan(long maDon) {

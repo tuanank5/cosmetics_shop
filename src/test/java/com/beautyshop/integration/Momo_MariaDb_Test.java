@@ -41,6 +41,7 @@ class Momo_MariaDb_Test {
     @Autowired GioHang_Service gioHang;
     @Autowired ThanhToanMomo_Repository attempts;
     @Autowired Momo_Settings settings;
+    @Autowired com.beautyshop.service.ThanhToanMomo_Service thanhToan;
     @Autowired PhieuGiamGia_Service phieuGiamGiaService;
     @Autowired PlatformTransactionManager transactionManager;
     private final String password = UUID.randomUUID().toString();
@@ -168,8 +169,38 @@ class Momo_MariaDb_Test {
         }
         assertThat(trangThai(don)).isEqualTo("EXPIRED");
         assertThat(attempts.soLanCanHoan(don.id())).isEqualTo(1);
+        assertThat(attempts.lichSu(don.id(), true)).hasSize(1);
         assertThat(soLuong(don, "so_luong_trong_kho")).isEqualTo(2);
         assertThat(luot(don, "so_luot_da_dung")).isZero();
+    }
+
+    @Test
+    void haiRetrySauFailedChiTaoMotLanMoi() throws Exception {
+        var don = datDon();
+        var request = attempts.moiNhat(don.id()).orElseThrow().request();
+        var tuChoi = settings.moPhong(request, 1006);
+        org.assertj.core.api.Assertions.assertThatThrownBy(() -> thanhToan.nhanIPN(tuChoi, "MOMO"))
+            .isInstanceOf(org.springframework.web.server.ResponseStatusException.class);
+        assertThat(attempts.trangThaiHienThi(don.id())).contains("PENDING");
+        mvc.perform(ipn(tuChoi)).andExpect(status().isNoContent());
+        var batDau = new java.util.concurrent.CyclicBarrier(2);
+        java.util.concurrent.Callable<MomoGateway.Request> retry = () -> {
+            batDau.await(10, java.util.concurrent.TimeUnit.SECONDS);
+            return thanhToan.chuanBi(don.id(), MomoGateway.MA_MOCK);
+        };
+        try (var pool = java.util.concurrent.Executors.newFixedThreadPool(2)) {
+            var a = pool.submit(retry);
+            var b = pool.submit(retry);
+            assertThat(a.get(15, java.util.concurrent.TimeUnit.SECONDS))
+                .isEqualTo(b.get(15, java.util.concurrent.TimeUnit.SECONDS));
+        }
+        var lichSu = attempts.lichSu(don.id(), true);
+        assertThat(lichSu).extracting("trangThai").containsExactly("FAILED", "PENDING");
+        assertThat(lichSu.getFirst().maYeuCau()).isEqualTo(request.requestId());
+        assertThat(attempts.lichSu(don.id(), false)).allMatch(lan ->
+            lan.maLan() == null && lan.maYeuCau() == null && lan.maGiaoDich() == null);
+        assertThat(attempts.trangThaiHienThi(don.id())).contains("PENDING");
+        assertThat(trangThai(don)).isEqualTo("PENDING_PAYMENT");
     }
 
     private MockHttpServletRequestBuilder ipn(Ipn ipn) throws Exception {

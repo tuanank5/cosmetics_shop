@@ -18,6 +18,7 @@ import com.beautyshop.shipping.ShippingFee_Policy;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import com.beautyshop.dto.LanThanhToan_Dto;
 import java.util.UUID;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -136,15 +137,15 @@ public class DonHang_Service {
 
     public ChiTietDon chiTietCustomer(long maDon) {
         quyenDonHang.kiemTraSoHuu(maDon);
-        return docChiTiet(maDon);
+        return docChiTiet(maDon, false);
     }
 
     @PreAuthorize("hasRole('ADMIN')")
     public ChiTietDon chiTietAdmin(long maDon) {
-        return docChiTiet(maDon);
+        return docChiTiet(maDon, true);
     }
 
-    private ChiTietDon docChiTiet(long maDon) {
+    private ChiTietDon docChiTiet(long maDon, boolean quanTri) {
         Don don = timDon(maDon, false);
         boolean online = "MOMO".equals(don.phuongThuc());
         var thanhToan = (online ? thanhToanMomo.trangThaiHienThi(maDon) : donHangRepository.trangThaiThanhToanCOD(maDon)).orElse("");
@@ -153,7 +154,8 @@ public class DonHang_Service {
         boolean doiSoat = online && momo.enabled() && don.trangThai() == OrderStatus.PENDING_PAYMENT;
         return new ChiTietDon(don, donHangRepository.chiTiet(maDon), thanhToan,
             coTheHuy(don, thanhToan), next(don, "PAID".equals(thanhToan)), mock, doiSoat,
-            doiSoat && thanhToanMomo.conHan(maDon), online ? thanhToanMomo.soLanCanHoan(maDon) : 0);
+            doiSoat && thanhToanMomo.conHan(maDon), online ? thanhToanMomo.soLanCanHoan(maDon) : 0,
+            thanhToanMomo.lichSu(maDon, quanTri));
     }
 
     @Transactional(isolation = Isolation.READ_COMMITTED)
@@ -225,5 +227,6 @@ public class DonHang_Service {
     }
 
     public record ChiTietDon(Don don, List<ChiTiet> muc, String thanhToan, boolean coTheHuy, OrderStatus tiepTheo,
-                            boolean mock, boolean doiSoat, boolean coTheThuLai, long canHoanTien) {}
+                            boolean mock, boolean doiSoat, boolean coTheThuLai, long canHoanTien,
+                            List<LanThanhToan_Dto> lichSu) {}
 }

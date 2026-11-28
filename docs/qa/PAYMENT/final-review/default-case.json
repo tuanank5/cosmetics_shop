@@ -1,0 +1,7 @@
+﻿{
+    "class":  "com.beautyshop.integration.Momo_MariaDb_Test",
+    "method":  "haiRetrySauFailedChiTaoMotLanMoi",
+    "time":  "0.0",
+    "status":  "SKIP",
+    "reason":  "Environment variable [P01_MARIADB_TEST] does not exist"
+}

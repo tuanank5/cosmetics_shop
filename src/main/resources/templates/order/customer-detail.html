@@ -54,6 +54,7 @@
 
     <div class="order-detail-layout">
         <div class="commerce-stack">
+            <div th:replace="~{fragments/lich-su-thanh-toan :: lichSu(false)}"></div>
             <section class="card" aria-labelledby="order-delivery-title">
                 <div class="reference-card-title"><svg th:replace="~{fragments/commerce :: icon('pin')}"></svg><h2 id="order-delivery-title">Thông tin giao hàng</h2></div>
                 <dl class="order-delivery-grid">
