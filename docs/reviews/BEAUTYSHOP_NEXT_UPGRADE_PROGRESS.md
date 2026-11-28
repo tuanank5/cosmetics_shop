@@ -1,6 +1,6 @@
 # Sổ thực thi nâng cấp · 10 phase, 19 Work Package
 
-**5/19 DONE (BASE, AUTH, QUALITY, PERF, AUDIT).**
+**8/19 DONE (BASE, AUTH, QUALITY, PERF, AUDIT, VOUCHER, PAYMENT, ORDER).** [Quyết định owner](../DECISIONS.md#nghiệm-thu-voucher-payment-và-order-ngày-28112026)
 
 ## Thứ tự thực thi và trạng thái
 
@@ -13,10 +13,10 @@ Số thứ tự là số tệp. “Chờ BASE/phụ thuộc” xác định gate
 | 3 | 1 | [AUTH-LIVE](implementation-prompts/next-upgrade/03-AUTH-LIVE.md) | BLOCKED_EXTERNAL | BASE và AUTH đã đạt. Owner cần xác nhận môi trường test, client Google/GitHub, callback, hai Customer, Redis và Mailpit/SMTP thử. | Revision đầu vào `0ed547b` · chưa chạy |
 | 4 | 2 | [AUDIT](implementation-prompts/next-upgrade/04-AUDIT.md) | DONE | Owner chọn AUDIT-A. AUDIT PURGE — BLOCKED_EXTERNAL. | `5bdada6` · [Quyết định AUDIT-A](../DECISIONS.md#nghiệm-thu-audit-ngày-28112026) |
 | 5 | 2 | [ACCOUNT](implementation-prompts/next-upgrade/05-ACCOUNT.md) | BLOCKED_OWNER / phụ thuộc | Chốt nội dung mail, AUTH và AUDIT sẵn sàng. | — |
-| 6 | 3 | [VOUCHER](implementation-prompts/next-upgrade/06-VOUCHER.md) | MERGED / READY_FOR_OWNER_ACCEPTANCE | Chờ owner nghiệm thu. | PR #12 · `e4c00c8` · [Closeout](VOUCHER-ket-qua.md) |
-| 7 | 3 | [PAYMENT](implementation-prompts/next-upgrade/07-PAYMENT.md) | PARTIAL_ACCEPTED · READY_FOR_OWNER_ACCEPTANCE (mock) | Bốn gate sau VOUCHER đã chạy trên merge. Chờ quyết định owner. | `e4c00c8` · [Revalidation](PAYMENT-ket-qua.md#revalidation-pr-12) |
+| 6 | 3 | [VOUCHER](implementation-prompts/next-upgrade/06-VOUCHER.md) | DONE | Owner nghiệm thu 28/11/2026. Hai slot HÀNG/SHIP, quota, V9 và COD/MoMo mock. | PR #12 · `e4c00c8` · [Closeout](VOUCHER-ket-qua.md) |
+| 7 | 3 | [PAYMENT](implementation-prompts/next-upgrade/07-PAYMENT.md) | DONE | Owner nghiệm thu 28/11/2026. Lịch sử attempt và bốn gate sau VOUCHER trong phạm vi COD/MoMo mock. | `e4c00c8` · [Revalidation](PAYMENT-ket-qua.md#revalidation-pr-12) |
 | 8 | 3 | [PAY-LIVE](implementation-prompts/next-upgrade/08-PAY-LIVE.md) | Chờ phụ thuộc · BLOCKED_EXTERNAL | Xác nhận môi trường thật, revision và số đầu kỳ. | — |
-| 9 | 4 | [ORDER](implementation-prompts/next-upgrade/09-ORDER.md) | MERGED / READY_FOR_OWNER_ACCEPTANCE | Chờ owner nghiệm thu danh sách đơn Customer và mua lại vào giỏ. | 28/11/2026 · PR #14 · `13c586a` · [Báo cáo](ORDER-ket-qua.md) |
+| 9 | 4 | [ORDER](implementation-prompts/next-upgrade/09-ORDER.md) | DONE | Owner nghiệm thu 28/11/2026. Danh sách đơn Customer, bộ lọc, điều hướng và mua lại. | 28/11/2026 · PR #14 · `13c586a` · [Báo cáo](ORDER-ket-qua.md) |
 | 10 | 4 | [RETURN](implementation-prompts/next-upgrade/10-RETURN.md) | BLOCKED_OWNER | Duyệt 12 và hợp đồng audit. | — |
 | 11 | 4 | [REFUND](implementation-prompts/next-upgrade/11-REFUND.md) | BLOCKED_OWNER | Duyệt 3, 13–14 và nguồn bằng chứng chi tiền. | — |
 | 12 | 5 | [AI-OPS](implementation-prompts/next-upgrade/12-AI-OPS.md) | Chờ giao phần độc lập | BASE đã đạt cho guard/counter; AUDIT cho reindex. | — |
@@ -131,3 +131,5 @@ Khi bắt đầu mỗi WP, ghi người duyệt, ngày, revision, môi trường
 | 28/11/2026 | AUDIT → DONE (AUDIT-A) | Owner nghiệm thu D7 và guard D6 trên merge `5bdada6`. [PR #11](https://github.com/tuanank5/cosmetics_shop/pull/11) | Purge thực tế BLOCKED_EXTERNAL cho đến khi nguồn clearance đạt nghiệm thu. |
 
 28/11/2026 · VOUCHER — MERGED / READY_FOR_OWNER_ACCEPTANCE. PAYMENT — PARTIAL_ACCEPTED, bốn gate tích hợp PASS local trên merge với MoMo mock. Chờ owner nghiệm thu VOUCHER và xác nhận phạm vi PAYMENT mock. Tổng 5/19 DONE. AUTH-LIVE và AUDIT PURGE tiếp tục BLOCKED_EXTERNAL. PAY-LIVE chưa nghiệm thu.
+
+28/11/2026 · Sau closeout PR #15, owner nghiệm thu VOUCHER, PAYMENT (COD và MoMo mock) và ORDER. Tiến độ tăng từ 5/19 lên **8/19 DONE**. [Quyết định owner](../DECISIONS.md#nghiệm-thu-voucher-payment-và-order-ngày-28112026)

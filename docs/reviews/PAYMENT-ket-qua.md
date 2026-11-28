@@ -1,5 +1,9 @@
 # PAYMENT · Lịch sử từng lần thanh toán
 
+**DONE · Owner nghiệm thu ngày 28/11/2026.** Lịch sử payment attempt và bốn gate tích hợp sau VOUCHER trên `e4c00c8`, trong phạm vi COD và MoMo mock. [Quyết định owner](../DECISIONS.md#nghiệm-thu-voucher-payment-và-order-ngày-28112026)
+
+## Lịch sử triển khai và kiểm chứng
+
 Ngày 28/11/2026, owner giao phần độc lập sau BASE. Tại bước triển khai ban đầu, PAYMENT ở trạng thái **IN_PROGRESS**. HEAD và ref local origin/main cùng ở `98d2fa3da4e10ae030f99c3e9a5899de17e2cf28`. Bản kiểm thử là revision này cộng các tệp source/test trong [manifest SHA-256](../qa/PAYMENT/source.json). QA dùng checkout riêng `target/payment-07`. Bản nghiệm thu local của BASE, AUTH, QUALITY và PERF là cơ sở cập nhật tiến độ.
 
 ## Đối chiếu dữ liệu V1
