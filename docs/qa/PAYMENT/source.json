@@ -1,0 +1,26 @@
+{
+  "base": "98d2fa3da4e10ae030f99c3e9a5899de17e2cf28",
+  "algorithm": "SHA-256 of sorted UTF-8 lines: blob SHA-256, two spaces, path, LF. Blob hashes cover exact checkout bytes.",
+  "changes": {
+    "sha256": "f7ad01b4c8cdfc14985e34d883b1c84232661f68f0f1d35d626b91f44ff59a93",
+    "files": {
+      "src/main/java/com/beautyshop/dto/LanThanhToan_Dto.java": "aa4cb2007a200e04f46a334ee678978e983722944a9ed8e89b5ffc20a3f4578a",
+      "src/main/java/com/beautyshop/repository/ThanhToanMomo_Repository.java": "785898496b91f669006f481b02f72c976272d17eaf58b4279b0441e87fdc153d",
+      "src/main/java/com/beautyshop/service/DonHang_Service.java": "4ee85ebc7774771de82f6335c0108a7453e375c3f7dcb8f1eb873df17a623bc8",
+      "src/main/resources/templates/fragments/lich-su-thanh-toan.html": "caa424852bdc0523555c83b633885a9631945c1a784ea437a1ae7d256ce9f47a",
+      "src/main/resources/templates/order/customer-detail.html": "ff1854b1b9989f9a4e7df47fffe2b391d39bcd48fc1c84da6aa27b33d3c195ef",
+      "src/main/resources/templates/order/detail.html": "174091f346b9337a012817c80623463d195566b7a161e0a546ce8d556a10fc13",
+      "src/test/java/com/beautyshop/dto/LanThanhToanTest.java": "653c97f10d2f0d0b5caca449ff697565ec2a07d83c09f3fb9f3ebb17fecbf90f",
+      "src/test/java/com/beautyshop/integration/Momo_MariaDb_Test.java": "1f8d0e858a411100add7bfae76172f64ba0fa9933faa562e61fc9e155baaa0b2"
+    }
+  },
+  "fixtureScripts": {
+    "sha256": "d160a67110d33da3362e5004b1593c6fecaf6cc7cf30e5da7a298f8394a709a8",
+    "files": {
+      "docs/qa/CART-01/run-fixture.ps1": "fd61562e9a1bd3741cae61e0dd7d9534dcfc996c3008b5f157a2997202827fa7",
+      "docs/qa/PAYMENT/order-detail.cjs": "0b1f882451bd94fece5d8997615ec8c8632c4c680acaf6603c400b7a77139432",
+      "docs/qa/PAYMENT/run-order-detail.ps1": "ea95ae9218e5015a64e7a53ab85763fa7ff60418013563f9612df44b9c4eadf3",
+      "docs/qa/QUALITY/final-review/run-mariadb.ps1": "471bdcc3913b11425c4e807f7b002da13b4651ee7af333bb1dcebc3d1cb4bf38"
+    }
+  }
+}

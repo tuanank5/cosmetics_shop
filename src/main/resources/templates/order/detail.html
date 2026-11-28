@@ -25,6 +25,7 @@
     <p class="notice" th:if="${chiTiet.canHoanTien > 0}">Giao dịch cần được kiểm tra để hoàn tiền.</p>
     <div class="admin-order-layout">
         <div class="admin-stack">
+            <div th:replace="~{fragments/lich-su-thanh-toan :: lichSu(true)}"></div>
             <section class="admin-panel">
                 <h2>Tổng quan</h2>
                 <dl class="admin-facts">

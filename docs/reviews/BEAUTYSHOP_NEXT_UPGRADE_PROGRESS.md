@@ -14,7 +14,7 @@ Số thứ tự là số tệp. “Chờ BASE/phụ thuộc” xác định gate
 | 4 | 2 | [AUDIT](implementation-prompts/next-upgrade/04-AUDIT.md) | BLOCKED_OWNER | Owner duyệt 6–7 và BASE đạt. | — |
 | 5 | 2 | [ACCOUNT](implementation-prompts/next-upgrade/05-ACCOUNT.md) | BLOCKED_OWNER / phụ thuộc | Chốt nội dung mail, AUTH và AUDIT sẵn sàng. | — |
 | 6 | 3 | [VOUCHER](implementation-prompts/next-upgrade/06-VOUCHER.md) | BLOCKED_OWNER | Owner duyệt 1–3; phối hợp AUDIT. | — |
-| 7 | 3 | [PAYMENT](implementation-prompts/next-upgrade/07-PAYMENT.md) | Chờ BASE | BASE cho phần lịch sử; VOUCHER cho tích hợp cuối. | — |
+| 7 | 3 | [PAYMENT](implementation-prompts/next-upgrade/07-PAYMENT.md) | PARTIAL_ACCEPTED / BLOCKED_DEPENDENCY | Owner giao phần lịch sử độc lập tại `98d2fa3`. Tổng tiền, snapshot và đối soát hai slot BLOCKED_DEPENDENCY (VOUCHER). | [Báo cáo PAYMENT](PAYMENT-ket-qua.md) |
 | 8 | 3 | [PAY-LIVE](implementation-prompts/next-upgrade/08-PAY-LIVE.md) | Chờ phụ thuộc · BLOCKED_EXTERNAL | Xác nhận môi trường thật, revision và số đầu kỳ. | — |
 | 9 | 4 | [ORDER](implementation-prompts/next-upgrade/09-ORDER.md) | Chờ phụ thuộc | Chốt đầu vào AUTH; đồng bộ hai view chi tiết. | — |
 | 10 | 4 | [RETURN](implementation-prompts/next-upgrade/10-RETURN.md) | BLOCKED_OWNER | Duyệt 12 và hợp đồng audit. | — |
@@ -44,6 +44,12 @@ Số thứ tự là số tệp. “Chờ BASE/phụ thuộc” xác định gate
 Trên mỗi dòng, điền owner, revision gốc/tích hợp, PR/CI và kết quả; nối biên bản theo mẫu `ngày | WP | trạng thái trước → sau | quyết định/phụ thuộc | môi trường/fixture | PASS/FAIL/SKIP/NOT RUN | log/ảnh | bước kế tiếp`. Khi bị chặn, ghi người có thể mở khóa, quyết định cụ thể và phạm vi còn làm độc lập. Chỉ ghi DONE khi checkpoint, regression ảnh hưởng và review/CI đúng revision đã được xác nhận. Giữ lịch sử các lần thử, không cộng gộp suite khác môi trường.
 
 Mục 15 (restore web) và 17 (tự sinh mã SKU) tiếp tục ngoài phạm vi. D48 đã chốt MongoDB cho lịch sử Customer. D49 giao AUTH/AUTH-LIVE phân biệt logout BeautyShop với phiên Google, chỉ sửa lỗi ứng dụng tái hiện được.
+
+## Nhật ký PAYMENT
+
+| Ngày | WP | Kiểm chứng | Gate tiếp theo |
+|---|---|---|---|
+| 28/11/2026 | PAYMENT-FINAL · PARTIAL_ACCEPTED / BLOCKED_DEPENDENCY | Lịch sử độc lập đã review local trên `98d2fa3`. Maven 238 PASS/89 SKIP, MariaDB 95/95, WebKit 8/8 và package PASS. [Review](../qa/PAYMENT/final-review/review.md) | Chờ review PR, CI, nghiệm thu revision và tích hợp VOUCHER. |
 
 ## Nhật ký AUTH
 

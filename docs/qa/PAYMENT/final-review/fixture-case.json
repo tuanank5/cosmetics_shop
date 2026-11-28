@@ -1,0 +1,7 @@
+﻿{
+    "class":  "com.beautyshop.integration.Momo_MariaDb_Test",
+    "method":  "haiRetrySauFailedChiTaoMotLanMoi",
+    "time":  "0.396",
+    "status":  "PASS",
+    "reason":  null
+}

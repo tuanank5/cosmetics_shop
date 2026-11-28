@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<body>
+<section th:fragment="lichSu(quanTri)" class="card" aria-labelledby="lich-su-thanh-toan">
+    <h2 id="lich-su-thanh-toan">Lịch sử thanh toán</h2>
+    <p th:if="${#lists.isEmpty(chiTiet.lichSu)}">Đơn chưa có lần thanh toán nào được ghi nhận.</p>
+    <ol>
+        <li th:each="lan, st : ${chiTiet.lichSu}">
+            <strong th:text="|Lần ${st.count} · ${lan.phuongThuc()}|"></strong>
+            <span th:text="${lan.nhanTrangThai()}"></span>
+            <span th:replace="~{fragments/ui :: money(${lan.soTien})}"></span>
+            <dl>
+                <dt>Thời điểm tạo (giờ Việt Nam)</dt><dd th:text="${lan.gioVietNam(lan.ngayTao)}"></dd>
+                <dt>Thời điểm thanh toán (giờ Việt Nam)</dt><dd th:text="${lan.gioVietNam(lan.ngayThanhToan)}"></dd>
+                <th:block th:if="${quanTri}">
+                    <dt>Mã lần thanh toán</dt><dd th:text="${lan.maLan}"></dd>
+                    <dt>Mã yêu cầu</dt><dd th:text="${lan.maYeuCau ?: 'Chưa ghi nhận'}"></dd>
+                    <dt>Mã giao dịch cổng</dt><dd th:text="${lan.maGiaoDich ?: 'Chưa ghi nhận'}"></dd>
+                </th:block>
+            </dl>
+        </li>
+    </ol>
+</section>
+</body>
+</html>
