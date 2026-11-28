@@ -1,0 +1,314 @@
+{
+  "parent": "5aa4932cc663de1115ff06ab7a8d7b837a673d93",
+  "candidate": "a656e6e7f4480117873d89d6fab0fb1a2be9f435",
+  "merge": "610c816b5bd7f7bf924f80a62cec4eba0f7c59bb",
+  "tree": "dfeca3f664dcd32bf8b53f8068fe6120ab987f32",
+  "head": "610c816b5bd7f7bf924f80a62cec4eba0f7c59bb",
+  "originMainTracking": "610c816b5bd7f7bf924f80a62cec4eba0f7c59bb",
+  "rootIndexEmpty": true,
+  "sourceWorktreeClean": true,
+  "pr": {
+    "number": 17,
+    "state": "MERGED",
+    "source": "owner-confirmed GitHub status; both merge parents independently verified locally"
+  },
+  "ci": {
+    "run": 46152490413,
+    "event": "push",
+    "branch": "main",
+    "headSha": "610c816b5bd7f7bf924f80a62cec4eba0f7c59bb",
+    "status": "completed",
+    "conclusion": "success",
+    "source": "owner verification; local gh API request blocked",
+    "workflow": ".github/workflows/ci.yml",
+    "steps": [
+      "mvn -B test",
+      "mvn -B -DskipTests package"
+    ]
+  },
+  "stash": {
+    "subject": "ACCOUNT local files before sync",
+    "object": "ccac86dd262ad4d4954ce9ed52a053c0482e334e",
+    "total": 12,
+    "matchingIncomingBlobs": 45
+  },
+  "manifest": {
+    "matchedFiles": 45,
+    "matchedSourceFiles": 20,
+    "algorithm": "SHA-256 of tested Linux/Git LF bytes per path; aggregate UTF-8 sorted path + TAB + SHA-256 + LF",
+    "sourceSha256": "8756d38832cd5a6da4e5332a199d89ea965ff7200ea7b0e00eead183b3c8dd84",
+    "files": [
+      {
+        "path": "docs/DECISIONS.md",
+        "blob": "d296d895c2ae36836147997df93bdbbc6b3e5727",
+        "sha256": "e93d278af689f0f9d4ef6cf4a3e730505b74585c39adb283d091de8e4dc18993"
+      },
+      {
+        "path": "docs/design/02-erd.md",
+        "blob": "fc240862fdba836f6ce982594cdfb3d4c9a25f2c",
+        "sha256": "f8181d49f42c97a3dbe98958542480b30273dad60ff71d0ba542f29699b678e9"
+      },
+      {
+        "path": "docs/qa/ACCOUNT/browser.cjs",
+        "blob": "8c882566c6b8d91942ff457253594a5b27c4cfc2",
+        "sha256": "de845e6f20c5a875e3cdabd1bdf76a75de82d289f77a2b0e2744400be67a781b"
+      },
+      {
+        "path": "docs/qa/ACCOUNT/final-review/before.txt",
+        "blob": "7076a51666915227e6d3cfb932f02194cbf34779",
+        "sha256": "49093c838b31230a84d9a60598afa716d7b349cdc94529b0a96fd1a4b0a3e738"
+      },
+      {
+        "path": "docs/qa/ACCOUNT/final-review/check.sql",
+        "blob": "a1407ee6269719e6e36f4eea816d034b4d26e2d1",
+        "sha256": "7bf0fc882f142a0fc4f05adb75e6d02db8e57feb1e2fbae36312e17e7dc7dd4d"
+      },
+      {
+        "path": "docs/qa/ACCOUNT/final-review/integration.txt",
+        "blob": "449e9e1cb136cb325c327a83be07624f29c551f4",
+        "sha256": "4a88969c5256174edc30adc6bef776eca87d96c42bc0185eb42f53df58ab0211"
+      },
+      {
+        "path": "docs/qa/ACCOUNT/final-review/maven.txt",
+        "blob": "f62a538e8a80700fb8f58f4e5dad0b72eb28a672",
+        "sha256": "3804882e9c3ad9215adbad1c73af00ef0c21734d25b93eeb6253863b653eb9c5"
+      },
+      {
+        "path": "docs/qa/ACCOUNT/final-review/migration.txt",
+        "blob": "b1c274f94ae808f234901d2f0f2cc2dd3f48eef9",
+        "sha256": "d8e3c2beab759eda90677a008c2a25bc0e134b08b32333dc13af763a48fb63be"
+      },
+      {
+        "path": "docs/qa/ACCOUNT/final-review/package.txt",
+        "blob": "767622c31c69b17d6189e2e163ea9396bef69775",
+        "sha256": "666c4868d50b6d4a6a457259ce365225b926dbe9cbeebb977e737b1934d3cc5d"
+      },
+      {
+        "path": "docs/qa/ACCOUNT/final-review/review.md",
+        "blob": "6d13bb53570913c49bd505095e7b3d2d9b2d65a3",
+        "sha256": "9ede39f5116f9d863c5e68688d4576491bd73bbd1baf752f35d4c797bda13384"
+      },
+      {
+        "path": "docs/qa/ACCOUNT/final-review/skip.json",
+        "blob": "3ac896e012b7a655fb0e564012898313cdda4847",
+        "sha256": "3f972c19e41988e5db3b0983ff3fdf7fb85edbe5177b5de79b5569c7de0f1c34"
+      },
+      {
+        "path": "docs/qa/ACCOUNT/final-review/source.json",
+        "blob": "4437fbc2822905a0574f9406b2dcd50ca9783dc0",
+        "sha256": "78db57b5b709929d8f54edb49dea36a8b175eb7e5bb5fcf597add86d8c2689f1"
+      },
+      {
+        "path": "docs/qa/ACCOUNT/final-review/sql.txt",
+        "blob": "5d0ea22c8a46cd907be4feca4d7fac8f7eef89f2",
+        "sha256": "fd7bcf168bd21806a30b17d9e15cbaf087f08c1c8e906573898a750285ba08f5"
+      },
+      {
+        "path": "docs/qa/ACCOUNT/integration.txt",
+        "blob": "900ad64de5838d55e92549e05e956c90e0601aee",
+        "sha256": "f07384073c798d307cc122072582f0cc6f70720ba3920b86367ff1b5d1d16e19"
+      },
+      {
+        "path": "docs/qa/ACCOUNT/maven.txt",
+        "blob": "bccd26458f490ced22d9563b8ec16f164ffd5a33",
+        "sha256": "0880d07ba741341ce5077b97575ed878121f5fcad0cf6f90cf292f27c4d2b1f0"
+      },
+      {
+        "path": "docs/qa/ACCOUNT/migration.txt",
+        "blob": "673469b73dc594daefcb895cfe6df2a5bdcce5ff",
+        "sha256": "19ee62023aa943ae1e85b69ef4d57b85ca6978fb2f15c88df95d4c87987f873a"
+      },
+      {
+        "path": "docs/qa/ACCOUNT/package.txt",
+        "blob": "806f2d76b2513fa2725018770cf52ac79e25780f",
+        "sha256": "a9c1208289a979b4486b9e222a668199b42d0520a6bf143199248f6fd5254f9b"
+      },
+      {
+        "path": "docs/qa/ACCOUNT/run-fixture.ps1",
+        "blob": "24d832792d632694c247805bfa501c17e9529a19",
+        "sha256": "c6779f513a4d0448f334d03ccb42404003b674265f104c6852ae51972ba27b43"
+      },
+      {
+        "path": "docs/qa/ACCOUNT/source.json",
+        "blob": "5a81d57fdd36f4fac7222fae242c53fb40ab04b3",
+        "sha256": "36aa90a116f3052fa19abb57955a323b4e5483676ad98e19cbc02536628e8cd7"
+      },
+      {
+        "path": "docs/qa/ACCOUNT/verification.json",
+        "blob": "3e338f43611c0b44044d13cc3b4154be5cad3376",
+        "sha256": "5d94181cc1d24b0f15bc1182ca42eff2751e97f530bfbdf022539cef215c068b"
+      },
+      {
+        "path": "docs/requirements/01-srs.md",
+        "blob": "9187b51d00f68d7b1da58d8dfa2a6c5613337e56",
+        "sha256": "92fd37fb9c22c80c2873b596812071fa03de435d4a3c2d85a325444c0c0b0707"
+      },
+      {
+        "path": "docs/requirements/02-business-rules.md",
+        "blob": "ff55c0db8eb3dcff3274a84db401f982251d4fee",
+        "sha256": "e413a5c8dd39f107b644ce87423ea0ed1031fb79676f5ac63163a87716a686bc"
+      },
+      {
+        "path": "docs/reviews/ACCOUNT-ket-qua.md",
+        "blob": "920fe9622b8fa4261383d4f405fa9b78520256af",
+        "sha256": "2ceded668c02eb5b1f7404334e4eb9434c2f82eccb9335fbc4f992b75d048a8e"
+      },
+      {
+        "path": "docs/reviews/ACCOUNT-owner-decisions-proposal.md",
+        "blob": "0d8bdb53bc186887641a340cb1969d8406154314",
+        "sha256": "408765c45c48657fad5b2ae5509d4b5ffb3f33aed13abc79df5b4b33a8f3596c"
+      },
+      {
+        "path": "docs/reviews/BEAUTYSHOP_NEXT_UPGRADE_PROGRESS.md",
+        "blob": "a3080a8a58ca2af7f1b983ce23e90a594f435335",
+        "sha256": "bb1bd648cc5969be90a0f3af484a8e4f10e69b3a60f221d816021f2638c86bed"
+      },
+      {
+        "path": "src/main/java/com/beautyshop/controller/admin/AdminBaoMatTaiKhoan_Controller.java",
+        "blob": "8abf1cd13fdfc069c4deece3d10e825ce2b6a244",
+        "sha256": "1e427dc2823870d52571b1383fda7cc9051bcdb16bbc0c91eae60a5b626864ab"
+      },
+      {
+        "path": "src/main/java/com/beautyshop/controller/admin/AdminNguoiDung_Controller.java",
+        "blob": "fd3f720284175fd8f13f9ca4c1b6c604d165c82b",
+        "sha256": "3d5d5a256c2055b29a53989a862cd7dba86edf331d5851de0cc3709d127293bc"
+      },
+      {
+        "path": "src/main/java/com/beautyshop/controller/admin/PhienDoiTrangThai.java",
+        "blob": "dfb227e32a8c8954a4fe18b31a45e551d6960556",
+        "sha256": "ff4c58e6a936d9508638bdd547a9065d75b833316eab81afbf8307c63e28ac1a"
+      },
+      {
+        "path": "src/main/java/com/beautyshop/repository/NguoiDung_Repository.java",
+        "blob": "33d8f21bd2df8460bdac09743818637b8e143ff3",
+        "sha256": "ef8f9e6b857a495d64a0908f840ec7717e197a048998b4ee9694a25cb99cdd96"
+      },
+      {
+        "path": "src/main/java/com/beautyshop/service/Email_Service.java",
+        "blob": "4b72775840af2cb715ee62930bb79228ea0864ce",
+        "sha256": "c5c75b742b6fd9ddee53783c151cb2b8cfbebe653e019794d4ec8e4802bd6619"
+      },
+      {
+        "path": "src/main/java/com/beautyshop/service/GuiThuTaiKhoan_Job.java",
+        "blob": "a9bc9515882b7d103d0ebf6f0e3a38a2f6e471cf",
+        "sha256": "0a5814268b9321883960f1570a5f4947c5d890ed618a84c589cb53639904bf43"
+      },
+      {
+        "path": "src/main/java/com/beautyshop/service/LyDoTaiKhoan.java",
+        "blob": "0ddcd8d5e54ea12a3b760564af3616e7a01b0838",
+        "sha256": "e42157a1d080dc5f5aa80cd4a591446fe8fb1341c80a6661678ea96a8f427acc"
+      },
+      {
+        "path": "src/main/java/com/beautyshop/service/NguoiDung_Service.java",
+        "blob": "bf17a1be8c7999bc5dc72d909f1848a5346af82b",
+        "sha256": "4b726f384cdbf62ece8dc4a3b8f422a6a6af3a82b11de85d322e95e729932c78"
+      },
+      {
+        "path": "src/main/java/com/beautyshop/service/SuKienQuanTri_Service.java",
+        "blob": "d6ac4d2d3162a4b1295c4097066c1a441dcc5545",
+        "sha256": "f7c76985fc5e5176d657371b5ccccbe3e22430b507bd5bd38f640ff6df3be557"
+      },
+      {
+        "path": "src/main/java/com/beautyshop/service/ThuTrangThaiTaiKhoan.java",
+        "blob": "646d05479c8a394b2484adc75bdeaee6559366c1",
+        "sha256": "1e7958b933547eef71c4440ddc2e70099c6647c9333549426b34a3e463050d7e"
+      },
+      {
+        "path": "src/main/resources/application.properties",
+        "blob": "6d1af55c1aedb54647a72d7fbb6d625328549a33",
+        "sha256": "9c1fe67cc69bcb1824edf1d829fb00345a7f3641e892b72be1f7ce4a8800d6aa"
+      },
+      {
+        "path": "src/main/resources/db/migration/V10__thu_trang_thai_tai_khoan.sql",
+        "blob": "d0d3f2734094abb5f6ea73ee662cb2938e859a65",
+        "sha256": "925e170b9d2849f3b9aac456a1b4aafcbe4dc697186620450ec0fbff5ef9fec3"
+      },
+      {
+        "path": "src/main/resources/templates/admin/user/detail.html",
+        "blob": "9e59637fa2d8fab51e639721c3929a3adcefb25f",
+        "sha256": "2cef121c8223762f2093a0d76917c883a0019013b7c6aa631efe3780819707b2"
+      },
+      {
+        "path": "src/main/resources/templates/admin/user/list.html",
+        "blob": "2ba81cf4b6c055f7c32b8daccaec13eeff05bc31",
+        "sha256": "19f0846611e4362d73aa330f4a8010158a512bfc51f1fac7a8a25f496f1fc1d5"
+      },
+      {
+        "path": "src/test/java/com/beautyshop/bootstrap/LocalDatabaseMigration_MariaDb_Test.java",
+        "blob": "2433d6890c191042a0ea5533779f79e9395e36cd",
+        "sha256": "77fe0ac800d321fbeed8aeb98fbb2706389a01f99ce3204bed35d97dd1ea2346"
+      },
+      {
+        "path": "src/test/java/com/beautyshop/integration/OAuth2Callback_MariaDb_Test.java",
+        "blob": "b8790e45f046484fb11da951af4c358cf37dee0a",
+        "sha256": "b53b74bbe457ff94602cea5b4ffe0be4b153a12b6afa2a716756490f3267d501"
+      },
+      {
+        "path": "src/test/java/com/beautyshop/integration/XacThuc_MariaDb_Test.java",
+        "blob": "6785e7b248080a354fc9f725c7c950d382146fd6",
+        "sha256": "0c3eff39df44d00e2a6ec8c06076fc321dd485b669526a7efcb30009e1c4d4e0"
+      },
+      {
+        "path": "src/test/java/com/beautyshop/service/AdminServiceMethodSecurityTest.java",
+        "blob": "d39c4c2e1ef0399181b052305274077f957c8931",
+        "sha256": "0ebcc0d9b9305e89d62ebdee6ccac7c9d88125958bfa9d764c08250941e8ab91"
+      },
+      {
+        "path": "src/test/java/com/beautyshop/service/ThuTaiKhoanSmtpTest.java",
+        "blob": "34767b95133b5767017d85108adf277b8ae4f26c",
+        "sha256": "83d362ba1503d5e9a630fba1b2e143b24eae7b267a8b59618e846755d0da5093"
+      },
+      {
+        "path": "src/test/java/com/beautyshop/service/ThuTaiKhoan_MariaDb_Test.java",
+        "blob": "d23c93adf803876973b6495a369b8cb950a810be",
+        "sha256": "9d4be8bbe6b5c3d1d48cce85dc26a4588dd1af0d4118e049ce5d2cc7d963a248"
+      }
+    ]
+  },
+  "flyway": {
+    "unchangedV1toV9": {
+      "src/main/resources/db/migration/V1__khoi_tao_co_so_du_lieu.sql": "c8a24bd992e13f34b278e8e6787711729247662a",
+      "src/main/resources/db/migration/V2__ghi_nhan_tru_kho_cod.sql": "755be1ddad3e2483668bca952b208cfe0f141ae7",
+      "src/main/resources/db/migration/V3__ghi_nhan_gop_gio_hang.sql": "57d414f55215197dfa11d2b8fed1ea186821e4fc",
+      "src/main/resources/db/migration/V4__them_phien_ban_xac_thuc.sql": "89a12848138b3562afb49d1b429f84bcac123808",
+      "src/main/resources/db/migration/V5__nap_faq_beautyshop.sql": "c4a8cd1451f08daedac685f3bf40d20b9f64dc55",
+      "src/main/resources/db/migration/V6__them_danh_tinh_oauth.sql": "1f853fd28da6cef09902f444cc33a427f7646175",
+      "src/main/resources/db/migration/V7__xac_thuc_da_phuong_thuc.sql": "1283bbfbbaec5621ac24d30f39efcc8b3d2d9700",
+      "src/main/resources/db/migration/V8__nhat_ky_nghiep_vu.sql": "4a5a5c494d35ade997ccdf48e966986e8c1f764d",
+      "src/main/resources/db/migration/V9__phieu_giam_gia_hai_slot.sql": "dcdb41b7dc1c8ee7f773e142b29ee0d0a894c91a"
+    },
+    "V10": "src/main/resources/db/migration/V10__thu_trang_thai_tai_khoan.sql",
+    "blob": "d0d3f2734094abb5f6ea73ee662cb2938e859a65"
+  },
+  "inheritedFinalFixture": {
+    "rerunAtCloseout": false,
+    "maven": {
+      "pass": 257,
+      "skip": 121
+    },
+    "fixturePassedMethodsAmongSkipped": 80,
+    "notRunMethods": 41,
+    "methodLedger": "../final-review/skip.json",
+    "mariaDb": {
+      "pass": 81,
+      "includesWebKit": [
+        "ACCOUNT",
+        "AUTH"
+      ]
+    },
+    "bootstrapPass": 11,
+    "smtpLoopbackPassInsideMaven": 5,
+    "package": "PASS",
+    "auditSuccess": 17,
+    "successMissingEvent": 0,
+    "auditFailed": 4,
+    "failedWithEvent": 0,
+    "rollbackInjectionPoints": 3,
+    "approvedBodySha256AtSampleTime": {
+      "BeautyShop đã khóa tài khoản của bạn": "2c767c4a99baac0dc013506c6d165cf5b8dbe3f9a1534c3a53c488784d794b1a",
+      "BeautyShop đã mở khóa tài khoản của bạn": "1a183604c6458f2b1e890d24e6163702aa85db39c0391ce96cfebbcf46ff61c9"
+    }
+  },
+  "status": "MERGED / READY_FOR_OWNER_ACCEPTANCE",
+  "done": "8/19"
+}
